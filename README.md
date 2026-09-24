@@ -6,7 +6,7 @@
 
 ## 每日发现与发布
 
-GitHub Actions 每天 12:17（日本时间）执行一次，也可手动触发。它搜索 GitHub、检查仓库 README 与元数据、读取官方 `llms.txt` 并逐页确认 cookbook。通过校验的新条目直接提交到公开 `main`；网站在 13:23（日本时间）同步同一份 JSON。运行状态写入 [`data/monitor-status.json`](data/monitor-status.json)。GitHub 定时任务可能延迟或漏跑，应以 Actions 运行记录与该状态文件为准。
+GitHub Actions 每天 12:17（日本时间）执行一次，也可手动触发。它搜索 GitHub、检查仓库 README 与元数据、读取官方 `llms.txt` 并逐页确认 cookbook。通过校验的新条目直接提交到公开 `main`；网站的私有源码仓库在 13:23（日本时间）同步同一份 JSON。正式网站自动部署还需要其专用 Cloudflare CI Token；在配置和真实周期验收完成前，源码同步不等于线上同步。运行状态写入 [`data/monitor-status.json`](data/monitor-status.json)。GitHub 定时任务可能延迟或漏跑，应以 Actions 运行记录与该状态文件为准。
 
 X Recent Search 需要开发者 App 的 `X_BEARER_TOKEN`。未配置时状态为 `not_configured`，不会声称已经搜索 X。配置后只把带 GitHub 链接的作者帖关联到通过仓库规则的项目；单独演示帖不会自动进入深度案例库。
 
