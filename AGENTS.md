@@ -3,9 +3,10 @@
 <!-- project-knowledge-sync:start -->
 ## 项目资料
 
-- 统一详情：`/Users/lzc/Projects/project-registry/docs/projects/awesome-jev-cases.md`。
-- 每次项目修改同步详情的最新变更摘要与 `/Users/lzc/Projects/project-registry/docs/changes/awesome-jev-cases/YYYY-MM.md`。
-- 源码、GitHub Actions 运行和网站发布分别核验，不从一次本地脚本成功推断持续运行。
+- 项目详情：`/Users/lzc/Projects/project-registry/docs/projects/awesome-jev-cases.md`。需要背景、运行或发布信息时查阅相关章节，以当前源码和运行证据为准。
+- 每次项目修改均同步详情的最新变更摘要与 `/Users/lzc/Projects/project-registry/docs/changes/<id>/YYYY-MM.md`；事实变化时更新对应章节，区分代码、测试、部署和线上验证。
+- 所有项目统一管理，不按公司/个人区分；AgentOrg 是用户自己的 OPC 项目管理库。文档库流程见 `/Users/lzc/Projects/project-registry/docs/project-knowledge-library.md`。
+- 更新发布状态时按 `/Users/lzc/Projects/project-registry/docs/project-documentation-standard.md` 的口径记录证据；仅保存非敏感事实。
 <!-- project-knowledge-sync:end -->
 
 - 默认中文解释，公开数据须保持原始来源链接和官方/社区边界。
