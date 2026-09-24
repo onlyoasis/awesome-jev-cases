@@ -1,0 +1,164 @@
+[
+  {
+    "id": "consistency_noul_cookbook",
+    "name": "Self-consistency: nouls",
+    "url": "https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook.md",
+    "description": "Route uncertain probabilities to human review while keeping the underlying noul values visible.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "consistency_choice_cookbook",
+    "name": "Self-consistency: choices",
+    "url": "https://docs.typesafe.ai/cookbooks/consistency_choice_cookbook.md",
+    "description": "Add an uncertain outcome to moderation decisions and compare label agreement with the share of automatic actions.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "parallel_questions",
+    "name": "Parallel questions",
+    "url": "https://docs.typesafe.ai/cookbooks/parallel_questions.md",
+    "description": "Runs a 13-question regulatory briefing over the GDPR Wikipedia article, showing that batching every question into one TypeSafe call is 12.2x cheaper and 10.0x faster with no change in answers.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "rerank_typesafe",
+    "name": "Re-ranking",
+    "url": "https://docs.typesafe.ai/cookbooks/rerank_typesafe.md",
+    "description": "Builds 30-passage BM25 shortlists for 40 CLERC legal queries, then uses one TypeSafe question per query-candidate pair to raise top-1 accuracy from 5% to 18% and top-10 accuracy from 38% to 62%.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "semantic_find",
+    "name": "Line-by-line search",
+    "url": "https://docs.typesafe.ai/cookbooks/semantic_find.md",
+    "description": "Build semantic search for GitHub's Terms of Service. In one request, score 218 line ids against a plain-language query with a Choice question, and use a Noul question to check whether the document contains an answer.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "autoformat",
+    "name": "Structure recovery",
+    "url": "https://docs.typesafe.ai/cookbooks/autoformat.md",
+    "description": "Reconstructs Markdown from plain text that lost its formatting in two requests: one stitches hard-wrapped lines back together, one classifies every block (heading, list, code, callout).",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "function_calling",
+    "name": "Function calling",
+    "url": "https://docs.typesafe.ai/cookbooks/function_calling.md",
+    "description": "Turns natural-language trading requests into calls to ordinary typed functions by mapping function names and closed-set arguments to confidence-aware TypeSafe questions.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "skill_suggestion",
+    "name": "Skill suggestion",
+    "url": "https://docs.typesafe.ai/cookbooks/skill_suggestion.md",
+    "description": "Picks at most one skill for an agent turn out of the 182 in Nous Research's Hermes catalog, using two TypeSafe requests to rank and re-check the top candidates.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "entity_alignment",
+    "name": "Knowledge graph entity alignment",
+    "url": "https://docs.typesafe.ai/cookbooks/entity_alignment.md",
+    "description": "Decides which of 450 candidate pairs from two beer catalogues describe the same product using one Score question plus three companion Nouls that surface which fields disagree.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "classifying_rag_passages",
+    "name": "Classifying RAG passages",
+    "url": "https://docs.typesafe.ai/cookbooks/classifying_rag_passages.md",
+    "description": "Score each retrieved passage with one TypeSafe request, then decide in code which ones reach the answering model.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "citation_check",
+    "name": "Double-checking citations",
+    "url": "https://docs.typesafe.ai/cookbooks/citation_check.md",
+    "description": "Catch wrong or hallucinated citations by checking against the source document. One Choice question decides whether the quote's context supports the claim.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "llm_guardrails",
+    "name": "Guardrails for LLMs",
+    "url": "https://docs.typesafe.ai/cookbooks/llm_guardrails.md",
+    "description": "Screen every message going into and out of an LLM app with one TypeSafe request, thresholding hazard probabilities and severity to pass, review, block, or route.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "sde_cascade",
+    "name": "SDE cascade",
+    "url": "https://docs.typesafe.ai/cookbooks/sde_cascade.md",
+    "description": "Uses a 2-stage structured-data-extraction cascade (mini → verify → reasoning) to get most of the quality of a big reasoning model at a fraction of the cost.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "date_extraction_cookbook",
+    "name": "Date extraction",
+    "url": "https://docs.typesafe.ai/cookbooks/date_extraction_cookbook.md",
+    "description": "Extracts absolute and relative dates by asking TypeSafe for the parts named in a document, then resolving and validating them in code with confidence-based review.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "pre_parsed_value_extraction_cookbook",
+    "name": "Pre-parsed value extraction",
+    "url": "https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook.md",
+    "description": "Uses regexes to find candidate emails, phone numbers, and amounts, then has TypeSafe select the requested span so code can normalize a verbatim value.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "hierarchical_classification",
+    "name": "Hierarchical classification",
+    "url": "https://docs.typesafe.ai/cookbooks/hierarchical_classification.md",
+    "description": "Classifies documents through deep patent, retail product, biomedical, and source-code hierarchies using parallel beam search over TypeSafe Choice probabilities.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "autoresearch_feature_discovery",
+    "name": "Autoresearch feature discovery",
+    "url": "https://docs.typesafe.ai/cookbooks/autoresearch_feature_discovery.md",
+    "description": "Runs an autoresearch loop that proposes TypeSafe questions, converts free text into numeric features, and uses model errors to improve a supervised CatBoost regressor.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "classification_using_confidence",
+    "name": "Classification using confidence",
+    "url": "https://docs.typesafe.ai/cookbooks/classification_using_confidence.md",
+    "description": "Classify SEC annual reports into 75 industry groups with one Choice each, then read the answer's own confidence to decide whether to report that group or the broader division above it.",
+    "source": "official",
+    "discoveredAt": "2026-09-24",
+    "lastVerified": "2026-09-24"
+  }
+]

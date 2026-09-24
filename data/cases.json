@@ -1,0 +1,134 @@
+[
+  {
+    "id": "browser-use",
+    "name": "jev-ultrafast",
+    "author": "Browser Use / Gregor Zunic",
+    "area": { "zh": "浏览器 Agent", "en": "Browser agent" },
+    "evidence": "code-and-post",
+    "input": { "zh": "网页当前可见控件及用户目标。", "en": "Visible page controls and the user's goal." },
+    "decision": { "zh": "Jev 在一次请求中选择操作和当前元素编号；只有填写文字时才交给小型文本模型。", "en": "Jev selects an action and an indexed page element in one request; a small text model is used only for typing." },
+    "action": { "zh": "执行器重新校验目标后操作浏览器，并单独检查任务结果；仓库给出机票搜索示例，停在结果页，没有预订。", "en": "The executor rechecks the target, acts in the browser, then independently verifies the outcome. The flight example stops at results; it does not book." },
+    "boundary": { "zh": "仓库中的速度数据仅对应作者的样本任务，不能外推为通用成功率。", "en": "The repository's timing covers its own sample task, not general reliability." },
+    "sources": [
+      { "label": "GitHub", "url": "https://github.com/browser-use/jev-ultrafast" },
+      { "label": "X", "url": "https://x.com/gregpr07/status/2100411066966749359" }
+    ]
+  },
+  {
+    "id": "compaction",
+    "name": "fast-jev-compaction",
+    "author": "Tamara Tran",
+    "area": { "zh": "编码 Agent", "en": "Coding agent" },
+    "evidence": "code-and-post",
+    "input": { "zh": "Agent 对话中的工具调用、结果和上下文。", "en": "Tool calls, results and surrounding context from an agent transcript." },
+    "decision": { "zh": "对每个可裁剪的调用分别问两个 Noul：调用还需保留吗、结果还需逐字保留吗。", "en": "Two Noul questions per eligible call ask whether the call and its full result still matter." },
+    "action": { "zh": "按代码阈值保留、截短或移除调用与结果；用户和助手文本保持原样。", "en": "Code thresholds keep, truncate or remove call/result pairs while user and assistant text stays intact." },
+    "boundary": { "zh": "压缩可能丢失后来才变重要的证据；仓库的失败分支会抛错，由调用方决定回退。", "en": "Compaction can discard evidence needed later; on failure the library throws and leaves fallback to the caller." },
+    "sources": [
+      { "label": "GitHub", "url": "https://github.com/tamaratran/fast-jev-compaction" },
+      { "label": "X", "url": "https://x.com/tamarajtran/status/2100694549362553153" }
+    ]
+  },
+  {
+    "id": "document-packets",
+    "name": "DocJev",
+    "author": "Jerry Liu",
+    "area": { "zh": "文档处理", "en": "Document processing" },
+    "evidence": "code",
+    "input": { "zh": "PDF、DOCX 或 PPTX 的页文本，以及自然语言分类规则。", "en": "Page text from PDF, DOCX or PPTX files plus natural-language category rules." },
+    "decision": { "zh": "Jev 判断文档类别和合并文件中的文档边界。", "en": "Jev predicts document categories and boundaries within a combined packet." },
+    "action": { "zh": "程序输出类别、页码范围、复核标记，并可导出拆分后的 PDF。", "en": "The program outputs categories, page ranges and review flags, and can export split PDFs." },
+    "boundary": { "zh": "文字提取可在本地完成，但 Jev 推理仍使用托管服务；复杂 OCR 是另一个可选步骤。", "en": "Text extraction may run locally, but Jev inference is hosted; difficult OCR is a separate optional step." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/jerryjliu/docjev" }]
+  },
+  {
+    "id": "postgres",
+    "name": "pg-jev",
+    "author": "Zachi",
+    "area": { "zh": "数据库检索", "en": "Database retrieval" },
+    "evidence": "code-and-post",
+    "input": { "zh": "PostgreSQL 表行和 SQL 中写下的自然语言条件。", "en": "PostgreSQL rows and a natural-language condition written in SQL." },
+    "decision": { "zh": "扩展按批次为每行提一个 Noul 问题，也提供 Choice 和 Score 函数。", "en": "The extension batches one Noul question per row and also exposes Choice and Score functions." },
+    "action": { "zh": "把概率返回给 SQL，用 WHERE、排序和分组接入现有查询；会话内按行内容缓存。", "en": "Probabilities return to SQL for filtering, sorting and grouping, with session-level caching by row content." },
+    "boundary": { "zh": "每条被评估的行都可能发往外部 API；作者的延迟和成本数字是其环境中的测量。", "en": "Evaluated row data can leave for an external API; latency and cost figures are measurements from the author's environment." },
+    "sources": [
+      { "label": "GitHub", "url": "https://github.com/realZachi/pg-jev" },
+      { "label": "X", "url": "https://x.com/iam_zachi/status/2100679300756435135" }
+    ]
+  },
+  {
+    "id": "hono-routing",
+    "name": "hono-jev-router",
+    "author": "Yusuke Wada",
+    "area": { "zh": "请求路由", "en": "Request routing" },
+    "evidence": "code",
+    "input": { "zh": "HTTP 请求的方法、URL、脱敏后的请求头及部分文本正文。", "en": "An HTTP request's method, URL, redacted headers and part of its text body." },
+    "decision": { "zh": "每条语义路由对应一个 Noul，所有描述在一次 Jev 调用中评估。", "en": "Each semantic route becomes a Noul question; all descriptions are evaluated in one Jev call." },
+    "action": { "zh": "代码按注册顺序和阈值选处理器；未匹配则走常规回退。", "en": "Code picks the first registered route above its threshold and falls through when none match." },
+    "boundary": { "zh": "作者明确称其为实验，不建议把语义路由用作认证或授权边界。", "en": "The author calls this experimental and warns against using semantic routes for authentication or authorization." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/yusukebe/hono-jev-router" }]
+  },
+  {
+    "id": "agent-guard",
+    "name": "jev-guard",
+    "author": "leepokai",
+    "area": { "zh": "Agent 工具检查", "en": "Agent tool review" },
+    "evidence": "code",
+    "input": { "zh": "编码 Agent 准备执行的工具调用、近期用户指令及已读内容。", "en": "A proposed coding-agent tool call, recent user instructions and content the agent read." },
+    "decision": { "zh": "Score 评估风险，Noul 判断是否需批准、是否由用户请求以及是否受不可信内容诱导。", "en": "A Score rates risk; Noul questions examine approval need, user intent and instructions planted in untrusted content." },
+    "action": { "zh": "项目代码按阈值输出 deny、ask 或 allow，并通过各宿主的 hook 接入。", "en": "Project code maps answers to deny, ask or allow and connects through host-specific hooks." },
+    "boundary": { "zh": "这是社区实现的判断层，不能替代宿主权限、人工审批或真实安全边界。", "en": "This community judgment layer does not replace host permissions, human approval or security boundaries." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/leepokai/jev-guard" }]
+  },
+  {
+    "id": "ticket-triage",
+    "name": "typesafe-jev-examples · ticket triage",
+    "author": "Rajiv Kuriakose",
+    "area": { "zh": "客服工单", "en": "Support triage" },
+    "evidence": "code",
+    "input": { "zh": "一条客服工单。", "en": "One support ticket." },
+    "decision": { "zh": "一次请求并行提问：Choice 选部门，Score 评估业务影响，Noul 判断流失等信号。", "en": "One request asks Choice for the department, Score for business impact and Noul for churn signals." },
+    "action": { "zh": "代码依据不同风险设置不同的路由阈值，并为不匹配选项保留 other。", "en": "Code applies different routing thresholds by risk and keeps an other option for out-of-scope tickets." },
+    "boundary": { "zh": "这是可运行的示例工程；作者说明 OpenRouter 路径已运行，TypeSafe 直连路径尚未实测。", "en": "This is a runnable example; the author reports testing the OpenRouter path, not the direct TypeSafe path." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/rajivkuriakose/typesafe-jev-examples" }]
+  },
+  {
+    "id": "email-batch",
+    "name": "500-email classification demo",
+    "title": { "zh": "500 封邮件批量分类", "en": "500-email classification demo" },
+    "author": "Riley Brown",
+    "area": { "zh": "邮件分类", "en": "Email classification" },
+    "evidence": "post",
+    "input": { "zh": "作者演示中的 500 封邮件。", "en": "The 500 emails in the author's demo." },
+    "decision": { "zh": "作者用 Jev 批量分类；原帖没有给出题型、分类标签或阈值。", "en": "The author classifies the batch with Jev; the post does not disclose question types, labels or thresholds." },
+    "action": { "zh": "演示展示分类结果；作者自报耗时为数秒、成本为 3.5 美分。", "en": "The demo shows classifications; the author reports seconds of runtime and a 3.5-cent cost." },
+    "boundary": { "zh": "仅核对了作者原帖，未取得代码、邮件样本或独立计费记录。", "en": "Only the original post was checked; code, email samples and independent billing records were unavailable." },
+    "sources": [{ "label": "X", "url": "https://x.com/rileybrown/status/2100404532119269426" }]
+  },
+  {
+    "id": "download-folder",
+    "name": "Downloads folder sorter",
+    "title": { "zh": "下载文件夹自动整理", "en": "Downloads folder sorter" },
+    "author": "Marcel Pociot",
+    "area": { "zh": "个人文件整理", "en": "Personal file organization" },
+    "evidence": "post",
+    "input": { "zh": "macOS 下载文件夹中的新文件和用户自定义规则。", "en": "New files in a macOS Downloads folder and user-defined rules." },
+    "decision": { "zh": "作者举例让 Jev 判断文件是否为发票；原帖未公开具体题型和字段。", "en": "The author's example asks whether a file is an invoice; the post does not publish question types or fields." },
+    "action": { "zh": "应用按规则把文件移动到指定文件夹并更名；作者称未调用其他语言模型。", "en": "The app moves and renames files according to rules; the author says it uses no other language model." },
+    "boundary": { "zh": "仅为作者演示，源码、文件识别流程和误分类处理未从原帖核实。", "en": "This is an author demo; source code, file extraction and error handling were not verifiable from the post." },
+    "sources": [{ "label": "X", "url": "https://x.com/marcelpociot/status/2100906882365788167" }]
+  },
+  {
+    "id": "post-analysis",
+    "name": "3,282-post analysis",
+    "title": { "zh": "3,282 条 X 帖子分析", "en": "3,282-post analysis" },
+    "author": "Ian Nuttall",
+    "area": { "zh": "内容分析", "en": "Content analysis" },
+    "evidence": "post",
+    "input": { "zh": "作者自己的 3,282 条 X 帖子及其表现数据。", "en": "The author's 3,282 X posts and their performance data." },
+    "decision": { "zh": "每条帖子回答八个关于主题、开头、语气和是否提供教学价值等问题；原帖未说明 Jev 题型。", "en": "Eight questions per post cover topic, hook, tone and whether it teaches something; the post does not state Jev question types." },
+    "action": { "zh": "作者将判断结果与已有互动数据汇总，寻找高表现内容特征。", "en": "The author combines judgments with existing engagement data to identify patterns in better-performing posts." },
+    "boundary": { "zh": "样本只来自作者账户；成本与增长结论均为作者自报，不能推断因果或跨账号效果。", "en": "The sample is one account; cost and growth findings are self-reported and do not establish causality or cross-account performance." },
+    "sources": [{ "label": "X", "url": "https://x.com/iannuttall/status/2100668908227162567" }]
+  }
+]

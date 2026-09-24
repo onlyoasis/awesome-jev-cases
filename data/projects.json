@@ -1,0 +1,386 @@
+[
+  {
+    "id": "typesafe-sdk-python",
+    "name": "typesafe-ai/typesafe-sdk-python",
+    "url": "https://github.com/typesafe-ai/typesafe-sdk-python",
+    "category": "official-sdk",
+    "relationship": "official",
+    "license": "MIT",
+    "summary": {
+      "zh": "官方 Python SDK（pip 包 typesafe-sdk，要求 Python ≥ 3.10），提供同步/异步客户端与 Choice/Score/Noul 类型，默认读取 TYPESAFE_API_KEY。",
+      "en": "Official Python SDK (pip package typesafe-sdk, Python >= 3.10) with sync/async clients and Choice/Score/Noul types; reads TYPESAFE_API_KEY by default."
+    },
+    "sourceUrl": "https://github.com/typesafe-ai/typesafe-sdk-python",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 178
+  },
+  {
+    "id": "typesafe-sdk-js",
+    "name": "typesafe-ai/typesafe-sdk-js",
+    "url": "https://github.com/typesafe-ai/typesafe-sdk-js",
+    "category": "official-sdk",
+    "relationship": "official",
+    "license": "MIT",
+    "summary": {
+      "zh": "官方 TypeScript/JavaScript SDK（npm 包 @typesafe-ai/sdk），答案类型可自动推断，内置重试与错误分类。",
+      "en": "Official TypeScript/JavaScript SDK (npm package @typesafe-ai/sdk) with inferred answer types, built-in retries and error classes."
+    },
+    "sourceUrl": "https://github.com/typesafe-ai/typesafe-sdk-js",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 206
+  },
+  {
+    "id": "typesafe-skills",
+    "name": "typesafe-ai/skills",
+    "url": "https://github.com/typesafe-ai/skills",
+    "category": "official-sdk",
+    "relationship": "official",
+    "license": "MIT",
+    "summary": {
+      "zh": "官方 Agent Skill：教 Claude Code、Codex 等编码助手正确调用 System One API 的技能包。",
+      "en": "Official agent skills teaching coding agents such as Claude Code and Codex how to call the System One API."
+    },
+    "sourceUrl": "https://github.com/typesafe-ai/skills",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 1472
+  },
+  {
+    "id": "system-one-adapter-python",
+    "name": "typesafe-ai/system-one-adapter-python",
+    "url": "https://github.com/typesafe-ai/system-one-adapter-python",
+    "category": "official-sdk",
+    "relationship": "official",
+    "license": "MIT",
+    "summary": {
+      "zh": "官方适配器：用普通 LLM API 模拟 TypeSafeClient，便于对照测试或降级运行。",
+      "en": "Official adapter that emulates TypeSafeClient on top of ordinary LLM APIs for A/B testing or fallback."
+    },
+    "sourceUrl": "https://github.com/typesafe-ai/system-one-adapter-python",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 226
+  },
+  {
+    "id": "jev-ultrafast",
+    "name": "browser-use/jev-ultrafast",
+    "url": "https://github.com/browser-use/jev-ultrafast",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Browser Use 出品的极速网页 Agent：Jev 负责选择操作与目标元素，小模型只在需要打字时介入。发布首周星数最高的 Jev 项目。",
+      "en": "Browser Use's fast web agent: Jev picks each action and target element while a small LLM only types when needed. The most-starred Jev project of launch week."
+    },
+    "sourceUrl": "https://github.com/browser-use/jev-ultrafast",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 14820
+  },
+  {
+    "id": "jev-browser",
+    "name": "jkudish/jev-browser",
+    "url": "https://github.com/jkudish/jev-browser",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "基于 Jev 的浏览器自动化实现。",
+      "en": "Browser automation driven by Jev."
+    },
+    "sourceUrl": "https://github.com/jkudish/jev-browser",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 221
+  },
+  {
+    "id": "fast-jev-compaction",
+    "name": "tamaratran/fast-jev-compaction",
+    "url": "https://github.com/tamaratran/fast-jev-compaction",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Claude Code 插件：用 Jev 逐条判断历史工具调用的去留，替代摘要式上下文压缩；保留的内容原样保留。社区对该策略存在争议。",
+      "en": "Claude Code plugin that replaces compaction summaries with Jev decisions on every past tool call; kept content stays verbatim. The approach is debated in the community."
+    },
+    "sourceUrl": "https://github.com/tamaratran/fast-jev-compaction",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 5845
+  },
+  {
+    "id": "jev-router-cc",
+    "name": "gargpratyush/jev-router",
+    "url": "https://github.com/gargpratyush/jev-router",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Claude Code 插件：按任务选择最便宜且够用的模型。",
+      "en": "Claude Code plugin that routes each task to the cheapest sufficient model."
+    },
+    "sourceUrl": "https://github.com/gargpratyush/jev-router",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 299
+  },
+  {
+    "id": "jev-review",
+    "name": "devagrawal09/jev-review",
+    "url": "https://github.com/devagrawal09/jev-review",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "分阶段代码审查流程与本地面板。",
+      "en": "A staged code-review workflow with a local dashboard."
+    },
+    "sourceUrl": "https://github.com/devagrawal09/jev-review",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 460
+  },
+  {
+    "id": "jev-mcp",
+    "name": "jkudish/jev-mcp",
+    "url": "https://github.com/jkudish/jev-mcp",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MCP 服务器：把校验、筛选、排序等判断暴露为 Agent 可调用的工具。",
+      "en": "MCP server exposing typed judgments (screening, filtering, ranking) as agent tools."
+    },
+    "sourceUrl": "https://github.com/jkudish/jev-mcp",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 213
+  },
+  {
+    "id": "typesafe-mcp",
+    "name": "itsmostafa/typesafe-mcp",
+    "url": "https://github.com/itsmostafa/typesafe-mcp",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MCP 连接器：让 Agent 直接调用 Jev。",
+      "en": "MCP connector giving agents direct access to Jev."
+    },
+    "sourceUrl": "https://github.com/itsmostafa/typesafe-mcp",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 187
+  },
+  {
+    "id": "jev-guard",
+    "name": "leepokai/jev-guard",
+    "url": "https://github.com/leepokai/jev-guard",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "编码 Agent 的安全闸门：对每次工具调用给出 deny/ask/allow 风险判断，并标记提示注入；支持多种编码助手。",
+      "en": "A safety gate for coding agents: risk-scores every tool call as deny/ask/allow and flags prompt injection across many coding assistants."
+    },
+    "sourceUrl": "https://github.com/leepokai/jev-guard",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 18
+  },
+  {
+    "id": "jev-security-scan",
+    "name": "win4r/jev-security-scan",
+    "url": "https://github.com/win4r/jev-security-scan",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev 审查 Agent Skill 与 MCP 代码中的可疑行为（中文说明项目）。",
+      "en": "Reviews agent skills and MCP code for suspicious behavior using Jev (Chinese-language project)."
+    },
+    "sourceUrl": "https://github.com/win4r/jev-security-scan",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 9
+  },
+  {
+    "id": "semif",
+    "name": "TheoLeeCJ/SemIf",
+    "url": "https://github.com/TheoLeeCJ/SemIf",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "受 Jev 启发的开源实现：在开源模型上复刻“语义 if”接口，3090 显卡可本地运行。原名 OpenJev，作者声明与 TypeSafe 无关；不是 Jev 权重开源。",
+      "en": "An inspired open-source reimplementation of the 'semantic if' interface on open models, runnable on a single RTX 3090. Formerly OpenJev; the author states it is independent of TypeSafe. Not the Jev weights."
+    },
+    "sourceUrl": "https://github.com/TheoLeeCJ/SemIf",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 2935
+  },
+  {
+    "id": "kev",
+    "name": "jaredpalmer/kev",
+    "url": "https://github.com/jaredpalmer/kev",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "基于 Qwen3.5 的迷你 Jev 式决策模型，可自行训练并在本机运行。",
+      "en": "A tiny Jev-like decision-model family built on Qwen3.5 that you can train and run yourself."
+    },
+    "sourceUrl": "https://github.com/jaredpalmer/kev",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 1968
+  },
+  {
+    "id": "nanokev",
+    "name": "TianyuCodings/NanoJev",
+    "url": "https://github.com/TianyuCodings/NanoJev",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "0.6B 参数的 Jev 复刻：并行决策、动态候选与端到端训练流程。社区项目，与官方无关。",
+      "en": "A 0.6B-parameter Jev replica with parallel decisions, dynamic candidates, and an end-to-end training pipeline. Community project, unrelated to TypeSafe."
+    },
+    "sourceUrl": "https://github.com/TianyuCodings/NanoJev",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 1751
+  },
+  {
+    "id": "pg-jev",
+    "name": "realZachi/pg-jev",
+    "url": "https://github.com/realZachi/pg-jev",
+    "category": "data",
+    "relationship": "community",
+    "license": "unknown",
+    "summary": {
+      "zh": "PostgreSQL 扩展：用自然语言对表格行做判断。许可证未被 GitHub 识别为标准开源协议。",
+      "en": "A PostgreSQL extension for asking plain-language questions over table rows. Its license is not recognized by GitHub as a standard open-source license."
+    },
+    "sourceUrl": "https://github.com/realZachi/pg-jev",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 272
+  },
+  {
+    "id": "docjev",
+    "name": "jerryjliu/docjev",
+    "url": "https://github.com/jerryjliu/docjev",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "LlamaIndex 出品：用 Jev 做快速文档分类与子文档边界识别。",
+      "en": "From LlamaIndex: fast document classification and sub-document boundary detection with Jev."
+    },
+    "sourceUrl": "https://github.com/jerryjliu/docjev",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 165
+  },
+  {
+    "id": "hono-jev-router",
+    "name": "yusukebe/hono-jev-router",
+    "url": "https://github.com/yusukebe/hono-jev-router",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Hono 中间件：按语义把请求路由到不同处理器。",
+      "en": "Hono middleware that routes HTTP requests by meaning."
+    },
+    "sourceUrl": "https://github.com/yusukebe/hono-jev-router",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 45
+  },
+  {
+    "id": "jev-search",
+    "name": "superagents-lab/jev-search",
+    "url": "https://github.com/superagents-lab/jev-search",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev 选择数据源、理解查询并按相关性排序的网页搜索（基于 Search1API）。",
+      "en": "Web search where Jev picks sources, interprets queries, and ranks relevance (built on Search1API)."
+    },
+    "sourceUrl": "https://github.com/superagents-lab/jev-search",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 363
+  },
+  {
+    "id": "jev-align",
+    "name": "sutro-sh/jev-align",
+    "url": "https://github.com/sutro-sh/jev-align",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "用人工反馈与 GEPA 校准 Jev 判断函数。",
+      "en": "Calibrates Jev judgment functions from human feedback using GEPA."
+    },
+    "sourceUrl": "https://github.com/sutro-sh/jev-align",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 258
+  },
+  {
+    "id": "jev-trader",
+    "name": "jarrodwatts/jev-trader",
+    "url": "https://github.com/jarrodwatts/jev-trader",
+    "category": "finance",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "在 Monad 链上每个区块做一次买卖判断（默认 dry-run 模拟）。仅供研究，不构成任何投资建议；实盘风险自担。",
+      "en": "Makes one buy/sell decision per Monad block (dry-run by default). Research only — not investment advice; live trading carries real risk."
+    },
+    "sourceUrl": "https://github.com/jarrodwatts/jev-trader",
+    "lastVerified": "2026-09-22",
+    "status": "verified",
+    "stars": 1740
+  },
+  {
+    "id": "awesome-jev",
+    "name": "yibie/awesome-jev",
+    "url": "https://github.com/yibie/awesome-jev",
+    "category": "list",
+    "relationship": "community",
+    "license": "unknown",
+    "summary": {
+      "zh": "英文精选清单，按 13 类收录数百个项目与讨论；作者提醒同日批量提交的项目未经验证。",
+      "en": "A curated English list of hundreds of projects and discussions across 13 categories; the author warns that same-day batch submissions are unvetted."
+    },
+    "sourceUrl": "https://github.com/yibie/awesome-jev",
+    "lastVerified": "2026-09-24",
+    "status": "verified",
+    "stars": 1491
+  },
+  {
+    "id": "awesome-jev-zh",
+    "name": "yzfly/awesome-jev-zh",
+    "url": "https://github.com/yzfly/awesome-jev-zh",
+    "category": "list",
+    "relationship": "community",
+    "license": "CC0-1.0",
+    "summary": {
+      "zh": "中文精选列表：官方资料、应用、Agent 工具与开源复现，附中文上手指南。",
+      "en": "A Chinese curated list of official resources, apps, agent tooling, and replicas, with a Chinese quick-start guide."
+    },
+    "sourceUrl": "https://github.com/yzfly/awesome-jev-zh",
+    "lastVerified": "2026-09-24",
+    "status": "verified",
+    "stars": 67
+  }
+]

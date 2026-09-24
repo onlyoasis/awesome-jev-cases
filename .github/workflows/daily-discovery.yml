@@ -1,0 +1,41 @@
+name: Daily Jev discovery
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: jev-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Discover and validate
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: |
+          node scripts/discover.mjs
+          node scripts/validate.mjs
+          node scripts/render.mjs
+      - name: Publish verified catalog
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data CATALOG.md
+          git commit -m 'catalog: daily Jev discovery'
+          git push origin HEAD:main
