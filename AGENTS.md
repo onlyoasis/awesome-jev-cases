@@ -12,6 +12,6 @@
 - 默认中文解释，公开数据须保持原始来源链接和官方/社区边界。
 - 只给 `typesafe-ai/*` 一手仓库标 `official`；受启发的复刻不能写成 Jev 模型权重开源。
 - 新深度案例必须有输入、Jev 判断、后续动作、核验边界及原始来源。不得把作者自报性能写成独立测量。
-- 自动发现只发布通过 `scripts/discover.mjs` 与 `scripts/validate.mjs` 的项目和官方目录，修改规则时用真实误收/漏收样本复核。
-- 不提交 API Key 或运行数据。X 搜索的 Token 仅使用 GitHub Secret。
+- 每日发现由 Codex 按 `docs/codex-daily-curation.md` 阅读一手来源并作编辑判断；`scripts/validate.mjs` 仅校验结构，不代表内容质量。
+- X 搜索使用 Chrome 浏览器会话，不调用 X API 或搬运 Cookie；不提交 API Key、浏览器认证材料或运行数据。
 - 每次修改同步 `/Users/lzc/Projects/project-registry` 的项目详情与月度变更记录。

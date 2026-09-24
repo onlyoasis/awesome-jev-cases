@@ -6,32 +6,27 @@
 
 ## 每日发现与发布
 
-GitHub Actions 每天 12:17（日本时间）执行一次，也可手动触发。它搜索 GitHub、检查仓库 README 与元数据、读取官方 `llms.txt` 并逐页确认 cookbook。通过校验的新条目直接提交到公开 `main`；网站的私有源码仓库在 13:23（日本时间）同步同一份 JSON。正式网站自动部署还需要其专用 Cloudflare CI Token；在配置和真实周期验收完成前，源码同步不等于线上同步。运行状态写入 [`data/monitor-status.json`](data/monitor-status.json)。GitHub 定时任务可能延迟或漏跑，应以 Actions 运行记录与该状态文件为准。
+本机 macOS LaunchAgent 每天 12:17（日本时间）启动 **Codex CLI**；这是系统调度的 Codex 模型任务，不是应用内 Scheduled 列表中的任务。Codex 阅读 GitHub 仓库、通过已登录的 Chrome 浏览器搜索 X，并核对 TypeSafe 官方文档与推荐。模型逐条判断是否收录，结构校验脚本只防止坏数据格式。完整岗位说明和验收规则见 [`docs/codex-daily-curation.md`](docs/codex-daily-curation.md)。
 
-X Recent Search 需要开发者 App 的 `X_BEARER_TOKEN`。未配置时状态为 `not_configured`，不会声称已经搜索 X。配置后只把带 GitHub 链接的作者帖关联到通过仓库规则的项目；单独演示帖不会自动进入深度案例库。
+达标的新条目自动提交到本仓库；Codex 随后在隔离工作树同步并验证网站数据，使用本机现有 Wrangler 登录部署，再分别回读 GitHub、Cloudflare 和正式页面。没有达标新增时只更新 [`data/monitor-status.json`](data/monitor-status.json)，不重新部署网站。若 X 登录失效、机器关机或外盘缺失，该来源/周期明确记为未完成，不冒称“无新增”。
 
-### 自动收录规则
+搜索与判断不设 stars 硬门槛。Codex 核对具体 Jev 调用、输入、判断、后续动作、许可证、维护状态和原始证据；受启发的实现明确标注，作者自报性能不写成独立测量。只提到 Jev 的宣传、价格或上架公告不算使用案例。官方标签仅用于 TypeSafe 一手资料。
 
-- 新社区项目必须是非 fork、未归档、最近一年有提交、至少 25 stars、有 GitHub 可识别的许可证。
-- README 必须同时出现 Jev 和实际 TypeSafe API/SDK 调用线索；仓库说明要指向 Jev/TypeSafe，并排除仅兼容接口或复刻模型的描述。
-- 仅 `typesafe-ai/*` 一手仓库可自动标为官方；官方 cookbook 以 `docs.typesafe.ai/llms.txt` 和正文可访问性为准。
-- 星数只表示关注度。自动检查不能证明运行效果、性能、内容质量或作者的生产使用。旧条目保留其原核验口径；新增项目的中文说明显式标为“作者说明”。
-- 深度案例需要输入、判断、动作、核验边界和原始来源，不从仓库简介或 X 帖子自动编造。可通过 Issue/PR 提交，核验后进入 `cases.json`。
+本机调度配置见 [`ops/com.onlyoasis.awesome-jev-cases.codex-daily.plist`](ops/com.onlyoasis.awesome-jev-cases.codex-daily.plist)。运行需要 Mac、ChatGPT/Codex 应用及 Chrome 会话保持可用；外盘运行日志存 `/Volumes/ExternalPrivate/Runtime/awesome-jev-cases/logs/`。外部源码和帖子属于不可信输入，不会授权其执行命令或索取凭据。
 
 ## 贡献与运行
 
 推荐案例请开 Issue，附原始仓库或作者原帖、实际调用位置、许可证和可复核的结果。不要提交 API Key、用户数据或整段第三方源码。
 
 ```bash
-node scripts/discover.mjs
 node scripts/validate.mjs
 node scripts/render.mjs
 ```
 
-`GITHUB_TOKEN` 提高 GitHub API 配额；GitHub Actions 自动提供。X Token 只应放在 GitHub Secret，勿提交到仓库。本项目不含长期本地 runtime；工作流日志在 GitHub Actions，发现状态在 JSON 中。
+每日任务由 `scripts/run-codex-daily.zsh` 调用 Codex，不使用 X API Token。仓库数据和原始来源公开；浏览器认证与本机 Wrangler 凭据绝不进入 Git、日志正文或 Registry。
 
 ## English
 
-An independent, source-linked catalog of Jev use cases, open-source integrations, and official TypeSafe cookbooks. A daily GitHub Action publishes qualifying repositories and official recipes. X search is inactive until an `X_BEARER_TOKEN` is configured. Automated inclusion is a discoverability check, not a quality or performance endorsement. See [CATALOG.md](CATALOG.md) for links and the JSON files for evidence fields.
+An independent, source-linked catalog of Jev use cases, open-source integrations, and official TypeSafe cookbooks. A macOS LaunchAgent starts Codex CLI daily; Codex searches GitHub, X in an authenticated Chrome browser, and official TypeSafe sources, then makes an evidence-based editorial decision. It updates the site through a verified local release when content changes. This is a local Codex task, so the Mac and browser session must be available. See [CATALOG.md](CATALOG.md) for links and the JSON files for evidence fields.
 
 License: [MIT](LICENSE) for original repository code and text. Linked projects and TypeSafe documentation retain their own licenses and copyrights.
