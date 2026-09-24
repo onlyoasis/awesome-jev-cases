@@ -130,5 +130,32 @@
     "action": { "zh": "作者将判断结果与已有互动数据汇总，寻找高表现内容特征。", "en": "The author combines judgments with existing engagement data to identify patterns in better-performing posts." },
     "boundary": { "zh": "样本只来自作者账户；成本与增长结论均为作者自报，不能推断因果或跨账号效果。", "en": "The sample is one account; cost and growth findings are self-reported and do not establish causality or cross-account performance." },
     "sources": [{ "label": "X", "url": "https://x.com/iannuttall/status/2100668908227162567" }]
+  },
+  {
+    "id": "hn-prediction-pilot",
+    "name": "hn-oracle",
+    "author": "Anthony Maio",
+    "area": { "zh": "历史预测分析", "en": "Historical prediction analysis" },
+    "evidence": "code",
+    "input": { "zh": "历史 Hacker News 评论及其上下文。", "en": "Historical Hacker News comments and their context." },
+    "decision": { "zh": "首轮 Noul 判断评论是否预测未来；过阈值后，Noul、Choice 和 Score 判断可核对性、方向、主题与时间范围。", "en": "A first-stage Noul judges whether a comment predicts the future; after a threshold, Noul, Choice and Score questions assess checkability, direction, subject and horizon." },
+    "action": { "zh": "代码筛选可事后核验的预测，记录结构化字段，并公布预注册千条评论试验的结果；全库处理尚未完成。", "en": "Code selects predictions for later hindsight grading, records structured fields and publishes results from a preregistered 1,000-comment pilot; the full archive has not been processed." },
+    "boundary": { "zh": "准确率、成本和校准数字是作者试验的自报结果；概率经另一步校准，整库规模与耗时仍属估计。", "en": "Accuracy, cost and calibration figures are reported by the author; probabilities need a separate calibration step, and full-archive scale and runtime remain projections." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/anthony-maio/hn-oracle" }]
+  },
+  {
+    "id": "message-tone-preview",
+    "name": "undertone",
+    "author": "Numan",
+    "area": { "zh": "消息语气预览", "en": "Message tone preview" },
+    "evidence": "code-and-post",
+    "input": { "zh": "用户在发送前写下的消息文本。", "en": "A message drafted before sending." },
+    "decision": { "zh": "一次 Jev 请求用 Choice、Noul 和 Score 判断整体语气、讽刺或催促等信号、紧急程度，以及是否适合发给经理。", "en": "One Jev request uses Choice, Noul and Score to judge overall tone, signals such as sarcasm or pressure, urgency and whether the message suits a manager." },
+    "action": { "zh": "界面展示语气标签、颜色与措辞提示，由用户决定是否发送。", "en": "The interface shows a tone label, color and phrase tips; the user decides whether to send." },
+    "boundary": { "zh": "没有独立准确率测量；无 API Key 或请求失败时程序会切换到离线关键词判断，因此演示画面不能全部归因于 Jev。", "en": "There is no independent accuracy measurement; without an API key or on request failure the app uses an offline keyword classifier, so the entire demo cannot be attributed to Jev." },
+    "sources": [
+      { "label": "GitHub", "url": "https://github.com/Nuu-maan/undertone" },
+      { "label": "X", "url": "https://x.com/Numankhannnnn/status/2102779770220286158" }
+    ]
   }
 ]

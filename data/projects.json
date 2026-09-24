@@ -382,5 +382,53 @@
     "lastVerified": "2026-09-24",
     "status": "verified",
     "stars": 67
+  },
+  {
+    "id": "hn-oracle",
+    "name": "anthony-maio/hn-oracle",
+    "url": "https://github.com/anthony-maio/hn-oracle",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev 筛选历史 Hacker News 评论中的可核验预测；仓库包含预注册试验、实际调用代码和作者发布的结果数据，尚未处理完整档案。",
+      "en": "Screens historical Hacker News comments for checkable predictions with Jev; includes a preregistered pilot, calling code and author-published results, but not a completed full-archive run."
+    },
+    "sourceUrl": "https://github.com/anthony-maio/hn-oracle",
+    "lastVerified": "2026-09-24",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jevgate",
+    "name": "Tech-Byte-Frontier/jevgate",
+    "url": "https://github.com/Tech-Byte-Frontier/jevgate",
+    "category": "coding",
+    "relationship": "community",
+    "license": "Apache-2.0 OR MIT",
+    "summary": {
+      "zh": "Rust 代码审查工具：解析源码后向 Jev 提交局部、类型化的维护性判断，并由代码汇成带位置和建议的发现；安全规则需另行启用。",
+      "en": "Rust code-review tool that asks Jev typed questions about parsed source units, then composes located findings and suggested actions; security rules are opt-in."
+    },
+    "sourceUrl": "https://github.com/Tech-Byte-Frontier/jevgate",
+    "lastVerified": "2026-09-24",
+    "status": "verified",
+    "stars": 3
+  },
+  {
+    "id": "pi-jev-browser",
+    "name": "laihenyi/pi-Jev-browser",
+    "url": "https://github.com/laihenyi/pi-Jev-browser",
+    "category": "browser",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "pi 的浏览器与 macOS 桌面 Agent 扩展：Jev 根据可见文本、控件和目标选择单步动作，执行循环设有步数和人工复核边界。",
+      "en": "A pi browser and macOS desktop agent extension: Jev chooses one action from visible text, controls and the goal, within a bounded loop with human-review gates."
+    },
+    "sourceUrl": "https://github.com/laihenyi/pi-Jev-browser",
+    "lastVerified": "2026-09-24",
+    "status": "verified",
+    "stars": 0
   }
 ]

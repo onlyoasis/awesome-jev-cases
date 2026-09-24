@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (10)
+## 深度使用案例 / Worked cases (12)
 
 ### jev-ultrafast
 
@@ -94,7 +94,25 @@
 - 核验边界：样本只来自作者账户；成本与增长结论均为作者自报，不能推断因果或跨账号效果。
 - 来源：[X](https://x.com/iannuttall/status/2100668908227162567)
 
-## 开源项目 / Open-source projects (24)
+### hn-oracle
+
+- 作者：Anthony Maio
+- 输入：历史 Hacker News 评论及其上下文。
+- Jev 判断：首轮 Noul 判断评论是否预测未来；过阈值后，Noul、Choice 和 Score 判断可核对性、方向、主题与时间范围。
+- 后续动作：代码筛选可事后核验的预测，记录结构化字段，并公布预注册千条评论试验的结果；全库处理尚未完成。
+- 核验边界：准确率、成本和校准数字是作者试验的自报结果；概率经另一步校准，整库规模与耗时仍属估计。
+- 来源：[GitHub](https://github.com/anthony-maio/hn-oracle)
+
+### undertone
+
+- 作者：Numan
+- 输入：用户在发送前写下的消息文本。
+- Jev 判断：一次 Jev 请求用 Choice、Noul 和 Score 判断整体语气、讽刺或催促等信号、紧急程度，以及是否适合发给经理。
+- 后续动作：界面展示语气标签、颜色与措辞提示，由用户决定是否发送。
+- 核验边界：没有独立准确率测量；无 API Key 或请求失败时程序会切换到离线关键词判断，因此演示画面不能全部归因于 Jev。
+- 来源：[GitHub](https://github.com/Nuu-maan/undertone) · [X](https://x.com/Numankhannnnn/status/2102779770220286158)
+
+## 开源项目 / Open-source projects (27)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -122,6 +140,9 @@
 | [jarrodwatts/jev-trader](https://github.com/jarrodwatts/jev-trader) | community | MIT | 1740 |
 | [yibie/awesome-jev](https://github.com/yibie/awesome-jev) | community | unknown | 1493 |
 | [yzfly/awesome-jev-zh](https://github.com/yzfly/awesome-jev-zh) | community | CC0-1.0 | 67 |
+| [anthony-maio/hn-oracle](https://github.com/anthony-maio/hn-oracle) | community | MIT | 0 |
+| [Tech-Byte-Frontier/jevgate](https://github.com/Tech-Byte-Frontier/jevgate) | community | Apache-2.0 OR MIT | 3 |
+| [laihenyi/pi-Jev-browser](https://github.com/laihenyi/pi-Jev-browser) | community | Apache-2.0 | 0 |
 
 ## 官方 cookbook / Official recipes (18)
 
