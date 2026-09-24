@@ -120,7 +120,7 @@
 | [superagents-lab/jev-search](https://github.com/superagents-lab/jev-search) | community | MIT | 363 |
 | [sutro-sh/jev-align](https://github.com/sutro-sh/jev-align) | community | Apache-2.0 | 258 |
 | [jarrodwatts/jev-trader](https://github.com/jarrodwatts/jev-trader) | community | MIT | 1740 |
-| [yibie/awesome-jev](https://github.com/yibie/awesome-jev) | community | unknown | 1491 |
+| [yibie/awesome-jev](https://github.com/yibie/awesome-jev) | community | unknown | 1493 |
 | [yzfly/awesome-jev-zh](https://github.com/yzfly/awesome-jev-zh) | community | CC0-1.0 | 67 |
 
 ## 官方 cookbook / Official recipes (18)
