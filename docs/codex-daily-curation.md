@@ -22,8 +22,8 @@
 
 ## 写入与发布
 
-1. 仅在找到有一手证据且质量达标的新内容时修改 `data/cases.json`、`data/projects.json`、`data/official-recipes.json`；中英文描述准确且各自可读。更新 `data/monitor-status.json` 的运行时间、三来源完成状态和收录数；X 失败不得写 `ok`。运行 `node scripts/validate.mjs`、`node scripts/render.mjs`，检查 diff 与来源链接。
-2. 公开仓库只提交本任务的 `data/`、`CATALOG.md` 和必要说明，快进推送 `main`，回读 GitHub HEAD。若没有新条目，只更新监控状态，不触发网站部署。
+1. 仅在找到有一手证据且质量达标的新内容时修改 `data/cases.json`、`data/projects.json`、`data/official-recipes.json`；中英文描述准确且各自可读。更新 `data/monitor-status.json` 的运行时间、三来源完成状态和收录数；X 失败不得写 `ok`。运行 `node scripts/validate.mjs`、`node scripts/render.mjs` 和 `node scripts/render.mjs --check`，检查中英文 README 表格、详细目录、diff 与来源链接。
+2. 公开仓库只提交本任务的 `data/`、`README.md`、`README.en.md`、`CATALOG.md` 和必要说明，快进推送 `main`，回读 GitHub HEAD。若没有新条目，只更新监控状态，不触发网站部署。
 3. 有新条目时，从网站远端 `main` 建外盘隔离 worktree，运行 `node scripts/sync-case-catalog.mjs <本仓库的 data 绝对路径>`。保留网站已跟踪的 `ads.txt`；生产 `.env.production` 只可临时复制进外盘工作树且不得进入 Git。依项目规则将 `dist`、`.astro`、依赖缓存和 Wrangler dry-run 放外盘，构建 46 页、运行网站测试与 Wrangler dry-run，比较候选与现网统计/广告 meta 及 `ads.txt`。
 4. 仅提交并推送网站目录数据的变化；确认远端 SHA 后，使用本机现有 Wrangler 登录部署该候选，回读 Cloudflare 流量版本和正式域名中英文案例页、项目页、`ads.txt`。若任何验证失败，停止部署并报告卡在哪一层。正常移除隔离 worktree 和临时环境文件。
 5. 同步 Registry 的 `awesome-jev-cases`、`typesafe-jev` 详情最新摘要和各自当月变更记录；区分发现、提交、推送、部署与公网回读。保留其他项目的未提交工作。
