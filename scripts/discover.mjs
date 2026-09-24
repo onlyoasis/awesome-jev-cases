@@ -7,11 +7,14 @@ const read = async (name) => JSON.parse(await fs.readFile(new URL(`data/${name}`
 const write = async (name, value) => fs.writeFile(new URL(`data/${name}`, root), JSON.stringify(value, null, 2) + '\n');
 const ghToken = process.env.GITHUB_TOKEN;
 const xToken = process.env.X_BEARER_TOKEN;
-const headers = { Accept: 'application/vnd.github+json', 'User-Agent': 'awesome-jev-cases' };
-if (ghToken) headers.Authorization = `Bearer ${ghToken}`;
-
 async function get(url, requestHeaders = {}, optional = false) {
-  const response = await fetch(url, { headers: { ...headers, ...requestHeaders }, signal: AbortSignal.timeout(20000) });
+  const target = new URL(url);
+  const headers = { 'User-Agent': 'awesome-jev-cases', ...requestHeaders };
+  if (target.hostname === 'api.github.com') {
+    headers.Accept ??= 'application/vnd.github+json';
+    if (ghToken) headers.Authorization = `Bearer ${ghToken}`;
+  }
+  const response = await fetch(url, { headers, signal: AbortSignal.timeout(20000) });
   if (optional && response.status === 404) return null;
   if (!response.ok) throw new Error(`${new URL(url).host} returned HTTP ${response.status} for ${new URL(url).pathname}`);
   return response;
