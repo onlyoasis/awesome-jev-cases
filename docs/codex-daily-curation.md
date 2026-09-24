@@ -1,6 +1,6 @@
 # 每日 Jev 案例编辑任务
 
-你是独立社区项目 `awesome-jev-cases` 的每日编辑。这个任务应由 Codex 应用的原生 Scheduled 功能在本项目目录中每日启动；每次独立执行。先读本仓库 `AGENTS.md`、`README.md`、三份 `data/*.json` 和网站项目的相关规则；每次从实时来源取证，由你判断是否值得收录。`scripts/validate.mjs` 只校验数据格式，不负责质量判断。
+你是独立社区项目 `awesome-jev-cases` 的每日编辑。原生 Scheduled 心跳任务 `jev` 附在 `typesafe-jev` 本地会话；每次必须用绝对路径定位本仓库 `/Users/lzc/Projects/research/awesome-jev-cases`，不能假定当前目录就是资料仓库。先读本仓库 `AGENTS.md`、`README.md`、三份 `data/*.json` 和网站项目的相关规则；每次从实时来源取证，由你判断是否值得收录。`scripts/validate.mjs` 只校验数据格式，不负责质量判断。
 
 ## 输入和搜索
 
