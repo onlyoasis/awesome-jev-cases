@@ -74,7 +74,7 @@ The table summarizes uses published by their builders. **Public code** means the
 
 The tables are generated from [`data/cases.json`](data/cases.json) and [`data/projects.json`](data/projects.json). [`data/official-recipes.json`](data/official-recipes.json) tracks TypeSafe's official cookbooks; see the [detailed catalog](CATALOG.md) for their source links. Run `node scripts/validate.mjs` to check the data shape, then `node scripts/render.mjs` to refresh both README languages and the catalog. `node scripts/render.mjs --check` detects stale generated tables.
 
-The editorial workflow is in [`docs/codex-daily-curation.md`](docs/codex-daily-curation.md): Codex reads GitHub, original X posts in Chrome, and official sources before deciding what belongs here, with no hard star threshold. **The native Scheduled heartbeat `jev` is active at 12:17 Japan time daily**; its first natural run has not yet been verified, so creation alone is not evidence of successful search or deployment.
+The editorial workflow is in [`docs/codex-daily-curation.md`](docs/codex-daily-curation.md): Codex reads GitHub, original X posts in Chrome, and official sources before deciding what belongs here, with no hard star threshold. **The native Scheduled heartbeat `jev` is active at 12:17 Japan time daily**; its first natural run on 2026-09-25 verified searches of both sources. Publication completed after the user corrected how an X date-filter error should be handled; a fully unattended run remains to be verified.
 
 ## Contributing
 

@@ -74,7 +74,7 @@
 
 表格由 [`data/cases.json`](data/cases.json)、[`data/projects.json`](data/projects.json) 生成。另有 [`data/official-recipes.json`](data/official-recipes.json) 收录 TypeSafe 官方 cookbook，正文与来源见[详细目录](CATALOG.md)。运行 `node scripts/validate.mjs` 检查结构，再运行 `node scripts/render.mjs` 同步中英文 README 与目录；`node scripts/render.mjs --check` 可确认生成内容没有过期。
 
-每日编辑流程写在 [`docs/codex-daily-curation.md`](docs/codex-daily-curation.md)：Codex 读取 GitHub、Chrome 中的 X 原帖和官方资料后判断收录，不设 stars 硬门槛。**原生 Scheduled 心跳任务 `jev` 已启用，每天日本时间 12:17 运行**；首个自然周期尚未验收，创建成功不等于搜索或部署成功。
+每日编辑流程写在 [`docs/codex-daily-curation.md`](docs/codex-daily-curation.md)：Codex 读取 GitHub、Chrome 中的 X 原帖和官方资料后判断收录，不设 stars 硬门槛。**原生 Scheduled 心跳任务 `jev` 已启用，每天日本时间 12:17 运行**；2026-09-25 首次自然触发已核实双源搜索，发布在用户纠正日期筛选判断后完成。下一次无人介入发布仍待验收。
 
 ## 贡献
 
