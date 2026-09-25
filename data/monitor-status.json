@@ -8,5 +8,6 @@
   "officialRecipes": 18,
   "xPosts": 1,
   "xHistoricalCoverage": "partial",
+  "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
   "xHistoricalCoverageNote": "Latest returned verified current posts, but its since/until date filter also returned posts outside the requested interval; the older overlap was not confirmed."
 }
