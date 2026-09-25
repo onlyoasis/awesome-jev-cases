@@ -1,9 +1,12 @@
 {
-  "checkedAt": "2026-09-24T02:27:56.532Z",
+  "checkedAt": "2026-09-25T09:21:45Z",
   "github": "ok",
   "official": "ok",
   "x": "ok",
-  "addedProjects": 3,
+  "addedProjects": 1,
+  "addedCases": 2,
   "officialRecipes": 18,
-  "xPosts": 1
+  "xPosts": 1,
+  "xHistoricalCoverage": "partial",
+  "xHistoricalCoverageNote": "Latest returned verified current posts, but its since/until date filter also returned posts outside the requested interval; the older overlap was not confirmed."
 }

@@ -5,7 +5,7 @@
 独立社区维护的 Jev 使用案例与 GitHub 项目目录。每条案例说明输入、Jev 的判断、后续动作和证据边界；项目链接指向原作者仓库。本站与 TypeSafe AI 无隶属或背书关系。
 
 <!-- catalog:summary:start -->
-**12 条使用案例 · 27 个项目条目 · 18 篇官方 cookbook**
+**14 条使用案例 · 28 个项目条目 · 18 篇官方 cookbook**
 <!-- catalog:summary:end -->
 
 [网站案例库](https://typesafe-jev.com/use-cases/) · [网站项目页](https://typesafe-jev.com/projects/) · [官方 cookbook](https://docs.typesafe.ai/cookbooks.md) · [详细目录](CATALOG.md)
@@ -29,6 +29,8 @@
 | [3,282 条 X 帖子分析](https://x.com/iannuttall/status/2100668908227162567) | **内容分析**<br>作者自己的 3,282 条 X 帖子及其表现数据。 | **判断：**每条帖子回答八个关于主题、开头、语气和是否提供教学价值等问题；原帖未说明 Jev 题型。<br>**动作：**作者将判断结果与已有互动数据汇总，寻找高表现内容特征。 | 仅作者原帖<br>样本只来自作者账户；成本与增长结论均为作者自报，不能推断因果或跨账号效果。<br>[X](https://x.com/iannuttall/status/2100668908227162567) |
 | [hn-oracle](https://github.com/anthony-maio/hn-oracle) | **历史预测分析**<br>历史 Hacker News 评论及其上下文。 | **判断：**首轮 Noul 判断评论是否预测未来；过阈值后，Noul、Choice 和 Score 判断可核对性、方向、主题与时间范围。<br>**动作：**代码筛选可事后核验的预测，记录结构化字段，并公布预注册千条评论试验的结果；全库处理尚未完成。 | 公开源码<br>准确率、成本和校准数字是作者试验的自报结果；概率经另一步校准，整库规模与耗时仍属估计。<br>[GitHub](https://github.com/anthony-maio/hn-oracle) |
 | [undertone](https://github.com/Nuu-maan/undertone) | **消息语气预览**<br>用户在发送前写下的消息文本。 | **判断：**一次 Jev 请求用 Choice、Noul 和 Score 判断整体语气、讽刺或催促等信号、紧急程度，以及是否适合发给经理。<br>**动作：**界面展示语气标签、颜色与措辞提示，由用户决定是否发送。 | 源码＋作者原帖<br>没有独立准确率测量；无 API Key 或请求失败时程序会切换到离线关键词判断，因此演示画面不能全部归因于 Jev。<br>[GitHub](https://github.com/Nuu-maan/undertone) · [X](https://x.com/Numankhannnnn/status/2102779770220286158) |
+| [JevSearch 网页搜索重排](https://x.com/kylejeong/status/2102561749404971460) | **网页搜索**<br>用户查询、筛选准则，以及 Browserbase 搜索取得的约 25 个候选网页。 | **判断：**Jev 依据准则为候选结果打相关性分数。<br>**动作：**程序返回得分较高的 5 个结果；作者称 Jev 有时会选出原始搜索前五之外的网页。 | 仅作者原帖<br>已核对作者原帖与 TypeSafe 转发推荐，但未找到公开代码、样本查询或独立相关性评测；不是 TypeSafe 官方项目。<br>[X](https://x.com/kylejeong/status/2102561749404971460) · [TypeSafe X](https://x.com/typesafeai/status/2103218258405118035) |
+| [Jev Audit](https://github.com/neozhu/jev-audit) | **合同文本比对**<br>基准合同与扫描件提取的 OCR 文本。 | **判断：**一次 Jev 调用以 Noul、Choice 和 Score 判断实质条款是否相符、有无可见修改、差异类型及条款接近程度。<br>**动作：**代码把答案汇成加权一致性分数；作者设置超过 90% 才通过，其余进入人工复审并形成可检查报告。 | 公开源码<br>合同文本会送往 TypeSafe API；可选的问题生成功能还会调用 OpenAI。本站未独立调用 API 或验证法律结论；90% 是作者阈值，合同仍须人工核对原文。<br>[GitHub](https://github.com/neozhu/jev-audit) |
 <!-- catalog:cases:end -->
 
 ## GitHub 项目库
@@ -57,6 +59,7 @@
 | [sutro-sh/jev-align](https://github.com/sutro-sh/jev-align) | 数据与检索 | 社区项目 | Apache-2.0 | 258 · 2026-09-22 | 用人工反馈与 GEPA 校准 Jev 判断函数。 |
 | [jerryjliu/docjev](https://github.com/jerryjliu/docjev) | 数据与检索 | 社区项目 | Apache-2.0 | 165 · 2026-09-22 | LlamaIndex 出品：用 Jev 做快速文档分类与子文档边界识别。 |
 | [anthony-maio/hn-oracle](https://github.com/anthony-maio/hn-oracle) | 数据与检索 | 社区项目 | MIT | 0 · 2026-09-24 | 用 Jev 筛选历史 Hacker News 评论中的可核验预测；仓库包含预注册试验、实际调用代码和作者发布的结果数据，尚未处理完整档案。 |
+| [neozhu/jev-audit](https://github.com/neozhu/jev-audit) | 数据与检索 | 社区项目 | MIT | 0 · 2026-09-25 | 用 Jev 的 Noul、Choice、Score 比对基准合同与扫描件 OCR 文本，区分实质变化和识别噪声，并把低于作者阈值的结果交给人工复审；含真实 API 调用与一致性测试。 |
 | [leepokai/jev-guard](https://github.com/leepokai/jev-guard) | 安全与审核 | 社区项目 | MIT | 18 · 2026-09-22 | 编码 Agent 的安全闸门：对每次工具调用给出 deny/ask/allow 风险判断，并标记提示注入；支持多种编码助手。 |
 | [win4r/jev-security-scan](https://github.com/win4r/jev-security-scan) | 安全与审核 | 社区项目 | MIT | 9 · 2026-09-22 | 用 Jev 审查 Agent Skill 与 MCP 代码中的可疑行为（中文说明项目）。 |
 | [TheoLeeCJ/SemIf](https://github.com/TheoLeeCJ/SemIf) | 开源复刻 | 受启发的复刻 | MIT | 2,935 · 2026-09-22 | 受 Jev 启发的开源实现：在开源模型上复刻“语义 if”接口，3090 显卡可本地运行。原名 OpenJev，作者声明与 TypeSafe 无关；不是 Jev 权重开源。 |

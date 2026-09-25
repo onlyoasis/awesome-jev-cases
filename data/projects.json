@@ -430,5 +430,21 @@
     "lastVerified": "2026-09-24",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "jev-audit-contracts",
+    "name": "neozhu/jev-audit",
+    "url": "https://github.com/neozhu/jev-audit",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev 的 Noul、Choice、Score 比对基准合同与扫描件 OCR 文本，区分实质变化和识别噪声，并把低于作者阈值的结果交给人工复审；含真实 API 调用与一致性测试。",
+      "en": "Compares a baseline contract with scanned-copy OCR text using Jev Noul, Choice and Score questions, separates substantive changes from recognition noise and sends results below the author's cutoff to human review; includes a real API call and consistency tests."
+    },
+    "sourceUrl": "https://github.com/neozhu/jev-audit",
+    "lastVerified": "2026-09-25",
+    "status": "verified",
+    "stars": 0
   }
 ]

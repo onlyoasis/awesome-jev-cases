@@ -157,5 +157,33 @@
       { "label": "GitHub", "url": "https://github.com/Nuu-maan/undertone" },
       { "label": "X", "url": "https://x.com/Numankhannnnn/status/2102779770220286158" }
     ]
+  },
+  {
+    "id": "jevsearch-rerank",
+    "name": "JevSearch",
+    "title": { "zh": "JevSearch 网页搜索重排", "en": "JevSearch web reranking" },
+    "author": "Kyle Jeong",
+    "area": { "zh": "网页搜索", "en": "Web search" },
+    "evidence": "post",
+    "input": { "zh": "用户查询、筛选准则，以及 Browserbase 搜索取得的约 25 个候选网页。", "en": "A user query, selection criteria and roughly 25 candidate pages returned by Browserbase search." },
+    "decision": { "zh": "Jev 依据准则为候选结果打相关性分数。", "en": "Jev scores candidate results against the selected relevance criteria." },
+    "action": { "zh": "程序返回得分较高的 5 个结果；作者称 Jev 有时会选出原始搜索前五之外的网页。", "en": "The program returns five higher-scoring results; the author says Jev sometimes selects pages outside the search engine's initial top five." },
+    "boundary": { "zh": "已核对作者原帖与 TypeSafe 转发推荐，但未找到公开代码、样本查询或独立相关性评测；不是 TypeSafe 官方项目。", "en": "The author post and TypeSafe's repost were checked, but no public code, sample queries or independent relevance evaluation was found. This is not a TypeSafe project." },
+    "sources": [
+      { "label": "X", "url": "https://x.com/kylejeong/status/2102561749404971460" },
+      { "label": "TypeSafe X", "url": "https://x.com/typesafeai/status/2103218258405118035" }
+    ]
+  },
+  {
+    "id": "contract-ocr-audit",
+    "name": "Jev Audit",
+    "author": "neozhu",
+    "area": { "zh": "合同文本比对", "en": "Contract text comparison" },
+    "evidence": "code",
+    "input": { "zh": "基准合同与扫描件提取的 OCR 文本。", "en": "A baseline contract and OCR text extracted from a scanned copy." },
+    "decision": { "zh": "一次 Jev 调用以 Noul、Choice 和 Score 判断实质条款是否相符、有无可见修改、差异类型及条款接近程度。", "en": "One Jev call uses Noul, Choice and Score to judge substantive term agreement, signs of edits, difference type and closeness of terms." },
+    "action": { "zh": "代码把答案汇成加权一致性分数；作者设置超过 90% 才通过，其余进入人工复审并形成可检查报告。", "en": "Code combines answers into a weighted consistency score; the author's policy passes above 90%, while other results go to human review in an inspectable report." },
+    "boundary": { "zh": "合同文本会送往 TypeSafe API；可选的问题生成功能还会调用 OpenAI。本站未独立调用 API 或验证法律结论；90% 是作者阈值，合同仍须人工核对原文。", "en": "Contract text goes to the TypeSafe API; optional question generation also calls OpenAI. This site did not run the API or validate legal conclusions. The 90% cutoff is the author's choice, and original terms still need human review." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/neozhu/jev-audit" }]
   }
 ]

@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (12)
+## 深度使用案例 / Worked cases (14)
 
 ### jev-ultrafast
 
@@ -112,7 +112,25 @@
 - 核验边界：没有独立准确率测量；无 API Key 或请求失败时程序会切换到离线关键词判断，因此演示画面不能全部归因于 Jev。
 - 来源：[GitHub](https://github.com/Nuu-maan/undertone) · [X](https://x.com/Numankhannnnn/status/2102779770220286158)
 
-## 开源项目 / Open-source projects (27)
+### JevSearch 网页搜索重排
+
+- 作者：Kyle Jeong
+- 输入：用户查询、筛选准则，以及 Browserbase 搜索取得的约 25 个候选网页。
+- Jev 判断：Jev 依据准则为候选结果打相关性分数。
+- 后续动作：程序返回得分较高的 5 个结果；作者称 Jev 有时会选出原始搜索前五之外的网页。
+- 核验边界：已核对作者原帖与 TypeSafe 转发推荐，但未找到公开代码、样本查询或独立相关性评测；不是 TypeSafe 官方项目。
+- 来源：[X](https://x.com/kylejeong/status/2102561749404971460) · [TypeSafe X](https://x.com/typesafeai/status/2103218258405118035)
+
+### Jev Audit
+
+- 作者：neozhu
+- 输入：基准合同与扫描件提取的 OCR 文本。
+- Jev 判断：一次 Jev 调用以 Noul、Choice 和 Score 判断实质条款是否相符、有无可见修改、差异类型及条款接近程度。
+- 后续动作：代码把答案汇成加权一致性分数；作者设置超过 90% 才通过，其余进入人工复审并形成可检查报告。
+- 核验边界：合同文本会送往 TypeSafe API；可选的问题生成功能还会调用 OpenAI。本站未独立调用 API 或验证法律结论；90% 是作者阈值，合同仍须人工核对原文。
+- 来源：[GitHub](https://github.com/neozhu/jev-audit)
+
+## 开源项目 / Open-source projects (28)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -143,6 +161,7 @@
 | [anthony-maio/hn-oracle](https://github.com/anthony-maio/hn-oracle) | community | MIT | 0 |
 | [Tech-Byte-Frontier/jevgate](https://github.com/Tech-Byte-Frontier/jevgate) | community | Apache-2.0 OR MIT | 3 |
 | [laihenyi/pi-Jev-browser](https://github.com/laihenyi/pi-Jev-browser) | community | Apache-2.0 | 0 |
+| [neozhu/jev-audit](https://github.com/neozhu/jev-audit) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (18)
 
