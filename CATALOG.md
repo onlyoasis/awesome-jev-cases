@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (14)
+## 深度使用案例 / Worked cases (17)
 
 ### jev-ultrafast
 
@@ -130,7 +130,34 @@
 - 核验边界：合同文本会送往 TypeSafe API；可选的问题生成功能还会调用 OpenAI。本站未独立调用 API 或验证法律结论；90% 是作者阈值，合同仍须人工核对原文。
 - 来源：[GitHub](https://github.com/neozhu/jev-audit)
 
-## 开源项目 / Open-source projects (28)
+### OpenRouter 用 Jev 选择模型
+
+- 作者：OpenRouter
+- 输入：发往 OpenRouter 的 LLM 请求及会话上下文；原帖称路由会考虑缓存。
+- Jev 判断：Jev 判断任务、难度、精度需求和更大模型的收益，选择目标模型及推理强度。
+- 后续动作：OpenRouter 将请求送到所选模型，并在响应中附路由依据；其原帖称 Jev 超时或返回无效内容时请求会失败。
+- 核验边界：已核对 OpenRouter 原帖、产品页和 TypeSafe 转发，未见公开路由源码或本站独立质量、成本评估；这是第三方产品，不能把官方转发当作 TypeSafe 一手项目。
+- 来源：[OpenRouter X](https://x.com/OpenRouter/status/2103610898690855161) · [OpenRouter details](https://x.com/OpenRouter/status/2103610988432126195) · [TypeSafe X](https://x.com/typesafeai/status/2103612889655353346) · [OpenRouter](https://openrouter.ai/typesafe/jev-router)
+
+### jevgrep 定位代码上下文
+
+- 作者：dzhng
+- 输入：编码任务问题、仓库目录、文件预览与源代码单元。
+- Jev 判断：Jev 逐层用封闭的是非判断筛出与任务相关的目录、文件和代码位置。
+- 后续动作：CLI 返回带行号的原始代码片段和阅读线索，编码 Agent 再自行修改与测试。
+- 核验边界：符合筛选条件的源代码会发往用户所选的外部 Jev 服务；仓库作者的成本和任务成功率仅为其样本结果，检索线索不保证完整。
+- 来源：[GitHub](https://github.com/dzhng/jevgrep)
+
+### wellposed 检查 Jev 请求
+
+- 作者：suraj-phanindra
+- 输入：准备提交给 Jev 的 state、题型、instructions 和 criteria。
+- Jev 判断：离线规则先查结构问题；对规则难判断的语义缺陷，工具再让 Jev 用 Noul 判断，例如选项是否遗漏合理的“其他”情形。
+- 后续动作：程序在实际业务调用前给出警告与修改建议，由开发者决定是否改写问题。
+- 核验边界：语义检查本身需要 TypeSafe API Key，可能发送待检查的请求内容；作者的标注样本和准确率未经本站独立复算，提示不能替代实测。
+- 来源：[GitHub](https://github.com/suraj-phanindra/wellposed)
+
+## 开源项目 / Open-source projects (32)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -162,6 +189,10 @@
 | [Tech-Byte-Frontier/jevgate](https://github.com/Tech-Byte-Frontier/jevgate) | community | Apache-2.0 OR MIT | 3 |
 | [laihenyi/pi-Jev-browser](https://github.com/laihenyi/pi-Jev-browser) | community | Apache-2.0 | 0 |
 | [neozhu/jev-audit](https://github.com/neozhu/jev-audit) | community | MIT | 0 |
+| [JevAdvBench/JevAdvBench](https://github.com/JevAdvBench/JevAdvBench) | community | MIT (code); CC BY-NC 4.0 (data) | 0 |
+| [dzhng/jevgrep](https://github.com/dzhng/jevgrep) | community | MIT | 182 |
+| [suraj-phanindra/wellposed](https://github.com/suraj-phanindra/wellposed) | community | MIT | 2 |
+| [brnyxx/jev-ra](https://github.com/brnyxx/jev-ra) | community | MIT | 5 |
 
 ## 官方 cookbook / Official recipes (18)
 

@@ -446,5 +446,69 @@
     "lastVerified": "2026-09-25",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "jevadvbench",
+    "name": "JevAdvBench/JevAdvBench",
+    "url": "https://github.com/JevAdvBench/JevAdvBench",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT (code); CC BY-NC 4.0 (data)",
+    "summary": {
+      "zh": "Jev 决策的对抗评估资料库：提供 typed questions、单处改动样本、直接调用 TypeSafe API 的脚本和作者结果；代码与数据许可证不同，鲁棒性指标未由本站复算。",
+      "en": "An adversarial Jev decision benchmark with typed questions, single-edit variants, a direct TypeSafe API evaluator and author-published results. Code and data have different licenses; robustness figures were not independently reproduced."
+    },
+    "sourceUrl": "https://github.com/JevAdvBench/JevAdvBench",
+    "lastVerified": "2026-09-27",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jevgrep",
+    "name": "dzhng/jevgrep",
+    "url": "https://github.com/dzhng/jevgrep",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "为编码 Agent 检索仓库上下文的 CLI：用 Jev 判断目录、文件与代码单元的任务相关性，输出带行号的原文片段；待评估源码可能发往外部服务。",
+      "en": "A coding-agent CLI that uses Jev to judge the relevance of folders, files and source units, then returns line-referenced excerpts; eligible source content may be sent to an external provider."
+    },
+    "sourceUrl": "https://github.com/dzhng/jevgrep",
+    "lastVerified": "2026-09-27",
+    "status": "verified",
+    "stars": 182
+  },
+  {
+    "id": "wellposed",
+    "name": "suraj-phanindra/wellposed",
+    "url": "https://github.com/suraj-phanindra/wellposed",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Jev 请求预检查工具：离线规则筛结构缺陷，再以 Jev Noul 判断语义问题，给开发者警告与修改建议；语义层需要外部 API。",
+      "en": "Lints Jev requests with offline structural rules and Jev Noul judgments for semantic defects, then reports suggested fixes; the semantic layer needs an external API."
+    },
+    "sourceUrl": "https://github.com/suraj-phanindra/wellposed",
+    "lastVerified": "2026-09-27",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "jev-ra-browser",
+    "name": "brnyxx/jev-ra",
+    "url": "https://github.com/brnyxx/jev-ra",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "编码 Agent 的浏览器 MCP/CLI：Jev 每步选择动作与元素，客户端校验返回后驱动 Chrome；仓库的速度基准只代表作者测试环境。",
+      "en": "A browser MCP server and CLI for coding agents: Jev selects an action and element each step, and the client validates the reply before driving Chrome. Speed benchmarks are author-reported."
+    },
+    "sourceUrl": "https://github.com/brnyxx/jev-ra",
+    "lastVerified": "2026-09-27",
+    "status": "verified",
+    "stars": 5
   }
 ]

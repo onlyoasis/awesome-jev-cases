@@ -5,7 +5,7 @@
 独立社区维护的 Jev 使用案例与 GitHub 项目目录。每条案例说明输入、Jev 的判断、后续动作和证据边界；项目链接指向原作者仓库。本站与 TypeSafe AI 无隶属或背书关系。
 
 <!-- catalog:summary:start -->
-**14 条使用案例 · 28 个项目条目 · 18 篇官方 cookbook**
+**17 条使用案例 · 32 个项目条目 · 18 篇官方 cookbook**
 <!-- catalog:summary:end -->
 
 [网站案例库](https://typesafe-jev.com/use-cases/) · [网站项目页](https://typesafe-jev.com/projects/) · [官方 cookbook](https://docs.typesafe.ai/cookbooks.md) · [详细目录](CATALOG.md)
@@ -31,6 +31,9 @@
 | [undertone](https://github.com/Nuu-maan/undertone) | **消息语气预览**<br>用户在发送前写下的消息文本。 | **判断：**一次 Jev 请求用 Choice、Noul 和 Score 判断整体语气、讽刺或催促等信号、紧急程度，以及是否适合发给经理。<br>**动作：**界面展示语气标签、颜色与措辞提示，由用户决定是否发送。 | 源码＋作者原帖<br>没有独立准确率测量；无 API Key 或请求失败时程序会切换到离线关键词判断，因此演示画面不能全部归因于 Jev。<br>[GitHub](https://github.com/Nuu-maan/undertone) · [X](https://x.com/Numankhannnnn/status/2102779770220286158) |
 | [JevSearch 网页搜索重排](https://x.com/kylejeong/status/2102561749404971460) | **网页搜索**<br>用户查询、筛选准则，以及 Browserbase 搜索取得的约 25 个候选网页。 | **判断：**Jev 依据准则为候选结果打相关性分数。<br>**动作：**程序返回得分较高的 5 个结果；作者称 Jev 有时会选出原始搜索前五之外的网页。 | 仅作者原帖<br>已核对作者原帖与 TypeSafe 转发推荐，但未找到公开代码、样本查询或独立相关性评测；不是 TypeSafe 官方项目。<br>[X](https://x.com/kylejeong/status/2102561749404971460) · [TypeSafe X](https://x.com/typesafeai/status/2103218258405118035) |
 | [Jev Audit](https://github.com/neozhu/jev-audit) | **合同文本比对**<br>基准合同与扫描件提取的 OCR 文本。 | **判断：**一次 Jev 调用以 Noul、Choice 和 Score 判断实质条款是否相符、有无可见修改、差异类型及条款接近程度。<br>**动作：**代码把答案汇成加权一致性分数；作者设置超过 90% 才通过，其余进入人工复审并形成可检查报告。 | 公开源码<br>合同文本会送往 TypeSafe API；可选的问题生成功能还会调用 OpenAI。本站未独立调用 API 或验证法律结论；90% 是作者阈值，合同仍须人工核对原文。<br>[GitHub](https://github.com/neozhu/jev-audit) |
+| [OpenRouter 用 Jev 选择模型](https://x.com/OpenRouter/status/2103610898690855161) | **模型路由**<br>发往 OpenRouter 的 LLM 请求及会话上下文；原帖称路由会考虑缓存。 | **判断：**Jev 判断任务、难度、精度需求和更大模型的收益，选择目标模型及推理强度。<br>**动作：**OpenRouter 将请求送到所选模型，并在响应中附路由依据；其原帖称 Jev 超时或返回无效内容时请求会失败。 | 仅作者原帖<br>已核对 OpenRouter 原帖、产品页和 TypeSafe 转发，未见公开路由源码或本站独立质量、成本评估；这是第三方产品，不能把官方转发当作 TypeSafe 一手项目。<br>[OpenRouter X](https://x.com/OpenRouter/status/2103610898690855161) · [OpenRouter details](https://x.com/OpenRouter/status/2103610988432126195) · [TypeSafe X](https://x.com/typesafeai/status/2103612889655353346) · [OpenRouter](https://openrouter.ai/typesafe/jev-router) |
+| [jevgrep 定位代码上下文](https://github.com/dzhng/jevgrep) | **编码 Agent 检索**<br>编码任务问题、仓库目录、文件预览与源代码单元。 | **判断：**Jev 逐层用封闭的是非判断筛出与任务相关的目录、文件和代码位置。<br>**动作：**CLI 返回带行号的原始代码片段和阅读线索，编码 Agent 再自行修改与测试。 | 公开源码<br>符合筛选条件的源代码会发往用户所选的外部 Jev 服务；仓库作者的成本和任务成功率仅为其样本结果，检索线索不保证完整。<br>[GitHub](https://github.com/dzhng/jevgrep) |
+| [wellposed 检查 Jev 请求](https://github.com/suraj-phanindra/wellposed) | **请求质量检查**<br>准备提交给 Jev 的 state、题型、instructions 和 criteria。 | **判断：**离线规则先查结构问题；对规则难判断的语义缺陷，工具再让 Jev 用 Noul 判断，例如选项是否遗漏合理的“其他”情形。<br>**动作：**程序在实际业务调用前给出警告与修改建议，由开发者决定是否改写问题。 | 公开源码<br>语义检查本身需要 TypeSafe API Key，可能发送待检查的请求内容；作者的标注样本和准确率未经本站独立复算，提示不能替代实测。<br>[GitHub](https://github.com/suraj-phanindra/wellposed) |
 <!-- catalog:cases:end -->
 
 ## GitHub 项目库
@@ -46,10 +49,12 @@
 | [typesafe-ai/typesafe-sdk-python](https://github.com/typesafe-ai/typesafe-sdk-python) | 官方 SDK 与工具 | 官方 | MIT | 178 · 2026-09-22 | 官方 Python SDK（pip 包 typesafe-sdk，要求 Python ≥ 3.10），提供同步/异步客户端与 Choice/Score/Noul 类型，默认读取 TYPESAFE_API_KEY。 |
 | [browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) | 浏览器与电脑操作 | 社区项目 | MIT | 14,820 · 2026-09-22 | Browser Use 出品的极速网页 Agent：Jev 负责选择操作与目标元素，小模型只在需要打字时介入。发布首周星数最高的 Jev 项目。 |
 | [jkudish/jev-browser](https://github.com/jkudish/jev-browser) | 浏览器与电脑操作 | 社区项目 | MIT | 221 · 2026-09-22 | 基于 Jev 的浏览器自动化实现。 |
+| [brnyxx/jev-ra](https://github.com/brnyxx/jev-ra) | 浏览器与电脑操作 | 社区项目 | MIT | 5 · 2026-09-27 | 编码 Agent 的浏览器 MCP/CLI：Jev 每步选择动作与元素，客户端校验返回后驱动 Chrome；仓库的速度基准只代表作者测试环境。 |
 | [laihenyi/pi-Jev-browser](https://github.com/laihenyi/pi-Jev-browser) | 浏览器与电脑操作 | 社区项目 | Apache-2.0 | 0 · 2026-09-24 | pi 的浏览器与 macOS 桌面 Agent 扩展：Jev 根据可见文本、控件和目标选择单步动作，执行循环设有步数和人工复核边界。 |
 | [tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) | 编码助手 | 社区项目 | MIT | 5,845 · 2026-09-22 | Claude Code 插件：用 Jev 逐条判断历史工具调用的去留，替代摘要式上下文压缩；保留的内容原样保留。社区对该策略存在争议。 |
 | [devagrawal09/jev-review](https://github.com/devagrawal09/jev-review) | 编码助手 | 社区项目 | MIT | 460 · 2026-09-22 | 分阶段代码审查流程与本地面板。 |
 | [gargpratyush/jev-router](https://github.com/gargpratyush/jev-router) | 编码助手 | 社区项目 | MIT | 299 · 2026-09-22 | Claude Code 插件：按任务选择最便宜且够用的模型。 |
+| [dzhng/jevgrep](https://github.com/dzhng/jevgrep) | 编码助手 | 社区项目 | MIT | 182 · 2026-09-27 | 为编码 Agent 检索仓库上下文的 CLI：用 Jev 判断目录、文件与代码单元的任务相关性，输出带行号的原文片段；待评估源码可能发往外部服务。 |
 | [Tech-Byte-Frontier/jevgate](https://github.com/Tech-Byte-Frontier/jevgate) | 编码助手 | 社区项目 | Apache-2.0 OR MIT | 3 · 2026-09-24 | Rust 代码审查工具：解析源码后向 Jev 提交局部、类型化的维护性判断，并由代码汇成带位置和建议的发现；安全规则需另行启用。 |
 | [jkudish/jev-mcp](https://github.com/jkudish/jev-mcp) | MCP 与 Agent Skill | 社区项目 | MIT | 213 · 2026-09-22 | MCP 服务器：把校验、筛选、排序等判断暴露为 Agent 可调用的工具。 |
 | [itsmostafa/typesafe-mcp](https://github.com/itsmostafa/typesafe-mcp) | MCP 与 Agent Skill | 社区项目 | MIT | 187 · 2026-09-22 | MCP 连接器：让 Agent 直接调用 Jev。 |
@@ -62,6 +67,8 @@
 | [neozhu/jev-audit](https://github.com/neozhu/jev-audit) | 数据与检索 | 社区项目 | MIT | 0 · 2026-09-25 | 用 Jev 的 Noul、Choice、Score 比对基准合同与扫描件 OCR 文本，区分实质变化和识别噪声，并把低于作者阈值的结果交给人工复审；含真实 API 调用与一致性测试。 |
 | [leepokai/jev-guard](https://github.com/leepokai/jev-guard) | 安全与审核 | 社区项目 | MIT | 18 · 2026-09-22 | 编码 Agent 的安全闸门：对每次工具调用给出 deny/ask/allow 风险判断，并标记提示注入；支持多种编码助手。 |
 | [win4r/jev-security-scan](https://github.com/win4r/jev-security-scan) | 安全与审核 | 社区项目 | MIT | 9 · 2026-09-22 | 用 Jev 审查 Agent Skill 与 MCP 代码中的可疑行为（中文说明项目）。 |
+| [suraj-phanindra/wellposed](https://github.com/suraj-phanindra/wellposed) | 安全与审核 | 社区项目 | MIT | 2 · 2026-09-27 | Jev 请求预检查工具：离线规则筛结构缺陷，再以 Jev Noul 判断语义问题，给开发者警告与修改建议；语义层需要外部 API。 |
+| [JevAdvBench/JevAdvBench](https://github.com/JevAdvBench/JevAdvBench) | 安全与审核 | 社区项目 | MIT (code); CC BY-NC 4.0 (data) | 0 · 2026-09-27 | Jev 决策的对抗评估资料库：提供 typed questions、单处改动样本、直接调用 TypeSafe API 的脚本和作者结果；代码与数据许可证不同，鲁棒性指标未由本站复算。 |
 | [TheoLeeCJ/SemIf](https://github.com/TheoLeeCJ/SemIf) | 开源复刻 | 受启发的复刻 | MIT | 2,935 · 2026-09-22 | 受 Jev 启发的开源实现：在开源模型上复刻“语义 if”接口，3090 显卡可本地运行。原名 OpenJev，作者声明与 TypeSafe 无关；不是 Jev 权重开源。 |
 | [jaredpalmer/kev](https://github.com/jaredpalmer/kev) | 开源复刻 | 受启发的复刻 | Apache-2.0 | 1,968 · 2026-09-22 | 基于 Qwen3.5 的迷你 Jev 式决策模型，可自行训练并在本机运行。 |
 | [TianyuCodings/NanoJev](https://github.com/TianyuCodings/NanoJev) | 开源复刻 | 受启发的复刻 | MIT | 1,751 · 2026-09-22 | 0.6B 参数的 Jev 复刻：并行决策、动态候选与端到端训练流程。社区项目，与官方无关。 |

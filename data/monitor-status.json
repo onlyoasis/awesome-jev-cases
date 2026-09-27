@@ -1,13 +1,14 @@
 {
-  "checkedAt": "2026-09-25T09:21:45Z",
+  "checkedAt": "2026-09-27T03:28:25Z",
   "github": "ok",
   "official": "ok",
   "x": "ok",
-  "addedProjects": 1,
-  "addedCases": 2,
+  "addedProjects": 4,
+  "addedCases": 3,
   "officialRecipes": 18,
-  "xPosts": 1,
+  "xPosts": 3,
+  "xVisibleCounts": { "TypeSafe Jev": 7, "Jev github.com": 6, "from:typesafeai Jev": 4 },
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "Latest returned verified current posts, but its since/until date filter also returned posts outside the requested interval; the older overlap was not confirmed."
+  "xHistoricalCoverageNote": "Latest returned verified current posts, but since:2026-09-22 until:2026-09-25 still returned September 26 posts; the older overlap was not confirmed."
 }

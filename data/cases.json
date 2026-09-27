@@ -185,5 +185,49 @@
     "action": { "zh": "代码把答案汇成加权一致性分数；作者设置超过 90% 才通过，其余进入人工复审并形成可检查报告。", "en": "Code combines answers into a weighted consistency score; the author's policy passes above 90%, while other results go to human review in an inspectable report." },
     "boundary": { "zh": "合同文本会送往 TypeSafe API；可选的问题生成功能还会调用 OpenAI。本站未独立调用 API 或验证法律结论；90% 是作者阈值，合同仍须人工核对原文。", "en": "Contract text goes to the TypeSafe API; optional question generation also calls OpenAI. This site did not run the API or validate legal conclusions. The 90% cutoff is the author's choice, and original terms still need human review." },
     "sources": [{ "label": "GitHub", "url": "https://github.com/neozhu/jev-audit" }]
+  },
+  {
+    "id": "openrouter-jev-router",
+    "name": "OpenRouter Jev Router",
+    "title": { "zh": "OpenRouter 用 Jev 选择模型", "en": "OpenRouter model selection with Jev" },
+    "author": "OpenRouter",
+    "area": { "zh": "模型路由", "en": "Model routing" },
+    "evidence": "post",
+    "input": { "zh": "发往 OpenRouter 的 LLM 请求及会话上下文；原帖称路由会考虑缓存。", "en": "An incoming OpenRouter LLM request and conversation context; the author's post says routing is cache-aware." },
+    "decision": { "zh": "Jev 判断任务、难度、精度需求和更大模型的收益，选择目标模型及推理强度。", "en": "Jev judges task type, difficulty, precision needs and likely benefit from a larger model, then selects a model and reasoning effort." },
+    "action": { "zh": "OpenRouter 将请求送到所选模型，并在响应中附路由依据；其原帖称 Jev 超时或返回无效内容时请求会失败。", "en": "OpenRouter forwards the request to the selected model and includes routing metadata; its post says a Jev timeout or invalid output fails the request." },
+    "boundary": { "zh": "已核对 OpenRouter 原帖、产品页和 TypeSafe 转发，未见公开路由源码或本站独立质量、成本评估；这是第三方产品，不能把官方转发当作 TypeSafe 一手项目。", "en": "The OpenRouter post, product page and TypeSafe repost were checked, but no public router source or independent quality and cost evaluation was found. This is a third-party product, not a TypeSafe first-party project." },
+    "sources": [
+      { "label": "OpenRouter X", "url": "https://x.com/OpenRouter/status/2103610898690855161" },
+      { "label": "OpenRouter details", "url": "https://x.com/OpenRouter/status/2103610988432126195" },
+      { "label": "TypeSafe X", "url": "https://x.com/typesafeai/status/2103612889655353346" },
+      { "label": "OpenRouter", "url": "https://openrouter.ai/typesafe/jev-router" }
+    ]
+  },
+  {
+    "id": "jevgrep-code-context",
+    "name": "jevgrep",
+    "title": { "zh": "jevgrep 定位代码上下文", "en": "jevgrep code-context retrieval" },
+    "author": "dzhng",
+    "area": { "zh": "编码 Agent 检索", "en": "Coding-agent retrieval" },
+    "evidence": "code",
+    "input": { "zh": "编码任务问题、仓库目录、文件预览与源代码单元。", "en": "A coding-task question, repository hierarchy, file previews and source units." },
+    "decision": { "zh": "Jev 逐层用封闭的是非判断筛出与任务相关的目录、文件和代码位置。", "en": "Jev uses bounded yes-or-no relevance judgments to select folders, files and code locations across the repository hierarchy." },
+    "action": { "zh": "CLI 返回带行号的原始代码片段和阅读线索，编码 Agent 再自行修改与测试。", "en": "The CLI returns verbatim source excerpts with line references and reading leads; the coding agent then edits and tests separately." },
+    "boundary": { "zh": "符合筛选条件的源代码会发往用户所选的外部 Jev 服务；仓库作者的成本和任务成功率仅为其样本结果，检索线索不保证完整。", "en": "Eligible source content is sent to the chosen external Jev provider. The author's cost and solve-rate figures apply only to their sample, and retrieval may miss relevant files." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/dzhng/jevgrep" }]
+  },
+  {
+    "id": "wellposed-request-lint",
+    "name": "wellposed",
+    "title": { "zh": "wellposed 检查 Jev 请求", "en": "wellposed Jev request lint" },
+    "author": "suraj-phanindra",
+    "area": { "zh": "请求质量检查", "en": "Request quality checks" },
+    "evidence": "code",
+    "input": { "zh": "准备提交给 Jev 的 state、题型、instructions 和 criteria。", "en": "The state, question types, instructions and criteria in a proposed Jev request." },
+    "decision": { "zh": "离线规则先查结构问题；对规则难判断的语义缺陷，工具再让 Jev 用 Noul 判断，例如选项是否遗漏合理的“其他”情形。", "en": "Offline rules catch structural defects; for semantic issues they cannot settle, the tool asks Jev Noul questions, such as whether a realistic input fits none of the offered choices." },
+    "action": { "zh": "程序在实际业务调用前给出警告与修改建议，由开发者决定是否改写问题。", "en": "The program reports warnings and suggested fixes before a production request; the developer decides whether to revise it." },
+    "boundary": { "zh": "语义检查本身需要 TypeSafe API Key，可能发送待检查的请求内容；作者的标注样本和准确率未经本站独立复算，提示不能替代实测。", "en": "Semantic linting itself needs a TypeSafe API key and may send request content. The author's labeled samples and accuracy figures were not independently reproduced; warnings do not replace testing." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/suraj-phanindra/wellposed" }]
   }
 ]
