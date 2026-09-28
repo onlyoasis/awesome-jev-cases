@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (17)
+## 深度使用案例 / Worked cases (20)
 
 ### jev-ultrafast
 
@@ -157,7 +157,34 @@
 - 核验边界：语义检查本身需要 TypeSafe API Key，可能发送待检查的请求内容；作者的标注样本和准确率未经本站独立复算，提示不能替代实测。
 - 来源：[GitHub](https://github.com/suraj-phanindra/wellposed)
 
-## 开源项目 / Open-source projects (32)
+### jevmod 社区消息审核
+
+- 作者：ohernandezdev
+- 输入：待审核消息的文本、频道话题及社区自定义规则。
+- Jev 判断：Jev 对诈骗、垃圾信息、骚扰等类别分别回答 Noul，输出各类别概率。
+- 后续动作：策略按概率标记并交给管理员复核；默认不删除消息，只有显式启用才执行自动处置。
+- 核验边界：消息文本和频道话题会发往 TypeSafe；Jev 不可用时程序放行并记录错误。作者的审核准确率和成本数字未由本站复算，不能替代人工申诉与复核。
+- 来源：[GitHub](https://github.com/ohernandezdev/jevmod)
+
+### jev-mobile 安卓操作循环
+
+- 作者：Friedjof
+- 输入：用户目标、安卓界面的语义状态及当前可执行的动作集合。
+- Jev 判断：Jev 用 Choice 从程序给定的候选动作中选下一步，不生成任意坐标或代码。
+- 后续动作：工作进程先记录变更，再操作设备并重新观察，按独立检查判断任务是否完成或需升级处理。
+- 核验边界：需要已授权的 USB 调试设备和 TypeSafe API；界面状态可能发往外部服务。本站未在真实手机上复现，风险动作和完成状态依赖项目自身的审批与验证。
+- 来源：[GitHub](https://github.com/Friedjof/jev-mobile)
+
+### TypeSafe 电脑操作助手
+
+- 作者：awlevin
+- 输入：用户目标、屏幕 OCR 或可访问性状态及程序允许的动作。
+- Jev 判断：Jev 以 Choice 选择操作种类、目标控件或站点，并可用 Noul 检查填入的文字是否合适。
+- 后续动作：执行器确定性地操作鼠标键盘，随后重新获取屏幕状态以判断下一步。
+- 核验边界：项目仍属 Beta，会操作真实桌面；屏幕内容送往 TypeSafe，可选文字生成另用其他模型。本站未独立验证速度、费用或 OSWorld 成绩，实际使用应先 dry-run。
+- 来源：[GitHub](https://github.com/awlevin/typesafe-computer-use)
+
+## 开源项目 / Open-source projects (37)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -193,6 +220,11 @@
 | [dzhng/jevgrep](https://github.com/dzhng/jevgrep) | community | MIT | 182 |
 | [suraj-phanindra/wellposed](https://github.com/suraj-phanindra/wellposed) | community | MIT | 2 |
 | [brnyxx/jev-ra](https://github.com/brnyxx/jev-ra) | community | MIT | 5 |
+| [ohernandezdev/jevmod](https://github.com/ohernandezdev/jevmod) | community | MIT | 1 |
+| [Brainwires/jevwire](https://github.com/Brainwires/jevwire) | community | MIT | 22 |
+| [Friedjof/jev-mobile](https://github.com/Friedjof/jev-mobile) | community | MIT | 7 |
+| [disler/ten-levels-of-jev](https://github.com/disler/ten-levels-of-jev) | community | MIT | 5 |
+| [awlevin/typesafe-computer-use](https://github.com/awlevin/typesafe-computer-use) | community | MIT | 1044 |
 
 ## 官方 cookbook / Official recipes (18)
 

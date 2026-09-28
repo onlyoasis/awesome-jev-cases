@@ -229,5 +229,44 @@
     "action": { "zh": "程序在实际业务调用前给出警告与修改建议，由开发者决定是否改写问题。", "en": "The program reports warnings and suggested fixes before a production request; the developer decides whether to revise it." },
     "boundary": { "zh": "语义检查本身需要 TypeSafe API Key，可能发送待检查的请求内容；作者的标注样本和准确率未经本站独立复算，提示不能替代实测。", "en": "Semantic linting itself needs a TypeSafe API key and may send request content. The author's labeled samples and accuracy figures were not independently reproduced; warnings do not replace testing." },
     "sources": [{ "label": "GitHub", "url": "https://github.com/suraj-phanindra/wellposed" }]
+  },
+  {
+    "id": "jevmod-community-moderation",
+    "name": "jevmod",
+    "title": { "zh": "jevmod 社区消息审核", "en": "jevmod community moderation" },
+    "author": "ohernandezdev",
+    "area": { "zh": "社区内容审核", "en": "Community moderation" },
+    "evidence": "code",
+    "input": { "zh": "待审核消息的文本、频道话题及社区自定义规则。", "en": "A message's text, channel topic and community-defined rules." },
+    "decision": { "zh": "Jev 对诈骗、垃圾信息、骚扰等类别分别回答 Noul，输出各类别概率。", "en": "Jev answers separate Noul questions for categories such as scams, spam and harassment, returning a probability for each." },
+    "action": { "zh": "策略按概率标记并交给管理员复核；默认不删除消息，只有显式启用才执行自动处置。", "en": "Policy thresholds flag messages for moderator review; deletion is off by default and requires explicit enablement." },
+    "boundary": { "zh": "消息文本和频道话题会发往 TypeSafe；Jev 不可用时程序放行并记录错误。作者的审核准确率和成本数字未由本站复算，不能替代人工申诉与复核。", "en": "Message text and channel topic go to TypeSafe; on Jev failure the program leaves messages alone and logs the error. The author's accuracy and cost figures were not independently reproduced, and human review remains necessary." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/ohernandezdev/jevmod" }]
+  },
+  {
+    "id": "jev-mobile-android-control",
+    "name": "jev-mobile",
+    "title": { "zh": "jev-mobile 安卓操作循环", "en": "jev-mobile Android control loop" },
+    "author": "Friedjof",
+    "area": { "zh": "安卓设备操作", "en": "Android device control" },
+    "evidence": "code",
+    "input": { "zh": "用户目标、安卓界面的语义状态及当前可执行的动作集合。", "en": "A user goal, semantic Android UI state and the set of currently valid actions." },
+    "decision": { "zh": "Jev 用 Choice 从程序给定的候选动作中选下一步，不生成任意坐标或代码。", "en": "Jev uses Choice to select the next step from actions supplied by code; it does not generate arbitrary coordinates or code." },
+    "action": { "zh": "工作进程先记录变更，再操作设备并重新观察，按独立检查判断任务是否完成或需升级处理。", "en": "The worker journals the mutation, acts on the device, observes again and uses separate checks to decide whether the task is complete or needs escalation." },
+    "boundary": { "zh": "需要已授权的 USB 调试设备和 TypeSafe API；界面状态可能发往外部服务。本站未在真实手机上复现，风险动作和完成状态依赖项目自身的审批与验证。", "en": "The flow needs an authorized USB-debugging device and TypeSafe API; UI context may leave the device. This site did not reproduce it on a phone, and risky actions and completion depend on the project's own approval and verification logic." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/Friedjof/jev-mobile" }]
+  },
+  {
+    "id": "typesafe-computer-use-desktop",
+    "name": "typesafe-computer-use",
+    "title": { "zh": "TypeSafe 电脑操作助手", "en": "TypeSafe computer-use assistant" },
+    "author": "awlevin",
+    "area": { "zh": "电脑操作", "en": "Computer use" },
+    "evidence": "code",
+    "input": { "zh": "用户目标、屏幕 OCR 或可访问性状态及程序允许的动作。", "en": "A user goal, screen OCR or accessibility state and actions allowed by the program." },
+    "decision": { "zh": "Jev 以 Choice 选择操作种类、目标控件或站点，并可用 Noul 检查填入的文字是否合适。", "en": "Jev uses Choice to select an action kind, target control or site, and can use Noul to check whether typed text suits a field." },
+    "action": { "zh": "执行器确定性地操作鼠标键盘，随后重新获取屏幕状态以判断下一步。", "en": "The executor drives the mouse and keyboard deterministically, then captures the next screen state before continuing." },
+    "boundary": { "zh": "项目仍属 Beta，会操作真实桌面；屏幕内容送往 TypeSafe，可选文字生成另用其他模型。本站未独立验证速度、费用或 OSWorld 成绩，实际使用应先 dry-run。", "en": "This beta controls a real desktop. Screen content goes to TypeSafe, and optional text generation uses another model. This site did not verify speed, cost or OSWorld results; users should start with a dry run." },
+    "sources": [{ "label": "GitHub", "url": "https://github.com/awlevin/typesafe-computer-use" }]
   }
 ]

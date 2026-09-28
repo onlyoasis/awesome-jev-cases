@@ -510,5 +510,85 @@
     "lastVerified": "2026-09-27",
     "status": "verified",
     "stars": 5
+  },
+  {
+    "id": "jevmod",
+    "name": "ohernandezdev/jevmod",
+    "url": "https://github.com/ohernandezdev/jevmod",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev 的 Noul 为社区消息输出多种风险类别概率，供 Bot、CLI、API、MCP 共用策略；默认只标记，模型故障时放行并记录错误。",
+      "en": "Uses Jev Noul questions to score community-message risks across bots, CLI, API and MCP interfaces; defaults to flag-only and leaves messages alone on model failure."
+    },
+    "sourceUrl": "https://github.com/ohernandezdev/jevmod",
+    "lastVerified": "2026-09-28",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "jevwire",
+    "name": "Brainwires/jevwire",
+    "url": "https://github.com/Brainwires/jevwire",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "连接 TypeSafe System One 的 MCP 工具、可嵌入 DecisionModel 和编码助手插件；源码提供请求校验与预算控制，插件提示不替代宿主权限。",
+      "en": "MCP tools, an embeddable DecisionModel and a coding-agent plugin for TypeSafe System One, with request validation and budget controls; plugin advice does not replace host permissions."
+    },
+    "sourceUrl": "https://github.com/Brainwires/jevwire",
+    "lastVerified": "2026-09-28",
+    "status": "verified",
+    "stars": 22
+  },
+  {
+    "id": "jev-mobile",
+    "name": "Friedjof/jev-mobile",
+    "url": "https://github.com/Friedjof/jev-mobile",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev Choice 从合法动作中选择安卓设备下一步，配合 SQLite 任务状态、执行前记录及执行后观察验证；需要 USB 调试和外部 API。",
+      "en": "Uses Jev Choice to select the next valid Android action, with SQLite task state, a mutation journal and post-action observation; requires USB debugging and an external API."
+    },
+    "sourceUrl": "https://github.com/Friedjof/jev-mobile",
+    "lastVerified": "2026-09-28",
+    "status": "verified",
+    "stars": 7
+  },
+  {
+    "id": "ten-levels-of-jev",
+    "name": "disler/ten-levels-of-jev",
+    "url": "https://github.com/disler/ten-levels-of-jev",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "把 Jev 从单个封闭判断逐级接入 Agent hooks 的教学代码库，含 TypeSafe/OpenRouter 真调用、离线 mock、交互演示与测试；速度和成本数字为作者材料。",
+      "en": "A progressive code lab from one bounded Jev decision to agent hooks, with live TypeSafe/OpenRouter calls, an offline mock, demos and tests; speed and cost figures are author-reported."
+    },
+    "sourceUrl": "https://github.com/disler/ten-levels-of-jev",
+    "lastVerified": "2026-09-28",
+    "status": "verified",
+    "stars": 5
+  },
+  {
+    "id": "typesafe-computer-use",
+    "name": "awlevin/typesafe-computer-use",
+    "url": "https://github.com/awlevin/typesafe-computer-use",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "macOS 电脑操作 Beta：以 Jev Choice 从屏幕状态选动作与控件，代码执行并复核下一帧；操作真实鼠标键盘，应先 dry-run。",
+      "en": "A macOS computer-use beta that asks Jev Choice to select actions and controls from screen state, then executes and checks the next frame; it drives real input, so start with a dry run."
+    },
+    "sourceUrl": "https://github.com/awlevin/typesafe-computer-use",
+    "lastVerified": "2026-09-28",
+    "status": "verified",
+    "stars": 1044
   }
 ]
