@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (20)
+## 深度使用案例 / Worked cases (40)
 
 ### jev-ultrafast
 
@@ -184,7 +184,187 @@
 - 核验边界：项目仍属 Beta，会操作真实桌面；屏幕内容送往 TypeSafe，可选文字生成另用其他模型。本站未独立验证速度、费用或 OSWorld 成绩，实际使用应先 dry-run。
 - 来源：[GitHub](https://github.com/awlevin/typesafe-computer-use)
 
-## 开源项目 / Open-source projects (37)
+### foreman
+
+- 作者：thruwire
+- 输入：一条软件工单、规格或缺陷报告，加上 Codex/OpenCode 工人产出的 diff、测试等“工厂证据”。
+- Jev 判断：一次 Jev 调用并行输出实现是否完成、需求是否满足、测试是否充分、是否需要核验、工人是否卡住、是否需要人工等一组概率。
+- 后续动作：代码按阈值决定继续、纠偏、停止、重试、核验或结束；Jev 只做语义监督，不参与写码。
+- 核验边界：仓库明示效果取决于检查配置、证据、阈值与底层模型质量；本站仅读源码与文档，未独立复现其监督效果。
+- 来源：[GitHub](https://github.com/thruwire/foreman)
+
+### minecraft-agent
+
+- 作者：rmalde
+- 输入：规划目标与原版 Minecraft 服务器的实时状态；只读 Java 传感器可上报末影龙头的精确位置。
+- Jev 判断：GPT-6 Astra 负责规划，Jev 在每步从可选玩家动作中做选择；作者最好成绩一次通关共 131 次 Jev 决策、35 次 Astra 调用。
+- 后续动作：选中的动作通过正常玩家协议发给服务器；不修改游戏规则或实体状态。
+- 核验边界：8 分 43 秒为作者录制的最好成绩，龙的飞行与降落时长逐局波动；录像与证据仅存本地不入库，本站未复跑。
+- 来源：[GitHub](https://github.com/rmalde/minecraft-agent)
+
+### typesafe-mario
+
+- 作者：fhshaik
+- 输入：NES 模拟器遥测与 RAM 解析成的紧凑 JSON（马里奥运动、跳跃轨迹、敌人、地形、历史控制结果），模型不看截图。
+- Jev 判断：Choice 从 noop、right、right_jump 等 7 个合法手柄动作中选一个，并返回完整概率分布。
+- 后续动作：模拟器推进若干帧后再次询问；每次决策的延迟、概率与置信度写入本地 JSONL 供复盘。
+- 核验边界：仓库不含 ROM，须自备合法游戏文件；默认每 8 帧决策一次的实验设置，作者未发布通关基准，本站未实测。
+- 来源：[GitHub](https://github.com/fhshaik/typesafe-mario)
+
+### mobile-jev
+
+- 作者：droidrun
+- 输入：Mobilerun 真机的屏幕状态与自然语言目标。
+- Jev 判断：Jev 从可用操作中为每一步做选择；演示里 Uber 路线任务 9 步约 21 秒，从打开 App 到支付选择页。
+- 后续动作：通过 Mobilerun API 操作真机并记录执行 traces 与请求级延迟；示例任务停在支付选择页。
+- 核验边界：计时为作者录制的演示；设备与 Mobilerun 服务费用另计，未演示完整下单，本站未复测。
+- 来源：[GitHub](https://github.com/droidrun/mobile-jev)
+
+### jev-voice-browser
+
+- 作者：Moritz Kremb
+- 输入：浏览器 Web Speech API 流式输出的部分转写，加上受控 Chromium 页面最多 100 个元素的索引快照。
+- Jev 判断：每次部分转写触发一次 Jev 请求，9-11 个问题覆盖意图、目标元素、站点、指令是否说完、是否对它说、是否破坏性，约 250-350ms 返回。
+- 后续动作：代码按阈值决定执行、等待、询问或忽略；搜索词与 URL 由代码提取成候选、Jev 只逐字挑选，不生成文本。
+- 核验边界：麦克风依赖 Chrome/Edge 的 Web Speech API；延迟与每次约 0.0002 美元为作者环境测量，本站未实测。
+- 来源：[GitHub](https://github.com/moritzkremb/jev-voice-browser)
+
+### jev-drone
+
+- 作者：RomanSlack
+- 输入：机载相机画面的深度与分割结果，由经典 CV 压成五个前向扇区、遮挡高度等紧凑场景；Jev 不做感知。
+- Jev 判断：2.5Hz 一次调用三问：Choice 选机动（保持/绕左/绕右/爬升/刹车/重捕获）、Score 评风险、Noul 判目标是否真丢失；场景指纹缓存，65 秒飞行约 110 次调用。
+- 后续动作：战术判断仅作咨询；50Hz 安全反射层与 500Hz 几何控制器保留否决权，如爬升必须在实测障碍顶边可达时才执行。
+- 核验边界：MuJoCo 仿真中的五站障碍课程；数字为作者单次飞行测量，非实物飞行，本站未复跑。
+- 来源：[GitHub](https://github.com/RomanSlack/jev-drone)
+
+### jev-codex-router
+
+- 作者：0xNatoshi
+- 输入：Codex 会话的有界决策状态；完整上下文回放只给执行模型，Jev 看不到。
+- Jev 判断：Jev 为每次模型调用（含工具后续轮）同时选择模型与推理强度，目标是用够用的能力、不浪费配额。
+- 后续动作：经内嵌的 Codex Router 分发到 luna/terra/sol/astra；任何 Jev 错误 fail-open，原样放行。
+- 核验边界：README 的“约省 60%”是旧策略 237 轮的历史回测，作者明示既非实测节省、也不能代表现策略。
+- 来源：[GitHub](https://github.com/0xNatoshi/jev-codex-router)
+
+### jev-pruner
+
+- 作者：Tamara Tran
+- 输入：Claude Code 刚执行完的 Bash stdout（1 万估算 token 以下直通）与任务、会话历史。
+- Jev 判断：输出切块后每块一个 Noul：块内是否有任何行仍需可用；单行需要即保护整块，含此前指令依赖的值。
+- 后续动作：不需要的块被裁掉，其余原样进入后续轮次；错误输出、JSON/XML/diff、git diff 等整文档命令与已识别文档豁免。
+- 核验边界：与作者另一项目 fast-jev-compaction 相互独立；token 用估算而非精确分词器，压缩率未经本站实测。
+- 来源：[GitHub](https://github.com/tamaratran/jev-pruner)
+
+### neo4jev
+
+- 作者：jexp
+- 输入：Neo4j 当前节点的出边关系列表（类型、属性、目标节点标签/属性）；schema 经自省发现，不写死。
+- Jev 判断：Choice 从出边中选下一条关系，Noul“目标是否已达成”同请求搭车，每跳恰好一次往返。
+- 后续动作：对返回概率做 top-k 束搜索，按对数概率求和排序得到最优路径，交互式渲染邻域与路径。
+- 核验边界：笔记本与 Streamlit 应用在公开 companies2 图上实测；无 key 时失败原样展示、用明确标注的替身答案跑管线，不冒充 TypeSafe 输出。
+- 来源：[GitHub](https://github.com/jexp/neo4jev)
+
+### pi-jev
+
+- 作者：y0usaf
+- 输入：Pi 编码 agent 待执行的 bash/write/edit 调用，以及命令执行后的输出。
+- Jev 判断：闸门把 3 个 Noul（破坏性/数据外传/超出用户所求）与 1 个 4 级 Score（影响）放进一次请求；输出裁判再两问查泄密与失败类别。
+- 后续动作：默认 shadow 模式只提示不拦截，可切换为执行前确认；所有错误路径 fail-open，缺 key、超时、429 都放行工具调用。
+- 核验边界：阈值（0.90/0.70/0.85/2.50）为作者默认配置；判定层不替代宿主权限或真实安全边界。
+- 来源：[GitHub](https://github.com/y0usaf/pi-jev)
+
+### jevmeter
+
+- 作者：ChetasLua
+- 输入：任意视频的逐句转写文本，加上所选预设（辩论访谈/财报电话会/播客闲谈/发布宣传）。
+- Jev 判断：按预设维度给每句打分并标记回避问题、情绪诉求、自相矛盾、炒作等信号；作者报告预设留出集准确率 99%。
+- 后续动作：渲染成可直接发布的 16:9 成片；整场辩论完整评分成本约 0.05 美元。
+- 核验边界：准确率与成本为作者自报的评测，未经本站复现；预设主要面向英文音视频内容。
+- 来源：[GitHub](https://github.com/ChetasLua/jevmeter) · [X](https://x.com/chetaslua/status/2100473581251748216)
+
+### jev-shell-history
+
+- 作者：mrnugget
+- 输入：当前敲到一半的命令与最近 100 条去重历史。
+- Jev 判断：Choice 判断最可能在补全哪条历史命令并返回概率；有前缀命中走字面补全，无命中进入替换模式。
+- 后续动作：fish 式灰色建议显示在光标后并附分数，→ 或 ^E 接受；条数、阈值与最小字符数可配。
+- 核验边界：击键即可能触发 API 调用（有 2 字符起测与阈值门控），费用由用户自理；演示 GIF 用虚构历史生成。
+- 来源：[GitHub](https://github.com/mrnugget/jev-shell-history)
+
+### jev-chat
+
+- 作者：w3cj
+- 输入：用户消息、会话状态与早前工具结果；仅 TYPESAFE_API_KEY 为必需。
+- Jev 判断：Choice 决定要调的 MCP 工具、每个参数取自哪里、是否先确认、给哪种回复；Noul 判断字段（如截止时间）是否已给出。
+- 后续动作：代码调用工具并只用工具返回的数据拼回复——没有任何模型写文本，页面上的值要么来自用户要么来自工具。
+- 核验边界：附检查器可查看每条回复的完整请求、概率与代码行为；示例工具集较小，不构成通用对话替代。
+- 来源：[GitHub](https://github.com/w3cj/jev-chat)
+
+### typesafe-adblock
+
+- 作者：Zachi
+- 输入：扩展用代码规则预筛的“广告形”候选 DOM 元素，压成标签、类名、链接域、IAB 尺寸等紧凑 JSON。
+- Jev 判断：每批一次请求、每候选一个 Noul“是否付费广告”，一次拿回逐元素概率。
+- 后续动作：P(广告)≥0.70 的元素被描红、收缩并移除；MutationObserver 捕捉懒加载，每批至多 30 个候选。
+- 核验边界：作者明示这是趣味项目而非真广告拦截：每页消耗 token、会漏判也会误删，不处理追踪与视频广告。
+- 来源：[GitHub](https://github.com/realZachi/typesafe-adblock)
+
+### jevmail
+
+- 作者：fazlerocks
+- 输入：Gmail 收件箱消息，经只读 gmail.readonly 单一 scope，仅用 list/get 类方法。
+- Jev 判断：每封 3 问：五个托盘（需回复/更新/促销/销售/垃圾）选一、1-5 紧急度、是否真人写给你。
+- 后续动作：按托盘与紧急度排序展示，托盘显示前两概率、用户纠错与原始答案一并存本地 SQLite；1000 封约 1 分钟、约 3 美分。
+- 核验边界：只读不代发不代归档；速度与成本为作者环境测量（经 Vercel AI Gateway 调 Jev），本站未复测。
+- 来源：[GitHub](https://github.com/fazlerocks/jevmail)
+
+### HA-Jev
+
+- 作者：AboveColin
+- 输入：房屋与传感器状态，以及用户在 UI 或 YAML 里定义的 Noul/Choice/Score 问题。
+- Jev 判断：每个问题变成一个实体：概率、选项及其分布、或量表数值；自动化里 jev.noul/jev.choice/jev.score/jev.ask 四个动作直接作答。
+- 后续动作：实体可参与自动化与 Assist 语音路由；集成统计每日调用、输入 token 与估算花费，对照每日预算。
+- 核验边界：HACS 社区自定义集成，作者声明与 TypeSafe 无关；判断质量取决于问题设计，自动化后果由用户配置负责。
+- 来源：[GitHub](https://github.com/AboveColin/HA-Jev)
+
+### shapeshift
+
+- 作者：anishfn
+- 输入：一个文本框的实时输入，如“周五晚 8 点和 Priya 视频”或“2400 三人平摊”。
+- Jev 判断：一次 Jev 调用并行 14 问：判断应变形为哪张卡片（日程/清单/计时器/分账/取色/投票…）及“是否视频通话”“是否紧急”等信号。
+- 后续动作：日期、金额、单位与运算全部由确定性代码解析计算；无 key 或 API 异常时静默回退内置关键词分类器，完全离线可用。
+- 核验边界：在线模式 key 只在服务端读取；离线兜底意味着默认体验不等于 Jev 精度，本站未做两种模式对比。
+- 来源：[GitHub](https://github.com/anishfn/shapeshift)
+
+### jevals
+
+- 作者：Openlayer
+- 输入：Agent trace（OpenAI 格式 messages 与工具 schema；Anthropic 内容块与 LangChain 对象亦可直接传入）。
+- Jev 判断：一次请求并行输出工具选择、是否用了工具结果、有据、未越界、回答相关、完整、间接注入、PHI 等 8 项判定与分数。
+- 后续动作：每条 trace 一请求、约数千分之一美分、数百毫秒，可跑在全部流量与 agent 循环内；后端可选 TypeSafe/Vercel、本地 Kev/Laya 或普通 LLM。
+- 核验边界：示例数字取自作者 quickstart trace 的真实返回；各 metric 的有效性未经本站独立评测。
+- 来源：[GitHub](https://github.com/openlayer-ai/jevals)
+
+### winnow
+
+- 作者：Ghaleb Dweikat
+- 输入：Claude Code 中大体积 Read/Bash/Grep 结果，切成约 25 行的块。
+- Jev 判断：每块一个 Noul“当前任务是否需要此块”；高置信不需要才隐藏，不确定的块与疑似错误的输出一律原样保留。
+- 后续动作：隐藏块替换为三行存根：隐藏了什么、廉价模型一句话摘要、以及可取回全文的召回键。
+- 核验边界：依赖判定模型的校准度，作者同时提供用 Claude Haiku 的未校准适配器备选；阈值可调，token 节省未经本站实测。
+- 来源：[GitHub](https://github.com/GhalebDweikat/winnow)
+
+### jev-chat-jarvis
+
+- 作者：恸码奇点（jev-chat）
+- 输入：读屏采集的当前对话：安卓端走无障碍读节点，Windows 端走窗口截图 + 本地 OCR；仅本机可见会话。
+- Jev 判断：Jev 判断对方意图、情绪/紧张度并给候选排序；生成模型起草 3 条候选回复，胜出概率随候选一起展示。
+- 后续动作：半透明悬浮窗给出判断摘要与候选，一键复制/填入输入框；发送永远由用户手动点，不碰转账红包。
+- 核验边界：判断可走 OpenRouter 或 TypeSafe 直连（用户自带 key）；读屏合规与使用场景由用户自行负责，README 未提供评测数据，本站未实测。
+- 来源：[GitHub](https://github.com/jev-chat/jev-chat-jarvis) · [GitHub · Windows 版](https://github.com/jev-chat/jev-chat-windows)
+
+## 开源项目 / Open-source projects (77)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -225,6 +405,46 @@
 | [Friedjof/jev-mobile](https://github.com/Friedjof/jev-mobile) | community | MIT | 7 |
 | [disler/ten-levels-of-jev](https://github.com/disler/ten-levels-of-jev) | community | MIT | 5 |
 | [awlevin/typesafe-computer-use](https://github.com/awlevin/typesafe-computer-use) | community | MIT | 1044 |
+| [thruwire/foreman](https://github.com/thruwire/foreman) | community | MIT | 608 |
+| [rmalde/minecraft-agent](https://github.com/rmalde/minecraft-agent) | community | unknown | 571 |
+| [fhshaik/typesafe-mario](https://github.com/fhshaik/typesafe-mario) | community | unknown | 421 |
+| [droidrun/mobile-jev](https://github.com/droidrun/mobile-jev) | community | MIT | 422 |
+| [moritzkremb/jev-voice-browser](https://github.com/moritzkremb/jev-voice-browser) | community | MIT | 365 |
+| [RomanSlack/jev-drone](https://github.com/RomanSlack/jev-drone) | community | MIT | 225 |
+| [0xNatoshi/jev-codex-router](https://github.com/0xNatoshi/jev-codex-router) | community | MIT | 277 |
+| [tamaratran/jev-pruner](https://github.com/tamaratran/jev-pruner) | community | MIT | 153 |
+| [jexp/neo4jev](https://github.com/jexp/neo4jev) | community | MIT | 152 |
+| [y0usaf/pi-jev](https://github.com/y0usaf/pi-jev) | community | MIT | 151 |
+| [ChetasLua/jevmeter](https://github.com/ChetasLua/jevmeter) | community | MIT | 101 |
+| [mrnugget/jev-shell-history](https://github.com/mrnugget/jev-shell-history) | community | unknown | 115 |
+| [w3cj/jev-chat](https://github.com/w3cj/jev-chat) | community | MIT | 104 |
+| [realZachi/typesafe-adblock](https://github.com/realZachi/typesafe-adblock) | community | MIT | 87 |
+| [fazlerocks/jevmail](https://github.com/fazlerocks/jevmail) | community | MIT | 90 |
+| [AboveColin/HA-Jev](https://github.com/AboveColin/HA-Jev) | community | MIT | 69 |
+| [anishfn/shapeshift](https://github.com/anishfn/shapeshift) | community | MIT | 738 |
+| [openlayer-ai/jevals](https://github.com/openlayer-ai/jevals) | community | MIT | 97 |
+| [GhalebDweikat/winnow](https://github.com/GhalebDweikat/winnow) | community | MIT | 100 |
+| [jev-chat/jev-chat-jarvis](https://github.com/jev-chat/jev-chat-jarvis) | community | MIT | 7075 |
+| [TheoLeeCJ/SemIf-OpenJev](https://github.com/TheoLeeCJ/SemIf-OpenJev) | inspired | MIT | 4560 |
+| [nokia-applied-research/AnyJev](https://github.com/nokia-applied-research/AnyJev) | inspired | Apache-2.0 | 938 |
+| [wfzyx/von](https://github.com/wfzyx/von) | inspired | Apache-2.0 | 767 |
+| [featherless-ai/simple-jev](https://github.com/featherless-ai/simple-jev) | inspired | Apache-2.0 | 568 |
+| [razorback16/openjev](https://github.com/razorback16/openjev) | inspired | Apache-2.0 | 521 |
+| [Yinsongxu/LLM2Jev](https://github.com/Yinsongxu/LLM2Jev) | inspired | Apache-2.0 | 370 |
+| [ekzhang/openjev-sglang](https://github.com/ekzhang/openjev-sglang) | inspired | unknown | 332 |
+| [logan-markewich/jeff](https://github.com/logan-markewich/jeff) | inspired | MIT | 264 |
+| [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) | inspired | Apache-2.0 | 28212 |
+| [heyjunpenn/awesome-jev](https://github.com/heyjunpenn/awesome-jev) | community | MIT | 895 |
+| [v-modal/awesome-jev-tools](https://github.com/v-modal/awesome-jev-tools) | community | unknown | 732 |
+| [AnotiaWang/awesome-jev](https://github.com/AnotiaWang/awesome-jev) | community | CC0-1.0 | 567 |
+| [wuyoscar/jev-skill](https://github.com/wuyoscar/jev-skill) | community | MIT | 543 |
+| [kitze/unclutter](https://github.com/kitze/unclutter) | community | MIT | 337 |
+| [BillionsBobby/JevRouter](https://github.com/BillionsBobby/JevRouter) | community | MIT | 288 |
+| [vinilana/jev-gateway](https://github.com/vinilana/jev-gateway) | community | MIT | 252 |
+| [fstandhartinger/jevbench](https://github.com/fstandhartinger/jevbench) | community | MIT | 176 |
+| [jev-chat/jev-chat-windows](https://github.com/jev-chat/jev-chat-windows) | community | unknown | 685 |
+| [obie/ruby_decision_model](https://github.com/obie/ruby_decision_model) | community | MIT | 52 |
+| [openqa-cn/jev-browser](https://github.com/openqa-cn/jev-browser) | community | MIT | 104 |
 
 ## 官方 cookbook / Official recipes (18)
 

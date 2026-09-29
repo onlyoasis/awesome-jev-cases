@@ -39,17 +39,17 @@ function block(document, name, content) {
   return `${document.slice(0, first + start.length)}\n${content}\n${document.slice(last)}`;
 }
 
-const categoryOrder = ['official-sdk', 'browser', 'coding', 'mcp', 'routing', 'data', 'guard', 'replica', 'finance', 'list'];
+const categoryOrder = ['official-sdk', 'browser', 'embodied', 'coding', 'mcp', 'routing', 'data', 'guard', 'apps', 'sdk', 'replica', 'finance', 'list'];
 const labels = {
   zh: {
     evidence: { 'code-and-post': '源码＋作者原帖', code: '公开源码', post: '仅作者原帖' },
     relationship: { official: '官方', community: '社区项目', inspired: '受启发的复刻' },
-    category: { 'official-sdk': '官方 SDK 与工具', browser: '浏览器与电脑操作', coding: '编码助手', mcp: 'MCP 与 Agent Skill', routing: '路由与网关', data: '数据与检索', guard: '安全与审核', replica: '开源复刻', finance: '交易研究', list: '导航清单' },
+    category: { 'official-sdk': '官方 SDK 与工具', browser: '浏览器与电脑操作', embodied: '具身与游戏控制', coding: '编码助手', mcp: 'MCP 与 Agent Skill', routing: '路由与网关', data: '数据与检索', guard: '安全与审核', apps: '终端用户应用', sdk: '社区 SDK 与客户端', replica: '开源复刻', finance: '交易研究', list: '导航清单' },
   },
   en: {
     evidence: { 'code-and-post': 'Code + author post', code: 'Public code', post: 'Author post only' },
     relationship: { official: 'Official', community: 'Community', inspired: 'Inspired replica' },
-    category: { 'official-sdk': 'Official SDKs & tools', browser: 'Browser & computer use', coding: 'Coding agents', mcp: 'MCP & agent skills', routing: 'Routing & gateways', data: 'Data & retrieval', guard: 'Safety & review', replica: 'Open replicas', finance: 'Trading research', list: 'Curated lists' },
+    category: { 'official-sdk': 'Official SDKs & tools', browser: 'Browser & computer use', embodied: 'Embodied & game control', coding: 'Coding agents', mcp: 'MCP & agent skills', routing: 'Routing & gateways', data: 'Data & retrieval', guard: 'Safety & review', apps: 'End-user apps', sdk: 'Community SDKs & clients', replica: 'Open replicas', finance: 'Trading research', list: 'Curated lists' },
   },
 };
 

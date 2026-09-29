@@ -590,5 +590,645 @@
     "lastVerified": "2026-09-28",
     "status": "verified",
     "stars": 1044
+  },
+  {
+    "id": "foreman",
+    "name": "thruwire/foreman",
+    "url": "https://github.com/thruwire/foreman",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "软件工厂监工：Jev 持续评估 Codex/OpenCode 工人的完成度、需求满足与测试充分性，代码决定继续、纠偏或停止。",
+      "en": "A software-factory foreman: Jev continuously scores Codex/OpenCode workers on completeness, requirements, and test sufficiency while code decides to continue, steer, or stop."
+    },
+    "sourceUrl": "https://github.com/thruwire/foreman",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 608
+  },
+  {
+    "id": "minecraft-agent",
+    "name": "rmalde/minecraft-agent",
+    "url": "https://github.com/rmalde/minecraft-agent",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "unknown",
+    "summary": {
+      "zh": "原版 Minecraft 通关 Agent：GPT-6 Astra 规划、Jev 逐动作选择，最佳全程 8 分 43 秒、131 次 Jev 决策，不修改游戏规则。",
+      "en": "A vanilla-Minecraft speedrun agent where GPT-6 Astra plans and Jev picks each action; best verified run 8m43s with 131 Jev decisions and no rule changes."
+    },
+    "sourceUrl": "https://github.com/rmalde/minecraft-agent",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 571
+  },
+  {
+    "id": "typesafe-mario",
+    "name": "fhshaik/typesafe-mario",
+    "url": "https://github.com/fhshaik/typesafe-mario",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "unknown",
+    "summary": {
+      "zh": "NES 超级马里奥实验控制器：模拟器状态转结构化 JSON（无截图），Jev Choice 从 7 个合法手柄动作中选择；仓库不含 ROM。",
+      "en": "An experimental NES Super Mario controller that feeds structured JSON state (no screenshots) to a Jev Choice over seven legal inputs; ships no ROM."
+    },
+    "sourceUrl": "https://github.com/fhshaik/typesafe-mario",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 421
+  },
+  {
+    "id": "droidrun-mobile-jev",
+    "name": "droidrun/mobile-jev",
+    "url": "https://github.com/droidrun/mobile-jev",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "droidrun 出品的安卓 Agent：Jev 经 Mobilerun API 操作真机，附 React Studio、CLI 与请求级延迟记录；Uber 演示 9 步约 21 秒停在支付页。",
+      "en": "droidrun's Android agent where Jev drives a real phone via the Mobilerun API, with a React studio, CLI, and per-request latency traces; the Uber demo does 9 actions in ~21 s and stops at payment."
+    },
+    "sourceUrl": "https://github.com/droidrun/mobile-jev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 422
+  },
+  {
+    "id": "jev-voice-browser",
+    "name": "moritzkremb/jev-voice-browser",
+    "url": "https://github.com/moritzkremb/jev-voice-browser",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "语音控制真实浏览器：流式部分转写触发一次 Jev 请求（9-11 问），约 300ms 决定执行/等待/询问/忽略；文本只由代码提取、Jev 挑选。",
+      "en": "Voice control for a real browser: each partial transcript fires one 9-11 question Jev request (~300 ms) to act, wait, ask, or ignore; text is extracted by code and only picked by Jev."
+    },
+    "sourceUrl": "https://github.com/moritzkremb/jev-voice-browser",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 365
+  },
+  {
+    "id": "jev-drone",
+    "name": "RomanSlack/jev-drone",
+    "url": "https://github.com/RomanSlack/jev-drone",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MuJoCo 四旋翼仅凭机载相机过五站障碍课程：Jev 以 2.5Hz 做战术判断，50Hz 安全反射与 500Hz 控制器保留否决权。",
+      "en": "A MuJoCo quadrotor flies a five-station course from its onboard camera alone; Jev judges tactics at 2.5 Hz while 50 Hz reflexes and a 500 Hz controller keep the veto."
+    },
+    "sourceUrl": "https://github.com/RomanSlack/jev-drone",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 225
+  },
+  {
+    "id": "jev-codex-router",
+    "name": "0xNatoshi/jev-codex-router",
+    "url": "https://github.com/0xNatoshi/jev-codex-router",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Codex 逐调用模型路由：Jev 同时选模型与推理强度（含工具后续轮），Jev 只见有界决策状态，出错 fail-open。",
+      "en": "Per-call model routing for Codex: Jev picks model and thinking effort together (continuations included) from a bounded decision state, failing open on any error."
+    },
+    "sourceUrl": "https://github.com/0xNatoshi/jev-codex-router",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 277
+  },
+  {
+    "id": "jev-pruner",
+    "name": "tamaratran/jev-pruner",
+    "url": "https://github.com/tamaratran/jev-pruner",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Claude Code 插件：命令跑完后、结果回传主模型前，用 Jev 逐块判断 Bash 输出是否需要保留；文档、错误与 git diff 豁免。",
+      "en": "A Claude Code plugin that prunes noisy Bash output after the command runs but before the LLM sees it, one Jev noul per chunk, with documents, errors, and git diff exempt."
+    },
+    "sourceUrl": "https://github.com/tamaratran/jev-pruner",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 153
+  },
+  {
+    "id": "neo4jev",
+    "name": "jexp/neo4jev",
+    "url": "https://github.com/jexp/neo4jev",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Neo4j 图导航演示：每跳用 Choice 选出边、Noul 判目标，同请求一次往返，再对概率做束搜索渲染路径；schema 动态自省。",
+      "en": "A Neo4j navigation demo where each hop asks one Choice over outgoing edges plus a goal noul in a single round trip, then beam-searches the probabilities; schema is introspected live."
+    },
+    "sourceUrl": "https://github.com/jexp/neo4jev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 152
+  },
+  {
+    "id": "pi-jev",
+    "name": "y0usaf/pi-jev",
+    "url": "https://github.com/y0usaf/pi-jev",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Pi 编码 agent 的决策层：闸门一次请求判破坏性/外传/超范围/影响，输出裁判查泄密；默认 shadow 提示，错误一律 fail-open。",
+      "en": "A decision layer for the Pi coding agent: one gated request judges destructiveness, exfiltration, scope, and impact, plus an output judge for secrets; shadow mode by default and every error fails open."
+    },
+    "sourceUrl": "https://github.com/y0usaf/pi-jev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 151
+  },
+  {
+    "id": "jevmeter",
+    "name": "ChetasLua/jevmeter",
+    "url": "https://github.com/ChetasLua/jevmeter",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "视频真话仪表盘：按预设逐句给视频打分、标记回避与炒作，渲染 16:9 成片；整场辩论约 0.05 美元。",
+      "en": "A live meter for videos: every sentence scored against a preset, dodges and hype flagged, rendered as a postable 16:9 edit; a full debate costs about $0.05."
+    },
+    "sourceUrl": "https://github.com/ChetasLua/jevmeter",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 101
+  },
+  {
+    "id": "jev-shell-history",
+    "name": "mrnugget/jev-shell-history",
+    "url": "https://github.com/mrnugget/jev-shell-history",
+    "category": "coding",
+    "relationship": "community",
+    "license": "unknown",
+    "summary": {
+      "zh": "zsh 的 fish 式历史建议：Jev Choice 从最近 100 条去重历史里判断你在补全哪条，灰显在光标后并附概率。",
+      "en": "Fish-style zsh autosuggestions where a Jev Choice ranks which of your last 100 distinct commands you are completing, shown in grey with its probability."
+    },
+    "sourceUrl": "https://github.com/mrnugget/jev-shell-history",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 115
+  },
+  {
+    "id": "jev-chat",
+    "name": "w3cj/jev-chat",
+    "url": "https://github.com/w3cj/jev-chat",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "没有语言模型写一字的聊天命令条：Jev 选工具、参数来源与是否确认，代码调 MCP 并用工具数据拼回复，页面值皆有出处。",
+      "en": "A chat command bar where no LLM writes a word: Jev picks the tool, argument sources, and confirmations while code calls MCP servers and builds replies from tool data."
+    },
+    "sourceUrl": "https://github.com/w3cj/jev-chat",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 104
+  },
+  {
+    "id": "typesafe-adblock",
+    "name": "realZachi/typesafe-adblock",
+    "url": "https://github.com/realZachi/typesafe-adblock",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "趣味 Chrome 扩展：代码预筛广告形 DOM 候选，Jev 每候选一个 Noul 判“是否广告”，P≥0.70 移除；作者明示非真广告拦截。",
+      "en": "A fun Chrome extension where code pre-filters ad-shaped DOM candidates and one Jev noul per candidate decides \"is this an ad?\"; elements above 0.70 are removed. The author calls it a toy, not uBlock."
+    },
+    "sourceUrl": "https://github.com/realZachi/typesafe-adblock",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 87
+  },
+  {
+    "id": "jevmail",
+    "name": "fazlerocks/jevmail",
+    "url": "https://github.com/fazlerocks/jevmail",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "开源 Gmail 分诊：每封 3 问分五个托盘并打紧急度，只读不代发；1000 封约 1 分钟约 3 美分，纠错与概率本地留痕。",
+      "en": "Open-source Gmail triage: three questions per message sort five trays with urgency, strictly read-only; 1,000 emails in about a minute for a few cents, with corrections stored locally."
+    },
+    "sourceUrl": "https://github.com/fazlerocks/jevmail",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 90
+  },
+  {
+    "id": "ha-jev",
+    "name": "AboveColin/HA-Jev",
+    "url": "https://github.com/AboveColin/HA-Jev",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Home Assistant 集成：Noul/Choice/Score 问答变成传感器实体与自动化动作，附 25 个蓝图、Assist 语音路由与每日花费统计；与 TypeSafe 无关的社区作品。",
+      "en": "A Home Assistant integration that turns Noul/Choice/Score questions into sensor entities and automation actions, with 25 blueprints, Assist routing, and daily cost reporting; community-made, unaffiliated with TypeSafe."
+    },
+    "sourceUrl": "https://github.com/AboveColin/HA-Jev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 69
+  },
+  {
+    "id": "shapeshift",
+    "name": "anishfn/shapeshift",
+    "url": "https://github.com/anishfn/shapeshift",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "一个会变形的输入框：一次 Jev 调用 14 问判断输入应变成日程卡/清单/分账/取色等哪种 UI，日期金额由确定性代码计算，默认离线兜底。",
+      "en": "An input that becomes what you mean: one 14-question Jev call morphs the box into an event card, checklist, bill splitter, or color picker, while dates and math stay deterministic with an offline fallback."
+    },
+    "sourceUrl": "https://github.com/anishfn/shapeshift",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 738
+  },
+  {
+    "id": "jevals",
+    "name": "openlayer-ai/jevals",
+    "url": "https://github.com/openlayer-ai/jevals",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "把 agent 评估与护栏做成 Jev 决策：一条 trace 一次请求并行 8 项判定，千分之几美分、数百毫秒，可跑全量流量；后端可选 TypeSafe/Vercel、本地 Kev/Laya 或普通 LLM。",
+      "en": "Evals and guardrails as Jev decisions: eight parallel judgments per trace in one request at a few thousandths of a cent, fast enough for every trace; backends span TypeSafe/Vercel, local Kev/Laya, or a plain LLM."
+    },
+    "sourceUrl": "https://github.com/openlayer-ai/jevals",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 97
+  },
+  {
+    "id": "winnow",
+    "name": "GhalebDweikat/winnow",
+    "url": "https://github.com/GhalebDweikat/winnow",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Claude Code 的校准上下文筛：每个大工具结果分块过一个 Noul“任务是否需要”，高置信不需要的替换为存根+摘要+召回键，不确定的保留。",
+      "en": "A calibrated context sieve for Claude Code: every large tool result is split and judged block-by-block; confident-no blocks become stub-plus-summary with a recall key, while uncertain ones stay."
+    },
+    "sourceUrl": "https://github.com/GhalebDweikat/winnow",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 100
+  },
+  {
+    "id": "jev-chat-jarvis",
+    "name": "jev-chat/jev-chat-jarvis",
+    "url": "https://github.com/jev-chat/jev-chat-jarvis",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "手机对话副驾（安卓主仓 + Windows/macOS 姊妹仓）：读屏采集对话，Jev 判断意图与情绪并给候选排序，悬浮窗一键填入、发送永远手动；不依赖任何平台接口。",
+      "en": "A mobile chat copilot (Android hub plus Windows/macOS siblings) that reads the screen, lets Jev judge intent and mood and rank drafts, then fills the input box — sending stays manual, no platform APIs involved."
+    },
+    "sourceUrl": "https://github.com/jev-chat/jev-chat-jarvis",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 7075
+  },
+  {
+    "id": "semif-openjev",
+    "name": "TheoLeeCJ/SemIf-OpenJev",
+    "url": "https://github.com/TheoLeeCJ/SemIf-OpenJev",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "SemIf 作者的开放模型版：在 3090 或浏览器里跑“语义 if”接口模式。独立项目，与 Jev/TypeSafe 无关，非 Jev 权重开源。",
+      "en": "The SemIf author's open-models edition of the semantic-if interface, runnable on a 3090 or in the browser. Independent and unaffiliated with Jev or TypeSafe; not Jev weights."
+    },
+    "sourceUrl": "https://github.com/TheoLeeCJ/SemIf-OpenJev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 4560
+  },
+  {
+    "id": "anyjev",
+    "name": "nokia-applied-research/AnyJev",
+    "url": "https://github.com/nokia-applied-research/AnyJev",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "诺基亚应用研究出品：无需微调把任意 LLM 变成 Jev 式校准决策端点（序翻转率与校准误差显著改善），可经 vLLM 服务化。",
+      "en": "From Nokia applied research: turn any LLM into a Jev-style calibrated decision endpoint without fine-tuning (measurably better order-flip and calibration error), servable via vLLM."
+    },
+    "sourceUrl": "https://github.com/nokia-applied-research/AnyJev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 938
+  },
+  {
+    "id": "von",
+    "name": "wfzyx/von",
+    "url": "https://github.com/wfzyx/von",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "开源 System One 决策模型：非自回归、宣称亚 15ms、可本地部署的 Jev 替代。社区实现，与 TypeSafe 无关。",
+      "en": "An open-source System One decision model: non-autoregressive, sub-15 ms claims, local drop-in alternative. Community work, unaffiliated with TypeSafe."
+    },
+    "sourceUrl": "https://github.com/wfzyx/von",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 767
+  },
+  {
+    "id": "simple-jev",
+    "name": "featherless-ai/simple-jev",
+    "url": "https://github.com/featherless-ai/simple-jev",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Featherless 出品：直接读开放模型 logits 做结构化分类/评分，免登录公共 demo（2k 上下文、限速 2 RPS），附评测框架。",
+      "en": "From Featherless: read open-model logits directly for structured classification and scoring, with a no-login public demo (2k context, 2 RPS) and an eval framework."
+    },
+    "sourceUrl": "https://github.com/featherless-ai/simple-jev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 568
+  },
+  {
+    "id": "openjev",
+    "name": "razorback16/openjev",
+    "url": "https://github.com/razorback16/openjev",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "基于 DiffusionGemma 的开源 Jev 兼容决策服务器，本地可跑。社区复刻，与官方无关。",
+      "en": "An open, Jev-compatible decision server built on DiffusionGemma that runs locally. A community replica, unrelated to TypeSafe."
+    },
+    "sourceUrl": "https://github.com/razorback16/openjev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 521
+  },
+  {
+    "id": "llm2jev",
+    "name": "Yinsongxu/LLM2Jev",
+    "url": "https://github.com/Yinsongxu/LLM2Jev",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "把本地语言模型转成 Jev 式结构化决策模型，支持文本与图像输入。独立实现，非 Jev 权重。",
+      "en": "Turn local language models into Jev-style structured decision models over text and images. Independent implementation, not Jev weights."
+    },
+    "sourceUrl": "https://github.com/Yinsongxu/LLM2Jev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 370
+  },
+  {
+    "id": "openjev-sglang",
+    "name": "ekzhang/openjev-sglang",
+    "url": "https://github.com/ekzhang/openjev-sglang",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "unknown",
+    "summary": {
+      "zh": "用 SGLang 服务 Qwen3.6-35B 实现 TypeSafe/Jev HTTP API：每容器一张 B200、radix 缓存与可断 prefill CUDA 图，附 Modal 一键部署与冒烟测试。",
+      "en": "Serves Qwen3.6-35B on SGLang behind the TypeSafe/Jev HTTP API: one B200 per container, radix caching, breakable prefill CUDA graphs, plus Modal deploys and a smoke test."
+    },
+    "sourceUrl": "https://github.com/ekzhang/openjev-sglang",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 332
+  },
+  {
+    "id": "jeff",
+    "name": "logan-markewich/jeff",
+    "url": "https://github.com/logan-markewich/jeff",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "基于 GliFormer 的自托管 Jev 替代（LangChain 作者之一出品）：drop-in 兼容，跑在自己的机器上。社区项目，与 TypeSafe 无关。",
+      "en": "A self-hosted, GliFormer-powered drop-in replacement for Jev by a LangChain author; runs on your own machine. Community project, unaffiliated with TypeSafe."
+    },
+    "sourceUrl": "https://github.com/logan-markewich/jeff",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 264
+  },
+  {
+    "id": "laya",
+    "name": "NandhaKishorM/laya",
+    "url": "https://github.com/NandhaKishorM/laya",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "独立开源的非自回归 System 1 决策引擎（自有模型，非 Jev 实现、更非 Jev 权重开源）：对任意文本输出 Choice/Score/是否判断，可本地或经兼容接口服务，也出现在 JevBench 等第三方评测里。",
+      "en": "An independent open-source non-autoregressive System 1 decision engine (its own model — neither a Jev implementation nor Jev weights): typed choice, score, and yes/no decisions over any text, served locally or behind compatible APIs, and measured by third-party boards like JevBench."
+    },
+    "sourceUrl": "https://github.com/NandhaKishorM/laya",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 28212
+  },
+  {
+    "id": "awesome-jev-verified",
+    "name": "heyjunpenn/awesome-jev",
+    "url": "https://github.com/heyjunpenn/awesome-jev",
+    "category": "list",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "社区维护的核验型目录：收录 944 个 Jev 开源项目并标注证据。",
+      "en": "A community-maintained, verified catalog of 944 open-source Jev projects with evidence labels."
+    },
+    "sourceUrl": "https://github.com/heyjunpenn/awesome-jev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 895
+  },
+  {
+    "id": "awesome-jev-tools",
+    "name": "v-modal/awesome-jev-tools",
+    "url": "https://github.com/v-modal/awesome-jev-tools",
+    "category": "list",
+    "relationship": "community",
+    "license": "unknown",
+    "summary": {
+      "zh": "面向 Jev 工具的精选清单。",
+      "en": "A curated list of tools built for Jev."
+    },
+    "sourceUrl": "https://github.com/v-modal/awesome-jev-tools",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 732
+  },
+  {
+    "id": "awesome-jev-anotia",
+    "name": "AnotiaWang/awesome-jev",
+    "url": "https://github.com/AnotiaWang/awesome-jev",
+    "category": "list",
+    "relationship": "community",
+    "license": "CC0-1.0",
+    "summary": {
+      "zh": "Jev / TypeSafe System One 应用、库与资源精选（CC0 发布）。",
+      "en": "A curated list of Jev / TypeSafe System One applications, libraries, and resources, published under CC0."
+    },
+    "sourceUrl": "https://github.com/AnotiaWang/awesome-jev",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 567
+  },
+  {
+    "id": "jev-skill",
+    "name": "wuyoscar/jev-skill",
+    "url": "https://github.com/wuyoscar/jev-skill",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Jev 用例、工作流与 agent skills 集合。",
+      "en": "A collection of Jev use cases, workflows, and agent skills."
+    },
+    "sourceUrl": "https://github.com/wuyoscar/jev-skill",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 543
+  },
+  {
+    "id": "unclutter",
+    "name": "kitze/unclutter",
+    "url": "https://github.com/kitze/unclutter",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "WXT 浏览器扩展：Jev 判断页面杂项元素并移除，清理规则可存为可复用模板。",
+      "en": "A WXT browser extension where Jev spots page clutter for removal, with reusable template rules."
+    },
+    "sourceUrl": "https://github.com/kitze/unclutter",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 337
+  },
+  {
+    "id": "jevrouter",
+    "name": "BillionsBobby/JevRouter",
+    "url": "https://github.com/BillionsBobby/JevRouter",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "把模型、子代理、Skill、MCP 工具与 CLI 变成一个候选集：Jev 答一道 Choice，路由器负责可用性、权限、风险与确认；默认只决策不执行。",
+      "en": "Models, subagents, skills, MCP tools, and CLIs become one candidate set: Jev answers a single Choice while the router enforces availability, permissions, risk, and confirmation; decision-only by default."
+    },
+    "sourceUrl": "https://github.com/BillionsBobby/JevRouter",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 288
+  },
+  {
+    "id": "jev-gateway",
+    "name": "vinilana/jev-gateway",
+    "url": "https://github.com/vinilana/jev-gateway",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "本地编码 agent 网关：把“下一步调哪个工具”交给 Jev，其余流量原样走原有 LLM；兼容 Codex/Claude Code/OpenCode/Kilo 与订阅登录。",
+      "en": "A local gateway for coding agents that hands the \"which tool next\" decision to Jev while everything else flows to your usual LLM untouched; works with Codex, Claude Code, OpenCode, Kilo, and subscription logins."
+    },
+    "sourceUrl": "https://github.com/vinilana/jev-gateway",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 252
+  },
+  {
+    "id": "jevbench",
+    "name": "fstandhartinger/jevbench",
+    "url": "https://github.com/fstandhartinger/jevbench",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Jev 级决策模型基准（95 个系统在线排行，Jev 1.13 现列第 4）：冻结方法、封存决策与 SHA-256 清单，与 TypeSafe 无关。",
+      "en": "A benchmark for Jev-class decision models with a live board of 95 systems (Jev 1.13 currently #4): frozen method, sealed decisions, and a SHA-256 manifest; unaffiliated with TypeSafe."
+    },
+    "sourceUrl": "https://github.com/fstandhartinger/jevbench",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 176
+  },
+  {
+    "id": "jev-chat-windows",
+    "name": "jev-chat/jev-chat-windows",
+    "url": "https://github.com/jev-chat/jev-chat-windows",
+    "category": "apps",
+    "relationship": "community",
+    "license": "unknown",
+    "summary": {
+      "zh": "jarvis 内核的 Windows 版：窗口截图 + 本地离线 OCR 读微信/KakaoTalk，Jev 判断意图情绪、给 3 条候选一键填入；发送永远手动。",
+      "en": "The Windows sibling of the Jev chat copilot: window screenshots plus offline OCR read WeChat or KakaoTalk, Jev judges intent and mood and offers three ranked drafts; sending stays manual."
+    },
+    "sourceUrl": "https://github.com/jev-chat/jev-chat-windows",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 685
+  },
+  {
+    "id": "ruby-decision-model",
+    "name": "obie/ruby_decision_model",
+    "url": "https://github.com/obie/ruby_decision_model",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Ruby 决策模型客户端：一套 Client 走 OpenRouter（默认）或 TypeSafe 直连，Noul/Score 返回校准概率，无运行时依赖。",
+      "en": "The decision-model client for Ruby: one Client over OpenRouter (default) or direct TypeSafe, returning calibrated noul/score answers with zero runtime dependencies."
+    },
+    "sourceUrl": "https://github.com/obie/ruby_decision_model",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 52
+  },
+  {
+    "id": "openqa-jev-browser",
+    "name": "openqa-cn/jev-browser",
+    "url": "https://github.com/openqa-cn/jev-browser",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "CodexQA 技能：以页面内索引代替视觉模型做浏览器自动化，Jev 只从已索引控件中选择，Playwright 执行；回放、目标运行与站点探索共用同一索引。",
+      "en": "A CodexQA skill that replaces vision GUI models with an in-page index: Jev chooses only among indexed controls while Playwright acts; replay, goal runs, and site exploration share the index."
+    },
+    "sourceUrl": "https://github.com/openqa-cn/jev-browser",
+    "lastVerified": "2026-09-29",
+    "status": "verified",
+    "stars": 104
   }
 ]
