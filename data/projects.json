@@ -1230,5 +1230,69 @@
     "lastVerified": "2026-09-29",
     "status": "verified",
     "stars": 104
+  },
+  {
+    "id": "jevaro",
+    "name": "columnar-tech/jevaro",
+    "url": "https://github.com/columnar-tech/jevaro",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "TypeSafe Jev 的 Python 批处理代理：多个独立状态并发逐条调用官方 API，再按输入顺序输出 Apache Arrow 流；附 Python 与 JavaScript 读取器，非官方原生批量接口。",
+      "en": "A Python batching proxy for TypeSafe Jev: calls the official API once per independent state concurrently, then streams ordered Apache Arrow results, with Python and JavaScript readers; not a native batch API."
+    },
+    "sourceUrl": "https://github.com/columnar-tech/jevaro",
+    "lastVerified": "2026-09-30",
+    "status": "verified",
+    "stars": 10
+  },
+  {
+    "id": "jevwright",
+    "name": "Ice-Hazymoon/jevwright",
+    "url": "https://github.com/Ice-Hazymoon/jevwright",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "浏览器业务流程测试：Jev 初次定位页面控件并记录语义路径，后续可无模型回放；代码通过请求、API/数据库断言判定成败。",
+      "en": "Browser business-flow tests: Jev initially grounds controls and records semantic paths for model-free replay; code decides verdicts from requests and API/database assertions."
+    },
+    "sourceUrl": "https://github.com/Ice-Hazymoon/jevwright",
+    "lastVerified": "2026-09-30",
+    "status": "verified",
+    "stars": 12
+  },
+  {
+    "id": "jevals-duberblock",
+    "name": "duberblock/JEVals",
+    "url": "https://github.com/duberblock/JEVals",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "交互式 Jev 决策评测台：实际 TypeSafe 基线与模拟器、独立模型及 judge 逐题比较并保存执行追踪；默认托管模拟器会接收场景文本。",
+      "en": "An interactive Jev decision playground comparing a real TypeSafe baseline with an emulator, independent model and judge while saving execution traces; its default hosted emulator receives scenario text."
+    },
+    "sourceUrl": "https://github.com/duberblock/JEVals",
+    "lastVerified": "2026-09-30",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "tax-doc-classifier",
+    "name": "kyotofin/tax-doc-classifier",
+    "url": "https://github.com/kyotofin/tax-doc-classifier",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "IRS 表单 PDF 文本页分类器：Jev Choice 选表单和页面类别，按置信度门控后续路由；英文联邦表单限定，作者评测数据未由本站复测。",
+      "en": "An IRS PDF text-page classifier using Jev Choice for form and page kind with a confidence gate for routing; limited to English federal forms and not independently benchmarked here."
+    },
+    "sourceUrl": "https://github.com/kyotofin/tax-doc-classifier",
+    "lastVerified": "2026-09-30",
+    "status": "verified",
+    "stars": 483
   }
 ]

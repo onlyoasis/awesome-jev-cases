@@ -1358,5 +1358,125 @@
         "url": "https://github.com/jev-chat/jev-chat-windows"
       }
     ]
+  },
+  {
+    "id": "glean-expert-routing-evaluation",
+    "name": "Glean expert routing pilot",
+    "title": {
+      "zh": "Glean 专家模型路由离线评估",
+      "en": "Glean offline expert routing pilot"
+    },
+    "author": "Tony Gentilcore 等 Glean 作者",
+    "area": {
+      "zh": "企业模型路由",
+      "en": "Enterprise model routing"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "751 条历史请求及其专家路由黄金标签；试验把生产路由简化为 3 个专家候选。",
+      "en": "751 historical requests with golden expert-route labels, using a three-expert simplification of the production router."
+    },
+    "decision": {
+      "zh": "Jev 从 3 个预设专家中选处理请求的模型，替代原有生成式路由提示词的封闭选择步骤。",
+      "en": "Jev chooses one of three predefined experts for each request, replacing the bounded selection step of the generative routing prompt."
+    },
+    "action": {
+      "zh": "研究团队将选择与黄金标签及既有 LLM 路由比较，并对真实转接的 40 条样本另测调用延迟；文章未称已上线。",
+      "en": "The team compares choices with golden labels and its LLM router, then separately measures latency on 40 actual-transfer examples; the article does not claim deployment."
+    },
+    "boundary": {
+      "zh": "仅作者公开的离线评估，没有开源实现或本站复测；8.1 倍中位提速为作者在 40 条转接样本上的自报，数据驻留及运行保障仍待解决。",
+      "en": "This is an author-reported offline evaluation without public code or independent reproduction. The 8.1× median speedup comes from 40 transfer examples; data residency and operational guarantees remain open."
+    },
+    "sources": [
+      {
+        "label": "X article",
+        "url": "https://x.com/tonygentilcore/status/2104639390266036251"
+      },
+      {
+        "label": "TypeSafe X",
+        "url": "https://x.com/typesafeai/status/2104772007481180633"
+      }
+    ]
+  },
+  {
+    "id": "jevwright-browser-testing",
+    "name": "jevwright",
+    "title": {
+      "zh": "jevwright 浏览器业务流程测试",
+      "en": "jevwright browser business-flow tests"
+    },
+    "author": "Ice-Hazymoon",
+    "area": {
+      "zh": "浏览器测试",
+      "en": "Browser testing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "测试作者用自然语言写的业务步骤、当前 Chromium 页面的控件，以及声明的 API 请求和断言。",
+      "en": "Natural-language business steps, controls on the current Chromium page, and declared API requests and assertions."
+    },
+    "decision": {
+      "zh": "Jev 从当前页面定位符合步骤的控件，并对屏幕可见状态做封闭核对；模型不决定测试是否通过。",
+      "en": "Jev grounds each step to a control on the live page and makes bounded checks of visible state; it does not decide whether the test passed."
+    },
+    "action": {
+      "zh": "Playwright 执行动作并记录语义路径；后续可无模型回放，测试成败由请求、API/数据库断言和代码监控决定。",
+      "en": "Playwright acts and records a semantic path for later model-free replay; requests, API/database assertions and code monitors determine pass or fail."
+    },
+    "boundary": {
+      "zh": "首次探索或路径失效时需 OpenRouter/Vercel 网关密钥，纯回放不需；仓库提供源码和 CI，费用与效果数字仅为作者自报，本站未运行真实站点测试。",
+      "en": "Initial grounding or healing needs an OpenRouter/Vercel gateway key; replay does not. Code and CI are public, but costs and outcomes are author-reported; this site did not run a live-site test."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Ice-Hazymoon/jevwright"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/Ice-Hazymoon/jevwright/blob/main/src/models.ts"
+      }
+    ]
+  },
+  {
+    "id": "tax-doc-classifier-irs-forms",
+    "name": "tax-doc-classifier",
+    "title": {
+      "zh": "IRS 表单页分类与置信度门控",
+      "en": "IRS form-page classification with confidence gate"
+    },
+    "author": "kyotofin",
+    "area": {
+      "zh": "税务文档路由",
+      "en": "Tax-document routing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "从 PDF 文本层提取的单页文字，以及仓库生成的 IRS 表单与页面类型候选；空白页由代码直接处理。",
+      "en": "Text extracted from one PDF page plus repository-generated IRS form and page-kind options; code handles blank pages directly."
+    },
+    "decision": {
+      "zh": "Jev Choice 选择表单及 7 种页面类别；少数表单族再做一次子表单选择，返回概率。",
+      "en": "Jev Choice selects a form and one of seven page kinds, with a second choice for a few form families, returning probabilities."
+    },
+    "action": {
+      "zh": "程序输出表单 ID、页面类别和置信度；默认仅在表单置信度达到 0.95 时放行后续自动路由，低分交给调用方处理。",
+      "en": "Code emits a form ID, page kind and confidence; it gates downstream routing at 0.95 by default and leaves low-confidence handling to the caller."
+    },
+    "boundary": {
+      "zh": "仅英文联邦税表；扫描件需先 OCR，州税表只辨类别不识别具体表。页面文字送往 TypeSafe；准确率、速度和费用来自作者评测，本站未复测或用于报税。",
+      "en": "Limited to English federal forms. Scans need OCR, while state forms are only detected by kind. Page text goes to TypeSafe; accuracy, speed and cost are author-reported and were not remeasured or used for tax filing here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kyotofin/tax-doc-classifier"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/kyotofin/tax-doc-classifier/blob/main/src/backend.ts"
+      }
+    ]
   }
 ]

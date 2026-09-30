@@ -1,14 +1,35 @@
 {
-  "checkedAt": "2026-09-28T11:25:01Z",
+  "checkedAt": "2026-09-30T03:28:21.753Z",
   "github": "ok",
   "official": "ok",
   "x": "ok",
-  "addedProjects": 5,
+  "addedProjects": 4,
   "addedCases": 3,
   "officialRecipes": 18,
-  "xPosts": 5,
-  "xVisibleCounts": { "TypeSafe Jev": 5, "Jev github.com": 6, "from:typesafeai Jev": 5 },
+  "xPosts": 17,
+  "xVisibleCounts": {
+    "TypeSafe Jev": 7,
+    "Jev github.com": 5,
+    "from:typesafeai Jev": 5
+  },
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "Latest returned verified current posts, but since:2026-09-22 until:2026-09-27 still returned September 28 posts; the older overlap was not confirmed."
+  "xHistoricalCoverageNote": "Latest ignored since:2026-09-22 until:2026-09-29 on September 30, returning current posts; historical coverage from the retained cursor remains unverified.",
+  "githubSearches": [
+    {
+      "query": "TypeSafe Jev in:readme pushed:>=2026-09-26",
+      "totalCount": 6007,
+      "incomplete": false
+    },
+    {
+      "query": "jev in:name,description created:>=2026-09-28",
+      "totalCount": 880,
+      "incomplete": false
+    },
+    {
+      "query": "System One TypeSafe in:readme pushed:>=2026-09-26",
+      "totalCount": 3708,
+      "incomplete": false
+    }
+  ]
 }

@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (40)
+## 深度使用案例 / Worked cases (43)
 
 ### jev-ultrafast
 
@@ -364,7 +364,34 @@
 - 核验边界：判断可走 OpenRouter 或 TypeSafe 直连（用户自带 key）；读屏合规与使用场景由用户自行负责，README 未提供评测数据，本站未实测。
 - 来源：[GitHub](https://github.com/jev-chat/jev-chat-jarvis) · [GitHub · Windows 版](https://github.com/jev-chat/jev-chat-windows)
 
-## 开源项目 / Open-source projects (77)
+### Glean 专家模型路由离线评估
+
+- 作者：Tony Gentilcore 等 Glean 作者
+- 输入：751 条历史请求及其专家路由黄金标签；试验把生产路由简化为 3 个专家候选。
+- Jev 判断：Jev 从 3 个预设专家中选处理请求的模型，替代原有生成式路由提示词的封闭选择步骤。
+- 后续动作：研究团队将选择与黄金标签及既有 LLM 路由比较，并对真实转接的 40 条样本另测调用延迟；文章未称已上线。
+- 核验边界：仅作者公开的离线评估，没有开源实现或本站复测；8.1 倍中位提速为作者在 40 条转接样本上的自报，数据驻留及运行保障仍待解决。
+- 来源：[X article](https://x.com/tonygentilcore/status/2104639390266036251) · [TypeSafe X](https://x.com/typesafeai/status/2104772007481180633)
+
+### jevwright 浏览器业务流程测试
+
+- 作者：Ice-Hazymoon
+- 输入：测试作者用自然语言写的业务步骤、当前 Chromium 页面的控件，以及声明的 API 请求和断言。
+- Jev 判断：Jev 从当前页面定位符合步骤的控件，并对屏幕可见状态做封闭核对；模型不决定测试是否通过。
+- 后续动作：Playwright 执行动作并记录语义路径；后续可无模型回放，测试成败由请求、API/数据库断言和代码监控决定。
+- 核验边界：首次探索或路径失效时需 OpenRouter/Vercel 网关密钥，纯回放不需；仓库提供源码和 CI，费用与效果数字仅为作者自报，本站未运行真实站点测试。
+- 来源：[GitHub](https://github.com/Ice-Hazymoon/jevwright) · [Source code](https://github.com/Ice-Hazymoon/jevwright/blob/main/src/models.ts)
+
+### IRS 表单页分类与置信度门控
+
+- 作者：kyotofin
+- 输入：从 PDF 文本层提取的单页文字，以及仓库生成的 IRS 表单与页面类型候选；空白页由代码直接处理。
+- Jev 判断：Jev Choice 选择表单及 7 种页面类别；少数表单族再做一次子表单选择，返回概率。
+- 后续动作：程序输出表单 ID、页面类别和置信度；默认仅在表单置信度达到 0.95 时放行后续自动路由，低分交给调用方处理。
+- 核验边界：仅英文联邦税表；扫描件需先 OCR，州税表只辨类别不识别具体表。页面文字送往 TypeSafe；准确率、速度和费用来自作者评测，本站未复测或用于报税。
+- 来源：[GitHub](https://github.com/kyotofin/tax-doc-classifier) · [Source code](https://github.com/kyotofin/tax-doc-classifier/blob/main/src/backend.ts)
+
+## 开源项目 / Open-source projects (81)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -445,6 +472,10 @@
 | [jev-chat/jev-chat-windows](https://github.com/jev-chat/jev-chat-windows) | community | unknown | 685 |
 | [obie/ruby_decision_model](https://github.com/obie/ruby_decision_model) | community | MIT | 52 |
 | [openqa-cn/jev-browser](https://github.com/openqa-cn/jev-browser) | community | MIT | 104 |
+| [columnar-tech/jevaro](https://github.com/columnar-tech/jevaro) | community | Apache-2.0 | 10 |
+| [Ice-Hazymoon/jevwright](https://github.com/Ice-Hazymoon/jevwright) | community | MIT | 12 |
+| [duberblock/JEVals](https://github.com/duberblock/JEVals) | community | MIT | 2 |
+| [kyotofin/tax-doc-classifier](https://github.com/kyotofin/tax-doc-classifier) | community | Apache-2.0 | 483 |
 
 ## 官方 cookbook / Official recipes (18)
 

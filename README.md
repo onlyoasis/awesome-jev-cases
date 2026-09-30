@@ -5,7 +5,7 @@
 独立社区维护的 Jev 使用案例与 GitHub 项目目录。每条案例说明输入、Jev 的判断、后续动作和证据边界；项目链接指向原作者仓库。本站与 TypeSafe AI 无隶属或背书关系。
 
 <!-- catalog:summary:start -->
-**40 条使用案例 · 77 个项目条目 · 18 篇官方 cookbook**
+**43 条使用案例 · 81 个项目条目 · 18 篇官方 cookbook**
 <!-- catalog:summary:end -->
 
 [网站案例库](https://typesafe-jev.com/use-cases/) · [网站项目页](https://typesafe-jev.com/projects/) · [官方 cookbook](https://docs.typesafe.ai/cookbooks.md) · [详细目录](CATALOG.md)
@@ -57,6 +57,9 @@
 | [jevals](https://github.com/openlayer-ai/jevals) | **Agent 评估**<br>Agent trace（OpenAI 格式 messages 与工具 schema；Anthropic 内容块与 LangChain 对象亦可直接传入）。 | **判断：**一次请求并行输出工具选择、是否用了工具结果、有据、未越界、回答相关、完整、间接注入、PHI 等 8 项判定与分数。<br>**动作：**每条 trace 一请求、约数千分之一美分、数百毫秒，可跑在全部流量与 agent 循环内；后端可选 TypeSafe/Vercel、本地 Kev/Laya 或普通 LLM。 | 公开源码<br>示例数字取自作者 quickstart trace 的真实返回；各 metric 的有效性未经本站独立评测。<br>[GitHub](https://github.com/openlayer-ai/jevals) |
 | [winnow](https://github.com/GhalebDweikat/winnow) | **上下文压缩**<br>Claude Code 中大体积 Read/Bash/Grep 结果，切成约 25 行的块。 | **判断：**每块一个 Noul“当前任务是否需要此块”；高置信不需要才隐藏，不确定的块与疑似错误的输出一律原样保留。<br>**动作：**隐藏块替换为三行存根：隐藏了什么、廉价模型一句话摘要、以及可取回全文的召回键。 | 公开源码<br>依赖判定模型的校准度，作者同时提供用 Claude Haiku 的未校准适配器备选；阈值可调，token 节省未经本站实测。<br>[GitHub](https://github.com/GhalebDweikat/winnow) |
 | [jev-chat-jarvis](https://github.com/jev-chat/jev-chat-jarvis) | **聊天副驾**<br>读屏采集的当前对话：安卓端走无障碍读节点，Windows 端走窗口截图 + 本地 OCR；仅本机可见会话。 | **判断：**Jev 判断对方意图、情绪/紧张度并给候选排序；生成模型起草 3 条候选回复，胜出概率随候选一起展示。<br>**动作：**半透明悬浮窗给出判断摘要与候选，一键复制/填入输入框；发送永远由用户手动点，不碰转账红包。 | 公开源码<br>判断可走 OpenRouter 或 TypeSafe 直连（用户自带 key）；读屏合规与使用场景由用户自行负责，README 未提供评测数据，本站未实测。<br>[GitHub](https://github.com/jev-chat/jev-chat-jarvis) · [GitHub · Windows 版](https://github.com/jev-chat/jev-chat-windows) |
+| [Glean 专家模型路由离线评估](https://x.com/tonygentilcore/status/2104639390266036251) | **企业模型路由**<br>751 条历史请求及其专家路由黄金标签；试验把生产路由简化为 3 个专家候选。 | **判断：**Jev 从 3 个预设专家中选处理请求的模型，替代原有生成式路由提示词的封闭选择步骤。<br>**动作：**研究团队将选择与黄金标签及既有 LLM 路由比较，并对真实转接的 40 条样本另测调用延迟；文章未称已上线。 | 仅作者原帖<br>仅作者公开的离线评估，没有开源实现或本站复测；8.1 倍中位提速为作者在 40 条转接样本上的自报，数据驻留及运行保障仍待解决。<br>[X article](https://x.com/tonygentilcore/status/2104639390266036251) · [TypeSafe X](https://x.com/typesafeai/status/2104772007481180633) |
+| [jevwright 浏览器业务流程测试](https://github.com/Ice-Hazymoon/jevwright) | **浏览器测试**<br>测试作者用自然语言写的业务步骤、当前 Chromium 页面的控件，以及声明的 API 请求和断言。 | **判断：**Jev 从当前页面定位符合步骤的控件，并对屏幕可见状态做封闭核对；模型不决定测试是否通过。<br>**动作：**Playwright 执行动作并记录语义路径；后续可无模型回放，测试成败由请求、API/数据库断言和代码监控决定。 | 公开源码<br>首次探索或路径失效时需 OpenRouter/Vercel 网关密钥，纯回放不需；仓库提供源码和 CI，费用与效果数字仅为作者自报，本站未运行真实站点测试。<br>[GitHub](https://github.com/Ice-Hazymoon/jevwright) · [Source code](https://github.com/Ice-Hazymoon/jevwright/blob/main/src/models.ts) |
+| [IRS 表单页分类与置信度门控](https://github.com/kyotofin/tax-doc-classifier) | **税务文档路由**<br>从 PDF 文本层提取的单页文字，以及仓库生成的 IRS 表单与页面类型候选；空白页由代码直接处理。 | **判断：**Jev Choice 选择表单及 7 种页面类别；少数表单族再做一次子表单选择，返回概率。<br>**动作：**程序输出表单 ID、页面类别和置信度；默认仅在表单置信度达到 0.95 时放行后续自动路由，低分交给调用方处理。 | 公开源码<br>仅英文联邦税表；扫描件需先 OCR，州税表只辨类别不识别具体表。页面文字送往 TypeSafe；准确率、速度和费用来自作者评测，本站未复测或用于报税。<br>[GitHub](https://github.com/kyotofin/tax-doc-classifier) · [Source code](https://github.com/kyotofin/tax-doc-classifier/blob/main/src/backend.ts) |
 <!-- catalog:cases:end -->
 
 ## GitHub 项目库
@@ -78,6 +81,7 @@
 | [jkudish/jev-browser](https://github.com/jkudish/jev-browser) | 浏览器与电脑操作 | 社区项目 | MIT | 221 · 2026-09-22 | 基于 Jev 的浏览器自动化实现。 |
 | [openqa-cn/jev-browser](https://github.com/openqa-cn/jev-browser) | 浏览器与电脑操作 | 社区项目 | MIT | 104 · 2026-09-29 | CodexQA 技能：以页面内索引代替视觉模型做浏览器自动化，Jev 只从已索引控件中选择，Playwright 执行；回放、目标运行与站点探索共用同一索引。 |
 | [realZachi/typesafe-adblock](https://github.com/realZachi/typesafe-adblock) | 浏览器与电脑操作 | 社区项目 | MIT | 87 · 2026-09-29 | 趣味 Chrome 扩展：代码预筛广告形 DOM 候选，Jev 每候选一个 Noul 判“是否广告”，P≥0.70 移除；作者明示非真广告拦截。 |
+| [Ice-Hazymoon/jevwright](https://github.com/Ice-Hazymoon/jevwright) | 浏览器与电脑操作 | 社区项目 | MIT | 12 · 2026-09-30 | 浏览器业务流程测试：Jev 初次定位页面控件并记录语义路径，后续可无模型回放；代码通过请求、API/数据库断言判定成败。 |
 | [Friedjof/jev-mobile](https://github.com/Friedjof/jev-mobile) | 浏览器与电脑操作 | 社区项目 | MIT | 7 · 2026-09-28 | 用 Jev Choice 从合法动作中选择安卓设备下一步，配合 SQLite 任务状态、执行前记录及执行后观察验证；需要 USB 调试和外部 API。 |
 | [brnyxx/jev-ra](https://github.com/brnyxx/jev-ra) | 浏览器与电脑操作 | 社区项目 | MIT | 5 · 2026-09-27 | 编码 Agent 的浏览器 MCP/CLI：Jev 每步选择动作与元素，客户端校验返回后驱动 Chrome；仓库的速度基准只代表作者测试环境。 |
 | [laihenyi/pi-Jev-browser](https://github.com/laihenyi/pi-Jev-browser) | 浏览器与电脑操作 | 社区项目 | Apache-2.0 | 0 · 2026-09-24 | pi 的浏览器与 macOS 桌面 Agent 扩展：Jev 根据可见文本、控件和目标选择单步动作，执行循环设有步数和人工复核边界。 |
@@ -103,18 +107,21 @@
 | [0xNatoshi/jev-codex-router](https://github.com/0xNatoshi/jev-codex-router) | 路由与网关 | 社区项目 | MIT | 277 · 2026-09-29 | Codex 逐调用模型路由：Jev 同时选模型与推理强度（含工具后续轮），Jev 只见有界决策状态，出错 fail-open。 |
 | [vinilana/jev-gateway](https://github.com/vinilana/jev-gateway) | 路由与网关 | 社区项目 | MIT | 252 · 2026-09-29 | 本地编码 agent 网关：把“下一步调哪个工具”交给 Jev，其余流量原样走原有 LLM；兼容 Codex/Claude Code/OpenCode/Kilo 与订阅登录。 |
 | [yusukebe/hono-jev-router](https://github.com/yusukebe/hono-jev-router) | 路由与网关 | 社区项目 | MIT | 45 · 2026-09-22 | Hono 中间件：按语义把请求路由到不同处理器。 |
+| [kyotofin/tax-doc-classifier](https://github.com/kyotofin/tax-doc-classifier) | 数据与检索 | 社区项目 | Apache-2.0 | 483 · 2026-09-30 | IRS 表单 PDF 文本页分类器：Jev Choice 选表单和页面类别，按置信度门控后续路由；英文联邦表单限定，作者评测数据未由本站复测。 |
 | [superagents-lab/jev-search](https://github.com/superagents-lab/jev-search) | 数据与检索 | 社区项目 | MIT | 363 · 2026-09-22 | 用 Jev 选择数据源、理解查询并按相关性排序的网页搜索（基于 Search1API）。 |
 | [realZachi/pg-jev](https://github.com/realZachi/pg-jev) | 数据与检索 | 社区项目 | 未核实 | 272 · 2026-09-22 | PostgreSQL 扩展：用自然语言对表格行做判断。许可证未被 GitHub 识别为标准开源协议。 |
 | [sutro-sh/jev-align](https://github.com/sutro-sh/jev-align) | 数据与检索 | 社区项目 | Apache-2.0 | 258 · 2026-09-22 | 用人工反馈与 GEPA 校准 Jev 判断函数。 |
 | [fstandhartinger/jevbench](https://github.com/fstandhartinger/jevbench) | 数据与检索 | 社区项目 | MIT | 176 · 2026-09-29 | Jev 级决策模型基准（95 个系统在线排行，Jev 1.13 现列第 4）：冻结方法、封存决策与 SHA-256 清单，与 TypeSafe 无关。 |
 | [jerryjliu/docjev](https://github.com/jerryjliu/docjev) | 数据与检索 | 社区项目 | Apache-2.0 | 165 · 2026-09-22 | LlamaIndex 出品：用 Jev 做快速文档分类与子文档边界识别。 |
 | [jexp/neo4jev](https://github.com/jexp/neo4jev) | 数据与检索 | 社区项目 | MIT | 152 · 2026-09-29 | Neo4j 图导航演示：每跳用 Choice 选出边、Noul 判目标，同请求一次往返，再对概率做束搜索渲染路径；schema 动态自省。 |
+| [columnar-tech/jevaro](https://github.com/columnar-tech/jevaro) | 数据与检索 | 社区项目 | Apache-2.0 | 10 · 2026-09-30 | TypeSafe Jev 的 Python 批处理代理：多个独立状态并发逐条调用官方 API，再按输入顺序输出 Apache Arrow 流；附 Python 与 JavaScript 读取器，非官方原生批量接口。 |
 | [anthony-maio/hn-oracle](https://github.com/anthony-maio/hn-oracle) | 数据与检索 | 社区项目 | MIT | 0 · 2026-09-24 | 用 Jev 筛选历史 Hacker News 评论中的可核验预测；仓库包含预注册试验、实际调用代码和作者发布的结果数据，尚未处理完整档案。 |
 | [neozhu/jev-audit](https://github.com/neozhu/jev-audit) | 数据与检索 | 社区项目 | MIT | 0 · 2026-09-25 | 用 Jev 的 Noul、Choice、Score 比对基准合同与扫描件 OCR 文本，区分实质变化和识别噪声，并把低于作者阈值的结果交给人工复审；含真实 API 调用与一致性测试。 |
 | [y0usaf/pi-jev](https://github.com/y0usaf/pi-jev) | 安全与审核 | 社区项目 | MIT | 151 · 2026-09-29 | Pi 编码 agent 的决策层：闸门一次请求判破坏性/外传/超范围/影响，输出裁判查泄密；默认 shadow 提示，错误一律 fail-open。 |
 | [openlayer-ai/jevals](https://github.com/openlayer-ai/jevals) | 安全与审核 | 社区项目 | MIT | 97 · 2026-09-29 | 把 agent 评估与护栏做成 Jev 决策：一条 trace 一次请求并行 8 项判定，千分之几美分、数百毫秒，可跑全量流量；后端可选 TypeSafe/Vercel、本地 Kev/Laya 或普通 LLM。 |
 | [leepokai/jev-guard](https://github.com/leepokai/jev-guard) | 安全与审核 | 社区项目 | MIT | 18 · 2026-09-22 | 编码 Agent 的安全闸门：对每次工具调用给出 deny/ask/allow 风险判断，并标记提示注入；支持多种编码助手。 |
 | [win4r/jev-security-scan](https://github.com/win4r/jev-security-scan) | 安全与审核 | 社区项目 | MIT | 9 · 2026-09-22 | 用 Jev 审查 Agent Skill 与 MCP 代码中的可疑行为（中文说明项目）。 |
+| [duberblock/JEVals](https://github.com/duberblock/JEVals) | 安全与审核 | 社区项目 | MIT | 2 · 2026-09-30 | 交互式 Jev 决策评测台：实际 TypeSafe 基线与模拟器、独立模型及 judge 逐题比较并保存执行追踪；默认托管模拟器会接收场景文本。 |
 | [suraj-phanindra/wellposed](https://github.com/suraj-phanindra/wellposed) | 安全与审核 | 社区项目 | MIT | 2 · 2026-09-27 | Jev 请求预检查工具：离线规则筛结构缺陷，再以 Jev Noul 判断语义问题，给开发者警告与修改建议；语义层需要外部 API。 |
 | [ohernandezdev/jevmod](https://github.com/ohernandezdev/jevmod) | 安全与审核 | 社区项目 | MIT | 1 · 2026-09-28 | 用 Jev 的 Noul 为社区消息输出多种风险类别概率，供 Bot、CLI、API、MCP 共用策略；默认只标记，模型故障时放行并记录错误。 |
 | [JevAdvBench/JevAdvBench](https://github.com/JevAdvBench/JevAdvBench) | 安全与审核 | 社区项目 | MIT (code); CC BY-NC 4.0 (data) | 0 · 2026-09-27 | Jev 决策的对抗评估资料库：提供 typed questions、单处改动样本、直接调用 TypeSafe API 的脚本和作者结果；代码与数据许可证不同，鲁棒性指标未由本站复算。 |
