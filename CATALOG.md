@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (43)
+## 深度使用案例 / Worked cases (46)
 
 ### jev-ultrafast
 
@@ -391,7 +391,34 @@
 - 核验边界：仅英文联邦税表；扫描件需先 OCR，州税表只辨类别不识别具体表。页面文字送往 TypeSafe；准确率、速度和费用来自作者评测，本站未复测或用于报税。
 - 来源：[GitHub](https://github.com/kyotofin/tax-doc-classifier) · [Source code](https://github.com/kyotofin/tax-doc-classifier/blob/main/src/backend.ts)
 
-## 开源项目 / Open-source projects (81)
+### NetHack 合法动作选择
+
+- 作者：statico
+- 输入：NetHack 终端画面、当前角色状态及程序在这一回合列出的合法动作。
+- Jev 判断：Jev 以 Choice 只从合法动作列表中选下一步，不生成任意按键指令。
+- 后续动作：项目的 motor 将所选动作映射成按键，执行后重新读取画面并进入下一回合。
+- 核验边界：默认运行需要本地编译的 NetHack 与付费 TypeSafe API key；源码也支持兼容协议的本地服务。仓库展示运行和决策日志，但本站未验证通关、游戏成功率或成本。
+- 来源：[GitHub](https://github.com/statico/jev-nethack) · [Source code](https://github.com/statico/jev-nethack/blob/main/jev/jevapi.py)
+
+### jevvium 手机验收测试生成
+
+- 作者：AndresCarreonDiaz
+- 输入：YAML 验收目标、Appium 读取的当前屏幕和可操作控件，以及可选的明确断言。
+- Jev 判断：Jev 在一次请求中用 Choice 选下一动作、用 Noul 判断目标是否已达成，并从给定输入中选择字段值。
+- 后续动作：Appium 执行动作；达到目标且断言成立后，工具生成固定选择器的 WebdriverIO 测试，并用不调用模型的 Appium 回放核验。
+- 核验边界：需要 Appium、设备或模拟器及 TypeSafe key。若验收条件没有 expect，通过判定可能只依据模型判断；作者的耗时和通过率未由本站复测。
+- 来源：[GitHub](https://github.com/AndresCarreonDiaz/jevvium) · [Source code](https://github.com/AndresCarreonDiaz/jevvium/blob/main/src/providers/jev.ts)
+
+### RAG 段落筛选与可回答性门控
+
+- 作者：MersivMedia
+- 输入：待入库文档段落、用户查询和向量库检出的候选片段。
+- Jev 判断：Jev 对段落和片段做封闭判断：是否杂质、是否面向 AI 的指令、是否相关或与问题前提冲突，以及现有证据能否回答。
+- 后续动作：代码按阈值丢弃或隔离段落、排序并保留证据；可回答时才构建给生成模型的提示，否则拒答。
+- 核验边界：需另配向量库与嵌入模型；无 Jev key 时可降级为普通向量排序。README 的命中率、抗注入和成本为作者自报，本站未复测。
+- 来源：[GitHub](https://github.com/MersivMedia/jev-rag-retrieval) · [Source code](https://github.com/MersivMedia/jev-rag-retrieval/blob/main/jev_retrieval/jev/client.py)
+
+## 开源项目 / Open-source projects (86)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -476,6 +503,11 @@
 | [Ice-Hazymoon/jevwright](https://github.com/Ice-Hazymoon/jevwright) | community | MIT | 12 |
 | [duberblock/JEVals](https://github.com/duberblock/JEVals) | community | MIT | 2 |
 | [kyotofin/tax-doc-classifier](https://github.com/kyotofin/tax-doc-classifier) | community | Apache-2.0 | 483 |
+| [typesafe-ai/n8n-nodes-typesafe-ai](https://github.com/typesafe-ai/n8n-nodes-typesafe-ai) | official | MIT | 2 |
+| [typesafe-ai/WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) | official | Apache-2.0 | 12 |
+| [statico/jev-nethack](https://github.com/statico/jev-nethack) | community | MIT | 0 |
+| [AndresCarreonDiaz/jevvium](https://github.com/AndresCarreonDiaz/jevvium) | community | MIT | 1 |
+| [MersivMedia/jev-rag-retrieval](https://github.com/MersivMedia/jev-rag-retrieval) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (18)
 

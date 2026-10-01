@@ -1294,5 +1294,85 @@
     "lastVerified": "2026-09-30",
     "status": "verified",
     "stars": 483
+  },
+  {
+    "id": "typesafe-n8n-nodes",
+    "name": "typesafe-ai/n8n-nodes-typesafe-ai",
+    "url": "https://github.com/typesafe-ai/n8n-nodes-typesafe-ai",
+    "category": "official-sdk",
+    "relationship": "official",
+    "license": "MIT",
+    "summary": {
+      "zh": "TypeSafe 官方 n8n 社区节点：对每个 item 调用 System One 的 Choice、Score、Noul；Evaluate 附加结构化答案，Route 按答案或置信度把 item 分发到预设输出。",
+      "en": "TypeSafe official n8n community node calls System One Choice, Score, and Noul per item; Evaluate attaches typed answers and Route dispatches items by answer or confidence."
+    },
+    "sourceUrl": "https://github.com/typesafe-ai/n8n-nodes-typesafe-ai",
+    "lastVerified": "2026-10-01",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "typesafe-workflowevals",
+    "name": "typesafe-ai/WorkflowEvals",
+    "url": "https://github.com/typesafe-ai/WorkflowEvals",
+    "category": "data",
+    "relationship": "official",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "TypeSafe 官方工作流评测代码：复现发票、客服、代理轨迹和安保事件的有界决策评测，将 Jev 与其他提供商按参考模型动作一致性、成本和耗时对照；一致率不等于真实业务正确率。",
+      "en": "Official workflow evaluation code for invoice, support, agent-trace, and security decisions; compares Jev and other providers on agreement with reference-model actions, cost, and time, which does not establish ground-truth business accuracy."
+    },
+    "sourceUrl": "https://github.com/typesafe-ai/WorkflowEvals",
+    "lastVerified": "2026-10-01",
+    "status": "verified",
+    "stars": 12
+  },
+  {
+    "id": "jev-nethack",
+    "name": "statico/jev-nethack",
+    "url": "https://github.com/statico/jev-nethack",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "NetHack 5.0 游戏代理：代码读终端画面并枚举合法动作，Jev Choice 选一步，motor 发送对应按键；仓库有运行记录，未核实通关。",
+      "en": "A NetHack 5.0 agent where code reads the terminal and enumerates legal actions, Jev Choice picks one, and a motor sends the corresponding keys; runs are documented but ascension is unverified."
+    },
+    "sourceUrl": "https://github.com/statico/jev-nethack",
+    "lastVerified": "2026-10-01",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jevvium",
+    "name": "AndresCarreonDiaz/jevvium",
+    "url": "https://github.com/AndresCarreonDiaz/jevvium",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "从移动 App 验收目标探索 Appium 操作路径：Jev 从屏幕现有动作中选择，工具生成固定选择器的 WebdriverIO 测试并无模型回放；缺少断言时须人工复核。",
+      "en": "Explores Appium paths from mobile acceptance goals with Jev choosing on-screen actions, then generates fixed-selector WebdriverIO tests and replays without a model; goals without assertions need review."
+    },
+    "sourceUrl": "https://github.com/AndresCarreonDiaz/jevvium",
+    "lastVerified": "2026-10-01",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "jev-rag-retrieval",
+    "name": "MersivMedia/jev-rag-retrieval",
+    "url": "https://github.com/MersivMedia/jev-rag-retrieval",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Jev 驱动的 RAG 入库与检索管线：段落杂质和指令筛选、片段相关/冲突判断及可回答性门控；支持多种向量库，无 key 时降级为普通检索，评测数字为作者自报。",
+      "en": "A Jev-driven RAG ingestion and retrieval pipeline with paragraph screening, passage relevance/conflict checks, and an answerability gate; supports several vector stores, degrades without a key, and reports author-measured benchmarks."
+    },
+    "sourceUrl": "https://github.com/MersivMedia/jev-rag-retrieval",
+    "lastVerified": "2026-10-01",
+    "status": "verified",
+    "stars": 0
   }
 ]

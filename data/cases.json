@@ -1478,5 +1478,125 @@
         "url": "https://github.com/kyotofin/tax-doc-classifier/blob/main/src/backend.ts"
       }
     ]
+  },
+  {
+    "id": "jev-nethack-legal-actions",
+    "name": "nethack-jev",
+    "title": {
+      "zh": "NetHack 合法动作选择",
+      "en": "NetHack legal-action selection"
+    },
+    "author": "statico",
+    "area": {
+      "zh": "游戏代理",
+      "en": "Game agent"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "NetHack 终端画面、当前角色状态及程序在这一回合列出的合法动作。",
+      "en": "The current NetHack terminal view, player state, and legal actions enumerated by code for this turn."
+    },
+    "decision": {
+      "zh": "Jev 以 Choice 只从合法动作列表中选下一步，不生成任意按键指令。",
+      "en": "Jev uses Choice to pick the next step only from the legal-action list, without generating arbitrary keystrokes."
+    },
+    "action": {
+      "zh": "项目的 motor 将所选动作映射成按键，执行后重新读取画面并进入下一回合。",
+      "en": "The project motor maps the selected action to keystrokes, then reads the resulting screen for the next turn."
+    },
+    "boundary": {
+      "zh": "默认运行需要本地编译的 NetHack 与付费 TypeSafe API key；源码也支持兼容协议的本地服务。仓库展示运行和决策日志，但本站未验证通关、游戏成功率或成本。",
+      "en": "The default run needs a local NetHack build and a paid TypeSafe API key; source also supports a compatible local server. The repository shows runs and decision logs, but this site did not verify ascension, win rate, or cost."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/statico/jev-nethack"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/statico/jev-nethack/blob/main/jev/jevapi.py"
+      }
+    ]
+  },
+  {
+    "id": "jevvium-mobile-acceptance-tests",
+    "name": "jevvium",
+    "title": {
+      "zh": "jevvium 手机验收测试生成",
+      "en": "jevvium mobile acceptance-test generation"
+    },
+    "author": "AndresCarreonDiaz",
+    "area": {
+      "zh": "移动端测试",
+      "en": "Mobile testing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "YAML 验收目标、Appium 读取的当前屏幕和可操作控件，以及可选的明确断言。",
+      "en": "A YAML acceptance goal, the current Appium screen and actionable controls, and optional explicit assertions."
+    },
+    "decision": {
+      "zh": "Jev 在一次请求中用 Choice 选下一动作、用 Noul 判断目标是否已达成，并从给定输入中选择字段值。",
+      "en": "In one request, Jev uses Choice to select the next action, Noul to judge goal completion, and closed choices for field values."
+    },
+    "action": {
+      "zh": "Appium 执行动作；达到目标且断言成立后，工具生成固定选择器的 WebdriverIO 测试，并用不调用模型的 Appium 回放核验。",
+      "en": "Appium performs the action; once the goal and assertions hold, the tool writes a WebdriverIO test with fixed selectors and validates it through model-free Appium replay."
+    },
+    "boundary": {
+      "zh": "需要 Appium、设备或模拟器及 TypeSafe key。若验收条件没有 expect，通过判定可能只依据模型判断；作者的耗时和通过率未由本站复测。",
+      "en": "Requires Appium, a device or simulator, and a TypeSafe key. Without explicit expect assertions, a pass may rest only on the model judgment; author-reported timings and pass rates were not reproduced here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/AndresCarreonDiaz/jevvium"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/AndresCarreonDiaz/jevvium/blob/main/src/providers/jev.ts"
+      }
+    ]
+  },
+  {
+    "id": "jev-rag-retrieval-gates",
+    "name": "jev-rag-retrieval",
+    "title": {
+      "zh": "RAG 段落筛选与可回答性门控",
+      "en": "RAG passage screening and answerability gate"
+    },
+    "author": "MersivMedia",
+    "area": {
+      "zh": "检索增强生成",
+      "en": "Retrieval-augmented generation"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "待入库文档段落、用户查询和向量库检出的候选片段。",
+      "en": "Document paragraphs before indexing, a user query, and candidate passages retrieved from a vector store."
+    },
+    "decision": {
+      "zh": "Jev 对段落和片段做封闭判断：是否杂质、是否面向 AI 的指令、是否相关或与问题前提冲突，以及现有证据能否回答。",
+      "en": "Jev makes bounded judgments on whether paragraphs or passages are boilerplate, instructions aimed at AI, relevant, contradictory, or sufficient to answer."
+    },
+    "action": {
+      "zh": "代码按阈值丢弃或隔离段落、排序并保留证据；可回答时才构建给生成模型的提示，否则拒答。",
+      "en": "Code applies thresholds to drop or quarantine paragraphs, rank and retain evidence, and build an answer prompt only when the gate passes; otherwise it abstains."
+    },
+    "boundary": {
+      "zh": "需另配向量库与嵌入模型；无 Jev key 时可降级为普通向量排序。README 的命中率、抗注入和成本为作者自报，本站未复测。",
+      "en": "Requires a vector store and embedder; without a Jev key it can degrade to plain vector ranking. Recall, injection screening, and cost figures in the README are author-reported and were not remeasured here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/MersivMedia/jev-rag-retrieval"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/MersivMedia/jev-rag-retrieval/blob/main/jev_retrieval/jev/client.py"
+      }
+    ]
   }
 ]

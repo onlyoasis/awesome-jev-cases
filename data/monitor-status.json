@@ -1,35 +1,35 @@
 {
-  "checkedAt": "2026-09-30T03:28:21.753Z",
+  "checkedAt": "2026-10-01T08:06:35Z",
   "github": "ok",
   "official": "ok",
-  "x": "ok",
-  "addedProjects": 4,
+  "x": "failed",
+  "addedProjects": 5,
   "addedCases": 3,
   "officialRecipes": 18,
-  "xPosts": 17,
-  "xVisibleCounts": {
-    "TypeSafe Jev": 7,
-    "Jev github.com": 5,
-    "from:typesafeai Jev": 5
-  },
+  "xPosts": null,
+  "xVisibleCounts": null,
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "Latest ignored since:2026-09-22 until:2026-09-29 on September 30, returning current posts; historical coverage from the retained cursor remains unverified.",
+  "xHistoricalCoverageNote": "Earlier since/until bounds were ignored; October 1 X login failure prevented historical backfill. The uncovered start is unchanged.",
   "githubSearches": [
     {
-      "query": "TypeSafe Jev in:readme pushed:>=2026-09-26",
-      "totalCount": 6007,
+      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-09-28",
+      "totalCount": 1884,
       "incomplete": false
     },
     {
-      "query": "jev in:name,description created:>=2026-09-28",
-      "totalCount": 880,
+      "query": "jev in:name,description created:>=2026-09-29",
+      "totalCount": 872,
       "incomplete": false
     },
     {
-      "query": "System One TypeSafe in:readme pushed:>=2026-09-26",
-      "totalCount": 3708,
+      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-09-28",
+      "totalCount": 1801,
       "incomplete": false
     }
-  ]
+  ],
+  "githubLastSuccessfulAt": "2026-10-01T08:06:35Z",
+  "officialLastSuccessfulAt": "2026-10-01T08:06:35Z",
+  "xLastSuccessfulAt": "2026-09-30T03:28:21.753Z",
+  "xFailureNote": "October 1 Chrome X search failed to load request-header policy twice, then redirected to an X login page; no Latest timeline was read. User re-login required."
 }

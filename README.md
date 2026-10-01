@@ -5,7 +5,7 @@
 独立社区维护的 Jev 使用案例与 GitHub 项目目录。每条案例说明输入、Jev 的判断、后续动作和证据边界；项目链接指向原作者仓库。本站与 TypeSafe AI 无隶属或背书关系。
 
 <!-- catalog:summary:start -->
-**43 条使用案例 · 81 个项目条目 · 18 篇官方 cookbook**
+**46 条使用案例 · 86 个项目条目 · 18 篇官方 cookbook**
 <!-- catalog:summary:end -->
 
 [网站案例库](https://typesafe-jev.com/use-cases/) · [网站项目页](https://typesafe-jev.com/projects/) · [官方 cookbook](https://docs.typesafe.ai/cookbooks.md) · [详细目录](CATALOG.md)
@@ -60,6 +60,9 @@
 | [Glean 专家模型路由离线评估](https://x.com/tonygentilcore/status/2104639390266036251) | **企业模型路由**<br>751 条历史请求及其专家路由黄金标签；试验把生产路由简化为 3 个专家候选。 | **判断：**Jev 从 3 个预设专家中选处理请求的模型，替代原有生成式路由提示词的封闭选择步骤。<br>**动作：**研究团队将选择与黄金标签及既有 LLM 路由比较，并对真实转接的 40 条样本另测调用延迟；文章未称已上线。 | 仅作者原帖<br>仅作者公开的离线评估，没有开源实现或本站复测；8.1 倍中位提速为作者在 40 条转接样本上的自报，数据驻留及运行保障仍待解决。<br>[X article](https://x.com/tonygentilcore/status/2104639390266036251) · [TypeSafe X](https://x.com/typesafeai/status/2104772007481180633) |
 | [jevwright 浏览器业务流程测试](https://github.com/Ice-Hazymoon/jevwright) | **浏览器测试**<br>测试作者用自然语言写的业务步骤、当前 Chromium 页面的控件，以及声明的 API 请求和断言。 | **判断：**Jev 从当前页面定位符合步骤的控件，并对屏幕可见状态做封闭核对；模型不决定测试是否通过。<br>**动作：**Playwright 执行动作并记录语义路径；后续可无模型回放，测试成败由请求、API/数据库断言和代码监控决定。 | 公开源码<br>首次探索或路径失效时需 OpenRouter/Vercel 网关密钥，纯回放不需；仓库提供源码和 CI，费用与效果数字仅为作者自报，本站未运行真实站点测试。<br>[GitHub](https://github.com/Ice-Hazymoon/jevwright) · [Source code](https://github.com/Ice-Hazymoon/jevwright/blob/main/src/models.ts) |
 | [IRS 表单页分类与置信度门控](https://github.com/kyotofin/tax-doc-classifier) | **税务文档路由**<br>从 PDF 文本层提取的单页文字，以及仓库生成的 IRS 表单与页面类型候选；空白页由代码直接处理。 | **判断：**Jev Choice 选择表单及 7 种页面类别；少数表单族再做一次子表单选择，返回概率。<br>**动作：**程序输出表单 ID、页面类别和置信度；默认仅在表单置信度达到 0.95 时放行后续自动路由，低分交给调用方处理。 | 公开源码<br>仅英文联邦税表；扫描件需先 OCR，州税表只辨类别不识别具体表。页面文字送往 TypeSafe；准确率、速度和费用来自作者评测，本站未复测或用于报税。<br>[GitHub](https://github.com/kyotofin/tax-doc-classifier) · [Source code](https://github.com/kyotofin/tax-doc-classifier/blob/main/src/backend.ts) |
+| [NetHack 合法动作选择](https://github.com/statico/jev-nethack) | **游戏代理**<br>NetHack 终端画面、当前角色状态及程序在这一回合列出的合法动作。 | **判断：**Jev 以 Choice 只从合法动作列表中选下一步，不生成任意按键指令。<br>**动作：**项目的 motor 将所选动作映射成按键，执行后重新读取画面并进入下一回合。 | 公开源码<br>默认运行需要本地编译的 NetHack 与付费 TypeSafe API key；源码也支持兼容协议的本地服务。仓库展示运行和决策日志，但本站未验证通关、游戏成功率或成本。<br>[GitHub](https://github.com/statico/jev-nethack) · [Source code](https://github.com/statico/jev-nethack/blob/main/jev/jevapi.py) |
+| [jevvium 手机验收测试生成](https://github.com/AndresCarreonDiaz/jevvium) | **移动端测试**<br>YAML 验收目标、Appium 读取的当前屏幕和可操作控件，以及可选的明确断言。 | **判断：**Jev 在一次请求中用 Choice 选下一动作、用 Noul 判断目标是否已达成，并从给定输入中选择字段值。<br>**动作：**Appium 执行动作；达到目标且断言成立后，工具生成固定选择器的 WebdriverIO 测试，并用不调用模型的 Appium 回放核验。 | 公开源码<br>需要 Appium、设备或模拟器及 TypeSafe key。若验收条件没有 expect，通过判定可能只依据模型判断；作者的耗时和通过率未由本站复测。<br>[GitHub](https://github.com/AndresCarreonDiaz/jevvium) · [Source code](https://github.com/AndresCarreonDiaz/jevvium/blob/main/src/providers/jev.ts) |
+| [RAG 段落筛选与可回答性门控](https://github.com/MersivMedia/jev-rag-retrieval) | **检索增强生成**<br>待入库文档段落、用户查询和向量库检出的候选片段。 | **判断：**Jev 对段落和片段做封闭判断：是否杂质、是否面向 AI 的指令、是否相关或与问题前提冲突，以及现有证据能否回答。<br>**动作：**代码按阈值丢弃或隔离段落、排序并保留证据；可回答时才构建给生成模型的提示，否则拒答。 | 公开源码<br>需另配向量库与嵌入模型；无 Jev key 时可降级为普通向量排序。README 的命中率、抗注入和成本为作者自报，本站未复测。<br>[GitHub](https://github.com/MersivMedia/jev-rag-retrieval) · [Source code](https://github.com/MersivMedia/jev-rag-retrieval/blob/main/jev_retrieval/jev/client.py) |
 <!-- catalog:cases:end -->
 
 ## GitHub 项目库
@@ -73,6 +76,7 @@
 | [typesafe-ai/system-one-adapter-python](https://github.com/typesafe-ai/system-one-adapter-python) | 官方 SDK 与工具 | 官方 | MIT | 226 · 2026-09-22 | 官方适配器：用普通 LLM API 模拟 TypeSafeClient，便于对照测试或降级运行。 |
 | [typesafe-ai/typesafe-sdk-js](https://github.com/typesafe-ai/typesafe-sdk-js) | 官方 SDK 与工具 | 官方 | MIT | 206 · 2026-09-22 | 官方 TypeScript/JavaScript SDK（npm 包 @typesafe-ai/sdk），答案类型可自动推断，内置重试与错误分类。 |
 | [typesafe-ai/typesafe-sdk-python](https://github.com/typesafe-ai/typesafe-sdk-python) | 官方 SDK 与工具 | 官方 | MIT | 178 · 2026-09-22 | 官方 Python SDK（pip 包 typesafe-sdk，要求 Python ≥ 3.10），提供同步/异步客户端与 Choice/Score/Noul 类型，默认读取 TYPESAFE_API_KEY。 |
+| [typesafe-ai/n8n-nodes-typesafe-ai](https://github.com/typesafe-ai/n8n-nodes-typesafe-ai) | 官方 SDK 与工具 | 官方 | MIT | 2 · 2026-10-01 | TypeSafe 官方 n8n 社区节点：对每个 item 调用 System One 的 Choice、Score、Noul；Evaluate 附加结构化答案，Route 按答案或置信度把 item 分发到预设输出。 |
 | [browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) | 浏览器与电脑操作 | 社区项目 | MIT | 14,820 · 2026-09-22 | Browser Use 出品的极速网页 Agent：Jev 负责选择操作与目标元素，小模型只在需要打字时介入。发布首周星数最高的 Jev 项目。 |
 | [awlevin/typesafe-computer-use](https://github.com/awlevin/typesafe-computer-use) | 浏览器与电脑操作 | 社区项目 | MIT | 1,044 · 2026-09-28 | macOS 电脑操作 Beta：以 Jev Choice 从屏幕状态选动作与控件，代码执行并复核下一帧；操作真实鼠标键盘，应先 dry-run。 |
 | [droidrun/mobile-jev](https://github.com/droidrun/mobile-jev) | 浏览器与电脑操作 | 社区项目 | MIT | 422 · 2026-09-29 | droidrun 出品的安卓 Agent：Jev 经 Mobilerun API 操作真机，附 React Studio、CLI 与请求级延迟记录；Uber 演示 9 步约 21 秒停在支付页。 |
@@ -84,10 +88,12 @@
 | [Ice-Hazymoon/jevwright](https://github.com/Ice-Hazymoon/jevwright) | 浏览器与电脑操作 | 社区项目 | MIT | 12 · 2026-09-30 | 浏览器业务流程测试：Jev 初次定位页面控件并记录语义路径，后续可无模型回放；代码通过请求、API/数据库断言判定成败。 |
 | [Friedjof/jev-mobile](https://github.com/Friedjof/jev-mobile) | 浏览器与电脑操作 | 社区项目 | MIT | 7 · 2026-09-28 | 用 Jev Choice 从合法动作中选择安卓设备下一步，配合 SQLite 任务状态、执行前记录及执行后观察验证；需要 USB 调试和外部 API。 |
 | [brnyxx/jev-ra](https://github.com/brnyxx/jev-ra) | 浏览器与电脑操作 | 社区项目 | MIT | 5 · 2026-09-27 | 编码 Agent 的浏览器 MCP/CLI：Jev 每步选择动作与元素，客户端校验返回后驱动 Chrome；仓库的速度基准只代表作者测试环境。 |
+| [AndresCarreonDiaz/jevvium](https://github.com/AndresCarreonDiaz/jevvium) | 浏览器与电脑操作 | 社区项目 | MIT | 1 · 2026-10-01 | 从移动 App 验收目标探索 Appium 操作路径：Jev 从屏幕现有动作中选择，工具生成固定选择器的 WebdriverIO 测试并无模型回放；缺少断言时须人工复核。 |
 | [laihenyi/pi-Jev-browser](https://github.com/laihenyi/pi-Jev-browser) | 浏览器与电脑操作 | 社区项目 | Apache-2.0 | 0 · 2026-09-24 | pi 的浏览器与 macOS 桌面 Agent 扩展：Jev 根据可见文本、控件和目标选择单步动作，执行循环设有步数和人工复核边界。 |
 | [rmalde/minecraft-agent](https://github.com/rmalde/minecraft-agent) | 具身与游戏控制 | 社区项目 | 未核实 | 571 · 2026-09-29 | 原版 Minecraft 通关 Agent：GPT-6 Astra 规划、Jev 逐动作选择，最佳全程 8 分 43 秒、131 次 Jev 决策，不修改游戏规则。 |
 | [fhshaik/typesafe-mario](https://github.com/fhshaik/typesafe-mario) | 具身与游戏控制 | 社区项目 | 未核实 | 421 · 2026-09-29 | NES 超级马里奥实验控制器：模拟器状态转结构化 JSON（无截图），Jev Choice 从 7 个合法手柄动作中选择；仓库不含 ROM。 |
 | [RomanSlack/jev-drone](https://github.com/RomanSlack/jev-drone) | 具身与游戏控制 | 社区项目 | MIT | 225 · 2026-09-29 | MuJoCo 四旋翼仅凭机载相机过五站障碍课程：Jev 以 2.5Hz 做战术判断，50Hz 安全反射与 500Hz 控制器保留否决权。 |
+| [statico/jev-nethack](https://github.com/statico/jev-nethack) | 具身与游戏控制 | 社区项目 | MIT | 0 · 2026-10-01 | NetHack 5.0 游戏代理：代码读终端画面并枚举合法动作，Jev Choice 选一步，motor 发送对应按键；仓库有运行记录，未核实通关。 |
 | [tamaratran/fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) | 编码助手 | 社区项目 | MIT | 5,845 · 2026-09-22 | Claude Code 插件：用 Jev 逐条判断历史工具调用的去留，替代摘要式上下文压缩；保留的内容原样保留。社区对该策略存在争议。 |
 | [thruwire/foreman](https://github.com/thruwire/foreman) | 编码助手 | 社区项目 | MIT | 608 · 2026-09-29 | 软件工厂监工：Jev 持续评估 Codex/OpenCode 工人的完成度、需求满足与测试充分性，代码决定继续、纠偏或停止。 |
 | [devagrawal09/jev-review](https://github.com/devagrawal09/jev-review) | 编码助手 | 社区项目 | MIT | 460 · 2026-09-22 | 分阶段代码审查流程与本地面板。 |
@@ -114,8 +120,10 @@
 | [fstandhartinger/jevbench](https://github.com/fstandhartinger/jevbench) | 数据与检索 | 社区项目 | MIT | 176 · 2026-09-29 | Jev 级决策模型基准（95 个系统在线排行，Jev 1.13 现列第 4）：冻结方法、封存决策与 SHA-256 清单，与 TypeSafe 无关。 |
 | [jerryjliu/docjev](https://github.com/jerryjliu/docjev) | 数据与检索 | 社区项目 | Apache-2.0 | 165 · 2026-09-22 | LlamaIndex 出品：用 Jev 做快速文档分类与子文档边界识别。 |
 | [jexp/neo4jev](https://github.com/jexp/neo4jev) | 数据与检索 | 社区项目 | MIT | 152 · 2026-09-29 | Neo4j 图导航演示：每跳用 Choice 选出边、Noul 判目标，同请求一次往返，再对概率做束搜索渲染路径；schema 动态自省。 |
+| [typesafe-ai/WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) | 数据与检索 | 官方 | Apache-2.0 | 12 · 2026-10-01 | TypeSafe 官方工作流评测代码：复现发票、客服、代理轨迹和安保事件的有界决策评测，将 Jev 与其他提供商按参考模型动作一致性、成本和耗时对照；一致率不等于真实业务正确率。 |
 | [columnar-tech/jevaro](https://github.com/columnar-tech/jevaro) | 数据与检索 | 社区项目 | Apache-2.0 | 10 · 2026-09-30 | TypeSafe Jev 的 Python 批处理代理：多个独立状态并发逐条调用官方 API，再按输入顺序输出 Apache Arrow 流；附 Python 与 JavaScript 读取器，非官方原生批量接口。 |
 | [anthony-maio/hn-oracle](https://github.com/anthony-maio/hn-oracle) | 数据与检索 | 社区项目 | MIT | 0 · 2026-09-24 | 用 Jev 筛选历史 Hacker News 评论中的可核验预测；仓库包含预注册试验、实际调用代码和作者发布的结果数据，尚未处理完整档案。 |
+| [MersivMedia/jev-rag-retrieval](https://github.com/MersivMedia/jev-rag-retrieval) | 数据与检索 | 社区项目 | MIT | 0 · 2026-10-01 | Jev 驱动的 RAG 入库与检索管线：段落杂质和指令筛选、片段相关/冲突判断及可回答性门控；支持多种向量库，无 key 时降级为普通检索，评测数字为作者自报。 |
 | [neozhu/jev-audit](https://github.com/neozhu/jev-audit) | 数据与检索 | 社区项目 | MIT | 0 · 2026-09-25 | 用 Jev 的 Noul、Choice、Score 比对基准合同与扫描件 OCR 文本，区分实质变化和识别噪声，并把低于作者阈值的结果交给人工复审；含真实 API 调用与一致性测试。 |
 | [y0usaf/pi-jev](https://github.com/y0usaf/pi-jev) | 安全与审核 | 社区项目 | MIT | 151 · 2026-09-29 | Pi 编码 agent 的决策层：闸门一次请求判破坏性/外传/超范围/影响，输出裁判查泄密；默认 shadow 提示，错误一律 fail-open。 |
 | [openlayer-ai/jevals](https://github.com/openlayer-ai/jevals) | 安全与审核 | 社区项目 | MIT | 97 · 2026-09-29 | 把 agent 评估与护栏做成 Jev 决策：一条 trace 一次请求并行 8 项判定，千分之几美分、数百毫秒，可跑全量流量；后端可选 TypeSafe/Vercel、本地 Kev/Laya 或普通 LLM。 |
@@ -156,7 +164,7 @@
 
 表格由 [`data/cases.json`](data/cases.json)、[`data/projects.json`](data/projects.json) 生成。另有 [`data/official-recipes.json`](data/official-recipes.json) 收录 TypeSafe 官方 cookbook，正文与来源见[详细目录](CATALOG.md)。运行 `node scripts/validate.mjs` 检查结构，再运行 `node scripts/render.mjs` 同步中英文 README 与目录；`node scripts/render.mjs --check` 可确认生成内容没有过期。
 
-每日编辑流程写在 [`docs/codex-daily-curation.md`](docs/codex-daily-curation.md)：Codex 读取 GitHub、Chrome 中的 X 原帖和官方资料后判断收录，不设 stars 硬门槛。**原生 Scheduled 心跳任务 `jev` 已启用，每天日本时间 12:17 运行**；2026-09-27、28、30 的自然周期已完成双源检索、模型判断与发布回读。X 历史日期筛选仍不可靠，补查起点保留在监控状态中。
+每日编辑流程写在 [`docs/codex-daily-curation.md`](docs/codex-daily-curation.md)：Codex 分别搜索 GitHub、Chrome 中的 X 原帖和官方资料，按一手证据判断收录，不设 stars 硬门槛。**原生 Scheduled 心跳任务 `jev` 已启用，每天日本时间 12:17 运行**。任一来源有独立核实的合格内容即可发布；失败来源单独标记并保留其补查游标。2026-10-01 的 X 登录失败不影响已核实的 GitHub 与官方条目发布，X 的历史缺口仍待补查。
 
 ## 贡献
 
