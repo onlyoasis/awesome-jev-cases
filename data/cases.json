@@ -1598,5 +1598,213 @@
         "url": "https://github.com/MersivMedia/jev-rag-retrieval/blob/main/jev_retrieval/jev/client.py"
       }
     ]
+  },
+  {
+    "id": "rox-sales-retrieval-eval",
+    "name": "Rox Jev retrieval",
+    "title": {
+      "zh": "Rox 销售资料检索离线实验",
+      "en": "Rox offline sales-retrieval evaluation"
+    },
+    "author": "Rox",
+    "area": {
+      "zh": "销售资料检索",
+      "en": "Sales-data retrieval"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "75 条近似生产的销售查询及从通话转录、邮件、CRM、新闻和文档检出的候选片段。",
+      "en": "Seventy-five production-like sales queries and candidate passages from transcripts, email, CRM, news, and documents."
+    },
+    "decision": {
+      "zh": "Jev Score 用“不相关、稍相关、大致相关、直接相关”四级规则评判各候选片段。",
+      "en": "Jev Score rates each candidate passage on four levels from not relevant to directly relevant."
+    },
+    "action": {
+      "zh": "团队按评分重排候选，并与 GPT-5 Mini 的重排及另一模型建立的基准标签作离线比较。",
+      "en": "The team reranks candidates by score and compares the offline results with GPT-5 Mini reranking and labels from another model."
+    },
+    "boundary": {
+      "zh": "仅作者原帖和实验图片，未取得代码或样本；75 条查询规模有限。速度、成本及准确率均为作者自报，本站未复测，不能称已在生产检索中部署。",
+      "en": "Only author posts and experiment images are available, with no public code or sample set. The 75-query evaluation is small; speed, cost, and accuracy are author-reported, not independently reproduced or proof of deployment."
+    },
+    "sources": [
+      {
+        "label": "Author X",
+        "url": "https://x.com/rox_ai/status/2104642687534293353"
+      },
+      {
+        "label": "Method thread",
+        "url": "https://x.com/rox_ai/status/2104642689455292721"
+      },
+      {
+        "label": "TypeSafe X",
+        "url": "https://x.com/typesafeai/status/2105356405998063911"
+      }
+    ]
+  },
+  {
+    "id": "risk-analysis-server-sweeps",
+    "name": "risk-analysis-server",
+    "title": {
+      "zh": "风险画像监控与分层调查",
+      "en": "Profile-based risk monitoring and escalation"
+    },
+    "author": "Edward Irby / youdotcom-oss",
+    "area": {
+      "zh": "商业风险监控",
+      "en": "Business-risk monitoring"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "用户定义的风险主题、地点和触发条件，以及 You.com 返回的当前摘要与来源。",
+      "en": "A user-defined risk topic, locations, and policy triggers plus current You.com highlights and sources."
+    },
+    "decision": {
+      "zh": "Jev Noul 判有无实质威胁并筛选查询提案，Score 评结果相关性，Choice 从低、中、严重三级选最终级别。",
+      "en": "Jev Noul judges threat and query proposals, Score rates retrieved evidence, and Choice selects low, medium, or critical severity."
+    },
+    "action": {
+      "zh": "代码按阈值记录清洁巡检或启动限额深查；Qwen 仅提议查询和合成报告，程序保存带来源的报告及判断概率。",
+      "en": "Code records a clean sweep or starts a budgeted deep dive; Qwen proposes queries and drafts prose while the program persists a source-linked report and judgment probabilities."
+    },
+    "boundary": {
+      "zh": "作者公开了三次实时巡检，但成本、结果质量及风险报告内容未由本站复核；外部检索和模型服务会接收相应上下文。",
+      "en": "The author reports three live sweeps, but costs, report quality, and factual conclusions were not independently checked. External search and model services receive the relevant context."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/youdotcom-oss/risk-analysis-server"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/edwardirby/status/2105695667486355848"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/youdotcom-oss/risk-analysis-server/blob/main/src/services/jev.ts"
+      }
+    ]
+  },
+  {
+    "id": "nicia-knowledge-write-admission",
+    "name": "admission-decision-eval",
+    "title": {
+      "zh": "知识库写入准入离线评测",
+      "en": "Offline knowledge-write admission evaluation"
+    },
+    "author": "Nicia",
+    "area": {
+      "zh": "知识库写入审核",
+      "en": "Knowledge-base write review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "待写入记录、5 至 9 条已有记录，以及修改记录的旧版本；仓库用 85 条合成样本评估。",
+      "en": "An incoming record, five to nine accepted records, and the old version of an edited record, evaluated on 85 synthetic cases."
+    },
+    "decision": {
+      "zh": "Jev Choice 对每条记录判断冲突、重述或兼容，并对修改判更正、改写、补充或变义。",
+      "en": "Jev Choice classifies each comparison as contradictory, restated, or compatible and each edit as correction, rewording, addition, or meaning change."
+    },
+    "action": {
+      "zh": "评测代码汇总概率，只有低风险判断足够确定才模拟自动接纳，否则转人工；与其他决策模型对照。",
+      "en": "Evaluation code aggregates probabilities and simulates automatic admission only when risk is confidently low; otherwise it sends the write for human review and compares other decision models."
+    },
+    "boundary": {
+      "zh": "85 条均为虚构组织的合成案例；作者的正确率、顺序稳定性和延迟不是本站复测，更不能当作真实生产准入质量。",
+      "en": "All 85 cases use fictional organizations. The author-reported accuracy, order stability, and latency were not remeasured here and do not establish production write-admission quality."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/nicia-ai/admission-decision-eval"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/nicia-ai/admission-decision-eval/blob/main/run.mjs"
+      }
+    ]
+  },
+  {
+    "id": "wisp-voice-desktop-routing",
+    "name": "Wisp",
+    "title": {
+      "zh": "Wisp 语音桌面动作路由",
+      "en": "Wisp voice-to-desktop action routing"
+    },
+    "author": "duketopceo",
+    "area": {
+      "zh": "语音桌面助手",
+      "en": "Voice desktop assistant"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "按键录下的语音转写、近期会话及当前窗口等受限上下文。",
+      "en": "Push-to-talk transcript, recent conversation, and bounded context such as the active window."
+    },
+    "decision": {
+      "zh": "Jev 经 OpenRouter Decisions 以 Choice 选启动应用、工具、代理、回答或澄清，并判断具体目标。",
+      "en": "Jev through OpenRouter Decisions uses Choice to select app launch, tool, agent, answer, or clarification and to identify a target."
+    },
+    "action": {
+      "zh": "守护进程按风险级别调用桌面工具或启动编码代理；普通问答由单独的聊天模型生成文字，危险 shell 动作需确认。",
+      "en": "The daemon invokes desktop tools or starts a coding agent according to risk tier; a separate chat model writes ordinary answers, and shell actions require confirmation."
+    },
+    "boundary": {
+      "zh": "主要面向 Linux Omarchy/Hyprland，macOS 为作者提供的移植；运行需麦克风、转写模型和 OpenRouter key，语音上下文可能送外部。本站未在真实桌面复现。",
+      "en": "Primarily targets Linux Omarchy/Hyprland, with an author-provided macOS port. It needs microphone access, transcription, and an OpenRouter key; voice context may leave the device. This site did not reproduce desktop actions."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/duketopceo/wisp"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/duketopceo/wisp/blob/master/wisp/pipeline.py"
+      }
+    ]
+  },
+  {
+    "id": "claude-referee-done-check",
+    "name": "claude-referee",
+    "title": {
+      "zh": "claude-referee 完成声明核对",
+      "en": "claude-referee completion-claim check"
+    },
+    "author": "ismaildasci",
+    "area": {
+      "zh": "编码 Agent 结果核验",
+      "en": "Coding-agent result verification"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "Claude Code 的测试或 lint 输出，以及用户写出的明确完成条件。",
+      "en": "Test or lint output from Claude Code and explicit completion criteria supplied by the user."
+    },
+    "decision": {
+      "zh": "代码先解析退出码、跳过测试及摘要，再让 Jev 对每条条件用 Noul 判断现有证据是否足以支持。",
+      "en": "Code first parses exit codes, skipped tests, and summaries; Jev then uses a Noul for each criterion to judge whether the evidence supports it."
+    },
+    "action": {
+      "zh": "CLI 输出 met、unsure 或 missing 并留本地收据，让使用者补跑或检查缺失证据。",
+      "en": "The CLI reports met, unsure, or missing and keeps a local receipt so the user can rerun checks or inspect missing evidence."
+    },
+    "boundary": {
+      "zh": "当前自动 Stop hook 仅为 shadow 记录；阻止停止的 active 模式仍在计划中。顺序敏感与成本数据为作者自报，本站未复测，不能说项目已自动拦截不实完成声明。",
+      "en": "The automatic Stop hook currently records in shadow mode; active blocking is planned. Order-sensitivity and cost measurements are author-reported and unverified here, so this is not evidence that false completion claims are already blocked automatically."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ismaildasci/claude-referee"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/ismaildasci/claude-referee/blob/main/src/cli/commands/done.ts"
+      }
+    ]
   }
 ]

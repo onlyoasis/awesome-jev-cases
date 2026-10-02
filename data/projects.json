@@ -1374,5 +1374,101 @@
     "lastVerified": "2026-10-01",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "risk-analysis-server",
+    "name": "youdotcom-oss/risk-analysis-server",
+    "url": "https://github.com/youdotcom-oss/risk-analysis-server",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "风险画像监控服务：You.com 检索、Jev Noul/Score/Choice 分别做威胁门控、查询和证据排序、级别判断，代码控制调查预算并由 Qwen 起草带来源报告；效果为作者材料。",
+      "en": "A profile-based risk monitor using You.com search and Jev Noul/Score/Choice for threat gating, query and evidence ranking, and severity; code owns the investigation budget while Qwen drafts source-linked reports. Outcomes are author-reported."
+    },
+    "sourceUrl": "https://github.com/youdotcom-oss/risk-analysis-server",
+    "lastVerified": "2026-10-02",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "wisp",
+    "name": "duketopceo/wisp",
+    "url": "https://github.com/duketopceo/wisp",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Omarchy/Hyprland 语音桌面助手：转写后用 OpenRouter Jev 选应用、工具、代理或回答路线，按风险门控桌面动作；文本回答另用聊天模型，macOS 有作者移植。",
+      "en": "A voice desktop assistant for Omarchy/Hyprland: OpenRouter Jev routes transcribed speech to apps, tools, agents, or answers with risk-gated actions; another chat model writes answers, and the author provides a macOS port."
+    },
+    "sourceUrl": "https://github.com/duketopceo/wisp",
+    "lastVerified": "2026-10-02",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "claude-referee",
+    "name": "ismaildasci/claude-referee",
+    "url": "https://github.com/ismaildasci/claude-referee",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Claude Code 的完成证据检查器：代码解析测试与 lint 结果，Jev 核对明确条件并记本地收据；自动 Stop hook 目前为 shadow 模式，active 阻断尚未发布。",
+      "en": "A Claude Code completion-evidence checker: code parses test and lint results, Jev checks explicit criteria, and local receipts preserve findings; its automatic Stop hook is shadow-only, with active blocking not yet released."
+    },
+    "sourceUrl": "https://github.com/ismaildasci/claude-referee",
+    "lastVerified": "2026-10-02",
+    "status": "verified",
+    "stars": 3
+  },
+  {
+    "id": "jauvex",
+    "name": "reindent/jauvex",
+    "url": "https://github.com/reindent/jauvex",
+    "category": "apps",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "可语音操控 Claude、Codex 与 Grok 会话的桌面应用；可选 TypeSafe Jev 做封闭路由判断，无 Jev key 时由另一模型兜底。本站未实机验收。",
+      "en": "A desktop voice client for Claude, Codex, and Grok sessions; optional TypeSafe Jev makes bounded routing decisions, with another model as fallback when no Jev key is configured. This site did not run the app."
+    },
+    "sourceUrl": "https://github.com/reindent/jauvex",
+    "lastVerified": "2026-10-02",
+    "status": "verified",
+    "stars": 5
+  },
+  {
+    "id": "jev-kit",
+    "name": "jonathanavis96/jev-kit",
+    "url": "https://github.com/jonathanavis96/jev-kit",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Claude Code 的 Jev 工具包：含工具调用闸门、任务层级选择、搜索与浏览等集成；`airlock/client.py` 真调官方 System One，模型失败可 fail-open，作者性能数据未复测。",
+      "en": "A Jev kit for Claude Code with tool-call guards, task-tier selection, search, and browser integrations; `airlock/client.py` calls official System One, can fail open on model errors, and has author-reported performance."
+    },
+    "sourceUrl": "https://github.com/jonathanavis96/jev-kit",
+    "lastVerified": "2026-10-02",
+    "status": "verified",
+    "stars": 55
+  },
+  {
+    "id": "admission-decision-eval",
+    "name": "nicia-ai/admission-decision-eval",
+    "url": "https://github.com/nicia-ai/admission-decision-eval",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "知识库写入准入的可复现评测：85 条合成案例比较 Jev、Clef 和 Kev，对新记录的冲突、重述及变义做封闭判断并模拟接纳或人工复核；成绩不代表生产正确率。",
+      "en": "A reproducible knowledge-write admission study using 85 synthetic cases to compare Jev, Clef, and Kev on contradictions, restatements, and changed meaning, then simulate admit versus review; scores do not establish production accuracy."
+    },
+    "sourceUrl": "https://github.com/nicia-ai/admission-decision-eval",
+    "lastVerified": "2026-10-02",
+    "status": "verified",
+    "stars": 0
   }
 ]

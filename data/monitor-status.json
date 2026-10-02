@@ -1,35 +1,45 @@
 {
-  "checkedAt": "2026-10-01T08:06:35Z",
+  "checkedAt": "2026-10-02T03:28:12Z",
   "github": "ok",
   "official": "ok",
-  "x": "failed",
-  "addedProjects": 5,
-  "addedCases": 3,
+  "x": "partial",
+  "addedProjects": 6,
+  "addedCases": 5,
   "officialRecipes": 18,
-  "xPosts": null,
-  "xVisibleCounts": null,
+  "xPosts": 12,
+  "xVisibleCounts": {
+    "TypeSafe Jev": 7,
+    "Jev github.com": null,
+    "from:typesafeai Jev": 5
+  },
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "Earlier since/until bounds were ignored; October 1 X login failure prevented historical backfill. The uncovered start is unchanged.",
+  "xHistoricalCoverageNote": "The since:2026-09-22 until:2026-10-02 Latest query returned October 2 posts outside the requested end date; historical coverage is unverified and the cursor remains unchanged.",
   "githubSearches": [
     {
-      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-09-28",
-      "totalCount": 1884,
+      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-09-29",
+      "totalCount": 1762,
       "incomplete": false
     },
     {
-      "query": "jev in:name,description created:>=2026-09-29",
-      "totalCount": 872,
+      "query": "jev in:name,description created:>=2026-09-30",
+      "totalCount": 723,
       "incomplete": false
     },
     {
-      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-09-28",
-      "totalCount": 1801,
+      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-09-29",
+      "totalCount": 1629,
       "incomplete": false
     }
   ],
-  "githubLastSuccessfulAt": "2026-10-01T08:06:35Z",
-  "officialLastSuccessfulAt": "2026-10-01T08:06:35Z",
+  "githubLastSuccessfulAt": "2026-10-02T03:28:12Z",
+  "officialLastSuccessfulAt": "2026-10-02T03:28:12Z",
   "xLastSuccessfulAt": "2026-09-30T03:28:21.753Z",
-  "xFailureNote": "October 1 Chrome X search failed to load request-header policy twice, then redirected to an X login page; no Latest timeline was read. User re-login required."
+  "xFailureNote": "Logged-in Chrome Latest returned real posts for TypeSafe Jev and from:typesafeai Jev. Jev github.com stayed on a loading placeholder after two retries; the three-query X check is incomplete.",
+  "xPartialReadAt": "2026-10-02T03:28:12Z",
+  "xQueryStatus": {
+    "TypeSafe Jev": "ok",
+    "Jev github.com": "failed_loading_placeholder",
+    "from:typesafeai Jev": "ok"
+  }
 }

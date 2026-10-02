@@ -5,7 +5,7 @@
 独立社区维护的 Jev 使用案例与 GitHub 项目目录。每条案例说明输入、Jev 的判断、后续动作和证据边界；项目链接指向原作者仓库。本站与 TypeSafe AI 无隶属或背书关系。
 
 <!-- catalog:summary:start -->
-**46 条使用案例 · 86 个项目条目 · 18 篇官方 cookbook**
+**51 条使用案例 · 92 个项目条目 · 18 篇官方 cookbook**
 <!-- catalog:summary:end -->
 
 [网站案例库](https://typesafe-jev.com/use-cases/) · [网站项目页](https://typesafe-jev.com/projects/) · [官方 cookbook](https://docs.typesafe.ai/cookbooks.md) · [详细目录](CATALOG.md)
@@ -63,6 +63,11 @@
 | [NetHack 合法动作选择](https://github.com/statico/jev-nethack) | **游戏代理**<br>NetHack 终端画面、当前角色状态及程序在这一回合列出的合法动作。 | **判断：**Jev 以 Choice 只从合法动作列表中选下一步，不生成任意按键指令。<br>**动作：**项目的 motor 将所选动作映射成按键，执行后重新读取画面并进入下一回合。 | 公开源码<br>默认运行需要本地编译的 NetHack 与付费 TypeSafe API key；源码也支持兼容协议的本地服务。仓库展示运行和决策日志，但本站未验证通关、游戏成功率或成本。<br>[GitHub](https://github.com/statico/jev-nethack) · [Source code](https://github.com/statico/jev-nethack/blob/main/jev/jevapi.py) |
 | [jevvium 手机验收测试生成](https://github.com/AndresCarreonDiaz/jevvium) | **移动端测试**<br>YAML 验收目标、Appium 读取的当前屏幕和可操作控件，以及可选的明确断言。 | **判断：**Jev 在一次请求中用 Choice 选下一动作、用 Noul 判断目标是否已达成，并从给定输入中选择字段值。<br>**动作：**Appium 执行动作；达到目标且断言成立后，工具生成固定选择器的 WebdriverIO 测试，并用不调用模型的 Appium 回放核验。 | 公开源码<br>需要 Appium、设备或模拟器及 TypeSafe key。若验收条件没有 expect，通过判定可能只依据模型判断；作者的耗时和通过率未由本站复测。<br>[GitHub](https://github.com/AndresCarreonDiaz/jevvium) · [Source code](https://github.com/AndresCarreonDiaz/jevvium/blob/main/src/providers/jev.ts) |
 | [RAG 段落筛选与可回答性门控](https://github.com/MersivMedia/jev-rag-retrieval) | **检索增强生成**<br>待入库文档段落、用户查询和向量库检出的候选片段。 | **判断：**Jev 对段落和片段做封闭判断：是否杂质、是否面向 AI 的指令、是否相关或与问题前提冲突，以及现有证据能否回答。<br>**动作：**代码按阈值丢弃或隔离段落、排序并保留证据；可回答时才构建给生成模型的提示，否则拒答。 | 公开源码<br>需另配向量库与嵌入模型；无 Jev key 时可降级为普通向量排序。README 的命中率、抗注入和成本为作者自报，本站未复测。<br>[GitHub](https://github.com/MersivMedia/jev-rag-retrieval) · [Source code](https://github.com/MersivMedia/jev-rag-retrieval/blob/main/jev_retrieval/jev/client.py) |
+| [Rox 销售资料检索离线实验](https://x.com/rox_ai/status/2104642687534293353) | **销售资料检索**<br>75 条近似生产的销售查询及从通话转录、邮件、CRM、新闻和文档检出的候选片段。 | **判断：**Jev Score 用“不相关、稍相关、大致相关、直接相关”四级规则评判各候选片段。<br>**动作：**团队按评分重排候选，并与 GPT-5 Mini 的重排及另一模型建立的基准标签作离线比较。 | 仅作者原帖<br>仅作者原帖和实验图片，未取得代码或样本；75 条查询规模有限。速度、成本及准确率均为作者自报，本站未复测，不能称已在生产检索中部署。<br>[Author X](https://x.com/rox_ai/status/2104642687534293353) · [Method thread](https://x.com/rox_ai/status/2104642689455292721) · [TypeSafe X](https://x.com/typesafeai/status/2105356405998063911) |
+| [风险画像监控与分层调查](https://github.com/youdotcom-oss/risk-analysis-server) | **商业风险监控**<br>用户定义的风险主题、地点和触发条件，以及 You.com 返回的当前摘要与来源。 | **判断：**Jev Noul 判有无实质威胁并筛选查询提案，Score 评结果相关性，Choice 从低、中、严重三级选最终级别。<br>**动作：**代码按阈值记录清洁巡检或启动限额深查；Qwen 仅提议查询和合成报告，程序保存带来源的报告及判断概率。 | 源码＋作者原帖<br>作者公开了三次实时巡检，但成本、结果质量及风险报告内容未由本站复核；外部检索和模型服务会接收相应上下文。<br>[GitHub](https://github.com/youdotcom-oss/risk-analysis-server) · [Author X](https://x.com/edwardirby/status/2105695667486355848) · [Source code](https://github.com/youdotcom-oss/risk-analysis-server/blob/main/src/services/jev.ts) |
+| [知识库写入准入离线评测](https://github.com/nicia-ai/admission-decision-eval) | **知识库写入审核**<br>待写入记录、5 至 9 条已有记录，以及修改记录的旧版本；仓库用 85 条合成样本评估。 | **判断：**Jev Choice 对每条记录判断冲突、重述或兼容，并对修改判更正、改写、补充或变义。<br>**动作：**评测代码汇总概率，只有低风险判断足够确定才模拟自动接纳，否则转人工；与其他决策模型对照。 | 公开源码<br>85 条均为虚构组织的合成案例；作者的正确率、顺序稳定性和延迟不是本站复测，更不能当作真实生产准入质量。<br>[GitHub](https://github.com/nicia-ai/admission-decision-eval) · [Source code](https://github.com/nicia-ai/admission-decision-eval/blob/main/run.mjs) |
+| [Wisp 语音桌面动作路由](https://github.com/duketopceo/wisp) | **语音桌面助手**<br>按键录下的语音转写、近期会话及当前窗口等受限上下文。 | **判断：**Jev 经 OpenRouter Decisions 以 Choice 选启动应用、工具、代理、回答或澄清，并判断具体目标。<br>**动作：**守护进程按风险级别调用桌面工具或启动编码代理；普通问答由单独的聊天模型生成文字，危险 shell 动作需确认。 | 公开源码<br>主要面向 Linux Omarchy/Hyprland，macOS 为作者提供的移植；运行需麦克风、转写模型和 OpenRouter key，语音上下文可能送外部。本站未在真实桌面复现。<br>[GitHub](https://github.com/duketopceo/wisp) · [Source code](https://github.com/duketopceo/wisp/blob/master/wisp/pipeline.py) |
+| [claude-referee 完成声明核对](https://github.com/ismaildasci/claude-referee) | **编码 Agent 结果核验**<br>Claude Code 的测试或 lint 输出，以及用户写出的明确完成条件。 | **判断：**代码先解析退出码、跳过测试及摘要，再让 Jev 对每条条件用 Noul 判断现有证据是否足以支持。<br>**动作：**CLI 输出 met、unsure 或 missing 并留本地收据，让使用者补跑或检查缺失证据。 | 公开源码<br>当前自动 Stop hook 仅为 shadow 记录；阻止停止的 active 模式仍在计划中。顺序敏感与成本数据为作者自报，本站未复测，不能说项目已自动拦截不实完成声明。<br>[GitHub](https://github.com/ismaildasci/claude-referee) · [Source code](https://github.com/ismaildasci/claude-referee/blob/main/src/cli/commands/done.ts) |
 <!-- catalog:cases:end -->
 
 ## GitHub 项目库
@@ -102,6 +107,7 @@
 | [tamaratran/jev-pruner](https://github.com/tamaratran/jev-pruner) | 编码助手 | 社区项目 | MIT | 153 · 2026-09-29 | Claude Code 插件：命令跑完后、结果回传主模型前，用 Jev 逐块判断 Bash 输出是否需要保留；文档、错误与 git diff 豁免。 |
 | [mrnugget/jev-shell-history](https://github.com/mrnugget/jev-shell-history) | 编码助手 | 社区项目 | 未核实 | 115 · 2026-09-29 | zsh 的 fish 式历史建议：Jev Choice 从最近 100 条去重历史里判断你在补全哪条，灰显在光标后并附概率。 |
 | [GhalebDweikat/winnow](https://github.com/GhalebDweikat/winnow) | 编码助手 | 社区项目 | MIT | 100 · 2026-09-29 | Claude Code 的校准上下文筛：每个大工具结果分块过一个 Noul“任务是否需要”，高置信不需要的替换为存根+摘要+召回键，不确定的保留。 |
+| [jonathanavis96/jev-kit](https://github.com/jonathanavis96/jev-kit) | 编码助手 | 社区项目 | MIT | 55 · 2026-10-02 | Claude Code 的 Jev 工具包：含工具调用闸门、任务层级选择、搜索与浏览等集成；`airlock/client.py` 真调官方 System One，模型失败可 fail-open，作者性能数据未复测。 |
 | [disler/ten-levels-of-jev](https://github.com/disler/ten-levels-of-jev) | 编码助手 | 社区项目 | MIT | 5 · 2026-09-28 | 把 Jev 从单个封闭判断逐级接入 Agent hooks 的教学代码库，含 TypeSafe/OpenRouter 真调用、离线 mock、交互演示与测试；速度和成本数字为作者材料。 |
 | [Tech-Byte-Frontier/jevgate](https://github.com/Tech-Byte-Frontier/jevgate) | 编码助手 | 社区项目 | Apache-2.0 OR MIT | 3 · 2026-09-24 | Rust 代码审查工具：解析源码后向 Jev 提交局部、类型化的维护性判断，并由代码汇成带位置和建议的发现；安全规则需另行启用。 |
 | [wuyoscar/jev-skill](https://github.com/wuyoscar/jev-skill) | MCP 与 Agent Skill | 社区项目 | MIT | 543 · 2026-09-29 | Jev 用例、工作流与 agent skills 集合。 |
@@ -122,13 +128,16 @@
 | [jexp/neo4jev](https://github.com/jexp/neo4jev) | 数据与检索 | 社区项目 | MIT | 152 · 2026-09-29 | Neo4j 图导航演示：每跳用 Choice 选出边、Noul 判目标，同请求一次往返，再对概率做束搜索渲染路径；schema 动态自省。 |
 | [typesafe-ai/WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) | 数据与检索 | 官方 | Apache-2.0 | 12 · 2026-10-01 | TypeSafe 官方工作流评测代码：复现发票、客服、代理轨迹和安保事件的有界决策评测，将 Jev 与其他提供商按参考模型动作一致性、成本和耗时对照；一致率不等于真实业务正确率。 |
 | [columnar-tech/jevaro](https://github.com/columnar-tech/jevaro) | 数据与检索 | 社区项目 | Apache-2.0 | 10 · 2026-09-30 | TypeSafe Jev 的 Python 批处理代理：多个独立状态并发逐条调用官方 API，再按输入顺序输出 Apache Arrow 流；附 Python 与 JavaScript 读取器，非官方原生批量接口。 |
+| [youdotcom-oss/risk-analysis-server](https://github.com/youdotcom-oss/risk-analysis-server) | 数据与检索 | 社区项目 | MIT | 2 · 2026-10-02 | 风险画像监控服务：You.com 检索、Jev Noul/Score/Choice 分别做威胁门控、查询和证据排序、级别判断，代码控制调查预算并由 Qwen 起草带来源报告；效果为作者材料。 |
 | [anthony-maio/hn-oracle](https://github.com/anthony-maio/hn-oracle) | 数据与检索 | 社区项目 | MIT | 0 · 2026-09-24 | 用 Jev 筛选历史 Hacker News 评论中的可核验预测；仓库包含预注册试验、实际调用代码和作者发布的结果数据，尚未处理完整档案。 |
 | [MersivMedia/jev-rag-retrieval](https://github.com/MersivMedia/jev-rag-retrieval) | 数据与检索 | 社区项目 | MIT | 0 · 2026-10-01 | Jev 驱动的 RAG 入库与检索管线：段落杂质和指令筛选、片段相关/冲突判断及可回答性门控；支持多种向量库，无 key 时降级为普通检索，评测数字为作者自报。 |
 | [neozhu/jev-audit](https://github.com/neozhu/jev-audit) | 数据与检索 | 社区项目 | MIT | 0 · 2026-09-25 | 用 Jev 的 Noul、Choice、Score 比对基准合同与扫描件 OCR 文本，区分实质变化和识别噪声，并把低于作者阈值的结果交给人工复审；含真实 API 调用与一致性测试。 |
+| [nicia-ai/admission-decision-eval](https://github.com/nicia-ai/admission-decision-eval) | 数据与检索 | 社区项目 | Apache-2.0 | 0 · 2026-10-02 | 知识库写入准入的可复现评测：85 条合成案例比较 Jev、Clef 和 Kev，对新记录的冲突、重述及变义做封闭判断并模拟接纳或人工复核；成绩不代表生产正确率。 |
 | [y0usaf/pi-jev](https://github.com/y0usaf/pi-jev) | 安全与审核 | 社区项目 | MIT | 151 · 2026-09-29 | Pi 编码 agent 的决策层：闸门一次请求判破坏性/外传/超范围/影响，输出裁判查泄密；默认 shadow 提示，错误一律 fail-open。 |
 | [openlayer-ai/jevals](https://github.com/openlayer-ai/jevals) | 安全与审核 | 社区项目 | MIT | 97 · 2026-09-29 | 把 agent 评估与护栏做成 Jev 决策：一条 trace 一次请求并行 8 项判定，千分之几美分、数百毫秒，可跑全量流量；后端可选 TypeSafe/Vercel、本地 Kev/Laya 或普通 LLM。 |
 | [leepokai/jev-guard](https://github.com/leepokai/jev-guard) | 安全与审核 | 社区项目 | MIT | 18 · 2026-09-22 | 编码 Agent 的安全闸门：对每次工具调用给出 deny/ask/allow 风险判断，并标记提示注入；支持多种编码助手。 |
 | [win4r/jev-security-scan](https://github.com/win4r/jev-security-scan) | 安全与审核 | 社区项目 | MIT | 9 · 2026-09-22 | 用 Jev 审查 Agent Skill 与 MCP 代码中的可疑行为（中文说明项目）。 |
+| [ismaildasci/claude-referee](https://github.com/ismaildasci/claude-referee) | 安全与审核 | 社区项目 | MIT | 3 · 2026-10-02 | Claude Code 的完成证据检查器：代码解析测试与 lint 结果，Jev 核对明确条件并记本地收据；自动 Stop hook 目前为 shadow 模式，active 阻断尚未发布。 |
 | [duberblock/JEVals](https://github.com/duberblock/JEVals) | 安全与审核 | 社区项目 | MIT | 2 · 2026-09-30 | 交互式 Jev 决策评测台：实际 TypeSafe 基线与模拟器、独立模型及 judge 逐题比较并保存执行追踪；默认托管模拟器会接收场景文本。 |
 | [suraj-phanindra/wellposed](https://github.com/suraj-phanindra/wellposed) | 安全与审核 | 社区项目 | MIT | 2 · 2026-09-27 | Jev 请求预检查工具：离线规则筛结构缺陷，再以 Jev Noul 判断语义问题，给开发者警告与修改建议；语义层需要外部 API。 |
 | [ohernandezdev/jevmod](https://github.com/ohernandezdev/jevmod) | 安全与审核 | 社区项目 | MIT | 1 · 2026-09-28 | 用 Jev 的 Noul 为社区消息输出多种风险类别概率，供 Bot、CLI、API、MCP 共用策略；默认只标记，模型故障时放行并记录错误。 |
@@ -139,6 +148,8 @@
 | [ChetasLua/jevmeter](https://github.com/ChetasLua/jevmeter) | 终端用户应用 | 社区项目 | MIT | 101 · 2026-09-29 | 视频真话仪表盘：按预设逐句给视频打分、标记回避与炒作，渲染 16:9 成片；整场辩论约 0.05 美元。 |
 | [fazlerocks/jevmail](https://github.com/fazlerocks/jevmail) | 终端用户应用 | 社区项目 | MIT | 90 · 2026-09-29 | 开源 Gmail 分诊：每封 3 问分五个托盘并打紧急度，只读不代发；1000 封约 1 分钟约 3 美分，纠错与概率本地留痕。 |
 | [AboveColin/HA-Jev](https://github.com/AboveColin/HA-Jev) | 终端用户应用 | 社区项目 | MIT | 69 · 2026-09-29 | Home Assistant 集成：Noul/Choice/Score 问答变成传感器实体与自动化动作，附 25 个蓝图、Assist 语音路由与每日花费统计；与 TypeSafe 无关的社区作品。 |
+| [reindent/jauvex](https://github.com/reindent/jauvex) | 终端用户应用 | 社区项目 | Apache-2.0 | 5 · 2026-10-02 | 可语音操控 Claude、Codex 与 Grok 会话的桌面应用；可选 TypeSafe Jev 做封闭路由判断，无 Jev key 时由另一模型兜底。本站未实机验收。 |
+| [duketopceo/wisp](https://github.com/duketopceo/wisp) | 终端用户应用 | 社区项目 | MIT | 0 · 2026-10-02 | Omarchy/Hyprland 语音桌面助手：转写后用 OpenRouter Jev 选应用、工具、代理或回答路线，按风险门控桌面动作；文本回答另用聊天模型，macOS 有作者移植。 |
 | [obie/ruby_decision_model](https://github.com/obie/ruby_decision_model) | 社区 SDK 与客户端 | 社区项目 | MIT | 52 · 2026-09-29 | Ruby 决策模型客户端：一套 Client 走 OpenRouter（默认）或 TypeSafe 直连，Noul/Score 返回校准概率，无运行时依赖。 |
 | [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) | 开源复刻 | 受启发的复刻 | Apache-2.0 | 28,212 · 2026-09-29 | 独立开源的非自回归 System 1 决策引擎（自有模型，非 Jev 实现、更非 Jev 权重开源）：对任意文本输出 Choice/Score/是否判断，可本地或经兼容接口服务，也出现在 JevBench 等第三方评测里。 |
 | [TheoLeeCJ/SemIf-OpenJev](https://github.com/TheoLeeCJ/SemIf-OpenJev) | 开源复刻 | 受启发的复刻 | MIT | 4,560 · 2026-09-29 | SemIf 作者的开放模型版：在 3090 或浏览器里跑“语义 if”接口模式。独立项目，与 Jev/TypeSafe 无关，非 Jev 权重开源。 |

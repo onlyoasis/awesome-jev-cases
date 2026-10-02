@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (46)
+## 深度使用案例 / Worked cases (51)
 
 ### jev-ultrafast
 
@@ -418,7 +418,52 @@
 - 核验边界：需另配向量库与嵌入模型；无 Jev key 时可降级为普通向量排序。README 的命中率、抗注入和成本为作者自报，本站未复测。
 - 来源：[GitHub](https://github.com/MersivMedia/jev-rag-retrieval) · [Source code](https://github.com/MersivMedia/jev-rag-retrieval/blob/main/jev_retrieval/jev/client.py)
 
-## 开源项目 / Open-source projects (86)
+### Rox 销售资料检索离线实验
+
+- 作者：Rox
+- 输入：75 条近似生产的销售查询及从通话转录、邮件、CRM、新闻和文档检出的候选片段。
+- Jev 判断：Jev Score 用“不相关、稍相关、大致相关、直接相关”四级规则评判各候选片段。
+- 后续动作：团队按评分重排候选，并与 GPT-5 Mini 的重排及另一模型建立的基准标签作离线比较。
+- 核验边界：仅作者原帖和实验图片，未取得代码或样本；75 条查询规模有限。速度、成本及准确率均为作者自报，本站未复测，不能称已在生产检索中部署。
+- 来源：[Author X](https://x.com/rox_ai/status/2104642687534293353) · [Method thread](https://x.com/rox_ai/status/2104642689455292721) · [TypeSafe X](https://x.com/typesafeai/status/2105356405998063911)
+
+### 风险画像监控与分层调查
+
+- 作者：Edward Irby / youdotcom-oss
+- 输入：用户定义的风险主题、地点和触发条件，以及 You.com 返回的当前摘要与来源。
+- Jev 判断：Jev Noul 判有无实质威胁并筛选查询提案，Score 评结果相关性，Choice 从低、中、严重三级选最终级别。
+- 后续动作：代码按阈值记录清洁巡检或启动限额深查；Qwen 仅提议查询和合成报告，程序保存带来源的报告及判断概率。
+- 核验边界：作者公开了三次实时巡检，但成本、结果质量及风险报告内容未由本站复核；外部检索和模型服务会接收相应上下文。
+- 来源：[GitHub](https://github.com/youdotcom-oss/risk-analysis-server) · [Author X](https://x.com/edwardirby/status/2105695667486355848) · [Source code](https://github.com/youdotcom-oss/risk-analysis-server/blob/main/src/services/jev.ts)
+
+### 知识库写入准入离线评测
+
+- 作者：Nicia
+- 输入：待写入记录、5 至 9 条已有记录，以及修改记录的旧版本；仓库用 85 条合成样本评估。
+- Jev 判断：Jev Choice 对每条记录判断冲突、重述或兼容，并对修改判更正、改写、补充或变义。
+- 后续动作：评测代码汇总概率，只有低风险判断足够确定才模拟自动接纳，否则转人工；与其他决策模型对照。
+- 核验边界：85 条均为虚构组织的合成案例；作者的正确率、顺序稳定性和延迟不是本站复测，更不能当作真实生产准入质量。
+- 来源：[GitHub](https://github.com/nicia-ai/admission-decision-eval) · [Source code](https://github.com/nicia-ai/admission-decision-eval/blob/main/run.mjs)
+
+### Wisp 语音桌面动作路由
+
+- 作者：duketopceo
+- 输入：按键录下的语音转写、近期会话及当前窗口等受限上下文。
+- Jev 判断：Jev 经 OpenRouter Decisions 以 Choice 选启动应用、工具、代理、回答或澄清，并判断具体目标。
+- 后续动作：守护进程按风险级别调用桌面工具或启动编码代理；普通问答由单独的聊天模型生成文字，危险 shell 动作需确认。
+- 核验边界：主要面向 Linux Omarchy/Hyprland，macOS 为作者提供的移植；运行需麦克风、转写模型和 OpenRouter key，语音上下文可能送外部。本站未在真实桌面复现。
+- 来源：[GitHub](https://github.com/duketopceo/wisp) · [Source code](https://github.com/duketopceo/wisp/blob/master/wisp/pipeline.py)
+
+### claude-referee 完成声明核对
+
+- 作者：ismaildasci
+- 输入：Claude Code 的测试或 lint 输出，以及用户写出的明确完成条件。
+- Jev 判断：代码先解析退出码、跳过测试及摘要，再让 Jev 对每条条件用 Noul 判断现有证据是否足以支持。
+- 后续动作：CLI 输出 met、unsure 或 missing 并留本地收据，让使用者补跑或检查缺失证据。
+- 核验边界：当前自动 Stop hook 仅为 shadow 记录；阻止停止的 active 模式仍在计划中。顺序敏感与成本数据为作者自报，本站未复测，不能说项目已自动拦截不实完成声明。
+- 来源：[GitHub](https://github.com/ismaildasci/claude-referee) · [Source code](https://github.com/ismaildasci/claude-referee/blob/main/src/cli/commands/done.ts)
+
+## 开源项目 / Open-source projects (92)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -508,6 +553,12 @@
 | [statico/jev-nethack](https://github.com/statico/jev-nethack) | community | MIT | 0 |
 | [AndresCarreonDiaz/jevvium](https://github.com/AndresCarreonDiaz/jevvium) | community | MIT | 1 |
 | [MersivMedia/jev-rag-retrieval](https://github.com/MersivMedia/jev-rag-retrieval) | community | MIT | 0 |
+| [youdotcom-oss/risk-analysis-server](https://github.com/youdotcom-oss/risk-analysis-server) | community | MIT | 2 |
+| [duketopceo/wisp](https://github.com/duketopceo/wisp) | community | MIT | 0 |
+| [ismaildasci/claude-referee](https://github.com/ismaildasci/claude-referee) | community | MIT | 3 |
+| [reindent/jauvex](https://github.com/reindent/jauvex) | community | Apache-2.0 | 5 |
+| [jonathanavis96/jev-kit](https://github.com/jonathanavis96/jev-kit) | community | MIT | 55 |
+| [nicia-ai/admission-decision-eval](https://github.com/nicia-ai/admission-decision-eval) | community | Apache-2.0 | 0 |
 
 ## 官方 cookbook / Official recipes (18)
 
