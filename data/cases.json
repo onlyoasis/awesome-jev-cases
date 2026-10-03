@@ -1806,5 +1806,133 @@
         "url": "https://github.com/ismaildasci/claude-referee/blob/main/src/cli/commands/done.ts"
       }
     ]
+  },
+  {
+    "id": "pageindex-jev-tree-search",
+    "name": "jev-doc-search",
+    "title": {
+      "zh": "PageIndex + Jev 长文档分层找页",
+      "en": "PageIndex and Jev hierarchical page search"
+    },
+    "author": "PageIndex / VectifyAI",
+    "area": {
+      "zh": "长文档检索",
+      "en": "Long-document retrieval"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "用户问题和 PageIndex 从 PDF 构建的章节树：节点标题、摘要、页码范围及页文本。",
+      "en": "A user question and a PageIndex tree built from a PDF, with node titles, summaries, page ranges, and page text."
+    },
+    "decision": {
+      "zh": "Jev Choice 逐层选择最可能回答问题的章节和页面；Noul 再判断候选页是否确有回答信息。",
+      "en": "Jev Choice picks likely sections and pages level by level, then Noul checks whether candidate pages contain answer information."
+    },
+    "action": {
+      "zh": "代码按树路径缩小候选并返回页码、文本和判断轨迹，供调用者查证；项目本身不生成最终答案。",
+      "en": "Code narrows candidates along the tree and returns pages, text, and the judgment trace for inspection; it does not generate a final answer."
+    },
+    "boundary": {
+      "zh": "需要 TypeSafe 和 PageIndex API key；PDF 上传 PageIndex 云端。仓库演示与搜索效果未由本站复测，候选页仍需核对原文。",
+      "en": "Requires TypeSafe and PageIndex API keys, and uploads the PDF to PageIndex cloud. Demonstrations and retrieval quality were not independently reproduced; returned pages still need source review."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/VectifyAI/jev-doc-search"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/PageIndexAI/status/2105896667446940134"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/VectifyAI/jev-doc-search/blob/main/tree_search.py"
+      }
+    ]
+  },
+  {
+    "id": "jev-permission-gate-auto-mode",
+    "name": "jev-permission-gate",
+    "title": {
+      "zh": "Claude Code 自动模式权限预判",
+      "en": "Claude Code auto-mode permission precheck"
+    },
+    "author": "Madison Rickert",
+    "area": {
+      "zh": "编码 Agent 权限判断",
+      "en": "Coding-agent permission decisions"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "Claude Code auto mode 待审批的工具调用、近期用户消息及项目路径。",
+      "en": "A pending Claude Code auto-mode tool call, recent user messages, and the project path."
+    },
+    "decision": {
+      "zh": "Jev 一次回答八个 Noul：调用是否符合请求、各项风险及是否含自称已获批准的引导文字；代码按阈值判 allow、deny 或 defer。",
+      "en": "Jev answers eight Nouls in one request about user intent, risks, and approval-steering text; code thresholds yield allow, deny, or defer."
+    },
+    "action": {
+      "zh": "明显可允许的调用跳过原生分类器，明确危险且未请求的调用被阻止；不确定的仍交回 Claude Code 原生分类器。",
+      "en": "Clearly allowed calls bypass the built-in classifier, clearly risky unrequested calls are denied, and uncertain calls return to Claude Code built-in classification."
+    },
+    "boundary": {
+      "zh": "仅适用于可用 mods 的 Claude Code auto mode。待审批命令和近期消息可能发给 TypeSafe，包括未被规则识别的内嵌秘密；模型错误回退原生分类器。作者延迟与安全样本结果未经本站复测，不能视为通用安全保证。",
+      "en": "Requires Claude Code auto mode with mods. Pending commands and recent messages may go to TypeSafe, including inline secrets missed by filters. Model errors defer to the built-in classifier; author-reported latency and safety samples were not reproduced and are not a general security guarantee."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/madisonrickert/jev-permission-gate"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/MadisonJRickert/status/2106183706989953339"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/madisonrickert/jev-permission-gate/blob/main/hooks/policy.ts"
+      }
+    ]
+  },
+  {
+    "id": "jev-cfd-copilot-rarefied-flow",
+    "name": "jev-cfd-copilot",
+    "title": {
+      "zh": "稀薄气体流动的受限决策与求解",
+      "en": "Bounded rarefied-gas flow planning"
+    },
+    "author": "cfdgasman",
+    "area": {
+      "zh": "科学计算",
+      "en": "Scientific computing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户用自然语言描述平板间的气体流动，代码先识别数字和物理单位。",
+      "en": "A plain-language description of gas flow between plates, with quantities and units first extracted by code."
+    },
+    "decision": {
+      "zh": "Jev Choice 在封闭选项中识别流型、几何、气体及各量值的角色；代码据置信度决定运行、追问或拒绝。",
+      "en": "Jev Choice selects flow type, geometry, gas, and quantity roles from closed options; code uses confidence to run, ask for clarification, or decline."
+    },
+    "action": {
+      "zh": "确定性代码计算 Knudsen 数、选择适用的流体或动力学求解器，并输出有单位的剪切应力或流量。",
+      "en": "Deterministic code computes the Knudsen number, selects an applicable fluid or kinetic solver, and returns shear stress or flow rate with units."
+    },
+    "boundary": {
+      "zh": "只覆盖仓库支持的平板 Couette/Poiseuille 场景；作者对求解器与 Jev 成本的校验未由本站复跑。录制答案可离线重放，不能把每次示例运行都说成实时 Jev 调用。",
+      "en": "Limited to the supported parallel-plate Couette and Poiseuille problems. The author solver validation and Jev costs were not reproduced; recorded answers can replay offline, so not every demo run is a live Jev call."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/cfdgasman/jev-cfd-copilot"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/cfdgasman/jev-cfd-copilot/blob/main/copilot/plan.py"
+      }
+    ]
   }
 ]

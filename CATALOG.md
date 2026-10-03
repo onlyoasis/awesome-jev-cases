@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (51)
+## 深度使用案例 / Worked cases (54)
 
 ### jev-ultrafast
 
@@ -463,7 +463,34 @@
 - 核验边界：当前自动 Stop hook 仅为 shadow 记录；阻止停止的 active 模式仍在计划中。顺序敏感与成本数据为作者自报，本站未复测，不能说项目已自动拦截不实完成声明。
 - 来源：[GitHub](https://github.com/ismaildasci/claude-referee) · [Source code](https://github.com/ismaildasci/claude-referee/blob/main/src/cli/commands/done.ts)
 
-## 开源项目 / Open-source projects (92)
+### PageIndex + Jev 长文档分层找页
+
+- 作者：PageIndex / VectifyAI
+- 输入：用户问题和 PageIndex 从 PDF 构建的章节树：节点标题、摘要、页码范围及页文本。
+- Jev 判断：Jev Choice 逐层选择最可能回答问题的章节和页面；Noul 再判断候选页是否确有回答信息。
+- 后续动作：代码按树路径缩小候选并返回页码、文本和判断轨迹，供调用者查证；项目本身不生成最终答案。
+- 核验边界：需要 TypeSafe 和 PageIndex API key；PDF 上传 PageIndex 云端。仓库演示与搜索效果未由本站复测，候选页仍需核对原文。
+- 来源：[GitHub](https://github.com/VectifyAI/jev-doc-search) · [Author X](https://x.com/PageIndexAI/status/2105896667446940134) · [Source code](https://github.com/VectifyAI/jev-doc-search/blob/main/tree_search.py)
+
+### Claude Code 自动模式权限预判
+
+- 作者：Madison Rickert
+- 输入：Claude Code auto mode 待审批的工具调用、近期用户消息及项目路径。
+- Jev 判断：Jev 一次回答八个 Noul：调用是否符合请求、各项风险及是否含自称已获批准的引导文字；代码按阈值判 allow、deny 或 defer。
+- 后续动作：明显可允许的调用跳过原生分类器，明确危险且未请求的调用被阻止；不确定的仍交回 Claude Code 原生分类器。
+- 核验边界：仅适用于可用 mods 的 Claude Code auto mode。待审批命令和近期消息可能发给 TypeSafe，包括未被规则识别的内嵌秘密；模型错误回退原生分类器。作者延迟与安全样本结果未经本站复测，不能视为通用安全保证。
+- 来源：[GitHub](https://github.com/madisonrickert/jev-permission-gate) · [Author X](https://x.com/MadisonJRickert/status/2106183706989953339) · [Source code](https://github.com/madisonrickert/jev-permission-gate/blob/main/hooks/policy.ts)
+
+### 稀薄气体流动的受限决策与求解
+
+- 作者：cfdgasman
+- 输入：用户用自然语言描述平板间的气体流动，代码先识别数字和物理单位。
+- Jev 判断：Jev Choice 在封闭选项中识别流型、几何、气体及各量值的角色；代码据置信度决定运行、追问或拒绝。
+- 后续动作：确定性代码计算 Knudsen 数、选择适用的流体或动力学求解器，并输出有单位的剪切应力或流量。
+- 核验边界：只覆盖仓库支持的平板 Couette/Poiseuille 场景；作者对求解器与 Jev 成本的校验未由本站复跑。录制答案可离线重放，不能把每次示例运行都说成实时 Jev 调用。
+- 来源：[GitHub](https://github.com/cfdgasman/jev-cfd-copilot) · [Source code](https://github.com/cfdgasman/jev-cfd-copilot/blob/main/copilot/plan.py)
+
+## 开源项目 / Open-source projects (98)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -559,6 +586,12 @@
 | [reindent/jauvex](https://github.com/reindent/jauvex) | community | Apache-2.0 | 5 |
 | [jonathanavis96/jev-kit](https://github.com/jonathanavis96/jev-kit) | community | MIT | 55 |
 | [nicia-ai/admission-decision-eval](https://github.com/nicia-ai/admission-decision-eval) | community | Apache-2.0 | 0 |
+| [VectifyAI/jev-doc-search](https://github.com/VectifyAI/jev-doc-search) | community | Apache-2.0 | 48 |
+| [madisonrickert/jev-permission-gate](https://github.com/madisonrickert/jev-permission-gate) | community | MIT | 5 |
+| [cfdgasman/jev-cfd-copilot](https://github.com/cfdgasman/jev-cfd-copilot) | community | MIT | 0 |
+| [BareIQ/Jev.TypeSafe.AI](https://github.com/BareIQ/Jev.TypeSafe.AI) | community | MIT | 0 |
+| [dante01yoon/ComfyUI-SystemOne](https://github.com/dante01yoon/ComfyUI-SystemOne) | community | MIT | 0 |
+| [rodrigojager/pi-workspace-search](https://github.com/rodrigojager/pi-workspace-search) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (18)
 

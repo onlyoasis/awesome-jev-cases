@@ -1,45 +1,43 @@
 {
-  "checkedAt": "2026-10-02T03:28:12Z",
+  "checkedAt": "2026-10-03T03:28:55Z",
   "github": "ok",
   "official": "ok",
-  "x": "partial",
+  "x": "ok",
   "addedProjects": 6,
-  "addedCases": 5,
+  "addedCases": 3,
   "officialRecipes": 18,
-  "xPosts": 12,
+  "xPosts": 13,
   "xVisibleCounts": {
-    "TypeSafe Jev": 7,
-    "Jev github.com": null,
-    "from:typesafeai Jev": 5
+    "TypeSafe Jev": 4,
+    "Jev github.com": 5,
+    "from:typesafeai Jev": 4
   },
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "The since:2026-09-22 until:2026-10-02 Latest query returned October 2 posts outside the requested end date; historical coverage is unverified and the cursor remains unchanged.",
+  "xHistoricalCoverageNote": "The since:2026-09-22 until:2026-10-03 Latest query returned October 3 posts outside the requested end date; older coverage is unverified and the cursor remains unchanged.",
   "githubSearches": [
     {
-      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-09-29",
-      "totalCount": 1762,
+      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-09-30",
+      "totalCount": 1728,
       "incomplete": false
     },
     {
-      "query": "jev in:name,description created:>=2026-09-30",
-      "totalCount": 723,
+      "query": "jev in:name,description created:>=2026-10-01",
+      "totalCount": 665,
       "incomplete": false
     },
     {
-      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-09-29",
-      "totalCount": 1629,
+      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-09-30",
+      "totalCount": 1573,
       "incomplete": false
     }
   ],
-  "githubLastSuccessfulAt": "2026-10-02T03:28:12Z",
-  "officialLastSuccessfulAt": "2026-10-02T03:28:12Z",
-  "xLastSuccessfulAt": "2026-09-30T03:28:21.753Z",
-  "xFailureNote": "Logged-in Chrome Latest returned real posts for TypeSafe Jev and from:typesafeai Jev. Jev github.com stayed on a loading placeholder after two retries; the three-query X check is incomplete.",
-  "xPartialReadAt": "2026-10-02T03:28:12Z",
+  "githubLastSuccessfulAt": "2026-10-03T03:28:55Z",
+  "officialLastSuccessfulAt": "2026-10-03T03:28:55Z",
+  "xLastSuccessfulAt": "2026-10-03T03:28:55Z",
   "xQueryStatus": {
     "TypeSafe Jev": "ok",
-    "Jev github.com": "failed_loading_placeholder",
+    "Jev github.com": "ok",
     "from:typesafeai Jev": "ok"
   }
 }

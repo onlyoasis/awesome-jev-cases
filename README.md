@@ -5,7 +5,7 @@
 独立社区维护的 Jev 使用案例与 GitHub 项目目录。每条案例说明输入、Jev 的判断、后续动作和证据边界；项目链接指向原作者仓库。本站与 TypeSafe AI 无隶属或背书关系。
 
 <!-- catalog:summary:start -->
-**51 条使用案例 · 92 个项目条目 · 18 篇官方 cookbook**
+**54 条使用案例 · 98 个项目条目 · 18 篇官方 cookbook**
 <!-- catalog:summary:end -->
 
 [网站案例库](https://typesafe-jev.com/use-cases/) · [网站项目页](https://typesafe-jev.com/projects/) · [官方 cookbook](https://docs.typesafe.ai/cookbooks.md) · [详细目录](CATALOG.md)
@@ -68,6 +68,9 @@
 | [知识库写入准入离线评测](https://github.com/nicia-ai/admission-decision-eval) | **知识库写入审核**<br>待写入记录、5 至 9 条已有记录，以及修改记录的旧版本；仓库用 85 条合成样本评估。 | **判断：**Jev Choice 对每条记录判断冲突、重述或兼容，并对修改判更正、改写、补充或变义。<br>**动作：**评测代码汇总概率，只有低风险判断足够确定才模拟自动接纳，否则转人工；与其他决策模型对照。 | 公开源码<br>85 条均为虚构组织的合成案例；作者的正确率、顺序稳定性和延迟不是本站复测，更不能当作真实生产准入质量。<br>[GitHub](https://github.com/nicia-ai/admission-decision-eval) · [Source code](https://github.com/nicia-ai/admission-decision-eval/blob/main/run.mjs) |
 | [Wisp 语音桌面动作路由](https://github.com/duketopceo/wisp) | **语音桌面助手**<br>按键录下的语音转写、近期会话及当前窗口等受限上下文。 | **判断：**Jev 经 OpenRouter Decisions 以 Choice 选启动应用、工具、代理、回答或澄清，并判断具体目标。<br>**动作：**守护进程按风险级别调用桌面工具或启动编码代理；普通问答由单独的聊天模型生成文字，危险 shell 动作需确认。 | 公开源码<br>主要面向 Linux Omarchy/Hyprland，macOS 为作者提供的移植；运行需麦克风、转写模型和 OpenRouter key，语音上下文可能送外部。本站未在真实桌面复现。<br>[GitHub](https://github.com/duketopceo/wisp) · [Source code](https://github.com/duketopceo/wisp/blob/master/wisp/pipeline.py) |
 | [claude-referee 完成声明核对](https://github.com/ismaildasci/claude-referee) | **编码 Agent 结果核验**<br>Claude Code 的测试或 lint 输出，以及用户写出的明确完成条件。 | **判断：**代码先解析退出码、跳过测试及摘要，再让 Jev 对每条条件用 Noul 判断现有证据是否足以支持。<br>**动作：**CLI 输出 met、unsure 或 missing 并留本地收据，让使用者补跑或检查缺失证据。 | 公开源码<br>当前自动 Stop hook 仅为 shadow 记录；阻止停止的 active 模式仍在计划中。顺序敏感与成本数据为作者自报，本站未复测，不能说项目已自动拦截不实完成声明。<br>[GitHub](https://github.com/ismaildasci/claude-referee) · [Source code](https://github.com/ismaildasci/claude-referee/blob/main/src/cli/commands/done.ts) |
+| [PageIndex + Jev 长文档分层找页](https://github.com/VectifyAI/jev-doc-search) | **长文档检索**<br>用户问题和 PageIndex 从 PDF 构建的章节树：节点标题、摘要、页码范围及页文本。 | **判断：**Jev Choice 逐层选择最可能回答问题的章节和页面；Noul 再判断候选页是否确有回答信息。<br>**动作：**代码按树路径缩小候选并返回页码、文本和判断轨迹，供调用者查证；项目本身不生成最终答案。 | 源码＋作者原帖<br>需要 TypeSafe 和 PageIndex API key；PDF 上传 PageIndex 云端。仓库演示与搜索效果未由本站复测，候选页仍需核对原文。<br>[GitHub](https://github.com/VectifyAI/jev-doc-search) · [Author X](https://x.com/PageIndexAI/status/2105896667446940134) · [Source code](https://github.com/VectifyAI/jev-doc-search/blob/main/tree_search.py) |
+| [Claude Code 自动模式权限预判](https://github.com/madisonrickert/jev-permission-gate) | **编码 Agent 权限判断**<br>Claude Code auto mode 待审批的工具调用、近期用户消息及项目路径。 | **判断：**Jev 一次回答八个 Noul：调用是否符合请求、各项风险及是否含自称已获批准的引导文字；代码按阈值判 allow、deny 或 defer。<br>**动作：**明显可允许的调用跳过原生分类器，明确危险且未请求的调用被阻止；不确定的仍交回 Claude Code 原生分类器。 | 源码＋作者原帖<br>仅适用于可用 mods 的 Claude Code auto mode。待审批命令和近期消息可能发给 TypeSafe，包括未被规则识别的内嵌秘密；模型错误回退原生分类器。作者延迟与安全样本结果未经本站复测，不能视为通用安全保证。<br>[GitHub](https://github.com/madisonrickert/jev-permission-gate) · [Author X](https://x.com/MadisonJRickert/status/2106183706989953339) · [Source code](https://github.com/madisonrickert/jev-permission-gate/blob/main/hooks/policy.ts) |
+| [稀薄气体流动的受限决策与求解](https://github.com/cfdgasman/jev-cfd-copilot) | **科学计算**<br>用户用自然语言描述平板间的气体流动，代码先识别数字和物理单位。 | **判断：**Jev Choice 在封闭选项中识别流型、几何、气体及各量值的角色；代码据置信度决定运行、追问或拒绝。<br>**动作：**确定性代码计算 Knudsen 数、选择适用的流体或动力学求解器，并输出有单位的剪切应力或流量。 | 公开源码<br>只覆盖仓库支持的平板 Couette/Poiseuille 场景；作者对求解器与 Jev 成本的校验未由本站复跑。录制答案可离线重放，不能把每次示例运行都说成实时 Jev 调用。<br>[GitHub](https://github.com/cfdgasman/jev-cfd-copilot) · [Source code](https://github.com/cfdgasman/jev-cfd-copilot/blob/main/copilot/plan.py) |
 <!-- catalog:cases:end -->
 
 ## GitHub 项目库
@@ -110,6 +113,7 @@
 | [jonathanavis96/jev-kit](https://github.com/jonathanavis96/jev-kit) | 编码助手 | 社区项目 | MIT | 55 · 2026-10-02 | Claude Code 的 Jev 工具包：含工具调用闸门、任务层级选择、搜索与浏览等集成；`airlock/client.py` 真调官方 System One，模型失败可 fail-open，作者性能数据未复测。 |
 | [disler/ten-levels-of-jev](https://github.com/disler/ten-levels-of-jev) | 编码助手 | 社区项目 | MIT | 5 · 2026-09-28 | 把 Jev 从单个封闭判断逐级接入 Agent hooks 的教学代码库，含 TypeSafe/OpenRouter 真调用、离线 mock、交互演示与测试；速度和成本数字为作者材料。 |
 | [Tech-Byte-Frontier/jevgate](https://github.com/Tech-Byte-Frontier/jevgate) | 编码助手 | 社区项目 | Apache-2.0 OR MIT | 3 · 2026-09-24 | Rust 代码审查工具：解析源码后向 Jev 提交局部、类型化的维护性判断，并由代码汇成带位置和建议的发现；安全规则需另行启用。 |
+| [rodrigojager/pi-workspace-search](https://github.com/rodrigojager/pi-workspace-search) | 编码助手 | 社区项目 | MIT | 0 · 2026-10-03 | Pi 编码助手的有界源码检索：字面/正则走 ripgrep，本地索引可选，用户显式启用后用 TypeSafe 分类当前片段并返回行号与部分覆盖标记；不是全库无遗漏证明。 |
 | [wuyoscar/jev-skill](https://github.com/wuyoscar/jev-skill) | MCP 与 Agent Skill | 社区项目 | MIT | 543 · 2026-09-29 | Jev 用例、工作流与 agent skills 集合。 |
 | [jkudish/jev-mcp](https://github.com/jkudish/jev-mcp) | MCP 与 Agent Skill | 社区项目 | MIT | 213 · 2026-09-22 | MCP 服务器：把校验、筛选、排序等判断暴露为 Agent 可调用的工具。 |
 | [itsmostafa/typesafe-mcp](https://github.com/itsmostafa/typesafe-mcp) | MCP 与 Agent Skill | 社区项目 | MIT | 187 · 2026-09-22 | MCP 连接器：让 Agent 直接调用 Jev。 |
@@ -126,6 +130,7 @@
 | [fstandhartinger/jevbench](https://github.com/fstandhartinger/jevbench) | 数据与检索 | 社区项目 | MIT | 176 · 2026-09-29 | Jev 级决策模型基准（95 个系统在线排行，Jev 1.13 现列第 4）：冻结方法、封存决策与 SHA-256 清单，与 TypeSafe 无关。 |
 | [jerryjliu/docjev](https://github.com/jerryjliu/docjev) | 数据与检索 | 社区项目 | Apache-2.0 | 165 · 2026-09-22 | LlamaIndex 出品：用 Jev 做快速文档分类与子文档边界识别。 |
 | [jexp/neo4jev](https://github.com/jexp/neo4jev) | 数据与检索 | 社区项目 | MIT | 152 · 2026-09-29 | Neo4j 图导航演示：每跳用 Choice 选出边、Noul 判目标，同请求一次往返，再对概率做束搜索渲染路径；schema 动态自省。 |
+| [VectifyAI/jev-doc-search](https://github.com/VectifyAI/jev-doc-search) | 数据与检索 | 社区项目 | Apache-2.0 | 48 · 2026-10-03 | PageIndex 章节树与 Jev 组合检索长 PDF：Choice 逐层选章节/页面，Noul 检查候选页是否提供答案；不用向量库或嵌入，但须 PageIndex 云端和 TypeSafe 双 API key。 |
 | [typesafe-ai/WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) | 数据与检索 | 官方 | Apache-2.0 | 12 · 2026-10-01 | TypeSafe 官方工作流评测代码：复现发票、客服、代理轨迹和安保事件的有界决策评测，将 Jev 与其他提供商按参考模型动作一致性、成本和耗时对照；一致率不等于真实业务正确率。 |
 | [columnar-tech/jevaro](https://github.com/columnar-tech/jevaro) | 数据与检索 | 社区项目 | Apache-2.0 | 10 · 2026-09-30 | TypeSafe Jev 的 Python 批处理代理：多个独立状态并发逐条调用官方 API，再按输入顺序输出 Apache Arrow 流；附 Python 与 JavaScript 读取器，非官方原生批量接口。 |
 | [youdotcom-oss/risk-analysis-server](https://github.com/youdotcom-oss/risk-analysis-server) | 数据与检索 | 社区项目 | MIT | 2 · 2026-10-02 | 风险画像监控服务：You.com 检索、Jev Noul/Score/Choice 分别做威胁门控、查询和证据排序、级别判断，代码控制调查预算并由 Qwen 起草带来源报告；效果为作者材料。 |
@@ -137,6 +142,7 @@
 | [openlayer-ai/jevals](https://github.com/openlayer-ai/jevals) | 安全与审核 | 社区项目 | MIT | 97 · 2026-09-29 | 把 agent 评估与护栏做成 Jev 决策：一条 trace 一次请求并行 8 项判定，千分之几美分、数百毫秒，可跑全量流量；后端可选 TypeSafe/Vercel、本地 Kev/Laya 或普通 LLM。 |
 | [leepokai/jev-guard](https://github.com/leepokai/jev-guard) | 安全与审核 | 社区项目 | MIT | 18 · 2026-09-22 | 编码 Agent 的安全闸门：对每次工具调用给出 deny/ask/allow 风险判断，并标记提示注入；支持多种编码助手。 |
 | [win4r/jev-security-scan](https://github.com/win4r/jev-security-scan) | 安全与审核 | 社区项目 | MIT | 9 · 2026-09-22 | 用 Jev 审查 Agent Skill 与 MCP 代码中的可疑行为（中文说明项目）。 |
+| [madisonrickert/jev-permission-gate](https://github.com/madisonrickert/jev-permission-gate) | 安全与审核 | 社区项目 | MIT | 5 · 2026-10-03 | Claude Code auto mode 的 Jev 权限预判 mod：八个 Noul 和代码阈值决定 allow/deny/defer，不确定交原生分类器；命令与近期消息可能发送 TypeSafe，作者安全测量未复测。 |
 | [ismaildasci/claude-referee](https://github.com/ismaildasci/claude-referee) | 安全与审核 | 社区项目 | MIT | 3 · 2026-10-02 | Claude Code 的完成证据检查器：代码解析测试与 lint 结果，Jev 核对明确条件并记本地收据；自动 Stop hook 目前为 shadow 模式，active 阻断尚未发布。 |
 | [duberblock/JEVals](https://github.com/duberblock/JEVals) | 安全与审核 | 社区项目 | MIT | 2 · 2026-09-30 | 交互式 Jev 决策评测台：实际 TypeSafe 基线与模拟器、独立模型及 judge 逐题比较并保存执行追踪；默认托管模拟器会接收场景文本。 |
 | [suraj-phanindra/wellposed](https://github.com/suraj-phanindra/wellposed) | 安全与审核 | 社区项目 | MIT | 2 · 2026-09-27 | Jev 请求预检查工具：离线规则筛结构缺陷，再以 Jev Noul 判断语义问题，给开发者警告与修改建议；语义层需要外部 API。 |
@@ -149,8 +155,11 @@
 | [fazlerocks/jevmail](https://github.com/fazlerocks/jevmail) | 终端用户应用 | 社区项目 | MIT | 90 · 2026-09-29 | 开源 Gmail 分诊：每封 3 问分五个托盘并打紧急度，只读不代发；1000 封约 1 分钟约 3 美分，纠错与概率本地留痕。 |
 | [AboveColin/HA-Jev](https://github.com/AboveColin/HA-Jev) | 终端用户应用 | 社区项目 | MIT | 69 · 2026-09-29 | Home Assistant 集成：Noul/Choice/Score 问答变成传感器实体与自动化动作，附 25 个蓝图、Assist 语音路由与每日花费统计；与 TypeSafe 无关的社区作品。 |
 | [reindent/jauvex](https://github.com/reindent/jauvex) | 终端用户应用 | 社区项目 | Apache-2.0 | 5 · 2026-10-02 | 可语音操控 Claude、Codex 与 Grok 会话的桌面应用；可选 TypeSafe Jev 做封闭路由判断，无 Jev key 时由另一模型兜底。本站未实机验收。 |
+| [cfdgasman/jev-cfd-copilot](https://github.com/cfdgasman/jev-cfd-copilot) | 终端用户应用 | 社区项目 | MIT | 0 · 2026-10-03 | 稀薄气体平板流课程示例：Jev 选择流型、几何、气体与量值角色，代码计算置信度门控和物理求解；包含可离线重放的答案与作者求解器校验。 |
+| [dante01yoon/ComfyUI-SystemOne](https://github.com/dante01yoon/ComfyUI-SystemOne) | 终端用户应用 | 社区项目 | MIT | 0 · 2026-10-03 | ComfyUI 的 System One 判断节点，提供 TypeSafe Jev 和本地 Laya 两种后端，可用 Choice/Noul/Score 路由图流程；仓库可见演示主要用 Laya，不能当作 Jev 实测。 |
 | [duketopceo/wisp](https://github.com/duketopceo/wisp) | 终端用户应用 | 社区项目 | MIT | 0 · 2026-10-02 | Omarchy/Hyprland 语音桌面助手：转写后用 OpenRouter Jev 选应用、工具、代理或回答路线，按风险门控桌面动作；文本回答另用聊天模型，macOS 有作者移植。 |
 | [obie/ruby_decision_model](https://github.com/obie/ruby_decision_model) | 社区 SDK 与客户端 | 社区项目 | MIT | 52 · 2026-09-29 | Ruby 决策模型客户端：一套 Client 走 OpenRouter（默认）或 TypeSafe 直连，Noul/Score 返回校准概率，无运行时依赖。 |
+| [BareIQ/Jev.TypeSafe.AI](https://github.com/BareIQ/Jev.TypeSafe.AI) | 社区 SDK 与客户端 | 社区项目 | MIT | 0 · 2026-10-03 | 非官方 .NET TypeSafe/Jev 客户端：提供类型化 Noul、Choice、Score 结果、可注入 HttpClient、取消和重试；不属于 TypeSafe 官方 SDK。 |
 | [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) | 开源复刻 | 受启发的复刻 | Apache-2.0 | 28,212 · 2026-09-29 | 独立开源的非自回归 System 1 决策引擎（自有模型，非 Jev 实现、更非 Jev 权重开源）：对任意文本输出 Choice/Score/是否判断，可本地或经兼容接口服务，也出现在 JevBench 等第三方评测里。 |
 | [TheoLeeCJ/SemIf-OpenJev](https://github.com/TheoLeeCJ/SemIf-OpenJev) | 开源复刻 | 受启发的复刻 | MIT | 4,560 · 2026-09-29 | SemIf 作者的开放模型版：在 3090 或浏览器里跑“语义 if”接口模式。独立项目，与 Jev/TypeSafe 无关，非 Jev 权重开源。 |
 | [TheoLeeCJ/SemIf](https://github.com/TheoLeeCJ/SemIf) | 开源复刻 | 受启发的复刻 | MIT | 2,935 · 2026-09-22 | 受 Jev 启发的开源实现：在开源模型上复刻“语义 if”接口，3090 显卡可本地运行。原名 OpenJev，作者声明与 TypeSafe 无关；不是 Jev 权重开源。 |
@@ -175,7 +184,7 @@
 
 表格由 [`data/cases.json`](data/cases.json)、[`data/projects.json`](data/projects.json) 生成。另有 [`data/official-recipes.json`](data/official-recipes.json) 收录 TypeSafe 官方 cookbook，正文与来源见[详细目录](CATALOG.md)。运行 `node scripts/validate.mjs` 检查结构，再运行 `node scripts/render.mjs` 同步中英文 README 与目录；`node scripts/render.mjs --check` 可确认生成内容没有过期。
 
-每日编辑流程写在 [`docs/codex-daily-curation.md`](docs/codex-daily-curation.md)：Codex 分别搜索 GitHub、Chrome 中的 X 原帖和官方资料，按一手证据判断收录，不设 stars 硬门槛。**原生 Scheduled 心跳任务 `jev` 已启用，每天日本时间 12:17 运行**。任一来源有独立核实的合格内容即可发布；失败来源单独标记并保留其补查游标。2026-10-01 的 X 登录失败不影响已核实的 GitHub 与官方条目发布，X 的历史缺口仍待补查。
+每日编辑流程写在 [`docs/codex-daily-curation.md`](docs/codex-daily-curation.md)：Codex 分别搜索 GitHub、Chrome 中的 X 原帖和官方资料，按一手证据判断收录，不设 stars 硬门槛。**原生 Scheduled 心跳任务 `jev` 已启用，每天日本时间 12:17 运行**。任一来源有独立核实的合格内容即可发布；失败来源单独标记并保留其补查游标。2026-10-03 的 X 三组 Latest 已实际回读，但日期筛选仍返回区间外帖子，历史缺口继续保留。
 
 ## 贡献
 

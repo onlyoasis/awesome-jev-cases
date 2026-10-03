@@ -1470,5 +1470,101 @@
     "lastVerified": "2026-10-02",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "jev-doc-search",
+    "name": "VectifyAI/jev-doc-search",
+    "url": "https://github.com/VectifyAI/jev-doc-search",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "PageIndex 章节树与 Jev 组合检索长 PDF：Choice 逐层选章节/页面，Noul 检查候选页是否提供答案；不用向量库或嵌入，但须 PageIndex 云端和 TypeSafe 双 API key。",
+      "en": "Searches long PDFs with a PageIndex section tree and Jev Choice over nodes/pages plus Noul answerability checks. No vector DB or embeddings, but both PageIndex cloud and TypeSafe API keys are required."
+    },
+    "sourceUrl": "https://github.com/VectifyAI/jev-doc-search",
+    "lastVerified": "2026-10-03",
+    "status": "verified",
+    "stars": 48
+  },
+  {
+    "id": "jev-permission-gate",
+    "name": "madisonrickert/jev-permission-gate",
+    "url": "https://github.com/madisonrickert/jev-permission-gate",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Claude Code auto mode 的 Jev 权限预判 mod：八个 Noul 和代码阈值决定 allow/deny/defer，不确定交原生分类器；命令与近期消息可能发送 TypeSafe，作者安全测量未复测。",
+      "en": "A Jev permission precheck mod for Claude Code auto mode: eight Nouls and code thresholds decide allow, deny, or defer to the built-in classifier. Commands and recent messages may go to TypeSafe; safety measurements are author-reported."
+    },
+    "sourceUrl": "https://github.com/madisonrickert/jev-permission-gate",
+    "lastVerified": "2026-10-03",
+    "status": "verified",
+    "stars": 5
+  },
+  {
+    "id": "jev-cfd-copilot",
+    "name": "cfdgasman/jev-cfd-copilot",
+    "url": "https://github.com/cfdgasman/jev-cfd-copilot",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "稀薄气体平板流课程示例：Jev 选择流型、几何、气体与量值角色，代码计算置信度门控和物理求解；包含可离线重放的答案与作者求解器校验。",
+      "en": "A rarefied-gas parallel-plate teaching example: Jev selects flow, geometry, gas, and quantity roles while code gates confidence and runs the physics solver; recorded answers replay offline and solver validation is author-provided."
+    },
+    "sourceUrl": "https://github.com/cfdgasman/jev-cfd-copilot",
+    "lastVerified": "2026-10-03",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-typesafe-dotnet",
+    "name": "BareIQ/Jev.TypeSafe.AI",
+    "url": "https://github.com/BareIQ/Jev.TypeSafe.AI",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "非官方 .NET TypeSafe/Jev 客户端：提供类型化 Noul、Choice、Score 结果、可注入 HttpClient、取消和重试；不属于 TypeSafe 官方 SDK。",
+      "en": "An unofficial .NET TypeSafe/Jev client with typed Noul, Choice, and Score answers, injectable HttpClient, cancellation, and retries; not a TypeSafe first-party SDK."
+    },
+    "sourceUrl": "https://github.com/BareIQ/Jev.TypeSafe.AI",
+    "lastVerified": "2026-10-03",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "comfyui-systemone",
+    "name": "dante01yoon/ComfyUI-SystemOne",
+    "url": "https://github.com/dante01yoon/ComfyUI-SystemOne",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "ComfyUI 的 System One 判断节点，提供 TypeSafe Jev 和本地 Laya 两种后端，可用 Choice/Noul/Score 路由图流程；仓库可见演示主要用 Laya，不能当作 Jev 实测。",
+      "en": "ComfyUI System One nodes with TypeSafe Jev and local Laya backends for Choice/Noul/Score workflow branching; visible demos mainly use Laya and are not Jev performance evidence."
+    },
+    "sourceUrl": "https://github.com/dante01yoon/ComfyUI-SystemOne",
+    "lastVerified": "2026-10-03",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "pi-workspace-search",
+    "name": "rodrigojager/pi-workspace-search",
+    "url": "https://github.com/rodrigojager/pi-workspace-search",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Pi 编码助手的有界源码检索：字面/正则走 ripgrep，本地索引可选，用户显式启用后用 TypeSafe 分类当前片段并返回行号与部分覆盖标记；不是全库无遗漏证明。",
+      "en": "Bounded source search for Pi: ripgrep handles exact/regex, a local index is optional, and explicitly enabled TypeSafe classification ranks current snippets with line references and partial-coverage markers; it does not prove exhaustive absence."
+    },
+    "sourceUrl": "https://github.com/rodrigojager/pi-workspace-search",
+    "lastVerified": "2026-10-03",
+    "status": "verified",
+    "stars": 0
   }
 ]
