@@ -1934,5 +1934,133 @@
         "url": "https://github.com/cfdgasman/jev-cfd-copilot/blob/main/copilot/plan.py"
       }
     ]
+  },
+  {
+    "id": "hippo-memory-jev-rerank",
+    "name": "hippo-memory",
+    "title": {
+      "zh": "Jev 批量重排 Agent 记忆候选",
+      "en": "Batch reranking agent memories with Jev"
+    },
+    "author": "kitfunso",
+    "area": {
+      "zh": "Agent 记忆检索",
+      "en": "Agent memory retrieval"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户检索问题和本地记忆库预检索出的最多 40 条候选，内容先截断并做秘密信息过滤。",
+      "en": "A user query and up to 40 pre-retrieved local memories, truncated and passed through a secret redactor."
+    },
+    "decision": {
+      "zh": "Jev 在一次 System One 请求中对每条候选回答一个 Noul：它是否有助于回答问题，并返回相关性概率。",
+      "en": "In one System One call, Jev answers one Noul per candidate about whether it helps answer the query and returns relevance probabilities."
+    },
+    "action": {
+      "zh": "代码按概率重排并将记忆交给后续回答步骤；请求失败或答案不完整时回退到本地交叉编码器。",
+      "en": "Code reranks the memories for the downstream answer step; request failure or incomplete answers fall back to a local cross-encoder."
+    },
+    "boundary": {
+      "zh": "Jev 重排需显式启用，会把查询和候选记忆发给 TypeSafe。作者两个语料的排名提升未由本站复测；其评测未显示最终回答优于免费重排器，最高分也不证明候选含答案。",
+      "en": "Jev reranking is opt-in and sends query and memory text to TypeSafe. Author-reported ranking gains on two corpora were not reproduced; their evaluation did not show better final answers than a free reranker, and top score does not prove answerability."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kitfunso/hippo-memory"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/kitfunso/hippo-memory/blob/master/src/rerankers/jev.ts"
+      },
+      {
+        "label": "Author evaluation",
+        "url": "https://github.com/kitfunso/hippo-memory/blob/master/docs/evals/2026-09-19-jev-reranker.md"
+      }
+    ]
+  },
+  {
+    "id": "clipsieve-creator-research",
+    "name": "clipsieve",
+    "title": {
+      "zh": "Jev 筛选社交素材研究样本",
+      "en": "Jev shortlists social content for creator research"
+    },
+    "author": "SeeYangZhi",
+    "area": {
+      "zh": "创作者内容研究",
+      "en": "Creator content research"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "平台帖子经字幕、画面文字、标题、评论与互动数据转成带来源的文字证据包。",
+      "en": "Posts become sourced text evidence packets from transcripts, on-screen text, captions, comments, and metrics."
+    },
+    "decision": {
+      "zh": "Jev 对每个帖子按固定 rubric 回答类型化问题，判断是否值得进入后续研究候选。",
+      "en": "Jev answers typed fixed-rubric questions for each post to decide whether it belongs in the research shortlist."
+    },
+    "action": {
+      "zh": "代码按阈值和多样性筛选少数素材，再将幸存者交给 Claude 解释模式、草拟创意。",
+      "en": "Code applies thresholds and diversity selection, then sends survivors to Claude to explain patterns and draft concepts."
+    },
+    "boundary": {
+      "zh": "仓库说明后端及 fixture 流程已实现，前端仍在计划中；本站只核对源码和 README，未接入真实平台或复测筛选质量，Jev 与 Claude 服务均需凭据。",
+      "en": "The repository says backend and fixture flow are implemented while the frontend is planned. This site checked code and README only, not live platform integration or selection quality; Jev and Claude require credentials."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/SeeYangZhi/clipsieve"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/SeeYangZhi/clipsieve/blob/main/backend/clipsieve/judge/typesafe_client.py"
+      }
+    ]
+  },
+  {
+    "id": "jev-lint-agent-edit-rules",
+    "name": "jev-lint",
+    "title": {
+      "zh": "Jev 在编码 Agent 编辑后检查团队规则",
+      "en": "Jev checks team rules after coding-agent edits"
+    },
+    "author": "Chris Korhonen",
+    "area": {
+      "zh": "编码 Agent 质量反馈",
+      "en": "Coding-agent quality feedback"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "编码 Agent 刚修改的文件内容及仓库配置的团队规则。",
+      "en": "Code just edited by a coding agent and repository-configured team rules."
+    },
+    "decision": {
+      "zh": "TypeSafe Jev 对各条规则作 Noul 判断，返回是否出现需要提醒的违例概率。",
+      "en": "TypeSafe Jev answers Nouls for configured rules, returning probabilities of violations worth flagging."
+    },
+    "action": {
+      "zh": "编辑钩子及时把疑似违例反馈给 Agent 修复，并记录检查；服务异常时放行编辑。",
+      "en": "A post-edit hook reports likely violations to the agent for repair and records checks; service failures let the edit proceed."
+    },
+    "boundary": {
+      "zh": "可改用 Cloudflare Clef，但作者称其准确率尚未测量；演示视频含示意场景。README 的延迟、成本及违例下降来自作者实验，本站未复测，也不替代确定性 lint 与人工审查。",
+      "en": "Cloudflare Clef is optional, with accuracy not yet measured by the author; the demo includes an illustrative scene. README latency, cost, and violation reductions are author results, unverified here, and do not replace deterministic lint or review."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ckorhonen/jev-lint"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/ckorhonen/jev-lint/blob/main/src/jev.ts"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/ckorhonen/status/2106503620002996467"
+      }
+    ]
   }
 ]

@@ -1566,5 +1566,133 @@
     "lastVerified": "2026-10-03",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "snapdec",
+    "name": "aktonay/snapdec",
+    "url": "https://github.com/aktonay/snapdec",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "提供编码 Agent 共用的 MCP/CLI 判断服务，可选 TypeSafe Jev 后端调用 System One 的 Choice/Noul/Score；代码把低确定性结果交回 Agent，作者设备与准确率示例未由本站复测。",
+      "en": "An MCP/CLI decision service for coding agents with a TypeSafe Jev System One backend for Choice/Noul/Score; low-certainty results return to the agent. Hardware and accuracy examples are author-reported."
+    },
+    "sourceUrl": "https://github.com/aktonay/snapdec",
+    "lastVerified": "2026-10-04",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "hippo-memory",
+    "name": "kitfunso/hippo-memory",
+    "url": "https://github.com/kitfunso/hippo-memory",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "本地 Agent 记忆库的可选 Jev 重排器：一次请求给最多 40 条候选记忆分别打 Noul 相关性分，失败退回本地交叉编码器；作者排名评测未证明最终回答改善。",
+      "en": "An optional Jev reranker for a local agent memory store: one request scores up to 40 candidate memories with Nouls and falls back to a local cross-encoder. Author ranking tests do not establish better final answers."
+    },
+    "sourceUrl": "https://github.com/kitfunso/hippo-memory",
+    "lastVerified": "2026-10-04",
+    "status": "verified",
+    "stars": 770
+  },
+  {
+    "id": "deepnoodle-decide",
+    "name": "deepnoodle-ai/decide",
+    "url": "https://github.com/deepnoodle-ai/decide",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Go 库及 CLI，默认连接 TypeSafe Jev，以 Choice/Noul/Score 对文本、文件或 diff 运行类型化判断；也支持 Jev 兼容服务，运行示例和速度为作者材料。",
+      "en": "A Go library and CLI that defaults to TypeSafe Jev for typed Choice/Noul/Score decisions over text, files, or diffs; it also supports compatible services. Demos and timing are author-provided."
+    },
+    "sourceUrl": "https://github.com/deepnoodle-ai/decide",
+    "lastVerified": "2026-10-04",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "clipsieve",
+    "name": "SeeYangZhi/clipsieve",
+    "url": "https://github.com/SeeYangZhi/clipsieve",
+    "category": "apps",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "创作者素材研究工具：从字幕、画面文字、评论等证据构建帖子状态，Jev 按固定 rubric 评分后筛选候选，再交 Claude 解读；前端仍在计划中，本站未运行真实平台流程。",
+      "en": "A creator research tool that builds post evidence from transcripts, on-screen text, and comments, scores fixed rubrics with Jev, then sends a shortlist to Claude. The frontend remains planned; live platform flow was not reproduced."
+    },
+    "sourceUrl": "https://github.com/SeeYangZhi/clipsieve",
+    "lastVerified": "2026-10-04",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "pi-jev-vcc-memory-relevance",
+    "name": "DAXZEIT/Pi-JEV-VCC-memory-relevance",
+    "url": "https://github.com/DAXZEIT/Pi-JEV-VCC-memory-relevance",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Pi 编码 Agent 的记忆相关性扩展：对索引中每条记忆作 Noul 判断并给 Agent 排序提示，可用 OpenRouter Jev 或本地兼容 CLI；排序只是待核对线索。",
+      "en": "A Pi coding-agent memory relevance extension that scores each indexed memory with a Noul and gives the agent ranked hints, using hosted Jev through OpenRouter or a local compatible CLI; ranks need review."
+    },
+    "sourceUrl": "https://github.com/DAXZEIT/Pi-JEV-VCC-memory-relevance",
+    "lastVerified": "2026-10-04",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "x-bookmark-digest-template",
+    "name": "NaokiKomura/x-bookmark-digest-template",
+    "url": "https://github.com/NaokiKomura/x-bookmark-digest-template",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "X 书签与技术信息源摘要模板：可选 Jev 对公开正文作科技相关性 Noul 与主题 Choice，写入日常筛选数据；无 Jev key 时标 unavailable，由另一流程接手。",
+      "en": "An X bookmark and tech-source digest template with optional Jev Noul relevance and Choice topic decisions over public text; without a Jev key it records unavailable and uses another workflow."
+    },
+    "sourceUrl": "https://github.com/NaokiKomura/x-bookmark-digest-template",
+    "lastVerified": "2026-10-04",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-lint",
+    "name": "ckorhonen/jev-lint",
+    "url": "https://github.com/ckorhonen/jev-lint",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "编码 Agent 编辑后触发的模糊规则检查：TypeSafe Jev 对团队规则作 Noul 违例判断并提示 Agent 修复；可选 Clef，失败放行，作者效果与成本未由本站复测。",
+      "en": "A post-edit fuzzy rule check for coding agents: TypeSafe Jev uses Nouls to flag team-rule violations for agent repair. Clef is optional, failures pass through, and author results and costs were not reproduced."
+    },
+    "sourceUrl": "https://github.com/ckorhonen/jev-lint",
+    "lastVerified": "2026-10-04",
+    "status": "verified",
+    "stars": 6
+  },
+  {
+    "id": "llama-cpp-systemone",
+    "name": "ggml-org/llama.cpp",
+    "url": "https://github.com/ggml-org/llama.cpp",
+    "category": "replica",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "已合并的 PR #29818 为 Laya、Julia-1、Lev、OpenJev、Kev 加入 `/v1/systemone` 兼容 API 和 Choice/Noul/Score 概率输出；这是替代模型基础设施，不提供 TypeSafe Jev 权重。",
+      "en": "Merged PR #29818 adds a compatible `/v1/systemone` API and Choice/Noul/Score probabilities for Laya, Julia-1, Lev, OpenJev, and Kev. This is alternative-model infrastructure, not TypeSafe Jev weights."
+    },
+    "sourceUrl": "https://github.com/ggml-org/llama.cpp/pull/29818",
+    "lastVerified": "2026-10-04",
+    "status": "verified",
+    "stars": 130238
   }
 ]

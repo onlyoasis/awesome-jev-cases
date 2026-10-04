@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (54)
+## 深度使用案例 / Worked cases (57)
 
 ### jev-ultrafast
 
@@ -490,7 +490,34 @@
 - 核验边界：只覆盖仓库支持的平板 Couette/Poiseuille 场景；作者对求解器与 Jev 成本的校验未由本站复跑。录制答案可离线重放，不能把每次示例运行都说成实时 Jev 调用。
 - 来源：[GitHub](https://github.com/cfdgasman/jev-cfd-copilot) · [Source code](https://github.com/cfdgasman/jev-cfd-copilot/blob/main/copilot/plan.py)
 
-## 开源项目 / Open-source projects (98)
+### Jev 批量重排 Agent 记忆候选
+
+- 作者：kitfunso
+- 输入：用户检索问题和本地记忆库预检索出的最多 40 条候选，内容先截断并做秘密信息过滤。
+- Jev 判断：Jev 在一次 System One 请求中对每条候选回答一个 Noul：它是否有助于回答问题，并返回相关性概率。
+- 后续动作：代码按概率重排并将记忆交给后续回答步骤；请求失败或答案不完整时回退到本地交叉编码器。
+- 核验边界：Jev 重排需显式启用，会把查询和候选记忆发给 TypeSafe。作者两个语料的排名提升未由本站复测；其评测未显示最终回答优于免费重排器，最高分也不证明候选含答案。
+- 来源：[GitHub](https://github.com/kitfunso/hippo-memory) · [Source code](https://github.com/kitfunso/hippo-memory/blob/master/src/rerankers/jev.ts) · [Author evaluation](https://github.com/kitfunso/hippo-memory/blob/master/docs/evals/2026-09-19-jev-reranker.md)
+
+### Jev 筛选社交素材研究样本
+
+- 作者：SeeYangZhi
+- 输入：平台帖子经字幕、画面文字、标题、评论与互动数据转成带来源的文字证据包。
+- Jev 判断：Jev 对每个帖子按固定 rubric 回答类型化问题，判断是否值得进入后续研究候选。
+- 后续动作：代码按阈值和多样性筛选少数素材，再将幸存者交给 Claude 解释模式、草拟创意。
+- 核验边界：仓库说明后端及 fixture 流程已实现，前端仍在计划中；本站只核对源码和 README，未接入真实平台或复测筛选质量，Jev 与 Claude 服务均需凭据。
+- 来源：[GitHub](https://github.com/SeeYangZhi/clipsieve) · [Source code](https://github.com/SeeYangZhi/clipsieve/blob/main/backend/clipsieve/judge/typesafe_client.py)
+
+### Jev 在编码 Agent 编辑后检查团队规则
+
+- 作者：Chris Korhonen
+- 输入：编码 Agent 刚修改的文件内容及仓库配置的团队规则。
+- Jev 判断：TypeSafe Jev 对各条规则作 Noul 判断，返回是否出现需要提醒的违例概率。
+- 后续动作：编辑钩子及时把疑似违例反馈给 Agent 修复，并记录检查；服务异常时放行编辑。
+- 核验边界：可改用 Cloudflare Clef，但作者称其准确率尚未测量；演示视频含示意场景。README 的延迟、成本及违例下降来自作者实验，本站未复测，也不替代确定性 lint 与人工审查。
+- 来源：[GitHub](https://github.com/ckorhonen/jev-lint) · [Source code](https://github.com/ckorhonen/jev-lint/blob/main/src/jev.ts) · [Author X](https://x.com/ckorhonen/status/2106503620002996467)
+
+## 开源项目 / Open-source projects (106)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -592,6 +619,14 @@
 | [BareIQ/Jev.TypeSafe.AI](https://github.com/BareIQ/Jev.TypeSafe.AI) | community | MIT | 0 |
 | [dante01yoon/ComfyUI-SystemOne](https://github.com/dante01yoon/ComfyUI-SystemOne) | community | MIT | 0 |
 | [rodrigojager/pi-workspace-search](https://github.com/rodrigojager/pi-workspace-search) | community | MIT | 0 |
+| [aktonay/snapdec](https://github.com/aktonay/snapdec) | community | Apache-2.0 | 0 |
+| [kitfunso/hippo-memory](https://github.com/kitfunso/hippo-memory) | community | MIT | 770 |
+| [deepnoodle-ai/decide](https://github.com/deepnoodle-ai/decide) | community | Apache-2.0 | 0 |
+| [SeeYangZhi/clipsieve](https://github.com/SeeYangZhi/clipsieve) | community | Apache-2.0 | 0 |
+| [DAXZEIT/Pi-JEV-VCC-memory-relevance](https://github.com/DAXZEIT/Pi-JEV-VCC-memory-relevance) | community | MIT | 0 |
+| [NaokiKomura/x-bookmark-digest-template](https://github.com/NaokiKomura/x-bookmark-digest-template) | community | MIT | 0 |
+| [ckorhonen/jev-lint](https://github.com/ckorhonen/jev-lint) | community | MIT | 6 |
+| [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp) | inspired | MIT | 130238 |
 
 ## 官方 cookbook / Official recipes (18)
 
