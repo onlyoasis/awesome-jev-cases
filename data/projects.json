@@ -1694,5 +1694,133 @@
     "lastVerified": "2026-10-04",
     "status": "verified",
     "stars": 130238
+  },
+  {
+    "id": "sys1",
+    "name": "hraness/sys1",
+    "url": "https://github.com/hraness/sys1",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "编码 Agent 的 System One 工具箱：CLI、网关与类型化客户端可选托管 Jev 检查 diff 和完成声明；须显式启用，外发内容应先预览。",
+      "en": "A System One toolkit for coding agents with a CLI, gateway, and typed client; hosted Jev can check diffs and completion claims when explicitly enabled. Preview outbound content."
+    },
+    "sourceUrl": "https://github.com/hraness/sys1",
+    "lastVerified": "2026-10-05",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "auto-review-siyuan",
+    "name": "wmy2981/auto-review-siyuan",
+    "url": "https://github.com/wmy2981/auto-review-siyuan",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "思源 AI 工具调用审批插件：Jev 判断授权、影响与待审内容的自授权文字，代码再按阈值批准、拒绝或交人工；不构成安全保证。",
+      "en": "A SiYuan AI tool-call review plugin: Jev assesses authorization, impact, and self-authorizing text; code thresholds then approve, deny, or ask the user. It is not a security guarantee."
+    },
+    "sourceUrl": "https://github.com/wmy2981/auto-review-siyuan",
+    "lastVerified": "2026-10-05",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-board-games",
+    "name": "tripodxu/board-games",
+    "url": "https://github.com/tripodxu/board-games",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "七种棋类对弈站：Jev 给合法着法 Choice 概率，确定性战术层可接管后续走子；另有 mock、随机与 Rapfi 渠道，作者战绩未由本站复跑。",
+      "en": "A seven-game board-play site where Jev scores legal moves with Choice probabilities and a deterministic tactics layer can override them. Mock, random, and Rapfi modes also exist; results were not reproduced."
+    },
+    "sourceUrl": "https://github.com/tripodxu/board-games",
+    "lastVerified": "2026-10-05",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-factorio-agent",
+    "name": "jevplays-games/jev-factorio-agent",
+    "url": "https://github.com/jevplays-games/jev-factorio-agent",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Factorio 宏观决策 Agent：Jev 对目标、下一动作、卡住状态和紧急度作 Choice/Noul/Score 判断，代码过滤非法动作并在低置信度时回退；离线 mock 并非 Jev 实测。",
+      "en": "A Factorio macro-decision agent: Jev answers Choice/Noul/Score questions on goals, next actions, stuck state, and urgency; code filters impossible actions and falls back on low confidence. Offline mock is not Jev inference."
+    },
+    "sourceUrl": "https://github.com/jevplays-games/jev-factorio-agent",
+    "lastVerified": "2026-10-05",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "ora-jev",
+    "name": "shopsmartai/ora-jev",
+    "url": "https://github.com/shopsmartai/ora-jev",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Oracle PL/SQL 的 Jev 兼容扩展：把行 JSON 批量发往 System One，提供真假、概率、分类和评分函数；需网络 ACL 与 HTTPS wallet，行数据会离开数据库。",
+      "en": "An Oracle PL/SQL Jev-compatible extension batching row JSON to System One for boolean, probability, choice, and score functions. It needs a network ACL and HTTPS wallet; row data leaves the database."
+    },
+    "sourceUrl": "https://github.com/shopsmartai/ora-jev",
+    "lastVerified": "2026-10-05",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "decision-bench",
+    "name": "dreamerron/decision-bench",
+    "url": "https://github.com/dreamerron/decision-bench",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Agent 封闭判断评测库：公开 450 条作者标注样本和规则基线，实际调用 Jev 对路由、完成核验、浏览动作等任务评分；实验结果未经本站复核。",
+      "en": "An agent decision benchmark with 450 author-labelled items and a rules baseline; it calls Jev for routing, completion checks, browser-action risk, and more. Reported results were not reproduced here."
+    },
+    "sourceUrl": "https://github.com/dreamerron/decision-bench",
+    "lastVerified": "2026-10-05",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-java-sdk",
+    "name": "dmishra2022/jev-java-sdk",
+    "url": "https://github.com/dmishra2022/jev-java-sdk",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "非官方 Java 26 Jev SDK：提供 System One 的 Noul/Choice/Score 类型化客户端、重试和虚拟线程，并附离线工单样例；结构化并发模块需预览特性。",
+      "en": "An unofficial Java 26 Jev SDK with a typed System One client, retries, virtual threads, and an offline ticket sample; its structured-concurrency module requires preview features."
+    },
+    "sourceUrl": "https://github.com/dmishra2022/jev-java-sdk",
+    "lastVerified": "2026-10-05",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "hev-reranker",
+    "name": "hev/reranker",
+    "url": "https://github.com/hev/reranker",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "通用 Jev 重排库：一批最多 30 篇候选文档，每篇一个 Noul 相关性概率，按分数重排或阈值裁剪；BEIR 效果为作者报告，本站未复测。",
+      "en": "A Jev reranking library asking one Noul per candidate in batches of up to 30, then sorting or pruning by probability. BEIR results are author-reported and unverified here."
+    },
+    "sourceUrl": "https://github.com/hev/reranker",
+    "lastVerified": "2026-10-05",
+    "status": "verified",
+    "stars": 15
   }
 ]

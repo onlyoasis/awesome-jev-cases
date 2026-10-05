@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (57)
+## 深度使用案例 / Worked cases (60)
 
 ### jev-ultrafast
 
@@ -517,7 +517,34 @@
 - 核验边界：可改用 Cloudflare Clef，但作者称其准确率尚未测量；演示视频含示意场景。README 的延迟、成本及违例下降来自作者实验，本站未复测，也不替代确定性 lint 与人工审查。
 - 来源：[GitHub](https://github.com/ckorhonen/jev-lint) · [Source code](https://github.com/ckorhonen/jev-lint/blob/main/src/jev.ts) · [Author X](https://x.com/ckorhonen/status/2106503620002996467)
 
-## 开源项目 / Open-source projects (106)
+### 思源 AI 工具调用的 Jev 自动审查
+
+- 作者：wmy2981
+- 输入：思源 AI 待确认的工具名称、参数与影响，以及用户请求和 Agent 自述意图；过长字段截断并标记省略。
+- Jev 判断：Jev 一次请求回答两个 Choice（是否获用户授权、操作影响等级）和一个 Noul（待审内容是否自称已获授权）。
+- 后续动作：代码校验回答并按置信度阈值决定 allow、deny 或 ask；非仅提示模式下操作原生审批卡片，疑问则保留给用户。
+- 核验边界：仅在思源已配置并启用决策模型且会话选择自动审查时生效。工具参数和用户请求可能送到模型服务；授权判断可能误判，本站未在真实会话验证自动批准行为。
+- 来源：[GitHub](https://github.com/wmy2981/auto-review-siyuan) · [Decision request](https://github.com/wmy2981/auto-review-siyuan/blob/dev/src/autoReview/decision.ts) · [Policy and action](https://github.com/wmy2981/auto-review-siyuan/blob/dev/src/autoReview/controller.ts)
+
+### Jev 为七种棋类选择合法着法
+
+- 作者：tripodxu
+- 输入：当前棋局、执棋方、引擎枚举的合法着法及确定性战术事实。
+- Jev 判断：Jev 的 Choice 对候选着法给出概率；代码只接受与引擎合法着法匹配的选项。
+- 后续动作：战术层可优先处理致胜或防败着法；否则代码取最高概率或在前几项中按概率采样，再由棋局引擎执行并记录。
+- 核验边界：仓库另有 mock、随机和 Rapfi 渠道，并非每局都调用 Jev；线上站点与胜率为作者材料，本站只核对源码，未实战复现。
+- 来源：[GitHub](https://github.com/tripodxu/board-games) · [Source code](https://github.com/tripodxu/board-games/blob/main/src/core/jev/client.ts)
+
+### Factorio 的 Jev 宏观目标与动作选择
+
+- 作者：jevplays-games
+- 输入：游戏快照中的资源、物品栏、机器状态和位置；代码先枚举当前能执行的动作。
+- Jev 判断：Jev 在一次 System One 请求中以 Choice 选目标和下一动作，以 Noul 判断是否卡住，以 Score 评估调整紧急度。
+- 后续动作：代码核验动作仍在候选中并设置置信度门槛；达标则让后端执行，否则改用确定性策略，再读取执行后状态并留记录。
+- 核验边界：无 key 的离线 mock 是规则替身，不是 Jev 实测；原生 Factorio/FLE 需专用可重置世界。基础循环虽记录执行后状态，未定义完整后置条件验证；本站未运行游戏。
+- 来源：[GitHub](https://github.com/jevplays-games/jev-factorio-agent) · [Questions](https://github.com/jevplays-games/jev-factorio-agent/blob/main/src/jev_factorio/questions.py) · [Decision loop](https://github.com/jevplays-games/jev-factorio-agent/blob/main/src/jev_factorio/loop.py)
+
+## 开源项目 / Open-source projects (114)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -627,6 +654,14 @@
 | [NaokiKomura/x-bookmark-digest-template](https://github.com/NaokiKomura/x-bookmark-digest-template) | community | MIT | 0 |
 | [ckorhonen/jev-lint](https://github.com/ckorhonen/jev-lint) | community | MIT | 6 |
 | [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp) | inspired | MIT | 130238 |
+| [hraness/sys1](https://github.com/hraness/sys1) | community | MIT | 0 |
+| [wmy2981/auto-review-siyuan](https://github.com/wmy2981/auto-review-siyuan) | community | MIT | 0 |
+| [tripodxu/board-games](https://github.com/tripodxu/board-games) | community | MIT | 0 |
+| [jevplays-games/jev-factorio-agent](https://github.com/jevplays-games/jev-factorio-agent) | community | MIT | 2 |
+| [shopsmartai/ora-jev](https://github.com/shopsmartai/ora-jev) | community | MIT | 0 |
+| [dreamerron/decision-bench](https://github.com/dreamerron/decision-bench) | community | MIT | 0 |
+| [dmishra2022/jev-java-sdk](https://github.com/dmishra2022/jev-java-sdk) | community | Apache-2.0 | 0 |
+| [hev/reranker](https://github.com/hev/reranker) | community | Apache-2.0 | 15 |
 
 ## 官方 cookbook / Official recipes (18)
 

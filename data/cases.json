@@ -2062,5 +2062,133 @@
         "url": "https://x.com/ckorhonen/status/2106503620002996467"
       }
     ]
+  },
+  {
+    "id": "siyuan-auto-review",
+    "name": "auto-review-siyuan",
+    "title": {
+      "zh": "思源 AI 工具调用的 Jev 自动审查",
+      "en": "Jev review of SiYuan AI tool calls"
+    },
+    "author": "wmy2981",
+    "area": {
+      "zh": "笔记 Agent 权限审查",
+      "en": "Note-agent permission review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "思源 AI 待确认的工具名称、参数与影响，以及用户请求和 Agent 自述意图；过长字段截断并标记省略。",
+      "en": "A pending SiYuan AI tool name, arguments, and effects plus the user request and agent-stated intent; long fields are truncated with omissions marked."
+    },
+    "decision": {
+      "zh": "Jev 一次请求回答两个 Choice（是否获用户授权、操作影响等级）和一个 Noul（待审内容是否自称已获授权）。",
+      "en": "In one request, Jev answers two Choices about user authorization and action impact, plus a Noul about self-authorizing text inside the pending action."
+    },
+    "action": {
+      "zh": "代码校验回答并按置信度阈值决定 allow、deny 或 ask；非仅提示模式下操作原生审批卡片，疑问则保留给用户。",
+      "en": "Code validates answers and applies confidence thresholds for allow, deny, or ask; outside advisory mode it acts on the native approval card and leaves uncertain calls to the user."
+    },
+    "boundary": {
+      "zh": "仅在思源已配置并启用决策模型且会话选择自动审查时生效。工具参数和用户请求可能送到模型服务；授权判断可能误判，本站未在真实会话验证自动批准行为。",
+      "en": "Requires an enabled decision model in SiYuan and auto-review selected for the session. Tool arguments and user requests may be sent to the provider; authorization decisions can be wrong, and this site did not test live approvals."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/wmy2981/auto-review-siyuan"
+      },
+      {
+        "label": "Decision request",
+        "url": "https://github.com/wmy2981/auto-review-siyuan/blob/dev/src/autoReview/decision.ts"
+      },
+      {
+        "label": "Policy and action",
+        "url": "https://github.com/wmy2981/auto-review-siyuan/blob/dev/src/autoReview/controller.ts"
+      }
+    ]
+  },
+  {
+    "id": "jev-board-games-moves",
+    "name": "Jev 棋馆",
+    "title": {
+      "zh": "Jev 为七种棋类选择合法着法",
+      "en": "Jev selects legal moves across seven board games"
+    },
+    "author": "tripodxu",
+    "area": {
+      "zh": "棋类游戏决策",
+      "en": "Board-game decisions"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "当前棋局、执棋方、引擎枚举的合法着法及确定性战术事实。",
+      "en": "The current board state, side to move, legal moves enumerated by the engine, and deterministic tactical facts."
+    },
+    "decision": {
+      "zh": "Jev 的 Choice 对候选着法给出概率；代码只接受与引擎合法着法匹配的选项。",
+      "en": "Jev Choice provides probabilities for candidate moves; code accepts only options matching the engine legal moves."
+    },
+    "action": {
+      "zh": "战术层可优先处理致胜或防败着法；否则代码取最高概率或在前几项中按概率采样，再由棋局引擎执行并记录。",
+      "en": "A tactics layer can override for wins or defenses; otherwise code takes the top move or samples among top options, then the game engine executes and records it."
+    },
+    "boundary": {
+      "zh": "仓库另有 mock、随机和 Rapfi 渠道，并非每局都调用 Jev；线上站点与胜率为作者材料，本站只核对源码，未实战复现。",
+      "en": "The repository also has mock, random, and Rapfi modes, so not every game calls Jev. Live-site operation and win rates are author claims; this site checked source but did not replay matches."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/tripodxu/board-games"
+      },
+      {
+        "label": "Source code",
+        "url": "https://github.com/tripodxu/board-games/blob/main/src/core/jev/client.ts"
+      }
+    ]
+  },
+  {
+    "id": "jev-factorio-macro-actions",
+    "name": "jev-factorio",
+    "title": {
+      "zh": "Factorio 的 Jev 宏观目标与动作选择",
+      "en": "Jev macro goals and actions in Factorio"
+    },
+    "author": "jevplays-games",
+    "area": {
+      "zh": "游戏 Agent",
+      "en": "Game agent"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "游戏快照中的资源、物品栏、机器状态和位置；代码先枚举当前能执行的动作。",
+      "en": "A game snapshot with nearby resources, inventory, machine state, and position; code first enumerates actions possible now."
+    },
+    "decision": {
+      "zh": "Jev 在一次 System One 请求中以 Choice 选目标和下一动作，以 Noul 判断是否卡住，以 Score 评估调整紧急度。",
+      "en": "In one System One request, Jev uses Choices for goal and next action, a Noul for stuck state, and a Score for urgency."
+    },
+    "action": {
+      "zh": "代码核验动作仍在候选中并设置置信度门槛；达标则让后端执行，否则改用确定性策略，再读取执行后状态并留记录。",
+      "en": "Code checks that the action remains in the candidates and meets a confidence floor; otherwise it uses a deterministic fallback, then reads and records the post-action state."
+    },
+    "boundary": {
+      "zh": "无 key 的离线 mock 是规则替身，不是 Jev 实测；原生 Factorio/FLE 需专用可重置世界。基础循环虽记录执行后状态，未定义完整后置条件验证；本站未运行游戏。",
+      "en": "The offline no-key mock is rule-based, not Jev inference; native Factorio/FLE needs a dedicated resettable world. The basic loop records post-action state but has no full postcondition check; gameplay was not reproduced here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/jevplays-games/jev-factorio-agent"
+      },
+      {
+        "label": "Questions",
+        "url": "https://github.com/jevplays-games/jev-factorio-agent/blob/main/src/jev_factorio/questions.py"
+      },
+      {
+        "label": "Decision loop",
+        "url": "https://github.com/jevplays-games/jev-factorio-agent/blob/main/src/jev_factorio/loop.py"
+      }
+    ]
   }
 ]
