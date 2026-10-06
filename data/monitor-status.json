@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-05T03:29:09Z",
+  "checkedAt": "2026-10-06T03:29:09Z",
   "github": "ok",
   "official": "ok",
   "x": "ok",
-  "addedProjects": 8,
-  "addedCases": 3,
+  "addedProjects": 0,
+  "addedCases": 0,
   "officialRecipes": 18,
   "xPosts": 14,
   "xVisibleCounts": {
@@ -14,30 +14,115 @@
   },
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "The since:2026-09-22 until:2026-10-05 Latest query returned October 5 posts outside the requested end date; older coverage remains unverified and the cursor is unchanged.",
+  "xHistoricalCoverageNote": "The since:2026-09-22 until:2026-10-06 Latest query returned October 6 posts outside the requested end date; historical coverage is unverified and the original cursor is unchanged.",
   "githubSearches": [
     {
-      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-10-02",
-      "totalCount": 1555,
-      "incomplete": false
+      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-10-03",
+      "totalCount": null,
+      "displayedTotal": "1.5k",
+      "countPrecision": "rounded",
+      "incomplete": null,
+      "source": "Chrome GitHub search UI and GitHub connector",
+      "returnedRepositories": 30
     },
     {
-      "query": "jev in:name,description created:>=2026-10-03",
-      "totalCount": 481,
-      "incomplete": false
+      "query": "jev in:name,description created:>=2026-10-04",
+      "totalCount": 460,
+      "displayedTotal": "460",
+      "countPrecision": "exact",
+      "incomplete": null,
+      "source": "Chrome GitHub search UI and GitHub connector",
+      "returnedRepositories": 30
     },
     {
-      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-10-02",
-      "totalCount": 1394,
-      "incomplete": false
+      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-10-03",
+      "totalCount": null,
+      "displayedTotal": "1.3k",
+      "countPrecision": "rounded",
+      "incomplete": null,
+      "source": "Chrome GitHub search UI and GitHub connector",
+      "returnedRepositories": 30
     }
   ],
-  "githubLastSuccessfulAt": "2026-10-05T03:29:09Z",
-  "officialLastSuccessfulAt": "2026-10-05T03:29:09Z",
-  "xLastSuccessfulAt": "2026-10-05T03:29:09Z",
+  "githubLastSuccessfulAt": "2026-10-06T03:29:09Z",
+  "officialLastSuccessfulAt": "2026-10-06T03:29:09Z",
+  "xLastSuccessfulAt": "2026-10-06T03:29:09Z",
   "xQueryStatus": {
     "TypeSafe Jev": "ok",
     "Jev github.com": "ok",
     "from:typesafeai Jev": "ok"
+  },
+  "githubSearchNote": "The connector returned real repository links but omitted API total_count/incomplete_results; GitHub UI supplied displayed totals. Rounded counts are not treated as exact API counts.",
+  "officialRepositoryCount": 12,
+  "officialNote": "The index still lists 18 cookbooks and one demo. New typesafe-ai/typesafe-public-examples currently contains only README.md and LICENSE; no runnable sample content qualified for addition.",
+  "pendingProjects": 7,
+  "pendingCases": 2,
+  "pendingCandidates": [
+    {
+      "repository": "spring-ai-community/spring-ai-typesafe",
+      "url": "https://github.com/spring-ai-community/spring-ai-typesafe",
+      "license": "Apache-2.0",
+      "evidenceUrl": "https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/typesafe-spring-ai/src/main/java/org/springaicommunity/typesafe/advisor/JevSelfRefineAdvisor.java"
+    },
+    {
+      "repository": "wingedsheep/argentum-engine",
+      "url": "https://github.com/wingedsheep/argentum-engine",
+      "license": "MIT",
+      "evidenceUrl": "https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevAiPlayerController.kt"
+    },
+    {
+      "repository": "Arize-ai/openinference",
+      "url": "https://github.com/Arize-ai/openinference",
+      "license": "Apache-2.0",
+      "evidenceUrl": "https://github.com/Arize-ai/openinference/blob/main/python/instrumentation/openinference-instrumentation-typesafe/src/openinference/instrumentation/typesafe/__init__.py"
+    },
+    {
+      "repository": "get-convex/convex-evals",
+      "url": "https://github.com/get-convex/convex-evals",
+      "license": "Apache-2.0",
+      "evidenceUrl": "https://github.com/get-convex/convex-evals/blob/main/runner/decisions/providers.ts"
+    },
+    {
+      "repository": "justmytwospence/opencode-lean-context",
+      "url": "https://github.com/justmytwospence/opencode-lean-context",
+      "license": "MIT",
+      "evidenceUrl": "https://github.com/justmytwospence/opencode-lean-context/blob/main/src/jev.ts"
+    },
+    {
+      "repository": "justmytwospence/opencode-auto-effort",
+      "url": "https://github.com/justmytwospence/opencode-auto-effort",
+      "license": "MIT",
+      "evidenceUrl": "https://github.com/justmytwospence/opencode-auto-effort/blob/main/src/jev.ts"
+    },
+    {
+      "repository": "gebeer/jev-effort",
+      "url": "https://github.com/gebeer/jev-effort",
+      "license": "MIT",
+      "evidenceUrl": "https://github.com/gebeer/jev-effort/blob/main/hooks/jev-effort.ts"
+    }
+  ],
+  "pendingCaseProposals": [
+    {
+      "repository": "spring-ai-community/spring-ai-typesafe",
+      "topic": "Bounded response self-refinement with JevJudge",
+      "evidenceUrl": "https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/typesafe-spring-ai/src/main/java/org/springaicommunity/typesafe/advisor/JevSelfRefineAdvisor.java"
+    },
+    {
+      "repository": "wingedsheep/argentum-engine",
+      "topic": "Masked Magic: The Gathering state and engine-validated legal choices",
+      "evidenceUrl": "https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevAiPlayerController.kt"
+    }
+  ],
+  "publication": {
+    "status": "blocked",
+    "stage": "storage-preflight",
+    "reason": "storage-governor could not query diskutil; DiskManagement framework unavailable in the current executor",
+    "destination": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261006",
+    "expectedWriteGiB": 0.002,
+    "preflightApproved": false,
+    "publicHeadVerified": "696c452f1881637906f5f55b495f8906e17368f4",
+    "websiteRemoteHeadVerified": "a64190a968ea6138eb49477368589f6185b331e1",
+    "websiteCanonicalHead": "c33e1197996af1824bee06a68e3aeec6e51c6fad",
+    "note": "New review files, catalog entries, website worktree, and builds were not written after failed preflight. Pending source pointers only are recorded in this existing lightweight monitor file."
   }
 }
