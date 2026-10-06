@@ -1822,5 +1822,117 @@
     "lastVerified": "2026-10-05",
     "status": "verified",
     "stars": 15
+  },
+  {
+    "id": "spring-ai-typesafe",
+    "name": "spring-ai-community/spring-ai-typesafe",
+    "url": "https://github.com/spring-ai-community/spring-ai-typesafe",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Spring AI 社区的 TypeSafe Java 客户端及扩展：有类型化 System One、JevJudge、回答纠正 advisor、RAG 与工具检索；不是 TypeSafe 官方 SDK，托管调用与示例质量未经本站复测。",
+      "en": "A Spring AI community TypeSafe Java client and integrations for typed System One, JevJudge, response-refinement advisors, RAG, and tool search. It is not a TypeSafe first-party SDK; hosted calls and sample quality were not reproduced here."
+    },
+    "sourceUrl": "https://github.com/spring-ai-community/spring-ai-typesafe",
+    "lastVerified": "2026-10-06",
+    "status": "verified",
+    "stars": 51
+  },
+  {
+    "id": "argentum-jev",
+    "name": "wingedsheep/argentum-engine",
+    "url": "https://github.com/wingedsheep/argentum-engine",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Magic: The Gathering 引擎的 Jev AI 对手：本地开发模式将玩家视角与合法动作送给 OpenRouter Choice，引擎校验并可纠正或回退；不代表完整规则覆盖或独立获胜率证明。",
+      "en": "A Jev opponent in a Magic: The Gathering engine: local development mode sends a player view and legal actions to OpenRouter Choice, then validates, corrects, or falls back. This does not establish complete rules coverage or independently measured win rates."
+    },
+    "sourceUrl": "https://github.com/wingedsheep/argentum-engine",
+    "lastVerified": "2026-10-06",
+    "status": "verified",
+    "stars": 70
+  },
+  {
+    "id": "openinference-typesafe",
+    "name": "Arize-ai/openinference",
+    "url": "https://github.com/Arize-ai/openinference",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "OpenInference 中的 TypeSafe Python/JS 自动追踪子包：包装 System One 调用并导出 DECISION spans、模型与 token usage；可屏蔽输入输出，默认追踪内容需评估隐私。stars 属于父仓库。",
+      "en": "OpenInference TypeSafe Python/JS instrumentation wraps System One calls and exports DECISION spans, model identity, and token usage. Input/output masking is available; default payload tracing needs privacy review. Stars belong to the parent repository."
+    },
+    "sourceUrl": "https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-typesafe",
+    "lastVerified": "2026-10-06",
+    "status": "verified",
+    "stars": 1254
+  },
+  {
+    "id": "convex-decision-evals",
+    "name": "get-convex/convex-evals",
+    "url": "https://github.com/get-convex/convex-evals",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Convex 的决策模型评测扩展：发布问题库与可执行证据，实际调用 Jev 原生问题并保留概率、成本和模型身份；部分题目在干净环境的重放仍待补齐，本站未重跑。",
+      "en": "Convex decision-model evaluations publish a question bank and executable evidence, call native Jev questions, and retain probabilities, costs, and model identity. Some clean-environment replay remains incomplete; this site did not rerun the benchmark."
+    },
+    "sourceUrl": "https://github.com/get-convex/convex-evals",
+    "lastVerified": "2026-10-06",
+    "status": "verified",
+    "stars": 129
+  },
+  {
+    "id": "opencode-lean-context",
+    "name": "justmytwospence/opencode-lean-context",
+    "url": "https://github.com/justmytwospence/opencode-lean-context",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "OpenCode 工具结果裁剪插件：Jev 根据当前任务选择应保留的输出行，超大结果先由代码预筛；不可用或不确定时保留原输出，文本可能发外部，作者效果未复测。",
+      "en": "An OpenCode tool-output trimming plugin: Jev chooses relevant lines using task context, with code prefiltering oversized results. Unavailable or uncertain decisions preserve output; text may leave the device, and author results were not reproduced."
+    },
+    "sourceUrl": "https://github.com/justmytwospence/opencode-lean-context",
+    "lastVerified": "2026-10-06",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "opencode-auto-effort",
+    "name": "justmytwospence/opencode-auto-effort",
+    "url": "https://github.com/justmytwospence/opencode-auto-effort",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "OpenCode 的逐提示推理强度插件：Jev 对当前与近期请求及上轮概览评分，再由代码调整 effort；超时或失败保持级别，本站未验证省量或答案质量。",
+      "en": "An OpenCode per-prompt effort plugin: Jev scores current and recent requests plus a prior-run summary, and code adjusts effort. Timeout or failure holds the level; token savings and answer quality were not verified here."
+    },
+    "sourceUrl": "https://github.com/justmytwospence/opencode-auto-effort",
+    "lastVerified": "2026-10-06",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "claude-jev-effort",
+    "name": "gebeer/jev-effort",
+    "url": "https://github.com/gebeer/jev-effort",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Claude Code mod 用 OpenRouter Jev Score 映射 low/medium/high/xhigh；默认 shadow 只记日志，显式关闭才改推理强度，近期对话会送外部，作者环境未由本站复现。",
+      "en": "A Claude Code mod maps OpenRouter Jev Score to low/medium/high/xhigh effort. Shadow mode logs only by default; explicit activation changes effort. Recent conversation text leaves the device, and author runs were not reproduced."
+    },
+    "sourceUrl": "https://github.com/gebeer/jev-effort",
+    "lastVerified": "2026-10-06",
+    "status": "verified",
+    "stars": 1
   }
 ]

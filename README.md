@@ -5,7 +5,7 @@
 独立社区维护的 Jev 使用案例与 GitHub 项目目录。每条案例说明输入、Jev 的判断、后续动作和证据边界；项目链接指向原作者仓库。本站与 TypeSafe AI 无隶属或背书关系。
 
 <!-- catalog:summary:start -->
-**60 条使用案例 · 114 个项目条目 · 18 篇官方 cookbook**
+**62 条使用案例 · 121 个项目条目 · 18 篇官方 cookbook**
 <!-- catalog:summary:end -->
 
 [网站案例库](https://typesafe-jev.com/use-cases/) · [网站项目页](https://typesafe-jev.com/projects/) · [官方 cookbook](https://docs.typesafe.ai/cookbooks.md) · [详细目录](CATALOG.md)
@@ -77,6 +77,8 @@
 | [思源 AI 工具调用的 Jev 自动审查](https://github.com/wmy2981/auto-review-siyuan) | **笔记 Agent 权限审查**<br>思源 AI 待确认的工具名称、参数与影响，以及用户请求和 Agent 自述意图；过长字段截断并标记省略。 | **判断：**Jev 一次请求回答两个 Choice（是否获用户授权、操作影响等级）和一个 Noul（待审内容是否自称已获授权）。<br>**动作：**代码校验回答并按置信度阈值决定 allow、deny 或 ask；非仅提示模式下操作原生审批卡片，疑问则保留给用户。 | 公开源码<br>仅在思源已配置并启用决策模型且会话选择自动审查时生效。工具参数和用户请求可能送到模型服务；授权判断可能误判，本站未在真实会话验证自动批准行为。<br>[GitHub](https://github.com/wmy2981/auto-review-siyuan) · [Decision request](https://github.com/wmy2981/auto-review-siyuan/blob/dev/src/autoReview/decision.ts) · [Policy and action](https://github.com/wmy2981/auto-review-siyuan/blob/dev/src/autoReview/controller.ts) |
 | [Jev 为七种棋类选择合法着法](https://github.com/tripodxu/board-games) | **棋类游戏决策**<br>当前棋局、执棋方、引擎枚举的合法着法及确定性战术事实。 | **判断：**Jev 的 Choice 对候选着法给出概率；代码只接受与引擎合法着法匹配的选项。<br>**动作：**战术层可优先处理致胜或防败着法；否则代码取最高概率或在前几项中按概率采样，再由棋局引擎执行并记录。 | 公开源码<br>仓库另有 mock、随机和 Rapfi 渠道，并非每局都调用 Jev；线上站点与胜率为作者材料，本站只核对源码，未实战复现。<br>[GitHub](https://github.com/tripodxu/board-games) · [Source code](https://github.com/tripodxu/board-games/blob/main/src/core/jev/client.ts) |
 | [Factorio 的 Jev 宏观目标与动作选择](https://github.com/jevplays-games/jev-factorio-agent) | **游戏 Agent**<br>游戏快照中的资源、物品栏、机器状态和位置；代码先枚举当前能执行的动作。 | **判断：**Jev 在一次 System One 请求中以 Choice 选目标和下一动作，以 Noul 判断是否卡住，以 Score 评估调整紧急度。<br>**动作：**代码核验动作仍在候选中并设置置信度门槛；达标则让后端执行，否则改用确定性策略，再读取执行后状态并留记录。 | 公开源码<br>无 key 的离线 mock 是规则替身，不是 Jev 实测；原生 Factorio/FLE 需专用可重置世界。基础循环虽记录执行后状态，未定义完整后置条件验证；本站未运行游戏。<br>[GitHub](https://github.com/jevplays-games/jev-factorio-agent) · [Questions](https://github.com/jevplays-games/jev-factorio-agent/blob/main/src/jev_factorio/questions.py) · [Decision loop](https://github.com/jevplays-games/jev-factorio-agent/blob/main/src/jev_factorio/loop.py) |
+| [Spring AI 用 Jev 有界纠正模型回答](https://github.com/spring-ai-community/spring-ai-typesafe) | **模型回答质量反馈**<br>原始请求、模型候选回答和 advisor 顺序允许看到的工具调用或检索上下文。 | **判断：**JevJudge 对标准分别提出 Noul、Choice 或 Score，代码按各自阈值给出通过、失败或不确定；可确定的 Java predicate 检查在本地完成。<br>**动作：**advisor 对未通过回答从原请求重建反馈并有界重试；返回通过的回答，或按配置返回最佳候选／抛错。 | 公开源码<br>非官方 Spring AI 扩展；瞬时 judge 失败默认可返回未经评审的答案，工具是否随重试再执行取决于 advisor 顺序。此纠正流程不支持流式输出，本站未调用 API 或证明答案质量提高。<br>[GitHub](https://github.com/spring-ai-community/spring-ai-typesafe) · [Judge contract](https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/docs/judge/JevJudge.md) · [Advisor source](https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/typesafe-spring-ai/src/main/java/org/springaicommunity/typesafe/advisor/JevSelfRefineAdvisor.java) |
+| [Jev 在 Magic 对局中选择并校验合法动作](https://github.com/wingedsheep/argentum-engine) | **卡牌游戏 Agent**<br>当前玩家视角的掩码游戏快照、牌组和引擎提供的可支付合法动作；不给模型调试日志中的对手抽牌信息。 | **判断：**OpenRouter Jev 以原生 Choice 分阶段选择出牌及目标等细项，也处理起手换牌与轮抽；只接受程序给定的选项 ID。<br>**动作：**代码组装动作并让权威引擎校验；拒绝后向 Jev 提供错误做一次纠正，仍失败或预算用尽时回退到内置 AI。 | 公开源码<br>Jev 接入目前限定本地开发模式，仍需 OpenRouter key。项目包含大量规则与可选模型渠道，不是每局都调用 Jev；本站未验证完整 Magic 规则覆盖、实战表现或延迟。<br>[GitHub](https://github.com/wingedsheep/argentum-engine) · [Controller source](https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevAiPlayerController.kt) · [Jev client](https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevClient.kt) |
 <!-- catalog:cases:end -->
 
 ## GitHub 项目库
@@ -107,6 +109,7 @@
 | [rmalde/minecraft-agent](https://github.com/rmalde/minecraft-agent) | 具身与游戏控制 | 社区项目 | 未核实 | 571 · 2026-09-29 | 原版 Minecraft 通关 Agent：GPT-6 Astra 规划、Jev 逐动作选择，最佳全程 8 分 43 秒、131 次 Jev 决策，不修改游戏规则。 |
 | [fhshaik/typesafe-mario](https://github.com/fhshaik/typesafe-mario) | 具身与游戏控制 | 社区项目 | 未核实 | 421 · 2026-09-29 | NES 超级马里奥实验控制器：模拟器状态转结构化 JSON（无截图），Jev Choice 从 7 个合法手柄动作中选择；仓库不含 ROM。 |
 | [RomanSlack/jev-drone](https://github.com/RomanSlack/jev-drone) | 具身与游戏控制 | 社区项目 | MIT | 225 · 2026-09-29 | MuJoCo 四旋翼仅凭机载相机过五站障碍课程：Jev 以 2.5Hz 做战术判断，50Hz 安全反射与 500Hz 控制器保留否决权。 |
+| [wingedsheep/argentum-engine](https://github.com/wingedsheep/argentum-engine) | 具身与游戏控制 | 社区项目 | MIT | 70 · 2026-10-06 | Magic: The Gathering 引擎的 Jev AI 对手：本地开发模式将玩家视角与合法动作送给 OpenRouter Choice，引擎校验并可纠正或回退；不代表完整规则覆盖或独立获胜率证明。 |
 | [jevplays-games/jev-factorio-agent](https://github.com/jevplays-games/jev-factorio-agent) | 具身与游戏控制 | 社区项目 | MIT | 2 · 2026-10-05 | Factorio 宏观决策 Agent：Jev 对目标、下一动作、卡住状态和紧急度作 Choice/Noul/Score 判断，代码过滤非法动作并在低置信度时回退；离线 mock 并非 Jev 实测。 |
 | [statico/jev-nethack](https://github.com/statico/jev-nethack) | 具身与游戏控制 | 社区项目 | MIT | 0 · 2026-10-01 | NetHack 5.0 游戏代理：代码读终端画面并枚举合法动作，Jev Choice 选一步，motor 发送对应按键；仓库有运行记录，未核实通关。 |
 | [tripodxu/board-games](https://github.com/tripodxu/board-games) | 具身与游戏控制 | 社区项目 | MIT | 0 · 2026-10-05 | 七种棋类对弈站：Jev 给合法着法 Choice 概率，确定性战术层可接管后续走子；另有 mock、随机与 Rapfi 渠道，作者战绩未由本站复跑。 |
@@ -125,6 +128,7 @@
 | [Tech-Byte-Frontier/jevgate](https://github.com/Tech-Byte-Frontier/jevgate) | 编码助手 | 社区项目 | Apache-2.0 OR MIT | 3 · 2026-09-24 | Rust 代码审查工具：解析源码后向 Jev 提交局部、类型化的维护性判断，并由代码汇成带位置和建议的发现；安全规则需另行启用。 |
 | [DAXZEIT/Pi-JEV-VCC-memory-relevance](https://github.com/DAXZEIT/Pi-JEV-VCC-memory-relevance) | 编码助手 | 社区项目 | MIT | 0 · 2026-10-04 | Pi 编码 Agent 的记忆相关性扩展：对索引中每条记忆作 Noul 判断并给 Agent 排序提示，可用 OpenRouter Jev 或本地兼容 CLI；排序只是待核对线索。 |
 | [hraness/sys1](https://github.com/hraness/sys1) | 编码助手 | 社区项目 | MIT | 0 · 2026-10-05 | 编码 Agent 的 System One 工具箱：CLI、网关与类型化客户端可选托管 Jev 检查 diff 和完成声明；须显式启用，外发内容应先预览。 |
+| [justmytwospence/opencode-lean-context](https://github.com/justmytwospence/opencode-lean-context) | 编码助手 | 社区项目 | MIT | 0 · 2026-10-06 | OpenCode 工具结果裁剪插件：Jev 根据当前任务选择应保留的输出行，超大结果先由代码预筛；不可用或不确定时保留原输出，文本可能发外部，作者效果未复测。 |
 | [rodrigojager/pi-workspace-search](https://github.com/rodrigojager/pi-workspace-search) | 编码助手 | 社区项目 | MIT | 0 · 2026-10-03 | Pi 编码助手的有界源码检索：字面/正则走 ripgrep，本地索引可选，用户显式启用后用 TypeSafe 分类当前片段并返回行号与部分覆盖标记；不是全库无遗漏证明。 |
 | [wuyoscar/jev-skill](https://github.com/wuyoscar/jev-skill) | MCP 与 Agent Skill | 社区项目 | MIT | 543 · 2026-09-29 | Jev 用例、工作流与 agent skills 集合。 |
 | [jkudish/jev-mcp](https://github.com/jkudish/jev-mcp) | MCP 与 Agent Skill | 社区项目 | MIT | 213 · 2026-09-22 | MCP 服务器：把校验、筛选、排序等判断暴露为 Agent 可调用的工具。 |
@@ -136,6 +140,9 @@
 | [0xNatoshi/jev-codex-router](https://github.com/0xNatoshi/jev-codex-router) | 路由与网关 | 社区项目 | MIT | 277 · 2026-09-29 | Codex 逐调用模型路由：Jev 同时选模型与推理强度（含工具后续轮），Jev 只见有界决策状态，出错 fail-open。 |
 | [vinilana/jev-gateway](https://github.com/vinilana/jev-gateway) | 路由与网关 | 社区项目 | MIT | 252 · 2026-09-29 | 本地编码 agent 网关：把“下一步调哪个工具”交给 Jev，其余流量原样走原有 LLM；兼容 Codex/Claude Code/OpenCode/Kilo 与订阅登录。 |
 | [yusukebe/hono-jev-router](https://github.com/yusukebe/hono-jev-router) | 路由与网关 | 社区项目 | MIT | 45 · 2026-09-22 | Hono 中间件：按语义把请求路由到不同处理器。 |
+| [gebeer/jev-effort](https://github.com/gebeer/jev-effort) | 路由与网关 | 社区项目 | MIT | 1 · 2026-10-06 | Claude Code mod 用 OpenRouter Jev Score 映射 low/medium/high/xhigh；默认 shadow 只记日志，显式关闭才改推理强度，近期对话会送外部，作者环境未由本站复现。 |
+| [justmytwospence/opencode-auto-effort](https://github.com/justmytwospence/opencode-auto-effort) | 路由与网关 | 社区项目 | MIT | 0 · 2026-10-06 | OpenCode 的逐提示推理强度插件：Jev 对当前与近期请求及上轮概览评分，再由代码调整 effort；超时或失败保持级别，本站未验证省量或答案质量。 |
+| [Arize-ai/openinference](https://github.com/Arize-ai/openinference) | 数据与检索 | 社区项目 | Apache-2.0 | 1,254 · 2026-10-06 | OpenInference 中的 TypeSafe Python/JS 自动追踪子包：包装 System One 调用并导出 DECISION spans、模型与 token usage；可屏蔽输入输出，默认追踪内容需评估隐私。stars 属于父仓库。 |
 | [kyotofin/tax-doc-classifier](https://github.com/kyotofin/tax-doc-classifier) | 数据与检索 | 社区项目 | Apache-2.0 | 483 · 2026-09-30 | IRS 表单 PDF 文本页分类器：Jev Choice 选表单和页面类别，按置信度门控后续路由；英文联邦表单限定，作者评测数据未由本站复测。 |
 | [superagents-lab/jev-search](https://github.com/superagents-lab/jev-search) | 数据与检索 | 社区项目 | MIT | 363 · 2026-09-22 | 用 Jev 选择数据源、理解查询并按相关性排序的网页搜索（基于 Search1API）。 |
 | [realZachi/pg-jev](https://github.com/realZachi/pg-jev) | 数据与检索 | 社区项目 | 未核实 | 272 · 2026-09-22 | PostgreSQL 扩展：用自然语言对表格行做判断。许可证未被 GitHub 识别为标准开源协议。 |
@@ -143,6 +150,7 @@
 | [fstandhartinger/jevbench](https://github.com/fstandhartinger/jevbench) | 数据与检索 | 社区项目 | MIT | 176 · 2026-09-29 | Jev 级决策模型基准（95 个系统在线排行，Jev 1.13 现列第 4）：冻结方法、封存决策与 SHA-256 清单，与 TypeSafe 无关。 |
 | [jerryjliu/docjev](https://github.com/jerryjliu/docjev) | 数据与检索 | 社区项目 | Apache-2.0 | 165 · 2026-09-22 | LlamaIndex 出品：用 Jev 做快速文档分类与子文档边界识别。 |
 | [jexp/neo4jev](https://github.com/jexp/neo4jev) | 数据与检索 | 社区项目 | MIT | 152 · 2026-09-29 | Neo4j 图导航演示：每跳用 Choice 选出边、Noul 判目标，同请求一次往返，再对概率做束搜索渲染路径；schema 动态自省。 |
+| [get-convex/convex-evals](https://github.com/get-convex/convex-evals) | 数据与检索 | 社区项目 | Apache-2.0 | 129 · 2026-10-06 | Convex 的决策模型评测扩展：发布问题库与可执行证据，实际调用 Jev 原生问题并保留概率、成本和模型身份；部分题目在干净环境的重放仍待补齐，本站未重跑。 |
 | [VectifyAI/jev-doc-search](https://github.com/VectifyAI/jev-doc-search) | 数据与检索 | 社区项目 | Apache-2.0 | 48 · 2026-10-03 | PageIndex 章节树与 Jev 组合检索长 PDF：Choice 逐层选章节/页面，Noul 检查候选页是否提供答案；不用向量库或嵌入，但须 PageIndex 云端和 TypeSafe 双 API key。 |
 | [hev/reranker](https://github.com/hev/reranker) | 数据与检索 | 社区项目 | Apache-2.0 | 15 · 2026-10-05 | 通用 Jev 重排库：一批最多 30 篇候选文档，每篇一个 Noul 相关性概率，按分数重排或阈值裁剪；BEIR 效果为作者报告，本站未复测。 |
 | [typesafe-ai/WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) | 数据与检索 | 官方 | Apache-2.0 | 12 · 2026-10-01 | TypeSafe 官方工作流评测代码：复现发票、客服、代理轨迹和安保事件的有界决策评测，将 Jev 与其他提供商按参考模型动作一致性、成本和耗时对照；一致率不等于真实业务正确率。 |
@@ -178,6 +186,7 @@
 | [duketopceo/wisp](https://github.com/duketopceo/wisp) | 终端用户应用 | 社区项目 | MIT | 0 · 2026-10-02 | Omarchy/Hyprland 语音桌面助手：转写后用 OpenRouter Jev 选应用、工具、代理或回答路线，按风险门控桌面动作；文本回答另用聊天模型，macOS 有作者移植。 |
 | [SeeYangZhi/clipsieve](https://github.com/SeeYangZhi/clipsieve) | 终端用户应用 | 社区项目 | Apache-2.0 | 0 · 2026-10-04 | 创作者素材研究工具：从字幕、画面文字、评论等证据构建帖子状态，Jev 按固定 rubric 评分后筛选候选，再交 Claude 解读；前端仍在计划中，本站未运行真实平台流程。 |
 | [obie/ruby_decision_model](https://github.com/obie/ruby_decision_model) | 社区 SDK 与客户端 | 社区项目 | MIT | 52 · 2026-09-29 | Ruby 决策模型客户端：一套 Client 走 OpenRouter（默认）或 TypeSafe 直连，Noul/Score 返回校准概率，无运行时依赖。 |
+| [spring-ai-community/spring-ai-typesafe](https://github.com/spring-ai-community/spring-ai-typesafe) | 社区 SDK 与客户端 | 社区项目 | Apache-2.0 | 51 · 2026-10-06 | Spring AI 社区的 TypeSafe Java 客户端及扩展：有类型化 System One、JevJudge、回答纠正 advisor、RAG 与工具检索；不是 TypeSafe 官方 SDK，托管调用与示例质量未经本站复测。 |
 | [BareIQ/Jev.TypeSafe.AI](https://github.com/BareIQ/Jev.TypeSafe.AI) | 社区 SDK 与客户端 | 社区项目 | MIT | 0 · 2026-10-03 | 非官方 .NET TypeSafe/Jev 客户端：提供类型化 Noul、Choice、Score 结果、可注入 HttpClient、取消和重试；不属于 TypeSafe 官方 SDK。 |
 | [deepnoodle-ai/decide](https://github.com/deepnoodle-ai/decide) | 社区 SDK 与客户端 | 社区项目 | Apache-2.0 | 0 · 2026-10-04 | Go 库及 CLI，默认连接 TypeSafe Jev，以 Choice/Noul/Score 对文本、文件或 diff 运行类型化判断；也支持 Jev 兼容服务，运行示例和速度为作者材料。 |
 | [dmishra2022/jev-java-sdk](https://github.com/dmishra2022/jev-java-sdk) | 社区 SDK 与客户端 | 社区项目 | Apache-2.0 | 0 · 2026-10-05 | 非官方 Java 26 Jev SDK：提供 System One 的 Noul/Choice/Score 类型化客户端、重试和虚拟线程，并附离线工单样例；结构化并发模块需预览特性。 |

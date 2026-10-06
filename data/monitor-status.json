@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-06T03:29:09Z",
+  "checkedAt": "2026-10-06T03:50:06Z",
   "github": "ok",
   "official": "ok",
   "x": "ok",
-  "addedProjects": 0,
-  "addedCases": 0,
+  "addedProjects": 7,
+  "addedCases": 2,
   "officialRecipes": 18,
   "xPosts": 14,
   "xVisibleCounts": {
@@ -18,33 +18,48 @@
   "githubSearches": [
     {
       "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-10-03",
-      "totalCount": null,
-      "displayedTotal": "1.5k",
-      "countPrecision": "rounded",
-      "incomplete": null,
-      "source": "Chrome GitHub search UI and GitHub connector",
-      "returnedRepositories": 30
+      "totalCount": 1499,
+      "incomplete": false,
+      "checkedAt": "2026-10-06T03:46:41Z",
+      "source": "GitHub API",
+      "urls": [
+        "https://github.com/jkudish/jev-agent-tools",
+        "https://github.com/linny006/agent-eval-harness",
+        "https://github.com/iii-hq/workers",
+        "https://github.com/peter123023/awesome-free-llm-api",
+        "https://github.com/kame447/StudyPlanner"
+      ]
     },
     {
       "query": "jev in:name,description created:>=2026-10-04",
-      "totalCount": 460,
-      "displayedTotal": "460",
-      "countPrecision": "exact",
-      "incomplete": null,
-      "source": "Chrome GitHub search UI and GitHub connector",
-      "returnedRepositories": 30
+      "totalCount": 465,
+      "incomplete": false,
+      "checkedAt": "2026-10-06T03:46:41Z",
+      "source": "GitHub API",
+      "urls": [
+        "https://github.com/ilGentEAcutoO/flagkan",
+        "https://github.com/justmytwospence/pi-tool-gate",
+        "https://github.com/xueweijian/sensevoice-jev-cascade",
+        "https://github.com/ckarnell/ocarina-songbook",
+        "https://github.com/ajdunn2/clef-airy"
+      ]
     },
     {
       "query": "\"System One\" TypeSafe in:readme pushed:>=2026-10-03",
-      "totalCount": null,
-      "displayedTotal": "1.3k",
-      "countPrecision": "rounded",
-      "incomplete": null,
-      "source": "Chrome GitHub search UI and GitHub connector",
-      "returnedRepositories": 30
+      "totalCount": 1329,
+      "incomplete": false,
+      "checkedAt": "2026-10-06T03:46:41Z",
+      "source": "GitHub API",
+      "urls": [
+        "https://github.com/jkudish/jev-agent-tools",
+        "https://github.com/Daatan/retro",
+        "https://github.com/Laxmanckl/paper-desk",
+        "https://github.com/linny006/agent-eval-harness",
+        "https://github.com/JYeswak/jev_playground"
+      ]
     }
   ],
-  "githubLastSuccessfulAt": "2026-10-06T03:29:09Z",
+  "githubLastSuccessfulAt": "2026-10-06T03:46:41Z",
   "officialLastSuccessfulAt": "2026-10-06T03:29:09Z",
   "xLastSuccessfulAt": "2026-10-06T03:29:09Z",
   "xQueryStatus": {
@@ -52,77 +67,15 @@
     "Jev github.com": "ok",
     "from:typesafeai Jev": "ok"
   },
-  "githubSearchNote": "The connector returned real repository links but omitted API total_count/incomplete_results; GitHub UI supplied displayed totals. Rounded counts are not treated as exact API counts.",
+  "githubSearchNote": "After Full access was restored, the exact GitHub API totals and incomplete_results were reread. Earlier rounded browser totals were not used as exact counts.",
   "officialRepositoryCount": 12,
   "officialNote": "The index still lists 18 cookbooks and one demo. New typesafe-ai/typesafe-public-examples currently contains only README.md and LICENSE; no runnable sample content qualified for addition.",
-  "pendingProjects": 7,
-  "pendingCases": 2,
-  "pendingCandidates": [
-    {
-      "repository": "spring-ai-community/spring-ai-typesafe",
-      "url": "https://github.com/spring-ai-community/spring-ai-typesafe",
-      "license": "Apache-2.0",
-      "evidenceUrl": "https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/typesafe-spring-ai/src/main/java/org/springaicommunity/typesafe/advisor/JevSelfRefineAdvisor.java"
-    },
-    {
-      "repository": "wingedsheep/argentum-engine",
-      "url": "https://github.com/wingedsheep/argentum-engine",
-      "license": "MIT",
-      "evidenceUrl": "https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevAiPlayerController.kt"
-    },
-    {
-      "repository": "Arize-ai/openinference",
-      "url": "https://github.com/Arize-ai/openinference",
-      "license": "Apache-2.0",
-      "evidenceUrl": "https://github.com/Arize-ai/openinference/blob/main/python/instrumentation/openinference-instrumentation-typesafe/src/openinference/instrumentation/typesafe/__init__.py"
-    },
-    {
-      "repository": "get-convex/convex-evals",
-      "url": "https://github.com/get-convex/convex-evals",
-      "license": "Apache-2.0",
-      "evidenceUrl": "https://github.com/get-convex/convex-evals/blob/main/runner/decisions/providers.ts"
-    },
-    {
-      "repository": "justmytwospence/opencode-lean-context",
-      "url": "https://github.com/justmytwospence/opencode-lean-context",
-      "license": "MIT",
-      "evidenceUrl": "https://github.com/justmytwospence/opencode-lean-context/blob/main/src/jev.ts"
-    },
-    {
-      "repository": "justmytwospence/opencode-auto-effort",
-      "url": "https://github.com/justmytwospence/opencode-auto-effort",
-      "license": "MIT",
-      "evidenceUrl": "https://github.com/justmytwospence/opencode-auto-effort/blob/main/src/jev.ts"
-    },
-    {
-      "repository": "gebeer/jev-effort",
-      "url": "https://github.com/gebeer/jev-effort",
-      "license": "MIT",
-      "evidenceUrl": "https://github.com/gebeer/jev-effort/blob/main/hooks/jev-effort.ts"
-    }
-  ],
-  "pendingCaseProposals": [
-    {
-      "repository": "spring-ai-community/spring-ai-typesafe",
-      "topic": "Bounded response self-refinement with JevJudge",
-      "evidenceUrl": "https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/typesafe-spring-ai/src/main/java/org/springaicommunity/typesafe/advisor/JevSelfRefineAdvisor.java"
-    },
-    {
-      "repository": "wingedsheep/argentum-engine",
-      "topic": "Masked Magic: The Gathering state and engine-validated legal choices",
-      "evidenceUrl": "https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevAiPlayerController.kt"
-    }
-  ],
-  "publication": {
-    "status": "blocked",
-    "stage": "storage-preflight",
-    "reason": "storage-governor could not query diskutil; DiskManagement framework unavailable in the current executor",
-    "destination": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261006",
-    "expectedWriteGiB": 0.002,
-    "preflightApproved": false,
-    "publicHeadVerified": "696c452f1881637906f5f55b495f8906e17368f4",
-    "websiteRemoteHeadVerified": "a64190a968ea6138eb49477368589f6185b331e1",
-    "websiteCanonicalHead": "c33e1197996af1824bee06a68e3aeec6e51c6fad",
-    "note": "New review files, catalog entries, website worktree, and builds were not written after failed preflight. Pending source pointers only are recorded in this existing lightweight monitor file."
+  "recovery": {
+    "checkedAt": "2026-10-06T03:50:06Z",
+    "storagePreflight": "passed",
+    "projectsVolumeUuid": "49C2902F-986B-4FFA-AA95-AD8943F577B0",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261006-recovery/review.md",
+    "worktreePeakBudgetGiB": 1.5,
+    "networkReadback": "GitHub SSH and API succeeded after Full access activation"
   }
 }

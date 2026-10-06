@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (60)
+## 深度使用案例 / Worked cases (62)
 
 ### jev-ultrafast
 
@@ -544,7 +544,25 @@
 - 核验边界：无 key 的离线 mock 是规则替身，不是 Jev 实测；原生 Factorio/FLE 需专用可重置世界。基础循环虽记录执行后状态，未定义完整后置条件验证；本站未运行游戏。
 - 来源：[GitHub](https://github.com/jevplays-games/jev-factorio-agent) · [Questions](https://github.com/jevplays-games/jev-factorio-agent/blob/main/src/jev_factorio/questions.py) · [Decision loop](https://github.com/jevplays-games/jev-factorio-agent/blob/main/src/jev_factorio/loop.py)
 
-## 开源项目 / Open-source projects (114)
+### Spring AI 用 Jev 有界纠正模型回答
+
+- 作者：Spring AI Community
+- 输入：原始请求、模型候选回答和 advisor 顺序允许看到的工具调用或检索上下文。
+- Jev 判断：JevJudge 对标准分别提出 Noul、Choice 或 Score，代码按各自阈值给出通过、失败或不确定；可确定的 Java predicate 检查在本地完成。
+- 后续动作：advisor 对未通过回答从原请求重建反馈并有界重试；返回通过的回答，或按配置返回最佳候选／抛错。
+- 核验边界：非官方 Spring AI 扩展；瞬时 judge 失败默认可返回未经评审的答案，工具是否随重试再执行取决于 advisor 顺序。此纠正流程不支持流式输出，本站未调用 API 或证明答案质量提高。
+- 来源：[GitHub](https://github.com/spring-ai-community/spring-ai-typesafe) · [Judge contract](https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/docs/judge/JevJudge.md) · [Advisor source](https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/typesafe-spring-ai/src/main/java/org/springaicommunity/typesafe/advisor/JevSelfRefineAdvisor.java)
+
+### Jev 在 Magic 对局中选择并校验合法动作
+
+- 作者：Vincent Bons / wingedsheep
+- 输入：当前玩家视角的掩码游戏快照、牌组和引擎提供的可支付合法动作；不给模型调试日志中的对手抽牌信息。
+- Jev 判断：OpenRouter Jev 以原生 Choice 分阶段选择出牌及目标等细项，也处理起手换牌与轮抽；只接受程序给定的选项 ID。
+- 后续动作：代码组装动作并让权威引擎校验；拒绝后向 Jev 提供错误做一次纠正，仍失败或预算用尽时回退到内置 AI。
+- 核验边界：Jev 接入目前限定本地开发模式，仍需 OpenRouter key。项目包含大量规则与可选模型渠道，不是每局都调用 Jev；本站未验证完整 Magic 规则覆盖、实战表现或延迟。
+- 来源：[GitHub](https://github.com/wingedsheep/argentum-engine) · [Controller source](https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevAiPlayerController.kt) · [Jev client](https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevClient.kt)
+
+## 开源项目 / Open-source projects (121)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -662,6 +680,13 @@
 | [dreamerron/decision-bench](https://github.com/dreamerron/decision-bench) | community | MIT | 0 |
 | [dmishra2022/jev-java-sdk](https://github.com/dmishra2022/jev-java-sdk) | community | Apache-2.0 | 0 |
 | [hev/reranker](https://github.com/hev/reranker) | community | Apache-2.0 | 15 |
+| [spring-ai-community/spring-ai-typesafe](https://github.com/spring-ai-community/spring-ai-typesafe) | community | Apache-2.0 | 51 |
+| [wingedsheep/argentum-engine](https://github.com/wingedsheep/argentum-engine) | community | MIT | 70 |
+| [Arize-ai/openinference](https://github.com/Arize-ai/openinference) | community | Apache-2.0 | 1254 |
+| [get-convex/convex-evals](https://github.com/get-convex/convex-evals) | community | Apache-2.0 | 129 |
+| [justmytwospence/opencode-lean-context](https://github.com/justmytwospence/opencode-lean-context) | community | MIT | 0 |
+| [justmytwospence/opencode-auto-effort](https://github.com/justmytwospence/opencode-auto-effort) | community | MIT | 0 |
+| [gebeer/jev-effort](https://github.com/gebeer/jev-effort) | community | MIT | 1 |
 
 ## 官方 cookbook / Official recipes (18)
 

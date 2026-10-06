@@ -2190,5 +2190,93 @@
         "url": "https://github.com/jevplays-games/jev-factorio-agent/blob/main/src/jev_factorio/loop.py"
       }
     ]
+  },
+  {
+    "id": "spring-ai-jev-self-refine",
+    "name": "JevSelfRefineAdvisor",
+    "title": {
+      "zh": "Spring AI 用 Jev 有界纠正模型回答",
+      "en": "Bounded Spring AI answer refinement with Jev"
+    },
+    "author": "Spring AI Community",
+    "area": {
+      "zh": "模型回答质量反馈",
+      "en": "Model-answer quality feedback"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "原始请求、模型候选回答和 advisor 顺序允许看到的工具调用或检索上下文。",
+      "en": "The original request, a candidate model answer, and tool-call or retrieval context visible at the advisor position."
+    },
+    "decision": {
+      "zh": "JevJudge 对标准分别提出 Noul、Choice 或 Score，代码按各自阈值给出通过、失败或不确定；可确定的 Java predicate 检查在本地完成。",
+      "en": "JevJudge asks Noul, Choice, or Score questions per criterion; code thresholds yield pass, fail, or inconclusive. Deterministic Java predicate checks run locally."
+    },
+    "action": {
+      "zh": "advisor 对未通过回答从原请求重建反馈并有界重试；返回通过的回答，或按配置返回最佳候选／抛错。",
+      "en": "The advisor rebuilds feedback from the original request and retries failed answers within a budget, then returns a passing answer or, by configuration, the best candidate or an error."
+    },
+    "boundary": {
+      "zh": "非官方 Spring AI 扩展；瞬时 judge 失败默认可返回未经评审的答案，工具是否随重试再执行取决于 advisor 顺序。此纠正流程不支持流式输出，本站未调用 API 或证明答案质量提高。",
+      "en": "A community Spring AI extension. Transient judge failures may return an unjudged answer by default, and advisor order determines whether retries rerun tools. Refinement is non-streaming; this site did not call the API or prove better answers."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/spring-ai-community/spring-ai-typesafe"
+      },
+      {
+        "label": "Judge contract",
+        "url": "https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/docs/judge/JevJudge.md"
+      },
+      {
+        "label": "Advisor source",
+        "url": "https://github.com/spring-ai-community/spring-ai-typesafe/blob/main/typesafe-spring-ai/src/main/java/org/springaicommunity/typesafe/advisor/JevSelfRefineAdvisor.java"
+      }
+    ]
+  },
+  {
+    "id": "argentum-jev-mtg",
+    "name": "Argentum Jev opponent",
+    "title": {
+      "zh": "Jev 在 Magic 对局中选择并校验合法动作",
+      "en": "Jev choices validated by a Magic game engine"
+    },
+    "author": "Vincent Bons / wingedsheep",
+    "area": {
+      "zh": "卡牌游戏 Agent",
+      "en": "Card-game agent"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "当前玩家视角的掩码游戏快照、牌组和引擎提供的可支付合法动作；不给模型调试日志中的对手抽牌信息。",
+      "en": "A masked snapshot from the current player perspective, deck context, and engine-provided affordable legal actions; opponent draws from debug logs are excluded."
+    },
+    "decision": {
+      "zh": "OpenRouter Jev 以原生 Choice 分阶段选择出牌及目标等细项，也处理起手换牌与轮抽；只接受程序给定的选项 ID。",
+      "en": "OpenRouter Jev uses native Choices in stages for plays and details such as targets, as well as mulligans and drafts; only supplied option IDs are accepted."
+    },
+    "action": {
+      "zh": "代码组装动作并让权威引擎校验；拒绝后向 Jev 提供错误做一次纠正，仍失败或预算用尽时回退到内置 AI。",
+      "en": "Code constructs an action and validates it against the authoritative engine. Rejection gives Jev one correction attempt; continued failure or exhausted budget falls back to built-in AI."
+    },
+    "boundary": {
+      "zh": "Jev 接入目前限定本地开发模式，仍需 OpenRouter key。项目包含大量规则与可选模型渠道，不是每局都调用 Jev；本站未验证完整 Magic 规则覆盖、实战表现或延迟。",
+      "en": "Jev is currently limited to local development mode and requires an OpenRouter key. The project has rules and alternative model modes, so not every game uses Jev; full Magic coverage, match performance, and latency were not verified here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/wingedsheep/argentum-engine"
+      },
+      {
+        "label": "Controller source",
+        "url": "https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevAiPlayerController.kt"
+      },
+      {
+        "label": "Jev client",
+        "url": "https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevClient.kt"
+      }
+    ]
   }
 ]
