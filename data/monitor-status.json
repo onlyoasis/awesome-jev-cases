@@ -120,16 +120,23 @@
     "host": "darwin"
   },
   "publication": {
-    "status": "prepared",
+    "status": "published-and-verified",
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261007-resume/review.md",
     "environmentPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261007-resume/publish-environment.json",
     "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261007-resume/release-verification.json",
     "catalogContentChanged": true,
-    "catalogPush": "pending",
-    "websiteSync": "pending",
-    "websiteDeploy": "pending",
+    "catalogPush": "verified",
+    "websiteSync": "verified",
+    "websiteDeploy": "verified",
     "worktreePeakBudgetGiB": 3,
-    "note": "Candidates now have an external review record and bilingual entries. Actual commit, push, deploy and acceptance are recorded separately in the release record."
+    "note": "Both GitHub refs and Cloudflare 100% traffic were read back; all six formal URLs match this build byte for byte. The full release record is retained on Projects.",
+    "publishedAt": "2026-10-07T08:35:07.325Z",
+    "catalogContentSha": "2eee0bff5e432f6f49e8f814279dcf1717720996",
+    "websiteSha": "f12933ca2cd88f43d5eac7a55a51fa8f53b379bb",
+    "cloudflareVersion": "47cc6876-a8e7-494c-a2af-4dd0b1151d31",
+    "trafficPercent": 100,
+    "formalPagesVerified": 6,
+    "configurationUnchanged": true
   },
   "pendingCandidates": [],
   "deferredCandidates": [
