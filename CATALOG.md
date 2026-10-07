@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (62)
+## 深度使用案例 / Worked cases (64)
 
 ### jev-ultrafast
 
@@ -562,7 +562,25 @@
 - 核验边界：Jev 接入目前限定本地开发模式，仍需 OpenRouter key。项目包含大量规则与可选模型渠道，不是每局都调用 Jev；本站未验证完整 Magic 规则覆盖、实战表现或延迟。
 - 来源：[GitHub](https://github.com/wingedsheep/argentum-engine) · [Controller source](https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevAiPlayerController.kt) · [Jev client](https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevClient.kt)
 
-## 开源项目 / Open-source projects (121)
+### Reflex：遥测驱动的熔断与恢复探测
+
+- 作者：Datadog Labs / @ArunPar10
+- 输入：当前熔断状态与版本、Datadog 短/长窗口中的失败率、超时、延迟及队列信息，可选 Toto 预测。
+- Jev 判断：Jev 通过一个 Choice 在 Open、Probe、NoChange 中提议动作；预测只能作为证据，不能替代恢复探测。
+- 后续动作：执行器检查版本、遥测时效、冷却时间与状态约束后才改变熔断状态；连续 5 次成功探测由代码闭合，失败探测重新打开，推理失败保持原状态。
+- 核验边界：依据作者提供的模拟器与真实 SDK 接入代码核验，本站未运行 Datadog/Toto/Jev，也未验证生产环境可靠性或收益。
+- 来源：[GitHub](https://github.com/datadog-labs/reflex) · [Jev controller](https://github.com/datadog-labs/reflex/blob/7db760fa21f23d48bac086fcb81f20b0b309c36e/crates/reflex-sim/src/jev.rs) · [X](https://x.com/ArunPar10/status/2107628185592766684)
+
+### Alertmanager：保留通知的告警分流
+
+- 作者：gbesse
+- 输入：Alertmanager 告警组的 alertname、service、severity 和 summary/description；截断或超过 10 条的组直接进入复核。
+- Jev 判断：Jev 在 incident、routine、other 中做 Choice；代码把 other 或概率低于 0.9 的答案转为 review。
+- 后续动作：中继向每个原始通知附加 jevDecision 后转发，不静默、抑制、解除或丢弃报警；Jev 失败仍以 review 转发，下游发送失败返回 503 供重试。
+- 核验边界：作者说明只用合成输入试过 Jev API，没有真实 Alertmanager 实例；本站仅核查源码与 README，未测生产告警、端到端投递或模型分类质量。
+- 来源：[GitHub](https://github.com/gbesse/alertmanager-jev-triage) · [Jev API adapter](https://github.com/gbesse/alertmanager-jev-triage/blob/8918272db7f12baf6bd8af8e6ff73f508014e78f/jev.py) · [Relay](https://github.com/gbesse/alertmanager-jev-triage/blob/8918272db7f12baf6bd8af8e6ff73f508014e78f/triage.py)
+
+## 开源项目 / Open-source projects (124)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -687,6 +705,9 @@
 | [justmytwospence/opencode-lean-context](https://github.com/justmytwospence/opencode-lean-context) | community | MIT | 0 |
 | [justmytwospence/opencode-auto-effort](https://github.com/justmytwospence/opencode-auto-effort) | community | MIT | 0 |
 | [gebeer/jev-effort](https://github.com/gebeer/jev-effort) | community | MIT | 1 |
+| [datadog-labs/reflex](https://github.com/datadog-labs/reflex) | community | Apache-2.0 | 31 |
+| [gbesse/alertmanager-jev-triage](https://github.com/gbesse/alertmanager-jev-triage) | community | MIT | 0 |
+| [typesafe-ai/typesafe-public-examples](https://github.com/typesafe-ai/typesafe-public-examples) | official | MIT | 1 |
 
 ## 官方 cookbook / Official recipes (18)
 

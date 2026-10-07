@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-07T03:36:44Z",
+  "checkedAt": "2026-10-07T08:30:10.861Z",
   "github": "ok",
   "official": "ok",
   "x": "ok",
-  "addedProjects": 0,
-  "addedCases": 0,
+  "addedProjects": 3,
+  "addedCases": 2,
   "officialRecipes": 18,
   "xPosts": 15,
   "xVisibleCounts": {
@@ -18,57 +18,42 @@
   "githubSearches": [
     {
       "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-10-04",
-      "totalCount": null,
-      "displayedTotal": "1.6k",
-      "countPrecision": "rounded",
-      "incomplete": null,
-      "checkedAt": "2026-10-07T03:36:44Z",
-      "source": "GitHub connector results and Chrome search UI",
-      "returnedRepositories": 30,
+      "totalCount": 1616,
+      "incomplete": false,
+      "checkedAt": "2026-10-07T08:30:10.861Z",
+      "source": "GitHub API (gh)",
       "urls": [
-        "https://github.com/fatwang2/awesome-jev",
-        "https://github.com/hellogumbo/awesome-jev",
-        "https://github.com/heyjunpenn/awesome-jev",
-        "https://github.com/feder-cr/jev",
-        "https://github.com/genspark-ai/genoffice"
+        "https://github.com/greenlittleapple/jev-spire-strategist",
+        "https://github.com/YueyuHoshizora/TrackRadar",
+        "https://github.com/0xPlaygrounds/rig"
       ]
     },
     {
       "query": "jev in:name,description created:>=2026-10-05",
-      "totalCount": 466,
-      "displayedTotal": "466",
-      "countPrecision": "exact",
-      "incomplete": null,
-      "checkedAt": "2026-10-07T03:36:44Z",
-      "source": "GitHub connector results and Chrome search UI",
-      "returnedRepositories": 30,
+      "totalCount": 519,
+      "incomplete": false,
+      "checkedAt": "2026-10-07T08:30:10.861Z",
+      "source": "GitHub API (gh)",
       "urls": [
-        "https://github.com/tsale/jevline",
-        "https://github.com/mbutler/jev",
-        "https://github.com/asknimesh88/jev",
-        "https://github.com/Rox87/Jev",
-        "https://github.com/rvergara-forte/Jev"
+        "https://github.com/Sajjat4/Mark58",
+        "https://github.com/SuperInstance/jev-ideation",
+        "https://github.com/grewaljoe2/Jev-Desk"
       ]
     },
     {
       "query": "\"System One\" TypeSafe in:readme pushed:>=2026-10-04",
-      "totalCount": null,
-      "displayedTotal": "1.4k",
-      "countPrecision": "rounded",
-      "incomplete": null,
-      "checkedAt": "2026-10-07T03:36:44Z",
-      "source": "GitHub connector results and Chrome search UI",
-      "returnedRepositories": 30,
+      "totalCount": 1398,
+      "incomplete": false,
+      "checkedAt": "2026-10-07T08:30:10.861Z",
+      "source": "GitHub API (gh)",
       "urls": [
-        "https://github.com/heyjunpenn/awesome-jev",
-        "https://github.com/hellogumbo/awesome-jev",
-        "https://github.com/yibie/awesome-jev",
-        "https://github.com/fatwang2/awesome-jev",
-        "https://github.com/AbdelStark/awesome-typesafe-jev"
+        "https://github.com/vosbek/muse",
+        "https://github.com/Daatan/retro",
+        "https://github.com/paooxide/ui-draw-mcp"
       ]
     }
   ],
-  "githubLastSuccessfulAt": "2026-10-07T03:36:44Z",
+  "githubLastSuccessfulAt": "2026-10-07T08:30:10.861Z",
   "officialLastSuccessfulAt": "2026-10-07T03:36:44Z",
   "xLastSuccessfulAt": "2026-10-07T03:36:44Z",
   "xQueryStatus": {
@@ -76,62 +61,97 @@
     "Jev github.com": "ok",
     "from:typesafeai Jev": "ok"
   },
-  "githubSearchNote": "All three connector searches returned original repository links and Chrome returned genuine search results. The connector did not expose total_count or incomplete_results; rounded UI totals are not treated as exact counts, and completeness is unknown.",
+  "githubSearchNote": "After access was changed in this original thread, full GitHub API responses returned exact total_count and incomplete_results. Counts include unrelated matches; only source-verified candidates are added.",
   "officialRepositoryCount": 12,
-  "officialNote": "The official llms.txt index still lists 18 cookbooks and one demo. typesafe-ai/typesafe-public-examples now has cookbook fixtures and function-calling Python code (MIT, main c3698912a6b40a1675d229cf2c90d9998e2e474d); it is a new project candidate. No new cookbook URL was observed. The organization repository count was not refreshed in this run.",
+  "officialNote": "Official llms.txt remains 18 cookbooks and one demo. typesafe-ai/typesafe-public-examples now includes cookbook fixtures and TypeSafe system_one function dispatch code and is added as an official MIT project; existing cookbook semantics are not duplicated as a new case. Organization repository count was not refreshed.",
   "recovery": {
-    "checkedAt": "2026-10-06T03:50:06Z",
+    "checkedAt": "2026-10-07T08:30:10.861Z",
     "storagePreflight": "passed",
     "projectsVolumeUuid": "49C2902F-986B-4FFA-AA95-AD8943F577B0",
-    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261006-recovery/review.md",
-    "worktreePeakBudgetGiB": 1.5,
-    "networkReadback": "GitHub SSH and API succeeded after Full access activation"
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261007-resume/review.md",
+    "worktreePeakBudgetGiB": 3,
+    "networkReadback": "Actual original-thread GitHub API/SSH/push dry-run and Cloudflare read succeeded after user changed access"
   },
   "officialRepositoryCountLastVerifiedAt": "2026-10-06T03:29:09Z",
   "publishEnvironment": {
-    "checkedAt": "2026-10-07T03:18:50.311Z",
+    "checkedAt": "2026-10-07T08:22:29.645Z",
     "executor": {
-      "sandbox": "seatbelt",
-      "networkDisabled": true
+      "sandbox": "not-set",
+      "networkDisabled": false
     },
     "checks": {
       "worktreeStorage": {
-        "ok": false,
-        "failure": "Command or response validation failed",
-        "exitCode": 2,
-        "code": null
+        "ok": true,
+        "peakBudgetGiB": 1.5,
+        "minimumFreeGiB": 60,
+        "projectedFreeGiB": 133.891
       },
       "evidenceStorage": {
-        "ok": false,
-        "failure": "Command or response validation failed",
-        "exitCode": 2,
-        "code": null
+        "ok": true,
+        "peakBudgetGiB": 1.5,
+        "minimumFreeGiB": 60,
+        "projectedFreeGiB": 133.891
       },
       "catalogGitHub": {
-        "ok": false,
-        "failure": "Command or response validation failed",
-        "exitCode": 1,
-        "code": null
+        "ok": true,
+        "main": "4630868650e6202b652e9433b6a7846b0ef3ea2d",
+        "sshReadback": true,
+        "pushDryRun": true
       },
       "websiteGitHub": {
-        "ok": false,
-        "failure": "Command or response validation failed",
-        "exitCode": 1,
-        "code": null
+        "ok": true,
+        "main": "0134e025b95236ccbe9542922da45dd9b13dc2dd",
+        "sshReadback": true,
+        "pushDryRun": true
       },
       "cloudflare": {
-        "ok": false,
-        "failure": "Command or response validation failed",
-        "exitCode": 1,
-        "code": null
+        "ok": true,
+        "latestVersions": [
+          {
+            "versionId": "eea1d71b-e336-4a94-9acc-4b7132913672",
+            "percentage": 100
+          }
+        ]
       }
     },
-    "canPublishCatalog": false,
-    "canDeployWebsite": false,
-    "ok": false,
+    "canPublishCatalog": true,
+    "canDeployWebsite": true,
+    "ok": true,
     "host": "darwin"
   },
   "publication": {
+    "status": "prepared",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261007-resume/review.md",
+    "environmentPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261007-resume/publish-environment.json",
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261007-resume/release-verification.json",
+    "catalogContentChanged": true,
+    "catalogPush": "pending",
+    "websiteSync": "pending",
+    "websiteDeploy": "pending",
+    "worktreePeakBudgetGiB": 3,
+    "note": "Candidates now have an external review record and bilingual entries. Actual commit, push, deploy and acceptance are recorded separately in the release record."
+  },
+  "pendingCandidates": [],
+  "deferredCandidates": [
+    {
+      "url": "https://github.com/tsale/jevline",
+      "reason": "README describes incident expansion; API license null and LICENSE absent. Open-source project listing deferred."
+    },
+    {
+      "url": "https://github.com/mantaroh/jev-vs-openai-dicision-api",
+      "authorPost": "https://x.com/_mantaroh_/status/2107644287286673582",
+      "reason": "No verified license. Evaluation results are author reports, not independent measurements."
+    },
+    {
+      "url": "https://x.com/0xL1C10G/status/2107610578168795601",
+      "reason": "Puyo Puyo demo does not supply enough source or typed decision detail for a complete case."
+    },
+    {
+      "url": "https://x.com/deanimatedmonk/status/2107674781898174787",
+      "reason": "Bird-tracker post is a lead only; the Jev decision and downstream action remain unverified."
+    }
+  ],
+  "publicationBeforeRecovery": {
     "status": "blocked",
     "stage": "execution-permissions",
     "reason": "The actual heartbeat executor reports seatbelt and networkDisabled=true. Both storage preflights, both command-based GitHub checks, and the Cloudflare read check failed. canPublishCatalog=false and canDeployWebsite=false.",
@@ -172,81 +192,5 @@
     "websiteSync": "not attempted",
     "websiteBuild": "not attempted",
     "websiteDeploy": "not attempted"
-  },
-  "pendingCandidates": [
-    {
-      "repository": "datadog-labs/reflex",
-      "url": "https://github.com/datadog-labs/reflex",
-      "source": "x",
-      "authorPost": "https://x.com/ArunPar10/status/2107628185592766684",
-      "relationship": "community",
-      "license": "Apache-2.0",
-      "checkedAt": "2026-10-07T03:36:44Z",
-      "proposedListings": [
-        "project",
-        "case"
-      ],
-      "codeUrls": [
-        "https://github.com/datadog-labs/reflex/blob/main/crates/reflex-sim/src/provider.rs",
-        "https://github.com/datadog-labs/reflex/blob/main/crates/reflex-sim/src/jev.rs"
-      ],
-      "status": "source-verified; pending external review record and bilingual catalog entry",
-      "boundary": "Typed Jev judgments and guarded state transitions are demonstrated in a simulator; operational safety and production outcomes were not reproduced."
-    },
-    {
-      "repository": "gbesse/alertmanager-jev-triage",
-      "url": "https://github.com/gbesse/alertmanager-jev-triage",
-      "source": "github",
-      "relationship": "community",
-      "license": "MIT",
-      "checkedAt": "2026-10-07T03:36:44Z",
-      "proposedListings": [
-        "project",
-        "case"
-      ],
-      "codeUrls": [
-        "https://github.com/gbesse/alertmanager-jev-triage/blob/main/jev.py",
-        "https://github.com/gbesse/alertmanager-jev-triage/blob/main/triage.py"
-      ],
-      "status": "source-verified; pending external review record and bilingual catalog entry",
-      "boundary": "Finite incident/routine/review annotations are forwarded with original alerts; Jev failures become review. The author's synthetic API exercise is not live Alertmanager or site acceptance."
-    },
-    {
-      "repository": "typesafe-ai/typesafe-public-examples",
-      "url": "https://github.com/typesafe-ai/typesafe-public-examples",
-      "source": "official",
-      "relationship": "official",
-      "license": "MIT",
-      "checkedAt": "2026-10-07T03:36:44Z",
-      "proposedListings": [
-        "project"
-      ],
-      "verifiedMainSha": "c3698912a6b40a1675d229cf2c90d9998e2e474d",
-      "codeUrls": [
-        "https://github.com/typesafe-ai/typesafe-public-examples/blob/main/cookbooks/function_calling/dispatch.py",
-        "https://github.com/typesafe-ai/typesafe-public-examples/blob/main/cookbooks/function_calling/trader.py"
-      ],
-      "status": "source-verified; pending external review record and bilingual catalog entry",
-      "boundary": "Official cookbook materials and Jev SDK dispatch code; mocked market bars, no model weights, no independent execution. Existing cookbook semantics are not counted as a new case."
-    }
-  ],
-  "deferredCandidates": [
-    {
-      "url": "https://github.com/tsale/jevline",
-      "reason": "README describes incident expansion; API license null and LICENSE absent. Open-source project listing deferred."
-    },
-    {
-      "url": "https://github.com/mantaroh/jev-vs-openai-dicision-api",
-      "authorPost": "https://x.com/_mantaroh_/status/2107644287286673582",
-      "reason": "No verified license. Evaluation results are author reports, not independent measurements."
-    },
-    {
-      "url": "https://x.com/0xL1C10G/status/2107610578168795601",
-      "reason": "Puyo Puyo demo does not supply enough source or typed decision detail for a complete case."
-    },
-    {
-      "url": "https://x.com/deanimatedmonk/status/2107674781898174787",
-      "reason": "Bird-tracker post is a lead only; the Jev decision and downstream action remain unverified."
-    }
-  ]
+  }
 }

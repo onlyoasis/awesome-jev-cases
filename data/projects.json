@@ -1934,5 +1934,53 @@
     "lastVerified": "2026-10-06",
     "status": "verified",
     "stars": 1
+  },
+  {
+    "id": "reflex",
+    "name": "datadog-labs/reflex",
+    "url": "https://github.com/datadog-labs/reflex",
+    "category": "guard",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Rust 控制循环库：把 Datadog 遥测和可选 Toto 预测转成类型化状态，Jev 提议 Open/Probe/NoChange；代码在执行时检查状态版本、数据时效、冷却与探测约束。仓库提供熔断模拟器，本站未复现生产效果。",
+      "en": "Rust control-loop library using Datadog telemetry and optional Toto forecasts. Jev recommends Open/Probe/NoChange; code checks revisions, freshness, cooldowns and probe constraints before applying transitions. Includes a circuit-breaker simulator; production outcomes were not reproduced here."
+    },
+    "sourceUrl": "https://github.com/datadog-labs/reflex",
+    "lastVerified": "2026-10-07",
+    "status": "verified",
+    "stars": 31
+  },
+  {
+    "id": "alertmanager-jev-triage",
+    "name": "gbesse/alertmanager-jev-triage",
+    "url": "https://github.com/gbesse/alertmanager-jev-triage",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Prometheus Alertmanager 通知中继：Jev 对告警描述做有限分类，附加 incident/routine/review 标记并保留每条原始通知；低置信度、截断或 API 失败转人工复核，下游发送失败返回 503。作者只用合成输入测试 API，未接真实 Alertmanager。",
+      "en": "Prometheus Alertmanager relay that adds finite Jev triage annotations while forwarding every original notification. Low confidence, truncation or API failures become review; downstream failures return HTTP 503. The author exercised the API with synthetic input, without a live Alertmanager instance."
+    },
+    "sourceUrl": "https://github.com/gbesse/alertmanager-jev-triage",
+    "lastVerified": "2026-10-07",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "typesafe-public-examples",
+    "name": "typesafe-ai/typesafe-public-examples",
+    "url": "https://github.com/typesafe-ai/typesafe-public-examples",
+    "category": "official-sdk",
+    "relationship": "official",
+    "license": "MIT",
+    "summary": {
+      "zh": "TypeSafe 官方文档、demo 与 cookbook 素材库，包含公开数据夹具和 Python 函数调度代码：用 Choice/Noul 选函数及有限参数，再由代码执行。交易图表示例使用合成行情；不是独立完整安装包，本站未运行。",
+      "en": "Official documentation, demo and cookbook materials, with public fixtures and Python dispatch code that uses Choice/Noul for functions and finite arguments before code executes them. Trading charts use synthetic bars; this is not a complete standalone package and was not run here."
+    },
+    "sourceUrl": "https://github.com/typesafe-ai/typesafe-public-examples",
+    "lastVerified": "2026-10-07",
+    "status": "verified",
+    "stars": 1
   }
 ]

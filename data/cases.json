@@ -2278,5 +2278,93 @@
         "url": "https://github.com/wingedsheep/argentum-engine/blob/main/ai/src/main/kotlin/com/wingedsheep/ai/jev/JevClient.kt"
       }
     ]
+  },
+  {
+    "id": "reflex-circuit-breaker",
+    "name": "Reflex circuit breaker",
+    "title": {
+      "zh": "Reflex：遥测驱动的熔断与恢复探测",
+      "en": "Reflex: telemetry-guided circuit breaking and recovery probes"
+    },
+    "author": "Datadog Labs / @ArunPar10",
+    "area": {
+      "zh": "可观测性与控制循环",
+      "en": "Observability and control loops"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "当前熔断状态与版本、Datadog 短/长窗口中的失败率、超时、延迟及队列信息，可选 Toto 预测。",
+      "en": "Circuit phase and revision, short/long Datadog windows of failures, timeouts, latency and queue data, plus optional Toto forecasts."
+    },
+    "decision": {
+      "zh": "Jev 通过一个 Choice 在 Open、Probe、NoChange 中提议动作；预测只能作为证据，不能替代恢复探测。",
+      "en": "A single Choice asks Jev to recommend Open, Probe or NoChange. Forecasts are evidence and cannot replace recovery probes."
+    },
+    "action": {
+      "zh": "执行器检查版本、遥测时效、冷却时间与状态约束后才改变熔断状态；连续 5 次成功探测由代码闭合，失败探测重新打开，推理失败保持原状态。",
+      "en": "The executor checks revisions, telemetry freshness, cooldowns and state constraints before applying a transition. Code closes the circuit after five successful probes, reopens it on a failed probe and leaves it unchanged on inference failure."
+    },
+    "boundary": {
+      "zh": "依据作者提供的模拟器与真实 SDK 接入代码核验，本站未运行 Datadog/Toto/Jev，也未验证生产环境可靠性或收益。",
+      "en": "Verified from the author’s simulator and SDK integration code. This site did not run Datadog/Toto/Jev or validate production reliability or outcomes."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/datadog-labs/reflex"
+      },
+      {
+        "label": "Jev controller",
+        "url": "https://github.com/datadog-labs/reflex/blob/7db760fa21f23d48bac086fcb81f20b0b309c36e/crates/reflex-sim/src/jev.rs"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/ArunPar10/status/2107628185592766684"
+      }
+    ]
+  },
+  {
+    "id": "alertmanager-triage",
+    "name": "Alertmanager Jev Triage",
+    "title": {
+      "zh": "Alertmanager：保留通知的告警分流",
+      "en": "Alertmanager: triage annotations that preserve notifications"
+    },
+    "author": "gbesse",
+    "area": {
+      "zh": "监控告警分流",
+      "en": "Monitoring alert triage"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "Alertmanager 告警组的 alertname、service、severity 和 summary/description；截断或超过 10 条的组直接进入复核。",
+      "en": "Alertmanager group labels such as alertname, service and severity, with summary/description annotations. Truncated groups or groups over ten alerts go directly to review."
+    },
+    "decision": {
+      "zh": "Jev 在 incident、routine、other 中做 Choice；代码把 other 或概率低于 0.9 的答案转为 review。",
+      "en": "Jev chooses incident, routine or other; code maps other or a probability below 0.9 to review."
+    },
+    "action": {
+      "zh": "中继向每个原始通知附加 jevDecision 后转发，不静默、抑制、解除或丢弃报警；Jev 失败仍以 review 转发，下游发送失败返回 503 供重试。",
+      "en": "The relay forwards every original notification with a jevDecision annotation. It does not silence, inhibit, resolve or drop alerts; Jev failures are forwarded as review and downstream delivery failures return HTTP 503 for retries."
+    },
+    "boundary": {
+      "zh": "作者说明只用合成输入试过 Jev API，没有真实 Alertmanager 实例；本站仅核查源码与 README，未测生产告警、端到端投递或模型分类质量。",
+      "en": "The author reports an API exercise with synthetic input and no live Alertmanager instance. This site reviewed source and README only, without testing production alerts, end-to-end delivery or classification quality."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/gbesse/alertmanager-jev-triage"
+      },
+      {
+        "label": "Jev API adapter",
+        "url": "https://github.com/gbesse/alertmanager-jev-triage/blob/8918272db7f12baf6bd8af8e6ff73f508014e78f/jev.py"
+      },
+      {
+        "label": "Relay",
+        "url": "https://github.com/gbesse/alertmanager-jev-triage/blob/8918272db7f12baf6bd8af8e6ff73f508014e78f/triage.py"
+      }
+    ]
   }
 ]
