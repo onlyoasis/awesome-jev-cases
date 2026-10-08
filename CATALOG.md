@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (64)
+## 深度使用案例 / Worked cases (69)
 
 ### jev-ultrafast
 
@@ -580,7 +580,52 @@
 - 核验边界：作者说明只用合成输入试过 Jev API，没有真实 Alertmanager 实例；本站仅核查源码与 README，未测生产告警、端到端投递或模型分类质量。
 - 来源：[GitHub](https://github.com/gbesse/alertmanager-jev-triage) · [Jev API adapter](https://github.com/gbesse/alertmanager-jev-triage/blob/8918272db7f12baf6bd8af8e6ff73f508014e78f/jev.py) · [Relay](https://github.com/gbesse/alertmanager-jev-triage/blob/8918272db7f12baf6bd8af8e6ff73f508014e78f/triage.py)
 
-## 开源项目 / Open-source projects (124)
+### Jevons Talking：有限菜单逐键拼句
+
+- 作者：kmosher
+- 输入：用户问题、已拼文本、最近按键，以及 WordNet 预测词、字母、标点、退格和结束键组成的菜单。
+- Jev 判断：每步 Jev 通过 Choice 选择当前菜单中的一键；程序还可用 Noul 判断是否结束或需要修正。
+- 后续动作：代码追加词或字符、更新前缀预测、执行退格或结束，并记录概率轨迹；步数预算限制循环。
+- 核验边界：实验受字典与菜单限制，仓库转录只是作者样本；本站未调用 API、验证回复质量或认证辅助沟通用途。
+- 来源：[GitHub](https://github.com/kmosher/jevons-talking) · [Source](https://github.com/kmosher/jevons-talking/blob/e2acaa1ed763707da08c7ac4e0be7ba594db970f/talk.ts)
+
+### Railroad Route：一句话控制矿车开关
+
+- 作者：vinicius-francozo
+- 输入：玩家写的英文或葡文句子、已布置轨道和本关所有开关的有限问题。
+- Jev 判断：一次 Jev 请求并行判断 Choice 出口、Noul 闸门与 Score 等级；程序按阈值或四舍五入读为具体开关结果。
+- 后续动作：服务端验证答案后逐格模拟矿车，返回到矿、错误隧道或脱轨结果，并按路径、置信边界和用轨数评分。
+- 核验边界：限定五关的游戏，作者实时 API 测试和延迟为自报，参考解与回放不等于本站复现，也不是通用物理规划器。
+- 来源：[GitHub](https://github.com/vinicius-francozo/railroad-route) · [Source](https://github.com/vinicius-francozo/railroad-route/blob/49ce76a59d774aed5624f279bdac9dc5f612f82e/backend/railroad/jev.py) · [Source](https://github.com/vinicius-francozo/railroad-route/blob/49ce76a59d774aed5624f279bdac9dc5f612f82e/backend/railroad/simulate.py)
+
+### sift：生成简报前筛选信息与来源
+
+- 作者：BeforeLanding
+- 输入：配置中的用户兴趣、多来源候选条目及来源摘要。
+- Jev 判断：真实 Jev 后端对条目批量做 Score 价值判断，用 Noul 评估来源是否值得生成报告。
+- 后续动作：按配置阈值筛选后交给 LLM 生成双语简报；调用失败或不确定时保留候选，过滤后全空的来源保留少量高分条目。
+- 核验边界：真实 SDK 和 mock 分开；本站仅核查源码，没有验证作者的节省量、简报发布结果或被过滤信息的召回率。
+- 来源：[GitHub](https://github.com/BeforeLanding/sift) · [Source](https://github.com/BeforeLanding/sift/blob/fd3c9796a5ccb962f94411b5e562f8eb540ff70e/src/jev/real.ts) · [Source](https://github.com/BeforeLanding/sift/blob/fd3c9796a5ccb962f94411b5e562f8eb540ff70e/src/jev/filter.ts)
+
+### JevBot：先观察再按策略审核 Discord 消息
+
+- 作者：OGZamasu
+- 输入：当前 Discord 消息、同作者最近消息，以及频道规则和历史违规记录。
+- Jev 判断：Jev Choice 区分 spam、legitimate、uncertain；代码再核对垃圾概率、置信度和确定性规则。
+- 后续动作：新服务器默认 Observe，只记录；不确定结果进入人工复核。配置允许后可告警、删帖或超时，执行前再读设置并记录失败，不自动封禁。
+- 核验边界：需要自有 Discord、Cloudflare 和 TypeSafe 配置；本站未连接真实服务器、验证身份控制、误判率或线上删除结果。
+- 来源：[GitHub](https://github.com/OGZamasu/JevBot) · [Source](https://github.com/OGZamasu/JevBot/blob/f14fac27f0aabac0d7de9f508259b99c6087be08/worker/jev.ts) · [Source](https://github.com/OGZamasu/JevBot/blob/f14fac27f0aabac0d7de9f508259b99c6087be08/shared/moderation.ts) · [Source](https://github.com/OGZamasu/JevBot/blob/f14fac27f0aabac0d7de9f508259b99c6087be08/worker/gateway.ts)
+
+### HiringCafe：搜索词与简历的职位相关度评分
+
+- 作者：Hamed Nilforoshan / HiringCafe
+- 输入：用户搜索词或简历与一条职位描述。
+- Jev 判断：作者称 Jev 将匹配相关度评为 1–10 分，并与其他模型及团队人工标注比较。
+- 后续动作：作者称把这些判断用于 HiringCafe 职位搜索和简历匹配结果；本次原帖提供了两个相关度任务的评测。
+- 核验边界：仅作者原帖及 TypeSafe 推荐，无可检查源码。500 条团队标注样本、用户规模、费用与效果均为作者自报，本站未取得样本或复现评测，也不猜具体 API 请求形状。
+- 来源：[Author post](https://x.com/h_nilforoshan/status/2107643820150308932) · [Matching use](https://x.com/h_nilforoshan/status/2107644837407404340) · [TypeSafe recommendation](https://x.com/typesafeai/status/2107958916684632396)
+
+## 开源项目 / Open-source projects (131)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -708,6 +753,13 @@
 | [datadog-labs/reflex](https://github.com/datadog-labs/reflex) | community | Apache-2.0 | 31 |
 | [gbesse/alertmanager-jev-triage](https://github.com/gbesse/alertmanager-jev-triage) | community | MIT | 0 |
 | [typesafe-ai/typesafe-public-examples](https://github.com/typesafe-ai/typesafe-public-examples) | official | MIT | 1 |
+| [kmosher/jevons-talking](https://github.com/kmosher/jevons-talking) | community | MIT | 1 |
+| [vinicius-francozo/railroad-route](https://github.com/vinicius-francozo/railroad-route) | community | MIT | 0 |
+| [BeforeLanding/sift](https://github.com/BeforeLanding/sift) | community | MIT | 0 |
+| [OGZamasu/JevBot](https://github.com/OGZamasu/JevBot) | community | MIT | 0 |
+| [zereight/pi-zereight-router](https://github.com/zereight/pi-zereight-router) | community | MIT | 0 |
+| [celesteanglm/decision-models-skills](https://github.com/celesteanglm/decision-models-skills) | community | MIT | 0 |
+| [aaddrick/building-with-typesafe-jev](https://github.com/aaddrick/building-with-typesafe-jev) | community | MIT | 136 |
 
 ## 官方 cookbook / Official recipes (18)
 

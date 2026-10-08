@@ -1,69 +1,147 @@
 {
-  "checkedAt": "2026-10-07T08:30:10.861Z",
+  "checkedAt": "2026-10-08T03:26:13.781Z",
   "github": "ok",
   "official": "ok",
   "x": "ok",
-  "addedProjects": 3,
-  "addedCases": 2,
+  "addedProjects": 7,
+  "addedCases": 5,
   "officialRecipes": 18,
-  "xPosts": 15,
+  "xPosts": 13,
   "xVisibleCounts": {
-    "TypeSafe Jev": 7,
-    "Jev github.com": 4,
-    "from:typesafeai Jev": 4
+    "TypeSafe Jev": 5,
+    "Jev github.com": 6,
+    "from:typesafeai Jev": 2
   },
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "The since:2026-09-22 until:2026-10-07 Latest query returned October 7 posts outside the requested exclusive end date. Historical coverage remains partial; the original backfill cursor is unchanged.",
+  "xHistoricalCoverageNote": "The since:2026-09-22 until:2026-10-08 Latest query returned October 8 posts outside the exclusive upper date (for example PeterBell/2108034352705597941). The original backfill cursor is unchanged.",
   "githubSearches": [
     {
-      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-10-04",
-      "totalCount": 1616,
+      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-10-05",
+      "totalCount": 1588,
       "incomplete": false,
-      "checkedAt": "2026-10-07T08:30:10.861Z",
-      "source": "GitHub API (gh)",
+      "checkedAt": "2026-10-08T03:17:24.027495+00:00",
       "urls": [
-        "https://github.com/greenlittleapple/jev-spire-strategist",
+        "https://github.com/diminglucky/sub2api",
         "https://github.com/YueyuHoshizora/TrackRadar",
-        "https://github.com/0xPlaygrounds/rig"
+        "https://github.com/OtohaCo/SwiftAgent",
+        "https://github.com/felix-run/felix",
+        "https://github.com/linny006/agent-eval-harness",
+        "https://github.com/racecraft-lab/racecraft-plugins-public",
+        "https://github.com/brynston/jev-contact-centre-poc",
+        "https://github.com/lateos-ai/reflex",
+        "https://github.com/daviesluo/daviesportfolios",
+        "https://github.com/nisfeb/orrery",
+        "https://github.com/rw0104/sub2api-cost-console",
+        "https://github.com/hashgraph-online/awesome-ai-plugins",
+        "https://github.com/iii-hq/workers",
+        "https://github.com/xinyao27/jevonian",
+        "https://github.com/agentsfleet/orly",
+        "https://github.com/cxjkhr/ai-nostalgia",
+        "https://github.com/lim6112j/laya-example",
+        "https://github.com/lidge-jun/opencodex",
+        "https://github.com/kmosher/jevons-talking",
+        "https://github.com/mithril-lang/mithril",
+        "https://github.com/zereight/pi-zereight-router",
+        "https://github.com/yogadwipayana/chatbot-api",
+        "https://github.com/EngineeMoMo/sub2apicust",
+        "https://github.com/cybrking/modelrudder",
+        "https://github.com/HaoxiangXia/fork-cast",
+        "https://github.com/TheHalfMoon/Skelet",
+        "https://github.com/topherchris420/lop-nur-twin",
+        "https://github.com/carneloot/steam-organizer",
+        "https://github.com/2456868764/jevguide",
+        "https://github.com/gist-rs/riir-reflex"
       ]
     },
     {
       "query": "jev in:name,description created:>=2026-10-05",
-      "totalCount": 519,
+      "totalCount": 686,
       "incomplete": false,
-      "checkedAt": "2026-10-07T08:30:10.861Z",
-      "source": "GitHub API (gh)",
+      "checkedAt": "2026-10-08T03:17:26.453677+00:00",
       "urls": [
-        "https://github.com/Sajjat4/Mark58",
+        "https://github.com/brynston/jev-contact-centre-poc",
+        "https://github.com/leandrosmoreira53/llm-gateway",
+        "https://github.com/grewaljoe2/Jev-Desk",
+        "https://github.com/LIDR-academy/jev-dev-demo",
+        "https://github.com/kmosher/jevons-talking",
+        "https://github.com/zereight/pi-zereight-router",
+        "https://github.com/residenthiago2011/DSH-Laya-Tool-Router",
         "https://github.com/SuperInstance/jev-ideation",
-        "https://github.com/grewaljoe2/Jev-Desk"
+        "https://github.com/jang2162/tiergear",
+        "https://github.com/VictorGambarini/jev-mod",
+        "https://github.com/LIDR-academy/jev-demo",
+        "https://github.com/OGZamasu/JevBot",
+        "https://github.com/zhairy/dsh-agent-swarm",
+        "https://github.com/fei-yang-li/JEV",
+        "https://github.com/earlgreyhot1701D/readme-clew-2",
+        "https://github.com/AshwathSingh/jev-balancer",
+        "https://github.com/michaelmld/snake-jev",
+        "https://github.com/uu889/laya-opencv",
+        "https://github.com/nebula6379/jevmd",
+        "https://github.com/leolee2365/jev-demo-myfpjf7f",
+        "https://github.com/CarlosGuedea/JEV-Studio",
+        "https://github.com/guannan1031-hash/agentcheck",
+        "https://github.com/kozo2/jev4mztabm",
+        "https://github.com/BeforeLanding/sift",
+        "https://github.com/joelboersma/jev-melee",
+        "https://github.com/tironinho/jev_tranding_engine",
+        "https://github.com/kanedayo/clef-mcp",
+        "https://github.com/celesteanglm/decision-models-skills",
+        "https://github.com/vinicius-francozo/railroad-route",
+        "https://github.com/enochan/jev-demo-1"
       ]
     },
     {
-      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-10-04",
-      "totalCount": 1398,
+      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-10-05",
+      "totalCount": 1370,
       "incomplete": false,
-      "checkedAt": "2026-10-07T08:30:10.861Z",
-      "source": "GitHub API (gh)",
+      "checkedAt": "2026-10-08T03:17:28.337561+00:00",
       "urls": [
-        "https://github.com/vosbek/muse",
+        "https://github.com/diminglucky/sub2api",
         "https://github.com/Daatan/retro",
-        "https://github.com/paooxide/ui-draw-mcp"
+        "https://github.com/YueyuHoshizora/TrackRadar",
+        "https://github.com/uditakankananonononono/meemee",
+        "https://github.com/linny006/agent-eval-harness",
+        "https://github.com/bcollier/faculty-twin",
+        "https://github.com/brynston/jev-contact-centre-poc",
+        "https://github.com/mertguvencli/aifomoindex",
+        "https://github.com/rw0104/sub2api-cost-console",
+        "https://github.com/xinyao27/jevonian",
+        "https://github.com/OpenAgentsInc/openagents",
+        "https://github.com/lllcy/cpah-docs",
+        "https://github.com/chainlesschain/chainlesschain",
+        "https://github.com/mishrasanjeev/agentic-org",
+        "https://github.com/cxjkhr/ai-nostalgia",
+        "https://github.com/lim6112j/laya-example",
+        "https://github.com/lidge-jun/opencodex",
+        "https://github.com/mithril-lang/mithril",
+        "https://github.com/Laxmanckl/paper-desk",
+        "https://github.com/EngineeMoMo/sub2apicust",
+        "https://github.com/josers18/analytics-made-simple-tutorials",
+        "https://github.com/dashaun-tanzu/recent-cve-news",
+        "https://github.com/raullenchai/Rapid-MLX",
+        "https://github.com/everyinfra/jev-radar",
+        "https://github.com/x812033727/travel_scanner",
+        "https://github.com/LIDR-academy/jev-demo",
+        "https://github.com/tiffygk/jev-mode",
+        "https://github.com/grizzlypeaksoftware/kodiak",
+        "https://github.com/mgd34msu/goodvibes-jev",
+        "https://github.com/aleadag/agent-steward"
       ]
     }
   ],
-  "githubLastSuccessfulAt": "2026-10-07T08:30:10.861Z",
-  "officialLastSuccessfulAt": "2026-10-07T03:36:44Z",
-  "xLastSuccessfulAt": "2026-10-07T03:36:44Z",
+  "githubLastSuccessfulAt": "2026-10-08T03:26:13.781Z",
+  "officialLastSuccessfulAt": "2026-10-08T03:26:13.781Z",
+  "xLastSuccessfulAt": "2026-10-08T03:26:13.781Z",
   "xQueryStatus": {
     "TypeSafe Jev": "ok",
     "Jev github.com": "ok",
     "from:typesafeai Jev": "ok"
   },
-  "githubSearchNote": "After access was changed in this original thread, full GitHub API responses returned exact total_count and incomplete_results. Counts include unrelated matches; only source-verified candidates are added.",
+  "githubSearchNote": "Full live GitHub responses parsed with exact totals and incomplete_results. Only eight new repositories were deeply reviewed; query counts include unrelated results and do not represent exhaustive curation.",
   "officialRepositoryCount": 12,
-  "officialNote": "Official llms.txt remains 18 cookbooks and one demo. typesafe-ai/typesafe-public-examples now includes cookbook fixtures and TypeSafe system_one function dispatch code and is added as an official MIT project; existing cookbook semantics are not duplicated as a new case. Organization repository count was not refreshed.",
+  "officialNote": "Official llms.txt has 18 cookbooks and one demo; 12 organization repositories read back. public-examples remains identical to the previously reviewed c369891 commit. New official X recommendation of HiringCafe points to a source-verified author-only case.",
   "recovery": {
     "checkedAt": "2026-10-07T08:30:10.861Z",
     "storagePreflight": "passed",
@@ -72,9 +150,9 @@
     "worktreePeakBudgetGiB": 3,
     "networkReadback": "Actual original-thread GitHub API/SSH/push dry-run and Cloudflare read succeeded after user changed access"
   },
-  "officialRepositoryCountLastVerifiedAt": "2026-10-06T03:29:09Z",
+  "officialRepositoryCountLastVerifiedAt": "2026-10-08T03:26:13.781Z",
   "publishEnvironment": {
-    "checkedAt": "2026-10-07T08:22:29.645Z",
+    "checkedAt": "2026-10-08T03:14:06.448Z",
     "executor": {
       "sandbox": "not-set",
       "networkDisabled": false
@@ -84,23 +162,23 @@
         "ok": true,
         "peakBudgetGiB": 1.5,
         "minimumFreeGiB": 60,
-        "projectedFreeGiB": 133.891
+        "projectedFreeGiB": 122.179
       },
       "evidenceStorage": {
         "ok": true,
         "peakBudgetGiB": 1.5,
         "minimumFreeGiB": 60,
-        "projectedFreeGiB": 133.891
+        "projectedFreeGiB": 122.179
       },
       "catalogGitHub": {
         "ok": true,
-        "main": "4630868650e6202b652e9433b6a7846b0ef3ea2d",
+        "main": "55216af61da990eba1957a8eca12c2cc3d5daf59",
         "sshReadback": true,
         "pushDryRun": true
       },
       "websiteGitHub": {
         "ok": true,
-        "main": "0134e025b95236ccbe9542922da45dd9b13dc2dd",
+        "main": "f12933ca2cd88f43d5eac7a55a51fa8f53b379bb",
         "sshReadback": true,
         "pushDryRun": true
       },
@@ -108,7 +186,7 @@
         "ok": true,
         "latestVersions": [
           {
-            "versionId": "eea1d71b-e336-4a94-9acc-4b7132913672",
+            "versionId": "47cc6876-a8e7-494c-a2af-4dd0b1151d31",
             "percentage": 100
           }
         ]
@@ -120,6 +198,51 @@
     "host": "darwin"
   },
   "publication": {
+    "status": "prepared",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261008/review.md",
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261008/release-verification.json",
+    "catalogPush": "pending",
+    "websiteSync": "pending",
+    "websiteDeploy": "pending",
+    "worktreePeakBudgetGiB": 1.5
+  },
+  "pendingCandidates": [],
+  "deferredCandidates": [
+    {
+      "url": "https://github.com/harrysolovay/traits-poc",
+      "authorPost": "https://x.com/harrysolovay/status/2108010920471589259",
+      "reason": "Author marks heavily WIP; license not verified, so open-source project entry deferred."
+    }
+  ],
+  "xSearches": [
+    {
+      "query": "\"TypeSafe Jev\" since:2026-10-05 -is:retweet",
+      "checkedAt": "2026-10-08T03:26:13.781Z",
+      "visibleCount": 5,
+      "urls": [
+        "https://x.com/so_sthbryan/status/2107960661146013829",
+        "https://x.com/obie/status/2107993075205214665"
+      ]
+    },
+    {
+      "query": "Jev github.com since:2026-10-05 -is:retweet",
+      "checkedAt": "2026-10-08T03:26:13.781Z",
+      "visibleCount": 6,
+      "urls": [
+        "https://x.com/harrysolovay/status/2108010920471589259"
+      ]
+    },
+    {
+      "query": "from:typesafeai Jev since:2026-10-05",
+      "checkedAt": "2026-10-08T03:26:13.781Z",
+      "visibleCount": 2,
+      "urls": [
+        "https://x.com/typesafeai/status/2107958916684632396",
+        "https://x.com/typesafeai/status/2107908382569189762"
+      ]
+    }
+  ],
+  "previousPublication": {
     "status": "published-and-verified",
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261007-resume/review.md",
     "environmentPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261007-resume/publish-environment.json",
@@ -137,67 +260,5 @@
     "trafficPercent": 100,
     "formalPagesVerified": 6,
     "configurationUnchanged": true
-  },
-  "pendingCandidates": [],
-  "deferredCandidates": [
-    {
-      "url": "https://github.com/tsale/jevline",
-      "reason": "README describes incident expansion; API license null and LICENSE absent. Open-source project listing deferred."
-    },
-    {
-      "url": "https://github.com/mantaroh/jev-vs-openai-dicision-api",
-      "authorPost": "https://x.com/_mantaroh_/status/2107644287286673582",
-      "reason": "No verified license. Evaluation results are author reports, not independent measurements."
-    },
-    {
-      "url": "https://x.com/0xL1C10G/status/2107610578168795601",
-      "reason": "Puyo Puyo demo does not supply enough source or typed decision detail for a complete case."
-    },
-    {
-      "url": "https://x.com/deanimatedmonk/status/2107674781898174787",
-      "reason": "Bird-tracker post is a lead only; the Jev decision and downstream action remain unverified."
-    }
-  ],
-  "publicationBeforeRecovery": {
-    "status": "blocked",
-    "stage": "execution-permissions",
-    "reason": "The actual heartbeat executor reports seatbelt and networkDisabled=true. Both storage preflights, both command-based GitHub checks, and the Cloudflare read check failed. canPublishCatalog=false and canDeployWebsite=false.",
-    "storageDetail": "storage-governor returned approved=false with diskutil query failure. df saw both volumes mounted (ExternalProjects about 148 GiB available); this is an execution-permission failure, not evidence of an unmounted disk or insufficient capacity. UUID, 60 GiB floor and scratch write/read could not be accepted.",
-    "fetchResults": {
-      "catalog": "SSH failed to resolve github.com (-65563)",
-      "website": "FETCH_HEAD write denied: Operation not permitted"
-    },
-    "startup": {
-      "catalogLocalMain": "4630868650e6202b652e9433b6a7846b0ef3ea2d",
-      "catalogRemoteMain": "4630868650e6202b652e9433b6a7846b0ef3ea2d",
-      "websiteCanonicalHead": "c33e1197996af1824bee06a68e3aeec6e51c6fad",
-      "websiteCanonicalBranch": "codex/local-consolidation-20261005",
-      "websiteCanonicalClean": true,
-      "websiteRemoteMain": "0134e025b95236ccbe9542922da45dd9b13dc2dd",
-      "counts": {
-        "catalogCases": 62,
-        "catalogProjects": 121,
-        "websiteCases": 62,
-        "websiteProjects": 121,
-        "officialRecipes": 18
-      },
-      "pendingCatalogCommits": 0,
-      "catalogWebsiteDataDelta": 0,
-      "lastFullReleaseRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261006-recovery/release-verification.json",
-      "lastVerifiedCloudflareVersion": "eea1d71b-e336-4a94-9acc-4b7132913672",
-      "lastVerifiedCloudflareTrafficPercent": 100,
-      "lastFullReleaseCheckedAt": "2026-10-06T04:00:29.304598+00:00",
-      "todayLiveReadback": {
-        "url": "https://typesafe-jev.com/use-cases/",
-        "visibleCases": 62
-      },
-      "note": "Yesterday's recovery completed publication. Today's live page count does not prove current Cloudflare traffic or byte-for-byte equality; current Cloudflare readback failed."
-    },
-    "reviewArtifact": "Not created because ExternalProjects storage preflight failed; only lightweight candidate pointers are retained here.",
-    "catalogContentChanged": false,
-    "catalogPush": "not attempted: gate false",
-    "websiteSync": "not attempted",
-    "websiteBuild": "not attempted",
-    "websiteDeploy": "not attempted"
   }
 }

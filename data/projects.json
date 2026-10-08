@@ -1982,5 +1982,117 @@
     "lastVerified": "2026-10-07",
     "status": "verified",
     "stars": 1
+  },
+  {
+    "id": "jevons-talking",
+    "name": "kmosher/jevons-talking",
+    "url": "https://github.com/kmosher/jevons-talking",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 WordNet 预测键盘给 Jev 有限词、字母、标点和结束选项，再由代码逐键拼句；有转录、回删防循环与步数预算。实验项目，本站未复现答题或辅助沟通效果。",
+      "en": "Experimental predictive keyboard: Jev selects finite words, letters, punctuation and stop keys while code composes text. Includes transcripts, backspace-loop controls and a step budget; answer quality and assistive use were not reproduced here."
+    },
+    "sourceUrl": "https://github.com/kmosher/jevons-talking",
+    "lastVerified": "2026-10-08",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "railroad-route",
+    "name": "vinicius-francozo/railroad-route",
+    "url": "https://github.com/vinicius-francozo/railroad-route",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "矿车轨道解谜：玩家句子一次触发所有开关的 Choice/Noul/Score，服务端代码模拟路线并评分。提供五关、参考答案与回放测试；作者调用/延迟数据未经本站实测。",
+      "en": "Mine-cart puzzle where one player sentence drives batched Choice/Noul/Score switches, then backend code simulates and scores the route. Includes five levels, reference solutions and replay tests; author API and timing results were not independently measured."
+    },
+    "sourceUrl": "https://github.com/vinicius-francozo/railroad-route",
+    "lastVerified": "2026-10-08",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "sift",
+    "name": "BeforeLanding/sift",
+    "url": "https://github.com/BeforeLanding/sift",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "个人 AI 信息简报：真实 Jev 后端用批量 Score 筛选单条信息、Noul 门控来源，再交 LLM 生成双语报告；失败或低置信度保留候选。包含独立 mock 路径，本站未验证节省量或信息召回。",
+      "en": "Personal AI digest with a real Jev backend: batched Scores filter items and Nouls gate sources before LLM report generation. Failed or uncertain items are retained, with a separate mock path. Token savings and information recall were not validated here."
+    },
+    "sourceUrl": "https://github.com/BeforeLanding/sift",
+    "lastVerified": "2026-10-08",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "JevBot",
+    "name": "OGZamasu/JevBot",
+    "url": "https://github.com/OGZamasu/JevBot",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Discord 审核机器人：规则与 Jev 上下文分类结合，默认 Observe，低置信度转人工复核；策略可告警、删帖和超时，不自动封禁。需自有 Discord/Cloudflare/TypeSafe 配置，本站未连接真实服务器。",
+      "en": "Discord moderation bot combining rules and Jev context classification. Starts in Observe, sends uncertain detections to review and can warn, delete or time out under configured policies, without automatic bans. Requires Discord/Cloudflare/TypeSafe setup; no live server was tested here."
+    },
+    "sourceUrl": "https://github.com/OGZamasu/JevBot",
+    "lastVerified": "2026-10-08",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "pi-zereight-router",
+    "name": "zereight/pi-zereight-router",
+    "url": "https://github.com/zereight/pi-zereight-router",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Pi 的 Jev 虚拟模型路由器：按工作阶段选后端与 effort，首次文件修改后按策略切换到实现模型，分类失败或不确定回退 planning。需 OpenRouter 与相关 Pi/Cursor SDK，本站未验证模型账号或缓存收益。",
+      "en": "Jev-backed virtual router for Pi that selects backend models and effort by work phase, hands off after a file mutation and falls back to planning on classification failure or uncertainty. Requires OpenRouter and Pi/Cursor integration; account compatibility and cache benefits were not tested here."
+    },
+    "sourceUrl": "https://github.com/zereight/pi-zereight-router",
+    "lastVerified": "2026-10-08",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "decision-models-skills",
+    "name": "celesteanglm/decision-models-skills",
+    "url": "https://github.com/celesteanglm/decision-models-skills",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "六个可移植决策 Skill 与 Python CLI，覆盖输入护栏、模型路由、重排、工具门控、置信度和输出评价；Jev/OpenRouter 适配器验证有类型响应，只返回建议。作者说明初始阈值未校准，测试与费用为作者记录。",
+      "en": "Six portable decision skills and a Python CLI for guardrails, routing, reranking, tool gating, confidence gates and output evaluation. The Jev/OpenRouter adapter validates typed responses and returns recommendations only. Initial thresholds are uncalibrated; test and cost evidence is the author’s."
+    },
+    "sourceUrl": "https://github.com/celesteanglm/decision-models-skills",
+    "lastVerified": "2026-10-08",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "building-with-typesafe-jev",
+    "name": "aaddrick/building-with-typesafe-jev",
+    "url": "https://github.com/aaddrick/building-with-typesafe-jev",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "非官方 Jev 开发 Skill：用有界问题、置信度与代码执行边界解释设计模式，附代码草图和社区项目参考。独立于 TypeSafe 官方 Skill，本站未安装或运行作者评测。",
+      "en": "Unofficial Jev development skill covering bounded questions, confidence handling and code-owned workflows, with pattern sketches and community references. Separate from TypeSafe’s official skill; installation and author evaluations were not run here."
+    },
+    "sourceUrl": "https://github.com/aaddrick/building-with-typesafe-jev",
+    "lastVerified": "2026-10-08",
+    "status": "verified",
+    "stars": 136
   }
 ]
