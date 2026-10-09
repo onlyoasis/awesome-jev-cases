@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (69)
+## 深度使用案例 / Worked cases (74)
 
 ### jev-ultrafast
 
@@ -625,7 +625,52 @@
 - 核验边界：仅作者原帖及 TypeSafe 推荐，无可检查源码。500 条团队标注样本、用户规模、费用与效果均为作者自报，本站未取得样本或复现评测，也不猜具体 API 请求形状。
 - 来源：[Author post](https://x.com/h_nilforoshan/status/2107643820150308932) · [Matching use](https://x.com/h_nilforoshan/status/2107644837407404340) · [TypeSafe recommendation](https://x.com/typesafeai/status/2107958916684632396)
 
-## 开源项目 / Open-source projects (131)
+### Jev accounting：交易分类后生成复核 CSV
+
+- 作者：darrentmorgan
+- 输入：CSV 中的交易描述、有符号金额和币种，以及固定的示例账户类别。
+- Jev 判断：Jev Choice 选类别；代码读取所选类别概率，低于 0.85、缺失、非法答案或 Unassigned 都进入复核。
+- 后续动作：保留原始交易与顺序，同时展示建议、分配和复核原因，导出 CSV；原型没有向记账系统写入。
+- 核验边界：v0.1 原型、八条合成示例；作者的烟测不证明会计准确率或节省量。本站未提交真实交易、调用 Gateway 或复现记账结果。
+- 来源：[GitHub](https://github.com/darrentmorgan/jev-accounting) · [Source](https://github.com/darrentmorgan/jev-accounting/blob/b9548f98e2f172d6096c258c7c7a9a69ee83ba7c/src/classifier.ts) · [Source](https://github.com/darrentmorgan/jev-accounting/blob/b9548f98e2f172d6096c258c7c7a9a69ee83ba7c/src/catalog.ts)
+
+### mappity：用概率点亮符合愿望的地点
+
+- 作者：kortexa-ai
+- 输入：用户自然语言愿望、代码获取的场所类型、地点事实和可选街景上下文。
+- Jev 判断：Jev 先做有限请求分类与场所类型判断，再用 Noul 判断地点和街道是否匹配；为高分结果从已有事实中选解释。
+- 后续动作：代码执行地理查询与硬约束过滤，必要时组合地点/街道概率，将匹配结果在地图上高亮并展示选中的事实。
+- 核验边界：依据 Jev SDK 接线与作者演示核验，本站未测真实地图召回、定位或效果；可选 Shingi 是独立模型，其校准不能外推到本应用。
+- 来源：[GitHub](https://github.com/kortexa-ai/mappity) · [Source](https://github.com/kortexa-ai/mappity/blob/ab91ebb7a24d125e70d858d613e31719e5306a46/server/jev.js) · [Source](https://github.com/kortexa-ai/mappity/blob/ab91ebb7a24d125e70d858d613e31719e5306a46/server/pipeline.js)
+
+### ex-regex：按含义查找和替换原文片段
+
+- 作者：nothans
+- 输入：原始文本、代码枚举的候选片段及自然语言匹配条件，例如哪些句子在请求退款。
+- Jev 判断：Jev 对候选做有类型的语义判断，返回概率；库区分匹配、未匹配、不确定及调用失败。
+- 后续动作：Python API 返回带偏移量的原文切片，并据结果执行查找、提取、替换或分割；代码提供缓存、回放和预算限制。
+- 核验边界：原文切片限制了虚构字符串，但不保证匹配正确。作者合成评测与成本为自报，本站未调用模型、复测漏检或验证可靠脱敏。
+- 来源：[GitHub](https://github.com/nothans/ex-regex) · [Source](https://github.com/nothans/ex-regex/blob/24230a4348db5ff2d269ebc1c62e19109962b4f1/src/exregex/backends.py) · [Source](https://github.com/nothans/ex-regex/blob/24230a4348db5ff2d269ebc1c62e19109962b4f1/src/exregex/engine.py)
+
+### Vulnder：技术栈判断辅助漏洞信息匹配
+
+- 作者：fullymiddleaged
+- 输入：用户描述的技术栈、代码解析出的组件和候选产品名。
+- Jev 判断：Jev Choice 判断规模和托管环境，Noul 判断注入、候选产品适配和外网暴露；缺失答案保留未知。
+- 后续动作：代码使用这些判断辅助产品解析与暴露标记，再匹配 CVE；优先级由公开利用信号和确定性启发式规则计算，输出页面、JSON 或 Atom。
+- 核验边界：Jev 失败时保留基础解析；技术栈写入可分享 URL。本站未验证漏洞覆盖、产品匹配或风险校准，相关排名只是该项目启发式输出。
+- 来源：[GitHub](https://github.com/fullymiddleaged/vulnder) · [Source](https://github.com/fullymiddleaged/vulnder/blob/1ed2c9e9e97ef23a7add4008ac132a7745f5e9af/src/resolve/jev.ts)
+
+### Jev Skill Typeahead：发送前预览 Skill 调用概率
+
+- 作者：Daniel San / @dani_avila7
+- 输入：正在输入的提示词和用户已安装的有限 Skill 候选。
+- Jev 判断：作者称 Jev 预测哪些 Skill 最可能被 Claude 调用，并估计各项概率。
+- 后续动作：界面在发送请求之前显示预测，供用户理解或调整提示；原帖还提供了公开源码链接。
+- 核验边界：仅作者原帖与演示说明，本轮未精读该源码或核验预测准确率；没有推断具体 API primitive，也不把预计概率当作实际 Skill 执行保证。
+- 来源：[Author post](https://x.com/dani_avila7/status/2108354971531973028) · [Author source link (not reviewed)](https://github.com/davila7/claude-code-templates/tree/main/cli-tool/components/mods/productivity/jev-skill-typeahead)
+
+## 开源项目 / Open-source projects (138)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -760,6 +805,13 @@
 | [zereight/pi-zereight-router](https://github.com/zereight/pi-zereight-router) | community | MIT | 0 |
 | [celesteanglm/decision-models-skills](https://github.com/celesteanglm/decision-models-skills) | community | MIT | 0 |
 | [aaddrick/building-with-typesafe-jev](https://github.com/aaddrick/building-with-typesafe-jev) | community | MIT | 136 |
+| [darrentmorgan/jev-accounting](https://github.com/darrentmorgan/jev-accounting) | community | MIT | 0 |
+| [kortexa-ai/mappity](https://github.com/kortexa-ai/mappity) | community | MIT | 1 |
+| [nothans/ex-regex](https://github.com/nothans/ex-regex) | community | MIT | 1 |
+| [fullymiddleaged/vulnder](https://github.com/fullymiddleaged/vulnder) | community | Apache-2.0 | 0 |
+| [armando-token/industrial-selection-bench](https://github.com/armando-token/industrial-selection-bench) | community | MIT | 0 |
+| [juspay/neurolink](https://github.com/juspay/neurolink) | community | MIT | 144 |
+| [Jev-Engineering/cookbook](https://github.com/Jev-Engineering/cookbook) | community | MIT | 4 |
 
 ## 官方 cookbook / Official recipes (18)
 

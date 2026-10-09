@@ -2094,5 +2094,117 @@
     "lastVerified": "2026-10-08",
     "status": "verified",
     "stars": 136
+  },
+  {
+    "id": "jev-accounting",
+    "name": "darrentmorgan/jev-accounting",
+    "url": "https://github.com/darrentmorgan/jev-accounting",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "本地交易分类原型：Vercel AI Gateway 的 Jev Choice 对固定示例账户分类，概率低于 0.85、缺概率或错误均保留 Unassigned 供复核，再导出 CSV。仅合成演示，没有数据库或记账系统接线，本站未核账。",
+      "en": "Local transaction-classification prototype using Jev Choices through Vercel AI Gateway. Low, missing or invalid probabilities retain Unassigned for review before CSV export. Synthetic demonstration only, without database or accounting-system integration; accounting outcomes were not validated here."
+    },
+    "sourceUrl": "https://github.com/darrentmorgan/jev-accounting",
+    "lastVerified": "2026-10-09",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "mappity",
+    "name": "kortexa-ai/mappity",
+    "url": "https://github.com/kortexa-ai/mappity",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "自然语言地图探索：Jev 先判断场所类型，再批量判断地点与街道匹配度，代码结合 OSM/Mapillary 数据、硬约束和概率高亮地图。可选本地 Shingi 独立后端，作者演示/速度与成本非本站实测。",
+      "en": "Natural-language map exploration: Jev judges place types, then batches place and street relevance while code combines OSM/Mapillary data, hard constraints and probabilities to highlight matches. Supports a separate local Shingi backend; author demos, speed and cost were not independently measured."
+    },
+    "sourceUrl": "https://github.com/kortexa-ai/mappity",
+    "lastVerified": "2026-10-09",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "ex-regex",
+    "name": "nothans/ex-regex",
+    "url": "https://github.com/nothans/ex-regex",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Python 语义文本库：候选原文片段由 Jev 有类型判断后用于查找、提取、替换、分割与排序，保留偏移量及不确定/错误结果。支持多后端、缓存与回放；原文切片不保证语义匹配正确，本站未验证脱敏效果。",
+      "en": "Python semantic text library using typed Jev judgments over candidate source spans for finding, extraction, replacement, splitting and ranking, retaining offsets and uncertain/error outcomes. Includes multiple backends, caching and replay; verbatim spans do not guarantee correct semantic matches or redaction."
+    },
+    "sourceUrl": "https://github.com/nothans/ex-regex",
+    "lastVerified": "2026-10-09",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "vulnder",
+    "name": "fullymiddleaged/vulnder",
+    "url": "https://github.com/fullymiddleaged/vulnder",
+    "category": "guard",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "技术栈感知的 CVE 信息工具：JeV 通过 Workers AI 判描述环境、候选产品适配和外网暴露，固定代码匹配漏洞并用公开利用信号排序；故障保留基础解析。栈保存在可分享 URL，本站未验漏洞覆盖或风险校准。",
+      "en": "Stack-aware CVE tool using Jev on Workers AI for environment, product-fit and internet-exposure judgments. Fixed code matches vulnerabilities and ranks public exploitation signals, retaining base parsing on model failure. Stack URLs are shareable; coverage and risk calibration were not validated here."
+    },
+    "sourceUrl": "https://github.com/fullymiddleaged/vulnder",
+    "lastVerified": "2026-10-09",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "industrial-selection-bench",
+    "name": "armando-token/industrial-selection-bench",
+    "url": "https://github.com/armando-token/industrial-selection-bench",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "工业产品手册选型 pilot：比较 Jev 结构化判断、RAG、抓取、LLM 与规则基线，公开评测与证据接口。代码 MIT、数据 CC BY 4.0；仅 12 个 held-out 任务、gold 非人类专家核验，作者承认低正确率和错误批准，非成熟选型方案。",
+      "en": "Pilot comparing structured Jev selection, RAG, scraping, LLM and rules over industrial manuals, with evaluation and evidence interfaces. MIT code and CC BY 4.0 data; only 12 held-out tasks with non-expert gold labels. The author reports low correctness and false approvals; this is not a mature selection system."
+    },
+    "sourceUrl": "https://github.com/armando-token/industrial-selection-bench",
+    "lastVerified": "2026-10-09",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "neurolink",
+    "name": "juspay/neurolink",
+    "url": "https://github.com/juspay/neurolink",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "社区 TypeScript 多提供商库，在生成/流式接口之外提供 typed decide；TypeSafe/Jev 支持直连和 Vercel Gateway，校验 Choice/Score/Noul 响应并返回调用方处理。无配置可降级，作者生产与费用数字未由本站验证。",
+      "en": "Community TypeScript library adding typed decide alongside generation and streaming, with direct TypeSafe/Jev and Vercel Gateway transports. Parses Choice/Score/Noul responses for application handling and can degrade without configuration. Author production and cost claims were not verified here."
+    },
+    "sourceUrl": "https://github.com/juspay/neurolink",
+    "lastVerified": "2026-10-09",
+    "status": "verified",
+    "stars": 144
+  },
+  {
+    "id": "jev-engineering-cookbook",
+    "name": "Jev-Engineering/cookbook",
+    "url": "https://github.com/Jev-Engineering/cookbook",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "非官方 Jev Notebook 教程库：规划 60 项，核验快照已发布 5 个；共享 fixture、回放与显式 live SDK 后端，记录模式和返回模型。社区教程独立于官方 18 篇 cookbook，合成指标不当真实 Jev 效果，本站未运行。",
+      "en": "Unofficial Jev notebook curriculum planning 60 recipes, with five published in the reviewed snapshot. Shares fixture, replay and explicit live SDK backends with mode/model provenance. Separate from the 18 official cookbooks; synthetic metrics are not live Jev results and notebooks were not run here."
+    },
+    "sourceUrl": "https://github.com/Jev-Engineering/cookbook",
+    "lastVerified": "2026-10-09",
+    "status": "verified",
+    "stars": 4
   }
 ]
