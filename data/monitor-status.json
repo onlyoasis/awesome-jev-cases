@@ -1,147 +1,147 @@
 {
-  "checkedAt": "2026-10-09T03:29:43.238Z",
+  "checkedAt": "2026-10-10T04:06:09.444Z",
   "github": "ok",
   "official": "ok",
   "x": "ok",
   "addedProjects": 7,
   "addedCases": 5,
   "officialRecipes": 18,
-  "xPosts": 13,
+  "xPosts": 15,
   "xVisibleCounts": {
-    "TypeSafe Jev": 5,
-    "Jev github.com": 5,
+    "TypeSafe Jev": 6,
+    "Jev github.com": 6,
     "from:typesafeai Jev": 3
   },
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "The since:2026-09-22 until:2026-10-09 Latest query returned October 9 posts outside the exclusive upper date, including chaej_hy/2108396375977386085. The original backfill cursor remains unchanged.",
+  "xHistoricalCoverageNote": "The since:2026-09-22 until:2026-10-10 Latest query returned eight visible posts including harden_369741/2108769823220179113 dated 2026-10-10T04:01:19Z, outside the exclusive upper bound. Original historical cursor retained; no claim of no additions in the uncovered interval.",
   "githubSearches": [
     {
-      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-10-06",
-      "totalCount": 1606,
+      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-10-07",
+      "totalCount": 1577,
       "incomplete": false,
-      "checkedAt": "2026-10-09T03:15:02.460599+00:00",
+      "checkedAt": "2026-10-10T03:47:33.439148+00:00",
       "urls": [
-        "https://github.com/duolahypercho/codex-router",
-        "https://github.com/GokulMV/DocTheRepo",
-        "https://github.com/iii-hq/workers",
-        "https://github.com/kitfunso/hippo-memory",
-        "https://github.com/darrentmorgan/jev-accounting",
-        "https://github.com/TheHalfMoon/Skelet",
+        "https://github.com/alto-computer/alto-rooms",
+        "https://github.com/GGboya/dsh-paper-reader",
         "https://github.com/YueyuHoshizora/TrackRadar",
-        "https://github.com/gabrielbelo2007/JevTest",
-        "https://github.com/3208noname-arch/emotion-bot",
-        "https://github.com/2456868764/jevguide",
-        "https://github.com/itsoltech/basal-rs",
-        "https://github.com/kyle-pena-nlp/beelinebench",
-        "https://github.com/equationalapplications/curated-thoughts",
-        "https://github.com/VKirill/bb-plugin-lane-pilot",
-        "https://github.com/rfoerthe/fast-cat",
-        "https://github.com/falabellamichael/SignalR.E.A.C.H",
-        "https://github.com/kortexa-ai/mappity",
-        "https://github.com/lidge-jun/opencodex",
+        "https://github.com/codeshrew/amalgaverse",
+        "https://github.com/Zafer-Liu/jev-resume-screener",
+        "https://github.com/merak824/RecurdreamApi",
+        "https://github.com/gszj2018/pi-permission-bash-cmd-checker",
+        "https://github.com/linny006/agent-eval-harness",
+        "https://github.com/EugeneinTW/fable5-cases",
+        "https://github.com/inho-team/oh-my-teams",
+        "https://github.com/bobzhou-source/job-application-harness",
+        "https://github.com/kendallcoding202/btc-perp-desk",
+        "https://github.com/lim6112j/laya-example",
+        "https://github.com/Cognilogical/NeuroStrata",
+        "https://github.com/crisap94/herdr-plugins",
+        "https://github.com/mehd-io/duckdb-extension-radar",
+        "https://github.com/nevrs/attention-vaccine",
         "https://github.com/ayayaQ/vivi-cli",
-        "https://github.com/juspay/neurolink",
-        "https://github.com/nisfeb/orrery",
         "https://github.com/Wei-Shaw/sub2api",
-        "https://github.com/linny006/agent-eval-harness",
-        "https://github.com/cybrking/modelrudder",
-        "https://github.com/cynthia-git11/clawq-diary",
-        "https://github.com/philga7/informed-news",
-        "https://github.com/yusuketakuma/hermes-mcs",
-        "https://github.com/nothans/ex-regex",
-        "https://github.com/manojkmohan5/AI-Prompt-Governance-and-Risk-Detection-Platform",
-        "https://github.com/monoes/mono-agent"
+        "https://github.com/magnus919/agent-skills",
+        "https://github.com/adenzhou1350/jev-decision-teaching",
+        "https://github.com/zuoban/GeniusTrader",
+        "https://github.com/GokulMV/DocTheRepo",
+        "https://github.com/3208noname-arch/emotion-bot",
+        "https://github.com/tune-77/tune_lease_55",
+        "https://github.com/waifu-devs/fuwa",
+        "https://github.com/w-partners/0siri",
+        "https://github.com/1292917512/AnelfAgent",
+        "https://github.com/nik-6348/cultura",
+        "https://github.com/nodaysidle/kureksistant"
       ]
     },
     {
-      "query": "jev in:name,description created:>=2026-10-06",
-      "totalCount": 693,
+      "query": "jev in:name,description created:>=2026-10-07",
+      "totalCount": 630,
       "incomplete": false,
-      "checkedAt": "2026-10-09T03:15:04.505441+00:00",
+      "checkedAt": "2026-10-10T03:47:35.024848+00:00",
       "urls": [
-        "https://github.com/Tauhmax/frozenlake-jev",
-        "https://github.com/gabrielbelo2007/JevTest",
-        "https://github.com/zhairy/dsh-agent-swarm",
-        "https://github.com/earlgreyhot1701D/readme-clew-2",
-        "https://github.com/vihaaaaan17/Jev-Build-using-Qwen3-0.6B",
-        "https://github.com/monstercode2/reflex-cu",
-        "https://github.com/erikgna/jev-poc",
-        "https://github.com/Nuel-osas/revior",
-        "https://github.com/SixCorePeach/JEV-multimodelUnderstanding",
-        "https://github.com/VictorGambarini/jev-mod",
-        "https://github.com/vikrantvikaasa27/jev-gaurdrails",
-        "https://github.com/vamsi920/jevy-local-poc",
-        "https://github.com/ombolics/jev-tft",
-        "https://github.com/boredhero/pool-simulator",
-        "https://github.com/Novacon/ohmyjev",
-        "https://github.com/dick12339-arch/emotion-jev-proxy",
-        "https://github.com/leandrosmoreira53/llm-gateway",
-        "https://github.com/tironinho/jev_tranding_engine",
-        "https://github.com/ljcyt/bing-rewards-automation",
-        "https://github.com/fullymiddleaged/vulnder",
+        "https://github.com/joelboersma/jev-melee",
         "https://github.com/grewaljoe2/Jev-Desk",
-        "https://github.com/Sonderjyf/mihomo-route-agent",
-        "https://github.com/hongryu95-afk/jev-novel-style-check",
-        "https://github.com/carlosveeck/JamAndJev",
-        "https://github.com/alexyapsl/SpeakToAlex",
-        "https://github.com/samuelyossef/jev-openfast",
-        "https://github.com/armando-token/industrial-selection-bench",
-        "https://github.com/CR0ZER/NHL-Predictor",
-        "https://github.com/Cube-VG/Dashboard-for-all-gmails",
-        "https://github.com/Jev-Engineering/cookbook"
+        "https://github.com/digiteralevi/JEVKARATEDO",
+        "https://github.com/u-scanada-a9mmx5/4x9jevyhwsug",
+        "https://github.com/adenzhou1350/jev-decision-teaching",
+        "https://github.com/zuoban/GeniusTrader",
+        "https://github.com/SaulineytorX/urdia",
+        "https://github.com/YongLD/Multi-UAV-JEV",
+        "https://github.com/yauwes/datascape-jev-rlcd-pipeline",
+        "https://github.com/SarathChandraBellam/ToolDiscoveryBench",
+        "https://github.com/aimmetal-tech/jev-review",
+        "https://github.com/HunterXing/jev-judge",
+        "https://github.com/Oqura-ai/optim-jev",
+        "https://github.com/holny/evolve-router",
+        "https://github.com/oozoofrog/jev-native",
+        "https://github.com/kirimomi/jev-x",
+        "https://github.com/ctaxnagomi/wpc2-dual-agent",
+        "https://github.com/ys118/ra2web-jev-player",
+        "https://github.com/AdityaSolanki189/jev-games",
+        "https://github.com/jev-inside-neo4j/jev-inside-neo4j.github.io",
+        "https://github.com/tironinho/jev_tranding_engine",
+        "https://github.com/k4wai1/jav",
+        "https://github.com/rayelzz/Jev_Demo_Continuous_Kit",
+        "https://github.com/yubol-bobo/Jev-as-A-Predictor",
+        "https://github.com/cloud-f1/jev-agent-kit",
+        "https://github.com/randlee/plan-anchor",
+        "https://github.com/Muurrphy/bipu",
+        "https://github.com/earlgreyhot1701D/readme-clew-2",
+        "https://github.com/sicnlee/embodied-jev",
+        "https://github.com/Celest04ka/jevil-fight"
       ]
     },
     {
-      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-10-06",
-      "totalCount": 1364,
+      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-10-07",
+      "totalCount": 1341,
       "incomplete": false,
-      "checkedAt": "2026-10-09T03:15:07.211081+00:00",
+      "checkedAt": "2026-10-10T03:47:36.737719+00:00",
       "urls": [
+        "https://github.com/MrJev/awesome-jev",
         "https://github.com/Daatan/retro",
-        "https://github.com/nodecode-ai/cells",
         "https://github.com/YueyuHoshizora/TrackRadar",
-        "https://github.com/Laxmanckl/paper-desk",
-        "https://github.com/itsoltech/basal-rs",
-        "https://github.com/x812033727/travel_scanner",
-        "https://github.com/OpenAgentsInc/openagents",
-        "https://github.com/JiaQiSJTU/CanITrustU-Jev",
-        "https://github.com/mishrasanjeev/agentic-org",
-        "https://github.com/lidge-jun/opencodex",
-        "https://github.com/kortexa-ai/shingi-27b",
-        "https://github.com/MarcosPTProenca/rummikub",
-        "https://github.com/Trusty-Squire/veritaserum",
-        "https://github.com/monstercode2/reflex-cu",
-        "https://github.com/juspay/neurolink",
-        "https://github.com/matrixorigin/Astra",
-        "https://github.com/Wei-Shaw/sub2api",
+        "https://github.com/dkaul09/finance-sync",
+        "https://github.com/GuSheng107/helpme-Jev",
+        "https://github.com/Zafer-Liu/jev-resume-screener",
+        "https://github.com/merak824/RecurdreamApi",
         "https://github.com/linny006/agent-eval-harness",
-        "https://github.com/mgd34msu/goodvibes-jev",
-        "https://github.com/garrytan/gbrain-evals",
-        "https://github.com/nothans/ex-regex",
-        "https://github.com/Yinsongxu/LLM2Jev",
-        "https://github.com/foundationfivepro-gif/jev-agent",
-        "https://github.com/majiayu000/awesome-jev",
-        "https://github.com/yinyiming1223/yym_api",
-        "https://github.com/coldmint9/Synax",
+        "https://github.com/StellarieX/Heliotrope",
+        "https://github.com/rcarmo/rs-ai",
+        "https://github.com/raullenchai/Rapid-MLX",
+        "https://github.com/joelboersma/jev-melee",
+        "https://github.com/lim6112j/laya-example",
+        "https://github.com/duy-tung/pi-config",
+        "https://github.com/Cognilogical/NeuroStrata",
+        "https://github.com/mehd-io/duckdb-extension-radar",
         "https://github.com/ncecere/open-model-gateway",
-        "https://github.com/akassh9/ground-truth",
-        "https://github.com/yzfly/awesome-dsh-skills",
-        "https://github.com/edugonch/agentic-engineering-tutor-system"
+        "https://github.com/Wei-Shaw/sub2api",
+        "https://github.com/Laxmanckl/paper-desk",
+        "https://github.com/magnus919/agent-skills",
+        "https://github.com/OpenAgentsInc/openagents",
+        "https://github.com/nik-6348/cultura",
+        "https://github.com/nodaysidle/kureksistant",
+        "https://github.com/duongvm57/paseo-slp-plugin",
+        "https://github.com/teranos/QNTX",
+        "https://github.com/imrishit98/jev.aitools.fyi",
+        "https://github.com/Nirajd071/HCAD-RAG",
+        "https://github.com/lmgame-org/Gaming-JevSwarm",
+        "https://github.com/Dari-OS/rudra-proxy",
+        "https://github.com/Antseed/antseed"
       ]
     }
   ],
-  "githubLastSuccessfulAt": "2026-10-09T03:29:43.238Z",
-  "officialLastSuccessfulAt": "2026-10-09T03:29:43.238Z",
-  "xLastSuccessfulAt": "2026-10-09T03:29:43.238Z",
+  "githubLastSuccessfulAt": "2026-10-10T04:06:09.444Z",
+  "officialLastSuccessfulAt": "2026-10-10T04:06:09.444Z",
+  "xLastSuccessfulAt": "2026-10-10T04:06:09.444Z",
   "xQueryStatus": {
     "TypeSafe Jev": "ok",
     "Jev github.com": "ok",
     "from:typesafeai Jev": "ok"
   },
-  "githubSearchNote": "Exact API totals and incomplete_results parsed. Eight new repository snapshots deeply reviewed; query totals contain unrelated hits and are not exhaustive curation.",
+  "githubSearchNote": "Exact API totals and incomplete_results parsed; three groups of 30 latest results sampled, with eight new repositories deeply reviewed. Totals include unrelated hits and do not establish exhaustive curation.",
   "officialRepositoryCount": 12,
-  "officialNote": "18 cookbook URLs, one demo and 12 organization repositories read back. public-examples comparison to c369891 is identical. Official X currently has event/ranking and already-curated HiringCafe posts; no new qualified official index entry observed.",
+  "officialNote": "18 cookbook URLs, one demo and 12 organization repositories read back. Official X had event/ranking and already-curated HiringCafe references. No additional official index entry observed.",
   "recovery": {
     "checkedAt": "2026-10-07T08:30:10.861Z",
     "storagePreflight": "passed",
@@ -150,9 +150,9 @@
     "worktreePeakBudgetGiB": 3,
     "networkReadback": "Actual original-thread GitHub API/SSH/push dry-run and Cloudflare read succeeded after user changed access"
   },
-  "officialRepositoryCountLastVerifiedAt": "2026-10-09T03:29:43.238Z",
+  "officialRepositoryCountLastVerifiedAt": "2026-10-10T04:06:09.444Z",
   "publishEnvironment": {
-    "checkedAt": "2026-10-09T03:13:11.731Z",
+    "checkedAt": "2026-10-10T03:45:36.261Z",
     "executor": {
       "sandbox": "not-set",
       "networkDisabled": false
@@ -162,23 +162,23 @@
         "ok": true,
         "peakBudgetGiB": 1.5,
         "minimumFreeGiB": 60,
-        "projectedFreeGiB": 120.852
+        "projectedFreeGiB": 119.072
       },
       "evidenceStorage": {
         "ok": true,
         "peakBudgetGiB": 1.5,
         "minimumFreeGiB": 60,
-        "projectedFreeGiB": 120.852
+        "projectedFreeGiB": 119.072
       },
       "catalogGitHub": {
         "ok": true,
-        "main": "8acc19254d8a2e014ae14f977b4e7de7c47b21cd",
+        "main": "d75dbc4be868a14192298cb90410292fed6bdb9b",
         "sshReadback": true,
         "pushDryRun": true
       },
       "websiteGitHub": {
         "ok": true,
-        "main": "06af177d55ab7ed0ff9ebd0401d7b525961bb33c",
+        "main": "993f690d0ef469be7f4e5047ffedfffe282e221a",
         "sshReadback": true,
         "pushDryRun": true
       },
@@ -186,7 +186,7 @@
         "ok": true,
         "latestVersions": [
           {
-            "versionId": "7cba7a65-8e1e-4930-8ad7-9428cdbf05d8",
+            "versionId": "fc820d90-d138-406a-99d2-44a232994a9a",
             "percentage": 100
           }
         ]
@@ -198,6 +198,76 @@
     "host": "darwin"
   },
   "publication": {
+    "status": "prepared",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261010/review.md",
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261010/release-verification.json",
+    "catalogPush": "pending",
+    "websiteSync": "pending",
+    "websiteDeploy": "pending",
+    "worktreePeakBudgetGiB": 1.5
+  },
+  "pendingCandidates": [],
+  "deferredCandidates": [
+    {
+      "url": "https://github.com/retsu-AI/qq",
+      "sourcePost": "https://x.com/0xBunny/status/2108756488042987807",
+      "reason": "Author announcement reviewed; actual Jev invocation and its downstream path in reviewed main not verified. Code-search index may lag."
+    },
+    {
+      "url": "https://github.com/vigneshshanmugam/csgojev",
+      "sourcePost": "https://x.com/_vigneshh/status/2108762655154635253",
+      "reason": "New author lead beyond eight-repository deep-review budget; retained for next run."
+    },
+    {
+      "url": "https://github.com/pcparts001/pi-jev-compaction-lite",
+      "sourcePost": "https://x.com/ccietry_tozai/status/2108729678936920405",
+      "reason": "Discovery lead beyond deep-review budget; source not independently qualified."
+    },
+    {
+      "url": "https://github.com/Engid/question-kit",
+      "sourcePost": "https://x.com/NickGideo/status/2108710506987205109",
+      "reason": "Discovery lead beyond deep-review budget; source not independently qualified."
+    }
+  ],
+  "xSearches": [
+    {
+      "query": "\"TypeSafe Jev\" since:2026-10-07 -is:retweet",
+      "checkedAt": "2026-10-10T04:06:09.444Z",
+      "visibleCount": 6,
+      "urls": [
+        "https://x.com/0xBunny/status/2108756488042987807",
+        "https://x.com/limbopeng/status/2108700268842094950",
+        "https://x.com/so_sthbryan/status/2108690721385439507",
+        "https://x.com/gitghxst/status/2108679238379585702",
+        "https://x.com/shmidtqq/status/2108637104016072888",
+        "https://x.com/RespanAI/status/2108604337417335269"
+      ]
+    },
+    {
+      "query": "Jev github.com since:2026-10-07 -is:retweet",
+      "checkedAt": "2026-10-10T04:06:09.444Z",
+      "visibleCount": 6,
+      "urls": [
+        "https://x.com/_vigneshh/status/2108762655154635253",
+        "https://x.com/0xBunny/status/2108756488042987807",
+        "https://x.com/0xBunny/status/2108755638780125490",
+        "https://x.com/UnTalNixon_exe/status/2108731728684810426",
+        "https://x.com/ccietry_tozai/status/2108729678936920405",
+        "https://x.com/NickGideo/status/2108710506987205109"
+      ]
+    },
+    {
+      "query": "from:typesafeai Jev since:2026-10-07",
+      "checkedAt": "2026-10-10T04:06:09.444Z",
+      "visibleCount": 3,
+      "urls": [
+        "https://x.com/typesafeai/status/2108395288272765208",
+        "https://x.com/typesafeai/status/2107958916684632396",
+        "https://x.com/typesafeai/status/2107908382569189762"
+      ]
+    }
+  ],
+  "previousPublication": {
     "status": "published-and-verified",
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261009/review.md",
     "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261009/release-verification.json",
@@ -209,64 +279,6 @@
     "catalogContentSha": "4c9e0ab8554f9c6db2c9135722d2e50f7633d405",
     "websiteSha": "993f690d0ef469be7f4e5047ffedfffe282e221a",
     "cloudflareVersion": "fc820d90-d138-406a-99d2-44a232994a9a",
-    "trafficPercent": 100,
-    "formalPagesVerified": 6,
-    "configurationUnchanged": true
-  },
-  "pendingCandidates": [],
-  "deferredCandidates": [
-    {
-      "url": "https://github.com/earlgreyhot1701D/readme-clew-2",
-      "reason": "Reviewed main pipeline consumes mock answers; real Jev wiring and a complete runnable flow were not verified."
-    },
-    {
-      "url": "https://github.com/vibefilter/filament",
-      "sourcePost": "https://x.com/PovilasKorop/status/2108278841126818222",
-      "reason": "Discovery lead retained beyond this run’s eight-repository deep-review cap; not yet independently qualified."
-    }
-  ],
-  "xSearches": [
-    {
-      "query": "\"TypeSafe Jev\" since:2026-10-06 -is:retweet",
-      "checkedAt": "2026-10-09T03:29:43.238Z",
-      "visibleCount": 5,
-      "urls": [
-        "https://x.com/PovilasKorop/status/2108278841126818222",
-        "https://x.com/yibie/status/2108334869520777656"
-      ]
-    },
-    {
-      "query": "Jev github.com since:2026-10-06 -is:retweet",
-      "checkedAt": "2026-10-09T03:29:43.238Z",
-      "visibleCount": 5,
-      "urls": [
-        "https://x.com/dani_avila7/status/2108354971531973028",
-        "https://x.com/7uanF/status/2108350758546489821"
-      ]
-    },
-    {
-      "query": "from:typesafeai Jev since:2026-10-06",
-      "checkedAt": "2026-10-09T03:29:43.238Z",
-      "visibleCount": 3,
-      "urls": [
-        "https://x.com/typesafeai/status/2108395288272765208",
-        "https://x.com/typesafeai/status/2107958916684632396",
-        "https://x.com/typesafeai/status/2107908382569189762"
-      ]
-    }
-  ],
-  "previousPublication": {
-    "status": "published-and-verified",
-    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261008/review.md",
-    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261008/release-verification.json",
-    "catalogPush": "verified",
-    "websiteSync": "verified",
-    "websiteDeploy": "verified",
-    "worktreePeakBudgetGiB": 1.5,
-    "publishedAt": "2026-10-08T03:31:21.256Z",
-    "catalogContentSha": "65bb2a8d9532c8b81c3888a5f9f32b7ba9d8db24",
-    "websiteSha": "06af177d55ab7ed0ff9ebd0401d7b525961bb33c",
-    "cloudflareVersion": "7cba7a65-8e1e-4930-8ad7-9428cdbf05d8",
     "trafficPercent": 100,
     "formalPagesVerified": 6,
     "configurationUnchanged": true

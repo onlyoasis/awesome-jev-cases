@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (74)
+## 深度使用案例 / Worked cases (79)
 
 ### jev-ultrafast
 
@@ -670,7 +670,52 @@
 - 核验边界：仅作者原帖与演示说明，本轮未精读该源码或核验预测准确率；没有推断具体 API primitive，也不把预计概率当作实际 Skill 执行保证。
 - 来源：[Author post](https://x.com/dani_avila7/status/2108354971531973028) · [Author source link (not reviewed)](https://github.com/davila7/claude-code-templates/tree/main/cli-tool/components/mods/productivity/jev-skill-typeahead)
 
-## 开源项目 / Open-source projects (138)
+### VibeFilter：按自然语言条件过滤表格
+
+- 作者：vibefilter
+- 输入：用户输入的自然语言条件，以及其他 SQL 过滤后各行选定文本列。
+- Jev 判断：Jev Noul 批量判断每行是否符合条件，代码读取概率并按可配置阈值筛选；默认阈值 0.8。
+- 后续动作：缓存条件与文本对应的评分，显示通过阈值的表格行及可选评分列；大量未评分行会先让用户确认。
+- 核验边界：MIT 社区插件，真实 TypeSafe 调用与过滤消费可查。本站未安装插件、运行 API 或复现作者演示的速度、成本与匹配质量。
+- 来源：[GitHub](https://github.com/vibefilter/filament) · [Source](https://github.com/vibefilter/filament/blob/d254ad3cc458a96ca42e44450ec124417403c6b2/src/Drivers/TypeSafeDriver.php) · [Source](https://github.com/vibefilter/filament/blob/d254ad3cc458a96ca42e44450ec124417403c6b2/src/Tables/Filters/VibeFilter.php)
+
+### README Clew：分类声明后交给代码核验
+
+- 作者：earlgreyhot1701D
+- 输入：README 的分段行、候选符号名及仓库依赖/文件快照。
+- Jev 判断：Jev 经 Glasser 用 Choice 选有限声明类型，必要时从候选中选名称；置信度门槛拦下不确定结果。
+- 后续动作：真实 scan 将答案交给确定性依赖、命令、环境变量和引用核验器，生成可证实、冲突或无法核验的报告；手动评测入口也调用真实模型。
+- 核验边界：本轮新增真实模块后收录，旧 mock 路径仍用于离线测试；完整浏览器扩展/网页仍在开发。本站未运行付费评测或证明完整产品可用。
+- 来源：[GitHub](https://github.com/earlgreyhot1701D/readme-clew-2) · [Source](https://github.com/earlgreyhot1701D/readme-clew-2/blob/86c87f1a305778e83af5ddd68cfe03bbf3bd1374/lib/jev.js) · [Source](https://github.com/earlgreyhot1701D/readme-clew-2/blob/86c87f1a305778e83af5ddd68cfe03bbf3bd1374/lib/pipeline.js) · [Source](https://github.com/earlgreyhot1701D/readme-clew-2/blob/86c87f1a305778e83af5ddd68cfe03bbf3bd1374/evaluation/run-eval.js)
+
+### Attention Vaccine：在阅读时提示可疑写作手法
+
+- 作者：nevrs
+- 输入：用户许可站点中可见的帖子正文或文章开头，受长度限制，以及有限的写作手法问题。
+- Jev 判断：Jev 批量 Noul 判断煽动、诈骗式引导或无依据泛化等写法；代码结合每项阈值与确定性检查。
+- 后续动作：扩展为符合条件的内容添加提示标记，用户可查看问题原文、概率与说明；缓存和每日调用上限控制重复与预算。
+- 核验边界：这是写法判断，不是内容真伪验证；启用的站点文字会发往模型后端。本站未安装扩展、运行 API 或复现作者评测，权限排除逻辑也未做独立隐私审计。
+- 来源：[GitHub](https://github.com/nevrs/attention-vaccine) · [Source](https://github.com/nevrs/attention-vaccine/blob/1b8fec3082c010d506a3cf6da7faafff0a062bb1/background.js) · [Source](https://github.com/nevrs/attention-vaccine/blob/1b8fec3082c010d506a3cf6da7faafff0a062bb1/content.js) · [Source](https://github.com/nevrs/attention-vaccine/blob/1b8fec3082c010d506a3cf6da7faafff0a062bb1/checks.js)
+
+### Heliotrope：家电重要度评分辅助负载排序
+
+- 作者：StellarieX
+- 输入：家电名称与类型、功率、预计完成时间和可延后窗口。
+- Jev 判断：一批 Jev Score 按有限等级判断各负载对家庭的重要度；代码只采用达到置信度门槛的答案。
+- 后续动作：代码将重要度与紧迫性、功率和弹性组合排序，输出供调度使用的优先级；模型缺失、失败或低置信度明确标示 heuristic/mixed。
+- 核验边界：数学调度约束由代码负责；项目碳强度是代理估计。本站未调用模型、控制家电、验收电表数据或复现作者节能/减排效果。
+- 来源：[GitHub](https://github.com/StellarieX/Heliotrope) · [Source](https://github.com/StellarieX/Heliotrope/blob/11fd609fb535a02a2bda10f70a106dfc3064c127/backend/app/services/jev_client.py) · [Source](https://github.com/StellarieX/Heliotrope/blob/11fd609fb535a02a2bda10f70a106dfc3064c127/backend/app/services/prioritization.py)
+
+### ToolDiscoveryBench：选择 MCP 工具或弃权
+
+- 作者：SarathChandraBellam
+- 输入：任务请求、有限工具目录、服务说明与工具描述。
+- Jev 判断：Jev Choice 从工具或服务候选中选择并返回概率；加入 NONE 或独立适配问题时，代码按同题概率判断是否弃权。
+- 后续动作：平面、因子化或分层路由输出排序与弃权结果，评测器与基线比较并生成报告；不直接执行所选工具。
+- 核验边界：只测工具发现，不证明 Agent 完整成功率；gold 由编码助手挑选。作者准确率、延迟与费用未由本站复现，其他后端结果不混称 Jev。
+- 来源：[GitHub](https://github.com/SarathChandraBellam/ToolDiscoveryBench) · [Source](https://github.com/SarathChandraBellam/ToolDiscoveryBench/blob/ef0baf64dc0afef775d6cdbf15e7f922288b770f/src/tooldiscoverybench/routers/jev/client.py) · [Source](https://github.com/SarathChandraBellam/ToolDiscoveryBench/blob/ef0baf64dc0afef775d6cdbf15e7f922288b770f/src/tooldiscoverybench/routers/decisions/router.py)
+
+## 开源项目 / Open-source projects (145)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -812,6 +857,13 @@
 | [armando-token/industrial-selection-bench](https://github.com/armando-token/industrial-selection-bench) | community | MIT | 0 |
 | [juspay/neurolink](https://github.com/juspay/neurolink) | community | MIT | 144 |
 | [Jev-Engineering/cookbook](https://github.com/Jev-Engineering/cookbook) | community | MIT | 4 |
+| [vibefilter/filament](https://github.com/vibefilter/filament) | community | MIT | 4 |
+| [earlgreyhot1701D/readme-clew-2](https://github.com/earlgreyhot1701D/readme-clew-2) | community | Apache-2.0 | 0 |
+| [YongLD/Multi-UAV-JEV](https://github.com/YongLD/Multi-UAV-JEV) | inspired | Apache-2.0 | 1 |
+| [ys118/ra2web-jev-player](https://github.com/ys118/ra2web-jev-player) | inspired | MIT | 1 |
+| [nevrs/attention-vaccine](https://github.com/nevrs/attention-vaccine) | community | MIT | 0 |
+| [StellarieX/Heliotrope](https://github.com/StellarieX/Heliotrope) | community | MIT | 5 |
+| [SarathChandraBellam/ToolDiscoveryBench](https://github.com/SarathChandraBellam/ToolDiscoveryBench) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (18)
 

@@ -2206,5 +2206,117 @@
     "lastVerified": "2026-10-09",
     "status": "verified",
     "stars": 4
+  },
+  {
+    "id": "vibefilter-filament",
+    "name": "vibefilter/filament",
+    "url": "https://github.com/vibefilter/filament",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Laravel/Filament 自然语言表格过滤器：Jev Noul 批量评分 SQL 已筛选行，缓存结果并按可配置阈值显示，未评分行过多会先确认。MIT 插件，作者性能/成本未由本站复现。",
+      "en": "Laravel/Filament natural-language table filter using batched Jev Nouls over SQL-filtered rows, caching scores and applying a configurable threshold, with confirmation for large unscored sets. MIT plugin; author performance and cost were not reproduced."
+    },
+    "sourceUrl": "https://github.com/vibefilter/filament",
+    "lastVerified": "2026-10-10",
+    "status": "verified",
+    "stars": 4
+  },
+  {
+    "id": "readme-clew-2",
+    "name": "earlgreyhot1701D/readme-clew-2",
+    "url": "https://github.com/earlgreyhot1701D/readme-clew-2",
+    "category": "guard",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "README 声明核验原型：经 Glasser 调用 Jev 做类别与候选名称 Choice，置信度门槛后用代码核验依赖、命令、环境变量和引用。新加入真实 scan/eval，完整浏览器扩展与网页仍在开发；本站未运行付费评测。",
+      "en": "README claim-verification prototype using Jev via Glasser for claim-type and candidate-name Choices before confidence gates and deterministic dependency, command, environment-variable and reference checks. Live scan/evaluation modules now exist; the full extension/web app is still in development and paid evaluations were not run here."
+    },
+    "sourceUrl": "https://github.com/earlgreyhot1701D/readme-clew-2",
+    "lastVerified": "2026-10-10",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "multi-uav-jev",
+    "name": "YongLD/Multi-UAV-JEV",
+    "url": "https://github.com/YongLD/Multi-UAV-JEV",
+    "category": "apps",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "MuJoCo 视觉追逐仿真：结构化状态经有限动作决策交给确定性控制器。默认 NeoHorse-Jev-4B 是独立模型，当前单追逐者/单目标，多机协同为计划；不是 TypeSafe Jev 开源权重或真实硬件验收。",
+      "en": "MuJoCo visual pursuit simulation passing bounded action decisions over structured state to deterministic controllers. Defaults to the separate NeoHorse-Jev-4B model; the current setup has one pursuer and one target, with multi-agent coordination planned. Not TypeSafe Jev open weights or real-hardware validation."
+    },
+    "sourceUrl": "https://github.com/YongLD/Multi-UAV-JEV",
+    "lastVerified": "2026-10-10",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "ra2web-jev-player",
+    "name": "ys118/ra2web-jev-player",
+    "url": "https://github.com/ys118/ra2web-jev-player",
+    "category": "apps",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "ChronoDivide 单人对战实验：确定性游戏逻辑结合 System One 兼容判断与审计回放。当前默认本地 clef-flash，托管 Jev 可配置；现有比赛不可当 Jev 实测，本站未运行。",
+      "en": "ChronoDivide single-player experiment combining deterministic game logic with System One-compatible judgments and audit/replay. Defaults to local clef-flash, with configurable hosted Jev; current matches are not Jev measurements and were not run here."
+    },
+    "sourceUrl": "https://github.com/ys118/ra2web-jev-player",
+    "lastVerified": "2026-10-10",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "attention-vaccine",
+    "name": "nevrs/attention-vaccine",
+    "url": "https://github.com/nevrs/attention-vaccine",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Chrome 内容手法提示扩展：经用户许可的可见正文由 Jev 批量 Noul 判断，按阈值加提示，展示原问题和概率；有缓存、正文长度与日预算限制。概率描述写法而非事实真伪，启用站点正文会发往模型后端；本站未安装或复测。",
+      "en": "Chrome extension using batched Jev Nouls over visible text on permitted sites to show thresholded writing-technique cues, original questions and probabilities, with caching, text limits and daily budgets. Probabilities concern wording, not factual truth; enabled-site text goes to the model backend. Not installed or reproduced here."
+    },
+    "sourceUrl": "https://github.com/nevrs/attention-vaccine",
+    "lastVerified": "2026-10-10",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "heliotrope",
+    "name": "StellarieX/Heliotrope",
+    "url": "https://github.com/StellarieX/Heliotrope",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "家庭负载调度原型：Jev 分类家电并评分重要度，代码负责紧迫性、时限与容量等硬约束和优化；低置信度或未配置会标明 heuristic/mixed。碳强度为代理估计，不能声称已测真实设备减排。",
+      "en": "Household load-scheduling prototype using Jev appliance classification and importance scores while code handles urgency, deadlines, capacity constraints and optimization. Low-confidence or unconfigured paths explicitly label heuristic/mixed results. Carbon intensity is a proxy estimate, not measured device emissions savings."
+    },
+    "sourceUrl": "https://github.com/StellarieX/Heliotrope",
+    "lastVerified": "2026-10-10",
+    "status": "verified",
+    "stars": 5
+  },
+  {
+    "id": "tool-discovery-bench",
+    "name": "SarathChandraBellam/ToolDiscoveryBench",
+    "url": "https://github.com/SarathChandraBellam/ToolDiscoveryBench",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MCP 工具发现基准：比较 Jev Choice 平面/分层路由、弃权与其他模型及检索基线，输出报告。只测路由，不证明工具执行或 Agent 成功率；gold 由编码助手选择，作者速度、费用和准确率未由本站复现。",
+      "en": "MCP tool-discovery benchmark comparing flat/factored/hierarchical Jev Choice routing and abstention with other models and retrieval baselines. Reports routing performance without proving tool execution or agent success; gold tools were selected by coding assistants, and author timing, costs and accuracy were not reproduced."
+    },
+    "sourceUrl": "https://github.com/SarathChandraBellam/ToolDiscoveryBench",
+    "lastVerified": "2026-10-10",
+    "status": "verified",
+    "stars": 0
   }
 ]

@@ -2798,5 +2798,233 @@
         "url": "https://github.com/davila7/claude-code-templates/tree/main/cli-tool/components/mods/productivity/jev-skill-typeahead"
       }
     ]
+  },
+  {
+    "id": "vibefilter-semantic-table",
+    "name": "VibeFilter for Filament",
+    "title": {
+      "zh": "VibeFilter：按自然语言条件过滤表格",
+      "en": "VibeFilter: filter table rows by a natural-language condition"
+    },
+    "author": "vibefilter",
+    "area": {
+      "zh": "语义表格筛选",
+      "en": "Semantic table filtering"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户输入的自然语言条件，以及其他 SQL 过滤后各行选定文本列。",
+      "en": "A user-written condition and selected text columns from rows remaining after other SQL filters."
+    },
+    "decision": {
+      "zh": "Jev Noul 批量判断每行是否符合条件，代码读取概率并按可配置阈值筛选；默认阈值 0.8。",
+      "en": "Batched Jev Nouls judge each row against the condition. Code reads probabilities and applies a configurable threshold, defaulting to 0.8."
+    },
+    "action": {
+      "zh": "缓存条件与文本对应的评分，显示通过阈值的表格行及可选评分列；大量未评分行会先让用户确认。",
+      "en": "Caches condition/text scores and displays passing rows with an optional score column, asking for confirmation before large unscored sets."
+    },
+    "boundary": {
+      "zh": "MIT 社区插件，真实 TypeSafe 调用与过滤消费可查。本站未安装插件、运行 API 或复现作者演示的速度、成本与匹配质量。",
+      "en": "MIT community plugin with inspectable TypeSafe calls and score consumption. This site did not install it, call the API or reproduce author demo timing, cost or match quality."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/vibefilter/filament"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/vibefilter/filament/blob/d254ad3cc458a96ca42e44450ec124417403c6b2/src/Drivers/TypeSafeDriver.php"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/vibefilter/filament/blob/d254ad3cc458a96ca42e44450ec124417403c6b2/src/Tables/Filters/VibeFilter.php"
+      }
+    ]
+  },
+  {
+    "id": "readme-clew-claim-verification",
+    "name": "README Clew 2",
+    "title": {
+      "zh": "README Clew：分类声明后交给代码核验",
+      "en": "README Clew: classify claims before deterministic verification"
+    },
+    "author": "earlgreyhot1701D",
+    "area": {
+      "zh": "README 声明核验原型",
+      "en": "README claim-verification prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "README 的分段行、候选符号名及仓库依赖/文件快照。",
+      "en": "Segmented README lines, candidate symbol names and repository dependency/file snapshots."
+    },
+    "decision": {
+      "zh": "Jev 经 Glasser 用 Choice 选有限声明类型，必要时从候选中选名称；置信度门槛拦下不确定结果。",
+      "en": "Jev via Glasser chooses a bounded claim type and, when necessary, a candidate name; a confidence gate retains uncertain results."
+    },
+    "action": {
+      "zh": "真实 scan 将答案交给确定性依赖、命令、环境变量和引用核验器，生成可证实、冲突或无法核验的报告；手动评测入口也调用真实模型。",
+      "en": "The live scan passes answers to deterministic dependency, command, environment-variable and reference verifiers to build supported, contradicted or unverifiable findings; a manual evaluation entry also calls the live model."
+    },
+    "boundary": {
+      "zh": "本轮新增真实模块后收录，旧 mock 路径仍用于离线测试；完整浏览器扩展/网页仍在开发。本站未运行付费评测或证明完整产品可用。",
+      "en": "Included after live modules appeared in this snapshot; mock paths remain for offline tests and the full extension/web app is still in development. Paid evaluations and complete product usability were not verified here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/earlgreyhot1701D/readme-clew-2"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/earlgreyhot1701D/readme-clew-2/blob/86c87f1a305778e83af5ddd68cfe03bbf3bd1374/lib/jev.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/earlgreyhot1701D/readme-clew-2/blob/86c87f1a305778e83af5ddd68cfe03bbf3bd1374/lib/pipeline.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/earlgreyhot1701D/readme-clew-2/blob/86c87f1a305778e83af5ddd68cfe03bbf3bd1374/evaluation/run-eval.js"
+      }
+    ]
+  },
+  {
+    "id": "attention-vaccine-writing-cues",
+    "name": "Attention Vaccine",
+    "title": {
+      "zh": "Attention Vaccine：在阅读时提示可疑写作手法",
+      "en": "Attention Vaccine: writing-technique cues while reading"
+    },
+    "author": "nevrs",
+    "area": {
+      "zh": "浏览器阅读提示",
+      "en": "Browser reading cues"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户许可站点中可见的帖子正文或文章开头，受长度限制，以及有限的写作手法问题。",
+      "en": "Length-limited visible post text or article openings on permitted sites, with bounded writing-technique questions."
+    },
+    "decision": {
+      "zh": "Jev 批量 Noul 判断煽动、诈骗式引导或无依据泛化等写法；代码结合每项阈值与确定性检查。",
+      "en": "Batched Jev Nouls assess wording such as inflammatory cues, scam-style inducements or unsupported generalizations, combined with per-check thresholds and deterministic checks."
+    },
+    "action": {
+      "zh": "扩展为符合条件的内容添加提示标记，用户可查看问题原文、概率与说明；缓存和每日调用上限控制重复与预算。",
+      "en": "The extension adds cues to matching content, exposing original questions, probabilities and explanations on user interaction, with caching and daily call limits."
+    },
+    "boundary": {
+      "zh": "这是写法判断，不是内容真伪验证；启用的站点文字会发往模型后端。本站未安装扩展、运行 API 或复现作者评测，权限排除逻辑也未做独立隐私审计。",
+      "en": "Judges wording rather than factual truth; text on enabled sites is sent to a model backend. The extension, API, author evaluations and permission-exclusion privacy behavior were not independently tested here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/nevrs/attention-vaccine"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nevrs/attention-vaccine/blob/1b8fec3082c010d506a3cf6da7faafff0a062bb1/background.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nevrs/attention-vaccine/blob/1b8fec3082c010d506a3cf6da7faafff0a062bb1/content.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nevrs/attention-vaccine/blob/1b8fec3082c010d506a3cf6da7faafff0a062bb1/checks.js"
+      }
+    ]
+  },
+  {
+    "id": "heliotrope-load-priority",
+    "name": "Heliotrope",
+    "title": {
+      "zh": "Heliotrope：家电重要度评分辅助负载排序",
+      "en": "Heliotrope: appliance importance scores assist load ranking"
+    },
+    "author": "StellarieX",
+    "area": {
+      "zh": "家庭负载调度原型",
+      "en": "Household load-scheduling prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "家电名称与类型、功率、预计完成时间和可延后窗口。",
+      "en": "Appliance names and kinds, power, completion deadlines and flexibility windows."
+    },
+    "decision": {
+      "zh": "一批 Jev Score 按有限等级判断各负载对家庭的重要度；代码只采用达到置信度门槛的答案。",
+      "en": "Batched Jev Scores rate household importance against a finite rubric; code uses answers only when they meet a confidence gate."
+    },
+    "action": {
+      "zh": "代码将重要度与紧迫性、功率和弹性组合排序，输出供调度使用的优先级；模型缺失、失败或低置信度明确标示 heuristic/mixed。",
+      "en": "Code combines importance with urgency, power and flexibility to rank loads for scheduling, explicitly labeling heuristic/mixed results on missing, failed or low-confidence model paths."
+    },
+    "boundary": {
+      "zh": "数学调度约束由代码负责；项目碳强度是代理估计。本站未调用模型、控制家电、验收电表数据或复现作者节能/减排效果。",
+      "en": "Mathematical scheduling constraints remain in code and project carbon intensity is a proxy estimate. Model calls, appliance control, meter data and energy/emissions savings were not validated here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/StellarieX/Heliotrope"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/StellarieX/Heliotrope/blob/11fd609fb535a02a2bda10f70a106dfc3064c127/backend/app/services/jev_client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/StellarieX/Heliotrope/blob/11fd609fb535a02a2bda10f70a106dfc3064c127/backend/app/services/prioritization.py"
+      }
+    ]
+  },
+  {
+    "id": "tool-discovery-bench-abstention",
+    "name": "ToolDiscoveryBench",
+    "title": {
+      "zh": "ToolDiscoveryBench：选择 MCP 工具或弃权",
+      "en": "ToolDiscoveryBench: choose an MCP tool or abstain"
+    },
+    "author": "SarathChandraBellam",
+    "area": {
+      "zh": "MCP 工具路由评测",
+      "en": "MCP tool-routing benchmark"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "任务请求、有限工具目录、服务说明与工具描述。",
+      "en": "A task request, finite tool catalog, server descriptions and tool descriptions."
+    },
+    "decision": {
+      "zh": "Jev Choice 从工具或服务候选中选择并返回概率；加入 NONE 或独立适配问题时，代码按同题概率判断是否弃权。",
+      "en": "Jev Choices return probabilities over tool/server candidates. With NONE or a separate fit question, code compares probabilities within the same question to decide abstention."
+    },
+    "action": {
+      "zh": "平面、因子化或分层路由输出排序与弃权结果，评测器与基线比较并生成报告；不直接执行所选工具。",
+      "en": "Flat, factored or hierarchical routers return rankings and abstention for evaluation against baselines and reports, without directly executing selected tools."
+    },
+    "boundary": {
+      "zh": "只测工具发现，不证明 Agent 完整成功率；gold 由编码助手挑选。作者准确率、延迟与费用未由本站复现，其他后端结果不混称 Jev。",
+      "en": "Measures discovery rather than complete agent success; gold tools were picked by coding assistants. Author accuracy, latency and cost were not reproduced, and other backends are not reported as Jev."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/SarathChandraBellam/ToolDiscoveryBench"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/SarathChandraBellam/ToolDiscoveryBench/blob/ef0baf64dc0afef775d6cdbf15e7f922288b770f/src/tooldiscoverybench/routers/jev/client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/SarathChandraBellam/ToolDiscoveryBench/blob/ef0baf64dc0afef775d6cdbf15e7f922288b770f/src/tooldiscoverybench/routers/decisions/router.py"
+      }
+    ]
   }
 ]
