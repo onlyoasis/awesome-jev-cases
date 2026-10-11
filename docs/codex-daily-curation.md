@@ -30,12 +30,22 @@ X Latest 若忽略 `since` / `until` 日期条件，记录历史补查为 `parti
 
 可同时收录同一项目的仓库条目和有足够细节的使用案例，但两者各自满足对应证据要求。只把官方 cookbook 的新增或实质变化写进 `data/official-recipes.json`，不为日期变化而改动正文。
 
+## 每日生产健康检查
+
+内容编辑开始前和本轮结束后，必须重新回读正式站的 GA4 ID、Monetag zone、广告开关、Cloudflare 流量版本与发布标识，按网站 `config/production.json` 校验。每轮结束时使用部署对应主线的 `npm run verify:live` 验收全 44 条正式路由；不能在 canonical 保全分支运行旧版验收。即使没有新增、没有部署、没有积压或检索来源失败，也不能跳过生产健康检查。
+
+每轮至少在结束时用真实浏览器检查中英文桌面与 375px：桌面至少 1024px，Monetag 正常加载；GA4 默认不加载，统计同意后正确 measurement ID 的 `page_view/collect` 请求及响应可见；375px 无 Monetag loader、请求或素材，即使勾选广告也不加载。保留用户退出、缩屏和 GPC 门控。普通 Chrome 可见素材与 headless 加载证据分别记录，不点击真实广告，不把供应商无填充直接归为代码配置丢失。
+
+用户已授权发现上述生产异常后直接修复配置、每日流程和相关验收，必要的提交、推送、测试、构建、部署及最终回读无需重复请示；仅修复有证据的本次问题。使用最新 main 的 Projects 隔离工作树并遵守外盘预检，保留其他改动；已有活动发布时等待，部署前重核远端 SHA 与平台流量，避免覆盖并发更新。修复后独立回读配置、100% 流量与浏览器请求，再通知异常原因、修复和结果。必要条件阻塞时记录并通知，不宣称成功。
+
+既有 `jev` 内容任务每天 12:17 JST 运行，开始和结束均检查生产健康；`jev-2` 每天 14:00 JST 在独立聊天做发布后复核，先确认当天内容任务状态。复核不重复检索内容、不并行部署。每轮保存带日期的非敏感验收记录；生产健康、来源检索和发布层状态分别记录。正常无变化保持安静，只在异常、修复完成或需用户处理时通知。
+
 ## 写入与发布
 
 1. 仅在找到有一手证据且质量达标的新内容时修改 `data/cases.json`、`data/projects.json`、`data/official-recipes.json`；中英文描述准确且各自可读。更新 `data/monitor-status.json` 的运行时间、三来源独立完成状态、各自上次成功时间和收录数；失败来源不得写 `ok`、不得推进其成功游标。若某来源失败，其他来源的合格内容仍可发布，并明确报告缺口。运行 `node scripts/validate.mjs`、`node scripts/render.mjs` 和 `node scripts/render.mjs --check`，检查中英文 README 表格、详细目录、diff 与来源链接。
-2. 公开仓库只提交本任务的 `data/`、`README.md`、`README.en.md`、`CATALOG.md` 和必要说明，快进推送 `main`，回读 GitHub HEAD。只有没有新条目且没有积压发布时，才只更新监控状态、不触发网站部署。每层结果写入经过预检的外盘发布记录，包含源 SHA、网站 SHA、部署版本/流量、正式页面结果和失败步骤；失败不能写成全链成功。
+2. 公开仓库只提交本任务的 `data/`、`README.md`、`README.en.md`、`CATALOG.md` 和必要说明，快进推送 `main`，回读 GitHub HEAD。没有新条目、没有积压且生产健康检查正常时，只更新监控/健康检查记录、不触发网站部署；发现生产异常时仍按已授权范围修复并部署。每层结果写入经过预检的外盘发布记录，包含源 SHA、网站 SHA、部署版本/流量、正式页面结果和失败步骤；失败不能写成全链成功。
 3. 有新条目或待同步/部署差额时，从网站远端 `main` 在 `/Volumes/ExternalProjects/Workspaces/codex/` 建隔离 worktree，运行 `node scripts/sync-case-catalog.mjs <本仓库的 data 绝对路径>`。保留网站已跟踪的 `ads.txt`，不复制 canonical `.env.production` 或凭据。生产公开配置以网站已版本化的 `config/production.json` 为准；使用 `SITE_URL=https://typesafe-jev.com npm run build` 自动注入 GA4 ID、Monetag zone 和广告开关，不能直接 `astro build` 或从现网空字段推导配置。依项目规则将 `dist`、`.astro`、依赖缓存和 Wrangler dry-run 放外盘，运行 `npm test` 与 Wrangler dry-run。任何候选字段与版本化预期值不一致均停止部署，即使它与当前线上一致。桌面 ≥1024px 默认广告、移动端禁用、GPC 与用户退出策略必须保留；GA4 仍需统计同意。所有 Wrangler 调用设 `WRANGLER_WRITE_LOGS=false`，`XDG_CACHE_HOME` 与 `npm_config_cache` 指向 Projects 既有缓存，避免新增包含认证的调试日志。
 4. 仅提交并推送本次网站目录数据及必要目录文案修正；确认远端 SHA 后，必须重新构建，使 `tsj-release` 对应该提交，再运行 `npm test`、Wrangler dry-run 与 `npm run verify:production`。使用本机现有 Wrangler 登录部署已验收候选。完整解析部署列表，按 `created_on` 选择最新记录，不能默认取返回数组第一项；核新版本流量 100%。运行 `npm run verify:live`，逐页核验 44 条 sitemap URL 的 GA4 ID、广告开关、Monetag zone、正式 hostname 和 release SHA 与版本化预期值一致，同时验 ads.txt、404 和跳转；再逐字节比对正式域名中英文案例页、项目页、首页与 `ads.txt`。不能仅用“与部署前配置相同”判定成功。广告代码变动时补做真实桌面/375px/退出广告的浏览器验收。记录各层实际完成情况；失败保留已经审核的提交和续发依据，下轮继续，不要求重新发现同一条案例。正常移除已推送且干净的隔离 worktree 和临时环境文件。
 5. 同步 Registry 的 `awesome-jev-cases`、`typesafe-jev` 详情最新摘要和各自当月变更记录；区分发现、提交、推送、部署与公网回读。保留其他项目的未提交工作。
 
-每次运行的最终回复只报告新收录/补发内容及链接、检索覆盖与失败来源、GitHub/网站各层实际状态，以及需要用户处理的阻塞。所有来源成功、无变化、无故障且无积压发布时保持安静。不要把未运行的来源写成“无新增”。
+每次运行的最终回复只报告新收录/补发内容及链接、检索覆盖与失败来源、GitHub/网站各层实际状态、生产异常及修复结果，以及需要用户处理的阻塞。所有来源成功、无变化、无故障且无积压发布时，仍完成健康检查并保存记录后保持安静。不要把未运行的来源写成“无新增”。
