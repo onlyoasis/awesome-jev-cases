@@ -105,6 +105,19 @@ for (const [name, cwd, repo] of [
   });
 }
 
+check('websiteProductionConfiguration', () => {
+  // 读取最新主线，canonical 可能仍在保全分支；不读取 .env 或账号凭据。
+  const config = JSON.parse(run('git', ['show', 'origin/main:config/production.json'], website));
+  requireCondition(config.siteUrl === 'https://typesafe-jev.com' &&
+    config.gaId === 'G-5HP02C0495' && config.adsEnabled === true &&
+    config.monetagZoneId === '11855929', 'Versioned production configuration is missing or differs from the authorized policy');
+  const pkg = JSON.parse(run('git', ['show', 'origin/main:package.json'], website));
+  requireCondition(pkg.scripts?.build === 'node scripts/build-production.mjs' &&
+    pkg.scripts?.['verify:production'] && pkg.scripts?.['verify:live'],
+    'Production build or acceptance entrypoint is missing');
+  return { publicConfiguration: config, buildAndLiveAcceptanceRequired: true };
+});
+
 check('cloudflare', () => {
   const data = JSON.parse(run('npx', ['--no-install', 'wrangler',
     'deployments', 'list', '--json'], website));
@@ -122,7 +135,7 @@ const checks = report.checks;
 report.canPublishCatalog = checks.worktreeStorage.ok &&
   checks.evidenceStorage.ok && checks.catalogGitHub.ok;
 report.canDeployWebsite = report.canPublishCatalog &&
-  checks.websiteGitHub.ok && checks.cloudflare.ok;
+  checks.websiteGitHub.ok && checks.websiteProductionConfiguration.ok && checks.cloudflare.ok;
 report.ok = Object.values(checks).every(c => c.ok);
 report.host = os.platform();
 console.log(JSON.stringify(report, null, 2));
