@@ -198,13 +198,20 @@
     "host": "darwin"
   },
   "publication": {
-    "status": "prepared",
+    "status": "published-and-verified",
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261011/review.md",
     "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261011/release-verification.json",
-    "catalogPush": "pending",
-    "websiteSync": "pending",
-    "websiteDeploy": "pending",
-    "worktreePeakBudgetGiB": 1.5
+    "catalogPush": "verified",
+    "websiteSync": "verified",
+    "websiteDeploy": "verified",
+    "worktreePeakBudgetGiB": 1.5,
+    "publishedAt": "2026-10-11T03:36:04.823Z",
+    "catalogContentSha": "e775180f175a161384d80dc53b5d65753f879070",
+    "websiteSha": "19e45a652e2a973b3e387d884f33961dcdd80754",
+    "cloudflareVersion": "a96e1247-4710-43d3-a640-17a0e50c6c01",
+    "trafficPercent": 100,
+    "formalPagesVerified": 6,
+    "configurationUnchanged": true
   },
   "pendingCandidates": [],
   "deferredCandidates": [
