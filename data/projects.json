@@ -2318,5 +2318,101 @@
     "lastVerified": "2026-10-10",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "pi-jev-compaction-lite",
+    "name": "pcparts001/pi-jev-compaction-lite",
+    "url": "https://github.com/pcparts001/pi-jev-compaction-lite",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT (package.json declaration)",
+    "summary": {
+      "zh": "Pi Agent 的 Jev 会话压缩实验扩展：工具调用/结果各问一个 Noul，按概率保留或裁剪，接入压缩 hook、输出预算与默认摘要回退。package.json 声明 MIT，未附独立 LICENSE；算法来源 fast-jev-compaction，作者保真/节省数据未复现。",
+      "en": "Experimental Jev compaction extension for Pi Agent, judging tool calls/results with two Nouls before keeping or trimming, with compaction hooks, output budgets and default-summary fallback. package.json declares MIT without a standalone LICENSE; derives from fast-jev-compaction and author retention/savings were not reproduced."
+    },
+    "sourceUrl": "https://github.com/pcparts001/pi-jev-compaction-lite/blob/4fb1e511f3942d3c5bb4804d3952a9ea8c6ae912/package.json",
+    "lastVerified": "2026-10-11",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "question-kit",
+    "name": "Engid/question-kit",
+    "url": "https://github.com/Engid/question-kit",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "社区 TypeScript System One 工具库与流程型服务 Agent：Jev 读取有限意图、菜单/槽位与确认，代码负责门槛、工具调用和模板回复。披萨店提供 real/fake/replay 路径与模拟收银台；alpha，未接真实支付/厨房，非官方 SDK。",
+      "en": "Community TypeScript System One toolkit and procedural service agent using Jev for bounded intents, menu/slot values and confirmations, while code owns gates, tool calls and templated replies. Pizza demo distinguishes live/fake/replay and uses a simulated register; alpha, without real payment/kitchen integration, and not an official SDK."
+    },
+    "sourceUrl": "https://github.com/Engid/question-kit",
+    "lastVerified": "2026-10-11",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "decilabel",
+    "name": "EvanProgramming/decilabel",
+    "url": "https://github.com/EvanProgramming/decilabel",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "GitHub Action 为 Issues/PR 分类，只添加既有标签；Jev Noul/Choice 经概率、胜出差距与快照回读门槛，不执行提交者代码。支持 TypeSafe/OpenRouter 与另一独立模型；作者未 live 验证质量，24 例不当校准证据。",
+      "en": "GitHub Action classifying Issues/PRs and adding existing labels only, with Jev Noul/Choice probability, margin and fresh-snapshot gates, without executing contributor code. Supports TypeSafe/OpenRouter and a separate model; author quality is not live-verified and 24 examples do not establish calibration."
+    },
+    "sourceUrl": "https://github.com/EvanProgramming/decilabel",
+    "lastVerified": "2026-10-11",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "depgate",
+    "name": "samiulhuda360/depgate",
+    "url": "https://github.com/samiulhuda360/depgate",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Dependabot/Renovate 更新分流：Jev 判断发布说明、代码用法、CI 与风险，配置策略决定 auto-merge、人工复核或 hold，再写 GitHub 评论/标签与可选通知。可用规则/LLM 基线；作者评测不构成本站验证的安全合并保证。",
+      "en": "Dependabot/Renovate gate using Jev over release notes, code usage, CI and risk before configurable auto-merge, review or hold policies and GitHub comments/labels with optional notifications. Includes rule/LLM baselines; author evaluations are not an independently verified safe-merge guarantee."
+    },
+    "sourceUrl": "https://github.com/samiulhuda360/depgate",
+    "lastVerified": "2026-10-11",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "skimmer",
+    "name": "dorkitude/skimmer",
+    "url": "https://github.com/dorkitude/skimmer",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Go CLI 按目标用 Jev Noul 筛网页、文件块或列表项，保留原文行号与输入格式。分批、并发和部分失败标记可查；未判项默认保留，但上限可能再裁剪，全失败报错。重要信息可能漏选，本站未测召回或 token 节省。",
+      "en": "Go CLI filtering web/file chunks or list items with goal-based Jev Nouls, preserving source line ranges and input format. Includes batching, concurrency and partial-error markers; unjudged items are kept by default but caps can trim them, and total failure reports an error. Recall and token savings were not validated here."
+    },
+    "sourceUrl": "https://github.com/dorkitude/skimmer",
+    "lastVerified": "2026-10-11",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "qq-jev-routing",
+    "name": "retsu-AI/qq",
+    "url": "https://github.com/retsu-AI/qq",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Rust 编码 Agent runtime 的可选 Jev 决策层：任务只在已配置、授权的模型/推理强度中做 Choice，默认关闭；响应校验与重编译不通过即保留原模型。实际 TypeSafe 适配器与主流程接线已核对，本站未运行或验证任务质量/费用。",
+      "en": "Optional Jev decision layer in a Rust coding-agent runtime, choosing only among configured authorized models/efforts and disabled by default. Invalid responses or failed plan recompilation retain the configured model. TypeSafe adapter and runtime wiring were inspected without running it or validating task quality/cost."
+    },
+    "sourceUrl": "https://github.com/retsu-AI/qq",
+    "lastVerified": "2026-10-11",
+    "status": "verified",
+    "stars": 13
   }
 ]

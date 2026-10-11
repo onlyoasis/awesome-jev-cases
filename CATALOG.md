@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (79)
+## 深度使用案例 / Worked cases (85)
 
 ### jev-ultrafast
 
@@ -715,7 +715,61 @@
 - 核验边界：只测工具发现，不证明 Agent 完整成功率；gold 由编码助手挑选。作者准确率、延迟与费用未由本站复现，其他后端结果不混称 Jev。
 - 来源：[GitHub](https://github.com/SarathChandraBellam/ToolDiscoveryBench) · [Source](https://github.com/SarathChandraBellam/ToolDiscoveryBench/blob/ef0baf64dc0afef775d6cdbf15e7f922288b770f/src/tooldiscoverybench/routers/jev/client.py) · [Source](https://github.com/SarathChandraBellam/ToolDiscoveryBench/blob/ef0baf64dc0afef775d6cdbf15e7f922288b770f/src/tooldiscoverybench/routers/decisions/router.py)
 
-## 开源项目 / Open-source projects (145)
+### csgojev：从状态机的合法动作中选择游戏下一步
+
+- 作者：vigneshshanmugam
+- 输入：游戏感知到的距离、视线、脚步、生命值和时间，以及 XState 当前提供的合法动作。
+- Jev 判断：Jev Choice 从合法候选中选择下一步，例如探出、停止、退回或等待；代码检查答案是否属于候选。
+- 后续动作：TypeScript sidecar 把所选动作交给状态机与游戏引擎，后者负责移动、瞄准和物理；结果与其他策略基线比较。
+- 核验边界：无 key 时为 mock；作者明确未证明胜过最佳手工脚本。本站未运行游戏或模型，速度/胜率是作者自报；完整仓库许可未确认，未列入开源项目目录。
+- 来源：[GitHub](https://github.com/vigneshshanmugam/csgojev) · [Source](https://github.com/vigneshshanmugam/csgojev/blob/4d958fdf6e40573f6d1c5d947f831b00f946a7a8/cs16/sidecar/src/jevClient.ts) · [Source](https://github.com/vigneshshanmugam/csgojev/blob/4d958fdf6e40573f6d1c5d947f831b00f946a7a8/packages/jev/src/decide.ts)
+
+### question-kit：让封闭判断驱动披萨店点单流程
+
+- 作者：Engid
+- 输入：点单、改单、菜单询问等对话，以及有限菜单、订单记录、工具与书面步骤。
+- Jev 判断：Jev 读取有限意图、菜单/订单候选、所需槽位和确认；未达置信度门槛的读取交给追问或人工，而不直接执行。
+- 后续动作：代码按流程返回工具调用；示例收银台修改订单后回报结果，回复由模板生成，不使用生成模型编写对话。
+- 核验边界：alpha 库，模拟收银台并非真实支付或厨房接线；fake/replay 明确区分真实 Jev。本站未运行示例、API 或复测订单正确率。
+- 来源：[GitHub](https://github.com/Engid/question-kit) · [Source](https://github.com/Engid/question-kit/blob/df8fbe84db95ea0676286187da0d4ba56c2ea9e2/packages/question-kit/core/typesafe.ts) · [Source](https://github.com/Engid/question-kit/blob/df8fbe84db95ea0676286187da0d4ba56c2ea9e2/packages/question-kit/service-agent/read.ts) · [Source](https://github.com/Engid/question-kit/blob/df8fbe84db95ea0676286187da0d4ba56c2ea9e2/examples/pizza-shop/chat.ts)
+
+### DeciLabel：按证据添加 Issue 与 PR 标签
+
+- 作者：EvanProgramming
+- 输入：Issue/PR 标题、正文、有界 diff 与覆盖警告、仓库既有标签和已占用互斥组。
+- Jev 判断：独立标签各问 Noul，互斥组用带 none 的 Choice；代码检查概率、默认 0.70 阈值与至少 0.20 的胜出差距，缺失/异常则弃权。
+- 后续动作：写入前重新读取快照、标签定义和人工移除历史；通过后仅添加标签，不删除、替换或创建，也不运行提交者代码。
+- 核验边界：真实 API 接线可查，但作者明确未 live 验证模型质量，24 个示例不是校准证明；GitHub 历史检查与添加并非原子。本站未安装 Action 或修改任何外部条目的标签。
+- 来源：[GitHub](https://github.com/EvanProgramming/decilabel) · [Source](https://github.com/EvanProgramming/decilabel/blob/3493d0d9a6315fd043d2ff7c7571832c79a21b80/src/decisions.ts) · [Source](https://github.com/EvanProgramming/decilabel/blob/3493d0d9a6315fd043d2ff7c7571832c79a21b80/src/policy.ts) · [Source](https://github.com/EvanProgramming/decilabel/blob/3493d0d9a6315fd043d2ff7c7571832c79a21b80/src/main.ts)
+
+### depgate：依赖更新的合并、复核与暂缓判断
+
+- 作者：samiulhuda360
+- 输入：Dependabot/Renovate 更新的发布说明、代码用法、CI 状态和安全公告。
+- Jev 判断：一次 Jev 请求包含三分流 Choice、风险 Score 与四个 Noul，判断破坏性变化、是否影响仓库、安全修复和运行时变化。
+- 后续动作：代码再按配置、置信度、风险、CI 与版本约束决定评论、标签和人工复核；允许自动合并时可批准并开启 GitHub auto-merge，dry-run 不写入。
+- 核验边界：作者评测和团队故事不作本站验证的生产效果或安全保证。本站未调用 Jev、接入用户仓库、发送通知或执行任何批准/合并。
+- 来源：[GitHub](https://github.com/samiulhuda360/depgate) · [Source](https://github.com/samiulhuda360/depgate/blob/ca76727f7509865a3fe055c769fc6f0d0ed9d10c/depgate/backends/jev.py) · [Source](https://github.com/samiulhuda360/depgate/blob/ca76727f7509865a3fe055c769fc6f0d0ed9d10c/depgate/questions.py) · [Source](https://github.com/samiulhuda360/depgate/blob/ca76727f7509865a3fe055c769fc6f0d0ed9d10c/depgate/policy.py) · [Source](https://github.com/samiulhuda360/depgate/blob/ca76727f7509865a3fe055c769fc6f0d0ed9d10c/depgate/gate.py)
+
+### skimmer：只保留对目标有用的原文与列表项
+
+- 作者：dorkitude
+- 输入：目标说明、网页或文件的重叠文本块，以及原格式列表项。
+- Jev 判断：每块或每项一个 Jev Noul 相关性问题，按上下文预算分批，代码解析 P(相关) 并用可配置阈值筛选。
+- 后续动作：输出保留的原文、路径与行号，或按输入格式和顺序返回列表；部分失败的未判项默认保留，全请求失败报告错误。
+- 核验边界：原文保留不保证召回；可选上限会再次裁剪，未判块也可能被排除。作者压缩率与质量未复现，本站未把真实工作材料发往模型。
+- 来源：[GitHub](https://github.com/dorkitude/skimmer) · [Source](https://github.com/dorkitude/skimmer/blob/87f6584f9a317a7bd0df8ec85ce475ae199022a3/internal/jev/client.go) · [Source](https://github.com/dorkitude/skimmer/blob/87f6584f9a317a7bd0df8ec85ce475ae199022a3/internal/jev/judge.go) · [Source](https://github.com/dorkitude/skimmer/blob/87f6584f9a317a7bd0df8ec85ce475ae199022a3/internal/skim/skim.go)
+
+### QQ：在已授权模型与推理强度中选择任务路线
+
+- 作者：retsu-AI
+- 输入：有界脱敏任务，以及当前配置、授权和认证可用的模型/推理强度元数据。
+- Jev 判断：Jev Choice 从最多 32 个模型/强度组合中选择；代码同时检查合法候选、响应合同、置信度和胜出概率，后两项门槛均 0.7。
+- 后续动作：主运行时重编译并校验所选路线后执行；未开启、超时、异常、不确定或路线不可用时保留原配置模型，明确选择仍由用户掌握。
+- 核验边界：可选路由默认关闭；今日定位了实际 TypeSafe POST 与主运行时接线，关闭此前未核实线索。本站未运行 Agent 或证明任务质量、费用节省及完整审批安全。
+- 来源：[GitHub](https://github.com/retsu-AI/qq) · [Source](https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/src/runtime/routing.rs) · [Source](https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/src/runtime.rs) · [Source](https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/docs/adr/0034-concrete-jev-routing.md)
+
+## 开源项目 / Open-source projects (151)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -864,6 +918,12 @@
 | [nevrs/attention-vaccine](https://github.com/nevrs/attention-vaccine) | community | MIT | 0 |
 | [StellarieX/Heliotrope](https://github.com/StellarieX/Heliotrope) | community | MIT | 5 |
 | [SarathChandraBellam/ToolDiscoveryBench](https://github.com/SarathChandraBellam/ToolDiscoveryBench) | community | MIT | 0 |
+| [pcparts001/pi-jev-compaction-lite](https://github.com/pcparts001/pi-jev-compaction-lite) | community | MIT (package.json declaration) | 0 |
+| [Engid/question-kit](https://github.com/Engid/question-kit) | community | MIT | 2 |
+| [EvanProgramming/decilabel](https://github.com/EvanProgramming/decilabel) | community | MIT | 0 |
+| [samiulhuda360/depgate](https://github.com/samiulhuda360/depgate) | community | MIT | 0 |
+| [dorkitude/skimmer](https://github.com/dorkitude/skimmer) | community | MIT | 1 |
+| [retsu-AI/qq](https://github.com/retsu-AI/qq) | community | MIT | 13 |
 
 ## 官方 cookbook / Official recipes (18)
 

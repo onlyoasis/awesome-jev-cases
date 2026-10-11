@@ -3026,5 +3026,293 @@
         "url": "https://github.com/SarathChandraBellam/ToolDiscoveryBench/blob/ef0baf64dc0afef775d6cdbf15e7f922288b770f/src/tooldiscoverybench/routers/decisions/router.py"
       }
     ]
+  },
+  {
+    "id": "csgojev-legal-moves",
+    "name": "csgojev",
+    "title": {
+      "zh": "csgojev：从状态机的合法动作中选择游戏下一步",
+      "en": "csgojev: choose the next game move from legal state-machine actions"
+    },
+    "author": "vigneshshanmugam",
+    "area": {
+      "zh": "CS 1.6 游戏实验",
+      "en": "CS 1.6 game experiment"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "游戏感知到的距离、视线、脚步、生命值和时间，以及 XState 当前提供的合法动作。",
+      "en": "Game observations including distance, sight, footsteps, health and time, with legal actions currently offered by XState."
+    },
+    "decision": {
+      "zh": "Jev Choice 从合法候选中选择下一步，例如探出、停止、退回或等待；代码检查答案是否属于候选。",
+      "en": "A Jev Choice selects a next move such as peeking, stopping, retreating or waiting; code checks that the answer belongs to the offered set."
+    },
+    "action": {
+      "zh": "TypeScript sidecar 把所选动作交给状态机与游戏引擎，后者负责移动、瞄准和物理；结果与其他策略基线比较。",
+      "en": "A TypeScript sidecar passes the selection to the state machine and game engine, which own movement, aim and physics, with comparisons against other policies."
+    },
+    "boundary": {
+      "zh": "无 key 时为 mock；作者明确未证明胜过最佳手工脚本。本站未运行游戏或模型，速度/胜率是作者自报；完整仓库许可未确认，未列入开源项目目录。",
+      "en": "Uses mocks without a key, and the author has not shown superiority over the best hand-written script. Game/model runs and author timing/win rates were not reproduced. Whole-repository licensing is unconfirmed, so it is not listed as an open-source project."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/vigneshshanmugam/csgojev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/vigneshshanmugam/csgojev/blob/4d958fdf6e40573f6d1c5d947f831b00f946a7a8/cs16/sidecar/src/jevClient.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/vigneshshanmugam/csgojev/blob/4d958fdf6e40573f6d1c5d947f831b00f946a7a8/packages/jev/src/decide.ts"
+      }
+    ]
+  },
+  {
+    "id": "question-kit-pizza-counter",
+    "name": "question-kit pizza shop",
+    "title": {
+      "zh": "question-kit：让封闭判断驱动披萨店点单流程",
+      "en": "question-kit: closed judgments drive a pizza-counter workflow"
+    },
+    "author": "Engid",
+    "area": {
+      "zh": "流程型服务 Agent 示例",
+      "en": "Procedural service-agent example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "点单、改单、菜单询问等对话，以及有限菜单、订单记录、工具与书面步骤。",
+      "en": "Order/change/menu conversations with a finite menu, order records, tools and written procedure steps."
+    },
+    "decision": {
+      "zh": "Jev 读取有限意图、菜单/订单候选、所需槽位和确认；未达置信度门槛的读取交给追问或人工，而不直接执行。",
+      "en": "Jev reads bounded intents, menu/order candidates, required slots and confirmations, with uncertain readings routed to clarification or handoff instead of immediate action."
+    },
+    "action": {
+      "zh": "代码按流程返回工具调用；示例收银台修改订单后回报结果，回复由模板生成，不使用生成模型编写对话。",
+      "en": "Code follows the procedure and returns tool calls; the example register updates the order and reports results, with replies rendered from templates rather than a generative model."
+    },
+    "boundary": {
+      "zh": "alpha 库，模拟收银台并非真实支付或厨房接线；fake/replay 明确区分真实 Jev。本站未运行示例、API 或复测订单正确率。",
+      "en": "An alpha library with a simulated register rather than real payment or kitchen wiring; fake/replay modes distinguish live Jev. Demo/API runs and order accuracy were not reproduced here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Engid/question-kit"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Engid/question-kit/blob/df8fbe84db95ea0676286187da0d4ba56c2ea9e2/packages/question-kit/core/typesafe.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Engid/question-kit/blob/df8fbe84db95ea0676286187da0d4ba56c2ea9e2/packages/question-kit/service-agent/read.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Engid/question-kit/blob/df8fbe84db95ea0676286187da0d4ba56c2ea9e2/examples/pizza-shop/chat.ts"
+      }
+    ]
+  },
+  {
+    "id": "decilabel-add-only-labels",
+    "name": "DeciLabel",
+    "title": {
+      "zh": "DeciLabel：按证据添加 Issue 与 PR 标签",
+      "en": "DeciLabel: add Issue and PR labels supported by evidence"
+    },
+    "author": "EvanProgramming",
+    "area": {
+      "zh": "GitHub 标签分类原型",
+      "en": "GitHub label-classification prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "Issue/PR 标题、正文、有界 diff 与覆盖警告、仓库既有标签和已占用互斥组。",
+      "en": "Issue/PR titles, bodies, bounded diffs with coverage warnings, existing repository labels and occupied exclusive groups."
+    },
+    "decision": {
+      "zh": "独立标签各问 Noul，互斥组用带 none 的 Choice；代码检查概率、默认 0.70 阈值与至少 0.20 的胜出差距，缺失/异常则弃权。",
+      "en": "Independent labels receive Nouls and exclusive groups receive Choices with none; code checks probabilities, the default 0.70 threshold and a 0.20 winning margin, abstaining on missing or malformed answers."
+    },
+    "action": {
+      "zh": "写入前重新读取快照、标签定义和人工移除历史；通过后仅添加标签，不删除、替换或创建，也不运行提交者代码。",
+      "en": "Rechecks item snapshots, label definitions and maintainer-removal history before adding labels only, without deleting, replacing, creating labels or running contributor code."
+    },
+    "boundary": {
+      "zh": "真实 API 接线可查，但作者明确未 live 验证模型质量，24 个示例不是校准证明；GitHub 历史检查与添加并非原子。本站未安装 Action 或修改任何外部条目的标签。",
+      "en": "Real API wiring is inspectable, but the author explicitly lacks live quality verification and 24 examples do not establish calibration. GitHub history checks and additions are not atomic; this site did not install the Action or alter external labels."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/EvanProgramming/decilabel"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/EvanProgramming/decilabel/blob/3493d0d9a6315fd043d2ff7c7571832c79a21b80/src/decisions.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/EvanProgramming/decilabel/blob/3493d0d9a6315fd043d2ff7c7571832c79a21b80/src/policy.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/EvanProgramming/decilabel/blob/3493d0d9a6315fd043d2ff7c7571832c79a21b80/src/main.ts"
+      }
+    ]
+  },
+  {
+    "id": "depgate-dependency-triage",
+    "name": "depgate",
+    "title": {
+      "zh": "depgate：依赖更新的合并、复核与暂缓判断",
+      "en": "depgate: dependency-update merge, review and hold decisions"
+    },
+    "author": "samiulhuda360",
+    "area": {
+      "zh": "依赖更新审核",
+      "en": "Dependency-update review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "Dependabot/Renovate 更新的发布说明、代码用法、CI 状态和安全公告。",
+      "en": "Release notes, repository usage, CI status and advisories for Dependabot/Renovate updates."
+    },
+    "decision": {
+      "zh": "一次 Jev 请求包含三分流 Choice、风险 Score 与四个 Noul，判断破坏性变化、是否影响仓库、安全修复和运行时变化。",
+      "en": "One Jev request asks a triage Choice, risk Score and four Nouls about breaking changes, repository impact, security fixes and runtime changes."
+    },
+    "action": {
+      "zh": "代码再按配置、置信度、风险、CI 与版本约束决定评论、标签和人工复核；允许自动合并时可批准并开启 GitHub auto-merge，dry-run 不写入。",
+      "en": "Code applies configuration, confidence, risk, CI and version constraints for comments, labels and review; eligible configured paths can approve and enable GitHub auto-merge, while dry-run does not write."
+    },
+    "boundary": {
+      "zh": "作者评测和团队故事不作本站验证的生产效果或安全保证。本站未调用 Jev、接入用户仓库、发送通知或执行任何批准/合并。",
+      "en": "Author evaluations and team stories are not independently verified production outcomes or safety guarantees. This site did not call Jev, connect user repositories, send notifications or perform approvals/merges."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/samiulhuda360/depgate"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/samiulhuda360/depgate/blob/ca76727f7509865a3fe055c769fc6f0d0ed9d10c/depgate/backends/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/samiulhuda360/depgate/blob/ca76727f7509865a3fe055c769fc6f0d0ed9d10c/depgate/questions.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/samiulhuda360/depgate/blob/ca76727f7509865a3fe055c769fc6f0d0ed9d10c/depgate/policy.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/samiulhuda360/depgate/blob/ca76727f7509865a3fe055c769fc6f0d0ed9d10c/depgate/gate.py"
+      }
+    ]
+  },
+  {
+    "id": "skimmer-goal-filter",
+    "name": "skimmer",
+    "title": {
+      "zh": "skimmer：只保留对目标有用的原文与列表项",
+      "en": "skimmer: keep source chunks and list items relevant to a goal"
+    },
+    "author": "dorkitude",
+    "area": {
+      "zh": "目标驱动的文本筛选",
+      "en": "Goal-based text filtering"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "目标说明、网页或文件的重叠文本块，以及原格式列表项。",
+      "en": "A goal, overlapping chunks from pages/files and original-format list items."
+    },
+    "decision": {
+      "zh": "每块或每项一个 Jev Noul 相关性问题，按上下文预算分批，代码解析 P(相关) 并用可配置阈值筛选。",
+      "en": "One Jev Noul relevance question per chunk/item, batched to context budgets, with code parsing relevance probabilities against configurable thresholds."
+    },
+    "action": {
+      "zh": "输出保留的原文、路径与行号，或按输入格式和顺序返回列表；部分失败的未判项默认保留，全请求失败报告错误。",
+      "en": "Returns kept source text with paths/line ranges or lists in their original format/order; unjudged items from partial failures are kept by default, while total request failure reports an error."
+    },
+    "boundary": {
+      "zh": "原文保留不保证召回；可选上限会再次裁剪，未判块也可能被排除。作者压缩率与质量未复现，本站未把真实工作材料发往模型。",
+      "en": "Verbatim preservation does not guarantee recall, and optional caps can trim even unjudged chunks. Author savings/quality were not reproduced and real workspace materials were not sent to the model here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/dorkitude/skimmer"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/dorkitude/skimmer/blob/87f6584f9a317a7bd0df8ec85ce475ae199022a3/internal/jev/client.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/dorkitude/skimmer/blob/87f6584f9a317a7bd0df8ec85ce475ae199022a3/internal/jev/judge.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/dorkitude/skimmer/blob/87f6584f9a317a7bd0df8ec85ce475ae199022a3/internal/skim/skim.go"
+      }
+    ]
+  },
+  {
+    "id": "qq-authorized-model-routing",
+    "name": "QQ Jev routing",
+    "title": {
+      "zh": "QQ：在已授权模型与推理强度中选择任务路线",
+      "en": "QQ: route tasks among authorized models and reasoning efforts"
+    },
+    "author": "retsu-AI",
+    "area": {
+      "zh": "编码 Agent 模型路由",
+      "en": "Coding-agent model routing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "有界脱敏任务，以及当前配置、授权和认证可用的模型/推理强度元数据。",
+      "en": "A bounded masked task with configured, authorized and authenticated model/effort metadata."
+    },
+    "decision": {
+      "zh": "Jev Choice 从最多 32 个模型/强度组合中选择；代码同时检查合法候选、响应合同、置信度和胜出概率，后两项门槛均 0.7。",
+      "en": "A Jev Choice selects from at most 32 model/effort combinations, with code validating candidates, response contracts, confidence and winning probability; the latter gates are both 0.7."
+    },
+    "action": {
+      "zh": "主运行时重编译并校验所选路线后执行；未开启、超时、异常、不确定或路线不可用时保留原配置模型，明确选择仍由用户掌握。",
+      "en": "The runtime recompiles and validates a selected route before execution, retaining the configured model when disabled, timed out, malformed, uncertain or unavailable, while honoring explicit selections."
+    },
+    "boundary": {
+      "zh": "可选路由默认关闭；今日定位了实际 TypeSafe POST 与主运行时接线，关闭此前未核实线索。本站未运行 Agent 或证明任务质量、费用节省及完整审批安全。",
+      "en": "Optional routing is disabled by default. The actual TypeSafe POST and runtime wiring were located today, resolving a previously unverified lead. Agent runs, task quality, savings and full approval safety were not independently validated."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/retsu-AI/qq"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/src/runtime/routing.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/src/runtime.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/docs/adr/0034-concrete-jev-routing.md"
+      }
+    ]
   }
 ]
