@@ -259,6 +259,19 @@
       "url": "https://github.com/mlflow/mlflow",
       "sourcePost": "https://x.com/melvindvivas/status/2109488577331794327",
       "reason": "Quoted release announcement; original implementation and example not reviewed this run."
+    },
+    {
+      "url": "https://github.com/vigneshshanmugam/csgojev",
+      "reason": "Case published from inspected code, but whole-repository license unconfirmed; project entry remains deferred."
+    },
+    {
+      "url": "https://github.com/Dicklesworthstone/skillranker",
+      "reason": "License includes OpenAI/Anthropic restricted-party rider; not listed as a standard MIT open-source project."
+    },
+    {
+      "url": "https://x.com/RileyRalmuto/status/2109058041190457811",
+      "sourcePost": "https://x.com/typesafeai/status/2109098676664861033",
+      "reason": "Official recommendation and author post inspected; specific closed question/options and execution evidence not disclosed."
     }
   ],
   "xSearches": [
