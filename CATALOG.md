@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (85)
+## 深度使用案例 / Worked cases (90)
 
 ### jev-ultrafast
 
@@ -769,7 +769,52 @@
 - 核验边界：可选路由默认关闭；今日定位了实际 TypeSafe POST 与主运行时接线，关闭此前未核实线索。本站未运行 Agent 或证明任务质量、费用节省及完整审批安全。
 - 来源：[GitHub](https://github.com/retsu-AI/qq) · [Source](https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/src/runtime/routing.rs) · [Source](https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/src/runtime.rs) · [Source](https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/docs/adr/0034-concrete-jev-routing.md)
 
-## 开源项目 / Open-source projects (151)
+### 官方记忆示例：保存客户事实辅助后续工单路由
+
+- 作者：TypeSafe AI
+- 输入：当前工单、客户 ID 和该客户已保存的工单/答案。
+- Jev 判断：先用 Choice 路由；再用 Noul 判断原请求与答案是否包含值得记住的长期客户事实。
+- 后续动作：代码在 P(值得记忆)≥0.5 时按客户 ID 存入 Python dict；下次请求前把已有记忆加入 state，无论是否保存均返回路由答案。
+- 核验边界：官方两名虚构客户、六个后续工单的小样例；0.5 是待评估起点，字典不是生产持久化/保留期限方案。效果仅官方自报，本站未运行 API 或复现改善。
+- 来源：[Official cookbook](https://docs.typesafe.ai/cookbooks/basic_memory.md) · [Official replay cache](https://github.com/typesafe-ai/typesafe-public-examples/tree/25e9d373f4853b3e7e300e55a194f50e54838f68/cookbooks/basic_memory)
+
+### ego-jev：让封闭判断完成多步浏览器流程
+
+- 作者：Kim Jisub / kimjisub
+- 输入：当前页面的有限控件、目标、调用方给定值与可见状态要求。
+- Jev 判断：Jev 判断动作、目标元素和所用给定值；要求检查用 Noul，完成后再询问目标是否实际呈现在页面上。
+- 后续动作：代码通过 ego 执行操作并更新页面快照，再继续循环，返回操作记录和完成/不确定状态。
+- 核验边界：需 ego/macOS；不可逆操作选项和源码检查不是独立权限保证。页面上下文发送模型，作者配对速度/成功样例未复现，本站未操作真实账号或表单。
+- 来源：[GitHub](https://github.com/kimjisub/ego-jev) · [Source](https://github.com/kimjisub/ego-jev/blob/8d5f91acdf19534d2825716cfe73a1ac8adb2bed/src/ego-jev.mjs) · [Source](https://github.com/kimjisub/ego-jev/blob/8d5f91acdf19534d2825716cfe73a1ac8adb2bed/src/jev/jev.mjs)
+
+### MIDI 量化：音值概率与代码的小节约束结合
+
+- 作者：ysetbon
+- 输入：单小节钢琴 MIDI 的音高、起音时间、间隔、按键长度与拍号。
+- Jev 判断：每个起音一个 Jev Choice，从全音符、四分、附点、三连音等有限音值中返回概率；起始休止也用有限候选。
+- 后续动作：代码用动态规划寻找符合小节长度的序列并输出记谱/对照评测；无可行整小节解时退回逐项最高概率。
+- 核验边界：作者仅30个单小节，阈值有事后选择，不能外推完整曲目质量。仓库许可未确认，仅作代码案例；本站未下载演奏数据、调用模型或复现准确率。
+- 来源：[GitHub](https://github.com/ysetbon/Quantize_Midi_Jev) · [Source](https://github.com/ysetbon/Quantize_Midi_Jev/blob/124d2a772cc989063e39164b4d4ef815159ae90e/jevquant/jev.py) · [Source](https://github.com/ysetbon/Quantize_Midi_Jev/blob/124d2a772cc989063e39164b4d4ef815159ae90e/jevquant/notevalues.py)
+
+### Bayes：选择暂定行程或继续补查
+
+- 作者：jimador
+- 输入：确认的出游需求/偏好、地图和官网线索、代码生成的行程备选与未解问题。
+- Jev 判断：选择 Jev 引擎时，经 TypeSafeModelFactory 在有限备选与 research 中做 Choice，并作有限证据/适配判断。
+- 后续动作：代码显示选中的暂定方案、来源和缺口；信息不足返回补问/研究状态，没有自动预订或无限研究循环。
+- 核验边界：默认本地规则，远端模型及地图另需同意；地图标签/网页摘要不证明当前营业或交通。Snapshot依赖与作者比较未复现，其他引擎效果不混称 Jev。
+- 来源：[GitHub](https://github.com/jimador/bayes-of-our-lives) · [Source](https://github.com/jimador/bayes-of-our-lives/blob/a8e3276d2662627c0ffe19eae44ed38c1e2dee4e/src/main/java/dev/jimador/bays/BayesDecisionServices.java) · [Source](https://github.com/jimador/bayes-of-our-lives/blob/a8e3276d2662627c0ffe19eae44ed38c1e2dee4e/src/main/java/dev/jimador/bays/BayesAgent.java)
+
+### 评论洞察：Jev 分类后用代码汇总产品问题
+
+- 作者：ethangrogan757
+- 输入：去重后的评论文本，每批最多五条，以及有限主题、意图、严重程度和情感标准。
+- Jev 判断：Jev 用 Choice/Score 返回四类标签和概率；代码按 ID、标签范围与输出合同校验。
+- 后续动作：代码保存结果、复用完全重复文本，隔离未完成/异常行；按已完成记录的严重程度总和等计算排名，再由另一模型生成带证据的 memo。
+- 核验边界：作者只完成全量数据的一部分，不把其余待处理行算分类。样本准确率、成本和产品建议均为作者结果，许可未确认仅作案例；本站未复制评论数据或运行流水线。
+- 来源：[GitHub](https://github.com/ethangrogan757/spotify-review-pipeline) · [Source](https://github.com/ethangrogan757/spotify-review-pipeline/blob/3b0f8e9f56362adb05e1aa7c9bb0391c3b85f3a4/pipeline/enrich_jev.py) · [Source](https://github.com/ethangrogan757/spotify-review-pipeline/blob/3b0f8e9f56362adb05e1aa7c9bb0391c3b85f3a4/pipeline/rank.py)
+
+## 开源项目 / Open-source projects (155)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -924,8 +969,12 @@
 | [samiulhuda360/depgate](https://github.com/samiulhuda360/depgate) | community | MIT | 0 |
 | [dorkitude/skimmer](https://github.com/dorkitude/skimmer) | community | MIT | 1 |
 | [retsu-AI/qq](https://github.com/retsu-AI/qq) | community | MIT | 13 |
+| [kimjisub/ego-jev](https://github.com/kimjisub/ego-jev) | community | MIT | 0 |
+| [jimador/bayes-of-our-lives](https://github.com/jimador/bayes-of-our-lives) | community | MIT | 0 |
+| [schainks/system_one_client](https://github.com/schainks/system_one_client) | community | Apache-2.0 | 4 |
+| [truongxxxx/jev-polymarket-test](https://github.com/truongxxxx/jev-polymarket-test) | community | MIT | 0 |
 
-## 官方 cookbook / Official recipes (18)
+## 官方 cookbook / Official recipes (19)
 
 - [Self-consistency: nouls](https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook.md)：Route uncertain probabilities to human review while keeping the underlying noul values visible.
 - [Self-consistency: choices](https://docs.typesafe.ai/cookbooks/consistency_choice_cookbook.md)：Add an uncertain outcome to moderation decisions and compare label agreement with the share of automatic actions.
@@ -945,3 +994,4 @@
 - [Hierarchical classification](https://docs.typesafe.ai/cookbooks/hierarchical_classification.md)：Classifies documents through deep patent, retail product, biomedical, and source-code hierarchies using parallel beam search over TypeSafe Choice probabilities.
 - [Autoresearch feature discovery](https://docs.typesafe.ai/cookbooks/autoresearch_feature_discovery.md)：Runs an autoresearch loop that proposes TypeSafe questions, converts free text into numeric features, and uses model errors to improve a supervised CatBoost regressor.
 - [Classification using confidence](https://docs.typesafe.ai/cookbooks/classification_using_confidence.md)：Classify SEC annual reports into 75 industry groups with one Choice each, then read the answer's own confidence to decide whether to report that group or the broader division above it.
+- [Simple memory system](https://docs.typesafe.ai/cookbooks/basic_memory.md)：Store customer tickets and answers behind a Noul memory gate, then inject them into later typed support-routing calls. Toy dict-based example; evaluate the threshold for your own data.

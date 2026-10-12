@@ -3314,5 +3314,221 @@
         "url": "https://github.com/retsu-AI/qq/blob/f5dbf2299de32cf0cbbd29124de029ee082dea10/docs/adr/0034-concrete-jev-routing.md"
       }
     ]
+  },
+  {
+    "id": "official-basic-customer-memory",
+    "name": "Simple memory system",
+    "title": {
+      "zh": "官方记忆示例：保存客户事实辅助后续工单路由",
+      "en": "Official memory example: customer facts assist later ticket routing"
+    },
+    "author": "TypeSafe AI",
+    "area": {
+      "zh": "官方客户记忆示例",
+      "en": "Official customer-memory example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "当前工单、客户 ID 和该客户已保存的工单/答案。",
+      "en": "A current ticket, customer ID and previously saved tickets/answers for that customer."
+    },
+    "decision": {
+      "zh": "先用 Choice 路由；再用 Noul 判断原请求与答案是否包含值得记住的长期客户事实。",
+      "en": "A Choice routes the ticket, then a Noul judges whether the original request and answer contain lasting customer facts worth retaining."
+    },
+    "action": {
+      "zh": "代码在 P(值得记忆)≥0.5 时按客户 ID 存入 Python dict；下次请求前把已有记忆加入 state，无论是否保存均返回路由答案。",
+      "en": "Code stores tickets/answers by customer ID in a Python dict when the memory probability reaches 0.5, injects saved memories into later state and returns the routing answer either way."
+    },
+    "boundary": {
+      "zh": "官方两名虚构客户、六个后续工单的小样例；0.5 是待评估起点，字典不是生产持久化/保留期限方案。效果仅官方自报，本站未运行 API 或复现改善。",
+      "en": "An official toy example with two fictional customers and six later tickets. The 0.5 threshold needs evaluation, and a dict is not production persistence or retention management. Results are official reports, not independently reproduced here."
+    },
+    "sources": [
+      {
+        "label": "Official cookbook",
+        "url": "https://docs.typesafe.ai/cookbooks/basic_memory.md"
+      },
+      {
+        "label": "Official replay cache",
+        "url": "https://github.com/typesafe-ai/typesafe-public-examples/tree/25e9d373f4853b3e7e300e55a194f50e54838f68/cookbooks/basic_memory"
+      }
+    ]
+  },
+  {
+    "id": "ego-jev-browser-flows",
+    "name": "ego-jev",
+    "title": {
+      "zh": "ego-jev：让封闭判断完成多步浏览器流程",
+      "en": "ego-jev: closed judgments drive multi-step browser flows"
+    },
+    "author": "Kim Jisub / kimjisub",
+    "area": {
+      "zh": "浏览器操作",
+      "en": "Browser operations"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "当前页面的有限控件、目标、调用方给定值与可见状态要求。",
+      "en": "Current bounded page controls, a goal, caller-provided values and visible-state requirements."
+    },
+    "decision": {
+      "zh": "Jev 判断动作、目标元素和所用给定值；要求检查用 Noul，完成后再询问目标是否实际呈现在页面上。",
+      "en": "Jev judges actions, target elements and supplied values; Nouls check requirements and a final verification rechecks visible goal completion."
+    },
+    "action": {
+      "zh": "代码通过 ego 执行操作并更新页面快照，再继续循环，返回操作记录和完成/不确定状态。",
+      "en": "Code acts through ego, refreshes page snapshots and continues the loop, returning actions and completion/uncertainty status."
+    },
+    "boundary": {
+      "zh": "需 ego/macOS；不可逆操作选项和源码检查不是独立权限保证。页面上下文发送模型，作者配对速度/成功样例未复现，本站未操作真实账号或表单。",
+      "en": "Requires ego/macOS. Irreversible-action options and source checks are not independently verified authorization guarantees. Page context goes to the model; author timing/success examples and real-account/form actions were not reproduced here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kimjisub/ego-jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kimjisub/ego-jev/blob/8d5f91acdf19534d2825716cfe73a1ac8adb2bed/src/ego-jev.mjs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kimjisub/ego-jev/blob/8d5f91acdf19534d2825716cfe73a1ac8adb2bed/src/jev/jev.mjs"
+      }
+    ]
+  },
+  {
+    "id": "midi-jev-note-values",
+    "name": "Quantize_Midi_Jev",
+    "title": {
+      "zh": "MIDI 量化：音值概率与代码的小节约束结合",
+      "en": "MIDI quantization: combine note-value probabilities with bar constraints"
+    },
+    "author": "ysetbon",
+    "area": {
+      "zh": "音乐记谱实验",
+      "en": "Music-notation experiment"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "单小节钢琴 MIDI 的音高、起音时间、间隔、按键长度与拍号。",
+      "en": "Pitches, onset times, gaps, key durations and time signature from one bar of piano MIDI."
+    },
+    "decision": {
+      "zh": "每个起音一个 Jev Choice，从全音符、四分、附点、三连音等有限音值中返回概率；起始休止也用有限候选。",
+      "en": "One Jev Choice per onset returns probabilities over finite whole, quarter, dotted, triplet and other note values, with bounded initial-rest options."
+    },
+    "action": {
+      "zh": "代码用动态规划寻找符合小节长度的序列并输出记谱/对照评测；无可行整小节解时退回逐项最高概率。",
+      "en": "Code uses dynamic programming to find a bar-length-compatible sequence for notation/comparison, falling back to per-item top probabilities when no exact fill is feasible."
+    },
+    "boundary": {
+      "zh": "作者仅30个单小节，阈值有事后选择，不能外推完整曲目质量。仓库许可未确认，仅作代码案例；本站未下载演奏数据、调用模型或复现准确率。",
+      "en": "Author evaluation covers only 30 single bars with post-hoc threshold selection, not full-piece quality. Licensing is unconfirmed, so this is a code case only. Performance data, model calls and accuracy were not reproduced here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ysetbon/Quantize_Midi_Jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ysetbon/Quantize_Midi_Jev/blob/124d2a772cc989063e39164b4d4ef815159ae90e/jevquant/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ysetbon/Quantize_Midi_Jev/blob/124d2a772cc989063e39164b4d4ef815159ae90e/jevquant/notevalues.py"
+      }
+    ]
+  },
+  {
+    "id": "bayes-typed-itinerary",
+    "name": "Bayes of Our Lives",
+    "title": {
+      "zh": "Bayes：选择暂定行程或继续补查",
+      "en": "Bayes: choose a tentative itinerary or request more research"
+    },
+    "author": "jimador",
+    "area": {
+      "zh": "出游计划原型",
+      "en": "Outing-planning prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "确认的出游需求/偏好、地图和官网线索、代码生成的行程备选与未解问题。",
+      "en": "Confirmed outing needs/preferences, map/site clues, code-generated itinerary alternatives and open questions."
+    },
+    "decision": {
+      "zh": "选择 Jev 引擎时，经 TypeSafeModelFactory 在有限备选与 research 中做 Choice，并作有限证据/适配判断。",
+      "en": "With the Jev engine selected, TypeSafeModelFactory makes a Choice over bounded alternatives and research, with typed evidence/fit judgments."
+    },
+    "action": {
+      "zh": "代码显示选中的暂定方案、来源和缺口；信息不足返回补问/研究状态，没有自动预订或无限研究循环。",
+      "en": "Code displays a selected tentative plan, sources and gaps, returning clarification/research when needed without automatic bookings or an unbounded research loop."
+    },
+    "boundary": {
+      "zh": "默认本地规则，远端模型及地图另需同意；地图标签/网页摘要不证明当前营业或交通。Snapshot依赖与作者比较未复现，其他引擎效果不混称 Jev。",
+      "en": "Defaults to local rules with separate remote-model/map consent. Map tags/site snippets do not prove current hours or traffic. Snapshot dependencies and author comparisons were not reproduced, and other engines are not reported as Jev."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/jimador/bayes-of-our-lives"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jimador/bayes-of-our-lives/blob/a8e3276d2662627c0ffe19eae44ed38c1e2dee4e/src/main/java/dev/jimador/bays/BayesDecisionServices.java"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jimador/bayes-of-our-lives/blob/a8e3276d2662627c0ffe19eae44ed38c1e2dee4e/src/main/java/dev/jimador/bays/BayesAgent.java"
+      }
+    ]
+  },
+  {
+    "id": "spotify-review-jev-enrichment",
+    "name": "Spotify review insight pipeline",
+    "title": {
+      "zh": "评论洞察：Jev 分类后用代码汇总产品问题",
+      "en": "Review insights: Jev classification before coded issue aggregation"
+    },
+    "author": "ethangrogan757",
+    "area": {
+      "zh": "评论数据分析案例",
+      "en": "Review-analysis case"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "去重后的评论文本，每批最多五条，以及有限主题、意图、严重程度和情感标准。",
+      "en": "Deduplicated review text in batches of up to five, with bounded topic, intent, severity and sentiment rubrics."
+    },
+    "decision": {
+      "zh": "Jev 用 Choice/Score 返回四类标签和概率；代码按 ID、标签范围与输出合同校验。",
+      "en": "Jev Choices/Scores return four labels and probabilities, validated in code against IDs, allowed labels and output contracts."
+    },
+    "action": {
+      "zh": "代码保存结果、复用完全重复文本，隔离未完成/异常行；按已完成记录的严重程度总和等计算排名，再由另一模型生成带证据的 memo。",
+      "en": "Code saves results, reuses exact duplicates and quarantines unfinished/invalid rows; completed records feed deterministic severity-sum rankings before another model writes an evidence-linked memo."
+    },
+    "boundary": {
+      "zh": "作者只完成全量数据的一部分，不把其余待处理行算分类。样本准确率、成本和产品建议均为作者结果，许可未确认仅作案例；本站未复制评论数据或运行流水线。",
+      "en": "Only part of the full source was classified; pending rows are not counted as classifications. Sample quality, costs and product recommendations are author results. Licensing is unconfirmed, and this site did not copy review data or run the pipeline."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ethangrogan757/spotify-review-pipeline"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ethangrogan757/spotify-review-pipeline/blob/3b0f8e9f56362adb05e1aa7c9bb0391c3b85f3a4/pipeline/enrich_jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ethangrogan757/spotify-review-pipeline/blob/3b0f8e9f56362adb05e1aa7c9bb0391c3b85f3a4/pipeline/rank.py"
+      }
+    ]
   }
 ]

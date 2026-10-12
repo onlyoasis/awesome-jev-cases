@@ -160,5 +160,14 @@
     "source": "official",
     "discoveredAt": "2026-09-24",
     "lastVerified": "2026-09-24"
+  },
+  {
+    "id": "basic_memory",
+    "name": "Simple memory system",
+    "url": "https://docs.typesafe.ai/cookbooks/basic_memory.md",
+    "description": "Store customer tickets and answers behind a Noul memory gate, then inject them into later typed support-routing calls. Toy dict-based example; evaluate the threshold for your own data.",
+    "source": "official",
+    "discoveredAt": "2026-10-12",
+    "lastVerified": "2026-10-12"
   }
 ]

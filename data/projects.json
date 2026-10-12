@@ -2414,5 +2414,69 @@
     "lastVerified": "2026-10-11",
     "status": "verified",
     "stars": 13
+  },
+  {
+    "id": "ego-jev",
+    "name": "kimjisub/ego-jev",
+    "url": "https://github.com/kimjisub/ego-jev",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "ego lite 的多步浏览器决策层：Jev 选择有限动作、元素及调用方给定值，代码执行并复核要求。MIT，继承 jev-browser 部分代码；需 macOS/ego，作者24次配对样例不代表通用成功率，本站未运行。",
+      "en": "Multi-step decision layer for ego lite: Jev selects bounded actions, elements and caller-provided values, while code acts and rechecks requirements. MIT with inherited jev-browser code; requires macOS/ego. Author paired examples are not general reliability and were not run here."
+    },
+    "sourceUrl": "https://github.com/kimjisub/ego-jev",
+    "lastVerified": "2026-10-12",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "bayes-of-our-lives",
+    "name": "jimador/bayes-of-our-lives",
+    "url": "https://github.com/jimador/bayes-of-our-lives",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Embabel/Dice 城市出游原型，Jev 在代码生成的暂定计划与补查选项中做有类型判断；默认本地规则，另支持 OpenAI/Clef。地图、官网线索及偏好记忆有独立同意与未知标记，不预订；Snapshot依赖和作者观察未由本站运行复现。",
+      "en": "Embabel/Dice city-outing prototype using typed Jev judgments over code-generated tentative plans and a research option. Defaults to local rules with OpenAI/Clef alternatives. Map/site clues and preference memory expose consent and unknowns, without bookings; snapshot dependencies and author observations were not reproduced."
+    },
+    "sourceUrl": "https://github.com/jimador/bayes-of-our-lives",
+    "lastVerified": "2026-10-12",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "system-one-client-elixir",
+    "name": "schainks/system_one_client",
+    "url": "https://github.com/schainks/system_one_client",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "社区 Elixir System One 客户端：TypeSafe/OpenRouter Jev、独立 Clef 和兼容后端，返回 Choice/Noul/Score 完整分布；真实 Req HTTP 与 Stub 分开，重试/错误 tuple/脱敏遥测可查。Apache-2.0，非官方 SDK，本站未运行。",
+      "en": "Community Elixir System One client returning full Choice/Noul/Score distributions for TypeSafe/OpenRouter Jev, separate Clef and compatible providers. Distinguishes real Req HTTP from Stub, with retries, error tuples and telemetry excluding request content. Apache-2.0, unofficial and not run here."
+    },
+    "sourceUrl": "https://github.com/schainks/system_one_client",
+    "lastVerified": "2026-10-12",
+    "status": "verified",
+    "stars": 4
+  },
+  {
+    "id": "jev-polymarket-test",
+    "name": "truongxxxx/jev-polymarket-test",
+    "url": "https://github.com/truongxxxx/jev-polymarket-test",
+    "category": "finance",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "已结算预测市场的 Jev 回溯评测：对比盲文本/带历史价格的 Noul 与类别 Choice，代码生成校准和市场价基线报告。MIT；训练知识、时点与类别混杂需考虑，纸面结果不证明前瞻交易收益，原始模型结果未提交，本站未复现。",
+      "en": "Retrospective Jev evaluation over resolved prediction markets, comparing blind/priced Nouls and category Choices with calibration and market-price baselines. MIT; training knowledge, timing and category confounds remain. Paper results do not prove prospective trading returns; raw model answers are uncommitted and were not reproduced."
+    },
+    "sourceUrl": "https://github.com/truongxxxx/jev-polymarket-test",
+    "lastVerified": "2026-10-12",
+    "status": "verified",
+    "stars": 0
   }
 ]
