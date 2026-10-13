@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (90)
+## 深度使用案例 / Worked cases (97)
 
 ### jev-ultrafast
 
@@ -814,7 +814,70 @@
 - 核验边界：作者只完成全量数据的一部分，不把其余待处理行算分类。样本准确率、成本和产品建议均为作者结果，许可未确认仅作案例；本站未复制评论数据或运行流水线。
 - 来源：[GitHub](https://github.com/ethangrogan757/spotify-review-pipeline) · [Source](https://github.com/ethangrogan757/spotify-review-pipeline/blob/3b0f8e9f56362adb05e1aa7c9bb0391c3b85f3a4/pipeline/enrich_jev.py) · [Source](https://github.com/ethangrogan757/spotify-review-pipeline/blob/3b0f8e9f56362adb05e1aa7c9bb0391c3b85f3a4/pipeline/rank.py)
 
-## 开源项目 / Open-source projects (155)
+### 两阶段邮件判断：返回处理信号和回复标签
+
+- 作者：Ankit Kalluraya
+- 输入：邮件发送者、主题和正文描述。
+- Jev 判断：第一轮六类 Choice、紧急 Score、需回复/人工 Noul；代码允许后第二轮选择四种语气、六种意图及可自动处理概率。
+- 后续动作：垃圾/促销返回 archive，通知/简报返回 mute；无需回复跳过第二轮。其余返回 flag_human、auto_draft 或 suggest_reply 标签，无正文和发信操作。
+- 核验边界：Python/jevlang 示例；人工判断在第二轮后拦截，标签不是实际归档或发信。0.5/0.60/0.85 是作者起点，正文送模型；本站未运行或校准。
+- 来源：[GitHub](https://github.com/kallurayaankit/jev-email-triage) · [Source](https://github.com/kallurayaankit/jev-email-triage/blob/76ba60c2a26fe88d033f266e2bd412ee260257d4/agent.py) · [Source](https://github.com/kallurayaankit/jev-email-triage/blob/76ba60c2a26fe88d033f266e2bd412ee260257d4/triage.jev) · [Source](https://github.com/kallurayaankit/jev-email-triage/blob/76ba60c2a26fe88d033f266e2bd412ee260257d4/draft.jev)
+
+### OptChat：沿摘要树找回原始聊天记录
+
+- 作者：ericjuta
+- 输入：用户提问、二叉摘要视图各行与左右子摘要。
+- Jev 判断：OMP judge 角色配置为 Jev 时，每行 Noul 找可能含答案的摘要，再逐层 Choice 选 first/second。
+- 后续动作：代码下降到单条原记录，返回路径和首 8KB，余文通过 zoom 读取；未达阈值或失败/超时返回明确状态。
+- 核验边界：角色可用其他模型，不把所有运行归为 Jev；合成检索实验衡量导航而非真实 Jev 准确率。Linux/Bun/OMP18.9+，许可证未确认仅作代码案例，本站未运行。
+- 来源：[GitHub](https://github.com/ericjuta/omp-optchat) · [Source](https://github.com/ericjuta/omp-optchat/blob/1cff1a1fe060a65c575c438927720532502ba8a1/src/system1/recall.ts) · [Source](https://github.com/ericjuta/omp-optchat/blob/1cff1a1fe060a65c575c438927720532502ba8a1/src/system1/judge.ts)
+
+### 告警路由：模型选通知频道，标签规则兜底
+
+- 作者：Starttoaster
+- 输入：告警组、标题/描述、严重程度、主机与持续时间的脱敏摘要。
+- Jev 判断：Jev Choice 在 page now/informational 中判断，另一个 0–4 紧急 Score 仅供日志。
+- 后续动作：代码同时检查 confidence 与 P(page now) 后选 Discord 频道；低置信/缺 key/超时/错误按 severity=critical 路由，恢复通知沿用内存记录。
+- 核验边界：实验接收器，Sticky 重启后丢失；阈值需本地告警验证，模型不可用不代表投递一定成功。源码有 dry-run/合成测试，本站未部署、调用模型或发送通知。
+- 来源：[GitHub](https://github.com/Starttoaster/reflex) · [Source](https://github.com/Starttoaster/reflex/blob/a8f19dd212115fc3d056a6497c7bef2c193fda48/internal/router/router.go) · [Source](https://github.com/Starttoaster/reflex/blob/a8f19dd212115fc3d056a6497c7bef2c193fda48/internal/jev/client.go)
+
+### Minecraft：可行动作菜单与回合竞争
+
+- 作者：mrubens
+- 输入：当前游戏遥测、目标、动作代价/收益与生存、食物、工作的可执行候选。
+- Jev 判断：TypeSafe Jev 用有限 Choice/决策树选择动作和 turn_priority，不生成游戏代码；代码保留概率、过时答案与调用记录。
+- 后续动作：代码经 Mineflayer 执行菜单项，再根据受伤、失败、状态改变或等待超时重新判断；多数问题在服务不可用时暂停重问。
+- 核验边界：身体物理问题有代码例外，不把全部动作描述成纯模型。作者未通关，15/40世界进入下界等数字与计费仅作者历史观察，源码随试验变化；本站未运行游戏或复现。
+- 来源：[GitHub](https://github.com/mrubens/jevcraft) · [Source](https://github.com/mrubens/jevcraft/blob/959e75f7d3c9f08be776ea172b1710b1a2061661/src/typesafe.js) · [Source](https://github.com/mrubens/jevcraft/blob/959e75f7d3c9f08be776ea172b1710b1a2061661/src/decisions/index.js) · [Source](https://github.com/mrubens/jevcraft/blob/959e75f7d3c9f08be776ea172b1710b1a2061661/src/arbiter.js)
+
+### 技术排障：分开诊断、修复建议与解决验收
+
+- 作者：elioli983
+- 输入：用户症状/证据、另一模型的结构化状态与经过验证整合的资料线索。
+- Jev 判断：Jev Choice 选故障域/下一步；Noul 分别判断诊断成立、修复就绪和解决证据，Score 评紧急程度。
+- 后续动作：代码依据生命周期、兼容前提与安全检查约束有效动作，再交另一模型写建议并保存 case；修复尝试与解决验收分开。
+- 核验边界：Windows 开发/评估版，建议不是自动修设备；官方 TypeSafe 与自定义网关分开。离线测试、加密和启发式检查不证明真实诊断准确或全面安全，本站未使用真实故障数据或模型。
+- 来源：[GitHub](https://github.com/elioli983/TechMedic) · [Source](https://github.com/elioli983/TechMedic/blob/b26d593c11fb3ce85a3ad5c717386ea9a0351e11/techmedic/jev.py) · [Source](https://github.com/elioli983/TechMedic/blob/b26d593c11fb3ce85a3ad5c717386ea9a0351e11/techmedic/diagnostic_engine.py) · [Source](https://github.com/elioli983/TechMedic/blob/b26d593c11fb3ce85a3ad5c717386ea9a0351e11/docs/ARCHITECTURE.md)
+
+### 简历自查：有限匹配信号转成可解释分数
+
+- 作者：dphbfs
+- 输入：职位说明与简历全文；另可拆出要求和简历证据单元。
+- Jev 判断：同一 Jev 请求用 Score 判断岗位匹配，Noul 判断经验不足和明确不满足的条件；保留模型与信号。
+- 后续动作：代码以拟合权重合成 0–100 Match Score，再折减 blocker 概率；CLI/MCP 返回分数，另有逐要求覆盖和证据输出。
+- 核验边界：面向求职者自查，不自动录用；参照生成模型拟合的一致性不是客观能力或招聘准确率。作者误差、速度与成本未复现；简历文本发送提供商，本站未处理真实简历或调用模型。
+- 来源：[GitHub](https://github.com/dphbfs/fast-resume-scoring) · [Source](https://github.com/dphbfs/fast-resume-scoring/blob/86fc14f2d4f9a52b3208323104975aee957b6d6f/internal/app/holistic.go) · [Source](https://github.com/dphbfs/fast-resume-scoring/blob/86fc14f2d4f9a52b3208323104975aee957b6d6f/internal/domain/match.go) · [Source](https://github.com/dphbfs/fast-resume-scoring/blob/86fc14f2d4f9a52b3208323104975aee957b6d6f/internal/adapter/jev/client.go)
+
+### 官方聊天过滤：分类后由代码隐藏、模糊或突出
+
+- 作者：TypeSafe AI
+- 输入：游戏名称、直播标题与一条聊天消息。
+- Jev 判断：一请求包含五类 Choice（问题/欢呼/交谈/指点/垃圾）和毒性、剧透两个 Noul。
+- 后续动作：代码先按毒性及类别隐藏，再按剧透概率模糊；其他显示或突出问题。每条独立请求、最多八并发，改规则可复用已保存答案。
+- 核验边界：官方29个自写英文样本、0.7阈值示例，效果仅官方自报。没有主播进度记忆、实时输入需另接、消息等待可能短暂可见；类别近似平手需自定策略，本站未运行或复现。
+- 来源：[Official cookbook](https://docs.typesafe.ai/cookbooks/twitch_chat_filter.md) · [Official replay cache](https://github.com/typesafe-ai/typesafe-public-examples/tree/25e9d373f4853b3e7e300e55a194f50e54838f68/cookbooks/twitch_chat_filter)
+
+## 开源项目 / Open-source projects (161)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -973,8 +1036,14 @@
 | [jimador/bayes-of-our-lives](https://github.com/jimador/bayes-of-our-lives) | community | MIT | 0 |
 | [schainks/system_one_client](https://github.com/schainks/system_one_client) | community | Apache-2.0 | 4 |
 | [truongxxxx/jev-polymarket-test](https://github.com/truongxxxx/jev-polymarket-test) | community | MIT | 0 |
+| [kallurayaankit/jev-email-triage](https://github.com/kallurayaankit/jev-email-triage) | community | MIT | 0 |
+| [hwong103/jevmail](https://github.com/hwong103/jevmail) | community | MIT | 0 |
+| [Starttoaster/reflex](https://github.com/Starttoaster/reflex) | community | MIT | 0 |
+| [mrubens/jevcraft](https://github.com/mrubens/jevcraft) | community | MIT | 3 |
+| [elioli983/TechMedic](https://github.com/elioli983/TechMedic) | community | GPL-3.0-only | 0 |
+| [dphbfs/fast-resume-scoring](https://github.com/dphbfs/fast-resume-scoring) | community | Apache-2.0 | 0 |
 
-## 官方 cookbook / Official recipes (19)
+## 官方 cookbook / Official recipes (20)
 
 - [Self-consistency: nouls](https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook.md)：Route uncertain probabilities to human review while keeping the underlying noul values visible.
 - [Self-consistency: choices](https://docs.typesafe.ai/cookbooks/consistency_choice_cookbook.md)：Add an uncertain outcome to moderation decisions and compare label agreement with the share of automatic actions.
@@ -995,3 +1064,4 @@
 - [Autoresearch feature discovery](https://docs.typesafe.ai/cookbooks/autoresearch_feature_discovery.md)：Runs an autoresearch loop that proposes TypeSafe questions, converts free text into numeric features, and uses model errors to improve a supervised CatBoost regressor.
 - [Classification using confidence](https://docs.typesafe.ai/cookbooks/classification_using_confidence.md)：Classify SEC annual reports into 75 industry groups with one Choice each, then read the answer's own confidence to decide whether to report that group or the broader division above it.
 - [Simple memory system](https://docs.typesafe.ai/cookbooks/basic_memory.md)：Store customer tickets and answers behind a Noul memory gate, then inject them into later typed support-routing calls. Toy dict-based example; evaluate the threshold for your own data.
+- [Twitch chat filter](https://docs.typesafe.ai/cookbooks/twitch_chat_filter.md)：Classify one stream-chat message with a Choice and toxic/spoiler Nouls; code hides, blurs or highlights it. Authored 29-message English example; adapt thresholds, uncertainty and live-message handling locally.

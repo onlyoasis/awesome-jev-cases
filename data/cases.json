@@ -3530,5 +3530,325 @@
         "url": "https://github.com/ethangrogan757/spotify-review-pipeline/blob/3b0f8e9f56362adb05e1aa7c9bb0391c3b85f3a4/pipeline/rank.py"
       }
     ]
+  },
+  {
+    "id": "jev-email-two-stage-signals",
+    "name": "Jev Email Triage",
+    "title": {
+      "zh": "两阶段邮件判断：返回处理信号和回复标签",
+      "en": "Two-stage email judgments: handling signals and reply labels"
+    },
+    "author": "Ankit Kalluraya",
+    "area": {
+      "zh": "邮件分诊示例",
+      "en": "Email-triage example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "邮件发送者、主题和正文描述。",
+      "en": "A description of the email sender, subject and body."
+    },
+    "decision": {
+      "zh": "第一轮六类 Choice、紧急 Score、需回复/人工 Noul；代码允许后第二轮选择四种语气、六种意图及可自动处理概率。",
+      "en": "First-round six-way Choice, urgency Score and reply/human Nouls; when code permits, a second round selects four tones, six intents and an auto-processing probability."
+    },
+    "action": {
+      "zh": "垃圾/促销返回 archive，通知/简报返回 mute；无需回复跳过第二轮。其余返回 flag_human、auto_draft 或 suggest_reply 标签，无正文和发信操作。",
+      "en": "Spam/promotions return archive; notifications/newsletters return mute. No-reply mail skips round two. Others return flag_human, auto_draft or suggest_reply labels, without prose or sending."
+    },
+    "boundary": {
+      "zh": "Python/jevlang 示例；人工判断在第二轮后拦截，标签不是实际归档或发信。0.5/0.60/0.85 是作者起点，正文送模型；本站未运行或校准。",
+      "en": "Python/jevlang example; human review gates after round two, and labels do not perform mailbox actions. The 0.5/0.60/0.85 thresholds are author defaults, and bodies reach the model. Not run or calibrated here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kallurayaankit/jev-email-triage"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kallurayaankit/jev-email-triage/blob/76ba60c2a26fe88d033f266e2bd412ee260257d4/agent.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kallurayaankit/jev-email-triage/blob/76ba60c2a26fe88d033f266e2bd412ee260257d4/triage.jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kallurayaankit/jev-email-triage/blob/76ba60c2a26fe88d033f266e2bd412ee260257d4/draft.jev"
+      }
+    ]
+  },
+  {
+    "id": "omp-optchat-binary-recall",
+    "name": "OMP OptChat",
+    "title": {
+      "zh": "OptChat：沿摘要树找回原始聊天记录",
+      "en": "OptChat: recover original chat records through a summary tree"
+    },
+    "author": "ericjuta",
+    "area": {
+      "zh": "Agent 记忆检索",
+      "en": "Agent memory retrieval"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户提问、二叉摘要视图各行与左右子摘要。",
+      "en": "A user question, binary-summary view lines and child summaries."
+    },
+    "decision": {
+      "zh": "OMP judge 角色配置为 Jev 时，每行 Noul 找可能含答案的摘要，再逐层 Choice 选 first/second。",
+      "en": "When the OMP judge role is Jev, per-line Nouls find likely answer ranges, then a Choice selects first/second at each level."
+    },
+    "action": {
+      "zh": "代码下降到单条原记录，返回路径和首 8KB，余文通过 zoom 读取；未达阈值或失败/超时返回明确状态。",
+      "en": "Code descends to one original record and returns its path and first 8KB, with zoom for the rest. Low relevance, failure and timeout return explicit outcomes."
+    },
+    "boundary": {
+      "zh": "角色可用其他模型，不把所有运行归为 Jev；合成检索实验衡量导航而非真实 Jev 准确率。Linux/Bun/OMP18.9+，许可证未确认仅作代码案例，本站未运行。",
+      "en": "The role may use other models, so not all runs are Jev. Synthetic experiments measure navigation, not real Jev accuracy. Linux/Bun/OMP18.9+; licensing is unconfirmed, so this is a code case only and was not run here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ericjuta/omp-optchat"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ericjuta/omp-optchat/blob/1cff1a1fe060a65c575c438927720532502ba8a1/src/system1/recall.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ericjuta/omp-optchat/blob/1cff1a1fe060a65c575c438927720532502ba8a1/src/system1/judge.ts"
+      }
+    ]
+  },
+  {
+    "id": "reflex-alert-channel",
+    "name": "reflex",
+    "title": {
+      "zh": "告警路由：模型选通知频道，标签规则兜底",
+      "en": "Alert routing: choose a notification channel with label fallback"
+    },
+    "author": "Starttoaster",
+    "area": {
+      "zh": "监控通知实验",
+      "en": "Monitoring-notification experiment"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "告警组、标题/描述、严重程度、主机与持续时间的脱敏摘要。",
+      "en": "A scrubbed alert-group summary with titles/descriptions, severity, hosts and duration."
+    },
+    "decision": {
+      "zh": "Jev Choice 在 page now/informational 中判断，另一个 0–4 紧急 Score 仅供日志。",
+      "en": "A Jev Choice judges page now versus informational; a separate 0–4 urgency Score is logged only."
+    },
+    "action": {
+      "zh": "代码同时检查 confidence 与 P(page now) 后选 Discord 频道；低置信/缺 key/超时/错误按 severity=critical 路由，恢复通知沿用内存记录。",
+      "en": "Code checks confidence and P(page now) to choose a Discord channel. Low confidence, missing keys, timeouts and errors use severity=critical routing, while resolutions reuse the in-memory channel."
+    },
+    "boundary": {
+      "zh": "实验接收器，Sticky 重启后丢失；阈值需本地告警验证，模型不可用不代表投递一定成功。源码有 dry-run/合成测试，本站未部署、调用模型或发送通知。",
+      "en": "Experimental receiver; sticky state is lost on restart. Thresholds need local alert evaluation, and model fallback does not guarantee delivery. Source has dry-run/synthetic tests; no deployment, model calls or notifications were made here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Starttoaster/reflex"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Starttoaster/reflex/blob/a8f19dd212115fc3d056a6497c7bef2c193fda48/internal/router/router.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Starttoaster/reflex/blob/a8f19dd212115fc3d056a6497c7bef2c193fda48/internal/jev/client.go"
+      }
+    ]
+  },
+  {
+    "id": "jevcraft-bounded-turns",
+    "name": "jevcraft",
+    "title": {
+      "zh": "Minecraft：可行动作菜单与回合竞争",
+      "en": "Minecraft: feasible action menus and competing turn claims"
+    },
+    "author": "mrubens",
+    "area": {
+      "zh": "游戏决策实验",
+      "en": "Game-decision experiment"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "当前游戏遥测、目标、动作代价/收益与生存、食物、工作的可执行候选。",
+      "en": "Current game telemetry, goals, action costs/gains and feasible survival, food and work claims."
+    },
+    "decision": {
+      "zh": "TypeSafe Jev 用有限 Choice/决策树选择动作和 turn_priority，不生成游戏代码；代码保留概率、过时答案与调用记录。",
+      "en": "TypeSafe Jev uses bounded Choices/decision trees for actions and turn_priority, without generating gameplay code; probabilities, stale answers and calls are recorded."
+    },
+    "action": {
+      "zh": "代码经 Mineflayer 执行菜单项，再根据受伤、失败、状态改变或等待超时重新判断；多数问题在服务不可用时暂停重问。",
+      "en": "Code executes menu items through Mineflayer, then rejudges after harm, failure, changed state or wait expiry. Most questions pause and retry during outages."
+    },
+    "boundary": {
+      "zh": "身体物理问题有代码例外，不把全部动作描述成纯模型。作者未通关，15/40世界进入下界等数字与计费仅作者历史观察，源码随试验变化；本站未运行游戏或复现。",
+      "en": "Bodily-physics questions have coded exceptions; not every action is model-only. The author has not beaten the game. Figures such as 15/40 Nether entries and billing are historical author observations, with evolving code; the game was not run here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/mrubens/jevcraft"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mrubens/jevcraft/blob/959e75f7d3c9f08be776ea172b1710b1a2061661/src/typesafe.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mrubens/jevcraft/blob/959e75f7d3c9f08be776ea172b1710b1a2061661/src/decisions/index.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mrubens/jevcraft/blob/959e75f7d3c9f08be776ea172b1710b1a2061661/src/arbiter.js"
+      }
+    ]
+  },
+  {
+    "id": "techmedic-diagnostic-lifecycle",
+    "name": "TechMedic",
+    "title": {
+      "zh": "技术排障：分开诊断、修复建议与解决验收",
+      "en": "Technical troubleshooting: separate diagnosis, remediation and resolution"
+    },
+    "author": "elioli983",
+    "area": {
+      "zh": "技术排障评估原型",
+      "en": "Technical-troubleshooting evaluation prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户症状/证据、另一模型的结构化状态与经过验证整合的资料线索。",
+      "en": "User symptoms/evidence, structured state from another model and validated research integration."
+    },
+    "decision": {
+      "zh": "Jev Choice 选故障域/下一步；Noul 分别判断诊断成立、修复就绪和解决证据，Score 评紧急程度。",
+      "en": "Jev Choices select fault domain/next action, Nouls separately judge diagnosis, remediation readiness and resolution evidence, and a Score assesses urgency."
+    },
+    "action": {
+      "zh": "代码依据生命周期、兼容前提与安全检查约束有效动作，再交另一模型写建议并保存 case；修复尝试与解决验收分开。",
+      "en": "Code constrains effective actions through lifecycle, compatibility prerequisites and safety checks, then another model writes advice and the case is saved. Attempted fixes and verified resolution stay separate."
+    },
+    "boundary": {
+      "zh": "Windows 开发/评估版，建议不是自动修设备；官方 TypeSafe 与自定义网关分开。离线测试、加密和启发式检查不证明真实诊断准确或全面安全，本站未使用真实故障数据或模型。",
+      "en": "Windows development/evaluation build; advice does not automatically repair devices. Official TypeSafe and custom gateways are distinct. Offline tests, encryption and heuristics do not prove diagnosis accuracy or comprehensive security; no real case data or model calls were used here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/elioli983/TechMedic"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/elioli983/TechMedic/blob/b26d593c11fb3ce85a3ad5c717386ea9a0351e11/techmedic/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/elioli983/TechMedic/blob/b26d593c11fb3ce85a3ad5c717386ea9a0351e11/techmedic/diagnostic_engine.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/elioli983/TechMedic/blob/b26d593c11fb3ce85a3ad5c717386ea9a0351e11/docs/ARCHITECTURE.md"
+      }
+    ]
+  },
+  {
+    "id": "resume-self-check-match",
+    "name": "fast-resume-scoring",
+    "title": {
+      "zh": "简历自查：有限匹配信号转成可解释分数",
+      "en": "Resume self-check: turn bounded fit signals into an explainable score"
+    },
+    "author": "dphbfs",
+    "area": {
+      "zh": "求职者自查实验",
+      "en": "Job-seeker self-check experiment"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "职位说明与简历全文；另可拆出要求和简历证据单元。",
+      "en": "A full job posting and resume, with optional extracted requirements and evidence units."
+    },
+    "decision": {
+      "zh": "同一 Jev 请求用 Score 判断岗位匹配，Noul 判断经验不足和明确不满足的条件；保留模型与信号。",
+      "en": "One Jev request uses a Score for role match and Nouls for insufficient experience and a clearly unmet condition, retaining the model and signals."
+    },
+    "action": {
+      "zh": "代码以拟合权重合成 0–100 Match Score，再折减 blocker 概率；CLI/MCP 返回分数，另有逐要求覆盖和证据输出。",
+      "en": "Code combines fitted weights into a 0–100 Match Score and discounts by blocker probability. CLI/MCP returns the score, with separate per-requirement coverage and evidence outputs."
+    },
+    "boundary": {
+      "zh": "面向求职者自查，不自动录用；参照生成模型拟合的一致性不是客观能力或招聘准确率。作者误差、速度与成本未复现；简历文本发送提供商，本站未处理真实简历或调用模型。",
+      "en": "For job-seeker self-check, without automatic hiring. Agreement fitted against a generative model is not objective ability or hiring accuracy. Author errors, timing and costs were not reproduced; resume text reaches the provider, and no real resumes or model calls were used here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/dphbfs/fast-resume-scoring"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/dphbfs/fast-resume-scoring/blob/86fc14f2d4f9a52b3208323104975aee957b6d6f/internal/app/holistic.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/dphbfs/fast-resume-scoring/blob/86fc14f2d4f9a52b3208323104975aee957b6d6f/internal/domain/match.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/dphbfs/fast-resume-scoring/blob/86fc14f2d4f9a52b3208323104975aee957b6d6f/internal/adapter/jev/client.go"
+      }
+    ]
+  },
+  {
+    "id": "official-twitch-chat-filter",
+    "name": "Twitch chat filter",
+    "title": {
+      "zh": "官方聊天过滤：分类后由代码隐藏、模糊或突出",
+      "en": "Official chat filtering: hide, blur or highlight after classification"
+    },
+    "author": "TypeSafe AI",
+    "area": {
+      "zh": "官方直播聊天示例",
+      "en": "Official live-chat example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "游戏名称、直播标题与一条聊天消息。",
+      "en": "A game name, stream title and one chat message."
+    },
+    "decision": {
+      "zh": "一请求包含五类 Choice（问题/欢呼/交谈/指点/垃圾）和毒性、剧透两个 Noul。",
+      "en": "One request contains a five-way Choice for question/hype/conversation/backseat/spam and toxic/spoiler Nouls."
+    },
+    "action": {
+      "zh": "代码先按毒性及类别隐藏，再按剧透概率模糊；其他显示或突出问题。每条独立请求、最多八并发，改规则可复用已保存答案。",
+      "en": "Code hides toxic/blocked categories first, then blurs likely spoilers; other messages are shown or questions highlighted. One request per message, up to eight in flight, with reusable saved answers when rules change."
+    },
+    "boundary": {
+      "zh": "官方29个自写英文样本、0.7阈值示例，效果仅官方自报。没有主播进度记忆、实时输入需另接、消息等待可能短暂可见；类别近似平手需自定策略，本站未运行或复现。",
+      "en": "Official example with 29 authored English samples and 0.7 thresholds; results are official reports. No streamer-progress memory, live inputs require integration and messages may remain visible while waiting. Close categories need a local policy; not run or reproduced here."
+    },
+    "sources": [
+      {
+        "label": "Official cookbook",
+        "url": "https://docs.typesafe.ai/cookbooks/twitch_chat_filter.md"
+      },
+      {
+        "label": "Official replay cache",
+        "url": "https://github.com/typesafe-ai/typesafe-public-examples/tree/25e9d373f4853b3e7e300e55a194f50e54838f68/cookbooks/twitch_chat_filter"
+      }
+    ]
   }
 ]

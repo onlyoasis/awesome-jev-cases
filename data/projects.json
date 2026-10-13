@@ -2478,5 +2478,101 @@
     "lastVerified": "2026-10-12",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "jev-email-triage",
+    "name": "kallurayaankit/jev-email-triage",
+    "url": "https://github.com/kallurayaankit/jev-email-triage",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "两阶段邮件分诊：Jev 先分类，再选有限语气/回复意图；代码返回归档、静音、人工或草稿建议信号。MIT，Python/jevlang 示例，没有实际邮箱连接、正文生成或自动发信；阈值未由本站校准。",
+      "en": "Two-stage email triage: Jev classifies, then selects bounded tone/reply intent; code returns archive, mute, human-review or draft signals. MIT, Python/jevlang example without mailbox integration, prose generation or sending. Thresholds were not calibrated here."
+    },
+    "sourceUrl": "https://github.com/kallurayaankit/jev-email-triage",
+    "lastVerified": "2026-10-13",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jevmail-worker-prototype",
+    "name": "hwong103/jevmail",
+    "url": "https://github.com/hwong103/jevmail",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "源自 fazlerocks/jevmail 的 MIT Gmail 分诊原型，Workers AI/Command Code 的 Jev 适配、持久化纠错与托盘规则可查。合成夹具可用；作者明确真实 Gmail/部署未验收，当前 deploy 不发布 PWA，没有完整自托管安装或自动归档/发信。本站未运行。",
+      "en": "MIT Gmail-triage prototype derived from fazlerocks/jevmail, with inspectable Workers AI/Command Code Jev adapters, persistent corrections and tray rules. Synthetic fixtures work; the author explicitly reports no real Gmail/deployment acceptance and deploy omits the PWA. No complete self-hosting or automatic filing/sending; not run here."
+    },
+    "sourceUrl": "https://github.com/hwong103/jevmail",
+    "lastVerified": "2026-10-13",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "reflex-alert-routing",
+    "name": "Starttoaster/reflex",
+    "url": "https://github.com/Starttoaster/reflex",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Alertmanager→Discord 实验接收器：脱敏摘要经 Jev Choice 决定紧急/普通频道，Score 只日志；缺 key/低置信/超时回严重标签规则，恢复通知沿用原频道。Sticky 仅内存，不宜作为唯一关键告警通道；本站未部署或发通知。",
+      "en": "MIT experimental Alertmanager-to-Discord receiver: scrubbed summaries feed a Jev Choice for urgent/info channels, with a logged-only Score. Missing keys, low confidence and timeouts fall back to severity labels; resolutions reuse the channel. Sticky state is in memory, unsuitable as the only critical-alert path; not deployed here."
+    },
+    "sourceUrl": "https://github.com/Starttoaster/reflex",
+    "lastVerified": "2026-10-13",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jevcraft",
+    "name": "mrubens/jevcraft",
+    "url": "https://github.com/mrubens/jevcraft",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Mineflayer 游戏实验：代码构造可行动作菜单和生存/食物/工作竞争，Jev 判断后执行并记录失败。多数问题在 API 不可用时等待，身体物理问题有例外；作者仍未通关，成本、延迟与试验成绩非本站复现，固定 SHA 源码优先于旧 README 描述。",
+      "en": "MIT Mineflayer game experiment: code builds feasible action menus and survival/food/work claims for Jev to judge, then acts and records failures. Most questions wait during outages, with bodily-physics exceptions. The author has not beaten the game; costs, timing and trials were not reproduced, and pinned source takes precedence over older README descriptions."
+    },
+    "sourceUrl": "https://github.com/mrubens/jevcraft",
+    "lastVerified": "2026-10-13",
+    "status": "verified",
+    "stars": 3
+  },
+  {
+    "id": "techmedic",
+    "name": "elioli983/TechMedic",
+    "url": "https://github.com/elioli983/TechMedic",
+    "category": "apps",
+    "relationship": "community",
+    "license": "GPL-3.0-only",
+    "summary": {
+      "zh": "GPL-3.0-only Windows 技术排障评估应用，另一模型构造状态，Jev 选故障域/下一步并判断诊断、修复与解决证据，代码加生命周期/前提约束。官方 TypeSafe 和自定义网关分开；SQLCipher 离线测试不证明真实模型效果或全面安全，非自动设备修复，本站未运行。",
+      "en": "GPL-3.0-only Windows troubleshooting evaluation app: another model builds state, Jev chooses fault domain/next action and judges diagnosis, remediation and resolution evidence, with coded lifecycle/prerequisite guards. Official TypeSafe and custom gateways are distinct. Offline SQLCipher tests do not prove live-model quality or comprehensive security; no automatic device repair and not run here."
+    },
+    "sourceUrl": "https://github.com/elioli983/TechMedic",
+    "lastVerified": "2026-10-13",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "fast-resume-scoring",
+    "name": "dphbfs/fast-resume-scoring",
+    "url": "https://github.com/dphbfs/fast-resume-scoring",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 求职者简历自查 CLI/MCP：Jev 返回岗位匹配与经验缺口等有限信号，代码生成加权分和要求覆盖证据。带合成回放；作者误差参照生成模型、速度/成本未复现，不是客观能力或录用准确率，也不自动作招聘决定。",
+      "en": "Apache-2.0 resume self-check CLI/MCP: Jev provides bounded role-match and experience-gap signals for weighted scores and requirement-coverage evidence. Includes synthetic replay; author errors use a generative-model reference and costs/timing were not reproduced. Scores are not objective ability or hiring accuracy and do not make hiring decisions."
+    },
+    "sourceUrl": "https://github.com/dphbfs/fast-resume-scoring",
+    "lastVerified": "2026-10-13",
+    "status": "verified",
+    "stars": 0
   }
 ]
