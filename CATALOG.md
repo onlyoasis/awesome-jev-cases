@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (97)
+## 深度使用案例 / Worked cases (105)
 
 ### jev-ultrafast
 
@@ -877,7 +877,79 @@
 - 核验边界：官方29个自写英文样本、0.7阈值示例，效果仅官方自报。没有主播进度记忆、实时输入需另接、消息等待可能短暂可见；类别近似平手需自定策略，本站未运行或复现。
 - 来源：[Official cookbook](https://docs.typesafe.ai/cookbooks/twitch_chat_filter.md) · [Official replay cache](https://github.com/typesafe-ai/typesafe-public-examples/tree/25e9d373f4853b3e7e300e55a194f50e54838f68/cookbooks/twitch_chat_filter)
 
-## 开源项目 / Open-source projects (161)
+### Hapsland：把类型设计规则变成编辑后的反馈
+
+- 作者：dearlordylord
+- 输入：选中的类型或函数声明，以及在配置范围内找到的相关定义与规则问题。
+- Jev 判断：Jev 后端经 Effect TypeSafe 模型为各适用规则做概率判断，例如类型是否允许无意义字段组合。
+- 后续动作：代码按规则阈值映射预设反馈，批量送回支持的编码助手；上下文不完整时跳过相关规则。
+- 核验边界：反馈发生在编辑后，不自动回滚或保证修复，跳过不是通过。可选其他模型，形式化证明有指定范围；根许可证未确认只收案例，选中源码送提供商，本站未安装或运行。
+- 来源：[GitHub](https://github.com/dearlordylord/hapsland) · [Source](https://github.com/dearlordylord/hapsland/blob/a0773f79ffa4babdba219c773832fa3a61cc803c/packages/review-execution/src/jev-decision.ts) · [Source](https://github.com/dearlordylord/hapsland/blob/a0773f79ffa4babdba219c773832fa3a61cc803c/packages/review-definition/src/rules/defaults/meaningless_combinations.json) · [Source](https://github.com/dearlordylord/hapsland/blob/a0773f79ffa4babdba219c773832fa3a61cc803c/packages/review-definition/src/rules/decision.ts)
+
+### 信号筛选：Jev 概率决定保留与扫描顺序
+
+- 作者：h100envy
+- 输入：代码或 Grok 提取的信号、抓取焦点、来源类别与市场数据摘要。
+- Jev 判断：每信号一个 worth Noul，判断是否是具体、符合焦点且值得注意的信息。
+- 后续动作：代码丢弃 P(worth)<默认0.15 的结果，其余按 Jev 概率优先做独立扫描；模型失败继续原流程，延期结果下轮再查。
+- 核验边界：概率/安全标签不证明可盈利或安全投资；本例仅信息筛选。抓取与市场数据有时效和许可边界，预算进程内，作者速度/费用未复现；本站未抓取、交易或调用模型。
+- 来源：[GitHub](https://github.com/h100envy/crawl-hive) · [Source](https://github.com/h100envy/crawl-hive/blob/77cfe1c7a42f0d071bee49ac9ebb77fdf0556827/src/lib/server/crawl/jev.ts) · [Source](https://github.com/h100envy/crawl-hive/blob/77cfe1c7a42f0d071bee49ac9ebb77fdf0556827/src/lib/server/crawl/analyze.ts)
+
+### Scala MCP 实验：Jev 选取证据操作，另一模型写答案
+
+- 作者：James Ward
+- 输入：Jackson 文档研究目标、MCP 操作的模式目录与已确认的有类型值。
+- Jev 判断：Jev 在可绑定参数的操作、过滤或返回证据等有界选项中做下一步判断；另比较预先规划与逐步选择。
+- 后续动作：Scala 宿主执行 MCP、验证/过滤结构化证据并保留检查点，内层返回证据给外层 Bedrock 生成答案，错误恢复有预算。
+- 核验边界：应用调用独立 zio-typesafe-ai 库；README 七臂计时是作者单次网络样本，不能据此排名或推算稳定节省。根许可未确认仅案例，模型角色/过滤模式不同，本站未执行 sbt/MCP/模型。
+- 来源：[GitHub](https://github.com/jamesward/hello-zio-typesafe-ai) · [Source](https://github.com/jamesward/hello-zio-typesafe-ai/blob/79b9518e2626958c2b10e52edad0509ef16c32b1/src/main/scala/Main.scala) · [Source](https://github.com/jamesward/hello-zio-typesafe-ai/blob/79b9518e2626958c2b10e52edad0509ef16c32b1/src/main/scala/benchmark/javadocs/JacksonJavadocsBenchmark.scala) · [Source](https://github.com/jamesward/hello-zio-typesafe-ai/blob/79b9518e2626958c2b10e52edad0509ef16c32b1/build.sbt)
+
+### 相关性评分：意图与词项分开，记录重复波动
+
+- 作者：matthelam
+- 输入：页面元数据或加正文、作者设定的搜索问题与十个预期词项。
+- Jev 判断：Jev 两类五级 Score 请求分别判断页面回答意图的程度和各词项中心程度；词项请求不含意图。
+- 后续动作：代码将等级归一后计算词项和×意图适配，重复测量生成均值/±2SD与过期标记，显示排序和可改进分项，结果存 IndexedDB。
+- 核验边界：噪声带只是同输入重复答案波动，不是SEO排名、事实正确率或效果校准。源文本仍发送模型；作者十页百次实验未复现，费用随重测累积，本站未评分正式页面或调用API。
+- 来源：[GitHub](https://github.com/matthelam/seo-jev-analyzer) · [Source](https://github.com/matthelam/seo-jev-analyzer/blob/17c0475e12583ef377b6df57c4aaeac6dfda6f70/src/questions.ts) · [Source](https://github.com/matthelam/seo-jev-analyzer/blob/17c0475e12583ef377b6df57c4aaeac6dfda6f70/src/lib/server/jev.ts) · [Source](https://github.com/matthelam/seo-jev-analyzer/blob/17c0475e12583ef377b6df57c4aaeac6dfda6f70/src/lib/score.ts)
+
+### 情境回应练习：有限判断与本地标准共同计分
+
+- 作者：Kim Jibaek / Korea Management Education Institute
+- 输入：训练场景、规则、随机资源约束与学员限时写下的回应。
+- Jev 判断：Jev Choice 选接受/暂缓/拒绝/未知，Score 评两项模拟结果，逐标准及能否兑现承诺用 Noul。
+- 后续动作：代码对照情境的参考回应与阈值计算是否通过，记录漏项、时间和练习报告；场景生成与总评另用编码助手。
+- 核验边界：韩文原型与四套 AI 示例，量表不是实际顾客反应或劳动能力认证。回应发送OpenRouter，移动/Windows和进度保存有限；作者费用/速度未复现，本站未测试真实员工。
+- 来源：[GitHub](https://github.com/ceokobec-hue/job-drill) · [Source](https://github.com/ceokobec-hue/job-drill/blob/b0e25eb6b7932ad881f0f94bf8f8c25b877c2e41/jev.py) · [Source](https://github.com/ceokobec-hue/job-drill/blob/b0e25eb6b7932ad881f0f94bf8f8c25b877c2e41/public/js/app.js)
+
+### 动作级注入检查：分别问来源诱导与任务关联
+
+- 作者：minitru / xChk
+- 输入：当前及近期用户请求、前一工具正文、待执行动作和最多十二条动作历史。
+- Jev 判断：多个 Noul 判断动作是否偏离各请求、是否遵循外来内容；carries 单独判断正文是否诱发了请求未要求的动作。
+- 后续动作：代码同时满足 carries 与 intent 阈值才返回 flagged，另返回各概率、readable 与原因；本工具本身不阻止动作。
+- 核验边界：默认只看动作400字/正文6000字，存在作者已报告的填充绕过；无语义点击为不可读，不能当作安全。简单攻击集无留出且真实样本单一，作者效果未复现，不替代宿主权限。
+- 来源：[GitHub](https://github.com/minitru/jev-intent-benchmark) · [Source](https://github.com/minitru/jev-intent-benchmark/blob/260bb616e8816edca94150c6fcb340d6c83c1603/actcheck.js) · [Source](https://github.com/minitru/jev-intent-benchmark/blob/260bb616e8816edca94150c6fcb340d6c83c1603/README.md)
+
+### 风格密度检查：逐句判断后给出超基线证据
+
+- 作者：jomi-se
+- 输入：Markdown 句子、语境与固定风格问题；长引用从作者风格计数中排除。
+- Jev 判断：固定版本 Jev 对格言、三段式、免责声明等逐句作 Noul；代码校验请求/答案完整性。
+- 后续动作：代码按概率算期望计数与每千词密度；90%Poisson下界超过人类基线默认3倍时列出原句和位置，实验编辑另调用生成模型。
+- 核验边界：十三篇技术文章基线不代表所有文体/语言，密度不是作者归因或事实质量；短文与引文有单独处理，Node26/API另需配置，作者改写效果与费用未由本站复现。
+- 来源：[GitHub](https://github.com/jomi-se/system-one-deslop) · [Source](https://github.com/jomi-se/system-one-deslop/blob/8f1a7fee97a493f5b2bac33c9c0a64fd49272a94/src/jev.ts) · [Source](https://github.com/jomi-se/system-one-deslop/blob/8f1a7fee97a493f5b2bac33c9c0a64fd49272a94/src/check.ts) · [Source](https://github.com/jomi-se/system-one-deslop/blob/8f1a7fee97a493f5b2bac33c9c0a64fd49272a94/src/audit.ts)
+
+### 文档人工复核：提取置信与合理性判断独立保留
+
+- 作者：Unsiloed AI
+- 输入：文档提取字段及行 ID/上下文；原页定位和提取置信另存，不作为 Jev 输入。
+- Jev 判断：每行一个 Noul 检查提取指令的表面合理性，不读源图、不改值、不评患者个体安全。
+- 后续动作：代码保留提取和合理性两类检查，任一缺失/不合法或低于示例阈值即转人工；按行ID和定位回看源文档，高Jev答案不抵消低提取置信。
+- 核验边界：商业作者六行处方方法演示，非TypeSafe官方或医疗建议；0.90/0.50待人工文档校验，接近0.50另需策略。作者效果未复现，本站未处理真实医疗数据或调用模型。
+- 来源：[Author integration and code](https://unsiloed.ai/blog/document-review-unsiloed-typesafe-jev) · [Author X](https://x.com/aman_unsiloed/status/2110074793827725491)
+
+## 开源项目 / Open-source projects (167)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1042,6 +1114,12 @@
 | [mrubens/jevcraft](https://github.com/mrubens/jevcraft) | community | MIT | 3 |
 | [elioli983/TechMedic](https://github.com/elioli983/TechMedic) | community | GPL-3.0-only | 0 |
 | [dphbfs/fast-resume-scoring](https://github.com/dphbfs/fast-resume-scoring) | community | Apache-2.0 | 0 |
+| [h100envy/crawl-hive](https://github.com/h100envy/crawl-hive) | community | MIT | 84 |
+| [Ordo-Engine/Ordo](https://github.com/Ordo-Engine/Ordo) | community | MIT | 38 |
+| [matthelam/seo-jev-analyzer](https://github.com/matthelam/seo-jev-analyzer) | community | MIT | 0 |
+| [ceokobec-hue/job-drill](https://github.com/ceokobec-hue/job-drill) | community | MIT | 0 |
+| [minitru/jev-intent-benchmark](https://github.com/minitru/jev-intent-benchmark) | community | MIT | 0 |
+| [jomi-se/system-one-deslop](https://github.com/jomi-se/system-one-deslop) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (20)
 

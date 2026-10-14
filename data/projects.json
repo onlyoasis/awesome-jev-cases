@@ -2574,5 +2574,101 @@
     "lastVerified": "2026-10-13",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "crawl-hive",
+    "name": "h100envy/crawl-hive",
+    "url": "https://github.com/h100envy/crawl-hive",
+    "category": "finance",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 抓取信号研究平台，Jev Noul 筛掉低相关性、排序待扫描结果，Grok/规则负责提取，安全扫描和人工判断独立。源码可查但代币、交易与收益宣传非本站认可；进程内预算及作者延迟/费用未复现，本站未抓取、连钱包或运行。",
+      "en": "MIT crawler-signal research platform using Jev Nouls to filter low relevance and prioritize scans, with Grok/rules for extraction and separate scanning/human judgment. Inspectable code does not validate token, trading or profit claims. Process-local budgets and author costs/timing were not reproduced; no crawling, wallet connection or execution here."
+    },
+    "sourceUrl": "https://github.com/h100envy/crawl-hive",
+    "lastVerified": "2026-10-14",
+    "status": "verified",
+    "stars": 84
+  },
+  {
+    "id": "ordo-decision-engine",
+    "name": "Ordo-Engine/Ordo",
+    "url": "https://github.com/Ordo-Engine/Ordo",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 相关规则引擎，把已记录的 Jev 判断和业务事实映射为可测试、可版本化的处理标签，并比较阈值变更影响。示例 trace 不实际退款；实时 OpenRouter 地址未确认与官方当前接口兼容，部分缺字段填0，不称全面验证或线上可用。本站未运行。",
+      "en": "MIT related rule engine mapping recorded Jev judgments and business facts to tested, versioned outcome labels and threshold-change comparisons. Example trace does not issue refunds; its live OpenRouter URL is not confirmed against the current official API, and some missing fields default to zero. No comprehensive validation or live readiness is claimed; not run here."
+    },
+    "sourceUrl": "https://github.com/Ordo-Engine/Ordo",
+    "lastVerified": "2026-10-14",
+    "status": "verified",
+    "stars": 38
+  },
+  {
+    "id": "seo-jev-analyzer",
+    "name": "matthelam/seo-jev-analyzer",
+    "url": "https://github.com/matthelam/seo-jev-analyzer",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 搜索意图相关性研究应用：Jev Score 分别评意图与预设词，代码生成乘积分和重复答案噪声带，浏览器 IndexedDB 保存结果。文本仍送模型，±2SD 不是排名/真值准确率校准；作者100次重复实验未复现，本站未安装或测生产页面。",
+      "en": "MIT search-intent relevance research app: Jev Scores judge intent and expected terms, with coded product scores and repeat-answer noise bands stored in browser IndexedDB. Text still reaches the model, and ±2 SD does not calibrate rankings or truth. Author 100-run experiments were not reproduced; no installation or production-page evaluation here."
+    },
+    "sourceUrl": "https://github.com/matthelam/seo-jev-analyzer",
+    "lastVerified": "2026-10-14",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "job-drill",
+    "name": "ceokobec-hue/job-drill",
+    "url": "https://github.com/ceokobec-hue/job-drill",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 韩文情境回应练习，Jev 判断接受/暂缓/拒绝并评分、检查情境标准，代码按各情境基准计通过与报告；生成场景/总评另用编码助手。模拟量表不是实际顾客反应或员工能力认证，回复送OpenRouter，移动/Windows及进度保存有限，本站未运行。",
+      "en": "MIT Korean scenario-response practice: Jev selects accept/defer/decline and scores/checks scenario rubrics, while code computes passes and reports against local baselines. Coding assistants generate scenarios/overall comments. Simulated scales are not actual customer reactions or employee certification; replies reach OpenRouter, with mobile/Windows/persistence limits. Not run here."
+    },
+    "sourceUrl": "https://github.com/ceokobec-hue/job-drill",
+    "lastVerified": "2026-10-14",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-intent-benchmark",
+    "name": "minitru/jev-intent-benchmark",
+    "url": "https://github.com/minitru/jev-intent-benchmark",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 动作级间接提示注入研究检查：Jev 同时读请求、工具结果及待执行动作，双条件标记；只返回flag/readable与概率，不拦截。默认动作400字符/正文6000，已知填充绕过；公开攻击集和作者检测率未复现，不是安全保证，本站未运行。",
+      "en": "MIT act-level indirect-injection research check using Jev over requests, tool output and a proposed act, with a two-condition flag. Returns flags/readability/probabilities without blocking. Default 400-character acts and 6,000-character content have known padding bypasses. Public attack-set results were not reproduced and are not a security guarantee; not run here."
+    },
+    "sourceUrl": "https://github.com/minitru/jev-intent-benchmark",
+    "lastVerified": "2026-10-14",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "system-one-deslop",
+    "name": "jomi-se/system-one-deslop",
+    "url": "https://github.com/jomi-se/system-one-deslop",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 技术写作风格研究工具，Jev 对逐句风格问题做 Noul，代码算每千词密度、区间及13篇人类技术文基线；实验改写另用生成模型。风格指标不能鉴定作者或事实质量，Node26与API另需配置，作者效果/费用未由本站复现。",
+      "en": "MIT technical-writing style research tool using per-sentence Jev Nouls for density, intervals and a 13-post human baseline; experimental editing uses generative models separately. Style metrics do not identify authorship or factual quality. Requires Node 26/API configuration; author quality/cost claims were not reproduced here."
+    },
+    "sourceUrl": "https://github.com/jomi-se/system-one-deslop",
+    "lastVerified": "2026-10-14",
+    "status": "verified",
+    "stars": 0
   }
 ]
