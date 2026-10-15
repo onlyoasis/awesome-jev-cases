@@ -2670,5 +2670,117 @@
     "lastVerified": "2026-10-14",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "anofox-decide",
+    "name": "DataZooDE/anofox-decide",
+    "url": "https://github.com/DataZooDE/anofox-decide",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT DuckDB 决策扩展，把 SQL 行文本/JSON 经显式启用的 TypeSafe Jev 映射成概率、选项、分值及分布；另有本地模型与明确标注常数 Stub。注册/配置按进程重建，托管文本会发提供商，安装渠道签名/版本有区别，概率与可选校准需自测；本站未安装或运行。",
+      "en": "MIT DuckDB decision extension mapping SQL text/JSON through explicitly enabled TypeSafe Jev into probabilities, choices, scores and distributions. Also supports local models and a clearly constant Stub. Registrations/settings are process-local, hosted text reaches providers and installation channels differ in signing/version. Probabilities/optional calibration need local evaluation; not installed or run here."
+    },
+    "sourceUrl": "https://github.com/DataZooDE/anofox-decide",
+    "lastVerified": "2026-10-15",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "go-discern",
+    "name": "mrz1836/go-discern",
+    "url": "https://github.com/mrz1836/go-discern",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 社区 Go 有类型决策层，显式选择 TypeSafe Jev/Clef，返回所请求与实际响应模型标识；凭据由调用方传入，每 Call 单次 POST、不跟随重定向，校验响应边界。零第三方运行依赖，不代表模型判断或部署已经验证；本站未运行，基础工单示例不另列案例。",
+      "en": "MIT community Go typed decision layer with explicit TypeSafe Jev/Clef selection and requested/resolved model records. Callers supply credentials; each Call makes one POST without redirect following, with response bounds. No third-party runtime dependencies, without proof of model quality or deployment; not run here and the basic ticket example is not duplicated as a case."
+    },
+    "sourceUrl": "https://github.com/mrz1836/go-discern",
+    "lastVerified": "2026-10-15",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "sedum-browser-tests",
+    "name": "sedum-dev/sedum",
+    "url": "https://github.com/sedum-dev/sedum",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT pre-alpha 自然语言+TypeScript 浏览器测试，默认 Jev 选有限元素并判断页面主张，Playwright 执行；带新鲜性检查、概率与矛盾 flag，CI退出策略独立。边缘分数可 passed+flag，不能把 flag 当硬失败；Clef另选，作者节省/速度未复现，本站未测试第三方站点。",
+      "en": "MIT pre-alpha natural-language/TypeScript browser tests using Jev by default for bounded element selection and page claims, with Playwright execution, freshness checks and probability/contradiction flags. CI exit policy is separate; marginal results may pass with flags. Clef is optional; author savings/timing were not reproduced and no third-party sites were tested here."
+    },
+    "sourceUrl": "https://github.com/sedum-dev/sedum",
+    "lastVerified": "2026-10-15",
+    "status": "verified",
+    "stars": 12
+  },
+  {
+    "id": "axe-decision-control",
+    "name": "Saik0s/axe-decision-control",
+    "url": "https://github.com/Saik0s/axe-decision-control",
+    "category": "embodied",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT iOS Simulator 研究控制器，对比辅助功能树、截图网格与 Jev1.14 Box；存在/置信与新鲜性门控后经 AXe 操作，结果验收另读持久化状态。合成 FocusBench 与少量作者录像不代表通用App准确率，Box另给目标目录；需macOS/Xcode/AXe，实验视觉API，本站未运行。",
+      "en": "MIT iOS Simulator research controller comparing accessibility, screenshot grids and Jev 1.14 Boxes, gating presence/confidence/freshness before AXe actions and separately checking persisted outcomes. Synthetic FocusBench and a few author recordings do not establish general app accuracy; Box receives an extra target catalog. Requires macOS/Xcode/AXe and experimental vision APIs; not run here."
+    },
+    "sourceUrl": "https://github.com/Saik0s/axe-decision-control",
+    "lastVerified": "2026-10-15",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "utilitypot",
+    "name": "tugrulguner/utilitypot",
+    "url": "https://github.com/tugrulguner/utilitypot",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 有界转换/规划工具，Jev 解释后用户复核、代码执行；Mermaid分支关系、列映射、日期等都用有限选择，Worker校验答案。源码与fixture测试不证明生产部署或真实推理质量；速率约束非精确全局花费帽，提交文本送TypeSafe，本站未运行。",
+      "en": "MIT bounded conversion/planning utilities where Jev interpretation is reviewed before coded execution. Diagram branches, column maps, dates and other tasks use finite choices validated by a Worker. Source/fixture tests do not prove production deployment or live quality; rate controls are not exact global spend caps and submitted text reaches TypeSafe. Not run here."
+    },
+    "sourceUrl": "https://github.com/tugrulguner/utilitypot",
+    "lastVerified": "2026-10-15",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "cx-jev-tidy",
+    "name": "comchatx/cx-jev-tidy",
+    "url": "https://github.com/comchatx/cx-jev-tidy",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Pi 上下文整理包，移植 fast-jev-compaction 的双Noul算法，通过 ComChatX 本机代理提出 context_edit；保留用户/助手文本，释放不足25%或失败不提案，原会话仍存。依赖平台代理，非独立Jev客户端，相关上下文会发模型；本站未运行，案例意义与已收录压缩算法重复。",
+      "en": "MIT Pi context-tidying package porting fast-jev-compaction two-Noul logic through a ComChatX loopback proxy to propose context_edit entries. User/assistant prose and original sessions remain; under-25% savings or failure proposes nothing. Requires that platform proxy and sends relevant context to the model. Not run here; its case meaning duplicates an existing compaction entry."
+    },
+    "sourceUrl": "https://github.com/comchatx/cx-jev-tidy",
+    "lastVerified": "2026-10-15",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-box-study",
+    "name": "RINNECODER/jev-box-study",
+    "url": "https://github.com/RINNECODER/jev-box-study",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Jev1.14图像异常研究与网站源码：先找区域、框完整语义单元，再分类/复核和显示定位。研究记录了裁剪切字、卡通与几何误报，v7b未重跑旧26图集；手选小样本和费用仅作者记录，不验证AI来源归因或生产准确率。图片送实验API，本站未上传/运行。",
+      "en": "MIT Jev 1.14 image-anomaly study and app source, discovering regions and framing whole semantic units before classification/confirmation and localization display. Documents cut-word, cartoon and geometry false flags; v7b did not rerun the old 26-image set. Small handpicked samples/costs are author reports, not AI-origin attribution or production accuracy. Images reach an experimental API; no uploads or execution here."
+    },
+    "sourceUrl": "https://github.com/RINNECODER/jev-box-study",
+    "lastVerified": "2026-10-15",
+    "status": "verified",
+    "stars": 0
   }
 ]

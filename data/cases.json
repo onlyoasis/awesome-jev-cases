@@ -4214,5 +4214,285 @@
         "url": "https://x.com/aman_unsiloed/status/2110074793827725491"
       }
     ]
+  },
+  {
+    "id": "duckdb-typed-sql-decisions",
+    "name": "anofox-decide",
+    "author": "DataZooDE",
+    "title": {
+      "zh": "DuckDB：在 SQL 查询里保留有类型判断和分布",
+      "en": "DuckDB: retain typed decisions and distributions inside SQL"
+    },
+    "area": {
+      "zh": "数据库文本决策",
+      "en": "Database text decisions"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "SQL 表中的工单文本或结构化 JSON、用户问题及有限选项/有序等级。",
+      "en": "Ticket text or structured JSON in SQL rows, user questions and bounded options/ordered levels."
+    },
+    "decision": {
+      "zh": "选定 TypeSafe Jev 且明确允许远程调用后，Noul/Choice/Score 判断写在 SQL 中的问题。",
+      "en": "With TypeSafe Jev selected and remote calls explicitly enabled, Nouls/Choices/Scores judge questions expressed in SQL."
+    },
+    "action": {
+      "zh": "扩展校验响应并返回标量或分布列，SQL 可据概率做过滤、分组或路由；批处理对相同行复用并限制并发。",
+      "en": "The extension validates responses and returns scalar/distribution columns for SQL filtering, grouping or routing, with duplicate-row reuse and bounded batch concurrency."
+    },
+    "boundary": {
+      "zh": "托管文本会出机，注册/设置不持久化；常数Stub和本地Julia/Laya不算Jev效果。安装渠道与签名有区别，概率/可选校准需本地样本验证，本站未安装或调用。",
+      "en": "Hosted text leaves the machine and registrations/settings are not persistent. Constant Stub/local Julia/Laya results are not Jev results. Installation channels/signing vary and probabilities/optional calibration need local samples. Not installed or called here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/DataZooDE/anofox-decide"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/DataZooDE/anofox-decide/blob/17bd194f51d9b8ef1a7763063cd176245f78091d/src/decide_remote.cpp"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/DataZooDE/anofox-decide/blob/17bd194f51d9b8ef1a7763063cd176245f78091d/src/decide_scalars.cpp"
+      }
+    ]
+  },
+  {
+    "id": "sedum-probabilistic-browser-tests",
+    "name": "Sedum",
+    "author": "sedum-dev",
+    "title": {
+      "zh": "Sedum：有限元素选择与带标记的概率断言",
+      "en": "Sedum: bounded element selection and flagged probabilistic assertions"
+    },
+    "area": {
+      "zh": "浏览器测试原型",
+      "en": "Browser-testing prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "TypeScript 中的自然语言步骤、可操作元素候选及页面完整摘要。",
+      "en": "Natural-language steps in TypeScript, actionable element candidates and a complete page digest."
+    },
+    "decision": {
+      "zh": "默认 Jev Choice 选目标/none；两个 Noul 分别判断主张成立与页面是否有直接矛盾。",
+      "en": "By default, a Jev Choice selects a target/none and two Nouls judge claim support and direct contradiction."
+    },
+    "action": {
+      "zh": "代码复核页面新鲜性、元素角色后用 Playwright 执行；断言按阈值/容差产生 passed/failed 和 low_confidence/contradiction 标记，退出策略另处理。",
+      "en": "Code rechecks freshness/element roles before Playwright actions. Thresholds/bands yield assertion pass/fail plus low-confidence/contradiction flags, with a separate exit policy."
+    },
+    "boundary": {
+      "zh": "pre-alpha；边缘或矛盾结果可能是passed+flag，不等于严格无歧义通过。另选Clef不混称Jev，作者月成本是情景估算、速度小样本未复现；本站未运行外部测试或提交账号。",
+      "en": "Pre-alpha; marginal or contradicted results may pass with flags rather than being unambiguous passes. Optional Clef runs are separate. Author monthly costs are scenario estimates and small timing samples were not reproduced; no external tests or accounts were used here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/sedum-dev/sedum"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/sedum-dev/sedum/blob/86fb460dee8b4cb17e02b00689e21360c6553a5e/packages/provider-typesafe/src/index.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/sedum-dev/sedum/blob/86fb460dee8b4cb17e02b00689e21360c6553a5e/packages/provider-typesafe/src/request.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/sedum-dev/sedum/blob/86fb460dee8b4cb17e02b00689e21360c6553a5e/packages/core/src/assertion-engine.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/sedum-dev/sedum/blob/86fb460dee8b4cb17e02b00689e21360c6553a5e/packages/core/src/locator/runtime-selection.ts"
+      }
+    ]
+  },
+  {
+    "id": "axe-jev-image-boundaries",
+    "name": "AXe Decision Control",
+    "author": "Saik0s",
+    "title": {
+      "zh": "模拟器图像定位：存在判断与 Box 门控后点击",
+      "en": "Simulator image localization: tap after presence and Box gates"
+    },
+    "area": {
+      "zh": "iOS 模拟器研究",
+      "en": "iOS Simulator research"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "合成应用截图、目标、历史与调用方描述的目标目录，另给模拟器逻辑尺寸。",
+      "en": "A synthetic-app screenshot, goal, history and caller-described target catalog, with simulator logical dimensions."
+    },
+    "decision": {
+      "zh": "Jev1.14 Choice 选目标/操作，Noul 检查目标可见，Box 返回归一化边界；边缘结果允许一次放大复查。",
+      "en": "Jev 1.14 Choices select target/operation, a Noul checks visibility and a Box returns normalized edges, with one closer recheck for marginal results."
+    },
+    "action": {
+      "zh": "代码校验范围、存在/定位置信及状态新鲜性，将框中心换算为模拟器点，经 AXe 执行再观察；模型完成与独立持久化状态验收分开。",
+      "en": "Code validates ranges, presence/localization beliefs and freshness, maps the box center to simulator points and acts through AXe before observing again. Model completion and independent persisted-state acceptance stay separate."
+    },
+    "boundary": {
+      "zh": "官方视觉/Box为实验状态；作者三段1.14演示及旧合成评测不证明通用App准确率，定位方案还混有模型/候选差异。需macOS/Xcode/AXe和自备提供商，本站未操作模拟器或调用模型。",
+      "en": "Official vision/Box support is experimental. Three author 1.14 demos and older synthetic evaluations do not establish general app accuracy; models/catalogs also differ. Requires macOS/Xcode/AXe and providers. No simulator actions or model calls here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Saik0s/axe-decision-control"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Saik0s/axe-decision-control/blob/945ab1e16823a89cb0cfea75971c543a39e3ef45/src/axe_control/policies/box.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Saik0s/axe-decision-control/blob/945ab1e16823a89cb0cfea75971c543a39e3ef45/src/axe_control/providers/openrouter.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Saik0s/axe-decision-control/blob/945ab1e16823a89cb0cfea75971c543a39e3ef45/src/axe_control/runner.py"
+      }
+    ]
+  },
+  {
+    "id": "utilitypot-reviewed-flowchart",
+    "name": "UtilityPot",
+    "author": "Tugrul Guner",
+    "title": {
+      "zh": "流程图：Jev 选有限节点关系，复核后代码生成",
+      "en": "Flowcharts: Jev selects bounded relations before reviewed code generation"
+    },
+    "area": {
+      "zh": "文本结构转换",
+      "en": "Text-structure conversion"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "最多八行用户步骤及关系说明，节点文字由用户提供。",
+      "en": "Up to eight user-authored steps plus relationship instructions, retaining supplied node labels."
+    },
+    "decision": {
+      "zh": "每节点三个 Choice：普通/判断/终止角色、后继节点、否定分支节点，支持 none。",
+      "en": "Three Choices per node select role, next node and negative branch, including none."
+    },
+    "action": {
+      "zh": "Worker校验选项和概率，解码为需复核图；代码拒绝不一致分支/无效边，用户审查后确定性生成 Mermaid 并渲染下载。",
+      "en": "A Worker validates options/probabilities and decodes a review-required graph. Code rejects inconsistent branches/invalid edges, then deterministically emits Mermaid for rendering/download after review."
+    },
+    "boundary": {
+      "zh": "不是任意代码生成或自动执行业务流程；最多24问、8节点/16边，语义关系仍需人查。作者浏览器成功主要fixture，未证明部署或live模型质量，本站未上传文档或运行。",
+      "en": "Not arbitrary code generation or business-flow execution. At most 24 questions, eight nodes and sixteen edges; semantic relations still need review. Author browser successes use fixtures rather than proving deployment/live quality. No documents uploaded or code run here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/tugrulguner/utilitypot"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/tugrulguner/utilitypot/blob/0fa3319a867b6a7ec960ff99ab1b7e378dec4f43/worker/index.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/tugrulguner/utilitypot/blob/0fa3319a867b6a7ec960ff99ab1b7e378dec4f43/src/lib/utilities/diagram.js"
+      }
+    ]
+  },
+  {
+    "id": "jev-box-study-whole-units",
+    "name": "Jev Box Study",
+    "author": "0xRinne / RINNECODER",
+    "title": {
+      "zh": "图像异常研究：先框完整单元，再判断与显示",
+      "en": "Image-anomaly research: frame whole units before judging and display"
+    },
+    "area": {
+      "zh": "实验视觉评估",
+      "en": "Experimental vision evaluation"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "图像介质、原图与多尺度区域；保留完整词句、对象或整页上下文。",
+      "en": "Image medium, original image and multi-scale regions, retaining whole words/objects or page context."
+    },
+    "decision": {
+      "zh": "Jev1.14用Box找目标/完整单元，Choice在正常、异常类型和不确定中判断，临界答案重复并用另一问法确认。",
+      "en": "Jev 1.14 Boxes locate targets/whole units; Choices judge normality, anomaly types or uncertainty, repeating marginal answers and confirming with another format."
+    },
+    "action": {
+      "zh": "代码把窗口仅作线索、重新框完整语义单元后裁剪，合并重复框，最后定位显示并记录调用费用。",
+      "en": "Code treats windows as leads, reframes/crops complete semantic units, merges duplicate boxes and localizes for display with call-cost records."
+    },
+    "boundary": {
+      "zh": "研究已记录切字、卡通及表格几何误报，v7b未重跑旧26图集；手选少图不能给生产准确率或AI来源归因。官方API实验且图片发提供商，作者结果/费用未复现，本站未上传或运行。",
+      "en": "The study documents cut-word, cartoon and table-geometry false flags; v7b did not rerun the old 26-image set. Few handpicked images do not establish production accuracy or AI-origin attribution. Images reach an experimental API; author results/costs were not reproduced and no uploads/execution occurred here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/RINNECODER/jev-box-study"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/RINNECODER/jev-box-study/blob/0c19f4c1ee1218d979a916211c766bf00f73e74d/app/api/check.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/RINNECODER/jev-box-study/blob/0c19f4c1ee1218d979a916211c766bf00f73e74d/app/public/index.html"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/RINNECODER/jev-box-study/blob/0c19f4c1ee1218d979a916211c766bf00f73e74d/README.md"
+      }
+    ]
+  },
+  {
+    "id": "official-box-crop-with-presence",
+    "name": "Official Box crop example",
+    "author": "TypeSafe AI",
+    "title": {
+      "zh": "官方 Box 示例：定位目标后换算像素并裁剪",
+      "en": "Official Box example: locate a target, convert to pixels and crop"
+    },
+    "area": {
+      "zh": "官方图像裁剪示例",
+      "en": "Official image-cropping example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "厨房照片和待定位的咖啡杯目标；图像通过 assets 引用。",
+      "en": "A kitchen photo and a coffee-mug target, with image references in assets."
+    },
+    "decision": {
+      "zh": "Jev1.14 Box 返回上下左右归一化边；官方建议并行 Noul 判断目标是否存在。",
+      "en": "A Jev 1.14 Box returns normalized top/bottom/left/right edges, with an accompanying Noul recommended to check target presence."
+    },
+    "action": {
+      "zh": "示例代码将边界乘图片宽高，用PIL裁剪保存；低置信可先外扩并限在图内，边缘Noul可检查是否切断目标。",
+      "en": "Example code multiplies edges by image dimensions and crops/saves with PIL; low-confidence boxes may be padded/clamped, with edge Nouls checking cut targets."
+    },
+    "boundary": {
+      "zh": "官方实验示例，需图像实验header，Box即使无目标也返回框，框不能证明存在。0.6阈值/0.05外扩仅教材起点，格式/效果可能变化，本站未发图或复现；非新cookbook。",
+      "en": "Official experimental example requiring the image opt-in header. A Box returns edges even for an absent target, so it does not prove presence. The 0.6 threshold/0.05 padding are teaching defaults; formats/quality may change. No images sent or results reproduced here; not a new cookbook."
+    },
+    "sources": [
+      {
+        "label": "Official Box and crop code",
+        "url": "https://docs.typesafe.ai/primitives/box.md"
+      },
+      {
+        "label": "Official Images",
+        "url": "https://docs.typesafe.ai/images.md"
+      },
+      {
+        "label": "Official announcement",
+        "url": "https://x.com/typesafeai/status/2110536690037391732"
+      }
+    ]
   }
 ]

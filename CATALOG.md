@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (105)
+## 深度使用案例 / Worked cases (111)
 
 ### jev-ultrafast
 
@@ -949,7 +949,61 @@
 - 核验边界：商业作者六行处方方法演示，非TypeSafe官方或医疗建议；0.90/0.50待人工文档校验，接近0.50另需策略。作者效果未复现，本站未处理真实医疗数据或调用模型。
 - 来源：[Author integration and code](https://unsiloed.ai/blog/document-review-unsiloed-typesafe-jev) · [Author X](https://x.com/aman_unsiloed/status/2110074793827725491)
 
-## 开源项目 / Open-source projects (167)
+### DuckDB：在 SQL 查询里保留有类型判断和分布
+
+- 作者：DataZooDE
+- 输入：SQL 表中的工单文本或结构化 JSON、用户问题及有限选项/有序等级。
+- Jev 判断：选定 TypeSafe Jev 且明确允许远程调用后，Noul/Choice/Score 判断写在 SQL 中的问题。
+- 后续动作：扩展校验响应并返回标量或分布列，SQL 可据概率做过滤、分组或路由；批处理对相同行复用并限制并发。
+- 核验边界：托管文本会出机，注册/设置不持久化；常数Stub和本地Julia/Laya不算Jev效果。安装渠道与签名有区别，概率/可选校准需本地样本验证，本站未安装或调用。
+- 来源：[GitHub](https://github.com/DataZooDE/anofox-decide) · [Source](https://github.com/DataZooDE/anofox-decide/blob/17bd194f51d9b8ef1a7763063cd176245f78091d/src/decide_remote.cpp) · [Source](https://github.com/DataZooDE/anofox-decide/blob/17bd194f51d9b8ef1a7763063cd176245f78091d/src/decide_scalars.cpp)
+
+### Sedum：有限元素选择与带标记的概率断言
+
+- 作者：sedum-dev
+- 输入：TypeScript 中的自然语言步骤、可操作元素候选及页面完整摘要。
+- Jev 判断：默认 Jev Choice 选目标/none；两个 Noul 分别判断主张成立与页面是否有直接矛盾。
+- 后续动作：代码复核页面新鲜性、元素角色后用 Playwright 执行；断言按阈值/容差产生 passed/failed 和 low_confidence/contradiction 标记，退出策略另处理。
+- 核验边界：pre-alpha；边缘或矛盾结果可能是passed+flag，不等于严格无歧义通过。另选Clef不混称Jev，作者月成本是情景估算、速度小样本未复现；本站未运行外部测试或提交账号。
+- 来源：[GitHub](https://github.com/sedum-dev/sedum) · [Source](https://github.com/sedum-dev/sedum/blob/86fb460dee8b4cb17e02b00689e21360c6553a5e/packages/provider-typesafe/src/index.ts) · [Source](https://github.com/sedum-dev/sedum/blob/86fb460dee8b4cb17e02b00689e21360c6553a5e/packages/provider-typesafe/src/request.ts) · [Source](https://github.com/sedum-dev/sedum/blob/86fb460dee8b4cb17e02b00689e21360c6553a5e/packages/core/src/assertion-engine.ts) · [Source](https://github.com/sedum-dev/sedum/blob/86fb460dee8b4cb17e02b00689e21360c6553a5e/packages/core/src/locator/runtime-selection.ts)
+
+### 模拟器图像定位：存在判断与 Box 门控后点击
+
+- 作者：Saik0s
+- 输入：合成应用截图、目标、历史与调用方描述的目标目录，另给模拟器逻辑尺寸。
+- Jev 判断：Jev1.14 Choice 选目标/操作，Noul 检查目标可见，Box 返回归一化边界；边缘结果允许一次放大复查。
+- 后续动作：代码校验范围、存在/定位置信及状态新鲜性，将框中心换算为模拟器点，经 AXe 执行再观察；模型完成与独立持久化状态验收分开。
+- 核验边界：官方视觉/Box为实验状态；作者三段1.14演示及旧合成评测不证明通用App准确率，定位方案还混有模型/候选差异。需macOS/Xcode/AXe和自备提供商，本站未操作模拟器或调用模型。
+- 来源：[GitHub](https://github.com/Saik0s/axe-decision-control) · [Source](https://github.com/Saik0s/axe-decision-control/blob/945ab1e16823a89cb0cfea75971c543a39e3ef45/src/axe_control/policies/box.py) · [Source](https://github.com/Saik0s/axe-decision-control/blob/945ab1e16823a89cb0cfea75971c543a39e3ef45/src/axe_control/providers/openrouter.py) · [Source](https://github.com/Saik0s/axe-decision-control/blob/945ab1e16823a89cb0cfea75971c543a39e3ef45/src/axe_control/runner.py)
+
+### 流程图：Jev 选有限节点关系，复核后代码生成
+
+- 作者：Tugrul Guner
+- 输入：最多八行用户步骤及关系说明，节点文字由用户提供。
+- Jev 判断：每节点三个 Choice：普通/判断/终止角色、后继节点、否定分支节点，支持 none。
+- 后续动作：Worker校验选项和概率，解码为需复核图；代码拒绝不一致分支/无效边，用户审查后确定性生成 Mermaid 并渲染下载。
+- 核验边界：不是任意代码生成或自动执行业务流程；最多24问、8节点/16边，语义关系仍需人查。作者浏览器成功主要fixture，未证明部署或live模型质量，本站未上传文档或运行。
+- 来源：[GitHub](https://github.com/tugrulguner/utilitypot) · [Source](https://github.com/tugrulguner/utilitypot/blob/0fa3319a867b6a7ec960ff99ab1b7e378dec4f43/worker/index.js) · [Source](https://github.com/tugrulguner/utilitypot/blob/0fa3319a867b6a7ec960ff99ab1b7e378dec4f43/src/lib/utilities/diagram.js)
+
+### 图像异常研究：先框完整单元，再判断与显示
+
+- 作者：0xRinne / RINNECODER
+- 输入：图像介质、原图与多尺度区域；保留完整词句、对象或整页上下文。
+- Jev 判断：Jev1.14用Box找目标/完整单元，Choice在正常、异常类型和不确定中判断，临界答案重复并用另一问法确认。
+- 后续动作：代码把窗口仅作线索、重新框完整语义单元后裁剪，合并重复框，最后定位显示并记录调用费用。
+- 核验边界：研究已记录切字、卡通及表格几何误报，v7b未重跑旧26图集；手选少图不能给生产准确率或AI来源归因。官方API实验且图片发提供商，作者结果/费用未复现，本站未上传或运行。
+- 来源：[GitHub](https://github.com/RINNECODER/jev-box-study) · [Source](https://github.com/RINNECODER/jev-box-study/blob/0c19f4c1ee1218d979a916211c766bf00f73e74d/app/api/check.js) · [Source](https://github.com/RINNECODER/jev-box-study/blob/0c19f4c1ee1218d979a916211c766bf00f73e74d/app/public/index.html) · [Source](https://github.com/RINNECODER/jev-box-study/blob/0c19f4c1ee1218d979a916211c766bf00f73e74d/README.md)
+
+### 官方 Box 示例：定位目标后换算像素并裁剪
+
+- 作者：TypeSafe AI
+- 输入：厨房照片和待定位的咖啡杯目标；图像通过 assets 引用。
+- Jev 判断：Jev1.14 Box 返回上下左右归一化边；官方建议并行 Noul 判断目标是否存在。
+- 后续动作：示例代码将边界乘图片宽高，用PIL裁剪保存；低置信可先外扩并限在图内，边缘Noul可检查是否切断目标。
+- 核验边界：官方实验示例，需图像实验header，Box即使无目标也返回框，框不能证明存在。0.6阈值/0.05外扩仅教材起点，格式/效果可能变化，本站未发图或复现；非新cookbook。
+- 来源：[Official Box and crop code](https://docs.typesafe.ai/primitives/box.md) · [Official Images](https://docs.typesafe.ai/images.md) · [Official announcement](https://x.com/typesafeai/status/2110536690037391732)
+
+## 开源项目 / Open-source projects (174)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1120,6 +1174,13 @@
 | [ceokobec-hue/job-drill](https://github.com/ceokobec-hue/job-drill) | community | MIT | 0 |
 | [minitru/jev-intent-benchmark](https://github.com/minitru/jev-intent-benchmark) | community | MIT | 0 |
 | [jomi-se/system-one-deslop](https://github.com/jomi-se/system-one-deslop) | community | MIT | 0 |
+| [DataZooDE/anofox-decide](https://github.com/DataZooDE/anofox-decide) | community | MIT | 2 |
+| [mrz1836/go-discern](https://github.com/mrz1836/go-discern) | community | MIT | 1 |
+| [sedum-dev/sedum](https://github.com/sedum-dev/sedum) | community | MIT | 12 |
+| [Saik0s/axe-decision-control](https://github.com/Saik0s/axe-decision-control) | community | MIT | 1 |
+| [tugrulguner/utilitypot](https://github.com/tugrulguner/utilitypot) | community | MIT | 0 |
+| [comchatx/cx-jev-tidy](https://github.com/comchatx/cx-jev-tidy) | community | MIT | 0 |
+| [RINNECODER/jev-box-study](https://github.com/RINNECODER/jev-box-study) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (20)
 
