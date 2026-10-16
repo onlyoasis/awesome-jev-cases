@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (111)
+## 深度使用案例 / Worked cases (117)
 
 ### jev-ultrafast
 
@@ -1003,7 +1003,61 @@
 - 核验边界：官方实验示例，需图像实验header，Box即使无目标也返回框，框不能证明存在。0.6阈值/0.05外扩仅教材起点，格式/效果可能变化，本站未发图或复现；非新cookbook。
 - 来源：[Official Box and crop code](https://docs.typesafe.ai/primitives/box.md) · [Official Images](https://docs.typesafe.ai/images.md) · [Official announcement](https://x.com/typesafeai/status/2110536690037391732)
 
-## 开源项目 / Open-source projects (174)
+### 城市模拟：模型选动作，代码重查可行性
+
+- 作者：William Jones
+- 输入：模拟市民的角色、需求、局部灾情与代码筛选的有限可行动作。
+- Jev 判断：一条请求中Choice选下个动作，两Score评风险/义务，一Noul评是否中断日常。
+- 后续动作：服务端校验题型与分布，模拟器按请求ID接收并重新检查动作是否仍可行，再用代码执行移动和后果；回放、规则、live与安全覆盖分别标来源。
+- 核验边界：默认历史回放不发API；live失败显式用规则。4902次有效响应和延迟仅作者记录，不是现实城市/应急决策验证；本站未运行，真实调用需独立口令、密钥和预算配置。
+- 来源：[GitHub](https://github.com/WilliamJones/JEV-City) · [Source](https://github.com/WilliamJones/JEV-City/blob/b5c7ddfee26e6f004314a545ddf7f85acd9fc76d/src/jev/contract.ts) · [Source](https://github.com/WilliamJones/JEV-City/blob/b5c7ddfee26e6f004314a545ddf7f85acd9fc76d/src/jev/client.ts) · [Source](https://github.com/WilliamJones/JEV-City/blob/b5c7ddfee26e6f004314a545ddf7f85acd9fc76d/src/client/controller.ts) · [Source](https://github.com/WilliamJones/JEV-City/blob/b5c7ddfee26e6f004314a545ddf7f85acd9fc76d/src/sim/world.ts) · [Author X](https://x.com/WilliamJones/status/2110548635176071298)
+
+### Trace 检测：问题概率与类别分开保留
+
+- 作者：TraceRoot AI
+- 输入：解析后的trace spans及用户检测标准；超预算按固定次序截断并标记省略。
+- Jev 判断：同请求Noul判断是否存在问题，Choice在模板类别、other、none中命名问题。
+- 后续动作：代码用0.5 gate产生identified，保留类别分布/置信；标签none则类别不明，摘要明确无文字理由。坏答案抛错，由检测分发层记录错误而非正常发现。
+- 核验边界：所核模块在Apache-2.0核心，ee目录另用商业许可；不包含企业聚类自动修复承诺。字符截断可能遗漏问题，示例阈值需本地评测，trace会发提供商；本站未提交真实trace或调用。
+- 来源：[GitHub](https://github.com/traceroot-ai/traceroot) · [Source](https://github.com/traceroot-ai/traceroot/blob/cf44809a534e0b2c56d8326b2d9ed1eb5a302b3b/frontend/worker/src/detection/jev-state.ts) · [Source](https://github.com/traceroot-ai/traceroot/blob/cf44809a534e0b2c56d8326b2d9ed1eb5a302b3b/frontend/worker/src/detection/jev-compile.ts) · [Source](https://github.com/traceroot-ai/traceroot/blob/cf44809a534e0b2c56d8326b2d9ed1eb5a302b3b/frontend/worker/src/detection/jev-eval.ts) · [Source](https://github.com/traceroot-ai/traceroot/blob/cf44809a534e0b2c56d8326b2d9ed1eb5a302b3b/frontend/worker/src/detection/sandbox-eval.ts) · [Author X](https://x.com/xinwei_97/status/2110501481929670961)
+
+### 视觉影子评估：比较封闭答案，保留原工具结果
+
+- 作者：Steve Darlow / kerpopule
+- 输入：已有vision_analyze图片和封闭的PASS/FAIL或Yes/No问题；独立云端开关明确启用。
+- Jev 判断：TypeSafe Jev Choice检查图片；格式/尺寸预检、敏感问题跳过，并带官方图像实验header。
+- 后续动作：后台队列记录类别、置信、与原答案的一致性及假想混合结果；发送前再查开关，错误只记日志，原工具返回值不变。
+- 核验边界：主线shadow不等于作者另一个分支18/18桌面动作演示；0.6沿用阈值未经该模型A/B，截图本身不能脱敏且会出机。官方视觉实验、本地Jev-Omni另算，本站未上传图片或运行。
+- 来源：[GitHub](https://github.com/kerpopule/hermes-jev-skills) · [Source](https://github.com/kerpopule/hermes-jev-skills/blob/5acac9262b96a275067c90417495518a563afcda/jevkit/cloud_vision.py) · [Source](https://github.com/kerpopule/hermes-jev-skills/blob/5acac9262b96a275067c90417495518a563afcda/jevkit/images.py) · [Source](https://github.com/kerpopule/hermes-jev-skills/blob/5acac9262b96a275067c90417495518a563afcda/jevkit/client.py) · [Source](https://github.com/kerpopule/hermes-jev-skills/blob/5acac9262b96a275067c90417495518a563afcda/hermes/plugin/hermes-jev/__init__.py) · [Author X](https://x.com/StevenDarlow/status/2110778415288578070)
+
+### 递归语言模型：Jev 返回概率，根程序计算与检索
+
+- 作者：Jordan Hochenbaum
+- 输入：逐条文本项、有限标签、问题和分窗的大文档；共享上下文与每项内容明确对应。
+- Jev 判断：Choice分类、Noul是非；locate先Noul排窗口再评行句，返回原文offset与组合分数。
+- 后续动作：工具分批并发并校验缺失答案，向DSPy/自建RLM返回概率列表与原文片段，由根模型程序计数、筛选和回答；Jev部分独立计量。
+- 核验边界：研究库，小样本单次分数仅作者自报，Jev不生成或授权根程序。预算按token估算和固定费率，可能有误差且不含根模型费用，原文会发服务商；本站未运行模型/沙箱。
+- 来源：[GitHub](https://github.com/jhochenbaum/rlm-jev) · [Source](https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/rlm_jev/subcalls.py) · [Source](https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/rlm_jev/locate.py) · [Source](https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/rlm_jev/tools.py) · [Source](https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/rlm_jev/_client.py) · [Source](https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/examples/dspy_rlm_jev.py)
+
+### Grep 重排：逐段回答相关性，再输出原文位置
+
+- 作者：AI Ready Future
+- 输入：grep模式得到的命中窗口、文件路径/行号和用户自然语言问题；每行送入文本最多300字符。
+- Jev 判断：直连Jev按段编号逐一Noul判断是否回答问题，最多32段/请求，有限并发。
+- 后续动作：代码检查所有概率与回答数，按分值、路径、行号排序后输出原文及位置；错误停止，不输出部分排序。
+- 核验边界：只重排模式已命中的片段，不是全库语义召回。钉住主线已有实现，README发布版说明仍限密钥设置，已发布包/网关未验；片段会出机，0.4门槛需自评，本站未安装或调用。
+- 来源：[GitHub](https://github.com/ai-ready-future/jag) · [Source](https://github.com/ai-ready-future/jag/blob/e42b764cb456bdc63b15d891f52daea96df77624/src/cli.rs) · [Source](https://github.com/ai-ready-future/jag/blob/e42b764cb456bdc63b15d891f52daea96df77624/src/scorer.rs) · [Source](https://github.com/ai-ready-future/jag/blob/e42b764cb456bdc63b15d891f52daea96df77624/src/scorer/client.rs) · [Source](https://github.com/ai-ready-future/jag/blob/e42b764cb456bdc63b15d891f52daea96df77624/src/scorer/prompt.rs)
+
+### 合成线索评测：有界动作与反馈记忆对照
+
+- 作者：SenseLab / raia-live
+- 输入：生成的销售线索文本/字段、书面政策与策略提供的记忆；包含预设规则变化和带噪review。
+- Jev 判断：固定Jev模型Choice在AE、培育、自助、伙伴、淘汰五动作中选择；可另问记忆依据。
+- 后续动作：程序模拟动作结果并产生review，回写检索/SenseLab记忆与轨迹，执行配置的修复评测循环，生成对照报告；没有操作真实CRM。
+- 核验边界：合成损失金额与准确率不是实际营收或本站实测；记忆更新不是Jev权重学习。API错误选首项且记error，不能当业务自动阻断；外部SenseLab/评测权限另需自备，本站未调用。
+- 来源：[GitHub](https://github.com/raia-live/jev-senselab-demos) · [Source](https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/core/jev.py) · [Source](https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/core/arms.py) · [Source](https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/core/senselab.py) · [Source](https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/demos/lead_routing/scenario.py)
+
+## 开源项目 / Open-source projects (180)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1181,6 +1235,12 @@
 | [tugrulguner/utilitypot](https://github.com/tugrulguner/utilitypot) | community | MIT | 0 |
 | [comchatx/cx-jev-tidy](https://github.com/comchatx/cx-jev-tidy) | community | MIT | 0 |
 | [RINNECODER/jev-box-study](https://github.com/RINNECODER/jev-box-study) | community | MIT | 0 |
+| [WilliamJones/JEV-City](https://github.com/WilliamJones/JEV-City) | community | MIT | 0 |
+| [traceroot-ai/traceroot](https://github.com/traceroot-ai/traceroot) | community | Apache-2.0 core; proprietary EE | 803 |
+| [kerpopule/hermes-jev-skills](https://github.com/kerpopule/hermes-jev-skills) | community | MIT | 1130 |
+| [jhochenbaum/rlm-jev](https://github.com/jhochenbaum/rlm-jev) | community | MIT | 0 |
+| [ai-ready-future/jag](https://github.com/ai-ready-future/jag) | community | MIT | 0 |
+| [raia-live/jev-senselab-demos](https://github.com/raia-live/jev-senselab-demos) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (20)
 

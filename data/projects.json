@@ -2782,5 +2782,101 @@
     "lastVerified": "2026-10-15",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "jev-city",
+    "name": "WilliamJones/JEV-City",
+    "url": "https://github.com/WilliamJones/JEV-City",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 等距城市模拟，Jev 在代码给出的可行动作中选择，确定性规则控制移动、灾害与后果，并展示概率和来源。默认回放历史决策，实时模式另需密钥/口令/预算存储，失败显式退回规则；作者延迟与4902次有效响应不等于真实城市质量，本站未运行。",
+      "en": "MIT isometric city simulation where Jev selects code-defined feasible actions and deterministic rules govern movement, hazards and effects. Shows probabilities/provenance; recorded decisions are the default, while live mode needs credentials/passcode/budget storage and failures visibly fall back to rules. Author timing and 4,902 valid responses do not establish real-city quality; not run here."
+    },
+    "sourceUrl": "https://github.com/WilliamJones/JEV-City",
+    "lastVerified": "2026-10-16",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "traceroot-jev-detectors",
+    "name": "traceroot-ai/traceroot",
+    "url": "https://github.com/traceroot-ai/traceroot",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0 core; proprietary EE",
+    "summary": {
+      "zh": "TraceRoot 开源核心可用 Jev 的 Noul+Choice 检测 trace 并输出问题概率/类别；有投影预算、答案校验与错误结果。非ee部分Apache-2.0，任何ee目录商业许可；不把企业信号聚类混称开源。trace可能出机、截断会丢证据，SDK自动埋点另是功能，本站未部署或调用。",
+      "en": "TraceRoot open core can detect trace problems through Jev Noul/Choice questions with state budgets, response validation and error results. Non-ee content is Apache-2.0; all ee directories use a commercial license, including enterprise signal grouping. Traces may leave the machine and truncation can omit evidence. SDK auto-instrumentation is separate; not deployed or called here."
+    },
+    "sourceUrl": "https://github.com/traceroot-ai/traceroot",
+    "lastVerified": "2026-10-16",
+    "status": "verified",
+    "stars": 803
+  },
+  {
+    "id": "hermes-jev-skills",
+    "name": "kerpopule/hermes-jev-skills",
+    "url": "https://github.com/kerpopule/hermes-jev-skills",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 社区 Jev 技能/Agent 集成，含路由、检索、选择和独立关闭的视觉影子评估。主线云端图像检查用实验header，记录封闭答案比较而不改变原工具结果；截图不可自动脱敏，需明确启用。作者分支动作演示与主线shadow不同，本地Jev-Omni也非官方权重，本站未运行。",
+      "en": "MIT community Jev skills/agent integrations for routing, retrieval, choice and separately disabled vision shadow evaluation. Mainline cloud image checks use the experimental header and record bounded-answer comparisons without changing tool results; screenshots are not automatically redacted and need explicit opt-in. Author branch action demos and local Jev-Omni are separate, not official weights. Not run here."
+    },
+    "sourceUrl": "https://github.com/kerpopule/hermes-jev-skills",
+    "lastVerified": "2026-10-16",
+    "status": "verified",
+    "stars": 1130
+  },
+  {
+    "id": "rlm-jev",
+    "name": "jhochenbaum/rlm-jev",
+    "url": "https://github.com/jhochenbaum/rlm-jev",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 研究工具，把批量Choice分类、Noul判断和两级原文定位作为RLM子调用，返回概率、offset及用量，供根模型代码计算。支持DSPy/自建循环，预算按估算限制Jev部分；根模型费用/执行权限另管。小样本单次结果仅作者自报，非生产库，本站未运行。",
+      "en": "MIT research tools exposing batched Choice classification, Noul judgments and two-stage original-text location as RLM sub-calls, returning probabilities, offsets and usage for root-model code. Supports DSPy/custom loops with estimated Jev-only spend limits; root costs and execution permissions are separate. Small single-run results are author reports, not a production library. Not run here."
+    },
+    "sourceUrl": "https://github.com/jhochenbaum/rlm-jev",
+    "lastVerified": "2026-10-16",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jag-semantic-grep",
+    "name": "ai-ready-future/jag",
+    "url": "https://github.com/ai-ready-future/jag",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Rust grep重排工具：直连Jev对命中片段提Noul，代码校验、排序并输出原文路径/行号；非全库语义搜索。钉住主线已有搜索实现，但README仍说发布版仅密钥设置，不能据源码保证已发布包；网关兼容未验，文本会出机，本站未安装。",
+      "en": "MIT Rust grep reranker using direct Jev Nouls over matched snippets, validated and sorted in code with original paths/lines. Not full-corpus semantic retrieval. Pinned mainline implements search while the README still describes a key-setup-only release, so source is not proof of released packages. Gateway compatibility unverified; text leaves the machine. Not installed here."
+    },
+    "sourceUrl": "https://github.com/ai-ready-future/jag",
+    "lastVerified": "2026-10-16",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-senselab-demos",
+    "name": "raia-live/jev-senselab-demos",
+    "url": "https://github.com/raia-live/jev-senselab-demos",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Jev+SenseLab业务决策研究集，以合成线索等比较固定政策、检索记忆和反馈记忆；模型选有限动作，程序模拟review、记忆更新和报告。不是实客分配、真实损失或Jev权重学习；错误选择首项并记error，外部服务需自备权限。作者效果未复现，本站未运行。",
+      "en": "MIT Jev/SenseLab decision experiments comparing fixed policy, retrieval memory and feedback memory on synthetic business streams. The model chooses bounded actions; code simulates review, memory updates and reports. Not real customer routing, real losses or Jev weight learning; errors choose the first action and carry an error field. External services need separate access. Author effects not reproduced; not run here."
+    },
+    "sourceUrl": "https://github.com/raia-live/jev-senselab-demos",
+    "lastVerified": "2026-10-16",
+    "status": "verified",
+    "stars": 0
   }
 ]

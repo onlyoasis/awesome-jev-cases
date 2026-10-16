@@ -4494,5 +4494,333 @@
         "url": "https://x.com/typesafeai/status/2110536690037391732"
       }
     ]
+  },
+  {
+    "id": "jev-city-feasible-citizens",
+    "name": "JEV City",
+    "author": "William Jones",
+    "title": {
+      "zh": "城市模拟：模型选动作，代码重查可行性",
+      "en": "City simulation: model actions with coded feasibility rechecks"
+    },
+    "area": {
+      "zh": "确定性模拟与决策回放",
+      "en": "Deterministic simulation and decision replay"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "模拟市民的角色、需求、局部灾情与代码筛选的有限可行动作。",
+      "en": "A simulated citizen’s role, needs, local hazards and a code-filtered finite action set."
+    },
+    "decision": {
+      "zh": "一条请求中Choice选下个动作，两Score评风险/义务，一Noul评是否中断日常。",
+      "en": "One request selects the next action with Choice, rates risk/duty with two Scores and judges routine interruption with a Noul."
+    },
+    "action": {
+      "zh": "服务端校验题型与分布，模拟器按请求ID接收并重新检查动作是否仍可行，再用代码执行移动和后果；回放、规则、live与安全覆盖分别标来源。",
+      "en": "The server validates types/distributions; the simulator accepts by request ID, rechecks current feasibility and runs coded movement/effects, labelling replay, rules, live calls and safety overrides separately."
+    },
+    "boundary": {
+      "zh": "默认历史回放不发API；live失败显式用规则。4902次有效响应和延迟仅作者记录，不是现实城市/应急决策验证；本站未运行，真实调用需独立口令、密钥和预算配置。",
+      "en": "Recorded replay is the default and makes no API calls; live failures visibly use rules. The 4,902 valid responses and timings are author records, not validation for real cities/emergencies. Not run here; live calls require separate passcode, credentials and budgets."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/WilliamJones/JEV-City"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/WilliamJones/JEV-City/blob/b5c7ddfee26e6f004314a545ddf7f85acd9fc76d/src/jev/contract.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/WilliamJones/JEV-City/blob/b5c7ddfee26e6f004314a545ddf7f85acd9fc76d/src/jev/client.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/WilliamJones/JEV-City/blob/b5c7ddfee26e6f004314a545ddf7f85acd9fc76d/src/client/controller.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/WilliamJones/JEV-City/blob/b5c7ddfee26e6f004314a545ddf7f85acd9fc76d/src/sim/world.ts"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/WilliamJones/status/2110548635176071298"
+      }
+    ]
+  },
+  {
+    "id": "traceroot-typed-trace-detection",
+    "name": "TraceRoot Jev detectors",
+    "author": "TraceRoot AI",
+    "title": {
+      "zh": "Trace 检测：问题概率与类别分开保留",
+      "en": "Trace detection: retain problem probability and category separately"
+    },
+    "area": {
+      "zh": "Agent trace 检测",
+      "en": "Agent trace detection"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "解析后的trace spans及用户检测标准；超预算按固定次序截断并标记省略。",
+      "en": "Parsed trace spans plus user detector criteria, with ordered reductions and omission markers when oversized."
+    },
+    "decision": {
+      "zh": "同请求Noul判断是否存在问题，Choice在模板类别、other、none中命名问题。",
+      "en": "A Noul judges problem presence and a Choice names a template category, other or none in the same request."
+    },
+    "action": {
+      "zh": "代码用0.5 gate产生identified，保留类别分布/置信；标签none则类别不明，摘要明确无文字理由。坏答案抛错，由检测分发层记录错误而非正常发现。",
+      "en": "Code applies a 0.5 gate to identified and retains category distribution/confidence. A none label leaves the category unclear, with no written rationale; invalid answers throw and the dispatch layer records an error rather than a normal finding."
+    },
+    "boundary": {
+      "zh": "所核模块在Apache-2.0核心，ee目录另用商业许可；不包含企业聚类自动修复承诺。字符截断可能遗漏问题，示例阈值需本地评测，trace会发提供商；本站未提交真实trace或调用。",
+      "en": "Reviewed modules are Apache-2.0 core; ee directories are commercially licensed, with no claim about enterprise grouping or automatic fixes. Character reductions can omit problems, thresholds need local evaluation and traces reach a provider. No real traces submitted or calls made here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/traceroot-ai/traceroot"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/traceroot-ai/traceroot/blob/cf44809a534e0b2c56d8326b2d9ed1eb5a302b3b/frontend/worker/src/detection/jev-state.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/traceroot-ai/traceroot/blob/cf44809a534e0b2c56d8326b2d9ed1eb5a302b3b/frontend/worker/src/detection/jev-compile.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/traceroot-ai/traceroot/blob/cf44809a534e0b2c56d8326b2d9ed1eb5a302b3b/frontend/worker/src/detection/jev-eval.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/traceroot-ai/traceroot/blob/cf44809a534e0b2c56d8326b2d9ed1eb5a302b3b/frontend/worker/src/detection/sandbox-eval.ts"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/xinwei_97/status/2110501481929670961"
+      }
+    ]
+  },
+  {
+    "id": "hermes-cloud-vision-shadow",
+    "name": "Hermes Jev vision shadow",
+    "author": "Steve Darlow / kerpopule",
+    "title": {
+      "zh": "视觉影子评估：比较封闭答案，保留原工具结果",
+      "en": "Vision shadow evaluation: compare bounded answers without replacing tool results"
+    },
+    "area": {
+      "zh": "实验视觉影子评估",
+      "en": "Experimental vision shadow evaluation"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "已有vision_analyze图片和封闭的PASS/FAIL或Yes/No问题；独立云端开关明确启用。",
+      "en": "An existing vision_analyze image and a bounded PASS/FAIL or Yes/No question, with a separately enabled cloud switch."
+    },
+    "decision": {
+      "zh": "TypeSafe Jev Choice检查图片；格式/尺寸预检、敏感问题跳过，并带官方图像实验header。",
+      "en": "A TypeSafe Jev Choice checks the image after format/size checks and sensitive-question skips, using the official experimental image header."
+    },
+    "action": {
+      "zh": "后台队列记录类别、置信、与原答案的一致性及假想混合结果；发送前再查开关，错误只记日志，原工具返回值不变。",
+      "en": "A background queue records class, confidence, agreement and hypothetical hybrid results, rechecking the switch before sending. Errors only log; original tool results stay unchanged."
+    },
+    "boundary": {
+      "zh": "主线shadow不等于作者另一个分支18/18桌面动作演示；0.6沿用阈值未经该模型A/B，截图本身不能脱敏且会出机。官方视觉实验、本地Jev-Omni另算，本站未上传图片或运行。",
+      "en": "Mainline shadow evaluation is separate from the author’s 18/18 branch desktop-action demo. The borrowed 0.6 threshold lacks its own A/B evidence; screenshots cannot be redacted automatically and leave the machine. Official vision is experimental and local Jev-Omni is separate. No images uploaded or code run here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kerpopule/hermes-jev-skills"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kerpopule/hermes-jev-skills/blob/5acac9262b96a275067c90417495518a563afcda/jevkit/cloud_vision.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kerpopule/hermes-jev-skills/blob/5acac9262b96a275067c90417495518a563afcda/jevkit/images.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kerpopule/hermes-jev-skills/blob/5acac9262b96a275067c90417495518a563afcda/jevkit/client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kerpopule/hermes-jev-skills/blob/5acac9262b96a275067c90417495518a563afcda/hermes/plugin/hermes-jev/__init__.py"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/StevenDarlow/status/2110778415288578070"
+      }
+    ]
+  },
+  {
+    "id": "rlm-jev-bounded-subcalls",
+    "name": "rlm-jev",
+    "author": "Jordan Hochenbaum",
+    "title": {
+      "zh": "递归语言模型：Jev 返回概率，根程序计算与检索",
+      "en": "Recursive language models: Jev returns probabilities for root-code computation and retrieval"
+    },
+    "area": {
+      "zh": "长上下文研究工具",
+      "en": "Long-context research tools"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "逐条文本项、有限标签、问题和分窗的大文档；共享上下文与每项内容明确对应。",
+      "en": "Individual text items, finite labels, questions and windowed documents, with explicit shared context/item association."
+    },
+    "decision": {
+      "zh": "Choice分类、Noul是非；locate先Noul排窗口再评行句，返回原文offset与组合分数。",
+      "en": "Choice classification and Noul judgments; locate first ranks windows, then lines/sentences, returning original offsets and combined scores."
+    },
+    "action": {
+      "zh": "工具分批并发并校验缺失答案，向DSPy/自建RLM返回概率列表与原文片段，由根模型程序计数、筛选和回答；Jev部分独立计量。",
+      "en": "Tools batch bounded concurrent calls, reject missing answers and return probabilities/original passages to DSPy or custom RLMs for root-code counting, filtering and answering, with separate Jev accounting."
+    },
+    "boundary": {
+      "zh": "研究库，小样本单次分数仅作者自报，Jev不生成或授权根程序。预算按token估算和固定费率，可能有误差且不含根模型费用，原文会发服务商；本站未运行模型/沙箱。",
+      "en": "Research library with small single-run author results. Jev neither generates nor authorizes the root program. Token-estimate/fixed-rate budgets can err and exclude root-model costs; source text reaches providers. No models or sandbox programs run here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/jhochenbaum/rlm-jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/rlm_jev/subcalls.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/rlm_jev/locate.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/rlm_jev/tools.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/rlm_jev/_client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jhochenbaum/rlm-jev/blob/84ac72c37c4a68179753dd88b084a8d48771bff9/examples/dspy_rlm_jev.py"
+      }
+    ]
+  },
+  {
+    "id": "jag-grep-match-reranking",
+    "name": "jag",
+    "author": "AI Ready Future",
+    "title": {
+      "zh": "Grep 重排：逐段回答相关性，再输出原文位置",
+      "en": "Grep reranking: judge snippets and return original locations"
+    },
+    "area": {
+      "zh": "源码命中重排",
+      "en": "Source-match reranking"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "grep模式得到的命中窗口、文件路径/行号和用户自然语言问题；每行送入文本最多300字符。",
+      "en": "Grep-matched windows, file paths/line numbers and a natural-language question, with at most 300 characters per submitted line."
+    },
+    "decision": {
+      "zh": "直连Jev按段编号逐一Noul判断是否回答问题，最多32段/请求，有限并发。",
+      "en": "Direct Jev Nouls judge whether numbered snippets answer the question, at most 32 per request with bounded concurrency."
+    },
+    "action": {
+      "zh": "代码检查所有概率与回答数，按分值、路径、行号排序后输出原文及位置；错误停止，不输出部分排序。",
+      "en": "Code validates probabilities/answer counts and sorts by score, path and line before returning original text/locations. Errors stop without partial ranked output."
+    },
+    "boundary": {
+      "zh": "只重排模式已命中的片段，不是全库语义召回。钉住主线已有实现，README发布版说明仍限密钥设置，已发布包/网关未验；片段会出机，0.4门槛需自评，本站未安装或调用。",
+      "en": "Reranks only pattern matches, not full-corpus semantic recall. Pinned mainline implements it while release README text still limits the release to key setup; published packages/gateways are unverified. Snippets leave the machine and the 0.4 cutoff needs evaluation. Not installed or called here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ai-ready-future/jag"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ai-ready-future/jag/blob/e42b764cb456bdc63b15d891f52daea96df77624/src/cli.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ai-ready-future/jag/blob/e42b764cb456bdc63b15d891f52daea96df77624/src/scorer.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ai-ready-future/jag/blob/e42b764cb456bdc63b15d891f52daea96df77624/src/scorer/client.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ai-ready-future/jag/blob/e42b764cb456bdc63b15d891f52daea96df77624/src/scorer/prompt.rs"
+      }
+    ]
+  },
+  {
+    "id": "senselab-synthetic-feedback-memory",
+    "name": "Jev + SenseLab demos",
+    "author": "SenseLab / raia-live",
+    "title": {
+      "zh": "合成线索评测：有界动作与反馈记忆对照",
+      "en": "Synthetic-lead evaluation: bounded actions with feedback-memory comparisons"
+    },
+    "area": {
+      "zh": "反馈记忆模拟研究",
+      "en": "Feedback-memory simulation research"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "生成的销售线索文本/字段、书面政策与策略提供的记忆；包含预设规则变化和带噪review。",
+      "en": "Generated lead text/fields, written policy and strategy-supplied memory, including scripted policy shifts and noisy reviews."
+    },
+    "decision": {
+      "zh": "固定Jev模型Choice在AE、培育、自助、伙伴、淘汰五动作中选择；可另问记忆依据。",
+      "en": "A fixed Jev model chooses among AE routing, nurturing, self-service, partner or disqualification, optionally selecting a memory basis."
+    },
+    "action": {
+      "zh": "程序模拟动作结果并产生review，回写检索/SenseLab记忆与轨迹，执行配置的修复评测循环，生成对照报告；没有操作真实CRM。",
+      "en": "Code simulates outcomes/reviews, updates retrieval or SenseLab memory/traces, runs configured repair-evaluation loops and generates comparison reports, without acting on a real CRM."
+    },
+    "boundary": {
+      "zh": "合成损失金额与准确率不是实际营收或本站实测；记忆更新不是Jev权重学习。API错误选首项且记error，不能当业务自动阻断；外部SenseLab/评测权限另需自备，本站未调用。",
+      "en": "Synthetic losses/accuracy are neither real revenue nor site measurements; memory updates do not train Jev weights. API failures choose the first action with an error record, not business fail-closed handling. External SenseLab/eval access is separate. No calls made here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/raia-live/jev-senselab-demos"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/core/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/core/arms.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/core/senselab.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/demos/lead_routing/scenario.py"
+      }
+    ]
   }
 ]
