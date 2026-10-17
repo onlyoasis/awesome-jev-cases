@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (117)
+## 深度使用案例 / Worked cases (122)
 
 ### jev-ultrafast
 
@@ -1057,7 +1057,52 @@
 - 核验边界：合成损失金额与准确率不是实际营收或本站实测；记忆更新不是Jev权重学习。API错误选首项且记error，不能当业务自动阻断；外部SenseLab/评测权限另需自备，本站未调用。
 - 来源：[GitHub](https://github.com/raia-live/jev-senselab-demos) · [Source](https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/core/jev.py) · [Source](https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/core/arms.py) · [Source](https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/core/senselab.py) · [Source](https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/demos/lead_routing/scenario.py)
 
-## 开源项目 / Open-source projects (180)
+### 下一步建议：Jev 选有限候选，按 Tab 才执行
+
+- 作者：Alara Martin and collaborators
+- 输入：活动界面控件、近期操作及其他页面已有文本值，代码先构造候选动作。
+- Jev 判断：Choice选下个控件或none，另以有限Choice选字段/下拉值；文本生成的Claude路径分开。
+- 后续动作：代码显示可接受的ghost建议，用户按Tab才交执行器；相同界面慢/失败可回放缓存，已学重复流程另走零模型规则。
+- 核验边界：hackathon原型，仅公开代码案例，根项目许可未确认。部分按钮置信被代码升至至少0.7，非原始模型概率；跨页面文本会出机。付款演示仅测试网且不证明支付安全，本站未运行、交易或验证原效果。
+- 来源：[GitHub](https://github.com/alaramartin/paradigmhacks) · [Source](https://github.com/alaramartin/paradigmhacks/blob/f459a79c51440f32a579cf40fd292dd0fcb98226/brain/src/model.ts) · [Source](https://github.com/alaramartin/paradigmhacks/blob/f459a79c51440f32a579cf40fd292dd0fcb98226/brain/src/candidates.ts) · [Source](https://github.com/alaramartin/paradigmhacks/blob/f459a79c51440f32a579cf40fd292dd0fcb98226/brain/src/brain.ts) · [Author X](https://x.com/alara_martin_/status/2110875781819928838)
+
+### 浏览器屏蔽：政策判断转成有作用域的规则
+
+- 作者：Honeybank Studios
+- 输入：种子名单未覆盖的主机名、页面站点、资源类型/第一三方信息与用户政策，不发送完整URL或Cookie。
+- Jev 判断：每项两个Choice：block/allow和内容类别，最多八项一批。
+- 后续动作：代码按block概率阈值缓存决定，编译站点/类型动态规则；用户覆盖与暂停优先，错误放行，跨站复用另可关闭。
+- 核验边界：MV3首请求可先通过，不能按路径过滤或隐藏元素。缺概率时解析会借用choice/confidence甚至默认值，可能误屏蔽；费用软帽、外部名单另许可，站点/域名出机。本站未安装/测试扩展。
+- 来源：[GitHub](https://github.com/honeybankstudios/jevblock) · [Source](https://github.com/honeybankstudios/jevblock/blob/1a257c222f7029fb58ce074992c1b7fbda35bb04/src/background/jev.ts) · [Source](https://github.com/honeybankstudios/jevblock/blob/1a257c222f7029fb58ce074992c1b7fbda35bb04/src/background/index.ts) · [Source](https://github.com/honeybankstudios/jevblock/blob/1a257c222f7029fb58ce074992c1b7fbda35bb04/src/background/rules.ts)
+
+### 语义代码检查：判断偏离，再定位原文片段
+
+- 作者：darkmatter
+- 输入：源码、Markdown规则与good/bad例子，以及配置允许的附加上下文。
+- Jev 判断：Noul判断规则偏离、适用/排除条件；Choice选段及首末代码行，Noul评上下文是否足够。
+- 后续动作：代码按规则阈值和scope筛选，校验位置后生成含原文/概率/上下文提示的报告并缓存；缺失回答不作为无问题缓存，不自动修源码。
+- 核验边界：概率和定位仍可错，不能代替确定性lint/编译器或安全保证；源文件与附加读取会发提供商，移动别名/缓存需维护。默认Jev与其他provider分开，作者评测未经本站复现，未运行。
+- 来源：[GitHub](https://github.com/darkmatter/adhere) · [Source](https://github.com/darkmatter/adhere/blob/55c2b40ebd29132c60d19b5b88087330db507abc/src/providers/jev.ts) · [Source](https://github.com/darkmatter/adhere/blob/55c2b40ebd29132c60d19b5b88087330db507abc/src/services/Jev.ts) · [Source](https://github.com/darkmatter/adhere/blob/55c2b40ebd29132c60d19b5b88087330db507abc/src/services/Jev.http.ts) · [Source](https://github.com/darkmatter/adhere/blob/55c2b40ebd29132c60d19b5b88087330db507abc/src/workflows/audit.ts)
+
+### 写作指标：有限判断与本地计算分工
+
+- 作者：Chad Boyda
+- 输入：英文全文、段落与词语，给定词类/体裁选项和有序评分等级。
+- Jev 判断：Jev Choice/Score/Noul补本地不能确定的判断；全文/分段等级分布与体裁概率供组合模型使用。
+- 后续动作：本地算术和预拟合权重生成指标，profile/compare按作者样本标出需复读的偏离；不可用时警告并重算本地集合，cadence独立且无模型调用。
+- 核验边界：不是通用作文质量裁判，英文资源/训练样本限制适用范围，数据组件另有许可。作者验证未复现；全文会出机，jev-latest旧缓存可能过期，本站未提交文章或运行模型。
+- 来源：[GitHub](https://github.com/chadboyda/proseweave) · [Source](https://github.com/chadboyda/proseweave/blob/f5f0a7dcabb6d3e93ab3f3d91a307fe53f9e83ed/src/proseweave/jev.py) · [Source](https://github.com/chadboyda/proseweave/blob/f5f0a7dcabb6d3e93ab3f3d91a307fe53f9e83ed/src/proseweave/analysis.py) · [Source](https://github.com/chadboyda/proseweave/blob/f5f0a7dcabb6d3e93ab3f3d91a307fe53f9e83ed/src/proseweave/judged.py) · [Author X](https://x.com/chadboyda/status/2111269418927808829)
+
+### 模拟高尔夫：图像判断转成受阈值约束的解说事实
+
+- 作者：jjmerri
+- 输入：显式启用Jev后的模拟球场小地图截图和到旗距离；代码先找颜色/几何候选。
+- Jev 判断：Box定位球和旗，Noul确认水/沙/树等，Choice读有限数字与方位；带图像实验header。
+- 后续动作：代码验证位置/置信、换算几何与距离并过滤事实/hazards，供解说模型和预先生成的条件分支使用；超时/失败回退其他视觉，语音由另一路TTS生成。
+- 核验边界：Windows/GSPro截图环境专用，非现实球场安全导航；Box/图像仍实验，示例阈值/速度/费用仅作者口径且未复现。截图出机、其他LLM/TTS效果不算Jev结果，本站未抓图或运行。
+- 来源：[GitHub](https://github.com/jjmerri/gspro-commentator) · [Source](https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/commentator/minimap.py) · [Source](https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/commentator/engine.py) · [Source](https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/config.example.yaml)
+
+## 开源项目 / Open-source projects (186)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1241,6 +1286,12 @@
 | [jhochenbaum/rlm-jev](https://github.com/jhochenbaum/rlm-jev) | community | MIT | 0 |
 | [ai-ready-future/jag](https://github.com/ai-ready-future/jag) | community | MIT | 0 |
 | [raia-live/jev-senselab-demos](https://github.com/raia-live/jev-senselab-demos) | community | MIT | 0 |
+| [honeybankstudios/jevblock](https://github.com/honeybankstudios/jevblock) | community | MIT | 0 |
+| [darkmatter/adhere](https://github.com/darkmatter/adhere) | community | MIT | 9 |
+| [etsabary/jev-1.14-comparison-benchmark](https://github.com/etsabary/jev-1.14-comparison-benchmark) | community | MIT | 0 |
+| [chadboyda/proseweave](https://github.com/chadboyda/proseweave) | community | MIT | 0 |
+| [kallurayaankit/jev-consensus-gate](https://github.com/kallurayaankit/jev-consensus-gate) | community | MIT | 0 |
+| [jjmerri/gspro-commentator](https://github.com/jjmerri/gspro-commentator) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (20)
 

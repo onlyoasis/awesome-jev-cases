@@ -4822,5 +4822,257 @@
         "url": "https://github.com/raia-live/jev-senselab-demos/blob/00bf8a6d8c506a82c6a3549321b19f57bac30c7f/demos/lead_routing/scenario.py"
       }
     ]
+  },
+  {
+    "id": "tab-bounded-next-action-ghost",
+    "name": "Tab",
+    "author": "Alara Martin and collaborators",
+    "title": {
+      "zh": "下一步建议：Jev 选有限候选，按 Tab 才执行",
+      "en": "Next-action suggestions: Jev selects bounded candidates for Tab-key acceptance"
+    },
+    "area": {
+      "zh": "桌面交互研究原型",
+      "en": "Desktop-interaction research prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "活动界面控件、近期操作及其他页面已有文本值，代码先构造候选动作。",
+      "en": "Active controls, recent actions and values already visible on other pages, with candidate actions built in code."
+    },
+    "decision": {
+      "zh": "Choice选下个控件或none，另以有限Choice选字段/下拉值；文本生成的Claude路径分开。",
+      "en": "A Choice selects the next control or none, with separate finite Choices for field/select values. The Claude text-generation path is separate."
+    },
+    "action": {
+      "zh": "代码显示可接受的ghost建议，用户按Tab才交执行器；相同界面慢/失败可回放缓存，已学重复流程另走零模型规则。",
+      "en": "Code displays an acceptable ghost suggestion for Tab-key execution. Slow/failed calls may replay matching-screen caches, while learned repetitions use separate zero-model rules."
+    },
+    "boundary": {
+      "zh": "hackathon原型，仅公开代码案例，根项目许可未确认。部分按钮置信被代码升至至少0.7，非原始模型概率；跨页面文本会出机。付款演示仅测试网且不证明支付安全，本站未运行、交易或验证原效果。",
+      "en": "Hackathon prototype and public-code case only; root project license unconfirmed. Code boosts some button confidence to at least 0.7, not raw model probability, and cross-page text reaches the provider. Payment demos are testnet-only and do not establish payment safety. No execution, transactions or reproduced effects here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/alaramartin/paradigmhacks"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/alaramartin/paradigmhacks/blob/f459a79c51440f32a579cf40fd292dd0fcb98226/brain/src/model.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/alaramartin/paradigmhacks/blob/f459a79c51440f32a579cf40fd292dd0fcb98226/brain/src/candidates.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/alaramartin/paradigmhacks/blob/f459a79c51440f32a579cf40fd292dd0fcb98226/brain/src/brain.ts"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/alara_martin_/status/2110875781819928838"
+      }
+    ]
+  },
+  {
+    "id": "jevblock-host-policy-rules",
+    "name": "jevblock",
+    "author": "Honeybank Studios",
+    "title": {
+      "zh": "浏览器屏蔽：政策判断转成有作用域的规则",
+      "en": "Browser blocking: policy decisions become scoped rules"
+    },
+    "area": {
+      "zh": "浏览器资源策略原型",
+      "en": "Browser resource-policy prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "种子名单未覆盖的主机名、页面站点、资源类型/第一三方信息与用户政策，不发送完整URL或Cookie。",
+      "en": "Uncovered hostnames, page site, resource/party metadata and user policy, without full URLs or cookies."
+    },
+    "decision": {
+      "zh": "每项两个Choice：block/allow和内容类别，最多八项一批。",
+      "en": "Two Choices per item select block/allow and a host category, batching at most eight items."
+    },
+    "action": {
+      "zh": "代码按block概率阈值缓存决定，编译站点/类型动态规则；用户覆盖与暂停优先，错误放行，跨站复用另可关闭。",
+      "en": "Code thresholds/caches block decisions and compiles scoped dynamic rules. User overrides/pauses take priority, errors fail open and cross-site reuse can be disabled."
+    },
+    "boundary": {
+      "zh": "MV3首请求可先通过，不能按路径过滤或隐藏元素。缺概率时解析会借用choice/confidence甚至默认值，可能误屏蔽；费用软帽、外部名单另许可，站点/域名出机。本站未安装/测试扩展。",
+      "en": "MV3 first requests can pass before decisions; no path-level or cosmetic filtering. Missing probabilities fall back to choice/confidence or defaults and may overblock. Spend limits are soft, seed lists separately licensed and site/host metadata leaves the browser. Extension not installed or tested here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/honeybankstudios/jevblock"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/honeybankstudios/jevblock/blob/1a257c222f7029fb58ce074992c1b7fbda35bb04/src/background/jev.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/honeybankstudios/jevblock/blob/1a257c222f7029fb58ce074992c1b7fbda35bb04/src/background/index.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/honeybankstudios/jevblock/blob/1a257c222f7029fb58ce074992c1b7fbda35bb04/src/background/rules.ts"
+      }
+    ]
+  },
+  {
+    "id": "adhere-semantic-rule-findings",
+    "name": "adhere",
+    "author": "darkmatter",
+    "title": {
+      "zh": "语义代码检查：判断偏离，再定位原文片段",
+      "en": "Semantic code checks: judge rule deviation and locate original excerpts"
+    },
+    "area": {
+      "zh": "语义lint与复核",
+      "en": "Semantic lint and review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "源码、Markdown规则与good/bad例子，以及配置允许的附加上下文。",
+      "en": "Source code, Markdown rules/good-bad examples and configured additional context."
+    },
+    "decision": {
+      "zh": "Noul判断规则偏离、适用/排除条件；Choice选段及首末代码行，Noul评上下文是否足够。",
+      "en": "Nouls judge deviation and inclusion/exclusion scope; Choices select sections/start-end lines and a Noul evaluates context sufficiency."
+    },
+    "action": {
+      "zh": "代码按规则阈值和scope筛选，校验位置后生成含原文/概率/上下文提示的报告并缓存；缺失回答不作为无问题缓存，不自动修源码。",
+      "en": "Code filters by rule thresholds/scope, validates locations and reports original excerpts, probability and context hints with caching. Missing answers are not cached as clean results and source code is not automatically fixed."
+    },
+    "boundary": {
+      "zh": "概率和定位仍可错，不能代替确定性lint/编译器或安全保证；源文件与附加读取会发提供商，移动别名/缓存需维护。默认Jev与其他provider分开，作者评测未经本站复现，未运行。",
+      "en": "Probabilities/locations may be wrong and do not replace deterministic lint, compilers or security guarantees. Source/additional reads reach providers; moving aliases/caches need maintenance. Default Jev and other providers are separate. Author evaluations not reproduced; not run here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/darkmatter/adhere"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/darkmatter/adhere/blob/55c2b40ebd29132c60d19b5b88087330db507abc/src/providers/jev.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/darkmatter/adhere/blob/55c2b40ebd29132c60d19b5b88087330db507abc/src/services/Jev.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/darkmatter/adhere/blob/55c2b40ebd29132c60d19b5b88087330db507abc/src/services/Jev.http.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/darkmatter/adhere/blob/55c2b40ebd29132c60d19b5b88087330db507abc/src/workflows/audit.ts"
+      }
+    ]
+  },
+  {
+    "id": "proseweave-judged-metrics",
+    "name": "proseweave",
+    "author": "Chad Boyda",
+    "title": {
+      "zh": "写作指标：有限判断与本地计算分工",
+      "en": "Prose metrics: bounded judgments combined with local computation"
+    },
+    "area": {
+      "zh": "文本指标与相对样本复读",
+      "en": "Text metrics and sample-relative review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "英文全文、段落与词语，给定词类/体裁选项和有序评分等级。",
+      "en": "English text, passages and words with supplied word-class/genre options and ordered rating levels."
+    },
+    "decision": {
+      "zh": "Jev Choice/Score/Noul补本地不能确定的判断；全文/分段等级分布与体裁概率供组合模型使用。",
+      "en": "Jev Choice/Score/Noul questions supply judgments beyond local routes, with whole-text/chunk distributions and genre probabilities for combination models."
+    },
+    "action": {
+      "zh": "本地算术和预拟合权重生成指标，profile/compare按作者样本标出需复读的偏离；不可用时警告并重算本地集合，cadence独立且无模型调用。",
+      "en": "Local arithmetic/fitted weights produce metrics; profile/compare flag deviations from author samples for rereading. Unavailable Jev triggers a warned local recomputation; cadence is separate and makes no model calls."
+    },
+    "boundary": {
+      "zh": "不是通用作文质量裁判，英文资源/训练样本限制适用范围，数据组件另有许可。作者验证未复现；全文会出机，jev-latest旧缓存可能过期，本站未提交文章或运行模型。",
+      "en": "Not a universal writing-quality judge; English resources/fitting samples limit scope and data components have separate licenses. Author validation not reproduced. Text reaches providers and old jev-latest caches can age. No articles submitted or models run here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/chadboyda/proseweave"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/chadboyda/proseweave/blob/f5f0a7dcabb6d3e93ab3f3d91a307fe53f9e83ed/src/proseweave/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/chadboyda/proseweave/blob/f5f0a7dcabb6d3e93ab3f3d91a307fe53f9e83ed/src/proseweave/analysis.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/chadboyda/proseweave/blob/f5f0a7dcabb6d3e93ab3f3d91a307fe53f9e83ed/src/proseweave/judged.py"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/chadboyda/status/2111269418927808829"
+      }
+    ]
+  },
+  {
+    "id": "gspro-jev-minimap-facts",
+    "name": "Golf Commentator",
+    "author": "jjmerri",
+    "title": {
+      "zh": "模拟高尔夫：图像判断转成受阈值约束的解说事实",
+      "en": "Simulator golf: turn image judgments into thresholded commentary facts"
+    },
+    "area": {
+      "zh": "GSPro视觉解说",
+      "en": "GSPro visual commentary"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "显式启用Jev后的模拟球场小地图截图和到旗距离；代码先找颜色/几何候选。",
+      "en": "A simulator minimap crop and distance to pin after explicit Jev selection, with color/geometry candidates found in code."
+    },
+    "decision": {
+      "zh": "Box定位球和旗，Noul确认水/沙/树等，Choice读有限数字与方位；带图像实验header。",
+      "en": "Boxes locate ball/pin, Nouls confirm water/sand/trees and Choices read finite digits/directions, using the experimental image header."
+    },
+    "action": {
+      "zh": "代码验证位置/置信、换算几何与距离并过滤事实/hazards，供解说模型和预先生成的条件分支使用；超时/失败回退其他视觉，语音由另一路TTS生成。",
+      "en": "Code checks position/confidence, derives geometry/distances and filters facts/hazards for the commentary model and prewritten branches. Timeout/failure falls back to another vision model and separate TTS generates speech."
+    },
+    "boundary": {
+      "zh": "Windows/GSPro截图环境专用，非现实球场安全导航；Box/图像仍实验，示例阈值/速度/费用仅作者口径且未复现。截图出机、其他LLM/TTS效果不算Jev结果，本站未抓图或运行。",
+      "en": "Specific to Windows/GSPro screenshots, not real-course safety navigation. Boxes/images are experimental and example thresholds/timing/costs are author reports, not reproduced. Crops leave the machine; other LLM/TTS results are separate. No screenshots collected or code run here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/jjmerri/gspro-commentator"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/commentator/minimap.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/commentator/engine.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/config.example.yaml"
+      }
+    ]
   }
 ]

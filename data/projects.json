@@ -2878,5 +2878,101 @@
     "lastVerified": "2026-10-16",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "jevblock",
+    "name": "honeybankstudios/jevblock",
+    "url": "https://github.com/honeybankstudios/jevblock",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT MV3浏览器屏蔽扩展，种子名单之外用Jev按域名/站点/资源类型与用户政策判断，编译为动态规则，用户覆盖优先。首请求可能放过、错误放行，响应回退解析宽松且费用是软帽；域名会发OpenRouter、外部名单另许可。Firefox未测，本站未安装或改变浏览器规则。",
+      "en": "MIT MV3 content blocker using Jev over host/site/resource type and user policy beyond seed lists, compiling dynamic rules with user overrides first. First requests may pass, errors fail open, parsing fallbacks are permissive and spend limits are soft. Host/site metadata reaches OpenRouter and external lists have separate licenses. Firefox untested; not installed or applied here."
+    },
+    "sourceUrl": "https://github.com/honeybankstudios/jevblock",
+    "lastVerified": "2026-10-17",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "adhere-semantic-lint",
+    "name": "darkmatter/adhere",
+    "url": "https://github.com/darkmatter/adhere",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 语义规则检查器，默认Jev用Noul判源码偏离与scope，Choice定位段/行，代码按阈值形成可回看的报告/缓存。确定性规则仍交传统lint；概率和位置可能错，不自动修代码，源文件与附加上下文会出机。可换其他提供商，作者结果未复现，本站未运行。",
+      "en": "MIT semantic-rule checker using Jev by default for Noul violation/scope judgments and Choice section/line location, with thresholded reports and caches. Deterministic rules belong in conventional linters; probabilities/locations may be wrong, no automatic source fixes occur and source/context reaches providers. Other providers are separate; author results not reproduced and not run here."
+    },
+    "sourceUrl": "https://github.com/darkmatter/adhere",
+    "lastVerified": "2026-10-17",
+    "status": "verified",
+    "stars": 9
+  },
+  {
+    "id": "jev-text-comparison-benchmark",
+    "name": "etsabary/jev-1.14-comparison-benchmark",
+    "url": "https://github.com/etsabary/jev-1.14-comparison-benchmark",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 决策模型对照评测源码与记录，1136文本题含相关变体，固定选项/版本与首次尝试，保留错误和成组诊断。主表19服务/全测22是作者呈现，格式失败剔除为事后规则；日期/路线限制速度比较，费用软帽、分数非本站实测，不另增应用案例。",
+      "en": "MIT decision-model comparison source and records over 1,136 text questions with related variants, fixed options/checkpoints, first attempts, errors and grouped diagnostics. The author presents 19 main-table services from 22 tested, with a post-hoc format-failure exclusion. Dates/routes limit speed comparisons, budgets are soft and scores are not site measurements; not duplicated as an application case."
+    },
+    "sourceUrl": "https://github.com/etsabary/jev-1.14-comparison-benchmark",
+    "lastVerified": "2026-10-17",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "proseweave",
+    "name": "chadboyda/proseweave",
+    "url": "https://github.com/chadboyda/proseweave",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Python文本指标工具，Jev补有限词类、相关性、熟悉度和Score/体裁判断，本地算术/拟合组合形成指标和相对作者样本的复读提示；cadence本地独立。语料组件另许可，非通用写作质量裁判；原文出机、移动别名缓存可能过期，作者验证未复现，本站未安装。",
+      "en": "MIT Python prose metrics combining bounded Jev word-class/relatedness/familiarity and Score/genre judgments with local arithmetic/fitted models, flagging departures from author samples for rereading; cadence is separate and local. Data components carry separate licenses, not universal writing-quality judgments. Text reaches the provider and moving-alias caches may age. Author validation not reproduced; not installed here."
+    },
+    "sourceUrl": "https://github.com/chadboyda/proseweave",
+    "lastVerified": "2026-10-17",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-consensus-gate",
+    "name": "kallurayaankit/jev-consensus-gate",
+    "url": "https://github.com/kallurayaankit/jev-consensus-gate",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT jevlang多视角判断原型，三组安全/授权/攻击问题由代码汇总allow/human/block。demo只打印，不接真实执行器；CI使用假后端导入和lint，无live安全验收。三次同模型不同措辞不证明错误独立或权限成立，示例阈值需自测；本站未执行或调用。",
+      "en": "MIT jevlang multi-perspective prototype aggregating safety/authorization/attack questions into allow/human/block. The demo only prints, with no real executor; CI uses fake-backend imports and lint rather than live safety acceptance. Three framings of one model do not establish independent errors or authorization and example thresholds need evaluation. Not executed or called here."
+    },
+    "sourceUrl": "https://github.com/kallurayaankit/jev-consensus-gate",
+    "lastVerified": "2026-10-17",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "gspro-commentator",
+    "name": "jjmerri/gspro-commentator",
+    "url": "https://github.com/jjmerri/gspro-commentator",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Windows/GSPro高尔夫模拟解说台，显式选择Jev时用实验图像/Box和Noul读小地图，代码几何/阈值生成事实及风险分支；解说/语音另由LLM/TTS生成。失败回退其他视觉，非现实球场安全导航，截图出机、模型与声音需自备；作者速度费用未复现，本站未运行。",
+      "en": "MIT Windows/GSPro simulator commentary booth optionally using experimental Jev images/Boxes/Nouls for minimap facts and coded geometry/threshold branches. LLM/TTS generate speech separately; failures fall back to another vision model. Not real-course safety navigation; screenshots leave the machine and models/voices require separate setup. Author timing/costs not reproduced; not run here."
+    },
+    "sourceUrl": "https://github.com/jjmerri/gspro-commentator",
+    "lastVerified": "2026-10-17",
+    "status": "verified",
+    "stars": 0
   }
 ]
