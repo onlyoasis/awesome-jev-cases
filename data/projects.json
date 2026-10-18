@@ -2974,5 +2974,85 @@
     "lastVerified": "2026-10-17",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "pi-semantic-guards-kurowashi",
+    "name": "kurowashi/pi-jev",
+    "url": "https://github.com/kurowashi/pi-jev",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 的 Pi 内容/新文件放置检查扩展，真实 Noul 结果连接 edit/write 拦截；默认错误放行，不覆盖 bash，未运行模型。",
+      "en": "MIT Pi extensions for content and new-file placement, wiring Noul answers to edit/write blocking; errors allow by default, bash is outside scope, and no model was run."
+    },
+    "sourceUrl": "https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/README.md",
+    "lastVerified": "2026-10-18",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "opencode-system-one-atvari",
+    "name": "atvari-eu/opencode-system-one",
+    "url": "https://github.com/atvari-eu/opencode-system-one",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 的 OpenCode System One 插件，提供有界决策、推理级别/模型切换等接线；可显式设 TypeSafe endpoint，默认 Console 凭据/版本条件未独立验收。",
+      "en": "MIT OpenCode System One plugin with bounded judgments and reasoning/model switching; a TypeSafe endpoint can be explicit, while default Console credential/version conditions were not independently accepted."
+    },
+    "sourceUrl": "https://github.com/atvari-eu/opencode-system-one/blob/b017f89cd2048cb95ff1be8897b2bab4c7020021/README.md",
+    "lastVerified": "2026-10-18",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "agent-reflex",
+    "name": "psygreg/agent-reflex",
+    "url": "https://github.com/psygreg/agent-reflex",
+    "category": "guard",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 编码 Agent 插件集；已核对 Pi 的 TypeSafe Noul 命令检查和拦截路径，分类器不可用时放行；不把供应商预设或八宿主支持声明当作本站实测。",
+      "en": "Apache-2.0 coding-agent plugins; the Pi TypeSafe Noul shell-check/blocking path was inspected and fails open when unavailable. Provider presets and eight-host support claims are not site-run tests."
+    },
+    "sourceUrl": "https://github.com/psygreg/agent-reflex/blob/9426ab0f2381ead782aebd33f2917202db41213a/README.md",
+    "lastVerified": "2026-10-18",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "fast-compaction-privacy-branch",
+    "name": "flupkede/fast-compaction",
+    "url": "https://github.com/flupkede/fast-compaction",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "基于 fast-jev-compaction 的 MIT 隐私扩展分支，增加发给裁判前的密钥形状遮盖与可选稳定标识替换；云端仍可用真实 Jev，回放默认本地 Ollama。规则遮盖不保证完整保密，基础压缩案例已去重。",
+      "en": "MIT privacy-oriented derivative of fast-jev-compaction, adding secret-shape redaction and optional stable identifier substitution before judging. Cloud calls can use Jev; replay defaults to local Ollama. Pattern scrubbing is not a confidentiality guarantee; the base compaction case is deduplicated."
+    },
+    "sourceUrl": "https://github.com/flupkede/fast-compaction/blob/965127f8e6cc40c12c8a98c2c4c2938d7c4c1b85/README.md",
+    "lastVerified": "2026-10-18",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-layer-typakon4",
+    "name": "typakon4/jev-layer",
+    "url": "https://github.com/typakon4/jev-layer",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 的有界决策/MCP 适配层，含真实 TypeSafe、图片与 Box 建议接线；默认离线 demo，视觉/桌面表面需启用，宿主保留权限与执行。仅列项目，不把建议原型写成已验收的桌面自动化案例。",
+      "en": "MIT bounded-decision/MCP adapter with TypeSafe, image, and Box advice wiring. The default is offline demo; vision/desktop surfaces are opt-in and the host retains permissions and execution. Listed as a project, not accepted desktop automation."
+    },
+    "sourceUrl": "https://github.com/typakon4/jev-layer/blob/1b0109ddf14b38e9633a5ee3b6d92757cca12f4e/README.md",
+    "lastVerified": "2026-10-18",
+    "status": "verified",
+    "stars": 7
   }
 ]

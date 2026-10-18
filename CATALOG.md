@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (122)
+## 深度使用案例 / Worked cases (127)
 
 ### jev-ultrafast
 
@@ -1102,7 +1102,52 @@
 - 核验边界：Windows/GSPro截图环境专用，非现实球场安全导航；Box/图像仍实验，示例阈值/速度/费用仅作者口径且未复现。截图出机、其他LLM/TTS效果不算Jev结果，本站未抓图或运行。
 - 来源：[GitHub](https://github.com/jjmerri/gspro-commentator) · [Source](https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/commentator/minimap.py) · [Source](https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/commentator/engine.py) · [Source](https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/config.example.yaml)
 
-## 开源项目 / Open-source projects (186)
+### Pi：写入前核对内容规则与新文件放置
+
+- 作者：kurowashi
+- 输入：Pi 拟执行的 edit/write、匹配的项目规则与上下文；新文件放置检查另附有界目录树和拟写内容。
+- Jev 判断：每条规则构成一个 Noul；读取对应概率，按 negate 反转后与该检查的 minProbability 比较。
+- 后续动作：任一检查不满足便返回 block:true 与整改文案，阻止该次工具调用；通过才让 Pi 继续写入。
+- 核验边界：源码核查，未安装或调用 API。仅覆盖 edit/write；bash 等修改不受检查。默认 onError=allow，未匹配或未信任配置可跳过；字符/目录界限不保证完整上下文，也不构成安全隔离。
+- 来源：[GitHub](https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/README.md) · [packages/core/src/jev.ts](https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/packages/core/src/jev.ts) · [packages/content-guard/src/index.ts](https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/packages/content-guard/src/index.ts) · [packages/placement-guard/src/index.ts](https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/packages/placement-guard/src/index.ts) · [packages/core/src/config.ts](https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/packages/core/src/config.ts)
+
+### OpenCode：从允许的推理级别中选择并切换
+
+- 作者：atvari-eu
+- 输入：用户提示、经处理的近期上下文与当前模型支持的推理级别；可显式配置 TypeSafe System One endpoint 和有效 Jev 型号。
+- Jev 判断：effort-only 路径把允许的级别写为 Choice 候选；拒绝候选集以外的答案，数值 confidence 低于配置阈值时保留原级别。
+- 后续动作：把有效选择转为 switchTo，宿主调用 session.switchModel 设置 variant，并保存切换来源记录；手动选择和失败回退由代码处理。
+- 核验边界：未运行 OpenCode 或收费模型；默认 OpenCode Console endpoint/jev-1.13-free 与客户端版本、凭据有额外条件，未独立验证其免费路由。缺失 confidence 不会触发数值低阈值分支；不声称实际节省成本或其他功能均获验收。
+- 来源：[Choice and resolution](https://github.com/atvari-eu/opencode-system-one/blob/b017f89cd2048cb95ff1be8897b2bab4c7020021/src/logic.ts) · [Transport and host switch](https://github.com/atvari-eu/opencode-system-one/blob/b017f89cd2048cb95ff1be8897b2bab4c7020021/src/index.ts) · [README](https://github.com/atvari-eu/opencode-system-one/blob/b017f89cd2048cb95ff1be8897b2bab4c7020021/README.md)
+
+### 命令门控：Noul 风险判断接入 Pi 执行前钩子
+
+- 作者：psygreg
+- 输入：Pi 待执行的 shell 命令；把 agent-reflex 分类器显式配置为 TypeSafe endpoint 和 Jev 模型。
+- Jev 判断：Noul 询问命令是否可能损坏系统文件、无备份删除目录或泄露环境密钥；读 answers.q.noul 后按代码阈值判断。
+- 后续动作：tool_call 钩子命中 shell 工具且判断超阈值时返回 block:true，阻止该次调用；其他情况交给宿主继续处理。
+- 核验边界：仅核查 Pi/TypeSafe 这条源码路径，未安装、执行命令或测试模型安全性。分类器不可用/无配置时默认放行，不能代替权限与沙箱；其他供应商预设路径及八种宿主的兼容性均未独立验收。
+- 来源：[TypeSafe classifier](https://github.com/psygreg/agent-reflex/blob/9426ab0f2381ead782aebd33f2917202db41213a/plugins/pi/classifier.ts) · [Pi hook and threshold](https://github.com/psygreg/agent-reflex/blob/9426ab0f2381ead782aebd33f2917202db41213a/plugins/pi/index.ts) · [README](https://github.com/psygreg/agent-reflex/blob/9426ab0f2381ead782aebd33f2917202db41213a/README.md)
+
+### 个人 RSS：兴趣得分与时间衰减排序
+
+- 作者：潦草学者 Scholar.L / @liaocaoxuezhe
+- 输入：作者以阅读、收藏行为提取的兴趣资料和订阅 RSS 内容；兴趣提取由另一模型负责。
+- Jev 判断：作者称用 Jev 对内容与个人兴趣的匹配程度打分；具体题型、分值范围和提示词未公开。
+- 后续动作：本地程序把得分与时间衰减结合，重排今日和近七日 RSS 时间线；作者原帖展示与默认时间排序的对照。
+- 核验边界：仅作者原帖与展示，非本站实测；本地修改源码、衰减公式和部署均未公开。上游 PaperRss 是改造基础，不能据此声称上游已集成 Jev，也不将其新增为 Jev 开源项目。
+- 来源：[Author implementation note](https://x.com/liaocaoxuezhe/status/2111674188398559506) · [Author demonstration](https://x.com/liaocaoxuezhe/status/2111674184711725169)
+
+### MNIST：十选一图像分类与错误分析
+
+- 作者：kaitoy / @kaitoy3_
+- 输入：MNIST 的 28×28 灰度数字图像，代码默认放大到 280×280 PNG，经 SDK Image 输入并显式启用实验图像头。
+- Jev 判断：一个 Choice 在字符串 0–9 中选择数字；代码读取选择、confidence、实际响应型号和 token 数。
+- 后续动作：将预测与标签比较，单独计入 API 错误，生成全样本/已回答准确率、混淆矩阵和逐图 CSV，再由本地工具生成错误图册。
+- 核验边界：代码与原帖核查，未下载数据或调用模型。10,000 图像、92.45% 为作者自报，非本站复测；图像为实验预览，jev-preview 别名可能变化。根许可证及 pyproject 许可声明未发现，因此仅收录公开代码案例，不列为已核实许可的开源项目。
+- 来源：[Image Choice](https://github.com/kaitoy/jev-mnist/blob/4ae6a16ba49df03a5ad78fe42ecbb371eed1a704/jev_mnist/classify.py) · [Evaluation and CSV](https://github.com/kaitoy/jev-mnist/blob/4ae6a16ba49df03a5ad78fe42ecbb371eed1a704/jev_mnist/main.py) · [Author results](https://github.com/kaitoy/jev-mnist/blob/4ae6a16ba49df03a5ad78fe42ecbb371eed1a704/README.md) · [Author X post](https://x.com/kaitoy3_/status/2111667474878140846)
+
+## 开源项目 / Open-source projects (191)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1292,6 +1337,11 @@
 | [chadboyda/proseweave](https://github.com/chadboyda/proseweave) | community | MIT | 0 |
 | [kallurayaankit/jev-consensus-gate](https://github.com/kallurayaankit/jev-consensus-gate) | community | MIT | 0 |
 | [jjmerri/gspro-commentator](https://github.com/jjmerri/gspro-commentator) | community | MIT | 0 |
+| [kurowashi/pi-jev](https://github.com/kurowashi/pi-jev) | community | MIT | 0 |
+| [atvari-eu/opencode-system-one](https://github.com/atvari-eu/opencode-system-one) | community | MIT | 0 |
+| [psygreg/agent-reflex](https://github.com/psygreg/agent-reflex) | community | Apache-2.0 | 2 |
+| [flupkede/fast-compaction](https://github.com/flupkede/fast-compaction) | community | MIT | 0 |
+| [typakon4/jev-layer](https://github.com/typakon4/jev-layer) | community | MIT | 7 |
 
 ## 官方 cookbook / Official recipes (20)
 

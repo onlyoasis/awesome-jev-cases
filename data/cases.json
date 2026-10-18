@@ -5074,5 +5074,233 @@
         "url": "https://github.com/jjmerri/gspro-commentator/blob/37dea6073915a52bd2013625edd0fd0f2f78b8be/config.example.yaml"
       }
     ]
+  },
+  {
+    "id": "pi-semantic-content-placement-guards",
+    "name": "Pi semantic file guards (kurowashi)",
+    "author": "kurowashi",
+    "title": {
+      "zh": "Pi：写入前核对内容规则与新文件放置",
+      "en": "Pi: check content rules and new-file placement before writing"
+    },
+    "area": {
+      "zh": "编码规则与文件组织",
+      "en": "Coding rules and file organization"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "Pi 拟执行的 edit/write、匹配的项目规则与上下文；新文件放置检查另附有界目录树和拟写内容。",
+      "en": "A proposed Pi edit/write, matching project rules and context; placement checks also receive a bounded project tree and proposed content."
+    },
+    "decision": {
+      "zh": "每条规则构成一个 Noul；读取对应概率，按 negate 反转后与该检查的 minProbability 比较。",
+      "en": "Each rule becomes a Noul question; its probability is inverted for negated checks and compared with that check's minProbability."
+    },
+    "action": {
+      "zh": "任一检查不满足便返回 block:true 与整改文案，阻止该次工具调用；通过才让 Pi 继续写入。",
+      "en": "Any failed check returns block:true and corrective feedback to stop that tool call; passing checks let Pi continue writing."
+    },
+    "boundary": {
+      "zh": "源码核查，未安装或调用 API。仅覆盖 edit/write；bash 等修改不受检查。默认 onError=allow，未匹配或未信任配置可跳过；字符/目录界限不保证完整上下文，也不构成安全隔离。",
+      "en": "Source review only, without installation or API calls. Only edit/write are covered; bash changes are outside scope. onError defaults to allow and unmatched or untrusted configurations may be skipped. Character/tree bounds do not ensure full context or provide a security boundary."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/README.md"
+      },
+      {
+        "label": "packages/core/src/jev.ts",
+        "url": "https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/packages/core/src/jev.ts"
+      },
+      {
+        "label": "packages/content-guard/src/index.ts",
+        "url": "https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/packages/content-guard/src/index.ts"
+      },
+      {
+        "label": "packages/placement-guard/src/index.ts",
+        "url": "https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/packages/placement-guard/src/index.ts"
+      },
+      {
+        "label": "packages/core/src/config.ts",
+        "url": "https://github.com/kurowashi/pi-jev/blob/8ded06e87435fd96bfe58b0032761a8e538e571b/packages/core/src/config.ts"
+      }
+    ]
+  },
+  {
+    "id": "opencode-effort-choice-switch",
+    "name": "opencode-system-one",
+    "author": "atvari-eu",
+    "title": {
+      "zh": "OpenCode：从允许的推理级别中选择并切换",
+      "en": "OpenCode: choose and switch among allowed reasoning levels"
+    },
+    "area": {
+      "zh": "编码 Agent 推理配置",
+      "en": "Coding-agent reasoning configuration"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户提示、经处理的近期上下文与当前模型支持的推理级别；可显式配置 TypeSafe System One endpoint 和有效 Jev 型号。",
+      "en": "The user prompt, a processed recent-context digest, and the reasoning levels supported by the current model; a TypeSafe System One endpoint and valid Jev model can be configured explicitly."
+    },
+    "decision": {
+      "zh": "effort-only 路径把允许的级别写为 Choice 候选；拒绝候选集以外的答案，数值 confidence 低于配置阈值时保留原级别。",
+      "en": "The effort-only path offers the allowed levels as Choice options, rejects out-of-set answers, and retains the current level when a numeric confidence is below the configured threshold."
+    },
+    "action": {
+      "zh": "把有效选择转为 switchTo，宿主调用 session.switchModel 设置 variant，并保存切换来源记录；手动选择和失败回退由代码处理。",
+      "en": "A valid pick becomes switchTo; the host calls session.switchModel with the variant and records the switch provenance. Code handles manual selections and failure fallback."
+    },
+    "boundary": {
+      "zh": "未运行 OpenCode 或收费模型；默认 OpenCode Console endpoint/jev-1.13-free 与客户端版本、凭据有额外条件，未独立验证其免费路由。缺失 confidence 不会触发数值低阈值分支；不声称实际节省成本或其他功能均获验收。",
+      "en": "Neither OpenCode nor a paid model was run. The default OpenCode Console endpoint/jev-1.13-free has extra client-version and credential requirements; its free route was not independently verified. Missing confidence does not trigger the numeric low-confidence branch. No measured savings or acceptance of every other feature is claimed."
+    },
+    "sources": [
+      {
+        "label": "Choice and resolution",
+        "url": "https://github.com/atvari-eu/opencode-system-one/blob/b017f89cd2048cb95ff1be8897b2bab4c7020021/src/logic.ts"
+      },
+      {
+        "label": "Transport and host switch",
+        "url": "https://github.com/atvari-eu/opencode-system-one/blob/b017f89cd2048cb95ff1be8897b2bab4c7020021/src/index.ts"
+      },
+      {
+        "label": "README",
+        "url": "https://github.com/atvari-eu/opencode-system-one/blob/b017f89cd2048cb95ff1be8897b2bab4c7020021/README.md"
+      }
+    ]
+  },
+  {
+    "id": "agent-reflex-shell-noul-gate",
+    "name": "agent-reflex Pi shell guard",
+    "author": "psygreg",
+    "title": {
+      "zh": "命令门控：Noul 风险判断接入 Pi 执行前钩子",
+      "en": "Shell gate: connect a Noul risk judgment to Pi pre-execution hooks"
+    },
+    "area": {
+      "zh": "编码工具的风险辅助检查",
+      "en": "Risk-assisted review of coding tools"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "Pi 待执行的 shell 命令；把 agent-reflex 分类器显式配置为 TypeSafe endpoint 和 Jev 模型。",
+      "en": "A pending Pi shell command, with the agent-reflex classifier explicitly configured for the TypeSafe endpoint and a Jev model."
+    },
+    "decision": {
+      "zh": "Noul 询问命令是否可能损坏系统文件、无备份删除目录或泄露环境密钥；读 answers.q.noul 后按代码阈值判断。",
+      "en": "A Noul asks whether the command may damage system files, remove directories without backup, or leak environment keys; code reads answers.q.noul and applies its threshold."
+    },
+    "action": {
+      "zh": "tool_call 钩子命中 shell 工具且判断超阈值时返回 block:true，阻止该次调用；其他情况交给宿主继续处理。",
+      "en": "For a recognized shell tool, the tool_call hook returns block:true when the judgment exceeds the threshold; otherwise the host continues its normal handling."
+    },
+    "boundary": {
+      "zh": "仅核查 Pi/TypeSafe 这条源码路径，未安装、执行命令或测试模型安全性。分类器不可用/无配置时默认放行，不能代替权限与沙箱；其他供应商预设路径及八种宿主的兼容性均未独立验收。",
+      "en": "Only the Pi/TypeSafe source path was inspected; no installation, command execution, or model-safety test was performed. The classifier fails open when unavailable or unconfigured and cannot replace permissions or sandboxing. Other provider presets and all eight host integrations were not independently accepted."
+    },
+    "sources": [
+      {
+        "label": "TypeSafe classifier",
+        "url": "https://github.com/psygreg/agent-reflex/blob/9426ab0f2381ead782aebd33f2917202db41213a/plugins/pi/classifier.ts"
+      },
+      {
+        "label": "Pi hook and threshold",
+        "url": "https://github.com/psygreg/agent-reflex/blob/9426ab0f2381ead782aebd33f2917202db41213a/plugins/pi/index.ts"
+      },
+      {
+        "label": "README",
+        "url": "https://github.com/psygreg/agent-reflex/blob/9426ab0f2381ead782aebd33f2917202db41213a/README.md"
+      }
+    ]
+  },
+  {
+    "id": "rss-personal-interest-decay",
+    "name": "Personal RSS interest ranking",
+    "author": "潦草学者 Scholar.L / @liaocaoxuezhe",
+    "title": {
+      "zh": "个人 RSS：兴趣得分与时间衰减排序",
+      "en": "Personal RSS: rank with interest scores and time decay"
+    },
+    "area": {
+      "zh": "个人信息流排序",
+      "en": "Personal feed ranking"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "作者以阅读、收藏行为提取的兴趣资料和订阅 RSS 内容；兴趣提取由另一模型负责。",
+      "en": "An interest profile derived from reading and saved-item behavior, plus subscribed RSS content; a separate model extracts the interests."
+    },
+    "decision": {
+      "zh": "作者称用 Jev 对内容与个人兴趣的匹配程度打分；具体题型、分值范围和提示词未公开。",
+      "en": "The author reports using Jev to score how content matches personal interests; the primitive, score range, and prompts are not disclosed."
+    },
+    "action": {
+      "zh": "本地程序把得分与时间衰减结合，重排今日和近七日 RSS 时间线；作者原帖展示与默认时间排序的对照。",
+      "en": "The local program combines the scores with time decay to reorder daily and seven-day RSS timelines; the original thread shows a comparison with chronological ordering."
+    },
+    "boundary": {
+      "zh": "仅作者原帖与展示，非本站实测；本地修改源码、衰减公式和部署均未公开。上游 PaperRss 是改造基础，不能据此声称上游已集成 Jev，也不将其新增为 Jev 开源项目。",
+      "en": "Author post and demonstration only, not a site-run test. The local modifications, decay formula, and deployment are not public. Upstream PaperRss is the starting point, not evidence that upstream integrates Jev, and is not added as a Jev project."
+    },
+    "sources": [
+      {
+        "label": "Author implementation note",
+        "url": "https://x.com/liaocaoxuezhe/status/2111674188398559506"
+      },
+      {
+        "label": "Author demonstration",
+        "url": "https://x.com/liaocaoxuezhe/status/2111674184711725169"
+      }
+    ]
+  },
+  {
+    "id": "mnist-ten-choice-vision-evaluation",
+    "name": "jev-mnist",
+    "author": "kaitoy / @kaitoy3_",
+    "title": {
+      "zh": "MNIST：十选一图像分类与错误分析",
+      "en": "MNIST: ten-way image classification and error analysis"
+    },
+    "area": {
+      "zh": "图像分类离线评估",
+      "en": "Offline image-classification evaluation"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "MNIST 的 28×28 灰度数字图像，代码默认放大到 280×280 PNG，经 SDK Image 输入并显式启用实验图像头。",
+      "en": "MNIST 28×28 grayscale digit images, upscaled by default to 280×280 PNG, supplied as an SDK Image with the experimental-image opt-in header."
+    },
+    "decision": {
+      "zh": "一个 Choice 在字符串 0–9 中选择数字；代码读取选择、confidence、实际响应型号和 token 数。",
+      "en": "One Choice selects a digit from the strings 0–9; code reads the choice, confidence, actual response model, and token count."
+    },
+    "action": {
+      "zh": "将预测与标签比较，单独计入 API 错误，生成全样本/已回答准确率、混淆矩阵和逐图 CSV，再由本地工具生成错误图册。",
+      "en": "Predictions are compared with labels, API errors are retained separately, and code produces all-sample/answered accuracy, a confusion matrix, and per-image CSV data for a local error gallery."
+    },
+    "boundary": {
+      "zh": "代码与原帖核查，未下载数据或调用模型。10,000 图像、92.45% 为作者自报，非本站复测；图像为实验预览，jev-preview 别名可能变化。根许可证及 pyproject 许可声明未发现，因此仅收录公开代码案例，不列为已核实许可的开源项目。",
+      "en": "Code and original-post review only, without downloading data or calling the model. The 10,000-image, 92.45% result is author-reported, not independently reproduced. Images are an experimental preview and the jev-preview alias may change. No root license or pyproject license declaration was found, so this is a public-code case rather than a license-verified project listing."
+    },
+    "sources": [
+      {
+        "label": "Image Choice",
+        "url": "https://github.com/kaitoy/jev-mnist/blob/4ae6a16ba49df03a5ad78fe42ecbb371eed1a704/jev_mnist/classify.py"
+      },
+      {
+        "label": "Evaluation and CSV",
+        "url": "https://github.com/kaitoy/jev-mnist/blob/4ae6a16ba49df03a5ad78fe42ecbb371eed1a704/jev_mnist/main.py"
+      },
+      {
+        "label": "Author results",
+        "url": "https://github.com/kaitoy/jev-mnist/blob/4ae6a16ba49df03a5ad78fe42ecbb371eed1a704/README.md"
+      },
+      {
+        "label": "Author X post",
+        "url": "https://x.com/kaitoy3_/status/2111667474878140846"
+      }
+    ]
   }
 ]
