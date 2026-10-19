@@ -5302,5 +5302,289 @@
         "url": "https://x.com/kaitoy3_/status/2111667474878140846"
       }
     ]
+  },
+  {
+    "id": "openrouter-three-lane-proxy",
+    "name": "OpenRouter spend Jev proxy",
+    "author": "adymitruk",
+    "title": {
+      "zh": "OpenRouter 代理：三档模型路由与工具续接",
+      "en": "OpenRouter proxy: three-lane routing with tool continuation"
+    },
+    "area": {
+      "zh": "模型路由",
+      "en": "Model routing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "最新用户目标、当前消息节选及是否有工具；路由状态只取有限字符。",
+      "en": "Bounded excerpts of the latest user objective and current turn, plus whether tools are present."
+    },
+    "decision": {
+      "zh": "向 OpenRouter alpha/decisions 发送 Jev Choice，在 cheap、fast_mid、smart_pro 中选择；cheap 置信度低于 0.72 时升到中档。",
+      "en": "A Jev Choice through OpenRouter alpha/decisions selects cheap, fast_mid, or smart_pro; cheap choices below 0.72 confidence move to the middle lane."
+    },
+    "action": {
+      "zh": "改写请求 model 和 provider 排序后转发 chat/completions，支持流式或普通返回；工具续接复用短期路由，分类失败回退中档。",
+      "en": "Rewrite the model and provider ordering before forwarding chat/completions, for streaming or ordinary responses; tool continuations reuse a short-lived route and classifier failures fall back to the middle lane."
+    },
+    "boundary": {
+      "zh": "仅钉住源码核查，未启动代理或调用模型；续接键使用首条用户消息，不能视为经过验证的会话隔离。未发现根许可证，不新增为许可已核实的开源项目。",
+      "en": "Pinned source review only, without running the proxy or model. Continuation keys use the first user message and are not verified session isolation. No root license was found, so no license-verified project listing is added."
+    },
+    "sources": [
+      {
+        "label": "Choice and downstream forwarding",
+        "url": "https://github.com/adymitruk/openrouter-spend-jev/blob/811ae3f0524488e07ed9a9a589908b628df24e9b/jev-proxy/jev-proxy.py"
+      }
+    ]
+  },
+  {
+    "id": "live-mindmap-decision-todo-route",
+    "name": "live-mindmap",
+    "author": "daiki-beppu",
+    "title": {
+      "zh": "会议脑图：按新增决定与待办选择更新模型",
+      "en": "Meeting mindmap: route updates by new decisions and action items"
+    },
+    "area": {
+      "zh": "会议结构更新路由",
+      "en": "Meeting-update routing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "新增转写片段及最多六条近期发言；旧片段仅作上下文。",
+      "en": "New transcript remarks and up to six recent remarks for context."
+    },
+    "decision": {
+      "zh": "Jev Noul 判断新增发言是否含决定、共识或 TODO；读取 yes 概率，而非所选类别的置信度。",
+      "en": "A Jev Noul asks whether new remarks contain decisions, agreements, or action items, using the yes probability rather than the chosen class confidence."
+    },
+    "action": {
+      "zh": "yes 概率低于 0.3 交给 Haiku，其余或判断失败交给 Sonnet；分别保留各更新器的响应状态与待处理屏幕变化。",
+      "en": "Send probabilities below 0.3 to Haiku, otherwise or on judge failure to Sonnet; retain separate updater response state and pending screen changes."
+    },
+    "boundary": {
+      "zh": "Jev 只做路由，脑图差分由下游模型生成。Jev 配置可关闭或换其他裁判，本地模式默认不调用云裁判；未录音、读取会议资料或实测成本。",
+      "en": "Jev routes; downstream models generate mindmap diffs. The judge can be disabled or replaced, and local mode defaults to no cloud judge. No meetings were recorded or read and no costs were measured."
+    },
+    "sources": [
+      {
+        "label": "Noul and updater consumption",
+        "url": "https://github.com/daiki-beppu/live-mindmap/blob/2af3dacdf6804d9f104bb6951042b16dd0bd556e/server/src/routedDiffUpdater.ts"
+      },
+      {
+        "label": "System One request",
+        "url": "https://github.com/daiki-beppu/live-mindmap/blob/2af3dacdf6804d9f104bb6951042b16dd0bd556e/server/src/systemOne.ts"
+      },
+      {
+        "label": "Judge configuration",
+        "url": "https://github.com/daiki-beppu/live-mindmap/blob/2af3dacdf6804d9f104bb6951042b16dd0bd556e/server/src/judgeSelection.ts"
+      }
+    ]
+  },
+  {
+    "id": "jev-mem-threshold-context",
+    "name": "jev-mem",
+    "author": "must-lioncho",
+    "title": {
+      "zh": "jev-mem：向量召回后再筛选可注入记忆",
+      "en": "jev-mem: gate retrieved memories before context injection"
+    },
+    "area": {
+      "zh": "记忆检索与注入",
+      "en": "Memory retrieval and injection"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "当前提示词节选，以及本地 claude-mem 召回的默认五条记录标题、摘要和日期。",
+      "en": "A prompt excerpt and titles, summaries, and dates of five records retrieved by default from local claude-mem."
+    },
+    "decision": {
+      "zh": "一条 TypeSafe System One 请求为每个候选提出 Noul，判断该记录是否能实质帮助当前任务。",
+      "en": "One TypeSafe System One request asks a Noul per candidate about whether that record materially helps the current task."
+    },
+    "action": {
+      "zh": "按概率排序，默认仅注入达到 0.7 的最佳一条；可改为有上限的多条模式，无合格结果或超时/失败则不注入。",
+      "en": "Rank by probability and by default inject only the best record reaching 0.7; an optional bounded multi-record mode is available, with no injection on no match, timeout, or failure."
+    },
+    "boundary": {
+      "zh": "相关性不代表内容真实或仍有效。提示词和记忆摘要会发送给外部 Jev；仅审查源码，未读取本机记忆、安装钩子或发送用户资料，三提示词展示不是独立基准。",
+      "en": "Relevance does not establish truth or freshness. Prompt and memory summaries are sent to external Jev. Source review only: no local memories read, hooks installed, or user data transmitted; the three-prompt demonstration is not an independent benchmark."
+    },
+    "sources": [
+      {
+        "label": "Noul and threshold selection",
+        "url": "https://github.com/must-lioncho/jev-mem/blob/08c06e3644cad70a68ab3d2948caf56c582b10c9/src/select.mjs"
+      },
+      {
+        "label": "Retrieval and injection",
+        "url": "https://github.com/must-lioncho/jev-mem/blob/08c06e3644cad70a68ab3d2948caf56c582b10c9/src/run.mjs"
+      },
+      {
+        "label": "Native API client",
+        "url": "https://github.com/must-lioncho/jev-mem/blob/08c06e3644cad70a68ab3d2948caf56c582b10c9/src/jev.mjs"
+      }
+    ]
+  },
+  {
+    "id": "liedar-document-screening",
+    "name": "liedar",
+    "author": "colesmcintosh",
+    "title": {
+      "zh": "liedar：文档元数据与图像的风险筛查",
+      "en": "liedar: screen document metadata and page images"
+    },
+    "area": {
+      "zh": "文档风险信号",
+      "en": "Document risk signals"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "PDF、PNG 或 JPEG 的元数据与页面图像；PDF 最多发送前十页。",
+      "en": "Metadata and page images from PDF, PNG, or JPEG files, with at most the first ten PDF pages."
+    },
+    "decision": {
+      "zh": "原生 Jev 请求对整体可疑程度和七类固定信号分别提 Noul，覆盖日期冲突、视觉修改及数值不一致等。",
+      "en": "A native Jev request asks Nouls for overall suspicion and seven fixed signals including conflicting dates, visual edits, and inconsistent numbers."
+    },
+    "action": {
+      "zh": "以 0.5 为阈值输出 likelyFraud 和原因列表，按信号概率排序，供终端或 JSON 消费。",
+      "en": "Use a 0.5 threshold for likelyFraud and reported reasons, sorting signals by probability for terminal or JSON consumers."
+    },
+    "boundary": {
+      "zh": "只是筛查信号，不能据此认定欺诈。图像接口为实验功能，概率未经欺诈场景校准；仅源码核查，未上传文档、调用付费 API 或复测作者成本表。",
+      "en": "A screening signal cannot establish fraud. Images are experimental and probabilities are not calibrated for fraud. Source review only, without uploading documents, making paid API calls, or reproducing the author's cost table."
+    },
+    "sources": [
+      {
+        "label": "Fixed questions and report",
+        "url": "https://github.com/colesmcintosh/liedar/blob/e97abb9ff4941d876e43313d1410fe9f19d41893/src/fraud-check.ts"
+      },
+      {
+        "label": "Multipart Jev client",
+        "url": "https://github.com/colesmcintosh/liedar/blob/e97abb9ff4941d876e43313d1410fe9f19d41893/src/jev.ts"
+      },
+      {
+        "label": "Limits and warning",
+        "url": "https://github.com/colesmcintosh/liedar/blob/e97abb9ff4941d876e43313d1410fe9f19d41893/README.md"
+      }
+    ]
+  },
+  {
+    "id": "listing-photo-three-way-review",
+    "name": "listing-photo-checker",
+    "author": "Mani Khanuja / mani-aiml",
+    "title": {
+      "zh": "商品图：规则概率与三路审核结果",
+      "en": "Listing photos: rule probabilities and three-way review"
+    },
+    "area": {
+      "zh": "商品图片审核演示",
+      "en": "Listing-photo review demonstration"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "商品说明、缩放后的整图及四角裁片；尺寸和正方形等确定性规则在代码中计算。",
+      "en": "A listing description, resized full photo, and four corner tiles; code checks deterministic dimensions and squareness."
+    },
+    "decision": {
+      "zh": "Jev 用 Noul 检查白底、叠加文字、单一商品、清晰度和完整入镜；支持的型号另用 Box 定位商品。",
+      "en": "Jev Nouls check white background, overlays, a single item, sharpness, and full framing; supported models also locate the item with a Box."
+    },
+    "action": {
+      "zh": "把适用规则转换为合规概率：最低值 ≥0.9 判为可发布，≤0.2 退回，其余人工复核；Walmart 演示还以框面积判断画面占比。",
+      "en": "Convert applicable rules to compliance probabilities: minimum ≥0.9 means publish, ≤0.2 means send back, otherwise ask a person; the Walmart demonstration also checks box area for frame fill."
+    },
+    "boundary": {
+      "zh": "这是社区离线规则演示，代码只输出分类和评分，不会发布商品，也不保证符合平台现行政策。图像与 Box 属预览，未下载照片、运行模型或独立复测结果。",
+      "en": "A community offline rule demonstration that outputs verdicts and scores without publishing listings or guaranteeing current marketplace compliance. Images and Box are preview features; no photos were downloaded and no model or independent evaluation was run."
+    },
+    "sources": [
+      {
+        "label": "SDK Noul and Box",
+        "url": "https://github.com/mani-aiml/jev-demos/blob/966eb49d398b0d81177ed83c26f793cda726b210/listing-photo-checker/checker/arm_jev.py"
+      },
+      {
+        "label": "Thresholds and verdicts",
+        "url": "https://github.com/mani-aiml/jev-demos/blob/966eb49d398b0d81177ed83c26f793cda726b210/listing-photo-checker/checker/rules.py"
+      },
+      {
+        "label": "Verdict consumption",
+        "url": "https://github.com/mani-aiml/jev-demos/blob/966eb49d398b0d81177ed83c26f793cda726b210/listing-photo-checker/checker/score.py"
+      }
+    ]
+  },
+  {
+    "id": "coding-oss-tier-selected-subset",
+    "name": "Jev coding router experiment",
+    "author": "Shivay Lamba / @HowDevelop",
+    "title": {
+      "zh": "编码路由：三档开源模型与选组实验",
+      "en": "Coding routing: three open-model tiers and a selected-subset experiment"
+    },
+    "area": {
+      "zh": "作者编码路由实验",
+      "en": "Author coding-router experiment"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "编码任务的首条用户目标；工具回合沿用本次选择。",
+      "en": "The first user objective of a coding task, with tool turns retaining the selected tier."
+    },
+    "decision": {
+      "zh": "作者描述 Jev 将任务划入 routine、moderate 或 hard，分别映射 fast、balanced、strong；题型与完整路由提示未在本轮核实。",
+      "en": "The author describes Jev classifying routine, moderate, or hard tasks into fast, balanced, or strong tiers; primitives and full routing prompts were not verified this run."
+    },
+    "action": {
+      "zh": "经 nconnect 转接编码代理请求至对应模型；三次工具失败或显式强档请求可升级。",
+      "en": "Route coding-agent requests through nconnect to the chosen model, escalating after three tool failures or an explicit strong-tier request."
+    },
+    "boundary": {
+      "zh": "仅作者一手文章，非本站运行。文中 78.5% 成本降幅来自 50 任务中事后选择的 32 条“通过且更省钱”任务，不能外推全部任务成功率或普遍节省；所链新仓库留待后续源码核查。",
+      "en": "Author article only, not a site-run test. The reported 78.5% saving is from a post-selected 32 of 50 tasks that passed and cost less, not whole-set success or a universal saving. Linked new repositories await source review."
+    },
+    "sources": [
+      {
+        "label": "Author experiment and selection method",
+        "url": "https://x.com/HowDevelop/status/2111988896095506534"
+      }
+    ]
+  },
+  {
+    "id": "offline-directory-intent-app-search",
+    "name": "offline.directory",
+    "author": "Denis / @dnsk96",
+    "title": {
+      "zh": "offline.directory：按使用情境筛选离线应用",
+      "en": "offline.directory: match offline apps to a visitor's situation"
+    },
+    "area": {
+      "zh": "自然语言目录搜索",
+      "en": "Natural-language directory search"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "访客用自然语言描述的使用情境，与目录内候选应用资料。",
+      "en": "A visitor's natural-language situation and candidate application entries from the directory."
+    },
+    "decision": {
+      "zh": "作者称 Jev 对各应用与情境的适配程度打分；完整提示与具体题型未公开。",
+      "en": "The author reports Jev scoring each app's suitability for the situation; full prompts and the exact primitive are not public."
+    },
+    "action": {
+      "zh": "程序呈现最佳八个结果及适配标签，低置信度显示不确定；先呈现关键词结果，Jev 失败时回退关键词并记日志。",
+      "en": "Show the best eight results with fit labels and uncertainty for low confidence; keyword results appear first, with keyword fallback and logging on Jev failure."
+    },
+    "boundary": {
+      "zh": "作者原帖案例，未复测搜索、延迟或部署。不能把结果说明文本归因为 Jev 自由生成，也不能把 Grok 生成站点等同于 Jev 建站；源码未核实，不新增开源项目。",
+      "en": "Author-post case without independently testing search, latency, or deployment. Result explanations are not established as Jev-generated prose, and a Grok-built site is not Jev site generation. Source code was not verified, so no open-source project is added."
+    },
+    "sources": [
+      {
+        "label": "Author case study",
+        "url": "https://x.com/dnsk96/status/2111623463920165210"
+      }
+    ]
   }
 ]

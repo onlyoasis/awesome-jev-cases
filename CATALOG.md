@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (127)
+## 深度使用案例 / Worked cases (134)
 
 ### jev-ultrafast
 
@@ -1147,7 +1147,70 @@
 - 核验边界：代码与原帖核查，未下载数据或调用模型。10,000 图像、92.45% 为作者自报，非本站复测；图像为实验预览，jev-preview 别名可能变化。根许可证及 pyproject 许可声明未发现，因此仅收录公开代码案例，不列为已核实许可的开源项目。
 - 来源：[Image Choice](https://github.com/kaitoy/jev-mnist/blob/4ae6a16ba49df03a5ad78fe42ecbb371eed1a704/jev_mnist/classify.py) · [Evaluation and CSV](https://github.com/kaitoy/jev-mnist/blob/4ae6a16ba49df03a5ad78fe42ecbb371eed1a704/jev_mnist/main.py) · [Author results](https://github.com/kaitoy/jev-mnist/blob/4ae6a16ba49df03a5ad78fe42ecbb371eed1a704/README.md) · [Author X post](https://x.com/kaitoy3_/status/2111667474878140846)
 
-## 开源项目 / Open-source projects (191)
+### OpenRouter 代理：三档模型路由与工具续接
+
+- 作者：adymitruk
+- 输入：最新用户目标、当前消息节选及是否有工具；路由状态只取有限字符。
+- Jev 判断：向 OpenRouter alpha/decisions 发送 Jev Choice，在 cheap、fast_mid、smart_pro 中选择；cheap 置信度低于 0.72 时升到中档。
+- 后续动作：改写请求 model 和 provider 排序后转发 chat/completions，支持流式或普通返回；工具续接复用短期路由，分类失败回退中档。
+- 核验边界：仅钉住源码核查，未启动代理或调用模型；续接键使用首条用户消息，不能视为经过验证的会话隔离。未发现根许可证，不新增为许可已核实的开源项目。
+- 来源：[Choice and downstream forwarding](https://github.com/adymitruk/openrouter-spend-jev/blob/811ae3f0524488e07ed9a9a589908b628df24e9b/jev-proxy/jev-proxy.py)
+
+### 会议脑图：按新增决定与待办选择更新模型
+
+- 作者：daiki-beppu
+- 输入：新增转写片段及最多六条近期发言；旧片段仅作上下文。
+- Jev 判断：Jev Noul 判断新增发言是否含决定、共识或 TODO；读取 yes 概率，而非所选类别的置信度。
+- 后续动作：yes 概率低于 0.3 交给 Haiku，其余或判断失败交给 Sonnet；分别保留各更新器的响应状态与待处理屏幕变化。
+- 核验边界：Jev 只做路由，脑图差分由下游模型生成。Jev 配置可关闭或换其他裁判，本地模式默认不调用云裁判；未录音、读取会议资料或实测成本。
+- 来源：[Noul and updater consumption](https://github.com/daiki-beppu/live-mindmap/blob/2af3dacdf6804d9f104bb6951042b16dd0bd556e/server/src/routedDiffUpdater.ts) · [System One request](https://github.com/daiki-beppu/live-mindmap/blob/2af3dacdf6804d9f104bb6951042b16dd0bd556e/server/src/systemOne.ts) · [Judge configuration](https://github.com/daiki-beppu/live-mindmap/blob/2af3dacdf6804d9f104bb6951042b16dd0bd556e/server/src/judgeSelection.ts)
+
+### jev-mem：向量召回后再筛选可注入记忆
+
+- 作者：must-lioncho
+- 输入：当前提示词节选，以及本地 claude-mem 召回的默认五条记录标题、摘要和日期。
+- Jev 判断：一条 TypeSafe System One 请求为每个候选提出 Noul，判断该记录是否能实质帮助当前任务。
+- 后续动作：按概率排序，默认仅注入达到 0.7 的最佳一条；可改为有上限的多条模式，无合格结果或超时/失败则不注入。
+- 核验边界：相关性不代表内容真实或仍有效。提示词和记忆摘要会发送给外部 Jev；仅审查源码，未读取本机记忆、安装钩子或发送用户资料，三提示词展示不是独立基准。
+- 来源：[Noul and threshold selection](https://github.com/must-lioncho/jev-mem/blob/08c06e3644cad70a68ab3d2948caf56c582b10c9/src/select.mjs) · [Retrieval and injection](https://github.com/must-lioncho/jev-mem/blob/08c06e3644cad70a68ab3d2948caf56c582b10c9/src/run.mjs) · [Native API client](https://github.com/must-lioncho/jev-mem/blob/08c06e3644cad70a68ab3d2948caf56c582b10c9/src/jev.mjs)
+
+### liedar：文档元数据与图像的风险筛查
+
+- 作者：colesmcintosh
+- 输入：PDF、PNG 或 JPEG 的元数据与页面图像；PDF 最多发送前十页。
+- Jev 判断：原生 Jev 请求对整体可疑程度和七类固定信号分别提 Noul，覆盖日期冲突、视觉修改及数值不一致等。
+- 后续动作：以 0.5 为阈值输出 likelyFraud 和原因列表，按信号概率排序，供终端或 JSON 消费。
+- 核验边界：只是筛查信号，不能据此认定欺诈。图像接口为实验功能，概率未经欺诈场景校准；仅源码核查，未上传文档、调用付费 API 或复测作者成本表。
+- 来源：[Fixed questions and report](https://github.com/colesmcintosh/liedar/blob/e97abb9ff4941d876e43313d1410fe9f19d41893/src/fraud-check.ts) · [Multipart Jev client](https://github.com/colesmcintosh/liedar/blob/e97abb9ff4941d876e43313d1410fe9f19d41893/src/jev.ts) · [Limits and warning](https://github.com/colesmcintosh/liedar/blob/e97abb9ff4941d876e43313d1410fe9f19d41893/README.md)
+
+### 商品图：规则概率与三路审核结果
+
+- 作者：Mani Khanuja / mani-aiml
+- 输入：商品说明、缩放后的整图及四角裁片；尺寸和正方形等确定性规则在代码中计算。
+- Jev 判断：Jev 用 Noul 检查白底、叠加文字、单一商品、清晰度和完整入镜；支持的型号另用 Box 定位商品。
+- 后续动作：把适用规则转换为合规概率：最低值 ≥0.9 判为可发布，≤0.2 退回，其余人工复核；Walmart 演示还以框面积判断画面占比。
+- 核验边界：这是社区离线规则演示，代码只输出分类和评分，不会发布商品，也不保证符合平台现行政策。图像与 Box 属预览，未下载照片、运行模型或独立复测结果。
+- 来源：[SDK Noul and Box](https://github.com/mani-aiml/jev-demos/blob/966eb49d398b0d81177ed83c26f793cda726b210/listing-photo-checker/checker/arm_jev.py) · [Thresholds and verdicts](https://github.com/mani-aiml/jev-demos/blob/966eb49d398b0d81177ed83c26f793cda726b210/listing-photo-checker/checker/rules.py) · [Verdict consumption](https://github.com/mani-aiml/jev-demos/blob/966eb49d398b0d81177ed83c26f793cda726b210/listing-photo-checker/checker/score.py)
+
+### 编码路由：三档开源模型与选组实验
+
+- 作者：Shivay Lamba / @HowDevelop
+- 输入：编码任务的首条用户目标；工具回合沿用本次选择。
+- Jev 判断：作者描述 Jev 将任务划入 routine、moderate 或 hard，分别映射 fast、balanced、strong；题型与完整路由提示未在本轮核实。
+- 后续动作：经 nconnect 转接编码代理请求至对应模型；三次工具失败或显式强档请求可升级。
+- 核验边界：仅作者一手文章，非本站运行。文中 78.5% 成本降幅来自 50 任务中事后选择的 32 条“通过且更省钱”任务，不能外推全部任务成功率或普遍节省；所链新仓库留待后续源码核查。
+- 来源：[Author experiment and selection method](https://x.com/HowDevelop/status/2111988896095506534)
+
+### offline.directory：按使用情境筛选离线应用
+
+- 作者：Denis / @dnsk96
+- 输入：访客用自然语言描述的使用情境，与目录内候选应用资料。
+- Jev 判断：作者称 Jev 对各应用与情境的适配程度打分；完整提示与具体题型未公开。
+- 后续动作：程序呈现最佳八个结果及适配标签，低置信度显示不确定；先呈现关键词结果，Jev 失败时回退关键词并记日志。
+- 核验边界：作者原帖案例，未复测搜索、延迟或部署。不能把结果说明文本归因为 Jev 自由生成，也不能把 Grok 生成站点等同于 Jev 建站；源码未核实，不新增开源项目。
+- 来源：[Author case study](https://x.com/dnsk96/status/2111623463920165210)
+
+## 开源项目 / Open-source projects (198)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1342,6 +1405,13 @@
 | [psygreg/agent-reflex](https://github.com/psygreg/agent-reflex) | community | Apache-2.0 | 2 |
 | [flupkede/fast-compaction](https://github.com/flupkede/fast-compaction) | community | MIT | 0 |
 | [typakon4/jev-layer](https://github.com/typakon4/jev-layer) | community | MIT | 7 |
+| [yetone/magpie](https://github.com/yetone/magpie) | community | MIT | 16148 |
+| [daiki-beppu/live-mindmap](https://github.com/daiki-beppu/live-mindmap) | community | MIT | 1 |
+| [kikijiki/jevmon](https://github.com/kikijiki/jevmon) | inspired | MIT | 0 |
+| [must-lioncho/jev-mem](https://github.com/must-lioncho/jev-mem) | community | MIT | 0 |
+| [colesmcintosh/liedar](https://github.com/colesmcintosh/liedar) | community | MIT | 0 |
+| [mani-aiml/jev-demos](https://github.com/mani-aiml/jev-demos) | community | MIT | 7 |
+| [mud-the-developer/jev-loop](https://github.com/mud-the-developer/jev-loop) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (20)
 

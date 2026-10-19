@@ -3054,5 +3054,117 @@
     "lastVerified": "2026-10-18",
     "status": "verified",
     "stars": 7
+  },
+  {
+    "id": "magpie-system-one-gateway",
+    "name": "yetone/magpie",
+    "url": "https://github.com/yetone/magpie",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 本地 AI 网关，已有 System One 请求/响应适配、Jev 意图与 effort 判断，以及决策模型组故障转移代码。可选其他裁判；仅核查源码，不把网关全部功能或作者性能声明当成 Jev 实测。",
+      "en": "MIT local AI gateway with System One request/response adaptation, Jev intent and effort judging, and decision-model group failover. Other judges are optional; source review does not establish Jev testing of every gateway feature or performance claim."
+    },
+    "sourceUrl": "https://github.com/yetone/magpie/blob/5774c790bdd62533179b705a1dba8c19cff5d481/README.md",
+    "lastVerified": "2026-10-19",
+    "status": "verified",
+    "stars": 16148
+  },
+  {
+    "id": "live-mindmap-jev-route",
+    "name": "daiki-beppu/live-mindmap",
+    "url": "https://github.com/daiki-beppu/live-mindmap",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 实时会议脑图工具，可用原生 Jev 判断新增发言含决定/TODO 的概率，再路由 Haiku/Sonnet 更新器。支持禁用或替换裁判；未录音或运行云服务，Jev 不生成脑图正文。",
+      "en": "MIT live meeting-mindmap tool using native Jev to judge decisions/action items in new remarks and route Haiku/Sonnet updaters. Judges can be disabled or replaced; no audio/cloud run was performed and Jev does not generate the mindmap prose."
+    },
+    "sourceUrl": "https://github.com/daiki-beppu/live-mindmap/blob/2af3dacdf6804d9f104bb6951042b16dd0bd556e/README.md",
+    "lastVerified": "2026-10-19",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "jevmon-local-decisions",
+    "name": "kikijiki/jevmon",
+    "url": "https://github.com/kikijiki/jevmon",
+    "category": "guard",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "受 Jev 类型化决策接口启发的 MIT Linux 进程监控工具，默认运行本地 Laya/其他编码器与分类头，记录 safe/warn/crit 供人工查看。并非已核实的 TypeSafe Jev 调用或安全防护效果；代码许可不替代模型权重条款。",
+      "en": "MIT Linux process-monitoring tool inspired by Jev's typed-decision interface, using local Laya/other encoders and heads by default to record safe/warn/crit verdicts for review. Not verified TypeSafe Jev calls or security efficacy; code licensing does not replace model-weight terms."
+    },
+    "sourceUrl": "https://github.com/kikijiki/jevmon/blob/876f9674a8be9624204ddb01bff7d289457e2e80/README.md",
+    "lastVerified": "2026-10-19",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-mem-context-gate",
+    "name": "must-lioncho/jev-mem",
+    "url": "https://github.com/must-lioncho/jev-mem",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 记忆筛选适配器，先从本地 claude-mem 召回，再以原生 Jev Noul 和阈值筛选注入。默认最佳一条、失败不注入；提示词/摘要会离机，未安装钩子或读取用户记忆。",
+      "en": "MIT memory-selection adapter retrieving from local claude-mem before native Jev Nouls and threshold-gated injection. Defaults to one best record and no injection on failure; prompts/summaries leave the device. No hooks installed or user memories read."
+    },
+    "sourceUrl": "https://github.com/must-lioncho/jev-mem/blob/08c06e3644cad70a68ab3d2948caf56c582b10c9/README.md",
+    "lastVerified": "2026-10-19",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "liedar-document-screen",
+    "name": "colesmcintosh/liedar",
+    "url": "https://github.com/colesmcintosh/liedar",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 的 PDF/PNG/JPEG 风险筛查 CLI 与库，原生 Jev 图像/元数据请求输出固定信号及 JSON 报告。不是欺诈鉴定，图像为实验功能且概率未校准；未上传文档或独立复测。",
+      "en": "MIT PDF/PNG/JPEG screening CLI and library using native Jev image/metadata requests for fixed signals and JSON reports. Not fraud determination; images are experimental and probabilities uncalibrated. No documents uploaded or independent reproduction performed."
+    },
+    "sourceUrl": "https://github.com/colesmcintosh/liedar/blob/e97abb9ff4941d876e43313d1410fe9f19d41893/README.md",
+    "lastVerified": "2026-10-19",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "mani-jev-demos",
+    "name": "mani-aiml/jev-demos",
+    "url": "https://github.com/mani-aiml/jev-demos",
+    "category": "list",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 社区演示合集，核实了商品图 Noul/Box 接线和三路规则评分，另有检索、裁判与本地模型对照工具。仅所列路径完成源码核查，非 TypeSafe 官方基准或生产政策保证。",
+      "en": "MIT community demo collection with reviewed listing-photo Noul/Box wiring and three-way rule scoring, alongside retrieval, judging, and local-model comparisons. Only the named paths were source-reviewed; not an official TypeSafe benchmark or production-policy guarantee."
+    },
+    "sourceUrl": "https://github.com/mani-aiml/jev-demos/blob/966eb49d398b0d81177ed83c26f793cda726b210/README.md",
+    "lastVerified": "2026-10-19",
+    "status": "verified",
+    "stars": 7
+  },
+  {
+    "id": "jev-loop-verifier-advice",
+    "name": "mud-the-developer/jev-loop",
+    "url": "https://github.com/mud-the-developer/jev-loop",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT、基于 pi-loop 的源码开发版，用已配置的公开 jev_decide 工具建议配合固定验证器完成有界循环。需另配后端和 Pi 嵌套工具接口，仅 Pi 活跃时运行；真实模型/终端验收仍未证实，不收为已验证 Jev 端到端案例。",
+      "en": "MIT source development version derived from pi-loop, combining advice from a separately configured public jev_decide tool with a fixed verifier for bounded-loop completion. Requires a backend and Pi nested tools and runs while Pi is active; live-model/terminal acceptance is unverified, so no end-to-end Jev case is claimed."
+    },
+    "sourceUrl": "https://github.com/mud-the-developer/jev-loop/blob/e28afa835509f99893192a7be4fe89770db1f2d0/README.md",
+    "lastVerified": "2026-10-19",
+    "status": "verified",
+    "stars": 0
   }
 ]
