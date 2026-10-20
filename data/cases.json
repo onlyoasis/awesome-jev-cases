@@ -5541,8 +5541,8 @@
       "en": "Route coding-agent requests through nconnect to the chosen model, escalating after three tool failures or an explicit strong-tier request."
     },
     "boundary": {
-      "zh": "仅作者一手文章，非本站运行。文中 78.5% 成本降幅来自 50 任务中事后选择的 32 条“通过且更省钱”任务，不能外推全部任务成功率或普遍节省；所链新仓库留待后续源码核查。",
-      "en": "Author article only, not a site-run test. The reported 78.5% saving is from a post-selected 32 of 50 tasks that passed and cost less, not whole-set success or a universal saving. Linked new repositories await source review."
+      "zh": "仅作者一手文章，非本站运行。文中 78.5% 成本降幅来自 50 任务中事后选择的 32 条“通过且更省钱”任务，不能外推全部任务成功率或普遍节省；所链实验库和 nconnect 已另行核对并列入项目目录，实验运行及效果仍未由本站复现。",
+      "en": "Author article only, not a site-run test. The reported 78.5% saving is from a post-selected 32 of 50 tasks that passed and cost less, not whole-set success or a universal saving. The experiment repository and nconnect have since been source-reviewed and listed separately; the experiment and its effects remain independently untested."
     },
     "sources": [
       {
@@ -5780,6 +5780,266 @@
       {
         "label": "Author DM routine and review boundary",
         "url": "https://x.com/defileo/status/2102140359690305783"
+      }
+    ]
+  },
+  {
+    "id": "financial-document-type-choice-demo",
+    "name": "Document classifier",
+    "author": "Landon Thornton / LandoCole",
+    "title": {
+      "zh": "文档类型分类：固定词表与候选概率展示",
+      "en": "Document types: fixed vocabulary and candidate probabilities"
+    },
+    "area": {
+      "zh": "文档类型识别",
+      "en": "Document-type recognition"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "文档文本或抽取片段、片段策略说明，以及 21 种文档类型和“其他”的固定定义。",
+      "en": "Document text or an excerpt, an excerpt-strategy note, and fixed definitions for 21 document types plus other."
+    },
+    "decision": {
+      "zh": "向原生 /v1/systemone 发送一个 document_type Choice；代码检查选项、confidence、候选概率与 token 字段。",
+      "en": "Send one document_type Choice to native /v1/systemone; code checks the selected option, confidence, candidate probabilities, and token fields."
+    },
+    "action": {
+      "zh": "API 将类别、排序概率、实际型号和延迟返回网页；类别动画按响应概率展示并落到最终选择，不代表推理过程。",
+      "en": "The API returns the category, ranked probabilities, actual model, and latency to the page; the animation visualizes probabilities and lands on the choice rather than revealing inference."
+    },
+    "boundary": {
+      "zh": "仅钉住源码核查，未上传文档或调用模型。43 份合成文档的结果是作者演示，不能外推真实金融文档准确率；文本片段仍会发往托管模型，也未核实自动归档或低置信度转人工的生产接线。",
+      "en": "Pinned source review only, without uploading documents or calling the model. Results on 43 synthetic documents are an author demonstration, not real financial-document accuracy. Excerpts still go to hosted inference; production auto-filing or human escalation wiring was not verified."
+    },
+    "sources": [
+      {
+        "label": "Native Choice and response parsing",
+        "url": "https://github.com/LandoCole/document-classifier/blob/d3a220cf901b7935dd766510979c9b175761f689/src/jev.js"
+      },
+      {
+        "label": "HTTP consumer",
+        "url": "https://github.com/LandoCole/document-classifier/blob/d3a220cf901b7935dd766510979c9b175761f689/api/classify.js"
+      },
+      {
+        "label": "Probability visualization",
+        "url": "https://github.com/LandoCole/document-classifier/blob/d3a220cf901b7935dd766510979c9b175761f689/src/settle.js"
+      },
+      {
+        "label": "Synthetic evaluation boundary",
+        "url": "https://github.com/LandoCole/document-classifier/blob/d3a220cf901b7935dd766510979c9b175761f689/README.md"
+      }
+    ]
+  },
+  {
+    "id": "signalweave-policy-evidence-handoff",
+    "name": "SignalWeave",
+    "author": "waddle-zoo",
+    "title": {
+      "zh": "SignalWeave：BI 证据到有限策略结果与交接",
+      "en": "SignalWeave: BI evidence to bounded policy results and handoffs"
+    },
+    "area": {
+      "zh": "分析证据与工作流交接",
+      "en": "Analytics evidence and workflow handoffs"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户审核的分析卡片、标准化观测、来源证据及代码计算的数值比较；计算结果与语义策略分开。",
+      "en": "A user-reviewed analytics card, normalized observations, source evidence, and code-computed numeric comparisons, with calculations separated from semantic policy."
+    },
+    "decision": {
+      "zh": "配置 Jev 时用 Choice 判断观察项和 ignore、investigate、notify 等有限结果，Noul 回答卡片问题；低支持度的动作结果回退调查。",
+      "en": "With Jev configured, Choices judge watch items and bounded outcomes such as ignore, investigate, and notify, while Nouls answer card questions; low-support action outcomes fall back to investigation."
+    },
+    "action": {
+      "zh": "引擎再应用来源错误与策略门槛，生成带证据、调查计划和目的地的结构化交接与收据，供调用 Agent 深入分析和执行消息发送。",
+      "en": "The engine applies source-error and policy gates, returning evidence, investigation plans, destinations, and receipts for the calling agent to analyze further and handle delivery."
+    },
+    "boundary": {
+      "zh": "源码核查，未接入真实 BI、调度检查或发送通知。Jev 不负责因果解释，数值贡献不证明因果；服务支持其他后端，不能把所有运行都算 Jev。范围/预算不足会产生待调查交接，作者验收与本站复测分开。",
+      "en": "Source review only, without connecting BI systems, scheduling checks, or sending notifications. Jev does not supply causal explanations and numeric contributions are not causal proof. Other backends are supported, so not every run is a Jev run. Evidence or budget gaps can defer investigation; author acceptance is distinct from independent testing."
+    },
+    "sources": [
+      {
+        "label": "SDK questions and outcome parsing",
+        "url": "https://github.com/waddle-zoo/signal-weave/blob/2ce1c7ddbcd0cf885e26a996a8d89be862af3016/src/signalweave/typesafe_adapter.py"
+      },
+      {
+        "label": "Gates and workflow handoff",
+        "url": "https://github.com/waddle-zoo/signal-weave/blob/2ce1c7ddbcd0cf885e26a996a8d89be862af3016/src/signalweave/engine.py"
+      },
+      {
+        "label": "Service and caller responsibilities",
+        "url": "https://github.com/waddle-zoo/signal-weave/blob/2ce1c7ddbcd0cf885e26a996a8d89be862af3016/README.md"
+      }
+    ]
+  },
+  {
+    "id": "recoveriq-budgeted-recovery-actions",
+    "name": "RecoverIQ",
+    "author": "sanghamitrajohri",
+    "title": {
+      "zh": "RecoverIQ：失败恢复建议与确定性预算约束",
+      "en": "RecoverIQ: recovery advice with deterministic budget constraints"
+    },
+    "area": {
+      "zh": "编码 Agent 恢复实验",
+      "en": "Coding-agent recovery experiment"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "失败摘要、尝试历史、当前模型、受损文件信息、可用检查点和剩余预算；只提供当前可行的动作。",
+      "en": "Failure summaries, attempt history, current model, damaged-file information, checkpoint availability, and remaining budget, with only currently feasible actions offered."
+    },
+    "decision": {
+      "zh": "Jev Choice 排序重试、换模型、恢复检查点、人工升级或终止，另判断失败类别及重试是否有帮助；默认重试门槛为 Noul 0.3。",
+      "en": "A Jev Choice ranks retry, model switch, checkpoint restore, human escalation, or terminate; separate questions classify failure and whether retry helps, with a default 0.3 Noul retry gate."
+    },
+    "action": {
+      "zh": "确定性策略拒绝无效、不可用或超预算建议，再由图节点执行重试、换档、恢复或人工 interrupt；Jev 不可用时显式回退规则策略。",
+      "en": "A deterministic policy rejects invalid, unavailable, or unaffordable advice before graph nodes retry, switch tiers, restore, or interrupt for a human; Jev unavailability uses an explicitly labeled rules fallback."
+    },
+    "boundary": {
+      "zh": "默认 mock 与 live 明确区分；本站未运行生成代码或付费实验。作者 108 次运行规模小，重试门槛在首个 live 调用后调整，人力成本口径也会改变比较结论；根许可证未确认，因此只作代码案例。预算门槛依赖成本估计，不保证真实账单硬上限。",
+      "en": "Mock and live modes are distinct; no generated code or paid experiment was run here. The author’s 108-run study is small, its retry gate was adjusted after the first live call, and human-cost assumptions change comparisons. No root license was confirmed, so this is a code case only. Budget gates depend on cost estimates and do not guarantee a hard billing limit."
+    },
+    "sources": [
+      {
+        "label": "Native SDK decisions",
+        "url": "https://github.com/sanghamitrajohri/recoveriq/blob/c11648917d45753f77d631d0f5b0a312cba93567/jev_adapter.py"
+      },
+      {
+        "label": "Retry gate and fallback",
+        "url": "https://github.com/sanghamitrajohri/recoveriq/blob/c11648917d45753f77d631d0f5b0a312cba93567/strategies.py"
+      },
+      {
+        "label": "Deterministic budget policy",
+        "url": "https://github.com/sanghamitrajohri/recoveriq/blob/c11648917d45753f77d631d0f5b0a312cba93567/recovery_policy.py"
+      },
+      {
+        "label": "Action consumption",
+        "url": "https://github.com/sanghamitrajohri/recoveriq/blob/c11648917d45753f77d631d0f5b0a312cba93567/engine.py"
+      }
+    ]
+  },
+  {
+    "id": "jev-send-guard-advisory-draft-check",
+    "name": "Jev Send Guard",
+    "author": "MrDesjardins",
+    "title": {
+      "zh": "Jev Send Guard：允许应用内的草稿语气提示",
+      "en": "Jev Send Guard: draft-tone advice in allowed applications"
+    },
+    "area": {
+      "zh": "草稿编辑辅助",
+      "en": "Draft-editing assistance"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户允许列表中当前文本框的草稿，停止输入后检查；上下文开启时还包含可读的前文，默认不监控任何应用。",
+      "en": "A draft in the focused text field of a user-allowlisted application, checked after typing pauses; readable prior messages are included when context is enabled, and no apps are watched by default."
+    },
+    "decision": {
+      "zh": "Jev Noul 判断语气、明确请求、礼貌和讽刺等可配置问题，概率达到 0.7 时标记相应关注项。",
+      "en": "Configurable Jev Nouls assess tone, a clear ask, politeness, sarcasm, and related concerns, flagging an item at probability 0.7."
+    },
+    "action": {
+      "zh": "程序按关注项级别在输入框旁显示提示、分别展示模型结果与耗时；它不挂钩发送动作，也不会自动阻止或发送消息。",
+      "en": "Code displays severity-based advice beside the field with separate model results and latency; it does not intercept sending, block it automatically, or send messages."
+    },
+    "boundary": {
+      "zh": "仅源码核查，未安装、授权辅助功能或读取用户草稿。Windows 实机效果为作者自报，macOS 仍待作者实测；草稿/可选前文会离机。漏答项在所核代码中按 0 处理，提示不等于确定无风险；根许可未发现，不列开源项目。",
+      "en": "Source review only, without installation, accessibility authorization, or reading user drafts. Windows acceptance is author-reported and macOS remains untested by the author; drafts and optional prior messages leave the device. Missing answers become zero in the inspected code, so advice does not establish absence of risk. No root license was found, so no project listing is added."
+    },
+    "sources": [
+      {
+        "label": "Noul requests and threshold",
+        "url": "https://github.com/MrDesjardins/jev-send-guard/blob/adccaa732bf458427b3039b5574d58f0392e906b/core/jev_client.py"
+      },
+      {
+        "label": "Advisory popup consumption",
+        "url": "https://github.com/MrDesjardins/jev-send-guard/blob/adccaa732bf458427b3039b5574d58f0392e906b/core/watch_loop.py"
+      },
+      {
+        "label": "Application allowlist",
+        "url": "https://github.com/MrDesjardins/jev-send-guard/blob/adccaa732bf458427b3039b5574d58f0392e906b/core/config.py"
+      },
+      {
+        "label": "Platform and permission boundaries",
+        "url": "https://github.com/MrDesjardins/jev-send-guard/blob/adccaa732bf458427b3039b5574d58f0392e906b/README.md"
+      }
+    ]
+  },
+  {
+    "id": "openclaw-closed-routing-confidence-pilot",
+    "name": "Vai OpenClaw decision pilot",
+    "author": "Michael Gannotti / Vai",
+    "title": {
+      "zh": "OpenClaw：闭合决策与低置信度的离线试验",
+      "en": "OpenClaw: offline bounded decisions and low-confidence cases"
+    },
+    "area": {
+      "zh": "Agent 决策离线评估",
+      "en": "Offline agent-decision evaluation"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "简短的技能选择、是否发言、行动/询问/拒绝、任务形态和证据保留等情境，附预先定义的答案。",
+      "en": "Short scenarios for skill selection, speaking, acting/asking/refusing, task shape, and evidence retention, with predefined answers."
+    },
+    "decision": {
+      "zh": "作者用 Jev 的 Choice、Score 和 Noul 检查封闭问题，并比较标签与置信度，特别标出约 0.50 的不确定结果。",
+      "en": "The author uses Jev Choices, Scores, and Nouls for closed questions, comparing labels and confidence and highlighting uncertain results around 0.50."
+    },
+    "action": {
+      "zh": "作者汇总离线测试结果与低置信度行，提出把低于 0.80 的建议交回主 Agent 或人工；文章未证明这些建议已接入生产工具执行。",
+      "en": "The author summarizes offline results and low-confidence rows and proposes returning advice below 0.80 to the main agent or a person; production tool-execution wiring is not established."
+    },
+    "boundary": {
+      "zh": "仅作者文章，未核实逐行数据或复测“32/32”、延迟和费用。单条注入及少量语言/推理探针不能证明安全或多语言能力，confidence 阈值不是权限；Jev 不生成最终回复。",
+      "en": "Author article only, without row-level verification or reproducing the reported 32/32, latency, or cost. One injection and a few language/reasoning probes do not establish safety or multilingual ability; a confidence threshold is not permission. Jev does not generate the final reply."
+    },
+    "sources": [
+      {
+        "label": "Author pilot and limitations",
+        "url": "https://x.com/MichaelGannotti/status/2112259468671197615"
+      }
+    ]
+  },
+  {
+    "id": "paired-product-photo-classification-evaluation",
+    "name": "Jev product-photo paired evaluation",
+    "author": "Gbolagade Ishola / @gbolagadehq",
+    "title": {
+      "zh": "商品分类：同样本的文本与主图配对评估",
+      "en": "Product categories: paired text-only and main-photo evaluation"
+    },
+    "area": {
+      "zh": "视觉分类离线评估",
+      "en": "Offline visual-classification evaluation"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "同一批 1,999 个商品的文案与主图，固定类别顺序；作者说明超限图像仅补边或缩放，不裁剪。",
+      "en": "Text and main photos for the same 1,999 products, with fixed category ordering; the author reports padding or resizing out-of-limit images without cropping."
+    },
+    "decision": {
+      "zh": "作者让 Jev 1.14 从固定类别中选择并返回概率，对照仅文本和文本加图；本轮未核 API payload 或所链新仓库。",
+      "en": "The author asks Jev 1.14 to choose among fixed categories with probabilities, comparing text only against text plus image; API payloads and the newly linked repository were not reviewed this run."
+    },
+    "action": {
+      "zh": "将预测与标签配对比较，统计图像增益、置信度分布及输入开销，并分别报告近重复类别接受规则与原始标签计分。",
+      "en": "Compare paired predictions with labels, measuring image gains, confidence distributions, and input overhead, and distinguish near-duplicate-category acceptance from raw-label scoring."
+    },
+    "boundary": {
+      "zh": "仅作者离线评估，非本站复测；图像增益小且临界，接受规则会改变计数，公开数据及标签也有局限。低置信度再调用更强模型只是下一步设想，未测混合流程；不把结果推广到损伤检测、客户实拍、Box 或多语言。",
+      "en": "Author-reported offline evaluation, not independently reproduced. Image gains are small and borderline, acceptance rules change counts, and public data and labels have limitations. Stronger-model escalation is a proposed next experiment, not a tested hybrid; results do not establish damage detection, customer photos, Box, or multilingual performance."
+    },
+    "sources": [
+      {
+        "label": "Author paired study and deviations",
+        "url": "https://x.com/gbolagadehq/status/2112310531881156707"
       }
     ]
   }

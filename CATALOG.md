@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (139)
+## 深度使用案例 / Worked cases (145)
 
 ### jev-ultrafast
 
@@ -1198,7 +1198,7 @@
 - 输入：编码任务的首条用户目标；工具回合沿用本次选择。
 - Jev 判断：作者描述 Jev 将任务划入 routine、moderate 或 hard，分别映射 fast、balanced、strong；题型与完整路由提示未在本轮核实。
 - 后续动作：经 nconnect 转接编码代理请求至对应模型；三次工具失败或显式强档请求可升级。
-- 核验边界：仅作者一手文章，非本站运行。文中 78.5% 成本降幅来自 50 任务中事后选择的 32 条“通过且更省钱”任务，不能外推全部任务成功率或普遍节省；所链新仓库留待后续源码核查。
+- 核验边界：仅作者一手文章，非本站运行。文中 78.5% 成本降幅来自 50 任务中事后选择的 32 条“通过且更省钱”任务，不能外推全部任务成功率或普遍节省；所链实验库和 nconnect 已另行核对并列入项目目录，实验运行及效果仍未由本站复现。
 - 来源：[Author experiment and selection method](https://x.com/HowDevelop/status/2111988896095506534)
 
 ### offline.directory：按使用情境筛选离线应用
@@ -1255,7 +1255,61 @@
 - 核验边界：仅作者对现有流程的自述，无自动化导出、源码或本站端到端验收；文中的构建脚本与 Zapier/Make 说明不等于已验证部署。私信传给模型须由使用者授权，本次未读取私信、接入账号或发送消息。
 - 来源：[Author DM routine and review boundary](https://x.com/defileo/status/2102140359690305783)
 
-## 开源项目 / Open-source projects (198)
+### 文档类型分类：固定词表与候选概率展示
+
+- 作者：Landon Thornton / LandoCole
+- 输入：文档文本或抽取片段、片段策略说明，以及 21 种文档类型和“其他”的固定定义。
+- Jev 判断：向原生 /v1/systemone 发送一个 document_type Choice；代码检查选项、confidence、候选概率与 token 字段。
+- 后续动作：API 将类别、排序概率、实际型号和延迟返回网页；类别动画按响应概率展示并落到最终选择，不代表推理过程。
+- 核验边界：仅钉住源码核查，未上传文档或调用模型。43 份合成文档的结果是作者演示，不能外推真实金融文档准确率；文本片段仍会发往托管模型，也未核实自动归档或低置信度转人工的生产接线。
+- 来源：[Native Choice and response parsing](https://github.com/LandoCole/document-classifier/blob/d3a220cf901b7935dd766510979c9b175761f689/src/jev.js) · [HTTP consumer](https://github.com/LandoCole/document-classifier/blob/d3a220cf901b7935dd766510979c9b175761f689/api/classify.js) · [Probability visualization](https://github.com/LandoCole/document-classifier/blob/d3a220cf901b7935dd766510979c9b175761f689/src/settle.js) · [Synthetic evaluation boundary](https://github.com/LandoCole/document-classifier/blob/d3a220cf901b7935dd766510979c9b175761f689/README.md)
+
+### SignalWeave：BI 证据到有限策略结果与交接
+
+- 作者：waddle-zoo
+- 输入：用户审核的分析卡片、标准化观测、来源证据及代码计算的数值比较；计算结果与语义策略分开。
+- Jev 判断：配置 Jev 时用 Choice 判断观察项和 ignore、investigate、notify 等有限结果，Noul 回答卡片问题；低支持度的动作结果回退调查。
+- 后续动作：引擎再应用来源错误与策略门槛，生成带证据、调查计划和目的地的结构化交接与收据，供调用 Agent 深入分析和执行消息发送。
+- 核验边界：源码核查，未接入真实 BI、调度检查或发送通知。Jev 不负责因果解释，数值贡献不证明因果；服务支持其他后端，不能把所有运行都算 Jev。范围/预算不足会产生待调查交接，作者验收与本站复测分开。
+- 来源：[SDK questions and outcome parsing](https://github.com/waddle-zoo/signal-weave/blob/2ce1c7ddbcd0cf885e26a996a8d89be862af3016/src/signalweave/typesafe_adapter.py) · [Gates and workflow handoff](https://github.com/waddle-zoo/signal-weave/blob/2ce1c7ddbcd0cf885e26a996a8d89be862af3016/src/signalweave/engine.py) · [Service and caller responsibilities](https://github.com/waddle-zoo/signal-weave/blob/2ce1c7ddbcd0cf885e26a996a8d89be862af3016/README.md)
+
+### RecoverIQ：失败恢复建议与确定性预算约束
+
+- 作者：sanghamitrajohri
+- 输入：失败摘要、尝试历史、当前模型、受损文件信息、可用检查点和剩余预算；只提供当前可行的动作。
+- Jev 判断：Jev Choice 排序重试、换模型、恢复检查点、人工升级或终止，另判断失败类别及重试是否有帮助；默认重试门槛为 Noul 0.3。
+- 后续动作：确定性策略拒绝无效、不可用或超预算建议，再由图节点执行重试、换档、恢复或人工 interrupt；Jev 不可用时显式回退规则策略。
+- 核验边界：默认 mock 与 live 明确区分；本站未运行生成代码或付费实验。作者 108 次运行规模小，重试门槛在首个 live 调用后调整，人力成本口径也会改变比较结论；根许可证未确认，因此只作代码案例。预算门槛依赖成本估计，不保证真实账单硬上限。
+- 来源：[Native SDK decisions](https://github.com/sanghamitrajohri/recoveriq/blob/c11648917d45753f77d631d0f5b0a312cba93567/jev_adapter.py) · [Retry gate and fallback](https://github.com/sanghamitrajohri/recoveriq/blob/c11648917d45753f77d631d0f5b0a312cba93567/strategies.py) · [Deterministic budget policy](https://github.com/sanghamitrajohri/recoveriq/blob/c11648917d45753f77d631d0f5b0a312cba93567/recovery_policy.py) · [Action consumption](https://github.com/sanghamitrajohri/recoveriq/blob/c11648917d45753f77d631d0f5b0a312cba93567/engine.py)
+
+### Jev Send Guard：允许应用内的草稿语气提示
+
+- 作者：MrDesjardins
+- 输入：用户允许列表中当前文本框的草稿，停止输入后检查；上下文开启时还包含可读的前文，默认不监控任何应用。
+- Jev 判断：Jev Noul 判断语气、明确请求、礼貌和讽刺等可配置问题，概率达到 0.7 时标记相应关注项。
+- 后续动作：程序按关注项级别在输入框旁显示提示、分别展示模型结果与耗时；它不挂钩发送动作，也不会自动阻止或发送消息。
+- 核验边界：仅源码核查，未安装、授权辅助功能或读取用户草稿。Windows 实机效果为作者自报，macOS 仍待作者实测；草稿/可选前文会离机。漏答项在所核代码中按 0 处理，提示不等于确定无风险；根许可未发现，不列开源项目。
+- 来源：[Noul requests and threshold](https://github.com/MrDesjardins/jev-send-guard/blob/adccaa732bf458427b3039b5574d58f0392e906b/core/jev_client.py) · [Advisory popup consumption](https://github.com/MrDesjardins/jev-send-guard/blob/adccaa732bf458427b3039b5574d58f0392e906b/core/watch_loop.py) · [Application allowlist](https://github.com/MrDesjardins/jev-send-guard/blob/adccaa732bf458427b3039b5574d58f0392e906b/core/config.py) · [Platform and permission boundaries](https://github.com/MrDesjardins/jev-send-guard/blob/adccaa732bf458427b3039b5574d58f0392e906b/README.md)
+
+### OpenClaw：闭合决策与低置信度的离线试验
+
+- 作者：Michael Gannotti / Vai
+- 输入：简短的技能选择、是否发言、行动/询问/拒绝、任务形态和证据保留等情境，附预先定义的答案。
+- Jev 判断：作者用 Jev 的 Choice、Score 和 Noul 检查封闭问题，并比较标签与置信度，特别标出约 0.50 的不确定结果。
+- 后续动作：作者汇总离线测试结果与低置信度行，提出把低于 0.80 的建议交回主 Agent 或人工；文章未证明这些建议已接入生产工具执行。
+- 核验边界：仅作者文章，未核实逐行数据或复测“32/32”、延迟和费用。单条注入及少量语言/推理探针不能证明安全或多语言能力，confidence 阈值不是权限；Jev 不生成最终回复。
+- 来源：[Author pilot and limitations](https://x.com/MichaelGannotti/status/2112259468671197615)
+
+### 商品分类：同样本的文本与主图配对评估
+
+- 作者：Gbolagade Ishola / @gbolagadehq
+- 输入：同一批 1,999 个商品的文案与主图，固定类别顺序；作者说明超限图像仅补边或缩放，不裁剪。
+- Jev 判断：作者让 Jev 1.14 从固定类别中选择并返回概率，对照仅文本和文本加图；本轮未核 API payload 或所链新仓库。
+- 后续动作：将预测与标签配对比较，统计图像增益、置信度分布及输入开销，并分别报告近重复类别接受规则与原始标签计分。
+- 核验边界：仅作者离线评估，非本站复测；图像增益小且临界，接受规则会改变计数，公开数据及标签也有局限。低置信度再调用更强模型只是下一步设想，未测混合流程；不把结果推广到损伤检测、客户实拍、Box 或多语言。
+- 来源：[Author paired study and deviations](https://x.com/gbolagadehq/status/2112310531881156707)
+
+## 开源项目 / Open-source projects (204)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1457,6 +1511,12 @@
 | [colesmcintosh/liedar](https://github.com/colesmcintosh/liedar) | community | MIT | 0 |
 | [mani-aiml/jev-demos](https://github.com/mani-aiml/jev-demos) | community | MIT | 7 |
 | [mud-the-developer/jev-loop](https://github.com/mud-the-developer/jev-loop) | community | MIT | 0 |
+| [LandoCole/document-classifier](https://github.com/LandoCole/document-classifier) | community | MIT | 0 |
+| [waddle-zoo/signal-weave](https://github.com/waddle-zoo/signal-weave) | community | Apache-2.0 | 4 |
+| [nocoo/falcon](https://github.com/nocoo/falcon) | community | MIT | 0 |
+| [tancy-920/jev-agentic-wiki](https://github.com/tancy-920/jev-agentic-wiki) | community | MIT (code) | 0 |
+| [shivaylamba/jev-model-router-for-coding-tasks-oss](https://github.com/shivaylamba/jev-model-router-for-coding-tasks-oss) | community | MIT | 0 |
+| [Studio1-OSS/nconnect](https://github.com/Studio1-OSS/nconnect) | community | MIT | 7 |
 
 ## 官方 cookbook / Official recipes (20)
 

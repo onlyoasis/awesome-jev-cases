@@ -3166,5 +3166,101 @@
     "lastVerified": "2026-10-19",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "lando-document-classifier",
+    "name": "LandoCole/document-classifier",
+    "url": "https://github.com/LandoCole/document-classifier",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 文档类型分类演示：原生 Jev Choice 从21类及其他中选择，API返回候选概率供网页展示。43份合成样本的表现是作者演示，未复测真实文档，也未核实自动归档。",
+      "en": "MIT document-type classification demo using native Jev Choice over 21 types plus other, returning probabilities to a web UI. The 43 synthetic samples are an author demonstration, not independent real-document or auto-filing acceptance."
+    },
+    "sourceUrl": "https://github.com/LandoCole/document-classifier/blob/d3a220cf901b7935dd766510979c9b175761f689/README.md",
+    "lastVerified": "2026-10-20",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "signalweave-bi-policy",
+    "name": "waddle-zoo/signal-weave",
+    "url": "https://github.com/waddle-zoo/signal-weave",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 的分析工作流 MCP 服务，复用经审核卡片、来源证据和原生 Jev 的有限策略判断；输出调查/通知交接与收据，调度和消息发送由调用方负责。支持其他后端，本站未接真实 BI 或通知渠道。",
+      "en": "Apache-2.0 analytics-workflow MCP service combining reviewed cards, source evidence, and native Jev bounded policy judgments. It returns investigation/delivery handoffs and receipts while callers schedule and send messages. Other backends exist; no BI or messaging channel was connected here."
+    },
+    "sourceUrl": "https://github.com/waddle-zoo/signal-weave/blob/2ce1c7ddbcd0cf885e26a996a8d89be862af3016/README.md",
+    "lastVerified": "2026-10-20",
+    "status": "verified",
+    "stars": 4
+  },
+  {
+    "id": "falcon-native-decision-proxy",
+    "name": "nocoo/falcon",
+    "url": "https://github.com/nocoo/falcon",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT macOS 原生 HTTP/MCP 代理及决策观察工具，已核查上游转发与记录管线；支持直连或自有 relay、阶段回放及导出。未安装或实机验收；开发版未公证、凭据与本地记录存储边界由使用者审查。",
+      "en": "MIT native macOS HTTP/MCP proxy and decision-observation tool with reviewed upstream forwarding and recording paths. Supports direct or self-hosted relay, replay, and export. Not installed or device-tested here; the unnotarized development build’s credential and local-record storage boundaries require user review."
+    },
+    "sourceUrl": "https://github.com/nocoo/falcon/blob/bcc08d78475ab3d36d27e2c15602d9b21cb35ed8/README.md",
+    "lastVerified": "2026-10-20",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jev-agentic-wiki",
+    "name": "tancy-920/jev-agentic-wiki",
+    "url": "https://github.com/tancy-920/jev-agentic-wiki",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT (code)",
+    "summary": {
+      "zh": "MIT 代码的完整文章 Wiki/Graph RAG 助手，含需显式 live 门槛的原生 Jev 适配器和可选回答预算判断。静态展示及 Wiki/图导航基准不等于 Jev 端到端效果，本轮仅列项目，未运行模型或复测头部指标。",
+      "en": "MIT-code complete-article Wiki/Graph RAG assistant with an explicitly gated native Jev adapter and optional answer-budget judgments. Static replay and Wiki/graph benchmarks do not establish Jev end-to-end gains. Project listing only; no models or headline metrics were independently tested."
+    },
+    "sourceUrl": "https://github.com/tancy-920/jev-agentic-wiki/blob/c65bc3de4d8507c8e68e9858fcb11edf0d553aa8/README.md",
+    "lastVerified": "2026-10-20",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "shivay-oss-coding-router-study",
+    "name": "shivaylamba/jev-model-router-for-coding-tasks-oss",
+    "url": "https://github.com/shivaylamba/jev-model-router-for-coding-tasks-oss",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 的编码路由实验库，按固定工具/模型目录运行 nconnect 与隐藏测试，区分全50任务和事后筛选的32条节省样本。依赖外部固定版本工具与付费 API，未复测；原作者文章案例已收录，不重复新增案例。",
+      "en": "MIT coding-router experiment with pinned tools/catalogs, nconnect, and hidden tests, separating all 50 tasks from the post-selected 32 saving cases. Requires external pinned tools and paid APIs; not independently reproduced. The author article is already a case, so no duplicate case is added."
+    },
+    "sourceUrl": "https://github.com/shivaylamba/jev-model-router-for-coding-tasks-oss/blob/f16cfbc2805db43723a487e5abd327d541cea57f/README.md",
+    "lastVerified": "2026-10-20",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "nconnect-auto-decider",
+    "name": "Studio1-OSS/nconnect",
+    "url": "https://github.com/Studio1-OSS/nconnect",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 编码代理协议适配网关，Auto可显式选原生 Jev、另一托管模型或本地 Laya；Jev只判断任务难度，显式用户信号优先，失败回退规则。原生客户端与路由消费已核查，未安装或复测成本。",
+      "en": "MIT coding-agent protocol gateway whose Auto mode can explicitly select native Jev, another hosted model, or local Laya. Jev judges task difficulty; explicit user signals take priority and failures fall back to rules. Native client and routing consumption reviewed, without installation or cost reproduction."
+    },
+    "sourceUrl": "https://github.com/Studio1-OSS/nconnect/blob/2cb9d235b10f6289b4b9b06ad52f30e1ee6e425e/README.md",
+    "lastVerified": "2026-10-20",
+    "status": "verified",
+    "stars": 7
   }
 ]
