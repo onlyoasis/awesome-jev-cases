@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (134)
+## 深度使用案例 / Worked cases (139)
 
 ### jev-ultrafast
 
@@ -1209,6 +1209,51 @@
 - 后续动作：程序呈现最佳八个结果及适配标签，低置信度显示不确定；先呈现关键词结果，Jev 失败时回退关键词并记日志。
 - 核验边界：作者原帖案例，未复测搜索、延迟或部署。不能把结果说明文本归因为 Jev 自由生成，也不能把 Grok 生成站点等同于 Jev 建站；源码未核实，不新增开源项目。
 - 来源：[Author case study](https://x.com/dnsk96/status/2111623463920165210)
+
+### MotherDuck：在 SQL 中分类客户诉求
+
+- 作者：MotherDuck / Hamilton Ulmer, Till Döhmen, Jacob Matson
+- 输入：customer_conversations 表中的会话文本及预设的账单、技术、销售、账户四类诉求。
+- Jev 判断：prompt_jev() 的 Choice 从给定类别中选择主要诉求，分类指令与每类含义写在 SQL 函数参数中。
+- 后续动作：SELECT 逐行返回 conversation_id 与 classification，作为后续表格分析的结构化列；不将该示例描述为自动转接客服。
+- 核验边界：作者原帖与供应商一手 SQL 示例，未运行查询或传送会话。文中速度、费用与准确率是供应商在 AG News 新闻分类集上的自报，不能当作客服诉求准确率或本站复测。集成为托管功能，未核实开源实现，不新增 GitHub 项目。
+- 来源：[MotherDuck original post](https://x.com/motherduck/status/2102077291081896307) · [Vendor SQL example](https://motherduck.com/blog/motherduck-supports-jev/) · [TypeSafe recommendation](https://x.com/typesafeai/status/2102206611024716181)
+
+### Glean：搜索重排题型与同分影响评估
+
+- 作者：Tony Gentilcore and Glean coauthors
+- 输入：已捕获的企业搜索查询和每次最多 50 个候选结果；作者在同一内部评估集上比较排序。
+- Jev 判断：作者比较逐项 Noul、共享候选上下文 Noul、Score，以及单次 Choice 的候选概率四种相关性表达；Choice 在其试验中最好。
+- 后续动作：按相关性信号重排候选并评估 Recall@6，另移除生产顺序的同分打破规则，检查收益是否来自 Jev 本身。
+- 核验边界：仅作者离线评估，无开源实现或本站复测。大量候选同分，沿用生产顺序会抬高结果；评估集还存在访问范围限制，绝对数值不代表生产质量。作者明确不将其视为 Glean 生产重排器的替代品。
+- 来源：[Author article: reranking experiment](https://x.com/tonygentilcore/status/2104639390266036251) · [TypeSafe recommendation](https://x.com/typesafeai/status/2104772007481180633)
+
+### Glean：引文覆盖与支撑判断的重复性试验
+
+- 作者：Tony Gentilcore and Glean coauthors
+- 输入：固定的一份 1,448 词回答及其引用证据；覆盖判断在相同的 28 个段落上重复三次。
+- Jev 判断：按有限政策判断需要证据的陈述是否有充分引用，以及引用来源是否支撑所述内容；文章未公开完整 API 题型与提示词。
+- 后续动作：研究团队汇总覆盖/支撑判断，并与另一模型的三轮相同输入结果比较段落变化和成对分歧；不是自动修改答案或自动判定事实真伪。
+- 核验边界：作者自报的单回答重复性试验，无源码或本站复测；没有独立人工黄金标签，各模型支撑准则和分母不同，更稳定不等于更准确。计时口径也不同，不能当作端到端提速或已生产上线证明。
+- 来源：[Author article: citation judging](https://x.com/tonygentilcore/status/2104639390266036251) · [TypeSafe recommendation](https://x.com/typesafeai/status/2104772007481180633)
+
+### 创作者 Playground：开头筛选与发布前人工复核
+
+- 作者：Defileo / @defileo
+- 输入：作者自己写的多个开头候选，及准备发布的完整帖子；逐条或按行输入 Playground。
+- Jev 判断：Score 按具体读者情境评价开头，Noul 提示营销套话；完整稿另判断发布后悔风险和哪些具体主张需要来源。
+- 后续动作：作者查看分数与置信度后选择开头、补来源、删改主张或重写想法，最终发布由人决定。
+- 核验边界：仅作者文章中的个人使用自述和题目示例，未运行 Playground 或核实互动提升、用量与费用；没有自动写作或自动发帖证据。判断主观风格不代表能检测 AI 作者或验证事实。
+- 来源：[Author workflow and questions](https://x.com/defileo/status/2102140359690305783)
+
+### 创作者私信：分类、优先级与人工复核队列
+
+- 作者：Defileo / @defileo
+- 输入：逐条新私信及预先写定的商务合作、求助、读者反馈、推销、垃圾和其他类别。
+- Jev 判断：Choice 判断发送者的诉求，Noul 判断延后一周是否会损失机会；保留 other 和低置信度人工复核。
+- 后续动作：作者称 Zap 自动处理新消息，把商务线索与置信度写入 Notion 看板，其他消息批量处理，并定期人工检查 REVIEW 行、调整类别。
+- 核验边界：仅作者对现有流程的自述，无自动化导出、源码或本站端到端验收；文中的构建脚本与 Zapier/Make 说明不等于已验证部署。私信传给模型须由使用者授权，本次未读取私信、接入账号或发送消息。
+- 来源：[Author DM routine and review boundary](https://x.com/defileo/status/2102140359690305783)
 
 ## 开源项目 / Open-source projects (198)
 

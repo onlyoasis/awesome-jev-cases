@@ -1,20 +1,26 @@
 {
-  "checkedAt": "2026-10-19T03:28:52.810Z",
+  "checkedAt": "2026-10-20T00:30:56.824Z",
   "github": "ok",
   "official": "ok",
   "x": "ok",
-  "addedProjects": 7,
-  "addedCases": 7,
+  "addedProjects": 0,
+  "addedCases": 5,
   "officialRecipes": 20,
-  "xPosts": 11,
+  "xPosts": 35,
   "xVisibleCounts": {
-    "TypeSafe Jev": 7,
-    "Jev github.com": 4,
-    "from:typesafeai Jev": 0
+    "1 date-window": 6,
+    "2 official-account-Latest": 5,
+    "3 official-account-Top": 5,
+    "4 official-account-Top-scroll": 3,
+    "5 official-account-Top-scroll": 8,
+    "6 official-account-Top-scroll": 9,
+    "7 build-keyword-Top": 4,
+    "8 build-keyword-Top-scroll": 5,
+    "9 build-keyword-Top-scroll": 7
   },
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "since:2026-09-22 until:2026-10-19返回20条可见结果，含2026-10-19T03:19:36Z等上限外帖子和同名噪声；保留原起点，不声称未覆盖时段无新增。",
+  "xHistoricalCoverageNote": "本轮手动按Asia/Tokyo9/22起补查：日期窗口失效，改官方账号Latest/Top、作者关键词Top和引用链，9次页面记录/35个去重检索链接，精读3篇原文新增5案例。仅原帖日期核实，未形成连续时段全量覆盖，原UTC起点不推进。",
   "githubSearches": [
     {
       "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-10-16",
@@ -141,9 +147,15 @@
   "officialLastSuccessfulAt": "2026-10-19T03:18:35.485Z",
   "xLastSuccessfulAt": "2026-10-19T03:20:32.292Z",
   "xQueryStatus": {
-    "TypeSafe Jev": "ok",
-    "Jev github.com": "ok",
-    "from:typesafeai Jev": "ok"
+    "1 date-window": "ok",
+    "2 official-account-Latest": "ok",
+    "3 official-account-Top": "ok",
+    "4 official-account-Top-scroll": "ok",
+    "5 official-account-Top-scroll": "ok",
+    "6 official-account-Top-scroll": "ok",
+    "7 build-keyword-Top": "ok",
+    "8 build-keyword-Top-scroll": "ok",
+    "9 build-keyword-Top-scroll": "ok"
   },
   "githubSearchNote": "三组API完整解析1469/535/1289，每组最新30样本，精读8个新仓库；不作全量检索覆盖或实测效果声明。新增5个代码案例、2个作者文章案例和7个项目。",
   "officialRepositoryCount": 12,
@@ -158,7 +170,7 @@
   },
   "officialRepositoryCountLastVerifiedAt": "2026-10-19T03:18:35.485Z",
   "publishEnvironment": {
-    "checkedAt": "2026-10-19T03:16:17.799Z",
+    "checkedAt": "2026-10-20T00:24:24.455Z",
     "executor": {
       "sandbox": "not-set",
       "networkDisabled": false
@@ -168,23 +180,23 @@
         "ok": true,
         "peakBudgetGiB": 1.5,
         "minimumFreeGiB": 60,
-        "projectedFreeGiB": 99.714
+        "projectedFreeGiB": 99.501
       },
       "evidenceStorage": {
         "ok": true,
         "peakBudgetGiB": 1.5,
         "minimumFreeGiB": 60,
-        "projectedFreeGiB": 99.714
+        "projectedFreeGiB": 99.501
       },
       "catalogGitHub": {
         "ok": true,
-        "main": "2f76f385ded61c7240988d95be17976f5cc901f4",
+        "main": "9655c899679de856e6d2d8d96e59d3337769bc04",
         "sshReadback": true,
         "pushDryRun": true
       },
       "websiteGitHub": {
         "ok": true,
-        "main": "dbb022b2b084621614a0f5488cb65b59565b8289",
+        "main": "a91e641e1e9f8760fec0008587e095d0286cd29f",
         "sshReadback": true,
         "pushDryRun": true
       },
@@ -202,7 +214,7 @@
         "ok": true,
         "latestVersions": [
           {
-            "versionId": "a3bea20c-afc6-47c6-9ce0-6aa47c1f5f01",
+            "versionId": "0ff8d1bd-36cd-4403-ab1a-94b9d97c17ff",
             "percentage": 100
           }
         ]
@@ -214,28 +226,13 @@
     "host": "darwin"
   },
   "publication": {
-    "status": "published-and-verified",
-    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261019/review.md",
-    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261019/release-verification.json",
-    "catalogPush": "verified",
-    "websiteSync": "verified",
-    "websiteDeploy": "verified",
-    "worktreePeakBudgetGiB": 1.5,
-    "publishedAt": "2026-10-19T03:32:54.288Z",
-    "cloudflareVersion": "0ff8d1bd-36cd-4403-ab1a-94b9d97c17ff",
-    "trafficPercent": 100,
-    "formalPagesVerified": 44,
-    "corePagesByteVerified": 6,
-    "productionConfiguration": {
-      "siteUrl": "https://typesafe-jev.com",
-      "gaId": "G-5HP02C0495",
-      "adsEnabled": true,
-      "monetagZoneId": "11855929"
-    },
-    "browserVerified": true,
-    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261019/deployed-artifact",
-    "catalogContentSha": "5bb39c462daece8d576520769c9e11c0be7dd5c2",
-    "websiteSha": "a91e641e1e9f8760fec0008587e095d0286cd29f"
+    "status": "prepared",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261020-x-history/review.md",
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261020-x-history/release-verification.json",
+    "catalogPush": "pending",
+    "websiteSync": "pending",
+    "websiteDeploy": "pending",
+    "worktreePeakBudgetGiB": 1.5
   },
   "pendingCandidates": [
     {
@@ -327,185 +324,323 @@
   ],
   "xSearches": [
     {
-      "query": "\"TypeSafe Jev\" since:2026-10-16 -is:retweet",
-      "checkedAt": "2026-10-19T03:18:31.720Z",
-      "url": "https://x.com/search?q=%22TypeSafe%20Jev%22%20since%3A2026-10-16%20-is%3Aretweet&src=typed_query&f=live",
+      "method": "date-window",
+      "query": "Jev since:2026-09-22 until:2026-09-29",
+      "checkedAt": "2026-10-20T00:25:21.343Z",
       "status": "ok",
-      "visibleCount": 7,
-      "loading": true,
-      "noResults": false,
+      "visibleCount": 6,
+      "empty": false,
+      "loading": false,
       "posts": [
         {
-          "url": "https://x.com/lecaj_/status/2112001096273015013",
-          "time": "2026-10-19T02:01:15.000Z"
+          "url": "https://x.com/jevosswin/status/2105190051126677542",
+          "displayedDate": "Sep 30"
         },
         {
-          "url": "https://x.com/YanyuRensheng/status/2111983089971011644",
-          "time": "2026-10-19T00:49:42.000Z"
+          "url": "https://x.com/yonyonsaeki/status/2105182438314127753",
+          "displayedDate": "Sep 30"
         },
         {
-          "url": "https://x.com/emanuelsa/status/2111912255067427293",
-          "time": "2026-10-18T20:08:13.000Z"
+          "url": "https://x.com/eduarD3V_/status/2105179084862976015",
+          "displayedDate": "Sep 30"
         },
         {
-          "url": "https://x.com/mvonballmo/status/2111884625408590072",
-          "time": "2026-10-18T18:18:26.000Z"
+          "url": "https://x.com/guchopoi/status/2105165313390383330",
+          "displayedDate": "Sep 30"
         },
         {
-          "url": "https://x.com/eukkkaliptus/status/2111800514920808699",
-          "time": "2026-10-18T12:44:12.000Z"
+          "url": "https://x.com/m1ndhunter_x/status/2105164908534898930",
+          "displayedDate": "Sep 30"
         },
         {
-          "url": "https://x.com/MazuzAsaf/status/2111789474153632058",
-          "time": "2026-10-18T12:00:20.000Z"
-        },
-        {
-          "url": "https://x.com/coolthor/status/2111744482911605028",
-          "time": "2026-10-18T09:01:33.000Z"
+          "url": "https://x.com/jevosswin/status/2105150085239865671",
+          "displayedDate": "Sep 30"
         }
       ]
     },
     {
-      "query": "Jev github.com since:2026-10-16 -is:retweet",
-      "checkedAt": "2026-10-19T03:19:21.880Z",
-      "url": "https://x.com/search?q=Jev%20github.com%20since%3A2026-10-16%20-is%3Aretweet&src=typed_query&f=live",
+      "method": "official-account-Latest",
+      "query": "from:typesafeai Jev",
+      "checkedAt": "2026-10-20T00:25:48.898Z",
+      "status": "ok",
+      "visibleCount": 5,
+      "empty": false,
+      "loading": false,
+      "posts": [
+        {
+          "url": "https://x.com/typesafeai/status/2110901576550547602",
+          "displayedDate": "Oct 16"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2110536692952334716",
+          "displayedDate": "Oct 15"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2110536691702452264",
+          "displayedDate": "Oct 15"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2110536690037391732",
+          "displayedDate": "Oct 15"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2110536687835328981",
+          "displayedDate": "Oct 15"
+        }
+      ]
+    },
+    {
+      "method": "official-account-Top",
+      "query": "from:typesafeai Jev",
+      "checkedAt": "2026-10-20T00:25:53.939Z",
+      "status": "ok",
+      "visibleCount": 5,
+      "empty": false,
+      "loading": false,
+      "posts": [
+        {
+          "url": "https://x.com/typesafeai/status/2110536685805355064",
+          "displayedDate": "Oct 15"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2101786156572823624",
+          "displayedDate": "Sep 21"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2107908382569189762",
+          "displayedDate": "Oct 8"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2099944756931596454",
+          "displayedDate": "Sep 16"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2110419371453825349",
+          "displayedDate": "Oct 15"
+        }
+      ]
+    },
+    {
+      "method": "official-account-Top-scroll",
+      "query": "from:typesafeai Jev",
+      "checkedAt": "2026-10-20T00:26:23.390Z",
+      "status": "ok",
+      "visibleCount": 3,
+      "empty": false,
+      "loading": false,
+      "posts": [
+        {
+          "url": "https://x.com/typesafeai/status/2100114797295738951",
+          "displayedDate": "Sep 16"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2100376436272173088",
+          "displayedDate": "Sep 17"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2103165951781032167",
+          "displayedDate": "Sep 25"
+        }
+      ]
+    },
+    {
+      "method": "official-account-Top-scroll",
+      "query": "from:typesafeai Jev",
+      "checkedAt": "2026-10-20T00:26:38.464Z",
+      "status": "ok",
+      "visibleCount": 8,
+      "empty": false,
+      "loading": false,
+      "posts": [
+        {
+          "url": "https://x.com/typesafeai/status/2104772007481180633",
+          "displayedDate": "Sep 29"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2106071115915550786",
+          "displayedDate": "Oct 3"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2103612889655353346",
+          "displayedDate": "Sep 26"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2102206611024716181",
+          "displayedDate": "Sep 22"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2099969256914145707",
+          "displayedDate": "Sep 16"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2104337822350221795",
+          "displayedDate": "Sep 28"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2100114797295738951",
+          "displayedDate": "Sep 16"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2100376436272173088",
+          "displayedDate": "Sep 17"
+        }
+      ]
+    },
+    {
+      "method": "official-account-Top-scroll",
+      "query": "from:typesafeai Jev",
+      "checkedAt": "2026-10-20T00:26:50.887Z",
+      "status": "ok",
+      "visibleCount": 9,
+      "empty": false,
+      "loading": false,
+      "posts": [
+        {
+          "url": "https://x.com/typesafeai/status/2106071115915550786",
+          "displayedDate": "Oct 3"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2103612889655353346",
+          "displayedDate": "Sep 26"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2102206611024716181",
+          "displayedDate": "Sep 22"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2099969256914145707",
+          "displayedDate": "Sep 16"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2104337822350221795",
+          "displayedDate": "Sep 28"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2100114797295738951",
+          "displayedDate": "Sep 16"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2100376436272173088",
+          "displayedDate": "Sep 17"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2103165951781032167",
+          "displayedDate": "Sep 25"
+        },
+        {
+          "url": "https://x.com/typesafeai/status/2100351385686687915",
+          "displayedDate": "Sep 17"
+        }
+      ]
+    },
+    {
+      "method": "build-keyword-Top",
+      "query": "Jev built",
+      "checkedAt": "2026-10-20T00:27:38.020Z",
       "status": "ok",
       "visibleCount": 4,
+      "empty": false,
       "loading": false,
-      "noResults": false,
       "posts": [
         {
-          "url": "https://x.com/HowDevelop/status/2111988896095506534",
-          "time": "2026-10-19T01:12:46.000Z"
+          "url": "https://x.com/MoonGotchi/status/2101320141065609294",
+          "displayedDate": "Sep 19"
         },
         {
-          "url": "https://x.com/hochulambo/status/2111933950461612311",
-          "time": "2026-10-18T21:34:26.000Z"
+          "url": "https://x.com/parkerbrowndev/status/2112332326881653215",
+          "displayedDate": "relative-date"
         },
         {
-          "url": "https://x.com/agentslopzone/status/2111921884782874755",
-          "time": "2026-10-18T20:46:29.000Z"
+          "url": "https://x.com/mattturck/status/2110799882952831302",
+          "displayedDate": "Oct 16"
         },
         {
-          "url": "https://x.com/eldadtsabary/status/2111889071492780133",
-          "time": "2026-10-18T18:36:06.000Z"
+          "url": "https://x.com/RoundtableSpace/status/2103012808489402672",
+          "displayedDate": "Sep 24"
         }
       ]
     },
     {
-      "query": "from:typesafeai Jev since:2026-10-16",
-      "checkedAt": "2026-10-19T03:19:53.103Z",
-      "url": "https://x.com/search?q=from%3Atypesafeai%20Jev%20since%3A2026-10-16&src=typed_query&f=live",
+      "method": "build-keyword-Top-scroll",
+      "query": "Jev built",
+      "checkedAt": "2026-10-20T00:27:58.507Z",
       "status": "ok",
-      "visibleCount": 0,
+      "visibleCount": 5,
+      "empty": false,
       "loading": false,
-      "noResults": true,
-      "posts": []
-    },
-    {
-      "query": "Jev since:2026-09-22 until:2026-10-19",
-      "checkedAt": "2026-10-19T03:20:32.292Z",
-      "url": "https://x.com/search?q=Jev%20since%3A2026-09-22%20until%3A2026-10-19&src=typed_query&f=live",
-      "status": "ok",
-      "visibleCount": 20,
-      "loading": false,
-      "noResults": false,
       "posts": [
         {
-          "url": "https://x.com/mac90__/status/2112020817433468956",
-          "time": "2026-10-19T03:19:36.000Z"
+          "url": "https://x.com/RoundtableSpace/status/2103012808489402672",
+          "displayedDate": "Sep 24"
         },
         {
-          "url": "https://x.com/jevlorde/status/2112020796604608557",
-          "time": "2026-10-19T03:19:32.000Z"
+          "url": "https://x.com/thegreatest_sv/status/2109662374403727630",
+          "displayedDate": "Oct 13"
         },
         {
-          "url": "https://x.com/jevlorde/status/2112020587636040034",
-          "time": "2026-10-19T03:18:42.000Z"
+          "url": "https://x.com/dzhng/status/2103920741481848861",
+          "displayedDate": "Sep 27"
         },
         {
-          "url": "https://x.com/jevosswin/status/2112020340775985479",
-          "time": "2026-10-19T03:17:43.000Z"
+          "url": "https://x.com/systemdesignone/status/2111805165997105340",
+          "displayedDate": "Oct 18"
         },
         {
-          "url": "https://x.com/jevosswin/status/2112020319779291348",
-          "time": "2026-10-19T03:17:38.000Z"
+          "url": "https://x.com/jarrodwatts/status/2100356151468585346",
+          "displayedDate": "Sep 17"
+        }
+      ]
+    },
+    {
+      "method": "build-keyword-Top-scroll",
+      "query": "Jev built",
+      "checkedAt": "2026-10-20T00:28:06.962Z",
+      "status": "ok",
+      "visibleCount": 7,
+      "empty": false,
+      "loading": false,
+      "posts": [
+        {
+          "url": "https://x.com/mattturck/status/2110799882952831302",
+          "displayedDate": "Oct 16"
         },
         {
-          "url": "https://x.com/jevlorde/status/2112020314431652216",
-          "time": "2026-10-19T03:17:37.000Z"
+          "url": "https://x.com/RoundtableSpace/status/2103012808489402672",
+          "displayedDate": "Sep 24"
         },
         {
-          "url": "https://x.com/jevosswin/status/2112020301131493668",
-          "time": "2026-10-19T03:17:33.000Z"
+          "url": "https://x.com/thegreatest_sv/status/2109662374403727630",
+          "displayedDate": "Oct 13"
         },
         {
-          "url": "https://x.com/jevosswin/status/2112020206973579649",
-          "time": "2026-10-19T03:17:11.000Z"
+          "url": "https://x.com/dzhng/status/2103920741481848861",
+          "displayedDate": "Sep 27"
         },
         {
-          "url": "https://x.com/jevlorde/status/2112020154557370621",
-          "time": "2026-10-19T03:16:58.000Z"
+          "url": "https://x.com/systemdesignone/status/2111805165997105340",
+          "displayedDate": "Oct 18"
         },
         {
-          "url": "https://x.com/DbgKinggg/status/2112019947107102735",
-          "time": "2026-10-19T03:16:09.000Z"
+          "url": "https://x.com/jarrodwatts/status/2100356151468585346",
+          "displayedDate": "Sep 17"
         },
         {
-          "url": "https://x.com/jevlorde/status/2112019930464088272",
-          "time": "2026-10-19T03:16:05.000Z"
-        },
-        {
-          "url": "https://x.com/jevlorde/status/2112019744534753315",
-          "time": "2026-10-19T03:15:21.000Z"
-        },
-        {
-          "url": "https://x.com/jevlorde/status/2112019668798181384",
-          "time": "2026-10-19T03:15:03.000Z"
-        },
-        {
-          "url": "https://x.com/bbygurlho/status/2112019649231815078",
-          "time": "2026-10-19T03:14:58.000Z"
-        },
-        {
-          "url": "https://x.com/jevlorde/status/2112019546060226824",
-          "time": "2026-10-19T03:14:33.000Z"
-        },
-        {
-          "url": "https://x.com/jevlorde/status/2112019398462722455",
-          "time": "2026-10-19T03:13:58.000Z"
-        },
-        {
-          "url": "https://x.com/Janak____/status/2112019215079428594",
-          "time": "2026-10-19T03:13:14.000Z"
-        },
-        {
-          "url": "https://x.com/jevlorde/status/2112018988905685386",
-          "time": "2026-10-19T03:12:21.000Z"
-        },
-        {
-          "url": "https://x.com/jevlorde/status/2112018851613548913",
-          "time": "2026-10-19T03:11:48.000Z"
-        },
-        {
-          "url": "https://x.com/jevlorde/status/2112018636340961319",
-          "time": "2026-10-19T03:10:56.000Z"
+          "url": "https://x.com/RoundtableSpace/status/2102665520151716240",
+          "displayedDate": "Sep 23"
         }
       ]
     }
   ],
   "previousPublication": {
     "status": "published-and-verified",
-    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261018/review.md",
-    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261018/release-verification.json",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261019/review.md",
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261019/release-verification.json",
     "catalogPush": "verified",
     "websiteSync": "verified",
     "websiteDeploy": "verified",
     "worktreePeakBudgetGiB": 1.5,
-    "catalogContentSha": "2e7526c1c9d59efcd22d945f2849be92b940a517",
-    "websiteSha": "dbb022b2b084621614a0f5488cb65b59565b8289",
-    "publishedAt": "2026-10-18T05:38:25.013Z",
-    "cloudflareVersion": "a3bea20c-afc6-47c6-9ce0-6aa47c1f5f01",
+    "publishedAt": "2026-10-19T03:32:54.288Z",
+    "cloudflareVersion": "0ff8d1bd-36cd-4403-ab1a-94b9d97c17ff",
     "trafficPercent": 100,
     "formalPagesVerified": 44,
     "corePagesByteVerified": 6,
@@ -516,42 +651,34 @@
       "monetagZoneId": "11855929"
     },
     "browserVerified": true,
-    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261018/deployed-artifact"
+    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261019/deployed-artifact",
+    "catalogContentSha": "5bb39c462daece8d576520769c9e11c0be7dd5c2",
+    "websiteSha": "a91e641e1e9f8760fec0008587e095d0286cd29f"
   },
   "productionHealth": {
-    "startRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261019/health-start.json",
+    "startRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261020-x-history/health-start.json",
     "start": "configuration-and-routes-verified",
-    "end": "healthy",
-    "browser": "passed",
-    "repairNeeded": false,
-    "endRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261019/health-end.json",
-    "browserRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261019/browser-verification.json",
-    "chromeRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261019/chrome-verification.json",
-    "status": "healthy",
-    "ordinaryChromeCreative": {
-      "zh": true,
-      "en": true
-    },
-    "fillNote": "普通Chrome中英文桌面均有可见广告素材；headless的Monetag/GA请求与响应另行记录，未点击广告。"
+    "end": "pending",
+    "browser": "pending",
+    "repairNeeded": false
   },
   "currentRun": {
-    "automationId": "jev",
-    "scheduledAt": "2026-10-19T03:16:00.222Z",
-    "status": "published-and-verified",
-    "addedCases": 7,
-    "addedProjects": 7,
-    "githubRepositoriesCodeReviewed": 8,
-    "xArticlesReviewed": 2,
-    "storageCheck": "passed-current-executor",
-    "xControl": "real-Latest-readback",
-    "scheduleChanged": false,
-    "cachePersistence": "saved-to-Projects",
-    "completedAt": "2026-10-19T03:32:54.352Z",
-    "commit": "5bb39c462daece8d576520769c9e11c0be7dd5c2",
-    "websiteCommit": "a91e641e1e9f8760fec0008587e095d0286cd29f",
-    "push": "verified",
-    "deployment": "verified",
-    "browser": "passed"
+    "type": "user-requested-X-historical-backfill",
+    "startedAt": "2026-10-20T00:30:56.824Z",
+    "status": "reviewed-publication-pending",
+    "addedCases": 5,
+    "addedProjects": 0,
+    "sourceChecks": {
+      "x": "real-account-Top-Latest-and-original-post-readback",
+      "github": "related-source-not-needed-no-global-search-this-manual-run",
+      "official": "TypeSafe-X-recommendations-read-no-cookbook-refresh-this-manual-run"
+    },
+    "sourceSuccessTimesPreserved": [
+      "githubLastSuccessfulAt",
+      "officialLastSuccessfulAt",
+      "xLastSuccessfulAt"
+    ],
+    "scheduleChanged": false
   },
   "previousBlockedPublication": {
     "status": "blocked-storage-preflight",
@@ -572,5 +699,26 @@
       }
     },
     "cacheRecordPersisted": false
+  },
+  "xHistoricalLastSuccessfulAt": "2026-10-20T00:30:56.824Z",
+  "manualBackfill": {
+    "checkedAt": "2026-10-20T00:30:56.824Z",
+    "source": "X browser",
+    "mode": "account-and-keyword-search-with-original-post-chain",
+    "scopeFromLocalDate": "2026-09-22",
+    "timezone": "Asia/Tokyo",
+    "queryRecordCount": 9,
+    "uniqueSearchPostLinks": 35,
+    "originalPostsReviewed": 3,
+    "addedCases": 5,
+    "addedProjects": 0,
+    "coverage": "partial",
+    "reviewRecord": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261020-x-history/history-backfill.json",
+    "incrementalCursorUnchanged": true
+  },
+  "previousDailyXVisibleCounts": {
+    "TypeSafe Jev": 7,
+    "Jev github.com": 4,
+    "from:typesafeai Jev": 0
   }
 }

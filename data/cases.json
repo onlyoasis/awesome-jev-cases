@@ -5586,5 +5586,201 @@
         "url": "https://x.com/dnsk96/status/2111623463920165210"
       }
     ]
+  },
+  {
+    "id": "motherduck-sql-complaint-classification",
+    "name": "MotherDuck prompt_jev",
+    "author": "MotherDuck / Hamilton Ulmer, Till Döhmen, Jacob Matson",
+    "title": {
+      "zh": "MotherDuck：在 SQL 中分类客户诉求",
+      "en": "MotherDuck: classify customer complaints in SQL"
+    },
+    "area": {
+      "zh": "SQL 文本分析集成",
+      "en": "SQL text-analysis integration"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "customer_conversations 表中的会话文本及预设的账单、技术、销售、账户四类诉求。",
+      "en": "Conversation text from a customer_conversations table and four predefined complaint categories: billing, technical, sales, and account."
+    },
+    "decision": {
+      "zh": "prompt_jev() 的 Choice 从给定类别中选择主要诉求，分类指令与每类含义写在 SQL 函数参数中。",
+      "en": "A Choice in prompt_jev() selects the main complaint from the supplied categories, with instructions and category meanings passed as SQL function arguments."
+    },
+    "action": {
+      "zh": "SELECT 逐行返回 conversation_id 与 classification，作为后续表格分析的结构化列；不将该示例描述为自动转接客服。",
+      "en": "SELECT returns conversation_id and classification per row as structured columns for subsequent table analysis; this example does not establish automatic support-call transfers."
+    },
+    "boundary": {
+      "zh": "作者原帖与供应商一手 SQL 示例，未运行查询或传送会话。文中速度、费用与准确率是供应商在 AG News 新闻分类集上的自报，不能当作客服诉求准确率或本站复测。集成为托管功能，未核实开源实现，不新增 GitHub 项目。",
+      "en": "Author post and vendor SQL example only, without running queries or transmitting conversations. Reported speed, cost, and accuracy concern the vendor’s AG News classification benchmark, not support-complaint accuracy or independent reproduction. This hosted integration has no verified open-source implementation here, so no GitHub project is added."
+    },
+    "sources": [
+      {
+        "label": "MotherDuck original post",
+        "url": "https://x.com/motherduck/status/2102077291081896307"
+      },
+      {
+        "label": "Vendor SQL example",
+        "url": "https://motherduck.com/blog/motherduck-supports-jev/"
+      },
+      {
+        "label": "TypeSafe recommendation",
+        "url": "https://x.com/typesafeai/status/2102206611024716181"
+      }
+    ]
+  },
+  {
+    "id": "glean-search-rerank-tie-evaluation",
+    "name": "Glean search reranking experiment",
+    "author": "Tony Gentilcore and Glean coauthors",
+    "title": {
+      "zh": "Glean：搜索重排题型与同分影响评估",
+      "en": "Glean: evaluate reranking formulations and tie effects"
+    },
+    "area": {
+      "zh": "企业搜索离线评估",
+      "en": "Offline enterprise-search evaluation"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "已捕获的企业搜索查询和每次最多 50 个候选结果；作者在同一内部评估集上比较排序。",
+      "en": "Captured enterprise search queries and up to 50 candidate results per query, compared on the same internal evaluation set."
+    },
+    "decision": {
+      "zh": "作者比较逐项 Noul、共享候选上下文 Noul、Score，以及单次 Choice 的候选概率四种相关性表达；Choice 在其试验中最好。",
+      "en": "The authors compare pointwise Nouls, shared-state Nouls, Scores, and probabilities from a single Choice as relevance signals; Choice is strongest in their experiment."
+    },
+    "action": {
+      "zh": "按相关性信号重排候选并评估 Recall@6，另移除生产顺序的同分打破规则，检查收益是否来自 Jev 本身。",
+      "en": "Reorder candidates by the relevance signal and evaluate Recall@6, then remove production-order tie breaking to test whether gains come from Jev itself."
+    },
+    "boundary": {
+      "zh": "仅作者离线评估，无开源实现或本站复测。大量候选同分，沿用生产顺序会抬高结果；评估集还存在访问范围限制，绝对数值不代表生产质量。作者明确不将其视为 Glean 生产重排器的替代品。",
+      "en": "Author-reported offline evaluation only, without public implementation or independent reproduction. Many candidates tie, and retaining production order improves results; access limitations also make absolute metrics unrepresentative of production. The authors explicitly do not establish a replacement for Glean’s production ranker."
+    },
+    "sources": [
+      {
+        "label": "Author article: reranking experiment",
+        "url": "https://x.com/tonygentilcore/status/2104639390266036251"
+      },
+      {
+        "label": "TypeSafe recommendation",
+        "url": "https://x.com/typesafeai/status/2104772007481180633"
+      }
+    ]
+  },
+  {
+    "id": "glean-citation-coverage-repeatability",
+    "name": "Glean citation-support judging experiment",
+    "author": "Tony Gentilcore and Glean coauthors",
+    "title": {
+      "zh": "Glean：引文覆盖与支撑判断的重复性试验",
+      "en": "Glean: repeatability of citation-coverage and support judgments"
+    },
+    "area": {
+      "zh": "引文质量离线评估",
+      "en": "Offline citation-quality evaluation"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "固定的一份 1,448 词回答及其引用证据；覆盖判断在相同的 28 个段落上重复三次。",
+      "en": "One fixed 1,448-word response and its citation evidence, with coverage judgments repeated three times on the same 28 paragraphs."
+    },
+    "decision": {
+      "zh": "按有限政策判断需要证据的陈述是否有充分引用，以及引用来源是否支撑所述内容；文章未公开完整 API 题型与提示词。",
+      "en": "Make bounded policy judgments about whether evidence-requiring claims have citations and whether cited sources support the attributed claims; full API primitives and prompts are not disclosed."
+    },
+    "action": {
+      "zh": "研究团队汇总覆盖/支撑判断，并与另一模型的三轮相同输入结果比较段落变化和成对分歧；不是自动修改答案或自动判定事实真伪。",
+      "en": "Aggregate coverage/support judgments and compare paragraph changes and pairwise disagreement across three identical-input runs against another model, without automatically editing answers or establishing factual truth."
+    },
+    "boundary": {
+      "zh": "作者自报的单回答重复性试验，无源码或本站复测；没有独立人工黄金标签，各模型支撑准则和分母不同，更稳定不等于更准确。计时口径也不同，不能当作端到端提速或已生产上线证明。",
+      "en": "Author-reported repeatability study on one response, without code or independent reproduction. No independent human gold labels are provided, and support criteria and denominators differ between models: stability is not accuracy. Timing definitions also differ, so this is not end-to-end speedup or production-deployment evidence."
+    },
+    "sources": [
+      {
+        "label": "Author article: citation judging",
+        "url": "https://x.com/tonygentilcore/status/2104639390266036251"
+      },
+      {
+        "label": "TypeSafe recommendation",
+        "url": "https://x.com/typesafeai/status/2104772007481180633"
+      }
+    ]
+  },
+  {
+    "id": "creator-hook-and-prepublish-review",
+    "name": "Creator Playground review workflow",
+    "author": "Defileo / @defileo",
+    "title": {
+      "zh": "创作者 Playground：开头筛选与发布前人工复核",
+      "en": "Creator Playground: select hooks and review before publishing"
+    },
+    "area": {
+      "zh": "人工内容编辑辅助",
+      "en": "Human editorial assistance"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "作者自己写的多个开头候选，及准备发布的完整帖子；逐条或按行输入 Playground。",
+      "en": "Several opening lines written by the author and the full draft intended for publication, supplied individually or per line in Playground."
+    },
+    "decision": {
+      "zh": "Score 按具体读者情境评价开头，Noul 提示营销套话；完整稿另判断发布后悔风险和哪些具体主张需要来源。",
+      "en": "A Score evaluates hooks against concrete reader situations and a Noul flags formulaic marketing language; a separate pass evaluates draft regret risk and whether specific claims need sources."
+    },
+    "action": {
+      "zh": "作者查看分数与置信度后选择开头、补来源、删改主张或重写想法，最终发布由人决定。",
+      "en": "The author examines scores and confidence to select an opening, add sources, revise claims, or rethink the idea; a person decides publication."
+    },
+    "boundary": {
+      "zh": "仅作者文章中的个人使用自述和题目示例，未运行 Playground 或核实互动提升、用量与费用；没有自动写作或自动发帖证据。判断主观风格不代表能检测 AI 作者或验证事实。",
+      "en": "Author article describing personal use and sample questions only; Playground, engagement improvements, usage, and cost were not independently checked. No automatic writing or posting is established. Subjective style judgments do not establish AI authorship or factual verification."
+    },
+    "sources": [
+      {
+        "label": "Author workflow and questions",
+        "url": "https://x.com/defileo/status/2102140359690305783"
+      }
+    ]
+  },
+  {
+    "id": "creator-dm-choice-priority-review",
+    "name": "Creator DM triage with Jev",
+    "author": "Defileo / @defileo",
+    "title": {
+      "zh": "创作者私信：分类、优先级与人工复核队列",
+      "en": "Creator DMs: classification, priority, and human review"
+    },
+    "area": {
+      "zh": "私信分流与人工复核",
+      "en": "DM triage and human review"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "逐条新私信及预先写定的商务合作、求助、读者反馈、推销、垃圾和其他类别。",
+      "en": "Individual new direct messages and predefined categories for paid work, free help, fans, pitches, spam, and other messages."
+    },
+    "decision": {
+      "zh": "Choice 判断发送者的诉求，Noul 判断延后一周是否会损失机会；保留 other 和低置信度人工复核。",
+      "en": "A Choice classifies the sender’s request and a Noul asks whether a week’s delay could lose an opportunity; other and low-confidence human review remain available."
+    },
+    "action": {
+      "zh": "作者称 Zap 自动处理新消息，把商务线索与置信度写入 Notion 看板，其他消息批量处理，并定期人工检查 REVIEW 行、调整类别。",
+      "en": "The author reports a Zap processing new messages, writing paid-work leads and confidence to a Notion board, batching other messages, and periodically reviewing REVIEW rows and revising categories."
+    },
+    "boundary": {
+      "zh": "仅作者对现有流程的自述，无自动化导出、源码或本站端到端验收；文中的构建脚本与 Zapier/Make 说明不等于已验证部署。私信传给模型须由使用者授权，本次未读取私信、接入账号或发送消息。",
+      "en": "Author description only, without automation export, source code, or independent end-to-end acceptance. Script-building and Zapier/Make instructions are not verified deployment evidence. Users must authorize model transmission of DMs; no private messages were read, accounts connected, or messages sent in this review."
+    },
+    "sources": [
+      {
+        "label": "Author DM routine and review boundary",
+        "url": "https://x.com/defileo/status/2102140359690305783"
+      }
+    ]
   }
 ]
