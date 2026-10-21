@@ -219,13 +219,28 @@
     "host": "darwin"
   },
   "publication": {
-    "status": "pending",
+    "status": "published-and-verified",
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261021/review.md",
     "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261021/release-verification.json",
-    "catalogPush": "pending",
-    "websiteSync": "pending",
-    "websiteDeploy": "pending",
-    "worktreePeakBudgetGiB": 1.5
+    "catalogPush": "verified",
+    "websiteSync": "verified",
+    "websiteDeploy": "verified",
+    "worktreePeakBudgetGiB": 1.5,
+    "publishedAt": "2026-10-21T03:37:13.783Z",
+    "cloudflareVersion": "4246b076-2b38-4ef5-b775-ec3e41f0dc51",
+    "trafficPercent": 100,
+    "formalPagesVerified": 44,
+    "corePagesByteVerified": 6,
+    "productionConfiguration": {
+      "siteUrl": "https://typesafe-jev.com",
+      "gaId": "G-5HP02C0495",
+      "adsEnabled": true,
+      "monetagZoneId": "11855929"
+    },
+    "browserVerified": true,
+    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261021/deployed-artifact",
+    "catalogContentSha": "f25de32d28fc1f4d85919810a0bf2ec0cd64aeab",
+    "websiteSha": "aebec347892f2b74632fb269c58c06e2b4ef155e"
   },
   "pendingCandidates": [],
   "deferredCandidates": [
@@ -595,16 +610,25 @@
   "productionHealth": {
     "startRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261021/health-start.json",
     "start": "configuration-and-routes-verified",
-    "end": "pending",
-    "browser": "pending",
-    "repairNeeded": false
+    "end": "healthy",
+    "browser": "passed",
+    "repairNeeded": false,
+    "endRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261021/health-end.json",
+    "browserRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261021/browser-verification.json",
+    "chromeRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261021/chrome-verification.json",
+    "status": "healthy",
+    "ordinaryChromeCreative": {
+      "zh": true,
+      "en": true
+    },
+    "fillNote": "普通Chrome中英文桌面有可见Monetag素材，375px无loader或iframe；headless请求与响应独立记录，未点击广告。"
   },
   "currentRun": {
     "automationId": "jev",
     "type": "scheduled-daily-curation",
     "scheduledAt": "2026-10-21T03:21:10.492Z",
     "checkedAt": "2026-10-21T03:31:45.328Z",
-    "status": "content-reviewed-publication-pending",
+    "status": "published-and-verified",
     "addedCases": 6,
     "addedProjects": 4,
     "githubRepositoriesReviewed": 8,
@@ -619,7 +643,13 @@
     "cachePersistence": "saved-to-Projects",
     "updatedExistingCases": [
       "paired-product-photo-classification-evaluation"
-    ]
+    ],
+    "completedAt": "2026-10-21T03:37:25.348097+00:00",
+    "commit": "f25de32d28fc1f4d85919810a0bf2ec0cd64aeab",
+    "websiteCommit": "aebec347892f2b74632fb269c58c06e2b4ef155e",
+    "push": "verified",
+    "deployment": "verified",
+    "browser": "passed"
   },
   "previousBlockedPublication": {
     "status": "blocked-storage-preflight",
