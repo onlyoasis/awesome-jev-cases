@@ -6019,27 +6019,323 @@
       "zh": "视觉分类离线评估",
       "en": "Offline visual-classification evaluation"
     },
-    "evidence": "post",
+    "evidence": "code-and-post",
     "input": {
       "zh": "同一批 1,999 个商品的文案与主图，固定类别顺序；作者说明超限图像仅补边或缩放，不裁剪。",
       "en": "Text and main photos for the same 1,999 products, with fixed category ordering; the author reports padding or resizing out-of-limit images without cropping."
     },
     "decision": {
-      "zh": "作者让 Jev 1.14 从固定类别中选择并返回概率，对照仅文本和文本加图；本轮未核 API payload 或所链新仓库。",
-      "en": "The author asks Jev 1.14 to choose among fixed categories with probabilities, comparing text only against text plus image; API payloads and the newly linked repository were not reviewed this run."
+      "zh": "Jev 1.14.0 Choice 在固定类别中选择并返回概率；已核适配器用 assets 图像引用与显式实验头发送文案/主图，以及实际 runner。",
+      "en": "Jev 1.14.0 Choice selects a fixed category and returns probabilities; the adapter’s assets image references/explicit experimental header and actual runner were reviewed."
     },
     "action": {
       "zh": "将预测与标签配对比较，统计图像增益、置信度分布及输入开销，并分别报告近重复类别接受规则与原始标签计分。",
       "en": "Compare paired predictions with labels, measuring image gains, confidence distributions, and input overhead, and distinguish near-duplicate-category acceptance from raw-label scoring."
     },
     "boundary": {
-      "zh": "仅作者离线评估，非本站复测；图像增益小且临界，接受规则会改变计数，公开数据及标签也有局限。低置信度再调用更强模型只是下一步设想，未测混合流程；不把结果推广到损伤检测、客户实拍、Box 或多语言。",
-      "en": "Author-reported offline evaluation, not independently reproduced. Image gains are small and borderline, acceptance rules change counts, and public data and labels have limitations. Stronger-model escalation is a proposed next experiment, not a tested hybrid; results do not establish damage detection, customer photos, Box, or multilingual performance."
+      "zh": "作者离线评估，未独立复测；近重复类别接受规则、公开数据和标签均有局限，图像增益小且临界。低置信度升级仅设想；根许可证未发现，因此不列开源项目，也不推广到损伤、客户实拍、Box 或多语言。",
+      "en": "Author-run offline evaluation, not independently replicated; near-duplicate acceptance rules, public data and labels have limits and the image gain is small and borderline. Confidence-based escalation is only proposed. No root license was found, so no open-source-project listing or extension to damage, customer photos, Box or multilingual use."
     },
     "sources": [
       {
         "label": "Author paired study and deviations",
         "url": "https://x.com/gbolagadehq/status/2112310531881156707"
+      },
+      {
+        "label": "dbench/adapters.py",
+        "url": "https://github.com/gbolask24/decision-bench/blob/e5b72020617bf08958813fa3ee54e4384d66b69b/dbench/adapters.py"
+      },
+      {
+        "label": "dbench/run.py",
+        "url": "https://github.com/gbolask24/decision-bench/blob/e5b72020617bf08958813fa3ee54e4384d66b69b/dbench/run.py"
+      },
+      {
+        "label": "README.md",
+        "url": "https://github.com/gbolask24/decision-bench/blob/e5b72020617bf08958813fa3ee54e4384d66b69b/README.md"
+      }
+    ]
+  },
+  {
+    "id": "obsidian-review-before-tag-write",
+    "name": "System One Auto Tag",
+    "author": "holy-max",
+    "title": {
+      "zh": "Obsidian 既有标签评分与采纳写入",
+      "en": "Obsidian tag scoring before reviewed writes"
+    },
+    "area": {
+      "zh": "知识管理",
+      "en": "Knowledge management"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户选择的笔记标题/正文范围及 vault 已有的候选标签；可排除标签并跳过已有组合。",
+      "en": "User-selected note titles/body scope and existing vault tags, with exclusions and optional skipping of already tagged pairs."
+    },
+    "decision": {
+      "zh": "原生 Jev Noul 分批判断每个笔记是否适合各标签；按可调阈值与人工区间重分桶，不生成新标签。",
+      "en": "Native Jev Noul judges each note/tag pair in batches; adjustable thresholds and a human-review band reclassify scores without inventing tags."
+    },
+    "action": {
+      "zh": "界面先显示矩阵与建议；用户采纳后代码才写 YAML/行内标签，可手动添加、撤回或重置本次写入。",
+      "en": "The UI first shows a matrix and proposals; code writes YAML/inline tags only after acceptance, with manual additions, withdrawal and reset for this run."
+    },
+    "boundary": {
+      "zh": "独立 MIT 社区实现，交互受 Kaku 公开页面启发，非其官方插件。仅核源码，未安装或发送笔记；正文会发往所选服务。缺失答案按0补齐不代表确定不匹配，阈值和粗费用未校准。",
+      "en": "Independent MIT community implementation inspired by Kaku’s public UX, not an official Kaku plugin. Source review only; no installation or notes sent. Selected text leaves the device. Missing answers filled with zero are not proven negatives; thresholds and rough cost estimates are uncalibrated."
+    },
+    "sources": [
+      {
+        "label": "src/llm/systemone.ts",
+        "url": "https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/llm/systemone.ts"
+      },
+      {
+        "label": "src/judge/scheduler.ts",
+        "url": "https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/judge/scheduler.ts"
+      },
+      {
+        "label": "src/judge/bucket.ts",
+        "url": "https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/judge/bucket.ts"
+      },
+      {
+        "label": "src/ui/auto-tag-view.ts",
+        "url": "https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/ui/auto-tag-view.ts"
+      },
+      {
+        "label": "src/vault/tags.ts",
+        "url": "https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/vault/tags.ts"
+      },
+      {
+        "label": "README.md",
+        "url": "https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/README.md"
+      }
+    ]
+  },
+  {
+    "id": "dotlauncher-semantic-app-choice",
+    "name": "DotLauncher",
+    "author": "polidog",
+    "title": {
+      "zh": "Android 启动器语义应用候选",
+      "en": "Semantic app candidates in an Android launcher"
+    },
+    "area": {
+      "zh": "应用搜索",
+      "en": "App search"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户搜索词与已安装可启动应用的名称、包标识和有限候选表。",
+      "en": "A search phrase and a bounded list of installed launchable apps with names and package identifiers."
+    },
+    "decision": {
+      "zh": "没有强词面匹配时，Jev Choice 为应用分配概率，Noul 判断是否存在适合用途的应用。",
+      "en": "When strong lexical matches are absent, Jev Choice assigns probabilities to apps and Noul checks whether a suitable app exists."
+    },
+    "action": {
+      "zh": "代码在 exists≥0.3 时保留概率≥0.05的前5项，与本地搜索结果去重合并；用户点击或回车后再启动。",
+      "en": "Code retains up to five options with probability ≥0.05 when exists ≥0.3, merges them with local matches, and launches only after the user clicks or presses Enter."
+    },
+    "boundary": {
+      "zh": "MIT Android 社区代码，设备测试是作者自报；本站未安装、授予权限或核实 Play 上架。阈值在代码中标为经验值，API 失败回退本地结果；应用清单和搜索词会离机，不把语义候选说成自动执行。",
+      "en": "MIT Android community code; device tests are author-reported. We did not install it, grant permissions or verify a Play listing. Thresholds are explicitly heuristic, API failures fall back to local results, and app lists/search text leave the device; suggestions are not automatic execution."
+    },
+    "sources": [
+      {
+        "label": "app/src/main/java/jp/polidog/dotlauncher/JevSearch.kt",
+        "url": "https://github.com/polidog/dot-launcher/blob/e014d714df76df57dfaf16969d9e5786e7e56cb7/app/src/main/java/jp/polidog/dotlauncher/JevSearch.kt"
+      },
+      {
+        "label": "app/src/main/java/jp/polidog/dotlauncher/LauncherActivity.kt",
+        "url": "https://github.com/polidog/dot-launcher/blob/e014d714df76df57dfaf16969d9e5786e7e56cb7/app/src/main/java/jp/polidog/dotlauncher/LauncherActivity.kt"
+      },
+      {
+        "label": "README.md",
+        "url": "https://github.com/polidog/dot-launcher/blob/e014d714df76df57dfaf16969d9e5786e7e56cb7/README.md"
+      }
+    ]
+  },
+  {
+    "id": "commandcode-mod-tool-call-verdict",
+    "name": "cmd-mod-jev-guard",
+    "author": "felinae98",
+    "title": {
+      "zh": "Command Code 工具调用判定与确认接线",
+      "en": "Tool-call verdicts and confirmation in Command Code"
+    },
+    "area": {
+      "zh": "工具调用审核",
+      "en": "Tool-call review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "工具名、截断参数、工作目录、近期用户请求、助手意图与已标记的不可信内容。",
+      "en": "Tool name, bounded arguments, working directory, recent user requests, assistant intent and flagged untrusted content."
+    },
+    "decision": {
+      "zh": "Jev Score/Noul 判断风险、是否需确认、是否为用户所求及是否执行不可信指令；确定性阈值合成为 deny/ask/allow。",
+      "en": "Jev Score/Noul assesses risk, approval needs, user intent and untrusted-instruction following; deterministic thresholds combine answers into deny/ask/allow."
+    },
+    "action": {
+      "zh": "mod 在 beforeToolCall 阻止 deny，交互界面为 ask 弹出确认；onPermissionRequest 只对 allow 自动批准，并扫描部分工具结果/指令文件。",
+      "en": "The mod blocks deny in beforeToolCall, prompts for ask in an interactive UI, and auto-approves only allow in onPermissionRequest; selected tool results/instruction files are also scanned."
+    },
+    "boundary": {
+      "zh": "MIT 社区集成复用 jev-guard 策略，非安全保证。默认服务失败放行，headless 的 ask 仅警告后继续；只读工具可跳过，且自定义后端可能不是 Jev。未安装、改用户权限或做攻防复测，敏感上下文的外发边界需使用者审查。",
+      "en": "MIT community integration reusing jev-guard policy, not a safety guarantee. Service failure defaults to fail-open; headless ask only warns and proceeds. Read-only tools can be skipped and custom backends may not be Jev. No installation, user-permission changes or adversarial retest; users must review external transmission of context."
+    },
+    "sources": [
+      {
+        "label": "src/jev.js",
+        "url": "https://github.com/felinae98/cmd-mod-jev-guard/blob/4051a8b64c72678ff182318463f410a9dad9e0f9/src/jev.js"
+      },
+      {
+        "label": "src/policy.js",
+        "url": "https://github.com/felinae98/cmd-mod-jev-guard/blob/4051a8b64c72678ff182318463f410a9dad9e0f9/src/policy.js"
+      },
+      {
+        "label": "src/mod.ts",
+        "url": "https://github.com/felinae98/cmd-mod-jev-guard/blob/4051a8b64c72678ff182318463f410a9dad9e0f9/src/mod.ts"
+      },
+      {
+        "label": "README.md",
+        "url": "https://github.com/felinae98/cmd-mod-jev-guard/blob/4051a8b64c72678ff182318463f410a9dad9e0f9/README.md"
+      }
+    ]
+  },
+  {
+    "id": "harness2-ranked-final-output-selection",
+    "name": "Harness² Jev selection",
+    "author": "SASUKE40",
+    "title": {
+      "zh": "Harness² 既有候选成品的分维度选择",
+      "en": "Dimension-wise selection of existing Harness² outputs"
+    },
+    "area": {
+      "zh": "Agent 结果审核",
+      "en": "Agent output review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "匿名候选成品、任务要求、清理过的来源材料和工作上下文，排除基准评分反馈。",
+      "en": "Anonymized finished candidates, task requirements, sanitized source materials and work context, excluding benchmark verdicts."
+    },
+    "decision": {
+      "zh": "可选原生 Jev 后端按交付、格式、事实支持、一致性与可用性分别给0–2分；代码校验概率与置信度并按维度顺序排序。",
+      "en": "An optional native Jev backend scores delivery, conformance, source fidelity, consistency and usability from 0–2; code validates probabilities/confidence and ranks dimensions lexicographically."
+    },
+    "action": {
+      "zh": "选择一个已存在的候选并保存审计；答案缺失、低置信度、并列或审计写入失败时交回既有 Agent 选择器。",
+      "en": "It selects one existing candidate and persists an audit; missing answers, low confidence, ties or audit-write failure defer to the existing agent selector."
+    },
+    "boundary": {
+      "zh": "Apache-2.0 的社区分支接线，不是 TypeSafe 官方或 Google 官方 Jev 集成。仅核调用与消费者，未跑基准或付费请求；Jev 不负责生成/改写成品，父框架的性能不能归为此后端的实测效果。",
+      "en": "Community-fork wiring under Apache-2.0, not an official TypeSafe or Google Jev integration. Calls and consumer were reviewed without benchmarks or paid requests. Jev does not generate/rewrite deliverables; parent-framework metrics do not prove this backend’s performance."
+    },
+    "sources": [
+      {
+        "label": "harness2/core/jev.py",
+        "url": "https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/core/jev.py"
+      },
+      {
+        "label": "harness2/core/selection.py",
+        "url": "https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/core/selection.py"
+      },
+      {
+        "label": "README.md",
+        "url": "https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/README.md"
+      }
+    ]
+  },
+  {
+    "id": "harness2-aircraft-vision-recursive-harness",
+    "name": "Harness² aircraft demo",
+    "author": "Edward / SASUKE40",
+    "title": {
+      "zh": "飞机图像分类与外部 Harness 迭代",
+      "en": "Aircraft classification with external harness refinement"
+    },
+    "area": {
+      "zh": "视觉分类实验",
+      "en": "Visual classification experiment"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "飞机照片、有限机型分类表，以及 Harness 给出的提示规则和工具设定。",
+      "en": "Aircraft photos, a finite aircraft-type taxonomy and prompt rules/tool settings supplied by the harness."
+    },
+    "decision": {
+      "zh": "Jev 1.14 用 Choice 或逐类 Noul 判机型，另用 Box 定位飞机；代码解析类型、概率、框坐标与不确定提示。",
+      "en": "Jev 1.14 uses Choice or per-type Noul for aircraft type and Box for localization; code parses labels, probabilities, boxes and uncertainty warnings."
+    },
+    "action": {
+      "zh": "程序写出标签和检测记录供候选比较；外围 Harness 提议/试跑/组合规则与工具，并保存经验，模型权重不更新。",
+      "en": "Code writes labels/detections for candidate comparison; the surrounding harness proposes, probes and composes rules/tools and retains experience without updating model weights."
+    },
+    "boundary": {
+      "zh": "作者称3轮从49%到63%，本站未复测、未检查全部运行记录，不能断言跨数据集泛化或 Jev 自己生成工具。区分合成演示、真实照片和实际 API；图像/Box 为实验功能，FGVC-Aircraft 照片受独立非商业研究条款约束。",
+      "en": "The author reports 49% to 63% over three rounds; we did not rerun or inspect every run. This does not establish generalization or that Jev generates tools. Synthetic demos, real photos and API execution differ; image/Box features are experimental, and FGVC-Aircraft photos have separate non-commercial research terms."
+    },
+    "sources": [
+      {
+        "label": "X",
+        "url": "https://x.com/edward40e/status/2112327768180703610"
+      },
+      {
+        "label": "harness2/vision.py",
+        "url": "https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/vision.py"
+      },
+      {
+        "label": "harness2/image_demo.py",
+        "url": "https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/image_demo.py"
+      },
+      {
+        "label": "harness2/aircraft.py",
+        "url": "https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/aircraft.py"
+      }
+    ]
+  },
+  {
+    "id": "dtap-tool-call-self-gating-evaluation",
+    "name": "DTap self-gating study",
+    "author": "Zhaorun Chen",
+    "title": {
+      "zh": "DTap 工具执行前的 Jev 自检门控",
+      "en": "Jev self-gating before tool execution in DTap"
+    },
+    "area": {
+      "zh": "安全评测",
+      "en": "Safety evaluation"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "Jev 已选择且参数已填好的完整工具调用，以及此前的执行轨迹上下文。",
+      "en": "A complete tool call selected by Jev with filled arguments, plus preceding trajectory context."
+    },
+    "decision": {
+      "zh": "作者再次使用 Jev 复核该调用能否执行，而非直接信任首次工具选择。",
+      "en": "The authors ask Jev again to judge the call before execution rather than trusting its initial tool choice."
+    },
+    "action": {
+      "zh": "在评测流程中加入执行前门控，对照直接误用、间接提示注入和正常任务完成情况。",
+      "en": "The evaluation inserts a pre-execution gate and compares direct misuse, indirect prompt injection and benign task completion."
+    },
+    "boundary": {
+      "zh": "9月27日作者原帖与9月29日官方转发已核。作者报告攻击成功率下降且正常成功率60.9%降至55.8%，仍有明显残余风险；未核公开实现、精确输出类型/阈值、完整样本或独立复测，不能当作安全认证，也不能推广至新版 Jev。",
+      "en": "The September 27 author thread and September 29 official quote were verified. Authors report lower attack success but benign success also falls from 60.9% to 55.8%, with substantial residual risk. Public implementation, exact output type/threshold, full samples and independent replication were not verified; this is neither safety certification nor evidence about newer Jev versions."
+    },
+    "sources": [
+      {
+        "label": "X",
+        "url": "https://x.com/zrrrr_cn/status/2104003596375425117"
+      },
+      {
+        "label": "作者门控细节",
+        "url": "https://x.com/zrrrr_cn/status/2104003598736924857"
+      },
+      {
+        "label": "TypeSafe X",
+        "url": "https://x.com/typesafeai/status/2104768408890003807"
       }
     ]
   }

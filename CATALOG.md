@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (145)
+## 深度使用案例 / Worked cases (151)
 
 ### jev-ultrafast
 
@@ -1304,12 +1304,66 @@
 
 - 作者：Gbolagade Ishola / @gbolagadehq
 - 输入：同一批 1,999 个商品的文案与主图，固定类别顺序；作者说明超限图像仅补边或缩放，不裁剪。
-- Jev 判断：作者让 Jev 1.14 从固定类别中选择并返回概率，对照仅文本和文本加图；本轮未核 API payload 或所链新仓库。
+- Jev 判断：Jev 1.14.0 Choice 在固定类别中选择并返回概率；已核适配器用 assets 图像引用与显式实验头发送文案/主图，以及实际 runner。
 - 后续动作：将预测与标签配对比较，统计图像增益、置信度分布及输入开销，并分别报告近重复类别接受规则与原始标签计分。
-- 核验边界：仅作者离线评估，非本站复测；图像增益小且临界，接受规则会改变计数，公开数据及标签也有局限。低置信度再调用更强模型只是下一步设想，未测混合流程；不把结果推广到损伤检测、客户实拍、Box 或多语言。
-- 来源：[Author paired study and deviations](https://x.com/gbolagadehq/status/2112310531881156707)
+- 核验边界：作者离线评估，未独立复测；近重复类别接受规则、公开数据和标签均有局限，图像增益小且临界。低置信度升级仅设想；根许可证未发现，因此不列开源项目，也不推广到损伤、客户实拍、Box 或多语言。
+- 来源：[Author paired study and deviations](https://x.com/gbolagadehq/status/2112310531881156707) · [dbench/adapters.py](https://github.com/gbolask24/decision-bench/blob/e5b72020617bf08958813fa3ee54e4384d66b69b/dbench/adapters.py) · [dbench/run.py](https://github.com/gbolask24/decision-bench/blob/e5b72020617bf08958813fa3ee54e4384d66b69b/dbench/run.py) · [README.md](https://github.com/gbolask24/decision-bench/blob/e5b72020617bf08958813fa3ee54e4384d66b69b/README.md)
 
-## 开源项目 / Open-source projects (204)
+### Obsidian 既有标签评分与采纳写入
+
+- 作者：holy-max
+- 输入：用户选择的笔记标题/正文范围及 vault 已有的候选标签；可排除标签并跳过已有组合。
+- Jev 判断：原生 Jev Noul 分批判断每个笔记是否适合各标签；按可调阈值与人工区间重分桶，不生成新标签。
+- 后续动作：界面先显示矩阵与建议；用户采纳后代码才写 YAML/行内标签，可手动添加、撤回或重置本次写入。
+- 核验边界：独立 MIT 社区实现，交互受 Kaku 公开页面启发，非其官方插件。仅核源码，未安装或发送笔记；正文会发往所选服务。缺失答案按0补齐不代表确定不匹配，阈值和粗费用未校准。
+- 来源：[src/llm/systemone.ts](https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/llm/systemone.ts) · [src/judge/scheduler.ts](https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/judge/scheduler.ts) · [src/judge/bucket.ts](https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/judge/bucket.ts) · [src/ui/auto-tag-view.ts](https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/ui/auto-tag-view.ts) · [src/vault/tags.ts](https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/src/vault/tags.ts) · [README.md](https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/README.md)
+
+### Android 启动器语义应用候选
+
+- 作者：polidog
+- 输入：用户搜索词与已安装可启动应用的名称、包标识和有限候选表。
+- Jev 判断：没有强词面匹配时，Jev Choice 为应用分配概率，Noul 判断是否存在适合用途的应用。
+- 后续动作：代码在 exists≥0.3 时保留概率≥0.05的前5项，与本地搜索结果去重合并；用户点击或回车后再启动。
+- 核验边界：MIT Android 社区代码，设备测试是作者自报；本站未安装、授予权限或核实 Play 上架。阈值在代码中标为经验值，API 失败回退本地结果；应用清单和搜索词会离机，不把语义候选说成自动执行。
+- 来源：[app/src/main/java/jp/polidog/dotlauncher/JevSearch.kt](https://github.com/polidog/dot-launcher/blob/e014d714df76df57dfaf16969d9e5786e7e56cb7/app/src/main/java/jp/polidog/dotlauncher/JevSearch.kt) · [app/src/main/java/jp/polidog/dotlauncher/LauncherActivity.kt](https://github.com/polidog/dot-launcher/blob/e014d714df76df57dfaf16969d9e5786e7e56cb7/app/src/main/java/jp/polidog/dotlauncher/LauncherActivity.kt) · [README.md](https://github.com/polidog/dot-launcher/blob/e014d714df76df57dfaf16969d9e5786e7e56cb7/README.md)
+
+### Command Code 工具调用判定与确认接线
+
+- 作者：felinae98
+- 输入：工具名、截断参数、工作目录、近期用户请求、助手意图与已标记的不可信内容。
+- Jev 判断：Jev Score/Noul 判断风险、是否需确认、是否为用户所求及是否执行不可信指令；确定性阈值合成为 deny/ask/allow。
+- 后续动作：mod 在 beforeToolCall 阻止 deny，交互界面为 ask 弹出确认；onPermissionRequest 只对 allow 自动批准，并扫描部分工具结果/指令文件。
+- 核验边界：MIT 社区集成复用 jev-guard 策略，非安全保证。默认服务失败放行，headless 的 ask 仅警告后继续；只读工具可跳过，且自定义后端可能不是 Jev。未安装、改用户权限或做攻防复测，敏感上下文的外发边界需使用者审查。
+- 来源：[src/jev.js](https://github.com/felinae98/cmd-mod-jev-guard/blob/4051a8b64c72678ff182318463f410a9dad9e0f9/src/jev.js) · [src/policy.js](https://github.com/felinae98/cmd-mod-jev-guard/blob/4051a8b64c72678ff182318463f410a9dad9e0f9/src/policy.js) · [src/mod.ts](https://github.com/felinae98/cmd-mod-jev-guard/blob/4051a8b64c72678ff182318463f410a9dad9e0f9/src/mod.ts) · [README.md](https://github.com/felinae98/cmd-mod-jev-guard/blob/4051a8b64c72678ff182318463f410a9dad9e0f9/README.md)
+
+### Harness² 既有候选成品的分维度选择
+
+- 作者：SASUKE40
+- 输入：匿名候选成品、任务要求、清理过的来源材料和工作上下文，排除基准评分反馈。
+- Jev 判断：可选原生 Jev 后端按交付、格式、事实支持、一致性与可用性分别给0–2分；代码校验概率与置信度并按维度顺序排序。
+- 后续动作：选择一个已存在的候选并保存审计；答案缺失、低置信度、并列或审计写入失败时交回既有 Agent 选择器。
+- 核验边界：Apache-2.0 的社区分支接线，不是 TypeSafe 官方或 Google 官方 Jev 集成。仅核调用与消费者，未跑基准或付费请求；Jev 不负责生成/改写成品，父框架的性能不能归为此后端的实测效果。
+- 来源：[harness2/core/jev.py](https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/core/jev.py) · [harness2/core/selection.py](https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/core/selection.py) · [README.md](https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/README.md)
+
+### 飞机图像分类与外部 Harness 迭代
+
+- 作者：Edward / SASUKE40
+- 输入：飞机照片、有限机型分类表，以及 Harness 给出的提示规则和工具设定。
+- Jev 判断：Jev 1.14 用 Choice 或逐类 Noul 判机型，另用 Box 定位飞机；代码解析类型、概率、框坐标与不确定提示。
+- 后续动作：程序写出标签和检测记录供候选比较；外围 Harness 提议/试跑/组合规则与工具，并保存经验，模型权重不更新。
+- 核验边界：作者称3轮从49%到63%，本站未复测、未检查全部运行记录，不能断言跨数据集泛化或 Jev 自己生成工具。区分合成演示、真实照片和实际 API；图像/Box 为实验功能，FGVC-Aircraft 照片受独立非商业研究条款约束。
+- 来源：[X](https://x.com/edward40e/status/2112327768180703610) · [harness2/vision.py](https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/vision.py) · [harness2/image_demo.py](https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/image_demo.py) · [harness2/aircraft.py](https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/harness2/aircraft.py)
+
+### DTap 工具执行前的 Jev 自检门控
+
+- 作者：Zhaorun Chen
+- 输入：Jev 已选择且参数已填好的完整工具调用，以及此前的执行轨迹上下文。
+- Jev 判断：作者再次使用 Jev 复核该调用能否执行，而非直接信任首次工具选择。
+- 后续动作：在评测流程中加入执行前门控，对照直接误用、间接提示注入和正常任务完成情况。
+- 核验边界：9月27日作者原帖与9月29日官方转发已核。作者报告攻击成功率下降且正常成功率60.9%降至55.8%，仍有明显残余风险；未核公开实现、精确输出类型/阈值、完整样本或独立复测，不能当作安全认证，也不能推广至新版 Jev。
+- 来源：[X](https://x.com/zrrrr_cn/status/2104003596375425117) · [作者门控细节](https://x.com/zrrrr_cn/status/2104003598736924857) · [TypeSafe X](https://x.com/typesafeai/status/2104768408890003807)
+
+## 开源项目 / Open-source projects (208)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1517,6 +1571,10 @@
 | [tancy-920/jev-agentic-wiki](https://github.com/tancy-920/jev-agentic-wiki) | community | MIT (code) | 0 |
 | [shivaylamba/jev-model-router-for-coding-tasks-oss](https://github.com/shivaylamba/jev-model-router-for-coding-tasks-oss) | community | MIT | 0 |
 | [Studio1-OSS/nconnect](https://github.com/Studio1-OSS/nconnect) | community | MIT | 7 |
+| [holy-max/obsidian-systemone-auto-tag](https://github.com/holy-max/obsidian-systemone-auto-tag) | inspired | MIT | 0 |
+| [polidog/dot-launcher](https://github.com/polidog/dot-launcher) | community | MIT | 0 |
+| [felinae98/cmd-mod-jev-guard](https://github.com/felinae98/cmd-mod-jev-guard) | community | MIT | 0 |
+| [SASUKE40/harness2](https://github.com/SASUKE40/harness2) | community | Apache-2.0 | 2 |
 
 ## 官方 cookbook / Official recipes (20)
 

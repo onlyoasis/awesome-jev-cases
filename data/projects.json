@@ -3262,5 +3262,69 @@
     "lastVerified": "2026-10-20",
     "status": "verified",
     "stars": 7
+  },
+  {
+    "id": "holy-max-obsidian-systemone-auto-tag",
+    "name": "holy-max/obsidian-systemone-auto-tag",
+    "url": "https://github.com/holy-max/obsidian-systemone-auto-tag",
+    "category": "apps",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "Obsidian 既有标签 Noul 打分插件，矩阵审阅后采纳写入；独立实现受 Kaku 公开交互启发。已核 API、分桶与文件写入接线，未安装或复测；笔记会离机，缺失答案补0和粗费用有局限。",
+      "en": "Obsidian Noul scoring over existing tags, with matrix review before accepted writes. Independent implementation inspired by Kaku’s public UX. API/bucketing/write wiring reviewed without installation or retest; notes leave the device and zero-filled answers/rough costs have limits."
+    },
+    "sourceUrl": "https://github.com/holy-max/obsidian-systemone-auto-tag/blob/62fdb4fb6ff012cb927c22d374262c7e13606c37/README.md",
+    "lastVerified": "2026-10-21",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "polidog-dot-launcher",
+    "name": "polidog/dot-launcher",
+    "url": "https://github.com/polidog/dot-launcher",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Android 启动器，强词面匹配优先，原生 Jev Choice/Noul 补语义应用候选，用户确认后启动；另含应用类别分配。未安装或核验商店状态，设备效果为作者自报，经验阈值非准确率保证。",
+      "en": "Android launcher prioritizing strong lexical matches and adding native Jev Choice/Noul semantic candidates for user-confirmed launch; also categorizes apps. Not installed or store-verified; device behavior is author-reported and heuristic thresholds do not guarantee accuracy."
+    },
+    "sourceUrl": "https://github.com/polidog/dot-launcher/blob/e014d714df76df57dfaf16969d9e5786e7e56cb7/README.md",
+    "lastVerified": "2026-10-21",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "felinae98-cmd-mod-jev-guard",
+    "name": "felinae98/cmd-mod-jev-guard",
+    "url": "https://github.com/felinae98/cmd-mod-jev-guard",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Command Code 的 Jev 判定 mod，复用 jev-guard 策略并接入工具阻止、交互确认、权限请求及内容扫描。默认 fail-open、headless ask仅警告，支持非Jev自定义后端；仅源码核查，不作安全效果保证。",
+      "en": "Command Code mod reusing jev-guard judgments with tool blocking, interactive confirmation, permission requests and content scanning. Defaults to fail-open and warning-only headless ask; custom backends can be non-Jev. Source-reviewed, without a safety-effectiveness claim."
+    },
+    "sourceUrl": "https://github.com/felinae98/cmd-mod-jev-guard/blob/4051a8b64c72678ff182318463f410a9dad9e0f9/README.md",
+    "lastVerified": "2026-10-21",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "sasuke40-harness2",
+    "name": "SASUKE40/harness2",
+    "url": "https://github.com/SASUKE40/harness2",
+    "category": "coding",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Harness² 社区分支，含原生 Jev 候选成品评分选择与飞机/路标视觉演示；Jev 做结构化判断，外围框架迭代提示和工具。已核消费者与根许可，未运行；非 Google/TypeSafe 官方 Jev 集成，照片许可另计。",
+      "en": "Community Harness² fork with native Jev final-output scoring/selection and aircraft/road-sign vision demos. Jev supplies typed judgments while the surrounding framework refines prompts/tools. Consumer and root license reviewed, not run; not an official Google/TypeSafe Jev integration and photo terms are separate."
+    },
+    "sourceUrl": "https://github.com/SASUKE40/harness2/blob/993c5337b889a6f8f3585fdb57043ca7bc9dade9/README.md",
+    "lastVerified": "2026-10-21",
+    "status": "verified",
+    "stars": 2
   }
 ]
