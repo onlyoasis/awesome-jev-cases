@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (151)
+## 深度使用案例 / Worked cases (158)
 
 ### jev-ultrafast
 
@@ -1363,7 +1363,70 @@
 - 核验边界：9月27日作者原帖与9月29日官方转发已核。作者报告攻击成功率下降且正常成功率60.9%降至55.8%，仍有明显残余风险；未核公开实现、精确输出类型/阈值、完整样本或独立复测，不能当作安全认证，也不能推广至新版 Jev。
 - 来源：[X](https://x.com/zrrrr_cn/status/2104003596375425117) · [作者门控细节](https://x.com/zrrrr_cn/status/2104003598736924857) · [TypeSafe X](https://x.com/typesafeai/status/2104768408890003807)
 
-## 开源项目 / Open-source projects (208)
+### Claude 选项旁的 Jev 概率提示
+
+- 作者：PeesukaGu
+- 输入：当前问题、有限选项及截至最近用户输入的最多3000字符对话；过滤当前轮推荐标记和机器消息。
+- Jev 判断：插件调用 jev CLI 的 Choice 为每项返回概率，并按 confidence 门槛标出首选；默认门槛0.6。
+- 后续动作：默认仅改写可见选项描述，仍由用户作答；显式开启 auto_select 且所有问题均为有首选的单选时才回填答案，并告知 Claude 是 Jev 选择。
+- 核验边界：MIT社区插件，未安装、读取用户会话或调用付费模型。221条历史回答匹配率为作者自报，较高门槛未证明更贴合用户；auto_select可能替用户作不同决定。对话片段会发往服务，显示隔离不等于偏好预测可靠。
+- 来源：[scripts/jev-advise.mjs](https://github.com/PeesukaGu/jev-advise/blob/e328078295bea8b044f240d3e6eab11207df5408/scripts/jev-advise.mjs) · [hooks/hooks.json](https://github.com/PeesukaGu/jev-advise/blob/e328078295bea8b044f240d3e6eab11207df5408/hooks/hooks.json) · [README.md](https://github.com/PeesukaGu/jev-advise/blob/e328078295bea8b044f240d3e6eab11207df5408/README.md) · [X](https://x.com/PeesukaGu/status/2113184525413179615)
+
+### 本地论文集合的 Jev 筛选与分类
+
+- 作者：Zilize
+- 输入：本地 arXiv 语料经关键词、日期、类别与集合操作召回的论文元数据，以及用户的纳入准则和2–12个类别。
+- Jev 判断：原生 Jev Noul 逐篇判纳入；单标签用 Choice（含other），多标签逐类用 Noul，保留概率与不确定区间。
+- 后续动作：代码按节点阈值写入纳入/排除/分类结果，每个已答批次连同进度事务保存到 SQLite；界面显示不可变集合图，失败或重启后续做未判断项。
+- 核验边界：Apache-2.0社区插件，未安装或导入论文语料。默认纳入0.5、单标签置信度0.8等为作者策略，非通用准确率保证；“万篇约2分钟”等为作者展示/推算。存储本地不代表推理本地，所选论文证据会发给托管Jev，召回只覆盖实际入库范围。
+- 来源：[src/sets/jev.ts](https://github.com/Zilize/parallax-dsh/blob/023ffadd6dea3af30587b89feb6073ffdd142c68/src/sets/jev.ts) · [src/sets/jobs.ts](https://github.com/Zilize/parallax-dsh/blob/023ffadd6dea3af30587b89feb6073ffdd142c68/src/sets/jobs.ts) · [src/jev-defaults.ts](https://github.com/Zilize/parallax-dsh/blob/023ffadd6dea3af30587b89feb6073ffdd142c68/src/jev-defaults.ts) · [README.md](https://github.com/Zilize/parallax-dsh/blob/023ffadd6dea3af30587b89feb6073ffdd142c68/README.md)
+
+### 篮球暂停时的有限教练卡片选择
+
+- 作者：aiden-guan
+- 输入：代码生成的最多8条短洞察卡片、比赛形势和暂停上下文；云端用代号表示球员，局部元数据不发送。
+- Jev 判断：Jev Noul 判断各卡片是否当前可行动，Choice 在有限卡片与none中选择；解码门槛拒绝不确定或不支持的结果。
+- 后续动作：消费者将合格结果排序展示在教练面板；可信none可不发卡片。模型关闭、迟到、失败或置信度不足时回退确定性优先级，不阻塞事件循环。
+- 核验边界：MIT社区代码；已核原生SDK、模型/离线模式分离与实际消费者，未接摄像头、运行比赛或调用模型。模拟/回放测试和作者测试数不证明真实篮球识别或教练建议准确率；README与实现的时间预算口径不同，本文不复述其延迟指标。
+- 来源：[courtvision/decision/client.py](https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/decision/client.py) · [courtvision/decision/questions.py](https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/decision/questions.py) · [courtvision/decision/advisor.py](https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/decision/advisor.py) · [courtvision/narration/narrator.py](https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/narration/narrator.py) · [courtvision/pipeline.py](https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/pipeline.py) · [README.md](https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/README.md)
+
+### FFT 反馈的九问题分析与人工复核队列
+
+- 作者：Jan du Plessis / AI MedReview
+- 输入：Google Sheet 中 FFT 反馈的 free_text 与 do_better，合并后去空/短文本、匿名化并建立稳定复核标识。
+- Jev 判断：作者用一次 Jev 调用的9个独立问题：Choice 判情绪、主题与人员组，Score 判程度/行动性/紧急度，Noul 判安全、尊严/包容及离开风险。
+- 后续动作：异步批处理把答案与概率存 CSV、定期检查点续做；Streamlit 读取持久结果，按代码规则显示警示与低置信度候选主题，供人员复核，浏览页面时不重新推理。
+- 核验边界：作者公开文章和展示代码已读，未核原仓、根许可或处理任何患者记录；不是NHS官方背书或临床诊断。阈值未有本站校准，匿名化有效性/部署效果未复测；分数落盘取整会损失信息，jev-latest别名可能变化。
+- 来源：[作者文章](https://ai-medreview.notion.site/TypeSafe-Jev-Turning-Friends-and-Family-Test-comments-into-decisions-143fdfd68a9780ad8673e813f95a3ce9) · [X](https://x.com/janduplessis/status/2113178671662186504)
+
+### WhatsApp 分类的影子运行与分歧复盘
+
+- 作者：Mauricio Suarez Vega
+- 输入：与主客服流程并行的一份文本历史和预订上下文；不含主流程全部运行信息或图像像素。
+- Jev 判断：Jev 1.13.0 判断报价、投诉、付款等有限意图，并回答求职、需人工及是否明确确认方案等二元问题；问题版本分别记录。
+- 后续动作：只记录标签、概率、延迟和错误，与主流程结果作分层对照，供后续独立标注与评估；不改变客户回复、不创建预订，也不据此自动接管服务。
+- 核验边界：文章标10月2日、10月22日原帖再次分享；作者703个turn含重复联系人，模型间一致率不是人工准确率。128/131仅指主提供商失败子集中的返回率，不是纠错率；两者共用基础设施，费用/延迟口径不同，尚未证明业务收益或独立容灾，未读客户对话或复测。
+- 来源：[作者复盘](https://mauriciosuarez.dev/es/articulos/typesafe-jev-part-2/) · [X](https://x.com/mauroziuxSV/status/2113163564210880760)
+
+### 王者荣耀中的有限动作与赛后 Playbook 迭代
+
+- 作者：Agnes AI / Aiden
+- 输入：己方可见的英雄状态、当前规划与此刻允许的决策集合；教练赛后可见完整记录，场上模型不获该全局视角。
+- Jev 判断：Jev 在有限决策空间返回各选项概率并选择动作；较大的 Agnes 模型另作规划和赛后策略改写。
+- 后续动作：Playbook代码高频执行动作；教练提议提示、动作空间与反射代码改动，经固定测试后才晋升候选，模型权重不训练。
+- 核验边界：仅作者10月12日报告，仓库无可运行核心代码或已核根许可，不列开源项目。胜率/延迟为作者自报且仅对内置机器人；95%检查分数不是纯胜率，3v3后续虚线是目标，部分迁移含人工操作，不能推广到真人竞技或机器人。
+- 来源：[REPORT.md](https://github.com/AgnesAI-Labs/Agnes-RSI-Framework-Honor-of-Kings/blob/d06df8ec1b381c28c9ed197e9c6a8e4a27b11466/REPORT.md) · [README.md](https://github.com/AgnesAI-Labs/Agnes-RSI-Framework-Honor-of-Kings/blob/d06df8ec1b381c28c9ed197e9c6a8e4a27b11466/README.md)
+
+### UiPath 预览连接器的有界判断与阈值复核
+
+- 作者：UiPath / Sandeep Panda
+- 输入：UiPath 工作流提供的 JSON 状态、预先定义的选项或有序准则；供应商展示邮件路由等决策活动。
+- Jev 判断：连接器以用户自己的 TypeSafe Key 调用 Jev 的 Choice、Score、Noul，返回结构化答案、概率及适用的置信度。
+- 后续动作：工作流代码消费答案并配置任务阈值，清楚的结果进入后续步骤，低于门槛则转人工或推理 Agent 复核；模型本身不授权业务动作。
+- 核验边界：已核UiPath一手文章与TypeSafe推荐，明确为preview和供应商示例，未登录租户执行或验证客户生产闭环。94%是与LLM裁判的一致率，成本/延迟为早期内部评测，非本站实测；请求走用户与TypeSafe的约定，不经UiPath AI Trust Layer。
+- 来源：[UiPath一手说明](https://www.uipath.com/blog/product-and-updates/typesafe-connector-bring-jev-models-to-uipath) · [UiPath X](https://x.com/UiPath/status/2112941209635418297) · [TypeSafe X](https://x.com/typesafeai/status/2112971330421412292)
+
+## 开源项目 / Open-source projects (214)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1575,6 +1638,12 @@
 | [polidog/dot-launcher](https://github.com/polidog/dot-launcher) | community | MIT | 0 |
 | [felinae98/cmd-mod-jev-guard](https://github.com/felinae98/cmd-mod-jev-guard) | community | MIT | 0 |
 | [SASUKE40/harness2](https://github.com/SASUKE40/harness2) | community | Apache-2.0 | 2 |
+| [PeesukaGu/jev-advise](https://github.com/PeesukaGu/jev-advise) | community | MIT | 0 |
+| [Zilize/parallax-dsh](https://github.com/Zilize/parallax-dsh) | community | Apache-2.0 | 1 |
+| [aiden-guan/courtvision](https://github.com/aiden-guan/courtvision) | community | MIT | 0 |
+| [hendrik77/cap-jev](https://github.com/hendrik77/cap-jev) | inspired | MIT | 0 |
+| [Keyizhan/jev-fabric-annotator](https://github.com/Keyizhan/jev-fabric-annotator) | inspired | MIT | 0 |
+| [patronus-protect/decision-model-guard](https://github.com/patronus-protect/decision-model-guard) | inspired | MIT | 2 |
 
 ## 官方 cookbook / Official recipes (20)
 

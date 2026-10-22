@@ -6338,5 +6338,321 @@
         "url": "https://x.com/typesafeai/status/2104768408890003807"
       }
     ]
+  },
+  {
+    "id": "jev-advise-question-option-probabilities",
+    "name": "jev-advise",
+    "author": "PeesukaGu",
+    "title": {
+      "zh": "Claude 选项旁的 Jev 概率提示",
+      "en": "Jev probabilities alongside Claude’s options"
+    },
+    "area": {
+      "zh": "人机决策辅助",
+      "en": "Human decision support"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "当前问题、有限选项及截至最近用户输入的最多3000字符对话；过滤当前轮推荐标记和机器消息。",
+      "en": "The current question, finite options and up to 3,000 conversation characters ending at the last user prompt, with current recommendation marks and machine messages filtered."
+    },
+    "decision": {
+      "zh": "插件调用 jev CLI 的 Choice 为每项返回概率，并按 confidence 门槛标出首选；默认门槛0.6。",
+      "en": "The plugin uses the jev CLI’s Choice to return option probabilities and marks a pick using a confidence threshold, defaulting to 0.6."
+    },
+    "action": {
+      "zh": "默认仅改写可见选项描述，仍由用户作答；显式开启 auto_select 且所有问题均为有首选的单选时才回填答案，并告知 Claude 是 Jev 选择。",
+      "en": "By default it annotates visible descriptions while the user chooses. Explicit auto_select fills answers only when every question is single-select with a confident pick, and tells Claude that Jev chose."
+    },
+    "boundary": {
+      "zh": "MIT社区插件，未安装、读取用户会话或调用付费模型。221条历史回答匹配率为作者自报，较高门槛未证明更贴合用户；auto_select可能替用户作不同决定。对话片段会发往服务，显示隔离不等于偏好预测可靠。",
+      "en": "MIT community plugin; not installed, no user transcripts read or paid calls made. Matching rates on 221 past answers are author-reported, and higher thresholds did not establish better preference matching. Auto-select may differ from the user. Excerpts leave the device; display separation does not prove reliable preference prediction."
+    },
+    "sources": [
+      {
+        "label": "scripts/jev-advise.mjs",
+        "url": "https://github.com/PeesukaGu/jev-advise/blob/e328078295bea8b044f240d3e6eab11207df5408/scripts/jev-advise.mjs"
+      },
+      {
+        "label": "hooks/hooks.json",
+        "url": "https://github.com/PeesukaGu/jev-advise/blob/e328078295bea8b044f240d3e6eab11207df5408/hooks/hooks.json"
+      },
+      {
+        "label": "README.md",
+        "url": "https://github.com/PeesukaGu/jev-advise/blob/e328078295bea8b044f240d3e6eab11207df5408/README.md"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/PeesukaGu/status/2113184525413179615"
+      }
+    ]
+  },
+  {
+    "id": "parallax-local-corpus-typed-screening",
+    "name": "Parallax dsh",
+    "author": "Zilize",
+    "title": {
+      "zh": "本地论文集合的 Jev 筛选与分类",
+      "en": "Jev screening and classification over local paper sets"
+    },
+    "area": {
+      "zh": "文献检索",
+      "en": "Literature retrieval"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "本地 arXiv 语料经关键词、日期、类别与集合操作召回的论文元数据，以及用户的纳入准则和2–12个类别。",
+      "en": "Paper metadata recalled from a local arXiv corpus by keyword/date/category and set operations, with inclusion criteria and 2–12 user-defined classes."
+    },
+    "decision": {
+      "zh": "原生 Jev Noul 逐篇判纳入；单标签用 Choice（含other），多标签逐类用 Noul，保留概率与不确定区间。",
+      "en": "Native Jev Noul screens each paper; single-label classification uses Choice with other, and multi-label classification uses per-class Noul, retaining probabilities and uncertainty bands."
+    },
+    "action": {
+      "zh": "代码按节点阈值写入纳入/排除/分类结果，每个已答批次连同进度事务保存到 SQLite；界面显示不可变集合图，失败或重启后续做未判断项。",
+      "en": "Code writes include/exclude/classification outcomes using node thresholds, committing answered batches and progress together in SQLite. An immutable set graph exposes decisions and resumed jobs process undecided items."
+    },
+    "boundary": {
+      "zh": "Apache-2.0社区插件，未安装或导入论文语料。默认纳入0.5、单标签置信度0.8等为作者策略，非通用准确率保证；“万篇约2分钟”等为作者展示/推算。存储本地不代表推理本地，所选论文证据会发给托管Jev，召回只覆盖实际入库范围。",
+      "en": "Apache-2.0 community plugin, not installed and no corpus imported. Defaults such as 0.5 inclusion and 0.8 single-label confidence are application policies, not accuracy guarantees. Timing demonstrations/estimates are author-reported. Local storage does not mean local inference: selected evidence goes to hosted Jev, and recall is bounded by the ingested corpus."
+    },
+    "sources": [
+      {
+        "label": "src/sets/jev.ts",
+        "url": "https://github.com/Zilize/parallax-dsh/blob/023ffadd6dea3af30587b89feb6073ffdd142c68/src/sets/jev.ts"
+      },
+      {
+        "label": "src/sets/jobs.ts",
+        "url": "https://github.com/Zilize/parallax-dsh/blob/023ffadd6dea3af30587b89feb6073ffdd142c68/src/sets/jobs.ts"
+      },
+      {
+        "label": "src/jev-defaults.ts",
+        "url": "https://github.com/Zilize/parallax-dsh/blob/023ffadd6dea3af30587b89feb6073ffdd142c68/src/jev-defaults.ts"
+      },
+      {
+        "label": "README.md",
+        "url": "https://github.com/Zilize/parallax-dsh/blob/023ffadd6dea3af30587b89feb6073ffdd142c68/README.md"
+      }
+    ]
+  },
+  {
+    "id": "courtvision-bounded-coach-card-selection",
+    "name": "CourtVision coach cards",
+    "author": "aiden-guan",
+    "title": {
+      "zh": "篮球暂停时的有限教练卡片选择",
+      "en": "Bounded coach-card selection during basketball stoppages"
+    },
+    "area": {
+      "zh": "体育解说辅助",
+      "en": "Sports commentary support"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "代码生成的最多8条短洞察卡片、比赛形势和暂停上下文；云端用代号表示球员，局部元数据不发送。",
+      "en": "Up to eight short code-generated insight cards with game situation and stoppage context; cloud payloads use player tokens and exclude local metadata."
+    },
+    "decision": {
+      "zh": "Jev Noul 判断各卡片是否当前可行动，Choice 在有限卡片与none中选择；解码门槛拒绝不确定或不支持的结果。",
+      "en": "Jev Noul judges whether cards are currently actionable and Choice selects among the bounded cards and none; decoding thresholds reject uncertain or unsupported answers."
+    },
+    "action": {
+      "zh": "消费者将合格结果排序展示在教练面板；可信none可不发卡片。模型关闭、迟到、失败或置信度不足时回退确定性优先级，不阻塞事件循环。",
+      "en": "The consumer ranks and displays accepted results on the coach board; a confident none can suppress a card. Off, late, failed or low-confidence model results fall back to deterministic priorities without blocking the event loop."
+    },
+    "boundary": {
+      "zh": "MIT社区代码；已核原生SDK、模型/离线模式分离与实际消费者，未接摄像头、运行比赛或调用模型。模拟/回放测试和作者测试数不证明真实篮球识别或教练建议准确率；README与实现的时间预算口径不同，本文不复述其延迟指标。",
+      "en": "MIT community code. Native SDK wiring, live/offline-mode separation and the consumer were reviewed without cameras, game execution or model calls. Simulated/replay tests and author test counts do not establish real-game recognition or advice accuracy. README and implementation timing budgets differ, so no latency claim is repeated."
+    },
+    "sources": [
+      {
+        "label": "courtvision/decision/client.py",
+        "url": "https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/decision/client.py"
+      },
+      {
+        "label": "courtvision/decision/questions.py",
+        "url": "https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/decision/questions.py"
+      },
+      {
+        "label": "courtvision/decision/advisor.py",
+        "url": "https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/decision/advisor.py"
+      },
+      {
+        "label": "courtvision/narration/narrator.py",
+        "url": "https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/narration/narrator.py"
+      },
+      {
+        "label": "courtvision/pipeline.py",
+        "url": "https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/courtvision/pipeline.py"
+      },
+      {
+        "label": "README.md",
+        "url": "https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/README.md"
+      }
+    ]
+  },
+  {
+    "id": "fft-feedback-nine-question-review-queue",
+    "name": "AI MedReview FFT",
+    "author": "Jan du Plessis / AI MedReview",
+    "title": {
+      "zh": "FFT 反馈的九问题分析与人工复核队列",
+      "en": "Nine-question FFT feedback analysis and human review queues"
+    },
+    "area": {
+      "zh": "服务反馈审核",
+      "en": "Service feedback review"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "Google Sheet 中 FFT 反馈的 free_text 与 do_better，合并后去空/短文本、匿名化并建立稳定复核标识。",
+      "en": "FFT free_text and do_better fields from a Google Sheet, combined, filtered for empty/short text, anonymized and assigned a stable review identifier."
+    },
+    "decision": {
+      "zh": "作者用一次 Jev 调用的9个独立问题：Choice 判情绪、主题与人员组，Score 判程度/行动性/紧急度，Noul 判安全、尊严/包容及离开风险。",
+      "en": "The author uses nine independent Jev questions per review: Choice for sentiment/topic/staff group, Score for strength/actionability/urgency, and Noul for safety, dignity/inclusion and leaving risk."
+    },
+    "action": {
+      "zh": "异步批处理把答案与概率存 CSV、定期检查点续做；Streamlit 读取持久结果，按代码规则显示警示与低置信度候选主题，供人员复核，浏览页面时不重新推理。",
+      "en": "An async batch job persists answers/probabilities to CSV with checkpoints. Streamlit reads stored results and uses code rules for alerts and low-confidence alternative topics for staff review, without inference on page views."
+    },
+    "boundary": {
+      "zh": "作者公开文章和展示代码已读，未核原仓、根许可或处理任何患者记录；不是NHS官方背书或临床诊断。阈值未有本站校准，匿名化有效性/部署效果未复测；分数落盘取整会损失信息，jev-latest别名可能变化。",
+      "en": "The author’s public article and displayed code were reviewed, not the original repository/license or any patient records. No NHS endorsement or clinical diagnosis is implied. Thresholds, anonymization and deployed effects were not independently validated; integer score storage loses information and the jev-latest alias can change."
+    },
+    "sources": [
+      {
+        "label": "作者文章",
+        "url": "https://ai-medreview.notion.site/TypeSafe-Jev-Turning-Friends-and-Family-Test-comments-into-decisions-143fdfd68a9780ad8673e813f95a3ce9"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/janduplessis/status/2113178671662186504"
+      }
+    ]
+  },
+  {
+    "id": "maltaclean-whatsapp-shadow-classification-study",
+    "name": "MaltaClean shadow study",
+    "author": "Mauricio Suarez Vega",
+    "title": {
+      "zh": "WhatsApp 分类的影子运行与分歧复盘",
+      "en": "Shadow classification and disagreement review on WhatsApp"
+    },
+    "area": {
+      "zh": "客服影子评估",
+      "en": "Support shadow evaluation"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "与主客服流程并行的一份文本历史和预订上下文；不含主流程全部运行信息或图像像素。",
+      "en": "A parallel copy of text history and booking context, excluding some operational information and image pixels available to the main support pipeline."
+    },
+    "decision": {
+      "zh": "Jev 1.13.0 判断报价、投诉、付款等有限意图，并回答求职、需人工及是否明确确认方案等二元问题；问题版本分别记录。",
+      "en": "Jev 1.13.0 classifies finite intents such as quotation, complaint and payment, plus binary questions about job seeking, human review and explicit proposal confirmation, with rubric versions separated."
+    },
+    "action": {
+      "zh": "只记录标签、概率、延迟和错误，与主流程结果作分层对照，供后续独立标注与评估；不改变客户回复、不创建预订，也不据此自动接管服务。",
+      "en": "It logs labels, probabilities, latency and errors for stratified comparison and later independent labeling; it does not change customer replies, create bookings or automatically take over service."
+    },
+    "boundary": {
+      "zh": "文章标10月2日、10月22日原帖再次分享；作者703个turn含重复联系人，模型间一致率不是人工准确率。128/131仅指主提供商失败子集中的返回率，不是纠错率；两者共用基础设施，费用/延迟口径不同，尚未证明业务收益或独立容灾，未读客户对话或复测。",
+      "en": "The article is dated October 2 and was reshared October 22. The author’s 703 turns include repeat contacts, and agreement is not human-labeled accuracy. 128/131 is response availability in a provider-failure subset, not correctness. Shared infrastructure and different cost/timing scopes preclude claims of business gains or independent redundancy. No customer conversations were read or experiment rerun."
+    },
+    "sources": [
+      {
+        "label": "作者复盘",
+        "url": "https://mauriciosuarez.dev/es/articulos/typesafe-jev-part-2/"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/mauroziuxSV/status/2113163564210880760"
+      }
+    ]
+  },
+  {
+    "id": "agnes-honor-of-kings-bounded-action-playbook",
+    "name": "Agnes RSI Honor of Kings",
+    "author": "Agnes AI / Aiden",
+    "title": {
+      "zh": "王者荣耀中的有限动作与赛后 Playbook 迭代",
+      "en": "Bounded game actions and post-game playbook refinement"
+    },
+    "area": {
+      "zh": "游戏研究报告",
+      "en": "Game research report"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "己方可见的英雄状态、当前规划与此刻允许的决策集合；教练赛后可见完整记录，场上模型不获该全局视角。",
+      "en": "The hero’s visible state, current plan and currently available decisions; the coach receives complete post-game records, while playing models do not."
+    },
+    "decision": {
+      "zh": "Jev 在有限决策空间返回各选项概率并选择动作；较大的 Agnes 模型另作规划和赛后策略改写。",
+      "en": "Jev returns probabilities over bounded decisions and chooses an action, while larger Agnes models plan and revise the playbook after games."
+    },
+    "action": {
+      "zh": "Playbook代码高频执行动作；教练提议提示、动作空间与反射代码改动，经固定测试后才晋升候选，模型权重不训练。",
+      "en": "Playbook code executes actions at a higher frequency; coach-proposed prompt, action-space and reflex-code changes pass fixed promotion tests, without model-weight training."
+    },
+    "boundary": {
+      "zh": "仅作者10月12日报告，仓库无可运行核心代码或已核根许可，不列开源项目。胜率/延迟为作者自报且仅对内置机器人；95%检查分数不是纯胜率，3v3后续虚线是目标，部分迁移含人工操作，不能推广到真人竞技或机器人。",
+      "en": "Author report dated October 12 only, with no runnable core or verified root license, so no open-source-project entry. Win rates/latency are author-reported against built-in bots; a 95% check score is not a pure win rate, future 3v3 dashed points are targets and some transfer was manual. No extension to human competition or robotics is established."
+    },
+    "sources": [
+      {
+        "label": "REPORT.md",
+        "url": "https://github.com/AgnesAI-Labs/Agnes-RSI-Framework-Honor-of-Kings/blob/d06df8ec1b381c28c9ed197e9c6a8e4a27b11466/REPORT.md"
+      },
+      {
+        "label": "README.md",
+        "url": "https://github.com/AgnesAI-Labs/Agnes-RSI-Framework-Honor-of-Kings/blob/d06df8ec1b381c28c9ed197e9c6a8e4a27b11466/README.md"
+      }
+    ]
+  },
+  {
+    "id": "uipath-typesafe-preview-confidence-handoff",
+    "name": "UiPath TypeSafe connector preview",
+    "author": "UiPath / Sandeep Panda",
+    "title": {
+      "zh": "UiPath 预览连接器的有界判断与阈值复核",
+      "en": "Bounded judgments and threshold review with the UiPath preview connector"
+    },
+    "area": {
+      "zh": "工作流集成预览",
+      "en": "Workflow integration preview"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "UiPath 工作流提供的 JSON 状态、预先定义的选项或有序准则；供应商展示邮件路由等决策活动。",
+      "en": "JSON state supplied by a UiPath workflow with predefined options or ordered criteria; the vendor illustrates decision activities such as email routing."
+    },
+    "decision": {
+      "zh": "连接器以用户自己的 TypeSafe Key 调用 Jev 的 Choice、Score、Noul，返回结构化答案、概率及适用的置信度。",
+      "en": "The connector calls Jev Choice, Score and Noul with the user’s own TypeSafe key, returning typed answers, probabilities and confidence where applicable."
+    },
+    "action": {
+      "zh": "工作流代码消费答案并配置任务阈值，清楚的结果进入后续步骤，低于门槛则转人工或推理 Agent 复核；模型本身不授权业务动作。",
+      "en": "Workflow code consumes answers and task-specific thresholds, continuing suitable results and handing uncertain ones to humans or reasoning agents; the model itself does not authorize business actions."
+    },
+    "boundary": {
+      "zh": "已核UiPath一手文章与TypeSafe推荐，明确为preview和供应商示例，未登录租户执行或验证客户生产闭环。94%是与LLM裁判的一致率，成本/延迟为早期内部评测，非本站实测；请求走用户与TypeSafe的约定，不经UiPath AI Trust Layer。",
+      "en": "UiPath’s primary article and TypeSafe’s recommendation were verified. This is a preview/vendor example, not a tenant execution or verified customer production loop. The 94% figure measures LLM-judge agreement; cost/latency come from early internal experiments, not our tests. Requests use the user’s TypeSafe agreement and bypass UiPath AI Trust Layer."
+    },
+    "sources": [
+      {
+        "label": "UiPath一手说明",
+        "url": "https://www.uipath.com/blog/product-and-updates/typesafe-connector-bring-jev-models-to-uipath"
+      },
+      {
+        "label": "UiPath X",
+        "url": "https://x.com/UiPath/status/2112941209635418297"
+      },
+      {
+        "label": "TypeSafe X",
+        "url": "https://x.com/typesafeai/status/2112971330421412292"
+      }
+    ]
   }
 ]

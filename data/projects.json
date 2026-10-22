@@ -3326,5 +3326,101 @@
     "lastVerified": "2026-10-21",
     "status": "verified",
     "stars": 2
+  },
+  {
+    "id": "peesukagu-jev-advise",
+    "name": "PeesukaGu/jev-advise",
+    "url": "https://github.com/PeesukaGu/jev-advise",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Claude Code插件，经jev CLI在有限选项旁显示概率，默认用户选择；显式auto_select可替答。已核hook/消费者，未安装；作者偏好匹配率并非独立验证，选取上下文会外发。",
+      "en": "MIT Claude Code plugin displaying jev CLI probabilities beside bounded options; users choose by default, with explicit auto-select available. Hook/consumer reviewed without installation; author preference-matching rates are unverified and selected context is transmitted."
+    },
+    "sourceUrl": "https://github.com/PeesukaGu/jev-advise/blob/e328078295bea8b044f240d3e6eab11207df5408/README.md",
+    "lastVerified": "2026-10-22",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "zilize-parallax-dsh",
+    "name": "Zilize/parallax-dsh",
+    "url": "https://github.com/Zilize/parallax-dsh",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0本地arXiv集合图插件：关键词召回/集合操作加原生Jev筛选和分类，逐批持久化概率与进度。未安装、未复测万篇时间；本地数据库不等于本地推理，召回受入库范围约束。",
+      "en": "Apache-2.0 local arXiv set-graph plugin combining keyword recall/set operations with native Jev screening/classification and batch-persisted probabilities/progress. Not installed or timing-retested; local database is not local inference and recall depends on ingested coverage."
+    },
+    "sourceUrl": "https://github.com/Zilize/parallax-dsh/blob/023ffadd6dea3af30587b89feb6073ffdd142c68/README.md",
+    "lastVerified": "2026-10-22",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "aiden-guan-courtvision",
+    "name": "aiden-guan/courtvision",
+    "url": "https://github.com/aiden-guan/courtvision",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT篮球视觉、统计与解说原型，含原生Jev SDK、有限教练卡片/解说类型判断和确定性回退；live、stub、replay、off分开。已核调用和消费者，未接真实比赛或复测，模拟与测试数不代表实场准确率。",
+      "en": "MIT basketball vision/stats/narration prototype with native Jev SDK, bounded coach-card/line-kind judgments and deterministic fallbacks. Live/stub/replay/off are separate. Calls/consumer reviewed without real-game or performance tests; simulations/test counts do not establish field accuracy."
+    },
+    "sourceUrl": "https://github.com/aiden-guan/courtvision/blob/fadf0131615d998b9a74a4979bcffd4022b147e0/README.md",
+    "lastVerified": "2026-10-22",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "hendrik77-cap-jev",
+    "name": "hendrik77/cap-jev",
+    "url": "https://github.com/hendrik77/cap-jev",
+    "category": "sdk",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT SAP CAP内部System One决策服务，验证Choice/Score/Noul并支持超时、重试、Destination与mock。当前Cloudflare provider默认Clef，通用兼容接口不等于已验证TypeSafe Jev业务调用；仅列相关工具，未安装或验证npm发布。",
+      "en": "MIT internal System One decision service for SAP CAP, with typed validation, deadlines/retries, Destination and mock support. Its current Cloudflare provider defaults to Clef; compatibility does not establish a verified TypeSafe Jev business call. Related tool only, not installed or npm-publication verified."
+    },
+    "sourceUrl": "https://github.com/hendrik77/cap-jev/blob/60e4fbea641513258c7894940e30ff5a4248fb03/README.md",
+    "lastVerified": "2026-10-22",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "keyizhan-jev-fabric-annotator",
+    "name": "Keyizhan/jev-fabric-annotator",
+    "url": "https://github.com/Keyizhan/jev-fabric-annotator",
+    "category": "embodied",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT双臂布料分拣视频标注管线，把本地兼容决策模型的形状投票与几何规则合并成篮筐红框，释放后停止跟踪。默认本地StartLux/jev兼容服务，非TypeSafe托管模型验收；权重/机器人数据不含，权重另有非商业限制，未运行。",
+      "en": "MIT dual-arm fabric-sorting video annotation pipeline combining local compatible-model shape votes with geometry to draw basket boxes until release. Defaults to a local StartLux/jev-compatible service, not verified hosted TypeSafe use. Weights/robot data are excluded; weights have separate non-commercial restrictions. Not run."
+    },
+    "sourceUrl": "https://github.com/Keyizhan/jev-fabric-annotator/blob/b6cb5e359147ca7b90f3ff7017dda6035c1363a6/README.md",
+    "lastVerified": "2026-10-22",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "patronus-protect-decision-model-guard",
+    "name": "patronus-protect/decision-model-guard",
+    "url": "https://github.com/patronus-protect/decision-model-guard",
+    "category": "guard",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT通用决策护栏与审计工具：扫描不可信内容，擦除片段重判，再以策略生成复核/弃权/阻止等结果。已核管线和兼容HTTP适配，示例主要为独立本地模型，不当TypeSafe Jev效果；未下载权重或复测安全指标。",
+      "en": "MIT generic decision guards/audit tooling: scans untrusted content, rejudges erased spans and applies review/abstain/block policies. Pipeline/compatible HTTP adapter reviewed; demonstrations mainly use independent local models, not proof of TypeSafe Jev results. No weights downloaded or safety metrics retested."
+    },
+    "sourceUrl": "https://github.com/patronus-protect/decision-model-guard/blob/a125f37d176c7eb27eb70f8ea6879dcc4e4c7786/README.md",
+    "lastVerified": "2026-10-22",
+    "status": "verified",
+    "stars": 2
   }
 ]
