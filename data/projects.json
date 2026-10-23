@@ -3422,5 +3422,117 @@
     "lastVerified": "2026-10-22",
     "status": "verified",
     "stars": 2
+  },
+  {
+    "id": "lexus2016-fast-jev-compaction",
+    "name": "Lexus2016/fast-jev-compaction",
+    "url": "https://github.com/Lexus2016/fast-jev-compaction",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "维护 tamaratran 压缩工具的 MIT 分支：保全并行工具结果、长会话窗口、外发脱敏与超时回退。已核调用和 hook；默认保留工具调用，显式配置才可删。未发布该分支 npm 包，未安装或复测，不重复计同类案例。",
+      "en": "MIT maintenance fork of tamaratran’s compactor with parallel-result preservation, long-session windows, redaction and timeout/fallback handling. Client/hook reviewed; calls remain by default unless explicitly dropped. No fork npm release, installation or retest; not counted as a duplicate case."
+    },
+    "sourceUrl": "https://github.com/Lexus2016/fast-jev-compaction/blob/bec4021842319827c42e4314b8468140ce34c87d/README.md",
+    "lastVerified": "2026-10-23",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "aen07-jev-grievance-triage",
+    "name": "aen07/jev-grievance-triage",
+    "url": "https://github.com/aen07/jev-grievance-triage",
+    "category": "routing",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 申诉分流原型：官方 SDK 批量窄问题、版本化阈值与确定性政策输出分流/复核及审计信息。安全风险和 API 失败转人工。仅核源码，未读取投诉缓存或验证实际权益处置。",
+      "en": "Apache-2.0 grievance-triage prototype using the official SDK, batched narrow questions, versioned thresholds and deterministic policy for routing/review and audit output. Risks/API failures route to people. Source only; no complaint caches or real rights adjudication inspected."
+    },
+    "sourceUrl": "https://github.com/aen07/jev-grievance-triage/blob/80a5672ac18e77d5cec784202d13abcc60df61cf/README.md",
+    "lastVerified": "2026-10-23",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "fmegahed-decision-models-for-industrial-image-qc",
+    "name": "fmegahed/decision-models-for-industrial-image-qc",
+    "url": "https://github.com/fmegahed/decision-models-for-industrial-image-qc",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 工业缺陷图像研究工程：托管 Jev 图像调用、独立校准集与保留测试集比较；含另一条本地模型路径。R 包仍设计中；论文指标为作者自报，数据许可独立，未下载数据/权重或执行付费评测。",
+      "en": "MIT industrial-defect image research with hosted Jev image calls, separate calibration and held-out comparisons, plus a distinct local-model path. R package remains in design; paper metrics are author-reported, data licenses separate, and no data/weights downloaded or paid evaluations run."
+    },
+    "sourceUrl": "https://github.com/fmegahed/decision-models-for-industrial-image-qc/blob/c493264afcb2b5ecc824791787294581df5b6eac/README.md",
+    "lastVerified": "2026-10-23",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "matteoandradeboschi-jev-classificador",
+    "name": "matteoandradeboschi/jev-classificador",
+    "url": "https://github.com/matteoandradeboschi/jev-classificador",
+    "category": "apps",
+    "relationship": "community",
+    "license": "0BSD",
+    "summary": {
+      "zh": "0BSD Obsidian 插件：原生 Jev 对笔记做封闭分类与词表标签，低概率组合需确认后写 frontmatter，排除目录先于读取。未安装、发送笔记或确认市场上架；分类质量未复测。",
+      "en": "0BSD Obsidian plugin using native Jev for bounded note classification and wordlist tags, with confirmation for uncertain pairs before frontmatter writes and folder exclusion before reads. No install, note transmission or store verification; classification quality untested."
+    },
+    "sourceUrl": "https://github.com/matteoandradeboschi/jev-classificador/blob/c23b22bd5e260d836f170ef4dbf2a03c82824e49/README.md",
+    "lastVerified": "2026-10-23",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "bitefoundry-switchbite",
+    "name": "BiteFoundry/switchbite",
+    "url": "https://github.com/BiteFoundry/switchbite",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Rust/MCP 候选工作者分配建议工具，原生 Jev 1.14 窄判断加确定性资格筛选与 hold。宿主拥有权限和执行，工具不启动工作者；公开预览只声明 Windows x64 验收，未运行真实模型。",
+      "en": "MIT Rust/MCP worker-assignment proposal tool using native Jev 1.14 judgments, deterministic eligibility filters and holds. Host owns permissions/execution; the tool launches no workers. Preview release validation is Windows x64 only; no live model run."
+    },
+    "sourceUrl": "https://github.com/BiteFoundry/switchbite/blob/878530478ea948efcdba0ed5e67831ffe0810ad7/README.md",
+    "lastVerified": "2026-10-23",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "samuelsacco-jev-exploration",
+    "name": "SamuelSacco/jev-exploration",
+    "url": "https://github.com/SamuelSacco/jev-exploration",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Jev 证据账本与评估工具：原生客户端、校准/基线与跨域研究代码。其结论受样本、模型版本和实验设计限制，不能写成普遍性能事实；未读取原始邮件语料、运行实验或复测指标。",
+      "en": "MIT Jev evidence ledger/evaluation tooling with a native client and calibration, baseline and cross-domain research code. Conclusions are limited by samples, model versions and study design, not universal performance facts. No raw email corpora read, experiments run or metrics retested."
+    },
+    "sourceUrl": "https://github.com/SamuelSacco/jev-exploration/blob/0c10cbc368cfd131531b713229be3bf7826290c2/README.md",
+    "lastVerified": "2026-10-23",
+    "status": "verified",
+    "stars": 3
+  },
+  {
+    "id": "lakeday-org-perch",
+    "name": "lakeday-org/perch",
+    "url": "https://github.com/lakeday-org/perch",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 语义代码检查 CLI，原生 TypeSafe System One 可选后端；代码消费概率形成问题、规则违例与覆盖报告。默认云路由也支持其他模型，基准成绩必须区分后端；未上传代码、安装或复测召回。",
+      "en": "MIT semantic code-checking CLI with an optional native TypeSafe System One backend. Code consumes probabilities into issues, rule violations and coverage reports. Default cloud routing supports other models; benchmarks must distinguish backends. No code uploaded, installation or recall retest."
+    },
+    "sourceUrl": "https://github.com/lakeday-org/perch/blob/b91ac7ad9c4633f5fb1c99fbd4eba223c959f48a/README.md",
+    "lastVerified": "2026-10-23",
+    "status": "verified",
+    "stars": 350
   }
 ]

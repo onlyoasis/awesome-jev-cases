@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (158)
+## 深度使用案例 / Worked cases (166)
 
 ### jev-ultrafast
 
@@ -1426,7 +1426,79 @@
 - 核验边界：已核UiPath一手文章与TypeSafe推荐，明确为preview和供应商示例，未登录租户执行或验证客户生产闭环。94%是与LLM裁判的一致率，成本/延迟为早期内部评测，非本站实测；请求走用户与TypeSafe的约定，不经UiPath AI Trust Layer。
 - 来源：[UiPath一手说明](https://www.uipath.com/blog/product-and-updates/typesafe-connector-bring-jev-models-to-uipath) · [UiPath X](https://x.com/UiPath/status/2112941209635418297) · [TypeSafe X](https://x.com/typesafeai/status/2112971330421412292)
 
-## 开源项目 / Open-source projects (214)
+### 申诉分流原型：23 个判断交给版本化政策
+
+- 作者：aen07
+- 输入：开发项目申诉文本、接收日期和渠道；本轮只检查公开源码。
+- Jev 判断：一次原生 System One 请求以 Noul 判断项目、议题与安全信号，以 Score 判断紧急程度；日期窗口由 Python 计算。
+- 后续动作：版本化阈值与 P1–P8 规则输出部门、紧急程度、脱敏和复核标记；安全风险、不确定结果或 API 失败进入人工复核，清晰常规项才建议自动分流。
+- 核验边界：Apache-2.0 社区原型，非真实申诉处置系统验收。未读取投诉缓存、运行模型或验证安全召回/可靠脱敏；其样本评估是作者自报，不应自动裁定个人权益。
+- 来源：[GitHub](https://github.com/aen07/jev-grievance-triage) · [Source](https://github.com/aen07/jev-grievance-triage/blob/80a5672ac18e77d5cec784202d13abcc60df61cf/triage/jev_client.py) · [Source](https://github.com/aen07/jev-grievance-triage/blob/80a5672ac18e77d5cec784202d13abcc60df61cf/triage/pipeline.py) · [Source](https://github.com/aen07/jev-grievance-triage/blob/80a5672ac18e77d5cec784202d13abcc60df61cf/triage/policy.py)
+
+### Flutter 语义测试：从有限动作到独立断言
+
+- 作者：lucasgm1997
+- 输入：调试版 Flutter 的语义节点、目标、未满足断言及输入字段说明；具体输入值保留本地。
+- Jev 判断：原生 Jev Choice 从执行器构造的 tap、fill、wait、blocked 等有限候选中选择下一步，并返回置信度。
+- 后续动作：执行器校验候选与置信度，动作前重读界面，调用 Marionette，并重新检查断言；界面漂移、低置信度、无语义变化或步数耗尽会停止。
+- 核验边界：未安装应用、启动模拟器或调用模型；作者的 19/19 断言和耗时不是本站实测。需应用实现调试语义接口，不能直接测试任意 release APK；未发现根许可证，只列代码案例。
+- 来源：[GitHub](https://github.com/lucasgm1997/automation_with_llm_and_jev) · [Source](https://github.com/lucasgm1997/automation_with_llm_and_jev/blob/78abf5d809f927f4808483e1b6361a5acc05ad89/automation/jev_e2e/policy.py) · [Source](https://github.com/lucasgm1997/automation_with_llm_and_jev/blob/78abf5d809f927f4808483e1b6361a5acc05ad89/automation/jev_e2e/ui_runner.py)
+
+### 工业图像质检：有界分类与独立校准
+
+- 作者：Fadel M. Megahed / Ying-Ju Chen
+- 输入：待检工业图像、正常/缺陷描述及可选的已标注参考图像。
+- Jev 判断：托管 TypeSafe 路径发送图像 assets 和实验性图像请求头，用 Choice 判断正常/缺陷或主要缺陷，也提供多标签 Noul。
+- 后续动作：R 代码整理概率与预测，另以校准集拟合 Platt/保序回归，并对保留测试集按阈值评估，输出配对比较和报告。
+- 核验边界：MIT 研究工程，R 包仍在设计；另有独立本地模型路径，不能当 TypeSafe 权重开源。论文数值与成本为作者自报，未下载数据/权重、运行付费评测或验证工厂部署，数据集另有许可边界。
+- 来源：[GitHub](https://github.com/fmegahed/decision-models-for-industrial-image-qc) · [Source](https://github.com/fmegahed/decision-models-for-industrial-image-qc/blob/c493264afcb2b5ecc824791787294581df5b6eac/R/industrial_defect_classifier.R) · [Source](https://github.com/fmegahed/decision-models-for-industrial-image-qc/blob/c493264afcb2b5ecc824791787294581df5b6eac/R/fair_evaluate.R)
+
+### Obsidian 笔记的封闭分类与低置信度确认
+
+- 作者：Matteo Andrade Boschi
+- 输入：用户主动触发的笔记标题、标签和截断正文；排除目录先于读取检查。
+- Jev 判断：一次原生 Jev 请求用 Choice 选择固定知识领域及其子类；代码拒绝分类表外的返回值，并用类别与子类概率组合判断是否需要确认。
+- 后续动作：低于门槛时弹窗让用户选前三组合，已有分类先确认覆盖；通过后写入 categoria/genero frontmatter。另有封闭词表主题标签命令。
+- 核验边界：0BSD 社区插件；未安装 Obsidian 插件、发送笔记或验证上架。笔记片段会离机，默认阈值是作者设置，不是准确率保证。
+- 来源：[GitHub](https://github.com/matteoandradeboschi/jev-classificador) · [Source](https://github.com/matteoandradeboschi/jev-classificador/blob/c23b22bd5e260d836f170ef4dbf2a03c82824e49/src/core/jev.ts) · [Source](https://github.com/matteoandradeboschi/jev-classificador/blob/c23b22bd5e260d836f170ef4dbf2a03c82824e49/src/main.ts)
+
+### Switchbite：候选工作者排序与显式暂缓
+
+- 作者：BiteFoundry
+- 输入：宿主提供的任务、能力要求、候选工作者、可用性和偏好。
+- Jev 判断：先用代码排除不合格候选，再以 Jev 1.14 Noul 判断上下文充分性，Score 评估每个候选的适配与偏好；代码按 0.7/0.3 加权。
+- 后续动作：严格校验答案后返回 assign 建议或带理由的 hold；宿主负责权限、启动、状态与实际编排，MCP 服务自身不启动工作者。
+- 核验边界：MIT 首个公开预览；仅作者声明 Windows x64 发布验收，macOS/Linux 未发布验收。未运行二进制或真实模型；离线 replay 优先且需要宿主绑定原任务，置信度是分布集中度。
+- 来源：[GitHub](https://github.com/BiteFoundry/switchbite) · [Source](https://github.com/BiteFoundry/switchbite/blob/878530478ea948efcdba0ed5e67831ffe0810ad7/src/http.rs) · [Source](https://github.com/BiteFoundry/switchbite/blob/878530478ea948efcdba0ed5e67831ffe0810ad7/src/core.rs)
+
+### Perch：以 Jev 概率生成语义代码检查结果
+
+- 作者：Lakeday
+- 输入：解析出的代码方法、相关调用上下文及可配置的自然语言规则。
+- Jev 判断：可配置的原生 TypeSafe System One 路径使用 jev-latest，对代码和规则提封闭问题；缺失答案会报错，超限请求按服务限制拆分。
+- 后续动作：代码把概率转换为问题、严重度和规则违例列表，保存扫描覆盖与失败状态，用于排序、复查及 CI 门槛；未完整检查不应当作通过。
+- 核验边界：MIT 多后端工具，默认 Perch Cloud 路由不等于每次都用 Jev；需显式配置 TypeSafe。基准同时含 OpenAI 和 Jev，不能把另一模型成绩归给 Jev；未上传仓库或复测缺陷召回。
+- 来源：[GitHub](https://github.com/lakeday-org/perch) · [Source](https://github.com/lakeday-org/perch/blob/b91ac7ad9c4633f5fb1c99fbd4eba223c959f48a/src/systemone.js) · [Source](https://github.com/lakeday-org/perch/blob/b91ac7ad9c4633f5fb1c99fbd4eba223c959f48a/src/scan.js) · [Source](https://github.com/lakeday-org/perch/blob/b91ac7ad9c4633f5fb1c99fbd4eba223c959f48a/src/questions.js)
+
+### Sanity @s：公司 Agent 路由与前三项人工选择
+
+- 作者：Even Westvang / Rostislav Melkumyan / Knut Melvær
+- 输入：Slack 当前消息（最多 8,000 字符）、最多前 20 条线程消息，以及已发布可路由 Agent 的描述；作者当时有 66 项和一个 @s 帮助选项。
+- Jev 判断：Jev 在给定候选中判断相关性和置信度，并获知线程当前 Agent；在自动响应频道另判断该 Agent 是否应答。
+- 后续动作：最高概率候选接手任务；置信度低于 0.4 时展示前三项让用户选择。后续工具与知识库由选中 Agent 执行，Temporal 保持运行。
+- 核验边界：Sanity 一手工程文章、作者原帖及 TypeSafe 推荐已核；这是社区公司的内部实现，不是 TypeSafe 官方项目。未获得内部源码、Slack 权限或独立准确率；0.4 是作者策略。
+- 来源：[Sanity engineering](https://www.sanity.io/engineering/how-we-built-our-company-agent-harness) · [Author X](https://x.com/kmelve/status/2113295590876660007) · [TypeSafe X](https://x.com/typesafeai/status/2113348030590267557)
+
+### Composio Firewall：工具调用与返回值的条件拦截
+
+- 作者：Karan Vaidya / Composio
+- 输入：工具名、参数、返回内容及用户配置的自然语言阻止条件；有历史上下文的会话也会考虑此前活动。
+- Jev 判断：作者说明 Firewall 结合 Jev 与 Composio 自定义小模型评估行动和输入；文档展示条件是否命中及提示注入检查，未公开每个检查的模型分工或题型。
+- 后续动作：before_execute 命中条件时不执行调用并返回 blocked；after_execute 可阻止结果进入 Agent，注入检查只作用于返回值。
+- 核验边界：供应商文档标 Experimental、付费计划；营销页部分上下文功能仍标 Coming soon，不能概括为全部已上线。after_execute 不能撤销已执行工具，ZDR 缺少历史上下文，meta tools 不在 hook 范围。未开通服务、调用 API 或独立验证攻防效果。
+- 来源：[Composio docs](https://docs.composio.dev/docs/firewall) · [Author X](https://x.com/KaranVaidya6/status/2113290621821784557) · [TypeSafe X](https://x.com/typesafeai/status/2113346740267143361) · [Product boundary](https://composio.dev/firewall)
+
+## 开源项目 / Open-source projects (221)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1644,6 +1716,13 @@
 | [hendrik77/cap-jev](https://github.com/hendrik77/cap-jev) | inspired | MIT | 0 |
 | [Keyizhan/jev-fabric-annotator](https://github.com/Keyizhan/jev-fabric-annotator) | inspired | MIT | 0 |
 | [patronus-protect/decision-model-guard](https://github.com/patronus-protect/decision-model-guard) | inspired | MIT | 2 |
+| [Lexus2016/fast-jev-compaction](https://github.com/Lexus2016/fast-jev-compaction) | community | MIT | 1 |
+| [aen07/jev-grievance-triage](https://github.com/aen07/jev-grievance-triage) | community | Apache-2.0 | 0 |
+| [fmegahed/decision-models-for-industrial-image-qc](https://github.com/fmegahed/decision-models-for-industrial-image-qc) | community | MIT | 0 |
+| [matteoandradeboschi/jev-classificador](https://github.com/matteoandradeboschi/jev-classificador) | community | 0BSD | 0 |
+| [BiteFoundry/switchbite](https://github.com/BiteFoundry/switchbite) | community | MIT | 0 |
+| [SamuelSacco/jev-exploration](https://github.com/SamuelSacco/jev-exploration) | community | MIT | 3 |
+| [lakeday-org/perch](https://github.com/lakeday-org/perch) | community | MIT | 350 |
 
 ## 官方 cookbook / Official recipes (20)
 
