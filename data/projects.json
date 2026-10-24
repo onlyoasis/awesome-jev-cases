@@ -3534,5 +3534,101 @@
     "lastVerified": "2026-10-23",
     "status": "verified",
     "stars": 350
+  },
+  {
+    "id": "xerj-org-xerj",
+    "name": "xerj-org/xerj",
+    "url": "https://github.com/xerj-org/xerj",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 本地搜索/MCP 引擎，原生 Jev 为显式可选重排；已核托管调用、结果消费及外发边界。独立本地 judge 不是 Jev，概率不可直接当校准阈值；未安装、外发索引或复测性能。",
+      "en": "Apache-2.0 local-search/MCP engine with explicit optional native Jev reranking. Hosted calls, result consumption and egress boundaries reviewed. Independent local judges are not Jev and probabilities are not calibrated thresholds. No install, index transmission or benchmark retest."
+    },
+    "sourceUrl": "https://github.com/xerj-org/xerj/blob/d53bc2e44f297d0ff635291241f5aa52981044eb/README.md",
+    "lastVerified": "2026-10-24",
+    "status": "verified",
+    "stars": 14235
+  },
+  {
+    "id": "diegoag64-jev-devtools",
+    "name": "diegoag64/jev-devtools",
+    "url": "https://github.com/diegoag64/jev-devtools",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 实验性 React/Node 检查器：包装官方 SDK、内存记录、同源 SSE 与条件流程可视化，捕获默认关闭。演示主要用固定样本，作者未验 live inference；仅列工具，不把模拟图当真实 Jev 案例，未安装或读取 trace。",
+      "en": "MIT experimental React/Node inspector wrapping the official SDK with bounded memory recording, same-origin SSE and condition-flow visualization; capture is off by default. Demos mainly use fixtures and the author has not verified live inference. Tool entry only; no fixture claimed as live Jev, installation or trace access."
+    },
+    "sourceUrl": "https://github.com/diegoag64/jev-devtools/blob/a229b328ce742cf2a15fb01514d62e7a52cb0839/README.md",
+    "lastVerified": "2026-10-24",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "mushan-bit-decision-moderation-bench",
+    "name": "MuShan-bit/decision-moderation-bench",
+    "url": "https://github.com/MuShan-bit/decision-moderation-bench",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 中文审核评测台，Jev 原生 provider 与四问阈值、mock/其他 provider 分开；含 CLI 与网页指标。825条标签来自公开数据映射，数据许可独立；作者preview结果未复测，不是生产审核服务验收。",
+      "en": "MIT Chinese moderation evaluation console separating a native Jev provider/four-question thresholds from mock/other providers, with CLI/web metrics. The 825 labels are mapped from public datasets with separate licenses. Preview results were not retested and this is not production-service acceptance."
+    },
+    "sourceUrl": "https://github.com/MuShan-bit/decision-moderation-bench/blob/7d843be8414e96d9d43a617e7c063dc74dfc0b94/README.md",
+    "lastVerified": "2026-10-24",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "szia-ai-jev-on-durians",
+    "name": "szia-ai/jev-on-durians",
+    "url": "https://github.com/szia-ai/jev-on-durians",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 评论决策模型研究：原生 Jev 18问、其他模型对照、指标及 Elo 图表。83条评论版权独立、样本小且选择有偏；榜单/费用为作者自报，未复制语料、运行实验或下载权重。",
+      "en": "MIT opinion/decision-model research with native Jev’s 18 questions, other-model controls, metrics and Elo charts. The 83 opinions have separate copyrights; samples are small and selected. Rankings/costs are author-reported. No corpus copied, experiments run or weights downloaded."
+    },
+    "sourceUrl": "https://github.com/szia-ai/jev-on-durians/blob/ae62dfccadad51fa8d2de00210c2ece781e4d932/README.md",
+    "lastVerified": "2026-10-24",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "pbswimmer3-claude-jev-router",
+    "name": "pbswimmer3/claude-jev-router",
+    "url": "https://github.com/pbswimmer3/claude-jev-router",
+    "category": "routing",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 Claude Code mod：Jev 判断草稿模型/推理强度并显示建议，不自动切换。默认Merge、可选TypeSafe直连，续接才补上下文；明显模式脱敏不等于绝不泄露，未安装或复测。",
+      "en": "Apache-2.0 Claude Code mod displaying Jev-based draft model/effort suggestions without switching settings. Merge is default, TypeSafe direct optional, and context is added only for continuation. Obvious-pattern scrubbing is not complete confidentiality. No install or retest."
+    },
+    "sourceUrl": "https://github.com/pbswimmer3/claude-jev-router/blob/be11baddb9bec6a5619f8543733e072ee6045407/README.md",
+    "lastVerified": "2026-10-24",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "jpcamara-judgelint",
+    "name": "jpcamara/judgelint",
+    "url": "https://github.com/jpcamara/judgelint",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Ruby/原生 CLI，将团队约定转为双向 Noul 并输出行级问题及 CI 结果；TypeSafe 原生后端已核，其他后端独立。拒答/跳过不静默当通过；judge 与规则仍可能误判，未上传代码或安装复测。",
+      "en": "MIT Ruby/native CLI turning team conventions into paired Nouls with line-range findings and CI results. Native TypeSafe reviewed; other backends remain separate. Refusals/skips are explicit. Judges/rules can still err; no source uploaded, binary installed or tests rerun."
+    },
+    "sourceUrl": "https://github.com/jpcamara/judgelint/blob/c2b3f6b9e8d9ebc5fa908213417f8b7c761a1691/README.md",
+    "lastVerified": "2026-10-24",
+    "status": "verified",
+    "stars": 0
   }
 ]

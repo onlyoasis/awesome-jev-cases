@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (166)
+## 深度使用案例 / Worked cases (172)
 
 ### jev-ultrafast
 
@@ -1498,7 +1498,61 @@
 - 核验边界：供应商文档标 Experimental、付费计划；营销页部分上下文功能仍标 Coming soon，不能概括为全部已上线。after_execute 不能撤销已执行工具，ZDR 缺少历史上下文，meta tools 不在 hook 范围。未开通服务、调用 API 或独立验证攻防效果。
 - 来源：[Composio docs](https://docs.composio.dev/docs/firewall) · [Author X](https://x.com/KaranVaidya6/status/2113290621821784557) · [TypeSafe X](https://x.com/typesafeai/status/2113346740267143361) · [Product boundary](https://composio.dev/firewall)
 
-## 开源项目 / Open-source projects (221)
+### XERJ：本地检索后的可选 Jev 重排
+
+- 作者：xerj-org
+- 输入：本地检索的问题与窗口内命中项的标题、文本及显式允许字段；无文本项不外发。
+- Jev 判断：托管 Jev 路径为每篇候选构造独立 Noul，把候选内容放入该问题的 instructions，判断是否能回答查询。
+- 后续动作：API 层以有效答案重排并替换 _score，记录未评估项；可降级错误明确返回 applied:false 并保留原排序，其他错误按策略上报。
+- 核验边界：Apache-2.0 社区引擎；重排需显式请求且把问题/命中文本外发。作者提示原始概率未校准，勿把同一阈值当跨查询可靠性。另有本地 judge/兼容端点，不能算托管 Jev；未安装、上传索引或复测 BEIR 指标。
+- 来源：[GitHub](https://github.com/xerj-org/xerj) · [Source](https://github.com/xerj-org/xerj/blob/d53bc2e44f297d0ff635291241f5aa52981044eb/engine/crates/xerj-rerank/src/lib.rs) · [Source](https://github.com/xerj-org/xerj/blob/d53bc2e44f297d0ff635291241f5aa52981044eb/engine/crates/xerj-api/src/rerank_stage.rs) · [Source](https://github.com/xerj-org/xerj/blob/d53bc2e44f297d0ff635291241f5aa52981044eb/docs/RERANK.md)
+
+### 中文内容审核评测：四个问题与固定阈值
+
+- 作者：Dylan Kong / MuShan-bit
+- 输入：作者从公开数据标签映射构建的 825 条中文评测样本；本轮只读取方法和程序，不读取样本文本。
+- Jev 判断：选择 jev provider 时调用 TypeSafe System One；Choice 选有限类别，Score 评严重度，两个 Noul 判断攻击和危害信号。
+- 后续动作：程序按类别概率与固定门槛合成 verdict，在 CLI/网页汇总混淆矩阵、F1 和延迟，区分真实 provider 与 mock；不实际封禁用户内容。
+- 核验边界：MIT 评测工程，数据许可独立。Jev preview 的结果为作者自报；标签并非独立人工复核，违规占比偏高，不能外推线上误杀率。无 Key 可进明确标记的 mock；未调用 API 或复跑评测。
+- 来源：[GitHub](https://github.com/MuShan-bit/decision-moderation-bench) · [Source](https://github.com/MuShan-bit/decision-moderation-bench/blob/7d843be8414e96d9d43a617e7c063dc74dfc0b94/server/providers/index.mjs) · [Source](https://github.com/MuShan-bit/decision-moderation-bench/blob/7d843be8414e96d9d43a617e7c063dc74dfc0b94/server/providers/systemone.mjs) · [Author X](https://x.com/mushan40120676/status/2113829740838797665)
+
+### 榴莲评论研究：18 项判断到品种比较
+
+- 作者：Marton Szel / szia-ai
+- 输入：83 条中、英、马来文榴莲评论片段及三种品种、口味等固定问题定义。
+- Jev 判断：原生托管 Jev 对每条评论回答 18 个 Noul、Choice、Score 问题，识别提及、情绪、品种和比较等；独立本地模型另走 Ollama。
+- 后续动作：Python 归一化答案，与标签比较质量、耗时和成本，再把评分及比较结果转成 Elo 表与图表。
+- 核验边界：MIT 研究代码，评论版权属于原作者。小样本、作者选择和 Elo 构造限制结论；排行榜及费用为作者自报，非客观品种优劣或本站实测。未搬运评论、运行 notebook、下载模型或付费评测。
+- 来源：[GitHub](https://github.com/szia-ai/jev-on-durians) · [Source](https://github.com/szia-ai/jev-on-durians/blob/ae62dfccadad51fa8d2de00210c2ece781e4d932/src/benchmarking.py) · [Source](https://github.com/szia-ai/jev-on-durians/blob/ae62dfccadad51fa8d2de00210c2ece781e4d932/src/schema.py) · [Source](https://github.com/szia-ai/jev-on-durians/blob/ae62dfccadad51fa8d2de00210c2ece781e4d932/src/elo.py)
+
+### Claude 草稿的模型与推理强度建议
+
+- 作者：Prad Biswas / pbswimmer3
+- 输入：待发送草稿；只有被判断为续接先前工作时，才附最近两条用户提示和上一条助手回复的截断内容。
+- Jev 判断：原生 System One 格式一次问有限模型、推理强度、敏感改动、显式模型指令和续接信号；续接时按策略补上下文再判断。
+- 后续动作：代码按门槛、升档策略和用户明确选择生成建议卡，使用者手动改模型；首次发送后的建议也不代表已切换正在运行的模型。
+- 核验边界：Apache-2.0 社区 mod，默认 Merge Gateway，TypeSafe 直连为可选配置，Kev 是独立后端。脱敏仅覆盖明显模式，非完整保密保证；作者准确率/成本未复测，未安装 mod、读取会话或调用模型。
+- 来源：[GitHub](https://github.com/pbswimmer3/claude-jev-router) · [Source](https://github.com/pbswimmer3/claude-jev-router/blob/be11baddb9bec6a5619f8543733e072ee6045407/hooks/jev.ts) · [Source](https://github.com/pbswimmer3/claude-jev-router/blob/be11baddb9bec6a5619f8543733e072ee6045407/hooks/route.ts) · [Source](https://github.com/pbswimmer3/claude-jev-router/blob/be11baddb9bec6a5619f8543733e072ee6045407/hooks/register.tsx)
+
+### judgelint：团队约定的双向问题与行级结果
+
+- 作者：JP Camara
+- 输入：带行号的代码文件、README 约定及可选上下文；默认按 40 行窗口提问。
+- Jev 判断：TypeSafe 配置走原生 System One Noul；对约定分别问违反和遵循/不适用，再反转遵循答案，形成违规评分。
+- 后续动作：程序合并问题/可选多模型评分，按阈值区分 violation、uncertain 等状态，输出行范围、JSON/SARIF 或 CI 退出码；跳过与拒答单独呈现。
+- 核验边界：MIT 多后端工具，其他模型结果不算 Jev 效果。规则措辞、judge 家族和代码内 judgehint 均影响结果；不是确定性静态证明或安全授权。未安装二进制、上传代码或复测作者样本。
+- 来源：[GitHub](https://github.com/jpcamara/judgelint) · [Source](https://github.com/jpcamara/judgelint/blob/c2b3f6b9e8d9ebc5fa908213417f8b7c761a1691/lib/judgelint/providers.rb) · [Source](https://github.com/jpcamara/judgelint/blob/c2b3f6b9e8d9ebc5fa908213417f8b7c761a1691/lib/judgelint/protocol.rb) · [Source](https://github.com/jpcamara/judgelint/blob/c2b3f6b9e8d9ebc5fa908213417f8b7c761a1691/lib/judgelint/question.rb) · [Source](https://github.com/jpcamara/judgelint/blob/c2b3f6b9e8d9ebc5fa908213417f8b7c761a1691/lib/judgelint/runner.rb)
+
+### AI 对话研究：用 Jev 分类而后人工选读
+
+- 作者：Eduardo Bergel
+- 输入：作者生成的 437 组对话、11,013 条消息；本轮只读作者公开文章。
+- Jev 判断：作者用 TypeSafe Jev 为每条消息回答 53 个分类问题，其中 24 个宽泛主题；另以六个视角评估一千条消息，具体 API primitive 未公开核实。
+- 后续动作：汇总主题分布与相关性，辅助选择值得人工阅读的片段，再据偏差设计后续人工校验和控制实验。
+- 核验边界：仅作者文章，未精读仓库或搬运原始对话，暂不列开源项目。主题得分不是意识证据；样本失衡、消息不独立、提示框架及长度偏差限制结论，费用为作者自报。
+- 来源：[Author X article](https://x.com/BergelEduardo/status/2113657356307316822)
+
+## 开源项目 / Open-source projects (227)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1723,6 +1777,12 @@
 | [BiteFoundry/switchbite](https://github.com/BiteFoundry/switchbite) | community | MIT | 0 |
 | [SamuelSacco/jev-exploration](https://github.com/SamuelSacco/jev-exploration) | community | MIT | 3 |
 | [lakeday-org/perch](https://github.com/lakeday-org/perch) | community | MIT | 350 |
+| [xerj-org/xerj](https://github.com/xerj-org/xerj) | community | Apache-2.0 | 14235 |
+| [diegoag64/jev-devtools](https://github.com/diegoag64/jev-devtools) | community | MIT | 2 |
+| [MuShan-bit/decision-moderation-bench](https://github.com/MuShan-bit/decision-moderation-bench) | community | MIT | 0 |
+| [szia-ai/jev-on-durians](https://github.com/szia-ai/jev-on-durians) | community | MIT | 0 |
+| [pbswimmer3/claude-jev-router](https://github.com/pbswimmer3/claude-jev-router) | community | Apache-2.0 | 0 |
+| [jpcamara/judgelint](https://github.com/jpcamara/judgelint) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (20)
 
