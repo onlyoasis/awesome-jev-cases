@@ -7298,5 +7298,325 @@
         "url": "https://x.com/BergelEduardo/status/2113657356307316822"
       }
     ]
+  },
+  {
+    "id": "google-adk-typesafe-classifier-routing",
+    "name": "ADK TypesafeClassifier",
+    "author": "Google ADK contributors",
+    "title": {
+      "zh": "ADK：Jev 分类答案连接工作流分支",
+      "en": "ADK workflow branches driven by Jev classifier answers"
+    },
+    "area": {
+      "zh": "工作流路由示例",
+      "en": "Workflow routing example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "文档中的客服工单文本，或由调用方提供的 JSON；每个问题显式给出说明和允许答案。",
+      "en": "A support-ticket text in the docs, or caller-supplied JSON, with explicit instructions and allowed answers."
+    },
+    "decision": {
+      "zh": "TypesafeClassifier 将 Choice、Binary、Score 转为原生 Jev choice、noul、score，一次请求后校验类型、候选标签及数值范围。",
+      "en": "TypesafeClassifier converts Choice, Binary and Score to native Jev choice, noul and score, then checks types, labels and numeric ranges."
+    },
+    "action": {
+      "zh": "ClassifierNode 用 Choice 标签或 Binary 阈值生成 route，原输入交给下游节点；建图时检查分支覆盖，缺失/非法答案报错。",
+      "en": "ClassifierNode emits a Choice label or Binary-threshold route while forwarding unchanged input; graph validation checks branch coverage and invalid/missing answers raise errors."
+    },
+    "boundary": {
+      "zh": "Apache-2.0 的 Google SDK 集成，不是 TypeSafe 官方项目。分类节点仍属 labs 实验接口；通用工单样例默认 Gemini，文档另给 TypesafeClassifier 替换接线。未安装、调用 Jev、执行客服或工具权限操作。",
+      "en": "Apache-2.0 Google SDK integration, not a TypeSafe official project. Classifier nodes remain experimental labs APIs. The generic ticket sample defaults to Gemini; docs explicitly show TypeSafe wiring. No install, Jev call, customer workflow or tool authorization executed."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/google/adk-python"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/google/adk-python/blob/12c7bed7661ccf942f0f6d3b62bed22a23ea0a85/src/google/adk/integrations/typesafe/_typesafe_classifier.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/google/adk-python/blob/12c7bed7661ccf942f0f6d3b62bed22a23ea0a85/src/google/adk/labs/classifiers/_classifier_node.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/google/adk-python/blob/12c7bed7661ccf942f0f6d3b62bed22a23ea0a85/docs/guides/integrations/typesafe/typesafe_classifier/index.md"
+      }
+    ]
+  },
+  {
+    "id": "skillbox-authorized-catalog-score-recommendations",
+    "name": "Skillbox Jev recommendations",
+    "author": "Kitze",
+    "title": {
+      "zh": "Skillbox：只在获授权的 Skill 目录内评分推荐",
+      "en": "Skillbox relevance recommendations within an authorized skill catalog"
+    },
+    "area": {
+      "zh": "Skill 推荐",
+      "en": "Skill recommendation"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户任务和当前身份获授权、启用且未归档的 Skill 描述与版本；超出目录预算则明确回退。",
+      "en": "A task and the authenticated scope’s active, authorized skill descriptions/revisions; oversized catalogs explicitly fall back."
+    },
+    "decision": {
+      "zh": "可选 TypeSafe 直连为每个候选提 Score，使用 0–4 的有限相关性量表；也支持由用户配置的其他网关。",
+      "en": "Optional direct TypeSafe evaluates each candidate with a Score on a bounded 0–4 relevance rubric; user-configured gateways are also supported."
+    },
+    "action": {
+      "zh": "代码校验全部评分，返回至少 3 分的候选并排序分页；权限/目录变化会废弃旧结果，失败回到普通搜索并标出 fallbackReason，不执行 Skill。",
+      "en": "Code validates all scores and returns candidates scoring at least 3, ranked/paginated. Scope/catalog changes invalidate results, failures explicitly fall back to search, and no skill is executed."
+    },
+    "boundary": {
+      "zh": "MIT 自托管工具。0–4 是未校准量表而非正确率；任务和获授权描述仍发给所选服务。没有密钥/超时回退不算 Jev 成功；未安装、读取私人 Skill、付费跑分或验收生产推荐质量。",
+      "en": "MIT self-hosted tool. The 0–4 rubric is uncalibrated, not accuracy. Tasks and authorized descriptions go to the selected provider. Missing-key/timeout fallback is not Jev success. No install, private-skill access, paid benchmark or production-quality validation."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kitze/skillbox"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kitze/skillbox/blob/e7e232bcc703abafaac6887d71b5cdc19af1b7dc/src/server/recommendations.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kitze/skillbox/blob/e7e232bcc703abafaac6887d71b5cdc19af1b7dc/src/server/mcp.ts"
+      }
+    ]
+  },
+  {
+    "id": "arxiv-jev-digest-interest-screening",
+    "name": "arXiv Jev Digest",
+    "author": "Monkeypox966",
+    "title": {
+      "zh": "论文日报：Jev 筛兴趣，代码排序后再生成摘要",
+      "en": "Paper digest with Jev interest screening before ranking and summaries"
+    },
+    "area": {
+      "zh": "论文筛选与日报",
+      "en": "Paper screening and digests"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "新 arXiv 论文的标题、摘要和分类，以及用户配置的兴趣命题与排除条件。",
+      "en": "New arXiv titles, abstracts and categories plus configured interest propositions/exclusion conditions."
+    },
+    "decision": {
+      "zh": "默认原生 TypeSafe Jev 对每篇论文批量回答兴趣与排除 Noul；校验每个答案后计算 max 或 noisy-or 组合分数。",
+      "en": "Native TypeSafe Jev is the default, answering interest/exclusion Nouls per paper. Validated answers become max or noisy-or composite scores."
+    },
+    "action": {
+      "zh": "程序按相关性和排除阈值筛选，另核机构偏好再取 Top K，交 DeepSeek 写摘要；预览只出报告，发送模式经待发记录和去重后投递邮件。",
+      "en": "Code applies relevance/exclusion gates, separately checks institution preferences and selects Top K for DeepSeek summaries. Preview writes reports; send mode uses pending-delivery records and deduplication before email."
+    },
+    "boundary": {
+      "zh": "MIT 工程；机构偏好和组合分数不是客观论文质量或校准概率。未调用模型、触发 Actions、发送邮件或确认真实投递；其他兼容后端只按明确配置使用，不能由接口测试推断全部真实联调。",
+      "en": "MIT project. Institution preferences/composite scores are not objective paper quality or calibrated probabilities. No model calls, Actions runs, mail sending or live delivery verified. Other compatible backends require explicit configuration; contract tests do not prove all live integrations."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Monkeypox966/arxiv-jev-digest"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Monkeypox966/arxiv-jev-digest/blob/05b6a2f77122d5feaa38d15fa65569280901d341/src/arxiv_digest/clients.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Monkeypox966/arxiv-jev-digest/blob/05b6a2f77122d5feaa38d15fa65569280901d341/src/arxiv_digest/pipeline.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Monkeypox966/arxiv-jev-digest/blob/05b6a2f77122d5feaa38d15fa65569280901d341/config.toml"
+      }
+    ]
+  },
+  {
+    "id": "better-email-filter-feedback-triage",
+    "name": "Better Email Filter",
+    "author": "Miguel Garcia",
+    "title": {
+      "zh": "Gmail 分流：证据门槛与人工纠正示例",
+      "en": "Gmail triage with evidence gates and human-corrected examples"
+    },
+    "area": {
+      "zh": "个人邮件分流",
+      "en": "Personal email triage"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "邮件发件人、主题、可选截断正文、个人偏好，以及最多六个相关人工纠正示例。",
+      "en": "Sender, subject, optional truncated body, personal preferences and up to six relevant human-corrected examples."
+    },
+    "decision": {
+      "zh": "原生 Jev Choice 选 Spam/Ignore/Important，Noul 判断证据是否充分；代码校验分布并用概率、置信度和证据门槛决定是否 Review。",
+      "en": "Native Jev Choice selects Spam/Ignore/Important and Noul judges evidence sufficiency; code validates distributions and gates Review on probability, confidence and evidence."
+    },
+    "action": {
+      "zh": "preview 保存预测；apply 单独校验版本和人工标签后加自定义标签。学习复用纠正示例，不训练权重；可选 cleanup 再执行归档或移入垃圾箱。",
+      "en": "Preview stores predictions; apply separately checks versions/human labels before labeling. Learning reuses corrections without training weights; optional cleanup then archives or trashes messages."
+    },
+    "boundary": {
+      "zh": "实验性个人流程，根许可未确认，仅列代码案例。process.sh 默认启用 cleanup，Spam 移入垃圾箱，Ignore 与 Review 都会归档；复核标签不保证留在收件箱。邮件片段会外发；未读邮箱、授权 Gmail、运行分类或验证准确率。",
+      "en": "Experimental personal workflow; root license unconfirmed, so code case only. process.sh enables cleanup by default: Spam goes to Trash and Ignore/Review are archived. Review does not imply inbox retention. Excerpts leave the device. No mailbox access, Gmail authorization, classification or accuracy test performed."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/miguelgarcia/better-email-filter"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/miguelgarcia/better-email-filter/blob/f2923f14ee4abfcc8399f070d4ffdb4f12d4717b/src/better_email/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/miguelgarcia/better-email-filter/blob/f2923f14ee4abfcc8399f070d4ffdb4f12d4717b/src/better_email/engine.py"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/MikezGarcia/status/2114024819029401879"
+      }
+    ]
+  },
+  {
+    "id": "jev-live-presence-gated-box-snapshots",
+    "name": "Jev Live",
+    "author": "mu1ze",
+    "title": {
+      "zh": "Jev Live：存在判断门控的图像框快照",
+      "en": "Jev Live image-box snapshots gated by presence judgments"
+    },
+    "area": {
+      "zh": "图像定位原型",
+      "en": "Image-localization prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户主动启用后的 JPEG/PNG 快照，以及最多八个目标描述；页面加载本身不启动相机或上传。",
+      "en": "A user-triggered JPEG/PNG snapshot with up to eight target descriptions; page load itself starts neither camera nor upload."
+    },
+    "decision": {
+      "zh": "服务端固定调用 Jev 1.14 的实验图像接口，为每个目标并行提 Noul 存在问题与 Box 定位问题。",
+      "en": "The server calls Jev 1.14’s experimental image interface, pairing Noul presence and Box localization questions per target."
+    },
+    "action": {
+      "zh": "代码抑制存在概率低于 0.7 或坐标/置信度无效的框，以两者最小值显示置信度；浏览器绘制快照框并在拍摄四秒后过期，迟到结果丢弃。",
+      "en": "Code suppresses boxes below 0.7 presence or with invalid coordinates/confidence and displays the minimum confidence. Browser overlays expire four seconds after capture and late results are discarded."
+    },
+    "boundary": {
+      "zh": "未发现项目许可证，仅列公开代码案例。图像送往托管服务，并非本地视觉或连续跟踪；4 Hz 是请求目标而非完成率保证。作者测试使用虚拟相机/fixture；未打开相机、上传图像、调用模型或复测检测质量。",
+      "en": "No project license found; public code case only. Images go to a hosted service, not on-device vision or continuous tracking. 4 Hz is a target cadence, not guaranteed completion rate. Author tests use fake cameras/fixtures. No camera opened, images uploaded, models called or quality retested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/mu1ze/jev-live"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mu1ze/jev-live/blob/df1183626aa75989dd9e2569e283e42e4089af2c/server.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mu1ze/jev-live/blob/df1183626aa75989dd9e2569e283e42e4089af2c/static/app.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mu1ze/jev-live/blob/df1183626aa75989dd9e2569e283e42e4089af2c/static/core.mjs"
+      }
+    ]
+  },
+  {
+    "id": "booksmith-two-level-pause-annotation",
+    "name": "Booksmith contextual pauses",
+    "author": "NeuralCatAccel",
+    "title": {
+      "zh": "Booksmith：先逐句判断，再按段落复核停顿",
+      "en": "Booksmith sentence decisions followed by paragraph pause review"
+    },
+    "area": {
+      "zh": "有声书停顿标注",
+      "en": "Audiobook pause annotation"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "作者 DRM-free 电子书中的句子边界和段落上下文，以及已测静音和可安全编辑的位置。",
+      "en": "Sentence boundaries/paragraph context from the author’s DRM-free ebooks plus measured silence and safe edit positions."
+    },
+    "decision": {
+      "zh": "作者称 Jev 从有限停顿角色和段落方案中选择，先做句级建议，再整体保留、移除或增加节拍；不改写原文。",
+      "en": "The author says Jev selects bounded pause roles/paragraph plans, proposing sentence timing then retaining, removing or adding beats without rewriting the text."
+    },
+    "action": {
+      "zh": "程序把方案转换为需要增加的静音，配合本地 Kokoro 生成分章有声书；发音建议和修复另有人类批准/听感门槛。",
+      "en": "Plans become necessary extra silence alongside local Kokoro chapter narration, with separate human approval/listening gates for pronunciation suggestions and repairs."
+    },
+    "boundary": {
+      "zh": "按作者原帖收录，非本站端到端验证。公开客户端依赖自配 /Jev/decide 网关，未核其 TypeSafe 适配；项目明确尚未选许可证，不列开源项目。Windows-first、默认关闭托管停顿功能；未读取书籍/音频、安装、调用模型或验证 Plex。",
+      "en": "Author-post evidence, not our end-to-end verification. The public client needs a configured /Jev/decide gateway whose TypeSafe adapter was not verified. The project explicitly has no selected license, so no open-source entry. Windows-first, hosted timing off by default. No books/audio accessed, install, model call or Plex verification."
+    },
+    "sources": [
+      {
+        "label": "Author X",
+        "url": "https://x.com/NeuralCatAccel/status/2114146837670052042"
+      },
+      {
+        "label": "Source boundary",
+        "url": "https://github.com/neuralcataccel/booksmith/blob/667fdd31edb6c5e5b9d3bfd9ebba261623478633/README.md"
+      },
+      {
+        "label": "Gateway client (adapter unverified)",
+        "url": "https://github.com/neuralcataccel/booksmith/blob/667fdd31edb6c5e5b9d3bfd9ebba261623478633/jev_client.py"
+      }
+    ]
+  },
+  {
+    "id": "contact-form-choice-spam-tag-fail-open",
+    "name": "Contact-form Jev classification",
+    "author": "Yuki Matsukura / matsubokkuri",
+    "title": {
+      "zh": "联系表单四分类与不丢邮件的失败回退",
+      "en": "Four-way contact-form classification with fail-open mail delivery"
+    },
+    "area": {
+      "zh": "联系表单分流",
+      "en": "Contact-form triage"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "表单类别、姓名、邮箱和留言，以及网站业务范围说明；本轮只读公开技术文章和脱敏示意。",
+      "en": "Form category, name, email and message with site-business context; only the public technical article and redacted illustrations were read."
+    },
+    "decision": {
+      "zh": "一次原生 Jev Choice 在正常联系、推销、发错公司和垃圾之间分配概率；业务范围写进 instructions/criteria。",
+      "en": "One native Jev Choice distributes probability among legitimate inquiry, sales, misdirected and junk, with business context in instructions/criteria."
+    },
+    "action": {
+      "zh": "sales+junk 至少 0.8 时加 [SPAM] 主题标记，发错公司另标；所有邮件仍发送，API 失败则按未判定正常送达。作者另做自动/手动外部垃圾报告。",
+      "en": "At sales+junk >=0.8, code tags subjects [SPAM], with a separate misdirected tag. All mail remains delivered; API failure sends it as unclassified. The author also implements automated/manual external spam reporting."
+    },
+    "boundary": {
+      "zh": "仅作者文章，181条历史验证和单次费用为自报/估计，未验证真实计费或部署。作者披露外部自动报告与平台要求存在冲突、误报难从已分发名单收回；这部分不作为推荐流程。个人字段会外发，未读取原始客户数据、提交表单、发信或报告身份。",
+      "en": "Author-article evidence only; the 181-item retrospective and per-call costs are author-reported/estimated, without independent billing or deployment verification. The author discloses conflicts with external reporting requirements and hard-to-retract distributed false reports; that portion is not a recommended workflow. Personal fields leave the device. No original customer data accessed, forms submitted, mail sent or identities reported."
+    },
+    "sources": [
+      {
+        "label": "Author technical article",
+        "url": "https://zenn.dev/matsubokkuri/articles/2026-10-23-contact-form-spam-typesafe-jev"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/matsubokkuri/status/2113927768270569681"
+      }
+    ]
   }
 ]

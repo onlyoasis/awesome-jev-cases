@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (172)
+## 深度使用案例 / Worked cases (179)
 
 ### jev-ultrafast
 
@@ -1552,7 +1552,70 @@
 - 核验边界：仅作者文章，未精读仓库或搬运原始对话，暂不列开源项目。主题得分不是意识证据；样本失衡、消息不独立、提示框架及长度偏差限制结论，费用为作者自报。
 - 来源：[Author X article](https://x.com/BergelEduardo/status/2113657356307316822)
 
-## 开源项目 / Open-source projects (227)
+### ADK：Jev 分类答案连接工作流分支
+
+- 作者：Google ADK contributors
+- 输入：文档中的客服工单文本，或由调用方提供的 JSON；每个问题显式给出说明和允许答案。
+- Jev 判断：TypesafeClassifier 将 Choice、Binary、Score 转为原生 Jev choice、noul、score，一次请求后校验类型、候选标签及数值范围。
+- 后续动作：ClassifierNode 用 Choice 标签或 Binary 阈值生成 route，原输入交给下游节点；建图时检查分支覆盖，缺失/非法答案报错。
+- 核验边界：Apache-2.0 的 Google SDK 集成，不是 TypeSafe 官方项目。分类节点仍属 labs 实验接口；通用工单样例默认 Gemini，文档另给 TypesafeClassifier 替换接线。未安装、调用 Jev、执行客服或工具权限操作。
+- 来源：[GitHub](https://github.com/google/adk-python) · [Source](https://github.com/google/adk-python/blob/12c7bed7661ccf942f0f6d3b62bed22a23ea0a85/src/google/adk/integrations/typesafe/_typesafe_classifier.py) · [Source](https://github.com/google/adk-python/blob/12c7bed7661ccf942f0f6d3b62bed22a23ea0a85/src/google/adk/labs/classifiers/_classifier_node.py) · [Source](https://github.com/google/adk-python/blob/12c7bed7661ccf942f0f6d3b62bed22a23ea0a85/docs/guides/integrations/typesafe/typesafe_classifier/index.md)
+
+### Skillbox：只在获授权的 Skill 目录内评分推荐
+
+- 作者：Kitze
+- 输入：用户任务和当前身份获授权、启用且未归档的 Skill 描述与版本；超出目录预算则明确回退。
+- Jev 判断：可选 TypeSafe 直连为每个候选提 Score，使用 0–4 的有限相关性量表；也支持由用户配置的其他网关。
+- 后续动作：代码校验全部评分，返回至少 3 分的候选并排序分页；权限/目录变化会废弃旧结果，失败回到普通搜索并标出 fallbackReason，不执行 Skill。
+- 核验边界：MIT 自托管工具。0–4 是未校准量表而非正确率；任务和获授权描述仍发给所选服务。没有密钥/超时回退不算 Jev 成功；未安装、读取私人 Skill、付费跑分或验收生产推荐质量。
+- 来源：[GitHub](https://github.com/kitze/skillbox) · [Source](https://github.com/kitze/skillbox/blob/e7e232bcc703abafaac6887d71b5cdc19af1b7dc/src/server/recommendations.ts) · [Source](https://github.com/kitze/skillbox/blob/e7e232bcc703abafaac6887d71b5cdc19af1b7dc/src/server/mcp.ts)
+
+### 论文日报：Jev 筛兴趣，代码排序后再生成摘要
+
+- 作者：Monkeypox966
+- 输入：新 arXiv 论文的标题、摘要和分类，以及用户配置的兴趣命题与排除条件。
+- Jev 判断：默认原生 TypeSafe Jev 对每篇论文批量回答兴趣与排除 Noul；校验每个答案后计算 max 或 noisy-or 组合分数。
+- 后续动作：程序按相关性和排除阈值筛选，另核机构偏好再取 Top K，交 DeepSeek 写摘要；预览只出报告，发送模式经待发记录和去重后投递邮件。
+- 核验边界：MIT 工程；机构偏好和组合分数不是客观论文质量或校准概率。未调用模型、触发 Actions、发送邮件或确认真实投递；其他兼容后端只按明确配置使用，不能由接口测试推断全部真实联调。
+- 来源：[GitHub](https://github.com/Monkeypox966/arxiv-jev-digest) · [Source](https://github.com/Monkeypox966/arxiv-jev-digest/blob/05b6a2f77122d5feaa38d15fa65569280901d341/src/arxiv_digest/clients.py) · [Source](https://github.com/Monkeypox966/arxiv-jev-digest/blob/05b6a2f77122d5feaa38d15fa65569280901d341/src/arxiv_digest/pipeline.py) · [Source](https://github.com/Monkeypox966/arxiv-jev-digest/blob/05b6a2f77122d5feaa38d15fa65569280901d341/config.toml)
+
+### Gmail 分流：证据门槛与人工纠正示例
+
+- 作者：Miguel Garcia
+- 输入：邮件发件人、主题、可选截断正文、个人偏好，以及最多六个相关人工纠正示例。
+- Jev 判断：原生 Jev Choice 选 Spam/Ignore/Important，Noul 判断证据是否充分；代码校验分布并用概率、置信度和证据门槛决定是否 Review。
+- 后续动作：preview 保存预测；apply 单独校验版本和人工标签后加自定义标签。学习复用纠正示例，不训练权重；可选 cleanup 再执行归档或移入垃圾箱。
+- 核验边界：实验性个人流程，根许可未确认，仅列代码案例。process.sh 默认启用 cleanup，Spam 移入垃圾箱，Ignore 与 Review 都会归档；复核标签不保证留在收件箱。邮件片段会外发；未读邮箱、授权 Gmail、运行分类或验证准确率。
+- 来源：[GitHub](https://github.com/miguelgarcia/better-email-filter) · [Source](https://github.com/miguelgarcia/better-email-filter/blob/f2923f14ee4abfcc8399f070d4ffdb4f12d4717b/src/better_email/jev.py) · [Source](https://github.com/miguelgarcia/better-email-filter/blob/f2923f14ee4abfcc8399f070d4ffdb4f12d4717b/src/better_email/engine.py) · [Author X](https://x.com/MikezGarcia/status/2114024819029401879)
+
+### Jev Live：存在判断门控的图像框快照
+
+- 作者：mu1ze
+- 输入：用户主动启用后的 JPEG/PNG 快照，以及最多八个目标描述；页面加载本身不启动相机或上传。
+- Jev 判断：服务端固定调用 Jev 1.14 的实验图像接口，为每个目标并行提 Noul 存在问题与 Box 定位问题。
+- 后续动作：代码抑制存在概率低于 0.7 或坐标/置信度无效的框，以两者最小值显示置信度；浏览器绘制快照框并在拍摄四秒后过期，迟到结果丢弃。
+- 核验边界：未发现项目许可证，仅列公开代码案例。图像送往托管服务，并非本地视觉或连续跟踪；4 Hz 是请求目标而非完成率保证。作者测试使用虚拟相机/fixture；未打开相机、上传图像、调用模型或复测检测质量。
+- 来源：[GitHub](https://github.com/mu1ze/jev-live) · [Source](https://github.com/mu1ze/jev-live/blob/df1183626aa75989dd9e2569e283e42e4089af2c/server.py) · [Source](https://github.com/mu1ze/jev-live/blob/df1183626aa75989dd9e2569e283e42e4089af2c/static/app.js) · [Source](https://github.com/mu1ze/jev-live/blob/df1183626aa75989dd9e2569e283e42e4089af2c/static/core.mjs)
+
+### Booksmith：先逐句判断，再按段落复核停顿
+
+- 作者：NeuralCatAccel
+- 输入：作者 DRM-free 电子书中的句子边界和段落上下文，以及已测静音和可安全编辑的位置。
+- Jev 判断：作者称 Jev 从有限停顿角色和段落方案中选择，先做句级建议，再整体保留、移除或增加节拍；不改写原文。
+- 后续动作：程序把方案转换为需要增加的静音，配合本地 Kokoro 生成分章有声书；发音建议和修复另有人类批准/听感门槛。
+- 核验边界：按作者原帖收录，非本站端到端验证。公开客户端依赖自配 /Jev/decide 网关，未核其 TypeSafe 适配；项目明确尚未选许可证，不列开源项目。Windows-first、默认关闭托管停顿功能；未读取书籍/音频、安装、调用模型或验证 Plex。
+- 来源：[Author X](https://x.com/NeuralCatAccel/status/2114146837670052042) · [Source boundary](https://github.com/neuralcataccel/booksmith/blob/667fdd31edb6c5e5b9d3bfd9ebba261623478633/README.md) · [Gateway client (adapter unverified)](https://github.com/neuralcataccel/booksmith/blob/667fdd31edb6c5e5b9d3bfd9ebba261623478633/jev_client.py)
+
+### 联系表单四分类与不丢邮件的失败回退
+
+- 作者：Yuki Matsukura / matsubokkuri
+- 输入：表单类别、姓名、邮箱和留言，以及网站业务范围说明；本轮只读公开技术文章和脱敏示意。
+- Jev 判断：一次原生 Jev Choice 在正常联系、推销、发错公司和垃圾之间分配概率；业务范围写进 instructions/criteria。
+- 后续动作：sales+junk 至少 0.8 时加 [SPAM] 主题标记，发错公司另标；所有邮件仍发送，API 失败则按未判定正常送达。作者另做自动/手动外部垃圾报告。
+- 核验边界：仅作者文章，181条历史验证和单次费用为自报/估计，未验证真实计费或部署。作者披露外部自动报告与平台要求存在冲突、误报难从已分发名单收回；这部分不作为推荐流程。个人字段会外发，未读取原始客户数据、提交表单、发信或报告身份。
+- 来源：[Author technical article](https://zenn.dev/matsubokkuri/articles/2026-10-23-contact-form-spam-typesafe-jev) · [Author X](https://x.com/matsubokkuri/status/2113927768270569681)
+
+## 开源项目 / Open-source projects (232)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1783,6 +1846,11 @@
 | [szia-ai/jev-on-durians](https://github.com/szia-ai/jev-on-durians) | community | MIT | 0 |
 | [pbswimmer3/claude-jev-router](https://github.com/pbswimmer3/claude-jev-router) | community | Apache-2.0 | 0 |
 | [jpcamara/judgelint](https://github.com/jpcamara/judgelint) | community | MIT | 0 |
+| [google/adk-python](https://github.com/google/adk-python) | community | Apache-2.0 | 21993 |
+| [kitze/skillbox](https://github.com/kitze/skillbox) | community | MIT | 273 |
+| [Monkeypox966/arxiv-jev-digest](https://github.com/Monkeypox966/arxiv-jev-digest) | community | MIT | 2 |
+| [weiping/magpie-cf-jev](https://github.com/weiping/magpie-cf-jev) | community | MIT (package.json declaration) | 0 |
+| [vllm-project/vllm](https://github.com/vllm-project/vllm) | inspired | Apache-2.0 | 95366 |
 
 ## 官方 cookbook / Official recipes (20)
 

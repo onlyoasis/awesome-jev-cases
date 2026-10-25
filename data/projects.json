@@ -3630,5 +3630,85 @@
     "lastVerified": "2026-10-24",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "google-adk-python",
+    "name": "google/adk-python",
+    "url": "https://github.com/google/adk-python",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Google ADK 的原生 TypesafeClassifier 适配，支持有界题型、严格答案校验、ClassifierNode 路由和回调接线；labs 接口为实验性，通用样例默认其他模型。已核源码/文档，未安装、调用模型或验收客户流程；非TypeSafe官方项目。",
+      "en": "Google ADK native TypesafeClassifier with bounded question types, answer checks and ClassifierNode/callback wiring. Labs APIs are experimental and generic samples default to other models. Source/docs reviewed; no install, model calls or customer-flow acceptance. Not a TypeSafe official project."
+    },
+    "sourceUrl": "https://github.com/google/adk-python/blob/12c7bed7661ccf942f0f6d3b62bed22a23ea0a85/README.md",
+    "lastVerified": "2026-10-25",
+    "status": "verified",
+    "stars": 21993
+  },
+  {
+    "id": "kitze-skillbox",
+    "name": "kitze/skillbox",
+    "url": "https://github.com/kitze/skillbox",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 自托管版本化 Skill 库，权限范围内可选 Jev Score 推荐；候选、版本和授权变化会废弃旧结果，失败明确回普通搜索，不执行Skill。量表非校准概率，任务/描述会外发；未安装、读取私有库或复测效果。",
+      "en": "MIT self-hosted versioned skill library with optional scoped Jev Score recommendations. Candidate/version/grant changes invalidate results; failures explicitly fall back to search without execution. Rubric scores are not calibrated probabilities and task/descriptions leave the device. No install, private-library access or quality retest."
+    },
+    "sourceUrl": "https://github.com/kitze/skillbox/blob/e7e232bcc703abafaac6887d71b5cdc19af1b7dc/README.md",
+    "lastVerified": "2026-10-25",
+    "status": "verified",
+    "stars": 273
+  },
+  {
+    "id": "monkeypox966-arxiv-jev-digest",
+    "name": "Monkeypox966/arxiv-jev-digest",
+    "url": "https://github.com/Monkeypox966/arxiv-jev-digest",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT arXiv 日报工程，默认原生 Jev Noul 兴趣/排除筛选，代码另做机构偏好和Top K，再用DeepSeek摘要与SMTP投递。预算/预览/待发记录可查；机构偏好非客观质量，未触发工作流、模型或邮件。",
+      "en": "MIT arXiv digest using native Jev Nouls for interest/exclusion screening, separate institution preferences/Top K and DeepSeek summaries/SMTP. Budgets, preview and pending-delivery records reviewed. Preferences are not objective quality; no workflow, model or email execution."
+    },
+    "sourceUrl": "https://github.com/Monkeypox966/arxiv-jev-digest/blob/05b6a2f77122d5feaa38d15fa65569280901d341/README.md",
+    "lastVerified": "2026-10-25",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "weiping-magpie-cf-jev",
+    "name": "weiping/magpie-cf-jev",
+    "url": "https://github.com/weiping/magpie-cf-jev",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT (package.json declaration)",
+    "summary": {
+      "zh": "Magpie 的 Cloudflare Jev/Clef 决策适配插件，保留state/questions并拆分层result，使answers回到顶层。package.json声明MIT，未附独立LICENSE；作者直连/经宿主自测非本站复测。未安装、读取认证或调用Cloudflare；Clef不是TypeSafe Jev。",
+      "en": "Magpie adapter for Cloudflare Jev/Clef preserving state/questions and unwrapping nested result envelopes to expose answers. package.json declares MIT; no standalone LICENSE. Author direct/host tests were not repeated. No install, credential access or Cloudflare call; Clef is not TypeSafe Jev."
+    },
+    "sourceUrl": "https://github.com/weiping/magpie-cf-jev/blob/5223ed1264bfd32c6cd24269980885a149fac2f3/package.json",
+    "lastVerified": "2026-10-25",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "vllm-project-vllm",
+    "name": "vllm-project/vllm",
+    "url": "https://github.com/vllm-project/vllm",
+    "category": "sdk",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 推理服务的 System One 风格结构决策端点；PR #59299已合并，当前API路由可查。属于开源模型兼容工具，不代表TypeSafe Jev权重开放或效果相同；模型/读出策略限制依版本。未下载权重、启动GPU或复测。",
+      "en": "Apache-2.0 inference server with a System One-style structured-decision endpoint. PR #59299 is merged and the current API route was reviewed. This is compatibility tooling for open models, not open TypeSafe Jev weights or equivalent quality. Model/read-strategy limits are version-specific. No weights downloaded, GPU launched or retest."
+    },
+    "sourceUrl": "https://github.com/vllm-project/vllm/blob/c9dbc92630bc837ec666f68dab02853fa095c8ab/vllm/entrypoints/generate/structured_decisions/api_router.py",
+    "lastVerified": "2026-10-25",
+    "status": "verified",
+    "stars": 95366
   }
 ]
