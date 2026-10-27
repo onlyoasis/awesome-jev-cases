@@ -3710,5 +3710,85 @@
     "lastVerified": "2026-10-25",
     "status": "verified",
     "stars": 95366
+  },
+  {
+    "id": "shcherbak-ai-contextgem",
+    "name": "shcherbak-ai/contextgem",
+    "url": "https://github.com/shcherbak-ai/contextgem",
+    "category": "data",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 文档抽取框架，经 LiteLLM Decisions 支持 Jev 的段落判定和布尔/标签/等级抽取；包含阈值、概率及多模型回退。所读示例为协议文本，不是法律验收，未安装或调用模型。",
+      "en": "Apache-2.0 document extraction via LiteLLM Decisions, including Jev paragraph predicates and Boolean/label/rating concepts, thresholds, probabilities and model fallbacks. Reviewed agreement examples are not legal validation; no installation or model calls."
+    },
+    "sourceUrl": "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/dev/usage_examples/readme/quickstart_decision_model.py",
+    "lastVerified": "2026-10-27",
+    "status": "verified",
+    "stars": 2016
+  },
+  {
+    "id": "osolmaz-switch",
+    "name": "osolmaz/switch",
+    "url": "https://github.com/osolmaz/switch",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 菜单式决策框架，程序枚举动作、模型选择、记录证据并回放；pi-ai 分类器支持 Jev，附国际象棋和 legal-judge 域。法律评分不是法律意见，棋子素材另 BSD，未运行或验证效果。",
+      "en": "MIT menu-based decision harness with enumerated actions, model choices, evidence traces and replay. A pi-ai classifier supports Jev, with chess and legal-judge domains. Legal grading is not legal advice; pieces are separately BSD-licensed. No runtime or effectiveness verification."
+    },
+    "sourceUrl": "https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/models/pi-ai.ts",
+    "lastVerified": "2026-10-27",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "ankur287-jev-open-calibration",
+    "name": "ankur287/jev-open-calibration",
+    "url": "https://github.com/ankur287/jev-open-calibration",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 校准研究：开源 scikit-learn 仿接口与真实 Jev 的 BANKING77 实验并列，含 Choice/Noul、域外与 few-shot 对比。数据另 CC-BY 4.0；作者指标不算本站复现，不是 Jev 权重开源。",
+      "en": "MIT calibration research comparing a scikit-learn interface with actual Jev BANKING77 experiments, including Choice/Noul, out-of-schema and few-shot variants. Data is separately CC-BY 4.0. Metrics are author-reported, not replicated here or open Jev weights."
+    },
+    "sourceUrl": "https://github.com/ankur287/jev-open-calibration/blob/303f89ff11fe5ff5f8b4ad532737d2c9116fc161/code/exp04_jev_live.py",
+    "lastVerified": "2026-10-27",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "andletenkov-decisium",
+    "name": "andletenkov/decisium",
+    "url": "https://github.com/andletenkov/decisium",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Gherkin/Playwright 语义测试工具，原生 Jev 选择枚举控件与动作，代码比较可核对断言，主观判断单独标注；cassette 回放不调用模型。实时页面/步骤会外发，未安装或验证第三方流程。",
+      "en": "MIT Gherkin/Playwright testing with native Jev choices over controls/actions, code-comparable assertions and separately marked subjective judgments. Cassette replay makes no model calls. Live steps/page text leave the device; no installation or third-party flow verification."
+    },
+    "sourceUrl": "https://github.com/andletenkov/decisium/blob/53455bb152c2a538322d3a5f57f965eeb99cd553/src/jev.ts",
+    "lastVerified": "2026-10-27",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "coo-quack-vigilant-heron",
+    "name": "coo-quack/vigilant-heron",
+    "url": "https://github.com/coo-quack/vigilant-heron",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 早期 HTTP 反代审核实验：固定规则与原生 Jev 双 Noul/类别 Choice 组合，支持 shadow、阈值和失败策略；也可选其他后端。作者尚未验收真实流量，脱敏不等于完整隐私保证，未部署或测防护效果。",
+      "en": "Early MIT HTTP reverse-proxy experiment combining fixed rules with native Jev Nouls/category Choice, shadow mode, thresholds and failure policies, plus alternative backends. Real traffic is unvalidated, redaction is not a complete privacy guarantee, and no deployment or protection test was performed."
+    },
+    "sourceUrl": "https://github.com/coo-quack/vigilant-heron/blob/8b08ab4bd587451fc55e73be95f1bd62f245e478/src/system_one.rs",
+    "lastVerified": "2026-10-27",
+    "status": "verified",
+    "stars": 1
   }
 ]

@@ -178,5 +178,14 @@
     "source": "official",
     "discoveredAt": "2026-10-13",
     "lastVerified": "2026-10-13"
+  },
+  {
+    "id": "intelliprompter",
+    "name": "Intelliprompter",
+    "url": "https://docs.typesafe.ai/cookbooks/intelliprompter.md",
+    "description": "Score pending presentation criteria against the accumulated transcript, then keep criteria checked after a local coverage gate. Six authored chunks demonstrate the one-way checklist; microphone/transcription integration is outside the cookbook.",
+    "source": "official",
+    "discoveredAt": "2026-10-27",
+    "lastVerified": "2026-10-27"
   }
 ]

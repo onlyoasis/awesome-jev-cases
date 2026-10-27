@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (179)
+## 深度使用案例 / Worked cases (186)
 
 ### jev-ultrafast
 
@@ -1615,7 +1615,70 @@
 - 核验边界：仅作者文章，181条历史验证和单次费用为自报/估计，未验证真实计费或部署。作者披露外部自动报告与平台要求存在冲突、误报难从已分发名单收回；这部分不作为推荐流程。个人字段会外发，未读取原始客户数据、提交表单、发信或报告身份。
 - 来源：[Author technical article](https://zenn.dev/matsubokkuri/articles/2026-10-23-contact-form-spam-typesafe-jev) · [Author X](https://x.com/matsubokkuri/status/2113927768270569681)
 
-## 开源项目 / Open-source projects (232)
+### ContextGem：把协议条款提成带概率的布尔与标签
+
+- 作者：Sergii Shcherbak / Shcherbak AI
+- 输入：示例服务协议段落，以及终止条款、能否无因终止和通知形式等预定义概念。
+- Jev 判断：typesafe/jev-latest 经 LiteLLM Decisions API 回答段落归属的 yes/no、布尔概念和有限标签问题；不是生成任意条款文本。
+- 后续动作：框架按阈值筛选段落、写入布尔值和概率；单类别标签取最大概率，结果留在文档的 extracted_items 中。
+- 核验边界：Apache-2.0 社区框架，支持多供应商；0.5 默认阈值适用于相应 yes/no 判断，不能概括为所有标签的置信度门槛。示例数值属于作者演示，不是法律结论或本站实测。未安装、读取真实合同、结果日志或调用模型。
+- 来源：[GitHub](https://github.com/shcherbak-ai/contextgem) · [Source](https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/dev/usage_examples/readme/quickstart_decision_model.py) · [Source](https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/contextgem/internal/base/decision_models.py) · [Source](https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/contextgem/internal/decisions.py)
+
+### switch：从合法走法菜单中选择国际象棋下一步
+
+- 作者：Onur Solmaz
+- 输入：文本棋盘、行棋历史和由 chess.js 枚举的合法走法；超出窗口时缩减历史视图。
+- Jev 判断：示例通过 pi-ai 的 typesafe/jev-latest 分类适配器，用 Choice 在合法走法和认输项之间选择，保留每项概率。
+- 后续动作：代码执行选定走法，再走带种子的随机对手回合，或让模型自弈；保存 trace、棋谱和终局，达到 200 步上限则标未完成。
+- 核验边界：MIT 社区框架，棋子素材另有 BSD 许可；同时支持其他决策模型。合法性由棋规库约束，不代表 Jev 棋力强或已实测胜率。未安装、下载模型、执行对局或运行文中假想工单。
+- 来源：[GitHub](https://github.com/osolmaz/switch) · [Source](https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/models/pi-ai.ts) · [Source](https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/core/loop.ts) · [Source](https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/domains/chess/move.ts) · [Source](https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/domains/chess/index.ts) · [Source](https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/domains/chess/README.md)
+
+### 银行意图离线研究：比较 Choice、Noul 与模拟自动处理阈值
+
+- 作者：Ankur Tomar
+- 输入：BANKING77 公开消息；七意图子集、完整 77 类，以及被排除意图的域外样本。
+- Jev 判断：原生 /v1/systemone 中，Choice 选意图，同次请求的独立 Noul 判断各意图；另比较简短准则和每类三个示例。
+- 后续动作：脚本对照标签计算准确率、校准和 Choice/Noul 不一致；用 0.9 阈值统计模拟自动处理比例及域外误处理，不执行银行业务。
+- 核验边界：代码 MIT、数据另为 CC-BY 4.0。开源 scikit-learn 仿接口与真实 Jev 实验分开；README 的数值和费用均为作者自报，阈值不是通用保证。未读取 raw 响应、访问账户、下载数据或付费重跑。
+- 来源：[GitHub](https://github.com/ankur287/jev-open-calibration) · [Source](https://github.com/ankur287/jev-open-calibration/blob/303f89ff11fe5ff5f8b4ad532737d2c9116fc161/code/exp04_jev_live.py) · [Source](https://github.com/ankur287/jev-open-calibration/blob/303f89ff11fe5ff5f8b4ad532737d2c9116fc161/code/exp05_jev_77.py) · [Source](https://github.com/ankur287/jev-open-calibration/blob/303f89ff11fe5ff5f8b4ad532737d2c9116fc161/code/exp06_jev_77_fewshot.py)
+
+### Jev Walker：路口有限出口选择与人工覆盖原型
+
+- 作者：Keanan Koppenhaver
+- 输入：当前路口的有限出口、相对方向、街段距离、已走进度和回家罗盘；公开给模型的菜单省去原始坐标与图节点。
+- Jev 判断：原生 TypeSafe 或 OpenRouter Decisions 接线，用 Jev Choice 从出口编号中选择；代码检查返回编号仍在本轮菜单。
+- 后续动作：模拟器更新路线；手机原型显示出口并等待到达，提供“不能走”人工覆盖与结束操作，连续失败留在重试状态，不盲走下一步。
+- 核验边界：公开代码但根/包许可未确认，不列许可明确的项目。README 当前完成率表是随机/启发式结果，不能写成 Jev 实走成绩；地图简化不验证实际通行安全。未读取家庭配置、GPS 日志，未定位、开隧道、实走或调用模型。
+- 来源：[GitHub](https://github.com/kkoppenhaver/jev-walker) · [Source](https://github.com/kkoppenhaver/jev-walker/blob/638d36999acf3757954a5abfdf8d71355b940fb9/jev_walker/choosers.py) · [Source](https://github.com/kkoppenhaver/jev-walker/blob/638d36999acf3757954a5abfdf8d71355b940fb9/jev_walker/run.py) · [Source](https://github.com/kkoppenhaver/jev-walker/blob/638d36999acf3757954a5abfdf8d71355b940fb9/jev_walker/live.py)
+
+### Decisium：Jev 选控件，代码检查页面值与状态
+
+- 作者：Andrei Letenkov
+- 输入：Gherkin 步骤、页面可见文本/控件树，以及程序枚举的元素、动作和候选输入值。
+- Jev 判断：原生 jev-1.14.0 的 Choice 选择目标、动作与检查类型，Noul 判断步骤是否完成；候选过多时分批缩小。
+- 后续动作：Playwright 执行动作，代码比对预期文本、值和控件状态；歧义或不可核对会另报。cassette 保存解析结果，回放不调用模型，界面变化可报 UI_CHANGED。
+- 核验边界：MIT 社区工具。主观断言默认 UNVERIFIABLE，显式 --judged 才交给 Jev，结果另标，不能概括为所有断言均被代码证明。实时步骤/页面文本会外发，字面密码也可能外发，应使用 $NAME 占位；回放零调用不证明当前 Jev 效果。未安装或操作第三方站点。
+- 来源：[GitHub](https://github.com/andletenkov/decisium) · [Source](https://github.com/andletenkov/decisium/blob/53455bb152c2a538322d3a5f57f965eeb99cd553/src/jev.ts) · [Source](https://github.com/andletenkov/decisium/blob/53455bb152c2a538322d3a5f57f965eeb99cd553/src/step.ts) · [Source](https://github.com/andletenkov/decisium/blob/53455bb152c2a538322d3a5f57f965eeb99cd553/src/check.ts) · [Source](https://github.com/andletenkov/decisium/blob/53455bb152c2a538322d3a5f57f965eeb99cd553/src/execute.ts)
+
+### vigilant-heron：HTTP 请求先规则过滤，再用 Jev 影子审核
+
+- 作者：coo-quack
+- 输入：固定规则未决定的 HTTP 请求副本；代码去除 Cookie/Authorization 等字段并限制正文长度，客户端内容独立放在 untrusted_http_request。
+- Jev 判断：原生 Jev 一次回答攻击概率、是否试图指挥 AI 两个 Noul，以及攻击类别 Choice；解析器检查题型和概率范围。
+- 后续动作：代码按站点阈值转发、403 阻挡或跳转；shadow 只记录本会采取的动作并放行，模型失败默认放行，可配置特定路径失败关闭。
+- 核验边界：MIT 早期社区项目，作者明确未用真实流量验收，建议先 shadow。字段脱敏不能保证全部私人内容都被移除；Clef/Strands 替代后端及 e2e stub 不能当作 Jev 实测。未启动反代、发送攻击、读取真实日志或调用模型。
+- 来源：[GitHub](https://github.com/coo-quack/vigilant-heron) · [Source](https://github.com/coo-quack/vigilant-heron/blob/8b08ab4bd587451fc55e73be95f1bd62f245e478/src/system_one.rs) · [Source](https://github.com/coo-quack/vigilant-heron/blob/8b08ab4bd587451fc55e73be95f1bd62f245e478/src/config.rs) · [Source](https://github.com/coo-quack/vigilant-heron/blob/8b08ab4bd587451fc55e73be95f1bd62f245e478/src/policy.rs) · [Source](https://github.com/coo-quack/vigilant-heron/blob/8b08ab4bd587451fc55e73be95f1bd62f245e478/src/sanitize.rs)
+
+### 官方 Intelliprompter：演讲要点达到覆盖分数后保持勾选
+
+- 作者：TypeSafe AI
+- 输入：持续累积的演讲转写，以及尚未勾选的要点描述；教程用六段预写转写增量演示。
+- Jev 判断：每个未完成要点一个五级 Score，同一请求共享完整转写；SDK 0–4 的分数加 1 映射到界面 1–5。
+- 后续动作：代码将至少 2.5 的要点加入已覆盖集合并从后续问题移除，清单保持勾选；Jev 不保存清单状态。
+- 核验边界：TypeSafe 官方教程；2.5 是本地覆盖阈值而非置信度，误勾不会自动撤回。教程省略麦克风/ElevenLabs 集成，以文本和缓存演示；公布数字来自作者的 jev-1.13.0 样本，未独立复现、调用麦克风或付费 API。
+- 来源：[Official cookbook](https://docs.typesafe.ai/cookbooks/intelliprompter.md)
+
+## 开源项目 / Open-source projects (237)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1851,8 +1914,13 @@
 | [Monkeypox966/arxiv-jev-digest](https://github.com/Monkeypox966/arxiv-jev-digest) | community | MIT | 2 |
 | [weiping/magpie-cf-jev](https://github.com/weiping/magpie-cf-jev) | community | MIT (package.json declaration) | 0 |
 | [vllm-project/vllm](https://github.com/vllm-project/vllm) | inspired | Apache-2.0 | 95366 |
+| [shcherbak-ai/contextgem](https://github.com/shcherbak-ai/contextgem) | community | Apache-2.0 | 2016 |
+| [osolmaz/switch](https://github.com/osolmaz/switch) | community | MIT | 1 |
+| [ankur287/jev-open-calibration](https://github.com/ankur287/jev-open-calibration) | community | MIT | 0 |
+| [andletenkov/decisium](https://github.com/andletenkov/decisium) | community | MIT | 1 |
+| [coo-quack/vigilant-heron](https://github.com/coo-quack/vigilant-heron) | community | MIT | 1 |
 
-## 官方 cookbook / Official recipes (20)
+## 官方 cookbook / Official recipes (21)
 
 - [Self-consistency: nouls](https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook.md)：Route uncertain probabilities to human review while keeping the underlying noul values visible.
 - [Self-consistency: choices](https://docs.typesafe.ai/cookbooks/consistency_choice_cookbook.md)：Add an uncertain outcome to moderation decisions and compare label agreement with the share of automatic actions.
@@ -1874,3 +1942,4 @@
 - [Classification using confidence](https://docs.typesafe.ai/cookbooks/classification_using_confidence.md)：Classify SEC annual reports into 75 industry groups with one Choice each, then read the answer's own confidence to decide whether to report that group or the broader division above it.
 - [Simple memory system](https://docs.typesafe.ai/cookbooks/basic_memory.md)：Store customer tickets and answers behind a Noul memory gate, then inject them into later typed support-routing calls. Toy dict-based example; evaluate the threshold for your own data.
 - [Twitch chat filter](https://docs.typesafe.ai/cookbooks/twitch_chat_filter.md)：Classify one stream-chat message with a Choice and toxic/spoiler Nouls; code hides, blurs or highlights it. Authored 29-message English example; adapt thresholds, uncertainty and live-message handling locally.
+- [Intelliprompter](https://docs.typesafe.ai/cookbooks/intelliprompter.md)：Score pending presentation criteria against the accumulated transcript, then keep criteria checked after a local coverage gate. Six authored chunks demonstrate the one-way checklist; microphone/transcription integration is outside the cookbook.

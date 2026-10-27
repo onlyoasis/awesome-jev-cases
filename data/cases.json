@@ -7618,5 +7618,345 @@
         "url": "https://x.com/matsubokkuri/status/2113927768270569681"
       }
     ]
+  },
+  {
+    "id": "contextgem-closed-contract-concepts",
+    "name": "ContextGem decision-model extraction",
+    "author": "Sergii Shcherbak / Shcherbak AI",
+    "title": {
+      "zh": "ContextGem：把协议条款提成带概率的布尔与标签",
+      "en": "ContextGem: probability-bearing Boolean and label extraction"
+    },
+    "area": {
+      "zh": "文档结构化示例",
+      "en": "Structured-document example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "示例服务协议段落，以及终止条款、能否无因终止和通知形式等预定义概念。",
+      "en": "Example service-agreement paragraphs and predefined concepts for termination, termination without cause and notice form."
+    },
+    "decision": {
+      "zh": "typesafe/jev-latest 经 LiteLLM Decisions API 回答段落归属的 yes/no、布尔概念和有限标签问题；不是生成任意条款文本。",
+      "en": "Via LiteLLM Decisions, typesafe/jev-latest answers paragraph-membership predicates, Boolean concepts and closed-label questions rather than generating clause text."
+    },
+    "action": {
+      "zh": "框架按阈值筛选段落、写入布尔值和概率；单类别标签取最大概率，结果留在文档的 extracted_items 中。",
+      "en": "The framework thresholds paragraph membership and Boolean values, retaining probabilities; multiclass labels use the most probable option and are stored in document extracted_items."
+    },
+    "boundary": {
+      "zh": "Apache-2.0 社区框架，支持多供应商；0.5 默认阈值适用于相应 yes/no 判断，不能概括为所有标签的置信度门槛。示例数值属于作者演示，不是法律结论或本站实测。未安装、读取真实合同、结果日志或调用模型。",
+      "en": "Apache-2.0 community framework with multiple providers. The default 0.5 threshold applies to the relevant predicates, not a universal label-confidence gate. Sample probabilities are author illustrations, not legal findings or independent measurements. No installation, real contracts, result logs or model calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/shcherbak-ai/contextgem"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/dev/usage_examples/readme/quickstart_decision_model.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/contextgem/internal/base/decision_models.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/shcherbak-ai/contextgem/blob/90974fbb78f71a48274a67018721b00b0070568f/contextgem/internal/decisions.py"
+      }
+    ]
+  },
+  {
+    "id": "switch-legal-move-chess-menu",
+    "name": "switch chess harness",
+    "author": "Onur Solmaz",
+    "title": {
+      "zh": "switch：从合法走法菜单中选择国际象棋下一步",
+      "en": "switch: choosing the next chess move from a legal menu"
+    },
+    "area": {
+      "zh": "棋类决策实验",
+      "en": "Chess decision experiment"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "文本棋盘、行棋历史和由 chess.js 枚举的合法走法；超出窗口时缩减历史视图。",
+      "en": "A text board, move history and legal moves enumerated by chess.js, with a reduced history view when the window is exceeded."
+    },
+    "decision": {
+      "zh": "示例通过 pi-ai 的 typesafe/jev-latest 分类适配器，用 Choice 在合法走法和认输项之间选择，保留每项概率。",
+      "en": "The example uses pi-ai’s typesafe/jev-latest classifier adapter to choose a legal move or resignation with Choice, retaining option probabilities."
+    },
+    "action": {
+      "zh": "代码执行选定走法，再走带种子的随机对手回合，或让模型自弈；保存 trace、棋谱和终局，达到 200 步上限则标未完成。",
+      "en": "Code plays the selected move followed by a seeded random opponent, or runs self-play. It records traces, moves and the outcome; reaching 200 steps is unfinished."
+    },
+    "boundary": {
+      "zh": "MIT 社区框架，棋子素材另有 BSD 许可；同时支持其他决策模型。合法性由棋规库约束，不代表 Jev 棋力强或已实测胜率。未安装、下载模型、执行对局或运行文中假想工单。",
+      "en": "MIT community framework with separately BSD-licensed pieces and support for other decision models. Rules constrain legal moves; this establishes no Jev playing strength or measured win rate. No installation, model downloads, games or hypothetical ticket workflow executed."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/osolmaz/switch"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/models/pi-ai.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/core/loop.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/domains/chess/move.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/domains/chess/index.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/osolmaz/switch/blob/7bbe8ee3e089ec7d4342503c6e168f1ad7084ade/src/domains/chess/README.md"
+      }
+    ]
+  },
+  {
+    "id": "jev-open-calibration-banking-intent-evaluation",
+    "name": "Jev open calibration experiments",
+    "author": "Ankur Tomar",
+    "title": {
+      "zh": "银行意图离线研究：比较 Choice、Noul 与模拟自动处理阈值",
+      "en": "Banking-intent research: Choice, Noul and simulated action thresholds"
+    },
+    "area": {
+      "zh": "分类校准研究",
+      "en": "Classification calibration study"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "BANKING77 公开消息；七意图子集、完整 77 类，以及被排除意图的域外样本。",
+      "en": "Public BANKING77 messages: a seven-intent slice, all 77 labels, and out-of-schema examples from excluded intents."
+    },
+    "decision": {
+      "zh": "原生 /v1/systemone 中，Choice 选意图，同次请求的独立 Noul 判断各意图；另比较简短准则和每类三个示例。",
+      "en": "Native /v1/systemone Choice picks an intent, with independent Nouls for individual intents in the same request; other experiments compare terse and three-shot criteria."
+    },
+    "action": {
+      "zh": "脚本对照标签计算准确率、校准和 Choice/Noul 不一致；用 0.9 阈值统计模拟自动处理比例及域外误处理，不执行银行业务。",
+      "en": "Scripts compare labels to compute accuracy, calibration and Choice/Noul disagreement, then use 0.9 to count simulated automatic decisions and out-of-schema errors; no banking operation is performed."
+    },
+    "boundary": {
+      "zh": "代码 MIT、数据另为 CC-BY 4.0。开源 scikit-learn 仿接口与真实 Jev 实验分开；README 的数值和费用均为作者自报，阈值不是通用保证。未读取 raw 响应、访问账户、下载数据或付费重跑。",
+      "en": "MIT code with separately CC-BY 4.0 data. Open scikit-learn interface experiments are distinct from actual Jev experiments. README results and costs are author-reported, and the threshold is no general guarantee. No raw responses, accounts, dataset downloads or paid reruns."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ankur287/jev-open-calibration"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ankur287/jev-open-calibration/blob/303f89ff11fe5ff5f8b4ad532737d2c9116fc161/code/exp04_jev_live.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ankur287/jev-open-calibration/blob/303f89ff11fe5ff5f8b4ad532737d2c9116fc161/code/exp05_jev_77.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ankur287/jev-open-calibration/blob/303f89ff11fe5ff5f8b4ad532737d2c9116fc161/code/exp06_jev_77_fewshot.py"
+      }
+    ]
+  },
+  {
+    "id": "jev-walker-corner-exit-prototype",
+    "name": "Jev Walks Me Home",
+    "author": "Keanan Koppenhaver",
+    "title": {
+      "zh": "Jev Walker：路口有限出口选择与人工覆盖原型",
+      "en": "Jev Walker: bounded corner-exit selection with manual overrides"
+    },
+    "area": {
+      "zh": "步行路线原型",
+      "en": "Walking-route prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "当前路口的有限出口、相对方向、街段距离、已走进度和回家罗盘；公开给模型的菜单省去原始坐标与图节点。",
+      "en": "A bounded exit menu, relative directions, block lengths, walking progress and home compass; the public model menu omits raw coordinates and graph-node identifiers."
+    },
+    "decision": {
+      "zh": "原生 TypeSafe 或 OpenRouter Decisions 接线，用 Jev Choice 从出口编号中选择；代码检查返回编号仍在本轮菜单。",
+      "en": "Native TypeSafe or OpenRouter Decisions wiring uses Jev Choice over exit IDs, checking that the returned ID belongs to the current menu."
+    },
+    "action": {
+      "zh": "模拟器更新路线；手机原型显示出口并等待到达，提供“不能走”人工覆盖与结束操作，连续失败留在重试状态，不盲走下一步。",
+      "en": "The simulator updates the route. The phone prototype displays the exit, waits for arrival and allows cannot-walk overrides or ending; repeated failures leave it waiting for retry."
+    },
+    "boundary": {
+      "zh": "公开代码但根/包许可未确认，不列许可明确的项目。README 当前完成率表是随机/启发式结果，不能写成 Jev 实走成绩；地图简化不验证实际通行安全。未读取家庭配置、GPS 日志，未定位、开隧道、实走或调用模型。",
+      "en": "Public code with unconfirmed root/package licensing, so no verified-license project entry. Current README completion tables concern random/heuristic choosers, not Jev field results; simplified maps do not establish safe passage. No home configuration, GPS logs, location, tunnels, walks or model calls accessed."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kkoppenhaver/jev-walker"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kkoppenhaver/jev-walker/blob/638d36999acf3757954a5abfdf8d71355b940fb9/jev_walker/choosers.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kkoppenhaver/jev-walker/blob/638d36999acf3757954a5abfdf8d71355b940fb9/jev_walker/run.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kkoppenhaver/jev-walker/blob/638d36999acf3757954a5abfdf8d71355b940fb9/jev_walker/live.py"
+      }
+    ]
+  },
+  {
+    "id": "decisium-gherkin-bounded-browser-testing",
+    "name": "Decisium semantic UI tests",
+    "author": "Andrei Letenkov",
+    "title": {
+      "zh": "Decisium：Jev 选控件，代码检查页面值与状态",
+      "en": "Decisium: Jev selects controls, code checks page values and states"
+    },
+    "area": {
+      "zh": "浏览器语义测试",
+      "en": "Semantic browser testing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "Gherkin 步骤、页面可见文本/控件树，以及程序枚举的元素、动作和候选输入值。",
+      "en": "Gherkin steps, visible page text/control trees, and program-enumerated elements, actions and candidate input values."
+    },
+    "decision": {
+      "zh": "原生 jev-1.14.0 的 Choice 选择目标、动作与检查类型，Noul 判断步骤是否完成；候选过多时分批缩小。",
+      "en": "Native jev-1.14.0 Choice selects targets, actions and check kinds, while Noul checks step completion; large candidate sets are narrowed in batches."
+    },
+    "action": {
+      "zh": "Playwright 执行动作，代码比对预期文本、值和控件状态；歧义或不可核对会另报。cassette 保存解析结果，回放不调用模型，界面变化可报 UI_CHANGED。",
+      "en": "Playwright performs actions and code compares expected text, values and states, reporting ambiguity/unverifiability separately. Cassettes retain resolutions for model-free replay and can flag UI_CHANGED."
+    },
+    "boundary": {
+      "zh": "MIT 社区工具。主观断言默认 UNVERIFIABLE，显式 --judged 才交给 Jev，结果另标，不能概括为所有断言均被代码证明。实时步骤/页面文本会外发，字面密码也可能外发，应使用 $NAME 占位；回放零调用不证明当前 Jev 效果。未安装或操作第三方站点。",
+      "en": "MIT community tool. Subjective assertions default to UNVERIFIABLE; explicit --judged delegates them to Jev with separate results, so not every assertion is code-proven. Live step/page text leaves the device; literal passwords can too, so use $NAME placeholders. Model-free replay does not establish current Jev quality. No installation or third-party site actions."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/andletenkov/decisium"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/andletenkov/decisium/blob/53455bb152c2a538322d3a5f57f965eeb99cd553/src/jev.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/andletenkov/decisium/blob/53455bb152c2a538322d3a5f57f965eeb99cd553/src/step.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/andletenkov/decisium/blob/53455bb152c2a538322d3a5f57f965eeb99cd553/src/check.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/andletenkov/decisium/blob/53455bb152c2a538322d3a5f57f965eeb99cd553/src/execute.ts"
+      }
+    ]
+  },
+  {
+    "id": "vigilant-heron-shadow-http-triage",
+    "name": "vigilant-heron request screening",
+    "author": "coo-quack",
+    "title": {
+      "zh": "vigilant-heron：HTTP 请求先规则过滤，再用 Jev 影子审核",
+      "en": "vigilant-heron: rules first, then Jev shadow request screening"
+    },
+    "area": {
+      "zh": "请求审核实验",
+      "en": "Request-screening experiment"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "固定规则未决定的 HTTP 请求副本；代码去除 Cookie/Authorization 等字段并限制正文长度，客户端内容独立放在 untrusted_http_request。",
+      "en": "Copies of HTTP requests not decided by fixed rules, with Cookie/Authorization fields removed and body length bounded; client data is isolated under untrusted_http_request."
+    },
+    "decision": {
+      "zh": "原生 Jev 一次回答攻击概率、是否试图指挥 AI 两个 Noul，以及攻击类别 Choice；解析器检查题型和概率范围。",
+      "en": "One native Jev request asks two Nouls for attack and AI-directed instructions, plus a category Choice, with answer-type and probability-range checks."
+    },
+    "action": {
+      "zh": "代码按站点阈值转发、403 阻挡或跳转；shadow 只记录本会采取的动作并放行，模型失败默认放行，可配置特定路径失败关闭。",
+      "en": "Site thresholds drive forwarding, 403 blocking or redirection. Shadow records would-have actions while forwarding; model errors default to allow, with configurable fail-closed paths."
+    },
+    "boundary": {
+      "zh": "MIT 早期社区项目，作者明确未用真实流量验收，建议先 shadow。字段脱敏不能保证全部私人内容都被移除；Clef/Strands 替代后端及 e2e stub 不能当作 Jev 实测。未启动反代、发送攻击、读取真实日志或调用模型。",
+      "en": "Early MIT community project explicitly unvalidated on real traffic; the author advises shadow first. Field redaction cannot guarantee all private content is removed. Alternative Clef/Strands backends and e2e stubs are not Jev measurements. No proxy launch, attacks, real logs or model calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/coo-quack/vigilant-heron"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/coo-quack/vigilant-heron/blob/8b08ab4bd587451fc55e73be95f1bd62f245e478/src/system_one.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/coo-quack/vigilant-heron/blob/8b08ab4bd587451fc55e73be95f1bd62f245e478/src/config.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/coo-quack/vigilant-heron/blob/8b08ab4bd587451fc55e73be95f1bd62f245e478/src/policy.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/coo-quack/vigilant-heron/blob/8b08ab4bd587451fc55e73be95f1bd62f245e478/src/sanitize.rs"
+      }
+    ]
+  },
+  {
+    "id": "official-intelliprompter-score-checklist",
+    "name": "Intelliprompter cookbook",
+    "author": "TypeSafe AI",
+    "title": {
+      "zh": "官方 Intelliprompter：演讲要点达到覆盖分数后保持勾选",
+      "en": "Official Intelliprompter: a monotonic checklist from coverage scores"
+    },
+    "area": {
+      "zh": "演讲清单教程",
+      "en": "Presentation-checklist tutorial"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "持续累积的演讲转写，以及尚未勾选的要点描述；教程用六段预写转写增量演示。",
+      "en": "An accumulated presentation transcript and descriptions of unchecked talking points; the cookbook demonstrates six authored transcript increments."
+    },
+    "decision": {
+      "zh": "每个未完成要点一个五级 Score，同一请求共享完整转写；SDK 0–4 的分数加 1 映射到界面 1–5。",
+      "en": "Each pending criterion gets a five-level Score over the same full transcript; adding one maps SDK scores from 0–4 to the UI’s 1–5 scale."
+    },
+    "action": {
+      "zh": "代码将至少 2.5 的要点加入已覆盖集合并从后续问题移除，清单保持勾选；Jev 不保存清单状态。",
+      "en": "Code adds criteria scoring at least 2.5 to a covered set and omits them from later requests, preserving checks; Jev does not store checklist state."
+    },
+    "boundary": {
+      "zh": "TypeSafe 官方教程；2.5 是本地覆盖阈值而非置信度，误勾不会自动撤回。教程省略麦克风/ElevenLabs 集成，以文本和缓存演示；公布数字来自作者的 jev-1.13.0 样本，未独立复现、调用麦克风或付费 API。",
+      "en": "TypeSafe’s official cookbook. The 2.5 gate is a local coverage threshold, not confidence, and an incorrect check is not automatically revoked. Microphone/ElevenLabs integration is omitted in favor of text/cache replay; published numbers are the author’s jev-1.13.0 sample, not independently reproduced. No microphone or paid API calls."
+    },
+    "sources": [
+      {
+        "label": "Official cookbook",
+        "url": "https://docs.typesafe.ai/cookbooks/intelliprompter.md"
+      }
+    ]
   }
 ]
