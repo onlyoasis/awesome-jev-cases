@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (186)
+## 深度使用案例 / Worked cases (192)
 
 ### jev-ultrafast
 
@@ -1678,7 +1678,61 @@
 - 核验边界：TypeSafe 官方教程；2.5 是本地覆盖阈值而非置信度，误勾不会自动撤回。教程省略麦克风/ElevenLabs 集成，以文本和缓存演示；公布数字来自作者的 jev-1.13.0 样本，未独立复现、调用麦克风或付费 API。
 - 来源：[Official cookbook](https://docs.typesafe.ai/cookbooks/intelliprompter.md)
 
-## 开源项目 / Open-source projects (237)
+### Emc²：邮件分类、相关性与固定原因标签
+
+- 作者：Zns-Nexus / collection-of-things
+- 输入：发件地址、主题和邮件预览；命中用户发件规则时优先使用规则。
+- Jev 判断：原生 Jev 一次用 Choice 分 Important/Other、三档 Score 评相关性，再用 Choice 选“需要回复”等固定原因。
+- 后续动作：代码将 Score 0–2 取整加 1 成为显示等级，并存入本地邮件记录；服务失败保留本地排序并向用户报错，不把失败当 Jev 成功。
+- 核验边界：MIT 社区邮件客户端，也支持其他供应商与离线规则。等级不是置信度；发送者和预览仍外发。未安装、连接私人邮箱、读取用户邮件或发信，作者的存储/跨平台功能未独立验收。
+- 来源：[GitHub](https://github.com/collection-of-things/aggregate-mail) · [Source](https://github.com/collection-of-things/aggregate-mail/blob/9f0a2978595e2d329b2e8f6e45a25565575a8bf8/server/sorting.ts) · [Source](https://github.com/collection-of-things/aggregate-mail/blob/9f0a2978595e2d329b2e8f6e45a25565575a8bf8/server/index.ts)
+
+### Agentic Router：将子问题分给三类知识来源
+
+- 作者：jacinta-escaffi
+- 输入：用户问题或由另一个模型拆出的子问题；候选来源为 OpenAI 文档、两家公司 10-K 和互联网。
+- Jev 判断：可选 route_query_jev 用原生 SDK Choice 选三个固定来源之一，问题文本作为 state。
+- 后续动作：显式将 Jev router 传入后，各部分分别检索作答并合并引用；Jev 请求异常时回退互联网路线。
+- 核验边界：公开 notebook 但根许可未确认，不列开源项目。默认 router 和另段 RBAC/缓存仍用 GPT，不能称为 Jev 授权系统；课程数据另需取得。20题结果与费用为作者自报/估计；未读 notebook 输出、下载语料或调用模型。
+- 来源：[GitHub](https://github.com/jacinta-escaffi/Agentic_Router) · [Source](https://github.com/jacinta-escaffi/Agentic_Router/blob/0816e02fcaba9e30d4782b5cbaa1fcc909f089af/001_Agentic_Router.ipynb)
+
+### Jev Guide：只标出下一步，由用户自己点击
+
+- 作者：some45bucks
+- 输入：用户目标、页面可点击元素与已尝试路径；候选很多时先分批缩小。
+- Jev 判断：原生 TypeSafe 接线以 Choice 选元素，Noul 判断目标完成、登录需要及不可逆/目标匹配；大页用 Score 预筛。
+- 后续动作：只绘制高亮、低置信备选和最终步骤警告；点击、输入和提交均由用户完成，过期页面答案丢弃。
+- 核验边界：阶段4/7的公开代码，根/package许可未发现，不列开源项目。演示为合成fixture，含错误转向；高置信与红色警告不保证正确或安全。OpenRouter兼容未核，只确认原生接线。未安装扩展、扩大权限、改密码或取消真实订阅。
+- 来源：[GitHub](https://github.com/some45bucks/jev-guide) · [Source](https://github.com/some45bucks/jev-guide/blob/2964f5cd588e274f78b0061601eb62a99d2d688a/src/shared/jev.ts) · [Source](https://github.com/some45bucks/jev-guide/blob/2964f5cd588e274f78b0061601eb62a99d2d688a/src/shared/suggest.ts) · [Source](https://github.com/some45bucks/jev-guide/blob/2964f5cd588e274f78b0061601eb62a99d2d688a/src/content/candidates.ts)
+
+### Feather Wand：Jev 为 JMeter Agent 选择初始工具包
+
+- 作者：NaveenKumar Namachivayam / QAInsights
+- 输入：去除附件正文后的请求文本，路由视图最多4000字符；仍可能含用户自行写入的敏感内容。
+- Jev 判断：原生 Jev Choice 选择检查解释、编辑计划、运行诊断、关联、计划文件，或复杂/不清楚；代码校验标签与概率。
+- 后续动作：达到配置置信门槛时聚焦工具包并显示路由卡；低置信、复杂或服务不可用时回退全工具集，交给后续 Agent。
+- 核验边界：MIT 社区插件；路由默认关闭，默认门槛0.75，也可选其他决策后端。工具包选择不是授权，改动/运行仍受宿主确认配置影响；未安装 JMeter、发起压测、读日志或调用模型。
+- 来源：[GitHub](https://github.com/QAInsights/jmeter-ai) · [Source](https://github.com/QAInsights/jmeter-ai/blob/d9e7aa3ed4a972a77977e708aa3ab8a5300b884a/src/main/java/org/qainsights/jmeter/ai/service/TypeSafeJudgmentProvider.java) · [Source](https://github.com/QAInsights/jmeter-ai/blob/d9e7aa3ed4a972a77977e708aa3ab8a5300b884a/src/main/java/org/qainsights/jmeter/ai/agent/TypeSafeAgentRequestRouter.java) · [Source](https://github.com/QAInsights/jmeter-ai/blob/d9e7aa3ed4a972a77977e708aa3ab8a5300b884a/src/main/java/org/qainsights/jmeter/ai/agent/JMeterAgent.java)
+
+### Lightpanda：让 Jev 选择登录表单的三个控件
+
+- 作者：Lightpanda
+- 输入：作者演示中登录页面提供的控件；原帖未公开完整传入字段。
+- Jev 判断：作者称 Jev 选择用户名输入框、密码输入框和提交按钮，从页面现有控件中作有限选择。
+- 后续动作：Lightpanda 的 Agent 将选出的控件用于登录流程，TypeSafe 转发推荐了该演示。
+- 核验边界：仅作者原帖与官方转发，属于 Lightpanda 社区集成。0.53秒/2次调用为作者演示数字，不能外推通用成功率；未精读 jev-fallback 分支、验证题型/失败处理、读取凭据或实际登录，不列已核许可项目。
+- 来源：[Author X](https://x.com/lightpanda_io/status/2115166932357771702) · [TypeSafe recommendation](https://x.com/typesafeai/status/2115169279155011747)
+
+### Conversation X-Ray：逐句着色并显示六个情绪维度
+
+- 作者：ElevenLabs Developers
+- 输入：演示中的逐句通话内容，画面同时显示实时转写；本轮未向演示发送声音。
+- Jev 判断：作者称 Jev 作情绪判断，界面呈现挫败、愉悦、惊讶、不确定、紧迫和中性六个维度；未公开具体题型、尺度与阈值。
+- 后续动作：话语片段按判断结果着色，右侧量表随通话变化；TypeSafe 当时转发了原作者演示。
+- 核验边界：补收9月24日作者原帖与27秒演示，非 TypeSafe 一手项目。未核源码、Jev是否接收声线或数据保留；“不存储”只是作者自报。没有独立准确率/延迟测量，未开启麦克风、调用服务或上传用户通话。
+- 来源：[Author X](https://x.com/ElevenLabsDevs/status/2102884507078791484) · [Author demo reply](https://x.com/ElevenLabsDevs/status/2102884509855482155) · [TypeSafe recommendation](https://x.com/typesafeai/status/2102979122964406712)
+
+## 开源项目 / Open-source projects (242)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1919,6 +1973,11 @@
 | [ankur287/jev-open-calibration](https://github.com/ankur287/jev-open-calibration) | community | MIT | 0 |
 | [andletenkov/decisium](https://github.com/andletenkov/decisium) | community | MIT | 1 |
 | [coo-quack/vigilant-heron](https://github.com/coo-quack/vigilant-heron) | community | MIT | 1 |
+| [Dongbumlee/ontosmith](https://github.com/Dongbumlee/ontosmith) | community | MIT | 0 |
+| [collection-of-things/aggregate-mail](https://github.com/collection-of-things/aggregate-mail) | community | MIT | 2 |
+| [AnthusAI/Cyclotron](https://github.com/AnthusAI/Cyclotron) | community | MIT | 1 |
+| [QAInsights/jmeter-ai](https://github.com/QAInsights/jmeter-ai) | community | MIT | 65 |
+| [bitskc/jev-agent-kit](https://github.com/bitskc/jev-agent-kit) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (21)
 

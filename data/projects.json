@@ -3790,5 +3790,85 @@
     "lastVerified": "2026-10-27",
     "status": "verified",
     "stars": 1
+  },
+  {
+    "id": "dongbumlee-ontosmith",
+    "name": "Dongbumlee/ontosmith",
+    "url": "https://github.com/Dongbumlee/ontosmith",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 证据图谱工具，区分候选提案、Jev judge、阈值与图谱写入，附预算和人工本体批准流程。参考绑定部分批处理仍用旧 OpenRouter 路由，兼容未证；仅收相关工具，不宣称本站验收了完整 Jev 构建。",
+      "en": "MIT evidence-graph tooling separating proposals, Jev judging, thresholds and writes, with budgets and human schema approval. Some reference batch wiring retains an unverified legacy OpenRouter route; listed as related tooling without claiming a verified end-to-end Jev build."
+    },
+    "sourceUrl": "https://github.com/Dongbumlee/ontosmith/blob/69e4b290102dd3e6bdbc704b9371e0e2c2c872fa/pipeline/decisions.py",
+    "lastVerified": "2026-10-28",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "collection-of-things-aggregate-mail",
+    "name": "collection-of-things/aggregate-mail",
+    "url": "https://github.com/collection-of-things/aggregate-mail",
+    "category": "apps",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Emc² 邮件客户端，提供原生 Jev 分类/三档相关性/原因标签，规则和用户教正优先，并保留本地回退。另有桌面和浏览器目标；未连接邮箱、验收存储/平台或发信，邮件字段仍会外发。",
+      "en": "MIT Emc² mail client with native Jev category/relevance/reason labels, rule/teaching precedence and local fallback, plus desktop/browser targets. No inbox, storage/platform or sending verification; mail fields can leave the device."
+    },
+    "sourceUrl": "https://github.com/collection-of-things/aggregate-mail/blob/9f0a2978595e2d329b2e8f6e45a25565575a8bf8/server/sorting.ts",
+    "lastVerified": "2026-10-28",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "anthusai-cyclotron",
+    "name": "AnthusAI/Cyclotron",
+    "url": "https://github.com/AnthusAI/Cyclotron",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT 决策反馈框架，附原生 Jev SDK adapter、rubric/few-shot/辅助问题、ML校准和held-out候选评估；也支持其他模型。README quickstart为 ScriptedModel，不当作真实 Jev 效果；未读取事件/标签库、运行优化或下载模型。",
+      "en": "MIT decision-feedback harness with a native Jev SDK adapter, rubric/few-shot/supporting questions, ML calibration and held-out evaluation, plus other models. README quickstarts use ScriptedModel, not Jev evidence. No event/label stores, optimization runs or model downloads."
+    },
+    "sourceUrl": "https://github.com/AnthusAI/Cyclotron/blob/eb4065bca23a402c14bc980a8f393ecd056e6bb6/src/decision_flywheel/adapters/jev.py",
+    "lastVerified": "2026-10-28",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "qainsights-jmeter-ai",
+    "name": "QAInsights/jmeter-ai",
+    "url": "https://github.com/QAInsights/jmeter-ai",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Feather Wand JMeter插件，提供可选原生 Jev 工具族路由、置信卡与全工具回退，后续编辑/诊断由独立 Agent 执行。路由默认关闭、不是权限控制，其他后端不代表 Jev；未安装、压测或付费运行。",
+      "en": "MIT Feather Wand JMeter plugin with optional native Jev tool-family routing, confidence cards and full-tool fallback, followed by a separate editing/diagnosis agent. Routing defaults off and is not authorization; other backends are not Jev. No installation, load test or paid run."
+    },
+    "sourceUrl": "https://github.com/QAInsights/jmeter-ai/blob/d9e7aa3ed4a972a77977e708aa3ab8a5300b884a/src/main/java/org/qainsights/jmeter/ai/agent/TypeSafeAgentRequestRouter.java",
+    "lastVerified": "2026-10-28",
+    "status": "verified",
+    "stars": 65
+  },
+  {
+    "id": "bitskc-jev-agent-kit",
+    "name": "bitskc/jev-agent-kit",
+    "url": "https://github.com/bitskc/jev-agent-kit",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Worker MCP集成包，组合上游 Jev 工具、bearer接入和Agent技能/hook；原生TypeSafe或Gateway接线可查。vendor需自行生成，guard失败开放，作者亦未验部分omp接口；未安装hook、部署或验证15工具真实可用性。",
+      "en": "MIT Worker MCP integration combining upstream Jev tools, bearer access and agent skills/hooks, with native TypeSafe/Gateway wiring. Vendor code must be built; guards fail open and some omp interfaces are author-unverified. No hook install, deployment or live 15-tool verification."
+    },
+    "sourceUrl": "https://github.com/bitskc/jev-agent-kit/blob/54c3cee28e23903ee616dfc4ef1a9458434eb34e/server/src/kit/jev.mjs",
+    "lastVerified": "2026-10-28",
+    "status": "verified",
+    "stars": 0
   }
 ]

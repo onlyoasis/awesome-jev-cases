@@ -7958,5 +7958,269 @@
         "url": "https://docs.typesafe.ai/cookbooks/intelliprompter.md"
       }
     ]
+  },
+  {
+    "id": "emc2-jev-mail-category-score-label",
+    "name": "Emc² Jev sorting",
+    "author": "Zns-Nexus / collection-of-things",
+    "title": {
+      "zh": "Emc²：邮件分类、相关性与固定原因标签",
+      "en": "Emc²: mail category, relevance and fixed reason labels"
+    },
+    "area": {
+      "zh": "邮件列表整理",
+      "en": "Mail-list organization"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "发件地址、主题和邮件预览；命中用户发件规则时优先使用规则。",
+      "en": "Sender address, subject and preview, with user sender rules taking priority."
+    },
+    "decision": {
+      "zh": "原生 Jev 一次用 Choice 分 Important/Other、三档 Score 评相关性，再用 Choice 选“需要回复”等固定原因。",
+      "en": "One native Jev request uses Choice for Important/Other, a three-level relevance Score and another Choice for fixed reasons such as needs-reply."
+    },
+    "action": {
+      "zh": "代码将 Score 0–2 取整加 1 成为显示等级，并存入本地邮件记录；服务失败保留本地排序并向用户报错，不把失败当 Jev 成功。",
+      "en": "Code rounds the 0–2 Score and adds one for display, storing the sorting on local mail records. Provider failure retains local sorting and reports an error rather than counting as Jev success."
+    },
+    "boundary": {
+      "zh": "MIT 社区邮件客户端，也支持其他供应商与离线规则。等级不是置信度；发送者和预览仍外发。未安装、连接私人邮箱、读取用户邮件或发信，作者的存储/跨平台功能未独立验收。",
+      "en": "MIT community mail client with other providers and local rules. Display levels are not confidence; sender and preview still leave the device. No installation, private inbox access or mail sending; storage/platform claims were not independently tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/collection-of-things/aggregate-mail"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/collection-of-things/aggregate-mail/blob/9f0a2978595e2d329b2e8f6e45a25565575a8bf8/server/sorting.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/collection-of-things/aggregate-mail/blob/9f0a2978595e2d329b2e8f6e45a25565575a8bf8/server/index.ts"
+      }
+    ]
+  },
+  {
+    "id": "agentic-router-optional-jev-three-source",
+    "name": "Agentic Router Jev option",
+    "author": "jacinta-escaffi",
+    "title": {
+      "zh": "Agentic Router：将子问题分给三类知识来源",
+      "en": "Agentic Router: routing sub-queries to three knowledge sources"
+    },
+    "area": {
+      "zh": "RAG 路由课程实验",
+      "en": "RAG-routing coursework"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户问题或由另一个模型拆出的子问题；候选来源为 OpenAI 文档、两家公司 10-K 和互联网。",
+      "en": "A user question or model-split sub-query, with OpenAI docs, two companies’ 10-K filings and the internet as candidate sources."
+    },
+    "decision": {
+      "zh": "可选 route_query_jev 用原生 SDK Choice 选三个固定来源之一，问题文本作为 state。",
+      "en": "Optional route_query_jev uses a native SDK Choice over three fixed sources, passing the question as state."
+    },
+    "action": {
+      "zh": "显式将 Jev router 传入后，各部分分别检索作答并合并引用；Jev 请求异常时回退互联网路线。",
+      "en": "When the Jev router is explicitly injected, each part is retrieved/answered and its citations combined; a Jev error falls back to the internet route."
+    },
+    "boundary": {
+      "zh": "公开 notebook 但根许可未确认，不列开源项目。默认 router 和另段 RBAC/缓存仍用 GPT，不能称为 Jev 授权系统；课程数据另需取得。20题结果与费用为作者自报/估计；未读 notebook 输出、下载语料或调用模型。",
+      "en": "Public notebook with unconfirmed root licensing, so no project entry. The default router and separate RBAC/cache section still use GPT, not Jev authorization; course data is external. The 20-question results/costs are author-reported/estimated. No notebook outputs, corpus downloads or model calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/jacinta-escaffi/Agentic_Router"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jacinta-escaffi/Agentic_Router/blob/0816e02fcaba9e30d4782b5cbaa1fcc909f089af/001_Agentic_Router.ipynb"
+      }
+    ]
+  },
+  {
+    "id": "jev-guide-human-click-highlighting",
+    "name": "Jev Guide human-click prototype",
+    "author": "some45bucks",
+    "title": {
+      "zh": "Jev Guide：只标出下一步，由用户自己点击",
+      "en": "Jev Guide: highlight the next step for the user to click"
+    },
+    "area": {
+      "zh": "浏览器引导原型",
+      "en": "Browser-guidance prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户目标、页面可点击元素与已尝试路径；候选很多时先分批缩小。",
+      "en": "A user goal, clickable page elements and attempted paths, with batch shortlisting for large candidate sets."
+    },
+    "decision": {
+      "zh": "原生 TypeSafe 接线以 Choice 选元素，Noul 判断目标完成、登录需要及不可逆/目标匹配；大页用 Score 预筛。",
+      "en": "Native TypeSafe wiring uses Choice for the element and Nouls for completion, login needs, irreversibility and goal match; large pages use Score shortlisting."
+    },
+    "action": {
+      "zh": "只绘制高亮、低置信备选和最终步骤警告；点击、输入和提交均由用户完成，过期页面答案丢弃。",
+      "en": "It draws highlights, uncertain alternatives and final-step warnings; the user clicks, types and submits, and stale-page answers are discarded."
+    },
+    "boundary": {
+      "zh": "阶段4/7的公开代码，根/package许可未发现，不列开源项目。演示为合成fixture，含错误转向；高置信与红色警告不保证正确或安全。OpenRouter兼容未核，只确认原生接线。未安装扩展、扩大权限、改密码或取消真实订阅。",
+      "en": "Stage-4/7 public code without confirmed root/package licensing, so no project entry. Synthetic fixtures include wrong turns; confidence and red warnings guarantee neither correctness nor safety. Only native wiring was reviewed, not OpenRouter compatibility. No extension installation, permission expansion, password changes or real cancellations."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/some45bucks/jev-guide"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/some45bucks/jev-guide/blob/2964f5cd588e274f78b0061601eb62a99d2d688a/src/shared/jev.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/some45bucks/jev-guide/blob/2964f5cd588e274f78b0061601eb62a99d2d688a/src/shared/suggest.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/some45bucks/jev-guide/blob/2964f5cd588e274f78b0061601eb62a99d2d688a/src/content/candidates.ts"
+      }
+    ]
+  },
+  {
+    "id": "feather-wand-jev-agent-tool-pack-routing",
+    "name": "Feather Wand Jev smart routing",
+    "author": "NaveenKumar Namachivayam / QAInsights",
+    "title": {
+      "zh": "Feather Wand：Jev 为 JMeter Agent 选择初始工具包",
+      "en": "Feather Wand: Jev selects the JMeter agent’s initial tool pack"
+    },
+    "area": {
+      "zh": "Agent 工具路由",
+      "en": "Agent tool routing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "去除附件正文后的请求文本，路由视图最多4000字符；仍可能含用户自行写入的敏感内容。",
+      "en": "A request with attachment bodies removed and the routing view capped at 4,000 characters; user-entered sensitive text can remain."
+    },
+    "decision": {
+      "zh": "原生 Jev Choice 选择检查解释、编辑计划、运行诊断、关联、计划文件，或复杂/不清楚；代码校验标签与概率。",
+      "en": "Native Jev Choice selects inspection, plan editing, run/diagnosis, correlation, plan files or complex/unclear, checking labels and probabilities."
+    },
+    "action": {
+      "zh": "达到配置置信门槛时聚焦工具包并显示路由卡；低置信、复杂或服务不可用时回退全工具集，交给后续 Agent。",
+      "en": "A confident route focuses the tool pack and displays a route card; low confidence, complexity or unavailable service falls back to all tools for the downstream agent."
+    },
+    "boundary": {
+      "zh": "MIT 社区插件；路由默认关闭，默认门槛0.75，也可选其他决策后端。工具包选择不是授权，改动/运行仍受宿主确认配置影响；未安装 JMeter、发起压测、读日志或调用模型。",
+      "en": "MIT community plugin with routing off by default, a default 0.75 gate and alternative backends. Tool-pack selection is not authorization; mutations/runs depend on host confirmation settings. No JMeter installation, load tests, logs or model calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/QAInsights/jmeter-ai"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/QAInsights/jmeter-ai/blob/d9e7aa3ed4a972a77977e708aa3ab8a5300b884a/src/main/java/org/qainsights/jmeter/ai/service/TypeSafeJudgmentProvider.java"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/QAInsights/jmeter-ai/blob/d9e7aa3ed4a972a77977e708aa3ab8a5300b884a/src/main/java/org/qainsights/jmeter/ai/agent/TypeSafeAgentRequestRouter.java"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/QAInsights/jmeter-ai/blob/d9e7aa3ed4a972a77977e708aa3ab8a5300b884a/src/main/java/org/qainsights/jmeter/ai/agent/JMeterAgent.java"
+      }
+    ]
+  },
+  {
+    "id": "lightpanda-login-control-selection",
+    "name": "Lightpanda Jev login fallback",
+    "author": "Lightpanda",
+    "title": {
+      "zh": "Lightpanda：让 Jev 选择登录表单的三个控件",
+      "en": "Lightpanda: Jev selects three login-form controls"
+    },
+    "area": {
+      "zh": "登录控件选择演示",
+      "en": "Login-control selection demo"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "作者演示中登录页面提供的控件；原帖未公开完整传入字段。",
+      "en": "Controls available on the demo login page; the complete input fields are not disclosed."
+    },
+    "decision": {
+      "zh": "作者称 Jev 选择用户名输入框、密码输入框和提交按钮，从页面现有控件中作有限选择。",
+      "en": "The author says Jev selects the username field, password field and submit button from existing page controls."
+    },
+    "action": {
+      "zh": "Lightpanda 的 Agent 将选出的控件用于登录流程，TypeSafe 转发推荐了该演示。",
+      "en": "Lightpanda’s agent uses the selected controls in the login flow, and TypeSafe recommended the demonstration."
+    },
+    "boundary": {
+      "zh": "仅作者原帖与官方转发，属于 Lightpanda 社区集成。0.53秒/2次调用为作者演示数字，不能外推通用成功率；未精读 jev-fallback 分支、验证题型/失败处理、读取凭据或实际登录，不列已核许可项目。",
+      "en": "Author post and official recommendation only, describing a Lightpanda community integration. The 0.53-second/two-call figures are author demo numbers, not a general success rate. No branch, question-type/failure-path, credential or live-login verification; no verified-license project entry."
+    },
+    "sources": [
+      {
+        "label": "Author X",
+        "url": "https://x.com/lightpanda_io/status/2115166932357771702"
+      },
+      {
+        "label": "TypeSafe recommendation",
+        "url": "https://x.com/typesafeai/status/2115169279155011747"
+      }
+    ]
+  },
+  {
+    "id": "conversation-xray-live-emotion-display",
+    "name": "Conversation X-Ray",
+    "author": "ElevenLabs Developers",
+    "title": {
+      "zh": "Conversation X-Ray：逐句着色并显示六个情绪维度",
+      "en": "Conversation X-Ray: colored phrases and six emotion meters"
+    },
+    "area": {
+      "zh": "实时通话呈现演示",
+      "en": "Live-call visualization demo"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "演示中的逐句通话内容，画面同时显示实时转写；本轮未向演示发送声音。",
+      "en": "Phrase-by-phrase call content with a live transcript visible in the demo; no voice was submitted this run."
+    },
+    "decision": {
+      "zh": "作者称 Jev 作情绪判断，界面呈现挫败、愉悦、惊讶、不确定、紧迫和中性六个维度；未公开具体题型、尺度与阈值。",
+      "en": "The author attributes emotion judgments to Jev; the UI shows frustration, happiness, surprise, uncertainty, urgency and neutral, without published question types, scales or thresholds."
+    },
+    "action": {
+      "zh": "话语片段按判断结果着色，右侧量表随通话变化；TypeSafe 当时转发了原作者演示。",
+      "en": "Phrases are color-coded and meters change during the call; TypeSafe recommended the original demonstration."
+    },
+    "boundary": {
+      "zh": "补收9月24日作者原帖与27秒演示，非 TypeSafe 一手项目。未核源码、Jev是否接收声线或数据保留；“不存储”只是作者自报。没有独立准确率/延迟测量，未开启麦克风、调用服务或上传用户通话。",
+      "en": "Backfilled from the September 24 author post and 27-second demo, not a TypeSafe-owned project. Source code, whether vocal tone reaches Jev and retention were not verified; no-storage is an author claim. No independent accuracy/latency measurement, microphone access, service calls or user-call uploads."
+    },
+    "sources": [
+      {
+        "label": "Author X",
+        "url": "https://x.com/ElevenLabsDevs/status/2102884507078791484"
+      },
+      {
+        "label": "Author demo reply",
+        "url": "https://x.com/ElevenLabsDevs/status/2102884509855482155"
+      },
+      {
+        "label": "TypeSafe recommendation",
+        "url": "https://x.com/typesafeai/status/2102979122964406712"
+      }
+    ]
   }
 ]
