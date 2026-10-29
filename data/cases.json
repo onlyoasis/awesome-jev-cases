@@ -8222,5 +8222,445 @@
         "url": "https://x.com/typesafeai/status/2102979122964406712"
       }
     ]
+  },
+  {
+    "id": "tiny-world-optional-jev-creature-decisions",
+    "name": "Tiny World island",
+    "author": "hank-go1",
+    "title": {
+      "zh": "Tiny World：为虚构岛屿住民选择动作与目标",
+      "en": "Tiny World: selecting fictional island residents’ actions and targets"
+    },
+    "area": {
+      "zh": "互动世界原型",
+      "en": "Interactive-world prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "场景指令、近期历史、住民特征、当前位置与饥饿/能量等需求。",
+      "en": "Scene instructions, recent history, resident traits, positions and needs such as hunger and energy."
+    },
+    "decision": {
+      "zh": "可选Jev经OpenRouter alpha/decisions，以Choice选动作/目标及场景状态，Noul判断飞行；代码以0.5转为飞行开关。",
+      "en": "Optional Jev via OpenRouter alpha/decisions selects actions, targets and scene state with Choices, plus a flight Noul converted at 0.5."
+    },
+    "action": {
+      "zh": "服务端校验答案的候选、数值和结构，成功后界面替换世界状态；运动、碰撞和绘制仍由本地代码处理，错误保持旧场景。",
+      "en": "The server validates answer options, numbers and structure before the UI replaces world state; movement, collisions and rendering remain local, and errors retain the scene."
+    },
+    "boundary": {
+      "zh": "界面默认OpenAI，城镇模式也非Jev；只核岛屿可选1.13接线，未调用模型。许可证明确待权利人批准，LICENSE.proposed不是生效授权，因此不列开源项目；自动决策和费用估计未实测。",
+      "en": "The UI defaults to OpenAI and town mode is not Jev. Only the optional island 1.13 wiring was reviewed, without model calls. Licensing explicitly awaits owner approval: LICENSE.proposed is not an active grant, so no open-source project entry. Automatic calls and cost estimates were not tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hank-go1/tiny-world"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/hank-go1/tiny-world/blob/cf08c10c82f9df27393e057cbf51edbe757352cb/lib/creature-decisions.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/hank-go1/tiny-world/blob/cf08c10c82f9df27393e057cbf51edbe757352cb/lib/world.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/hank-go1/tiny-world/blob/cf08c10c82f9df27393e057cbf51edbe757352cb/app/api/decide/route.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/hank-go1/tiny-world/blob/cf08c10c82f9df27393e057cbf51edbe757352cb/app/page.tsx"
+      }
+    ]
+  },
+  {
+    "id": "jev-abstract-art-typed-renderer-routing",
+    "name": "Jev abstract-art playground",
+    "author": "carollia-99",
+    "title": {
+      "zh": "抽象艺术：先判断需要哪些渲染字段，再生成固定画布",
+      "en": "Abstract art: deciding which renderer fields a prompt needs"
+    },
+    "area": {
+      "zh": "受限生成艺术",
+      "en": "Constrained generative art"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "最多500字符的绘画提示和固定Canvas渲染器可表达的能力。",
+      "en": "An art prompt of up to 500 characters and the fixed Canvas renderer’s capabilities."
+    },
+    "decision": {
+      "zh": "Gateway上的Jev以Choice确定视觉方向，以四档Score判断字段族是否相关；另用Choice选择固定规格或自定义代码路线。",
+      "en": "Gateway Jev uses Choices for visual direction, four-level Scores for field-family relevance and a separate Choice between fixed-spec and custom-code routes."
+    },
+    "action": {
+      "zh": "相关性达到1.5才继续询问可选字段，补全/修正规格后用带种子的Canvas绘制；仅自定义路线概率至少0.65才交给另一模型写JavaScript并走Sandbox。",
+      "en": "Optional fields are asked only at relevance 1.5 or above; completed/reconciled specs feed a seeded Canvas renderer. Only a custom-route probability of at least 0.65 sends the task to another model for JavaScript and Sandbox execution."
+    },
+    "boundary": {
+      "zh": "Jev不生成像素或JavaScript；固定语法、规则修正和其他模型共同构成结果。根许可unknown，只列可查代码案例。实验SDK、API、Sandbox、速度/费用及“确定性”未独立运行验证。",
+      "en": "Jev generates neither pixels nor JavaScript; constrained grammar, code reconciliation and other models contribute. Root licensing is unknown, so this is a code case only. Experimental SDK/API, Sandbox, speed, cost and determinism were not independently tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/carollia-99/jev-determinism-and-abstraction"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/carollia-99/jev-determinism-and-abstraction/blob/f5ca06de7ab7e752ab81b6ff5a76331159054614/server/compose-with-jev.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/carollia-99/jev-determinism-and-abstraction/blob/f5ca06de7ab7e752ab81b6ff5a76331159054614/server/art-reconciler.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/carollia-99/jev-determinism-and-abstraction/blob/f5ca06de7ab7e752ab81b6ff5a76331159054614/server/route-with-jev.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/carollia-99/jev-determinism-and-abstraction/blob/f5ca06de7ab7e752ab81b6ff5a76331159054614/server/compose-art.js"
+      }
+    ]
+  },
+  {
+    "id": "adk-jev-fast-powerful-model-workflow",
+    "name": "ADK Jev model router",
+    "author": "sjaffry",
+    "title": {
+      "zh": "ADK：以Jev的两项选择分流Gemini模型",
+      "en": "ADK: a two-choice Jev workflow for Gemini model routing"
+    },
+    "area": {
+      "zh": "模型路由示例",
+      "en": "Model-routing example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "进入ADK工作流的任务文本，候选为fast和powerful两个档位。",
+      "en": "Task text entering an ADK workflow, with fast and powerful as its two tiers."
+    },
+    "decision": {
+      "zh": "TypesafeClassifier配置jev-latest，Choice要求选择足以完成任务且更省的档位；上游Google适配源码可核原生/v1/systemone转换。",
+      "en": "TypesafeClassifier targets jev-latest with a Choice for the least costly adequate tier; Google’s adapter source confirms conversion to native /v1/systemone."
+    },
+    "action": {
+      "zh": "ClassifierNode将结果存入jev_routing，Workflow按标签分给gemini-2.5-flash或gemini-2.5-pro。",
+      "en": "ClassifierNode records the decision under jev_routing; Workflow dispatches the label to gemini-2.5-flash or gemini-2.5-pro."
+    },
+    "boundary": {
+      "zh": "社区代码示例，根许可未确认，不列开源项目。没有独立成本、准确率或置信校准证据；未安装ADK、启动CLI或调用模型，选择powerful也不是高风险任务的安全保证。",
+      "en": "Community code example with unconfirmed root licensing, so no project entry. There is no independent cost, accuracy or calibration evidence. No ADK installation, CLI execution or model calls; selecting powerful is not a safety guarantee for consequential tasks."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/sjaffry/model-routing-with-adk-jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/sjaffry/model-routing-with-adk-jev/blob/c886046e2a97a6b618a3ee33a8fa9727237ff51a/adk_model_router/agent.py"
+      },
+      {
+        "label": "Google ADK adapter",
+        "url": "https://github.com/google/adk-python/blob/main/src/google/adk/integrations/typesafe/_typesafe_classifier.py"
+      }
+    ]
+  },
+  {
+    "id": "hndelegate-hn-decision-tree-telegram",
+    "name": "hndelegate",
+    "author": "uint4096",
+    "title": {
+      "zh": "hndelegate：按决策树筛选HN文章，再推送频道",
+      "en": "hndelegate: decision-tree filtering before Telegram delivery"
+    },
+    "area": {
+      "zh": "新闻订阅筛选",
+      "en": "News-subscription filtering"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "新HN文章的提取内容，以及存于SQLite的自定义树问题、候选和门槛。",
+      "en": "Extracted content of new HN stories and configurable tree questions, options and gates stored in SQLite."
+    },
+    "decision": {
+      "zh": "一条原生Jev请求批量回答树上Choice/Noul；Choice额外含None，应用同时检查所选概率和最小置信度。",
+      "en": "A native Jev request batches tree Choices/Nouls; Choices include None, and code checks selected probability and minimum confidence."
+    },
+    "action": {
+      "zh": "递归判断是否存在一条完整通过的分支，命中任一根树后才向配置的Telegram目的地发送标题、文章和讨论链接；已处理条目跳过。",
+      "en": "Code recursively looks for a complete passing branch and sends title/article/discussion links to the configured Telegram destination when a root tree matches; processed stories are skipped."
+    },
+    "boundary": {
+      "zh": "GPL-3.0社区项目，只核源码和许可。树门槛不是真实性核验；未读取本机数据库、连接Telegram、发送消息或验证作者的周期运行。",
+      "en": "GPL-3.0 community project reviewed through source and licensing. Tree gates do not verify factual truth. No local database access, Telegram connection, messages or independent scheduled-run testing."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/uint4096/hndelegate"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/uint4096/hndelegate/blob/887869c1927a1be72d546e93c7e2534b3c1fd58b/internal/model/jev/jev.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/uint4096/hndelegate/blob/887869c1927a1be72d546e93c7e2534b3c1fd58b/internal/model/jev/client.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/uint4096/hndelegate/blob/887869c1927a1be72d546e93c7e2534b3c1fd58b/internal/classifier/classifier.go"
+      }
+    ]
+  },
+  {
+    "id": "opencode-jev-two-phase-context-pruning",
+    "name": "OpenCode Jev pruner",
+    "author": "theroich",
+    "title": {
+      "zh": "OpenCode：分两阶段裁剪MCP与技能描述",
+      "en": "OpenCode: two-stage pruning of MCP and skill descriptions"
+    },
+    "area": {
+      "zh": "Agent上下文裁剪",
+      "en": "Agent-context pruning"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "本轮用户提示词及候选MCP服务器、工具和技能描述。",
+      "en": "The current user prompt and candidate MCP server, tool and skill descriptions."
+    },
+    "decision": {
+      "zh": "批量Noul先判断服务器相关性，再判断剩余工具和技能；默认保留门槛分别为0.35和0.55。",
+      "en": "Batched Nouls first judge server relevance, then remaining tools and skills, with default retention gates of 0.35 and 0.55."
+    },
+    "action": {
+      "zh": "context钩子只改当前请求的工具目录、说明和工具映射；超时/错误保留原请求，缺失评分不主动移除。",
+      "en": "The context hook changes only the current request’s catalog, instructions and tool map. Timeouts/errors retain the original request, and missing scores do not actively prune."
+    },
+    "boundary": {
+      "zh": "MIT社区插件，裁剪不修改注册表、连接或执行权限，不能当授权防火墙。默认OpenCode代理端点和宿主集成未实测；fake-jev只是确定性词匹配。未安装hook、改宿主权限或调用付费模型。",
+      "en": "MIT community plugin. Pruning changes no registry, connection or execution permission and is not an authorization firewall. The default OpenCode proxy endpoint and host integration were not tested; fake-jev is deterministic keyword matching. No hooks, host permission changes or paid calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/theroich/opencode-jev-pruner"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/theroich/opencode-jev-pruner/blob/c552e5e20a141608646d5453f78b6394dd74e166/src/pruner.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/theroich/opencode-jev-pruner/blob/c552e5e20a141608646d5453f78b6394dd74e166/src/jev.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/theroich/opencode-jev-pruner/blob/c552e5e20a141608646d5453f78b6394dd74e166/src/index.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/theroich/opencode-jev-pruner/blob/c552e5e20a141608646d5453f78b6394dd74e166/src/config.ts"
+      }
+    ]
+  },
+  {
+    "id": "juger-vite-mail-ingress-draft-egress",
+    "name": "Juger vite, bloquer juste",
+    "author": "lorenzorama",
+    "title": {
+      "zh": "邮件演示：Jev检查来信与草稿，代码决定隔离和拒绝",
+      "en": "Mail demo: Jev checks inbound text and drafts; code enforces gates"
+    },
+    "area": {
+      "zh": "合成邮件Agent护栏",
+      "en": "Synthetic mail-agent guardrails"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "邮件显露的正文，或用户任务、拟写草稿和已读片段；地址与秘密均为作者演示设定。",
+      "en": "Revealed mail text, or a user task, proposed draft and read snippets, with author-defined demo addresses and secrets."
+    },
+    "decision": {
+      "zh": "Jev Noul判断是否向AI发指令、草稿是否属于请求，以及是否披露已读秘密；联系人是否获准由代码判断。",
+      "en": "Jev Nouls check AI-directed instructions, whether a draft serves the request and whether it discloses a read secret; contact authorization remains in code."
+    },
+    "action": {
+      "zh": "A模式只观察；B模式按阈值隔离可疑来信，只允许allow草稿落到本地JSONL。秘密披露、范围不明或服务错误会拒绝/升级，不发送邮件。",
+      "en": "Mode A observes; mode B quarantines gated mail and writes only allow drafts to local JSONL. Secret disclosure, ambiguous scope or provider errors block/escalate; no mail is sent."
+    },
+    "boundary": {
+      "zh": "MIT会议演示，非已验证防注入产品。入口/出口门槛、两秒超时和最多三草稿可查；另有Score评估，报告中位分数不等于模型confidence。未读用户邮件、门禁、回放正文或运行模型。",
+      "en": "MIT talk demonstration, not a verified injection defense. Gates, a two-second timeout and a three-draft limit are inspectable. A separate Score evaluation’s median is not model confidence. No user mail, access codes, replay bodies or model execution."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/lorenzorama/juger-vite-bloquer-juste"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/lorenzorama/juger-vite-bloquer-juste/blob/67aae240fd36e5dd87c87ce5f4514495b794d5fb/backend/app/guard.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/lorenzorama/juger-vite-bloquer-juste/blob/67aae240fd36e5dd87c87ce5f4514495b794d5fb/backend/app/tools.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/lorenzorama/juger-vite-bloquer-juste/blob/67aae240fd36e5dd87c87ce5f4514495b794d5fb/backend/app/config.py"
+      }
+    ]
+  },
+  {
+    "id": "pi-web-search-optional-jev-evidence-judgment",
+    "name": "Pi web search optional Jev judging",
+    "author": "Gagan Devagiri / GaganSD",
+    "title": {
+      "zh": "Pi搜索：先取证，再由Jev判断相关性与风险",
+      "en": "Pi search: retrieve evidence, then optionally judge it with Jev"
+    },
+    "area": {
+      "zh": "引用证据重排",
+      "en": "Cited-evidence reranking"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "query及各候选的标题、URL、引用全文；检索完成后才进入可选判断。",
+      "en": "The query and each candidate’s title, URL and full cited text, judged optionally after retrieval."
+    },
+    "decision": {
+      "zh": "经Pi分类器的bool问题判断回答性、离题、自含与整体充分性，Choice判断五类风险；需显式选择可用Jev模型。",
+      "en": "Pi classifier bool questions cover answer relevance, off-topic content, self-containment and set sufficiency, plus a five-category safety Choice; an available Jev model must be explicitly pinned."
+    },
+    "action": {
+      "zh": "代码默认按0.45/−0.30/0.25加权重排，风险类别概率达到0.75才抑制；保留未确认标记。8秒判断失败返回已有检索并警告，删证据后不沿用原充分性肯定。",
+      "en": "Code reranks with default weights 0.45/−0.30/0.25 and suppresses a non-safe category only at probability 0.75. Uncertainty remains marked. An eight-second judging failure retains retrieval with a warning; removed evidence invalidates a previous positive sufficiency claim."
+    },
+    "boundary": {
+      "zh": "MIT社区扩展，thorough检索与classifier均默认关闭，fast不判断。所有候选先发送选定外部服务，抑制不是安全防火墙；未安装扩展、读取Pi认证/配置、访问私有代码或验证搜索/模型性能。",
+      "en": "MIT community extension with thorough retrieval and judging both off by default; fast searches do not judge. All candidates reach the selected external provider before suppression, which is not a security firewall. No installation, Pi auth/config access, private code or performance testing."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/GaganSD/pi-extensions"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/GaganSD/pi-extensions/blob/a5fe18f053c26a696c4823bcd8c9ec188d55398c/pi-web-search/src/classifier/judge.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/GaganSD/pi-extensions/blob/a5fe18f053c26a696c4823bcd8c9ec188d55398c/pi-web-search/src/classifier/api.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/GaganSD/pi-extensions/blob/a5fe18f053c26a696c4823bcd8c9ec188d55398c/pi-web-search/src/classifier/augment.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/GaganSD/pi-extensions/blob/a5fe18f053c26a696c4823bcd8c9ec188d55398c/pi-web-search/docs/research.md"
+      },
+      {
+        "label": "Author X",
+        "url": "https://x.com/gagan1v9/status/2115253730342003068"
+      }
+    ]
+  },
+  {
+    "id": "monid-jev-people-search-before-enrichment",
+    "name": "Monid people-search demo",
+    "author": "Shengkun Ye / Monid",
+    "title": {
+      "zh": "Monid：先筛人员候选，再为保留项补全资料",
+      "en": "Monid: filter people-search candidates before enrichment"
+    },
+    "area": {
+      "zh": "人员搜索演示",
+      "en": "People-search demonstration"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "人员搜索诉求及来自多个数据供应商的候选；演示显示Jev选择部分来源。",
+      "en": "A people-search request and candidates from multiple data vendors; the demo shows Jev selecting a subset of sources."
+    },
+    "decision": {
+      "zh": "作者称Jev判断保留哪些候选，再进入补全；具体题型、筛选标准和阈值未公开。",
+      "en": "The author attributes candidate retention to Jev before enrichment, without publishing question types, retention criteria or thresholds."
+    },
+    "action": {
+      "zh": "只为保留的候选执行后续资料补全；TypeSafe转发了原作者演示。",
+      "en": "Only retained candidates proceed to enrichment; TypeSafe recommended the original demo."
+    },
+    "boundary": {
+      "zh": "仅原作者帖子与演示，非TypeSafe一手项目。每线索成本、0%加价和开源均为作者说法，源码/许可和个人数据处理未核；未检索真实人员、购买服务或发联系消息。",
+      "en": "Author post and demo only, not a TypeSafe-owned project. Per-lead cost, zero markup and open-source claims are unverified author statements; code, licensing and personal-data handling were not checked. No real-person searches, purchases or contact messages."
+    },
+    "sources": [
+      {
+        "label": "Author X",
+        "url": "https://x.com/shengkunye/status/2115495757071728926"
+      },
+      {
+        "label": "Author product reply",
+        "url": "https://x.com/shengkunye/status/2115498019919642963"
+      },
+      {
+        "label": "TypeSafe recommendation",
+        "url": "https://x.com/typesafeai/status/2115590372927889553"
+      }
+    ]
+  },
+  {
+    "id": "agora-jev-semantic-turn-end-detection",
+    "name": "Jev semantic VAD",
+    "author": "Jay F / SoCalJayF",
+    "title": {
+      "zh": "语音轮次：用转写与近期对话判断用户是否说完",
+      "en": "Voice turns: using transcript and recent context to detect completion"
+    },
+    "area": {
+      "zh": "实时语音交接演示",
+      "en": "Real-time voice-turn demonstration"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "实时转写和近期对话上下文，供Agora ConvoAI集成判断语义上的发言结束。",
+      "en": "A live transcript and recent conversation for semantic end-of-turn detection in an Agora ConvoAI integration."
+    },
+    "decision": {
+      "zh": "作者用Jev判断用户是否真正说完，而不把犹豫、未完成想法或短暂停顿直接当结束；具体题型/阈值未披露。",
+      "en": "The author uses Jev to decide whether the user has actually finished, distinguishing hesitation, unfinished thoughts and brief pauses; exact question types and gates are undisclosed."
+    },
+    "action": {
+      "zh": "将判断用于实时语音AI的轮次交接，作者附85秒演示与仓库回复，后来获TypeSafe推荐。",
+      "en": "The decision feeds real-time voice turn handoff; the author provides an 85-second demo and repository reply, later recommended by TypeSafe."
+    },
+    "boundary": {
+      "zh": "补收2026-09-24作者原帖；仅原帖证据，仓库实现/许可本轮未精读，原始音频是否入模、延迟和质量均未核。非TypeSafe官方项目，未开麦、发送通话或连接Agora。",
+      "en": "Backfilled from the September 24, 2026 original post. Post evidence only: implementation/licensing, whether raw audio reaches Jev, latency and quality were not verified this run. Not a TypeSafe-owned project; no microphone, call uploads or Agora connection."
+    },
+    "sources": [
+      {
+        "label": "Author X",
+        "url": "https://x.com/SoCalJayF/status/2103002322175668313"
+      },
+      {
+        "label": "Author repository reply",
+        "url": "https://x.com/SoCalJayF/status/2103002476270203133"
+      },
+      {
+        "label": "TypeSafe recommendation",
+        "url": "https://x.com/typesafeai/status/2105809232738283853"
+      }
+    ]
   }
 ]

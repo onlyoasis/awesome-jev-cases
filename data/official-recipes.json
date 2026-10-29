@@ -187,5 +187,32 @@
     "source": "official",
     "discoveredAt": "2026-10-27",
     "lastVerified": "2026-10-27"
+  },
+  {
+    "id": "reading-scanned-documents",
+    "name": "Reading a scanned vaccination record",
+    "url": "https://docs.typesafe.ai/cookbooks/reading_scanned_documents.md",
+    "description": "Find candidate vaccine rows with Nouls and Boxes, read years with a Choice including unreadable, then flag/crop rows for human review. Official experimental image workflow, not clinical or travel-health guidance; published results are not independently reproduced.",
+    "source": "official",
+    "discoveredAt": "2026-10-29",
+    "lastVerified": "2026-10-29"
+  },
+  {
+    "id": "ocr-confidence-bounding-boxes",
+    "name": "OCR confidence and bounding boxes",
+    "url": "https://docs.typesafe.ai/cookbooks/ocr_confidence_bounding_boxes.md",
+    "description": "Check already-extracted invoice values against a full photo and a zoomed Box crop using Nouls; either check below 0.25 flags human review. Experimental images/Box and official cached examples, not independent OCR or production validation.",
+    "source": "official",
+    "discoveredAt": "2026-10-29",
+    "lastVerified": "2026-10-29"
+  },
+  {
+    "id": "feeder-watch",
+    "name": "Feeder-cam visit log",
+    "url": "https://docs.typesafe.ai/cookbooks/feeder_watch.md",
+    "description": "Apply Noul, Choice and Box questions to one video frame per second, then merge detections into species visits in code. Experimental image workflow limited to two different species; occlusion and same-species birds remain limitations. Reported 101-frame results are official claims.",
+    "source": "official",
+    "discoveredAt": "2026-10-29",
+    "lastVerified": "2026-10-29"
   }
 ]

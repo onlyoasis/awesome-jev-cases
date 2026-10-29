@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (192)
+## 深度使用案例 / Worked cases (201)
 
 ### jev-ultrafast
 
@@ -1732,7 +1732,88 @@
 - 核验边界：补收9月24日作者原帖与27秒演示，非 TypeSafe 一手项目。未核源码、Jev是否接收声线或数据保留；“不存储”只是作者自报。没有独立准确率/延迟测量，未开启麦克风、调用服务或上传用户通话。
 - 来源：[Author X](https://x.com/ElevenLabsDevs/status/2102884507078791484) · [Author demo reply](https://x.com/ElevenLabsDevs/status/2102884509855482155) · [TypeSafe recommendation](https://x.com/typesafeai/status/2102979122964406712)
 
-## 开源项目 / Open-source projects (242)
+### Tiny World：为虚构岛屿住民选择动作与目标
+
+- 作者：hank-go1
+- 输入：场景指令、近期历史、住民特征、当前位置与饥饿/能量等需求。
+- Jev 判断：可选Jev经OpenRouter alpha/decisions，以Choice选动作/目标及场景状态，Noul判断飞行；代码以0.5转为飞行开关。
+- 后续动作：服务端校验答案的候选、数值和结构，成功后界面替换世界状态；运动、碰撞和绘制仍由本地代码处理，错误保持旧场景。
+- 核验边界：界面默认OpenAI，城镇模式也非Jev；只核岛屿可选1.13接线，未调用模型。许可证明确待权利人批准，LICENSE.proposed不是生效授权，因此不列开源项目；自动决策和费用估计未实测。
+- 来源：[GitHub](https://github.com/hank-go1/tiny-world) · [Source](https://github.com/hank-go1/tiny-world/blob/cf08c10c82f9df27393e057cbf51edbe757352cb/lib/creature-decisions.ts) · [Source](https://github.com/hank-go1/tiny-world/blob/cf08c10c82f9df27393e057cbf51edbe757352cb/lib/world.ts) · [Source](https://github.com/hank-go1/tiny-world/blob/cf08c10c82f9df27393e057cbf51edbe757352cb/app/api/decide/route.ts) · [Source](https://github.com/hank-go1/tiny-world/blob/cf08c10c82f9df27393e057cbf51edbe757352cb/app/page.tsx)
+
+### 抽象艺术：先判断需要哪些渲染字段，再生成固定画布
+
+- 作者：carollia-99
+- 输入：最多500字符的绘画提示和固定Canvas渲染器可表达的能力。
+- Jev 判断：Gateway上的Jev以Choice确定视觉方向，以四档Score判断字段族是否相关；另用Choice选择固定规格或自定义代码路线。
+- 后续动作：相关性达到1.5才继续询问可选字段，补全/修正规格后用带种子的Canvas绘制；仅自定义路线概率至少0.65才交给另一模型写JavaScript并走Sandbox。
+- 核验边界：Jev不生成像素或JavaScript；固定语法、规则修正和其他模型共同构成结果。根许可unknown，只列可查代码案例。实验SDK、API、Sandbox、速度/费用及“确定性”未独立运行验证。
+- 来源：[GitHub](https://github.com/carollia-99/jev-determinism-and-abstraction) · [Source](https://github.com/carollia-99/jev-determinism-and-abstraction/blob/f5ca06de7ab7e752ab81b6ff5a76331159054614/server/compose-with-jev.js) · [Source](https://github.com/carollia-99/jev-determinism-and-abstraction/blob/f5ca06de7ab7e752ab81b6ff5a76331159054614/server/art-reconciler.js) · [Source](https://github.com/carollia-99/jev-determinism-and-abstraction/blob/f5ca06de7ab7e752ab81b6ff5a76331159054614/server/route-with-jev.js) · [Source](https://github.com/carollia-99/jev-determinism-and-abstraction/blob/f5ca06de7ab7e752ab81b6ff5a76331159054614/server/compose-art.js)
+
+### ADK：以Jev的两项选择分流Gemini模型
+
+- 作者：sjaffry
+- 输入：进入ADK工作流的任务文本，候选为fast和powerful两个档位。
+- Jev 判断：TypesafeClassifier配置jev-latest，Choice要求选择足以完成任务且更省的档位；上游Google适配源码可核原生/v1/systemone转换。
+- 后续动作：ClassifierNode将结果存入jev_routing，Workflow按标签分给gemini-2.5-flash或gemini-2.5-pro。
+- 核验边界：社区代码示例，根许可未确认，不列开源项目。没有独立成本、准确率或置信校准证据；未安装ADK、启动CLI或调用模型，选择powerful也不是高风险任务的安全保证。
+- 来源：[GitHub](https://github.com/sjaffry/model-routing-with-adk-jev) · [Source](https://github.com/sjaffry/model-routing-with-adk-jev/blob/c886046e2a97a6b618a3ee33a8fa9727237ff51a/adk_model_router/agent.py) · [Google ADK adapter](https://github.com/google/adk-python/blob/main/src/google/adk/integrations/typesafe/_typesafe_classifier.py)
+
+### hndelegate：按决策树筛选HN文章，再推送频道
+
+- 作者：uint4096
+- 输入：新HN文章的提取内容，以及存于SQLite的自定义树问题、候选和门槛。
+- Jev 判断：一条原生Jev请求批量回答树上Choice/Noul；Choice额外含None，应用同时检查所选概率和最小置信度。
+- 后续动作：递归判断是否存在一条完整通过的分支，命中任一根树后才向配置的Telegram目的地发送标题、文章和讨论链接；已处理条目跳过。
+- 核验边界：GPL-3.0社区项目，只核源码和许可。树门槛不是真实性核验；未读取本机数据库、连接Telegram、发送消息或验证作者的周期运行。
+- 来源：[GitHub](https://github.com/uint4096/hndelegate) · [Source](https://github.com/uint4096/hndelegate/blob/887869c1927a1be72d546e93c7e2534b3c1fd58b/internal/model/jev/jev.go) · [Source](https://github.com/uint4096/hndelegate/blob/887869c1927a1be72d546e93c7e2534b3c1fd58b/internal/model/jev/client.go) · [Source](https://github.com/uint4096/hndelegate/blob/887869c1927a1be72d546e93c7e2534b3c1fd58b/internal/classifier/classifier.go)
+
+### OpenCode：分两阶段裁剪MCP与技能描述
+
+- 作者：theroich
+- 输入：本轮用户提示词及候选MCP服务器、工具和技能描述。
+- Jev 判断：批量Noul先判断服务器相关性，再判断剩余工具和技能；默认保留门槛分别为0.35和0.55。
+- 后续动作：context钩子只改当前请求的工具目录、说明和工具映射；超时/错误保留原请求，缺失评分不主动移除。
+- 核验边界：MIT社区插件，裁剪不修改注册表、连接或执行权限，不能当授权防火墙。默认OpenCode代理端点和宿主集成未实测；fake-jev只是确定性词匹配。未安装hook、改宿主权限或调用付费模型。
+- 来源：[GitHub](https://github.com/theroich/opencode-jev-pruner) · [Source](https://github.com/theroich/opencode-jev-pruner/blob/c552e5e20a141608646d5453f78b6394dd74e166/src/pruner.ts) · [Source](https://github.com/theroich/opencode-jev-pruner/blob/c552e5e20a141608646d5453f78b6394dd74e166/src/jev.ts) · [Source](https://github.com/theroich/opencode-jev-pruner/blob/c552e5e20a141608646d5453f78b6394dd74e166/src/index.ts) · [Source](https://github.com/theroich/opencode-jev-pruner/blob/c552e5e20a141608646d5453f78b6394dd74e166/src/config.ts)
+
+### 邮件演示：Jev检查来信与草稿，代码决定隔离和拒绝
+
+- 作者：lorenzorama
+- 输入：邮件显露的正文，或用户任务、拟写草稿和已读片段；地址与秘密均为作者演示设定。
+- Jev 判断：Jev Noul判断是否向AI发指令、草稿是否属于请求，以及是否披露已读秘密；联系人是否获准由代码判断。
+- 后续动作：A模式只观察；B模式按阈值隔离可疑来信，只允许allow草稿落到本地JSONL。秘密披露、范围不明或服务错误会拒绝/升级，不发送邮件。
+- 核验边界：MIT会议演示，非已验证防注入产品。入口/出口门槛、两秒超时和最多三草稿可查；另有Score评估，报告中位分数不等于模型confidence。未读用户邮件、门禁、回放正文或运行模型。
+- 来源：[GitHub](https://github.com/lorenzorama/juger-vite-bloquer-juste) · [Source](https://github.com/lorenzorama/juger-vite-bloquer-juste/blob/67aae240fd36e5dd87c87ce5f4514495b794d5fb/backend/app/guard.py) · [Source](https://github.com/lorenzorama/juger-vite-bloquer-juste/blob/67aae240fd36e5dd87c87ce5f4514495b794d5fb/backend/app/tools.py) · [Source](https://github.com/lorenzorama/juger-vite-bloquer-juste/blob/67aae240fd36e5dd87c87ce5f4514495b794d5fb/backend/app/config.py)
+
+### Pi搜索：先取证，再由Jev判断相关性与风险
+
+- 作者：Gagan Devagiri / GaganSD
+- 输入：query及各候选的标题、URL、引用全文；检索完成后才进入可选判断。
+- Jev 判断：经Pi分类器的bool问题判断回答性、离题、自含与整体充分性，Choice判断五类风险；需显式选择可用Jev模型。
+- 后续动作：代码默认按0.45/−0.30/0.25加权重排，风险类别概率达到0.75才抑制；保留未确认标记。8秒判断失败返回已有检索并警告，删证据后不沿用原充分性肯定。
+- 核验边界：MIT社区扩展，thorough检索与classifier均默认关闭，fast不判断。所有候选先发送选定外部服务，抑制不是安全防火墙；未安装扩展、读取Pi认证/配置、访问私有代码或验证搜索/模型性能。
+- 来源：[GitHub](https://github.com/GaganSD/pi-extensions) · [Source](https://github.com/GaganSD/pi-extensions/blob/a5fe18f053c26a696c4823bcd8c9ec188d55398c/pi-web-search/src/classifier/judge.ts) · [Source](https://github.com/GaganSD/pi-extensions/blob/a5fe18f053c26a696c4823bcd8c9ec188d55398c/pi-web-search/src/classifier/api.ts) · [Source](https://github.com/GaganSD/pi-extensions/blob/a5fe18f053c26a696c4823bcd8c9ec188d55398c/pi-web-search/src/classifier/augment.ts) · [Source](https://github.com/GaganSD/pi-extensions/blob/a5fe18f053c26a696c4823bcd8c9ec188d55398c/pi-web-search/docs/research.md) · [Author X](https://x.com/gagan1v9/status/2115253730342003068)
+
+### Monid：先筛人员候选，再为保留项补全资料
+
+- 作者：Shengkun Ye / Monid
+- 输入：人员搜索诉求及来自多个数据供应商的候选；演示显示Jev选择部分来源。
+- Jev 判断：作者称Jev判断保留哪些候选，再进入补全；具体题型、筛选标准和阈值未公开。
+- 后续动作：只为保留的候选执行后续资料补全；TypeSafe转发了原作者演示。
+- 核验边界：仅原作者帖子与演示，非TypeSafe一手项目。每线索成本、0%加价和开源均为作者说法，源码/许可和个人数据处理未核；未检索真实人员、购买服务或发联系消息。
+- 来源：[Author X](https://x.com/shengkunye/status/2115495757071728926) · [Author product reply](https://x.com/shengkunye/status/2115498019919642963) · [TypeSafe recommendation](https://x.com/typesafeai/status/2115590372927889553)
+
+### 语音轮次：用转写与近期对话判断用户是否说完
+
+- 作者：Jay F / SoCalJayF
+- 输入：实时转写和近期对话上下文，供Agora ConvoAI集成判断语义上的发言结束。
+- Jev 判断：作者用Jev判断用户是否真正说完，而不把犹豫、未完成想法或短暂停顿直接当结束；具体题型/阈值未披露。
+- 后续动作：将判断用于实时语音AI的轮次交接，作者附85秒演示与仓库回复，后来获TypeSafe推荐。
+- 核验边界：补收2026-09-24作者原帖；仅原帖证据，仓库实现/许可本轮未精读，原始音频是否入模、延迟和质量均未核。非TypeSafe官方项目，未开麦、发送通话或连接Agora。
+- 来源：[Author X](https://x.com/SoCalJayF/status/2103002322175668313) · [Author repository reply](https://x.com/SoCalJayF/status/2103002476270203133) · [TypeSafe recommendation](https://x.com/typesafeai/status/2105809232738283853)
+
+## 开源项目 / Open-source projects (247)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -1978,8 +2059,13 @@
 | [AnthusAI/Cyclotron](https://github.com/AnthusAI/Cyclotron) | community | MIT | 1 |
 | [QAInsights/jmeter-ai](https://github.com/QAInsights/jmeter-ai) | community | MIT | 65 |
 | [bitskc/jev-agent-kit](https://github.com/bitskc/jev-agent-kit) | community | MIT | 0 |
+| [uint4096/hndelegate](https://github.com/uint4096/hndelegate) | community | GPL-3.0 | 0 |
+| [theroich/opencode-jev-pruner](https://github.com/theroich/opencode-jev-pruner) | community | MIT | 0 |
+| [lorenzorama/juger-vite-bloquer-juste](https://github.com/lorenzorama/juger-vite-bloquer-juste) | community | MIT | 0 |
+| [bomliu/decision-drift](https://github.com/bomliu/decision-drift) | community | MIT | 0 |
+| [GaganSD/pi-extensions](https://github.com/GaganSD/pi-extensions) | community | MIT | 31 |
 
-## 官方 cookbook / Official recipes (21)
+## 官方 cookbook / Official recipes (24)
 
 - [Self-consistency: nouls](https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook.md)：Route uncertain probabilities to human review while keeping the underlying noul values visible.
 - [Self-consistency: choices](https://docs.typesafe.ai/cookbooks/consistency_choice_cookbook.md)：Add an uncertain outcome to moderation decisions and compare label agreement with the share of automatic actions.
@@ -2002,3 +2088,6 @@
 - [Simple memory system](https://docs.typesafe.ai/cookbooks/basic_memory.md)：Store customer tickets and answers behind a Noul memory gate, then inject them into later typed support-routing calls. Toy dict-based example; evaluate the threshold for your own data.
 - [Twitch chat filter](https://docs.typesafe.ai/cookbooks/twitch_chat_filter.md)：Classify one stream-chat message with a Choice and toxic/spoiler Nouls; code hides, blurs or highlights it. Authored 29-message English example; adapt thresholds, uncertainty and live-message handling locally.
 - [Intelliprompter](https://docs.typesafe.ai/cookbooks/intelliprompter.md)：Score pending presentation criteria against the accumulated transcript, then keep criteria checked after a local coverage gate. Six authored chunks demonstrate the one-way checklist; microphone/transcription integration is outside the cookbook.
+- [Reading a scanned vaccination record](https://docs.typesafe.ai/cookbooks/reading_scanned_documents.md)：Find candidate vaccine rows with Nouls and Boxes, read years with a Choice including unreadable, then flag/crop rows for human review. Official experimental image workflow, not clinical or travel-health guidance; published results are not independently reproduced.
+- [OCR confidence and bounding boxes](https://docs.typesafe.ai/cookbooks/ocr_confidence_bounding_boxes.md)：Check already-extracted invoice values against a full photo and a zoomed Box crop using Nouls; either check below 0.25 flags human review. Experimental images/Box and official cached examples, not independent OCR or production validation.
+- [Feeder-cam visit log](https://docs.typesafe.ai/cookbooks/feeder_watch.md)：Apply Noul, Choice and Box questions to one video frame per second, then merge detections into species visits in code. Experimental image workflow limited to two different species; occlusion and same-species birds remain limitations. Reported 101-frame results are official claims.

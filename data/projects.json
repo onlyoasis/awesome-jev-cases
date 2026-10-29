@@ -3870,5 +3870,85 @@
     "lastVerified": "2026-10-28",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "uint4096-hndelegate",
+    "name": "uint4096/hndelegate",
+    "url": "https://github.com/uint4096/hndelegate",
+    "category": "app",
+    "relationship": "community",
+    "license": "GPL-3.0",
+    "summary": {
+      "zh": "GPL-3.0的HN筛选器，原生Jev批量回答Choice/Noul决策树，应用以概率/置信门槛选文章后发Telegram。树和SQLite需自行配置；未连接数据库/频道或实测周期、质量。",
+      "en": "GPL-3.0 HN curator batching native Jev Choice/Noul tree questions before gated Telegram delivery. Trees/SQLite require setup; no database/channel connection or independent schedule/quality test."
+    },
+    "sourceUrl": "https://github.com/uint4096/hndelegate/blob/887869c1927a1be72d546e93c7e2534b3c1fd58b/internal/model/jev/jev.go",
+    "lastVerified": "2026-10-29",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "theroich-opencode-jev-pruner",
+    "name": "theroich/opencode-jev-pruner",
+    "url": "https://github.com/theroich/opencode-jev-pruner",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT OpenCode V2上下文插件，两阶段Jev Noul裁剪服务器/工具/技能描述，失败保留原请求。不是执行权限控制；默认代理端点和宿主未实测，fake-jev不是真实模型。",
+      "en": "MIT OpenCode V2 context plugin using two-stage Jev Nouls to prune server/tool/skill descriptions, retaining requests on failure. Not execution authorization; proxy/host untested and fake-jev is not the real model."
+    },
+    "sourceUrl": "https://github.com/theroich/opencode-jev-pruner/blob/c552e5e20a141608646d5453f78b6394dd74e166/src/index.ts",
+    "lastVerified": "2026-10-29",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "lorenzorama-juger-vite-bloquer-juste",
+    "name": "lorenzorama/juger-vite-bloquer-juste",
+    "url": "https://github.com/lorenzorama/juger-vite-bloquer-juste",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT邮件Agent会议演示：Jev入口/草稿出口Noul门控、观察/执行两模式及Score评估可查，只生成本地草稿不发信。演示效果与评估由作者报告，非独立安全验证；未读用户邮件或执行回放。",
+      "en": "MIT mail-agent talk demo with Jev ingress/egress Noul gates, shadow/enforced modes and Score evaluation. It creates local drafts without sending mail. Author results are not independent security validation; no user mail or replay execution."
+    },
+    "sourceUrl": "https://github.com/lorenzorama/juger-vite-bloquer-juste/blob/67aae240fd36e5dd87c87ce5f4514495b794d5fb/backend/app/guard.py",
+    "lastVerified": "2026-10-29",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "bomliu-decision-drift",
+    "name": "bomliu/decision-drift",
+    "url": "https://github.com/bomliu/decision-drift",
+    "category": "research",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT多决策模型漂移研究工具，通过OpenRouter重复冻结探针、换序/改述并报告噪声、变化与校准；数据另有条款且包含私有split。未核私有题或重测榜单，分批/并发预算检查不是硬消费上限。",
+      "en": "MIT decision-model drift tooling using frozen/repeated, shuffled and paraphrased probes through OpenRouter to report noise, changes and calibration. Data has separate terms/private splits. No private items or ranking reproduction; periodic concurrent budget checks are not a hard cap."
+    },
+    "sourceUrl": "https://github.com/bomliu/decision-drift/blob/3b1c6db4302393f1e7240ab49db6a08b53d99b25/src/run.ts",
+    "lastVerified": "2026-10-29",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "gagansd-pi-extensions",
+    "name": "GaganSD/pi-extensions",
+    "url": "https://github.com/GaganSD/pi-extensions",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Pi扩展集；pi-web-search可显式启用Jev分类器来判断、重排和抑制引用候选，检索与判断分离。宿主负责模型认证，所有候选先外发；未安装、读认证或验收其他扩展及性能。",
+      "en": "MIT Pi extension collection whose pi-web-search can opt into Jev judging, reranking and suppression of cited candidates, separately from retrieval. The host owns model auth and all candidates go out first; no installation, auth access or testing of other extensions/performance."
+    },
+    "sourceUrl": "https://github.com/GaganSD/pi-extensions/blob/a5fe18f053c26a696c4823bcd8c9ec188d55398c/pi-web-search/src/classifier/augment.ts",
+    "lastVerified": "2026-10-29",
+    "status": "verified",
+    "stars": 31
   }
 ]
