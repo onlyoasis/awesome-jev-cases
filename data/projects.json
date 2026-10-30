@@ -3950,5 +3950,69 @@
     "lastVerified": "2026-10-29",
     "status": "verified",
     "stars": 31
+  },
+  {
+    "id": "tom-r-main-footwork",
+    "name": "Tom-R-Main/Footwork",
+    "url": "https://github.com/Tom-R-Main/Footwork",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT电脑操作框架，Jev完成/逐要求Noul复核结合本地证据门槛，并有机械操作建议与宿主策略；原生/浏览器资格和构建依赖有边界。未安装驱动、读轨迹或复测作者可靠性，概率不是授权。",
+      "en": "MIT computer-use framework combining Jev completion/per-requirement Nouls with local evidence gates and mechanical-action advice under host policy. Native/browser qualification and builds are scoped. No drivers, traces or reliability reproduction; probability is not authorization."
+    },
+    "sourceUrl": "https://github.com/Tom-R-Main/Footwork/blob/f849e163190d5217695847644406edaae0a32dce/jevdual/python/jevdual/verify.py",
+    "lastVerified": "2026-10-30",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "gotalab-s1flow",
+    "name": "gotalab/s1flow",
+    "url": "https://github.com/gotalab/s1flow",
+    "category": "research",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0决策模型评估与策略执行工具，含原生TypeSafe、typed转换、显式允许连接与策略门槛/反馈。自动化覆盖和准确率是作者样本，不外推；未读私有数据、安装Skill或执行模型。",
+      "en": "Apache-2.0 decision-model evaluation/policy tooling with native TypeSafe wiring, typed conversion, explicit allowed connections and policy gates/feedback. Coverage/accuracy are author samples, not universal claims. No private data, skill installation or model execution."
+    },
+    "sourceUrl": "https://github.com/gotalab/s1flow/blob/a2e2fb001104278aa3d4f54824a33dbb7be2f472/src/s1flow/client/providers/typesafe.py",
+    "lastVerified": "2026-10-30",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "vlad0n1m-youtube-jev-filter",
+    "name": "Vlad0n1m/youtube-jev-filter",
+    "url": "https://github.com/Vlad0n1m/youtube-jev-filter",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Manifest V3扩展，以原生Jev两个Noul和信息量Score判断视频卡片，按本地门槛隐藏/淡化并缓存；Shorts为本地规则。阈值未真实feed校准，未知误删/缓存时效；未安装或读取个人历史。",
+      "en": "MIT Manifest V3 extension judging video cards with two native Jev Nouls and a substance Score, then locally hiding/dimming and caching; Shorts handling is local. Real-feed calibration, false removals and cache aging are unverified; no install or personal history."
+    },
+    "sourceUrl": "https://github.com/Vlad0n1m/youtube-jev-filter/blob/856e531bfb1212e1956e7f33df9771a52b452ce7/background.js",
+    "lastVerified": "2026-10-30",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "otohaco-swiftagent",
+    "name": "OtohaCo/SwiftAgent",
+    "url": "https://github.com/OtohaCo/SwiftAgent",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Swift Agent SDK，独立Jev DecisionProvider返回Noul/Choice/Score建议；示例默认fixture，live需显式开启。RC和宿主执行资格分开，建议不构成工具授权；未编译安装、读key或核生产平台。",
+      "en": "MIT Swift Agent SDK with a separate Jev DecisionProvider returning Noul/Choice/Score advice. The example defaults to a fixture and requires live opt-in. RC status and host execution qualification are separate; advice is not tool authorization. No build/install, keys or production-platform test."
+    },
+    "sourceUrl": "https://github.com/OtohaCo/SwiftAgent/blob/049c6daed318f32b7576f8be861a0dad9c1d29bd/Sources/AgentJevProvider/JevDecisionProvider.swift",
+    "lastVerified": "2026-10-30",
+    "status": "verified",
+    "stars": 1
   }
 ]

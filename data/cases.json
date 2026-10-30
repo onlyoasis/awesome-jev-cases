@@ -8662,5 +8662,297 @@
         "url": "https://x.com/typesafeai/status/2105809232738283853"
       }
     ]
+  },
+  {
+    "id": "footwork-jev-completion-evidence-gates",
+    "name": "Footwork completion verifier",
+    "author": "Thomas Main / Tom-R-Main",
+    "title": {
+      "zh": "Footwork：把完成声称拆成整体与逐项证据复核",
+      "en": "Footwork: checking overall and per-requirement completion evidence"
+    },
+    "area": {
+      "zh": "Agent完成复核",
+      "en": "Agent-completion review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "任务、要求、当前观察文本、拟报告答案及可选执行轨迹/本轮效果证据。",
+      "en": "The task, requirements, current observed text, proposed answer and optional trajectory/current-run effect evidence."
+    },
+    "decision": {
+      "zh": "原生System One请求批量问complete、每条要求是否unmet和是否需要回答的Noul；必要时用Choice区分历史动作、当前状态或答案类要求。",
+      "en": "A native System One request batches Nouls for completion, each unmet requirement and answer necessity, optionally classifying requirements as historical action, current state or answer."
+    },
+    "action": {
+      "zh": "代码先按概率分accept/verify/reject，默认complete至少0.80且最大unmet不超过0.30；缺少可见事实、必要回答或确定性效果证据时仍可降回verify。",
+      "en": "Code assigns accept/verify/reject, initially requiring completion at least 0.80 and maximum unmet at most 0.30; absent visible facts, a required answer or deterministic effect evidence can still downgrade acceptance."
+    },
+    "boundary": {
+      "zh": "MIT社区电脑操作框架，只核固定源码；阈值与作者试验不是独立可靠性或安全证明，判断不代替本人授权。另一个decisions.py是非Jev影子传输，未混同；未安装驱动、读本机轨迹、控制原生应用或调用模型。",
+      "en": "MIT community computer-use framework reviewed at pinned source. Gates and author experiments are not independent reliability/security evidence and never replace user authorization. Its separate decisions.py is a non-Jev shadow transport. No driver installation, local traces, native-app control or model calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Tom-R-Main/Footwork"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Tom-R-Main/Footwork/blob/f849e163190d5217695847644406edaae0a32dce/jevdual/python/jevdual/verify.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Tom-R-Main/Footwork/blob/f849e163190d5217695847644406edaae0a32dce/jevdual/python/jevdual/completion.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Tom-R-Main/Footwork/blob/f849e163190d5217695847644406edaae0a32dce/jevdual/python/jevdual/arbiter.py"
+      }
+    ]
+  },
+  {
+    "id": "ticket-triage-typed-questions-human-handoff",
+    "name": "Ticket Triage",
+    "author": "nacknime-official",
+    "title": {
+      "zh": "工单分流：三种题型配合本地人工接手规则",
+      "en": "Ticket triage: three question types and local human-handoff rules"
+    },
+    "area": {
+      "zh": "工单分类学习项目",
+      "en": "Ticket-classification learning project"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "工单主题和正文；后台worker从存储读文本，Kafka事件只传标识/状态。",
+      "en": "Ticket subject and body read by a background worker; Kafka events carry IDs/status rather than the text."
+    },
+    "decision": {
+      "zh": "Jev Noul判断投诉、Choice选择五类负责团队、四档Score判断紧急程度；显式规则区分不满情绪与实际影响。",
+      "en": "Jev uses a complaint Noul, a five-team Choice and a four-level urgency Score, with explicit rules separating dissatisfaction from actual impact."
+    },
+    "action": {
+      "zh": "类别置信度低于0.60、紧急程度置信度低于0.50或类别other时转needs_human；投诉概率中段仅加标记，成功状态/审计通过事务outbox交给SSE。",
+      "en": "Category confidence below 0.60, urgency confidence below 0.50 or category other routes to needs_human; mid-band complaint probability only adds a flag. Status/audit updates feed SSE through a transactional outbox."
+    },
+    "boundary": {
+      "zh": "默认fake，需显式切换Jev。OpenRouter旧路由和原生成功格式未独立验证；作者100题标签为未人工复审草稿，指标属临时自报。根许可unknown，不列开源项目；未启动Kafka/Postgres、读工单或付费probe。",
+      "en": "The default is fake until Jev is explicitly selected. Its older OpenRouter route and native success contract were not independently tested; the author’s 100-item labels are unreviewed drafts, so metrics are provisional claims. Root license unknown: no project entry. No Kafka/Postgres, ticket access or paid probe."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/nacknime-official/ticket-triage"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nacknime-official/ticket-triage/blob/fc2a761220109f6643eeeb42a40113b9d49dbf05/internal/classifier/jev/questions.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nacknime-official/ticket-triage/blob/fc2a761220109f6643eeeb42a40113b9d49dbf05/internal/classifier/policy.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nacknime-official/ticket-triage/blob/fc2a761220109f6643eeeb42a40113b9d49dbf05/internal/classifier/jev/jev.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nacknime-official/ticket-triage/blob/fc2a761220109f6643eeeb42a40113b9d49dbf05/internal/triage/processor.go"
+      }
+    ]
+  },
+  {
+    "id": "donjon-jev-monster-bounded-turns",
+    "name": "Donjon monster turns",
+    "author": "game-design-projects",
+    "title": {
+      "zh": "Donjon：怪物从可行动作与预写台词中作选择",
+      "en": "Donjon: monsters choose feasible actions and prewritten lines"
+    },
+    "area": {
+      "zh": "游戏怪物决策",
+      "en": "Game-monster decisions"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "怪物特征/状态、队伍、玩家话语与近期事件；入口限制玩家文本和候选数量。",
+      "en": "Monster traits/state, party, player speech and recent events, with input text and candidate counts bounded at entry."
+    },
+    "decision": {
+      "zh": "Jev Choice在当前可行动作、攻击目标和预写台词中选择，并结合意愿等判断；提供原生TypeSafe与OpenRouter alpha入口。",
+      "en": "Jev Choices select among currently feasible actions, attack targets and prewritten lines, alongside willingness judgments, through native TypeSafe or OpenRouter alpha wiring."
+    },
+    "action": {
+      "zh": "本地情绪、可行性和加入规则可修正选择，game.gd执行攻击、防御、对话或加入；服务错误时怪物犹豫，过期战斗结果不应用。",
+      "en": "Local emotion, feasibility and joining rules can reconcile choices before game.gd applies attacks, defense, conversation or joining. Provider errors make monsters hesitate and stale-fight responses are discarded."
+    },
+    "boundary": {
+      "zh": "Godot社区原型，根许可unknown，只列代码案例。引导关可强制加入，不能把所有行为归因Jev；未运行游戏、开麦、核跨平台效果或重测作者演示。",
+      "en": "Community Godot prototype with unknown root licensing, listed only as a code case. Guided encounters may force joining, so not every behavior comes from Jev. No game execution, microphone, platform qualification or demo reproduction."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/game-design-projects/final-project"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/game-design-projects/final-project/blob/edf4a6bc0c27c50c42c82feb3b03834addaa5f2b/src/jev/enemy.gd"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/game-design-projects/final-project/blob/edf4a6bc0c27c50c42c82feb3b03834addaa5f2b/src/jev/jev.gd"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/game-design-projects/final-project/blob/edf4a6bc0c27c50c42c82feb3b03834addaa5f2b/src/jev/api.gd"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/game-design-projects/final-project/blob/edf4a6bc0c27c50c42c82feb3b03834addaa5f2b/src/game/game.gd"
+      }
+    ]
+  },
+  {
+    "id": "youtube-jev-card-hide-dim-policy",
+    "name": "YouTube Jev Filter",
+    "author": "Vladislav Karachkov / Vlad0n1m",
+    "title": {
+      "zh": "YouTube筛选：Jev评分后由本地规则隐藏或淡化卡片",
+      "en": "YouTube filtering: local hide/dim policy after Jev judgments"
+    },
+    "area": {
+      "zh": "视频信息流筛选",
+      "en": "Video-feed filtering"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "视频卡片的标题、频道、时长和简介节选，不读取视频像素或转写。",
+      "en": "Video-card title, channel, duration and a description excerpt, without video pixels or transcripts."
+    },
+    "decision": {
+      "zh": "一条原生Jev请求问clickbait和hype两个Noul，再以四档Score评0–3的信息量。",
+      "en": "One native Jev request asks clickbait and hype Nouls plus a four-level 0–3 substance Score."
+    },
+    "action": {
+      "zh": "普通模式任一Noul至少0.70或信息量低于1.5便隐藏/淡化并显示原因；按video ID缓存原答案，改阈值无需重问，频道白名单优先。",
+      "en": "Normal mode hides/dims with reasons when either Noul reaches 0.70 or substance falls below 1.5. Raw answers are cached by video ID so threshold changes need no new call; the channel allowlist wins."
+    },
+    "boundary": {
+      "zh": "MIT扩展，Shorts隐藏/跳转另由本地规则完成。阈值未真实feed校准，音乐或有价值的夸张标题可能误伤，缓存可能过期；未安装扩展、读取个人观看记录、改浏览器权限或调用API。",
+      "en": "MIT extension whose Shorts hiding/redirects are separate local rules. Gates are not calibrated on real feeds; music or useful videos with exaggerated titles may be removed and caches can age. No installation, personal viewing history, browser permission changes or API calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Vlad0n1m/youtube-jev-filter"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Vlad0n1m/youtube-jev-filter/blob/856e531bfb1212e1956e7f33df9771a52b452ce7/background.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Vlad0n1m/youtube-jev-filter/blob/856e531bfb1212e1956e7f33df9771a52b452ce7/shared.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Vlad0n1m/youtube-jev-filter/blob/856e531bfb1212e1956e7f33df9771a52b452ce7/content.js"
+      }
+    ]
+  },
+  {
+    "id": "shorts-jev-ranked-format-blueprints",
+    "name": "Shorts ranking and blueprints",
+    "author": "bigmo6286",
+    "title": {
+      "zh": "Shorts选题：九个封闭判断配合本地排序与蓝图分组",
+      "en": "Shorts planning: nine typed judgments, local ranking and format blueprints"
+    },
+    "area": {
+      "zh": "视频选题与分组",
+      "en": "Video planning and grouping"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "短视频标题、简介、标签、频道、时长和可用转写；缺少转写时显式说明。",
+      "en": "Short-video title, description, tags, channel, duration and available transcript, explicitly marking missing transcripts."
+    },
+    "decision": {
+      "zh": "原生SDK一次问格式/主题/开头三Choice，钩子/可复用/常青三Score，以及语言可用性/推广/标题风险三Noul。",
+      "en": "One native SDK call batches three Choices for format/topic/hook, three Scores for hook strength/replicability/evergreen value and three Nouls for language accessibility/promotion/clickbait risk."
+    },
+    "action": {
+      "zh": "rank.py把流速、互动和归一化Score加权，按语言与推广门槛排除；analyze.py按格式/主题分组、限制每频道贡献、标记难复用的stretch蓝图。",
+      "en": "rank.py weights velocity, engagement and normalized Scores, excluding by language/promotion gates. analyze.py groups by format/topic, caps each channel’s contribution and marks hard-to-reproduce stretch blueprints."
+    },
+    "boundary": {
+      "zh": "仅代码核查，根许可unknown，不列开源项目。clickbait_risk虽询问却未直接用于该排名剔除；判断不证明事实、版权或平台合规。后续脚本/图像/配音不是Jev生成；未读Cookie、取视频、制作或上传内容。",
+      "en": "Code review only with unknown root licensing, so no project entry. clickbait_risk is asked but not directly used for this ranking’s exclusions. Judgments prove neither facts, rights nor platform compliance. Downstream scripts/images/voice are not Jev generation. No cookies, video retrieval, production or uploads."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/bigmo6286/youtube-shorts-automation"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/bigmo6286/youtube-shorts-automation/blob/6368748526e2b01222afd4dcb41a95ca1e2daa3d/shorts_pipeline/judge.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/bigmo6286/youtube-shorts-automation/blob/6368748526e2b01222afd4dcb41a95ca1e2daa3d/shorts_pipeline/rank.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/bigmo6286/youtube-shorts-automation/blob/6368748526e2b01222afd4dcb41a95ca1e2daa3d/shorts_pipeline/analyze.py"
+      }
+    ]
+  },
+  {
+    "id": "swiftagent-jev-advisory-review-proposal",
+    "name": "SwiftAgent Jev decision example",
+    "author": "ChainBow / OtohaCo",
+    "title": {
+      "zh": "SwiftAgent：三种题型只生成待复核建议",
+      "en": "SwiftAgent: three question types produce review advice only"
+    },
+    "area": {
+      "zh": "SDK建议示例",
+      "en": "SDK-advice example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "合成的重复扣费求助文本；同一请求包含账务、负责团队和复核时机三个问题。",
+      "en": "A synthetic double-charge request with billing, responsible-team and review-timing questions in one call."
+    },
+    "decision": {
+      "zh": "Jev提供billing Noul、support/billing两项Choice和两档urgency Score，适配器校验候选、数值及答案结构。",
+      "en": "Jev supplies a billing Noul, support/billing Choice and two-level urgency Score; the adapter checks options, numbers and response structure."
+    },
+    "action": {
+      "zh": "代码以0.5示意门槛生成ReviewProposal并打印队列、紧急和账务复核标记，不执行工具或授予权限。",
+      "en": "Code uses illustrative 0.5 gates to print a ReviewProposal containing queue, urgency and billing-review flags; it neither executes tools nor grants permission."
+    },
+    "boundary": {
+      "zh": "MIT SDK的RC示例默认fixture；只有显式开启live且有key才请求Jev，固定答案不当真实成功。未安装Swift、读取凭据、调用模型或验收生产宿主；示例门槛不是业务校准。",
+      "en": "The MIT SDK’s RC example defaults to a fixture; only explicit live opt-in plus a key calls Jev, so fixed answers are not live success. No Swift installation, credentials, model calls or production-host qualification; sample gates are not business calibration."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/OtohaCo/SwiftAgent"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/OtohaCo/SwiftAgent/blob/049c6daed318f32b7576f8be861a0dad9c1d29bd/Sources/AgentJevProvider/JevDecisionProvider.swift"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/OtohaCo/SwiftAgent/blob/049c6daed318f32b7576f8be861a0dad9c1d29bd/Examples/JevDecision/Sources/JevDecision/main.swift"
+      }
+    ]
   }
 ]

@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (201)
+## 深度使用案例 / Worked cases (207)
 
 ### jev-ultrafast
 
@@ -1813,7 +1813,61 @@
 - 核验边界：补收2026-09-24作者原帖；仅原帖证据，仓库实现/许可本轮未精读，原始音频是否入模、延迟和质量均未核。非TypeSafe官方项目，未开麦、发送通话或连接Agora。
 - 来源：[Author X](https://x.com/SoCalJayF/status/2103002322175668313) · [Author repository reply](https://x.com/SoCalJayF/status/2103002476270203133) · [TypeSafe recommendation](https://x.com/typesafeai/status/2105809232738283853)
 
-## 开源项目 / Open-source projects (247)
+### Footwork：把完成声称拆成整体与逐项证据复核
+
+- 作者：Thomas Main / Tom-R-Main
+- 输入：任务、要求、当前观察文本、拟报告答案及可选执行轨迹/本轮效果证据。
+- Jev 判断：原生System One请求批量问complete、每条要求是否unmet和是否需要回答的Noul；必要时用Choice区分历史动作、当前状态或答案类要求。
+- 后续动作：代码先按概率分accept/verify/reject，默认complete至少0.80且最大unmet不超过0.30；缺少可见事实、必要回答或确定性效果证据时仍可降回verify。
+- 核验边界：MIT社区电脑操作框架，只核固定源码；阈值与作者试验不是独立可靠性或安全证明，判断不代替本人授权。另一个decisions.py是非Jev影子传输，未混同；未安装驱动、读本机轨迹、控制原生应用或调用模型。
+- 来源：[GitHub](https://github.com/Tom-R-Main/Footwork) · [Source](https://github.com/Tom-R-Main/Footwork/blob/f849e163190d5217695847644406edaae0a32dce/jevdual/python/jevdual/verify.py) · [Source](https://github.com/Tom-R-Main/Footwork/blob/f849e163190d5217695847644406edaae0a32dce/jevdual/python/jevdual/completion.py) · [Source](https://github.com/Tom-R-Main/Footwork/blob/f849e163190d5217695847644406edaae0a32dce/jevdual/python/jevdual/arbiter.py)
+
+### 工单分流：三种题型配合本地人工接手规则
+
+- 作者：nacknime-official
+- 输入：工单主题和正文；后台worker从存储读文本，Kafka事件只传标识/状态。
+- Jev 判断：Jev Noul判断投诉、Choice选择五类负责团队、四档Score判断紧急程度；显式规则区分不满情绪与实际影响。
+- 后续动作：类别置信度低于0.60、紧急程度置信度低于0.50或类别other时转needs_human；投诉概率中段仅加标记，成功状态/审计通过事务outbox交给SSE。
+- 核验边界：默认fake，需显式切换Jev。OpenRouter旧路由和原生成功格式未独立验证；作者100题标签为未人工复审草稿，指标属临时自报。根许可unknown，不列开源项目；未启动Kafka/Postgres、读工单或付费probe。
+- 来源：[GitHub](https://github.com/nacknime-official/ticket-triage) · [Source](https://github.com/nacknime-official/ticket-triage/blob/fc2a761220109f6643eeeb42a40113b9d49dbf05/internal/classifier/jev/questions.go) · [Source](https://github.com/nacknime-official/ticket-triage/blob/fc2a761220109f6643eeeb42a40113b9d49dbf05/internal/classifier/policy.go) · [Source](https://github.com/nacknime-official/ticket-triage/blob/fc2a761220109f6643eeeb42a40113b9d49dbf05/internal/classifier/jev/jev.go) · [Source](https://github.com/nacknime-official/ticket-triage/blob/fc2a761220109f6643eeeb42a40113b9d49dbf05/internal/triage/processor.go)
+
+### Donjon：怪物从可行动作与预写台词中作选择
+
+- 作者：game-design-projects
+- 输入：怪物特征/状态、队伍、玩家话语与近期事件；入口限制玩家文本和候选数量。
+- Jev 判断：Jev Choice在当前可行动作、攻击目标和预写台词中选择，并结合意愿等判断；提供原生TypeSafe与OpenRouter alpha入口。
+- 后续动作：本地情绪、可行性和加入规则可修正选择，game.gd执行攻击、防御、对话或加入；服务错误时怪物犹豫，过期战斗结果不应用。
+- 核验边界：Godot社区原型，根许可unknown，只列代码案例。引导关可强制加入，不能把所有行为归因Jev；未运行游戏、开麦、核跨平台效果或重测作者演示。
+- 来源：[GitHub](https://github.com/game-design-projects/final-project) · [Source](https://github.com/game-design-projects/final-project/blob/edf4a6bc0c27c50c42c82feb3b03834addaa5f2b/src/jev/enemy.gd) · [Source](https://github.com/game-design-projects/final-project/blob/edf4a6bc0c27c50c42c82feb3b03834addaa5f2b/src/jev/jev.gd) · [Source](https://github.com/game-design-projects/final-project/blob/edf4a6bc0c27c50c42c82feb3b03834addaa5f2b/src/jev/api.gd) · [Source](https://github.com/game-design-projects/final-project/blob/edf4a6bc0c27c50c42c82feb3b03834addaa5f2b/src/game/game.gd)
+
+### YouTube筛选：Jev评分后由本地规则隐藏或淡化卡片
+
+- 作者：Vladislav Karachkov / Vlad0n1m
+- 输入：视频卡片的标题、频道、时长和简介节选，不读取视频像素或转写。
+- Jev 判断：一条原生Jev请求问clickbait和hype两个Noul，再以四档Score评0–3的信息量。
+- 后续动作：普通模式任一Noul至少0.70或信息量低于1.5便隐藏/淡化并显示原因；按video ID缓存原答案，改阈值无需重问，频道白名单优先。
+- 核验边界：MIT扩展，Shorts隐藏/跳转另由本地规则完成。阈值未真实feed校准，音乐或有价值的夸张标题可能误伤，缓存可能过期；未安装扩展、读取个人观看记录、改浏览器权限或调用API。
+- 来源：[GitHub](https://github.com/Vlad0n1m/youtube-jev-filter) · [Source](https://github.com/Vlad0n1m/youtube-jev-filter/blob/856e531bfb1212e1956e7f33df9771a52b452ce7/background.js) · [Source](https://github.com/Vlad0n1m/youtube-jev-filter/blob/856e531bfb1212e1956e7f33df9771a52b452ce7/shared.js) · [Source](https://github.com/Vlad0n1m/youtube-jev-filter/blob/856e531bfb1212e1956e7f33df9771a52b452ce7/content.js)
+
+### Shorts选题：九个封闭判断配合本地排序与蓝图分组
+
+- 作者：bigmo6286
+- 输入：短视频标题、简介、标签、频道、时长和可用转写；缺少转写时显式说明。
+- Jev 判断：原生SDK一次问格式/主题/开头三Choice，钩子/可复用/常青三Score，以及语言可用性/推广/标题风险三Noul。
+- 后续动作：rank.py把流速、互动和归一化Score加权，按语言与推广门槛排除；analyze.py按格式/主题分组、限制每频道贡献、标记难复用的stretch蓝图。
+- 核验边界：仅代码核查，根许可unknown，不列开源项目。clickbait_risk虽询问却未直接用于该排名剔除；判断不证明事实、版权或平台合规。后续脚本/图像/配音不是Jev生成；未读Cookie、取视频、制作或上传内容。
+- 来源：[GitHub](https://github.com/bigmo6286/youtube-shorts-automation) · [Source](https://github.com/bigmo6286/youtube-shorts-automation/blob/6368748526e2b01222afd4dcb41a95ca1e2daa3d/shorts_pipeline/judge.py) · [Source](https://github.com/bigmo6286/youtube-shorts-automation/blob/6368748526e2b01222afd4dcb41a95ca1e2daa3d/shorts_pipeline/rank.py) · [Source](https://github.com/bigmo6286/youtube-shorts-automation/blob/6368748526e2b01222afd4dcb41a95ca1e2daa3d/shorts_pipeline/analyze.py)
+
+### SwiftAgent：三种题型只生成待复核建议
+
+- 作者：ChainBow / OtohaCo
+- 输入：合成的重复扣费求助文本；同一请求包含账务、负责团队和复核时机三个问题。
+- Jev 判断：Jev提供billing Noul、support/billing两项Choice和两档urgency Score，适配器校验候选、数值及答案结构。
+- 后续动作：代码以0.5示意门槛生成ReviewProposal并打印队列、紧急和账务复核标记，不执行工具或授予权限。
+- 核验边界：MIT SDK的RC示例默认fixture；只有显式开启live且有key才请求Jev，固定答案不当真实成功。未安装Swift、读取凭据、调用模型或验收生产宿主；示例门槛不是业务校准。
+- 来源：[GitHub](https://github.com/OtohaCo/SwiftAgent) · [Source](https://github.com/OtohaCo/SwiftAgent/blob/049c6daed318f32b7576f8be861a0dad9c1d29bd/Sources/AgentJevProvider/JevDecisionProvider.swift) · [Source](https://github.com/OtohaCo/SwiftAgent/blob/049c6daed318f32b7576f8be861a0dad9c1d29bd/Examples/JevDecision/Sources/JevDecision/main.swift)
+
+## 开源项目 / Open-source projects (251)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2064,6 +2118,10 @@
 | [lorenzorama/juger-vite-bloquer-juste](https://github.com/lorenzorama/juger-vite-bloquer-juste) | community | MIT | 0 |
 | [bomliu/decision-drift](https://github.com/bomliu/decision-drift) | community | MIT | 0 |
 | [GaganSD/pi-extensions](https://github.com/GaganSD/pi-extensions) | community | MIT | 31 |
+| [Tom-R-Main/Footwork](https://github.com/Tom-R-Main/Footwork) | community | MIT | 2 |
+| [gotalab/s1flow](https://github.com/gotalab/s1flow) | community | Apache-2.0 | 0 |
+| [Vlad0n1m/youtube-jev-filter](https://github.com/Vlad0n1m/youtube-jev-filter) | community | MIT | 0 |
+| [OtohaCo/SwiftAgent](https://github.com/OtohaCo/SwiftAgent) | community | MIT | 1 |
 
 ## 官方 cookbook / Official recipes (24)
 
