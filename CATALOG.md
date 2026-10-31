@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (207)
+## 深度使用案例 / Worked cases (214)
 
 ### jev-ultrafast
 
@@ -1867,7 +1867,70 @@
 - 核验边界：MIT SDK的RC示例默认fixture；只有显式开启live且有key才请求Jev，固定答案不当真实成功。未安装Swift、读取凭据、调用模型或验收生产宿主；示例门槛不是业务校准。
 - 来源：[GitHub](https://github.com/OtohaCo/SwiftAgent) · [Source](https://github.com/OtohaCo/SwiftAgent/blob/049c6daed318f32b7576f8be861a0dad9c1d29bd/Sources/AgentJevProvider/JevDecisionProvider.swift) · [Source](https://github.com/OtohaCo/SwiftAgent/blob/049c6daed318f32b7576f8be861a0dad9c1d29bd/Examples/JevDecision/Sources/JevDecision/main.swift)
 
-## 开源项目 / Open-source projects (251)
+### 购物车：缩减候选找齐商品，再按字段组装
+
+- 作者：TypeSafe AI
+- 输入：一条咖啡店订单和四项菜单，每项有预先定义的字段；示例同时点拿铁与蓝莓松饼。
+- Jev 判断：每轮Choice从剩余商品和nothing_else中选一项；找到商品后，每项商品用一次批量Choice请求选择尺寸、奶等已知字段，另有unspecified。
+- 后续动作：代码删除已选商品并保存结果，遇哨兵或六轮上限停止，再把字段合成购物车；无字段商品跳过第二阶段调用。
+- 核验边界：官方文档及公开示例缓存目录已核，未调用API或下载缓存。示例输出属官方自报；每种商品最多出现一次且没有数量字段，重复商品或数量不能据此正确处理。
+- 来源：[Official cookbook](https://docs.typesafe.ai/cookbooks/cart_from_primitives.md)
+
+### 语音预判：逐词转写时预热可能的意图路径
+
+- 作者：Allie the Icon / Allie Laabs
+- 输入：自建STT管线逐词输出的转写文本，处于尚未说完的一轮语音中。
+- Jev 判断：作者描述Jev判断当前文本更可能落在哪个窄意图处理路径，随转写继续到达更新判断。
+- 后续动作：系统提前预热可能路径；作者称会依风险和可逆性，有时在说完前执行动作，再接自建TTS交互。
+- 核验边界：原帖显示2026-10-23 02:11 JST，引用系统说明为01:25 JST，已分别核对。只按作者自报收录；源码、完整候选、门槛和具体提前执行策略未公开，速度未独立复测，不能作为安全授权或直接处理音频的证明。
+- 来源：[Author post](https://x.com/allietheicon/status/2113317258839953571) · [System description](https://x.com/allietheicon/status/2113305734276600173)
+
+### Custos：可疑IP窗口经判断后进入封禁执行链
+
+- 作者：george-amir / Custos contributors
+- 输入：L1筛选后按IP聚合的可疑访问窗口、请求样本与清洗标记；多个IP压缩到一个批次状态。
+- Jev 判断：原生System One为每个IP问should_ban Noul和预定义威胁类别Choice；校验缺失答案、类别和概率数值。
+- 后续动作：非benign类别且恶意概率过配置门槛，或概率至少0.70且类别置信度至少0.95时，代码记录带期限封禁并交给防火墙；失败批次保留待重试，签名缓存另有约束。
+- 核验边界：MIT社区Rust项目，只核固定源码；有离线mock，作者内存/负载数据不代表模型准确率。未运行守护程序、读真实日志、改防火墙或调用模型；门槛不能证明误封率或对抗可靠性。
+- 来源：[GitHub](https://github.com/george-amir/Custos) · [Source](https://github.com/george-amir/Custos/blob/bc99e9d90567955cdae11b1d8d6b9cf286172734/src/jev.rs) · [Source](https://github.com/george-amir/Custos/blob/bc99e9d90567955cdae11b1d8d6b9cf286172734/src/lib.rs)
+
+### GRCInsight：三类相关性判断与逐项回退
+
+- 作者：ricomanifesto
+- 输入：每篇文章最多200字符标题和500字符正文/摘要，加上GRC关注领域；每批至多12篇并有字节预算。
+- Jev 判断：OpenRouter alpha上的Jev Choice选择relevant、irrelevant或insufficient_evidence，并校验返回模型、题目集合和概率分布。
+- 后续动作：启用试点时，可信相关项进入报告选集、可信不相关项排除，不确定项交原有模型；shadow仅记录对照，off保留原路径，报告生成仍由另一个模型完成。
+- 核验边界：MIT源码及消费位置已核，未把可选试点当作默认生产部署。概率门槛和作者对照不是本站实测；相关性不判断法律适用或严重性。未读私有文章、执行报告任务或付费probe。
+- 来源：[GitHub](https://github.com/ricomanifesto/GRCInsight) · [Source](https://github.com/ricomanifesto/GRCInsight/blob/a0bb7bfcc07dda04a3396f464bcf4b91c0179f8b/agent/services/relevance_decisions.py) · [Source](https://github.com/ricomanifesto/GRCInsight/blob/a0bb7bfcc07dda04a3396f464bcf4b91c0179f8b/agent/services/model_service.py)
+
+### 六爻界面：Jev只分问题类别并筛查风险
+
+- 作者：masonweb3
+- 输入：用户输入最多200字的问题，服务端校验长度并限流；排盘由本地确定性代码完成。
+- Jev 判断：一次原生请求包含主题Choice及自伤、紧急、赌博、认真提问四个Noul；主题置信度至少0.6才预选类别。
+- 后续动作：代码按自伤阻断、赌博婉拒、紧急提示、请重写、手动或预选类别的顺序分流；超时或无key返回未标记的手选回退。
+- 核验边界：源码可见但非开源许可：代码PolyForm Noncommercial，原创文案另有CC BY-NC-SA；只列代码案例。门槛来自作者小样本，故障回退会失去语义筛查；未验线上效果，Jev不预测吉凶，也非医疗、法律或投资判断。
+- 来源：[GitHub](https://github.com/masonweb3/liuyao) · [Source](https://github.com/masonweb3/liuyao/blob/b058080e650203c21a0538f5239d97354e6931ef/src/pages/api/judge.ts) · [Source](https://github.com/masonweb3/liuyao/blob/b058080e650203c21a0538f5239d97354e6931ef/src/lib/flow.ts) · [Source](https://github.com/masonweb3/liuyao/blob/b058080e650203c21a0538f5239d97354e6931ef/src/scripts/ritual.ts)
+
+### 分场景复核：合成频道消息判断后对照预设动作
+
+- 作者：WeBuildDatabases
+- 输入：虚构Postgres帮助频道的消息、频道用途及预先写定的core/edge预期标签。
+- Jev 判断：锁定jev-1.14.0，原生请求并行问消息类别Choice、敌意Noul和敏感信息Noul。
+- 后续动作：敌意至少0.7选hide，否则敏感信息至少0.7选blur，再按类别规则决定显示/突出；测试记录动作与预期是否相符、token与延迟。
+- 核验边界：这是合成测试，没有实际聊天室执行。README的307样本、成本和准确率为作者自报，缓存重放不算live；根许可unknown，不列开源项目。未运行脚本、读取.env、下载结果缓存或发起付费调用。
+- 来源：[GitHub](https://github.com/WeBuildDatabases/jev-job-by-job) · [Source](https://github.com/WeBuildDatabases/jev-job-by-job/blob/dd4370342bffc931968b72e17c947bed5a298828/tests/jev.py) · [Source](https://github.com/WeBuildDatabases/jev-job-by-job/blob/dd4370342bffc931968b72e17c947bed5a298828/tests/t_classify.py) · [Source](https://github.com/WeBuildDatabases/jev-job-by-job/blob/dd4370342bffc931968b72e17c947bed5a298828/tests/common.py)
+
+### DecideX：2048从合法方向选择，再等待盘面稳定
+
+- 作者：dengyie
+- 输入：4×4棋盘、分数、合法方向和本地两层前瞻评分，组成move_direction问题状态。
+- Jev 判断：TypeSafe适配器向System One发送Choice，候选只含合法方向；引擎按合法性和配置置信门槛处理答案。
+- 后续动作：程序执行选定方向并等待盘面稳定，记录分数增量；模型或门控失败时用Expectimax回退，hybrid模式按间隔调用Jev。
+- 核验边界：MIT代码案例，未附着浏览器、读账号池、执行游戏或复测延迟。框架另有mock和多提供商路径；校准、胜率和工业级说法为作者表述，部分回合是启发式而非Jev，不推荐任何绕过限额用途。
+- 来源：[GitHub](https://github.com/dengyie/decidex) · [Source](https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/examples/play_2048_live.py) · [Source](https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/src/decidex/providers/typesafe.py) · [Source](https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/src/decidex/engine.py)
+
+## 开源项目 / Open-source projects (255)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2122,8 +2185,12 @@
 | [gotalab/s1flow](https://github.com/gotalab/s1flow) | community | Apache-2.0 | 0 |
 | [Vlad0n1m/youtube-jev-filter](https://github.com/Vlad0n1m/youtube-jev-filter) | community | MIT | 0 |
 | [OtohaCo/SwiftAgent](https://github.com/OtohaCo/SwiftAgent) | community | MIT | 1 |
+| [phpaisdk/typesafe](https://github.com/phpaisdk/typesafe) | community | MIT | 0 |
+| [george-amir/Custos](https://github.com/george-amir/Custos) | community | MIT | 0 |
+| [ricomanifesto/GRCInsight](https://github.com/ricomanifesto/GRCInsight) | community | MIT | 1 |
+| [dengyie/decidex](https://github.com/dengyie/decidex) | community | MIT | 2 |
 
-## 官方 cookbook / Official recipes (24)
+## 官方 cookbook / Official recipes (25)
 
 - [Self-consistency: nouls](https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook.md)：Route uncertain probabilities to human review while keeping the underlying noul values visible.
 - [Self-consistency: choices](https://docs.typesafe.ai/cookbooks/consistency_choice_cookbook.md)：Add an uncertain outcome to moderation decisions and compare label agreement with the share of automatic actions.
@@ -2149,3 +2216,4 @@
 - [Reading a scanned vaccination record](https://docs.typesafe.ai/cookbooks/reading_scanned_documents.md)：Find candidate vaccine rows with Nouls and Boxes, read years with a Choice including unreadable, then flag/crop rows for human review. Official experimental image workflow, not clinical or travel-health guidance; published results are not independently reproduced.
 - [OCR confidence and bounding boxes](https://docs.typesafe.ai/cookbooks/ocr_confidence_bounding_boxes.md)：Check already-extracted invoice values against a full photo and a zoomed Box crop using Nouls; either check below 0.25 flags human review. Experimental images/Box and official cached examples, not independent OCR or production validation.
 - [Feeder-cam visit log](https://docs.typesafe.ai/cookbooks/feeder_watch.md)：Apply Noul, Choice and Box questions to one video frame per second, then merge detections into species visits in code. Experimental image workflow limited to two different species; occlusion and same-species birds remain limitations. Reported 101-frame results are official claims.
+- [Shopping cart](https://docs.typesafe.ai/cookbooks/cart_from_primitives.md)：Find menu items with a shrinking-options Choice loop and a nothing_else sentinel, then batch known field Choices per item. Code assembles the cart; each item appears once and quantities are not modeled. Published outputs are official reports, not site measurements.

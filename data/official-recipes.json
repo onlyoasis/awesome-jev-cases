@@ -214,5 +214,14 @@
     "source": "official",
     "discoveredAt": "2026-10-29",
     "lastVerified": "2026-10-29"
+  },
+  {
+    "id": "cart-from-primitives",
+    "name": "Shopping cart",
+    "url": "https://docs.typesafe.ai/cookbooks/cart_from_primitives.md",
+    "description": "Find menu items with a shrinking-options Choice loop and a nothing_else sentinel, then batch known field Choices per item. Code assembles the cart; each item appears once and quantities are not modeled. Published outputs are official reports, not site measurements.",
+    "source": "official",
+    "discoveredAt": "2026-10-31",
+    "lastVerified": "2026-10-31"
   }
 ]

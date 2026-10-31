@@ -8954,5 +8954,313 @@
         "url": "https://github.com/OtohaCo/SwiftAgent/blob/049c6daed318f32b7576f8be861a0dad9c1d29bd/Examples/JevDecision/Sources/JevDecision/main.swift"
       }
     ]
+  },
+  {
+    "id": "official-cart-shrinking-menu-options",
+    "name": "Shopping cart",
+    "author": "TypeSafe AI",
+    "title": {
+      "zh": "购物车：缩减候选找齐商品，再按字段组装",
+      "en": "Shopping cart: shrink item options, then assemble fields"
+    },
+    "area": {
+      "zh": "官方组合原语教程",
+      "en": "Official primitive-composition cookbook"
+    },
+    "evidence": "official",
+    "input": {
+      "zh": "一条咖啡店订单和四项菜单，每项有预先定义的字段；示例同时点拿铁与蓝莓松饼。",
+      "en": "One cafe order and a four-item menu with known per-item fields; the example orders a latte and a blueberry muffin."
+    },
+    "decision": {
+      "zh": "每轮Choice从剩余商品和nothing_else中选一项；找到商品后，每项商品用一次批量Choice请求选择尺寸、奶等已知字段，另有unspecified。",
+      "en": "Each Choice selects a remaining item or nothing_else; one batched Choice request per found item then fills known fields such as size and milk, with unspecified available."
+    },
+    "action": {
+      "zh": "代码删除已选商品并保存结果，遇哨兵或六轮上限停止，再把字段合成购物车；无字段商品跳过第二阶段调用。",
+      "en": "Code removes and saves each selected item, stops at the sentinel or six-request cap, and assembles fields into a cart. Items without fields skip the second-stage call."
+    },
+    "boundary": {
+      "zh": "官方文档及公开示例缓存目录已核，未调用API或下载缓存。示例输出属官方自报；每种商品最多出现一次且没有数量字段，重复商品或数量不能据此正确处理。",
+      "en": "Official documentation and its public example-cache path were checked without API calls or downloading the cache. Outputs are official reports. Each menu item appears at most once and there is no quantity field, so repeated items and quantities are not handled by this example."
+    },
+    "sources": [
+      {
+        "label": "Official cookbook",
+        "url": "https://docs.typesafe.ai/cookbooks/cart_from_primitives.md"
+      }
+    ]
+  },
+  {
+    "id": "allie-streaming-stt-intent-prewarm",
+    "name": "Precog engine",
+    "author": "Allie the Icon / Allie Laabs",
+    "title": {
+      "zh": "语音预判：逐词转写时预热可能的意图路径",
+      "en": "Voice anticipation: prewarm likely intent paths during streaming transcription"
+    },
+    "area": {
+      "zh": "作者自报语音Agent",
+      "en": "Author-reported voice agent"
+    },
+    "evidence": "author",
+    "input": {
+      "zh": "自建STT管线逐词输出的转写文本，处于尚未说完的一轮语音中。",
+      "en": "Word-by-word transcript text from a custom STT pipeline before the speaker has finished."
+    },
+    "decision": {
+      "zh": "作者描述Jev判断当前文本更可能落在哪个窄意图处理路径，随转写继续到达更新判断。",
+      "en": "The author describes Jev judging likely narrow intent-handler paths as additional transcript text arrives."
+    },
+    "action": {
+      "zh": "系统提前预热可能路径；作者称会依风险和可逆性，有时在说完前执行动作，再接自建TTS交互。",
+      "en": "The system prewarms likely paths; the author says risk and reversibility sometimes permit action before speech ends, alongside a custom TTS interaction pipeline."
+    },
+    "boundary": {
+      "zh": "原帖显示2026-10-23 02:11 JST，引用系统说明为01:25 JST，已分别核对。只按作者自报收录；源码、完整候选、门槛和具体提前执行策略未公开，速度未独立复测，不能作为安全授权或直接处理音频的证明。",
+      "en": "The original displays 2026-10-23 02:11 JST and its quoted system description 01:25 JST, checked separately. This is an author report: code, full options, gates and early-action policy are unpublished; speed was not reproduced and the post proves neither safe authorization nor direct audio processing."
+    },
+    "sources": [
+      {
+        "label": "Author post",
+        "url": "https://x.com/allietheicon/status/2113317258839953571"
+      },
+      {
+        "label": "System description",
+        "url": "https://x.com/allietheicon/status/2113305734276600173"
+      }
+    ]
+  },
+  {
+    "id": "custos-jev-windowed-ip-blocking",
+    "name": "Custos",
+    "author": "george-amir / Custos contributors",
+    "title": {
+      "zh": "Custos：可疑IP窗口经判断后进入封禁执行链",
+      "en": "Custos: judged suspicious-IP windows feed a blocking pipeline"
+    },
+    "area": {
+      "zh": "访问日志行为判断",
+      "en": "Access-log behavior judgments"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "L1筛选后按IP聚合的可疑访问窗口、请求样本与清洗标记；多个IP压缩到一个批次状态。",
+      "en": "Suspicious per-IP access windows, request samples and sanitization flags after L1 screening, batching multiple actors into compact state."
+    },
+    "decision": {
+      "zh": "原生System One为每个IP问should_ban Noul和预定义威胁类别Choice；校验缺失答案、类别和概率数值。",
+      "en": "Native System One asks a should_ban Noul and predefined threat-class Choice per IP, checking missing answers, labels and probability values."
+    },
+    "action": {
+      "zh": "非benign类别且恶意概率过配置门槛，或概率至少0.70且类别置信度至少0.95时，代码记录带期限封禁并交给防火墙；失败批次保留待重试，签名缓存另有约束。",
+      "en": "For non-benign classes, code applies the configured maliciousness gate, or probability at least 0.70 plus class confidence at least 0.95, then records an expiring ban for firewall enforcement. Failed batches remain pending and signature caching has separate checks."
+    },
+    "boundary": {
+      "zh": "MIT社区Rust项目，只核固定源码；有离线mock，作者内存/负载数据不代表模型准确率。未运行守护程序、读真实日志、改防火墙或调用模型；门槛不能证明误封率或对抗可靠性。",
+      "en": "MIT community Rust project reviewed at pinned source, with an offline mock. Author memory/load data do not establish model accuracy. No daemon, real logs, firewall changes or model calls; gates do not prove false-block rates or adversarial reliability."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/george-amir/Custos"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/george-amir/Custos/blob/bc99e9d90567955cdae11b1d8d6b9cf286172734/src/jev.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/george-amir/Custos/blob/bc99e9d90567955cdae11b1d8d6b9cf286172734/src/lib.rs"
+      }
+    ]
+  },
+  {
+    "id": "grcinsight-jev-article-relevance-pilot",
+    "name": "GRCInsight relevance pilot",
+    "author": "ricomanifesto",
+    "title": {
+      "zh": "GRCInsight：三类相关性判断与逐项回退",
+      "en": "GRCInsight: three relevance labels with per-article fallback"
+    },
+    "area": {
+      "zh": "监管与安全资讯筛选",
+      "en": "Regulatory and security news filtering"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "每篇文章最多200字符标题和500字符正文/摘要，加上GRC关注领域；每批至多12篇并有字节预算。",
+      "en": "Up to 200 title characters and 500 content/summary characters per article plus GRC focus areas, in batches of at most twelve with a byte budget."
+    },
+    "decision": {
+      "zh": "OpenRouter alpha上的Jev Choice选择relevant、irrelevant或insufficient_evidence，并校验返回模型、题目集合和概率分布。",
+      "en": "A Jev Choice through OpenRouter alpha selects relevant, irrelevant or insufficient_evidence, validating served model, question IDs and probability distributions."
+    },
+    "action": {
+      "zh": "启用试点时，可信相关项进入报告选集、可信不相关项排除，不确定项交原有模型；shadow仅记录对照，off保留原路径，报告生成仍由另一个模型完成。",
+      "en": "When the pilot is enabled, usable relevant items enter the report selection and irrelevant items are excluded; uncertain items use the existing model. Shadow mode only records comparisons, off preserves the old path, and another model still generates the report."
+    },
+    "boundary": {
+      "zh": "MIT源码及消费位置已核，未把可选试点当作默认生产部署。概率门槛和作者对照不是本站实测；相关性不判断法律适用或严重性。未读私有文章、执行报告任务或付费probe。",
+      "en": "MIT source and its consumer were checked; an optional pilot is not asserted to be the production default. Probability gates and author comparisons are not site measurements. Relevance does not establish legal applicability or severity. No private articles, report runs or paid probes."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ricomanifesto/GRCInsight"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ricomanifesto/GRCInsight/blob/a0bb7bfcc07dda04a3396f464bcf4b91c0179f8b/agent/services/relevance_decisions.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ricomanifesto/GRCInsight/blob/a0bb7bfcc07dda04a3396f464bcf4b91c0179f8b/agent/services/model_service.py"
+      }
+    ]
+  },
+  {
+    "id": "liuyao-jev-topic-and-screening",
+    "name": "Liuyao question screening",
+    "author": "masonweb3",
+    "title": {
+      "zh": "六爻界面：Jev只分问题类别并筛查风险",
+      "en": "Liuyao UI: Jev classifies questions and screens risk"
+    },
+    "area": {
+      "zh": "文化娱乐界面分流",
+      "en": "Cultural-entertainment UI routing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户输入最多200字的问题，服务端校验长度并限流；排盘由本地确定性代码完成。",
+      "en": "A user question capped at 200 characters with server validation and rate limits; chart calculation uses local deterministic code."
+    },
+    "decision": {
+      "zh": "一次原生请求包含主题Choice及自伤、紧急、赌博、认真提问四个Noul；主题置信度至少0.6才预选类别。",
+      "en": "One native request contains a topic Choice and four Nouls for self-harm, emergency, gambling and sincerity. Topic preselection requires confidence at least 0.6."
+    },
+    "action": {
+      "zh": "代码按自伤阻断、赌博婉拒、紧急提示、请重写、手动或预选类别的顺序分流；超时或无key返回未标记的手选回退。",
+      "en": "Code routes in order through self-harm blocking, gambling refusal, emergency notice, rewrite and manual/preselected topic. Timeout or no key returns an unflagged manual-selection fallback."
+    },
+    "boundary": {
+      "zh": "源码可见但非开源许可：代码PolyForm Noncommercial，原创文案另有CC BY-NC-SA；只列代码案例。门槛来自作者小样本，故障回退会失去语义筛查；未验线上效果，Jev不预测吉凶，也非医疗、法律或投资判断。",
+      "en": "Source-available rather than open source: code is PolyForm Noncommercial and original copy has separate CC BY-NC-SA terms. Listed only as a code case. Gates use author samples and failure fallback loses semantic screening. No live effectiveness test; Jev predicts neither fortune nor medical, legal or investment outcomes."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/masonweb3/liuyao"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/masonweb3/liuyao/blob/b058080e650203c21a0538f5239d97354e6931ef/src/pages/api/judge.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/masonweb3/liuyao/blob/b058080e650203c21a0538f5239d97354e6931ef/src/lib/flow.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/masonweb3/liuyao/blob/b058080e650203c21a0538f5239d97354e6931ef/src/scripts/ritual.ts"
+      }
+    ]
+  },
+  {
+    "id": "jev-job-by-job-synthetic-channel-tests",
+    "name": "Jev, job by job",
+    "author": "WeBuildDatabases",
+    "title": {
+      "zh": "分场景复核：合成频道消息判断后对照预设动作",
+      "en": "Job-by-job checks: synthetic channel judgments against expected actions"
+    },
+    "area": {
+      "zh": "社区合成样本评估",
+      "en": "Community synthetic-sample evaluation"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "虚构Postgres帮助频道的消息、频道用途及预先写定的core/edge预期标签。",
+      "en": "Fictional Postgres-help channel messages, channel purpose and prewritten core/edge expected labels."
+    },
+    "decision": {
+      "zh": "锁定jev-1.14.0，原生请求并行问消息类别Choice、敌意Noul和敏感信息Noul。",
+      "en": "Pinned jev-1.14.0 uses a native request with a message-category Choice, hostility Noul and private-information Noul."
+    },
+    "action": {
+      "zh": "敌意至少0.7选hide，否则敏感信息至少0.7选blur，再按类别规则决定显示/突出；测试记录动作与预期是否相符、token与延迟。",
+      "en": "Hostility at least 0.7 selects hide, otherwise private-information probability at least 0.7 selects blur, then category rules choose display/highlight. Tests record action agreement, tokens and latency."
+    },
+    "boundary": {
+      "zh": "这是合成测试，没有实际聊天室执行。README的307样本、成本和准确率为作者自报，缓存重放不算live；根许可unknown，不列开源项目。未运行脚本、读取.env、下载结果缓存或发起付费调用。",
+      "en": "This is a synthetic test, not live chat enforcement. README sample counts, costs and accuracy are author reports; cached replay is not live success. Root licensing is unknown, so no project entry. No scripts, .env access, result-cache downloads or paid calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/WeBuildDatabases/jev-job-by-job"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/WeBuildDatabases/jev-job-by-job/blob/dd4370342bffc931968b72e17c947bed5a298828/tests/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/WeBuildDatabases/jev-job-by-job/blob/dd4370342bffc931968b72e17c947bed5a298828/tests/t_classify.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/WeBuildDatabases/jev-job-by-job/blob/dd4370342bffc931968b72e17c947bed5a298828/tests/common.py"
+      }
+    ]
+  },
+  {
+    "id": "decidex-jev-2048-legal-move-loop",
+    "name": "DecideX 2048",
+    "author": "dengyie",
+    "title": {
+      "zh": "DecideX：2048从合法方向选择，再等待盘面稳定",
+      "en": "DecideX: select a legal 2048 move and await board settlement"
+    },
+    "area": {
+      "zh": "游戏动作选择原型",
+      "en": "Game-action selection prototype"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "4×4棋盘、分数、合法方向和本地两层前瞻评分，组成move_direction问题状态。",
+      "en": "A 4×4 board, score, legal moves and local depth-two lookahead values form state for move_direction."
+    },
+    "decision": {
+      "zh": "TypeSafe适配器向System One发送Choice，候选只含合法方向；引擎按合法性和配置置信门槛处理答案。",
+      "en": "The TypeSafe adapter sends a System One Choice over legal directions, and the engine applies legality and configured confidence gates."
+    },
+    "action": {
+      "zh": "程序执行选定方向并等待盘面稳定，记录分数增量；模型或门控失败时用Expectimax回退，hybrid模式按间隔调用Jev。",
+      "en": "The program executes the selected direction, waits for board settlement and records score gain. Model/gate failures fall back to Expectimax; hybrid mode invokes Jev periodically."
+    },
+    "boundary": {
+      "zh": "MIT代码案例，未附着浏览器、读账号池、执行游戏或复测延迟。框架另有mock和多提供商路径；校准、胜率和工业级说法为作者表述，部分回合是启发式而非Jev，不推荐任何绕过限额用途。",
+      "en": "MIT code case without browser attachment, account-pool access, gameplay or latency reproduction. The framework also has mock/multi-provider paths. Calibration, win-rate and industrial claims are author statements; some turns are heuristic rather than Jev. No quota-circumvention use is endorsed."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/dengyie/decidex"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/examples/play_2048_live.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/src/decidex/providers/typesafe.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/src/decidex/engine.py"
+      }
+    ]
   }
 ]

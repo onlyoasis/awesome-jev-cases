@@ -4014,5 +4014,69 @@
     "lastVerified": "2026-10-30",
     "status": "verified",
     "stars": 1
+  },
+  {
+    "id": "phpaisdk-typesafe",
+    "name": "phpaisdk/typesafe",
+    "url": "https://github.com/phpaisdk/typesafe",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT社区PHP 8.3适配器，将predicate/choice/score映射到原生Jev并保留答案概率和usage；仅文本/JSON，图像在HTTP前拒绝。静态核查与模拟HTTP测试可查，未安装依赖或验live，非TypeSafe官方SDK。",
+      "en": "MIT community PHP 8.3 adapter mapping predicate/choice/score to native Jev while preserving probabilities and usage. Text/JSON only; images are rejected before HTTP. Source and mock-HTTP tests are available, without dependency installation or live qualification; not an official TypeSafe SDK."
+    },
+    "sourceUrl": "https://github.com/phpaisdk/typesafe/blob/005ea44b9c99f54e15ced25afe9410ac455302a0/src/Models/TypeSafeDecisionModel.php",
+    "lastVerified": "2026-10-31",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "george-amir-custos",
+    "name": "george-amir/Custos",
+    "url": "https://github.com/george-amir/Custos",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Rust访问日志行为判断框架，L1窗口筛选后批量Jev Noul/Choice再按门槛进入限时封禁链，离线mock与生产效果分开。只核源码，未改防火墙或验证误封率，作者负载数据不作本站实测。",
+      "en": "MIT Rust access-log judgment framework batching Jev Nouls/Choices after L1 window filtering and gating expiring bans. Offline mocks and production effects are separate. Source review only: no firewall changes or false-block validation; author load figures are not site measurements."
+    },
+    "sourceUrl": "https://github.com/george-amir/Custos/blob/bc99e9d90567955cdae11b1d8d6b9cf286172734/src/jev.rs",
+    "lastVerified": "2026-10-31",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "ricomanifesto-grcinsight",
+    "name": "ricomanifesto/GRCInsight",
+    "url": "https://github.com/ricomanifesto/GRCInsight",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT GRC资讯报告项目，可选Jev三类相关性试点带off/shadow与不确定项回退，报告生成仍用另一模型。固定源码核查不证明生产已启用，也不证明法律适用性；未读取私有文章或运行任务。",
+      "en": "MIT GRC news-report project with an optional three-label Jev relevance pilot, off/shadow modes and uncertain-item fallback. Another model generates reports. Pinned source review proves neither production enablement nor legal applicability; no private articles or jobs were run."
+    },
+    "sourceUrl": "https://github.com/ricomanifesto/GRCInsight/blob/a0bb7bfcc07dda04a3396f464bcf4b91c0179f8b/agent/services/relevance_decisions.py",
+    "lastVerified": "2026-10-31",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "dengyie-decidex",
+    "name": "dengyie/decidex",
+    "url": "https://github.com/dengyie/decidex",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT社区游戏决策基座，含原生Jev适配、合法动作门控、启发式回退与2048执行示例。未运行游戏、访问账号池或核作者工业级/速度说法；mock、多提供商和非Jev回合需分开，不鼓励绕过限额。",
+      "en": "MIT community game-decision framework with a native Jev adapter, legal-action gates, heuristic fallback and a 2048 execution example. No gameplay, account-pool access or validation of industrial/speed claims. Mock, other-provider and non-Jev turns remain distinct; quota evasion is not encouraged."
+    },
+    "sourceUrl": "https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/src/decidex/providers/typesafe.py",
+    "lastVerified": "2026-10-31",
+    "status": "verified",
+    "stars": 2
   }
 ]
