@@ -8967,7 +8967,7 @@
       "zh": "官方组合原语教程",
       "en": "Official primitive-composition cookbook"
     },
-    "evidence": "official",
+    "evidence": "code",
     "input": {
       "zh": "一条咖啡店订单和四项菜单，每项有预先定义的字段；示例同时点拿铁与蓝莓松饼。",
       "en": "One cafe order and a four-item menu with known per-item fields; the example orders a latte and a blueberry muffin."
@@ -9003,7 +9003,7 @@
       "zh": "作者自报语音Agent",
       "en": "Author-reported voice agent"
     },
-    "evidence": "author",
+    "evidence": "post",
     "input": {
       "zh": "自建STT管线逐词输出的转写文本，处于尚未说完的一轮语音中。",
       "en": "Word-by-word transcript text from a custom STT pipeline before the speaker has finished."
