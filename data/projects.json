@@ -4078,5 +4078,53 @@
     "lastVerified": "2026-10-31",
     "status": "verified",
     "stars": 2
+  },
+  {
+    "id": "hangchi-jevrouter",
+    "name": "HangChi/JevRouter",
+    "url": "https://github.com/HangChi/JevRouter",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Agent框架：原生Jev四题路由与独立工具风险策略、人工确认、完成验证和有界循环。Web搜索/邮件工具为本地mock，53题指标为作者自报；只核固定源码，未授予真实工具权限。",
+      "en": "MIT agent framework separating native four-question Jev routing, tool-risk policy, human confirmation, completion verification and bounded execution. Web-search/mail tools are local mocks and fifty-three-case metrics are author reports. Pinned source only; no real-tool grants."
+    },
+    "sourceUrl": "https://github.com/HangChi/JevRouter/blob/e405b3c8255e8ef78b2e26aaaafbf6d3ce76da9d/jev_router/router.py",
+    "lastVerified": "2026-11-01",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "as214933-astrbot-betterchat",
+    "name": "AS214933/astrbot-betterchat",
+    "url": "https://github.com/AS214933/astrbot-betterchat",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT AstrBot插件，群聊经原生Jev三个Noul再按本地阈值选择接话；私聊合并/打断由本地逻辑完成。默认失败不主动回复、显式唤醒例外，流式片段和热重载有边界；未安装或读取聊天。",
+      "en": "MIT AstrBot plugin gating group participation with three native Jev Nouls and local rules. Private merging/interruption is local. Failure defaults to no unsolicited reply with explicit-wake exceptions; streaming and reload limits apply. No install or chat access."
+    },
+    "sourceUrl": "https://github.com/AS214933/astrbot-betterchat/blob/b8bbad9f44335d61863946ad5fdb5bb7a9cdea1d/betterchat_jev.py",
+    "lastVerified": "2026-11-01",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "lyhmain-supersonic-ontology",
+    "name": "lyhmain/supersonic-ontology",
+    "url": "https://github.com/lyhmain/supersonic-ontology",
+    "category": "data",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 SuperSonic旁挂分析/知识库插件，受Jev原语启发的相关性、冲突和可答性门控默认经GLM/百炼生成JSON；另有可选System One兼容接口。不是已核实TypeSafe Jev生产使用或权重开源，fail-open/回退首项的局限保留；未接数据库。",
+      "en": "Apache-2.0 SuperSonic sidecars with Jev-inspired relevance, conflict and answerability gates, using generated JSON through GLM/DashScope by default and optional System One compatibility. Not verified TypeSafe production use or open Jev weights; fail-open/first-option fallbacks remain limitations. No database connection."
+    },
+    "sourceUrl": "https://github.com/lyhmain/supersonic-ontology/blob/3731b06f994e365a655e07077f55cb32275b3755/kb_rag/utils/decision.py",
+    "lastVerified": "2026-11-01",
+    "status": "verified",
+    "stars": 0
   }
 ]

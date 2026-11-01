@@ -9262,5 +9262,293 @@
         "url": "https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/src/decidex/engine.py"
       }
     ]
+  },
+  {
+    "id": "vaultgate-relevance-and-sufficiency-abstention",
+    "name": "vaultgate",
+    "author": "Bagusdevaa",
+    "title": {
+      "zh": "vaultgate：逐段相关性后，再判断证据是否足够",
+      "en": "vaultgate: passage relevance followed by evidence sufficiency"
+    },
+    "area": {
+      "zh": "RAG证据筛选",
+      "en": "RAG evidence filtering"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "问题、混合检索候选和笔记链接扩展段落；即将给生成器的上下文有字符预算。",
+      "en": "A query, hybrid-search candidates and graph-expanded note passages, with a character budget for generation context."
+    },
+    "decision": {
+      "zh": "OpenRouter alpha上的Jev对每段问相关性Noul，再对预算内最终候选问足以回答问题的Noul；按字节分批。",
+      "en": "Jev through OpenRouter alpha asks a relevance Noul per passage, then a sufficiency Noul over the final context-budgeted set, using byte-capped batches."
+    },
+    "action": {
+      "zh": "配置以相关性0.2和充分性0.5为初值；证据不够时取消过滤并扩到40候选重试一次，仍不足则abstain，不让生成器作答。",
+      "en": "Configured initial gates are 0.2 for relevance and 0.5 for sufficiency. Insufficient evidence triggers one retry without filters and with forty candidates, then abstention without generation if still insufficient."
+    },
+    "boundary": {
+      "zh": "源码与消费路径已核，根许可及pyproject许可unknown，只列代码案例。阈值/作者60题比较不是本站校准；外部答案结构主要依赖索引与float转换。未读取真实笔记、启动Qdrant、下载模型或调用API。",
+      "en": "Source and consumer reviewed, with unknown root/pyproject licensing, so listed only as a code case. Gates and the author’s sixty-question comparison are not site calibration; response parsing mainly uses indexing and float conversion. No real notes, Qdrant, model downloads or API calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Bagusdevaa/vaultgate"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Bagusdevaa/vaultgate/blob/f3a29299d45fed51044f3962e072e177efa37285/src/vault_rag/gate/jev_gate.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Bagusdevaa/vaultgate/blob/f3a29299d45fed51044f3962e072e177efa37285/src/vault_rag/pipeline.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Bagusdevaa/vaultgate/blob/f3a29299d45fed51044f3962e072e177efa37285/config.yaml"
+      }
+    ]
+  },
+  {
+    "id": "hangchi-jevrouter-four-question-policy-loop",
+    "name": "JevRouter",
+    "author": "HangChi / SongHangChi",
+    "title": {
+      "zh": "JevRouter：四个判断进入独立策略与验证循环",
+      "en": "JevRouter: four judgments feed separate policy and verification"
+    },
+    "area": {
+      "zh": "Agent动作路由",
+      "en": "Agent action routing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "目标、已有执行状态和注册工具的候选描述；工具风险等级由代码注册。",
+      "en": "The goal, execution state and descriptions of registered candidate tools; code registers tool risk classes."
+    },
+    "decision": {
+      "zh": "原生System One一次请求问next_action Choice、0–4风险Score、需要确认及需要推理两个Noul。",
+      "en": "One native System One request asks a next_action Choice, a 0–4 risk Score and Nouls for confirmation and deeper reasoning."
+    },
+    "action": {
+      "zh": "策略先处理控制动作和未注册工具，再强制write/external确认；read再用阈值决定执行、确认或委托LLM。执行后另问完成度，重复finish分歧转人工。",
+      "en": "Policy handles controls and unregistered tools first, then requires confirmation for write/external tools. Read tools use gates for execution, confirmation or LLM delegation. Separate completion checks follow, and repeated finish disagreement goes to a human."
+    },
+    "boundary": {
+      "zh": "MIT社区框架；53题命中率/延迟为作者自报，测试使用HTTP mock。web_search/send_mock_email是本地mock；未启动API、授权真实工具或复测安全性，模型概率不构成权限。",
+      "en": "MIT community framework; fifty-three-case accuracy/latency are author reports and tests use HTTP mocks. web_search/send_mock_email are local mocks. No API startup, real-tool grants or safety reproduction; model probabilities confer no permission."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/HangChi/JevRouter"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/HangChi/JevRouter/blob/e405b3c8255e8ef78b2e26aaaafbf6d3ce76da9d/jev_router/clients/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/HangChi/JevRouter/blob/e405b3c8255e8ef78b2e26aaaafbf6d3ce76da9d/jev_router/router.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/HangChi/JevRouter/blob/e405b3c8255e8ef78b2e26aaaafbf6d3ce76da9d/jev_router/policy.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/HangChi/JevRouter/blob/e405b3c8255e8ef78b2e26aaaafbf6d3ce76da9d/jev_router/runner.py"
+      }
+    ]
+  },
+  {
+    "id": "astrbot-betterchat-group-response-gate",
+    "name": "BetterChat",
+    "author": "AS214933",
+    "title": {
+      "zh": "BetterChat：三个是非概率决定群聊是否接话",
+      "en": "BetterChat: three probabilities gate group-chat participation"
+    },
+    "area": {
+      "zh": "群聊回复门控",
+      "en": "Group-chat response gating"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "通过本地命令、长度、限频、冷却等规则的群聊消息，加上近期上下文与Bot身份信息。",
+      "en": "Group messages passing local command, length, rate-limit and cooldown checks, with recent context and bot identity."
+    },
+    "decision": {
+      "zh": "直连原生Jev一次问addressed_to_bot、open_question和already_answered_by_bot三个Noul；严格校验题目键和概率数值。",
+      "en": "One native Jev request asks addressed_to_bot, open_question and already_answered_by_bot Nouls, strictly validating answer keys and probability values."
+    },
+    "action": {
+      "zh": "代码先排除重复回答，再按唤醒和可配置阈值决定RESPOND/IGNORE；非法结果转UNKNOWN走失败策略，默认不主动回复，被唤醒的失败请求放行。",
+      "en": "Code suppresses repeated answers, then applies wake state and configurable gates for RESPOND/IGNORE. Invalid results become UNKNOWN under failure policy; default failure avoids unsolicited replies but permits explicitly woken requests."
+    },
+    "boundary": {
+      "zh": "MIT AstrBot插件，只核源码，未读真实聊天或发送消息。私聊的等待/合并是本地防抖，不归功Jev；流式旧片段不能撤回。渠道版本与门槛效果未实测，配置保存会取消待合并会话。",
+      "en": "MIT AstrBot plugin reviewed without real chats or messages. Private-chat waiting/merging is local debounce, not Jev; sent streaming fragments cannot be recalled. Channel versions and gate effectiveness were not tested, and saving configuration cancels pending merged turns."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/AS214933/astrbot-betterchat"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/AS214933/astrbot-betterchat/blob/b8bbad9f44335d61863946ad5fdb5bb7a9cdea1d/betterchat_jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/AS214933/astrbot-betterchat/blob/b8bbad9f44335d61863946ad5fdb5bb7a9cdea1d/betterchat_core.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/AS214933/astrbot-betterchat/blob/b8bbad9f44335d61863946ad5fdb5bb7a9cdea1d/main.py"
+      }
+    ]
+  },
+  {
+    "id": "humain-vs-jev-two-image-comparison-game",
+    "name": "Humain vs Jev",
+    "author": "rocktane",
+    "title": {
+      "zh": "人类对战Jev：两张图独立判断后比较概率",
+      "en": "Human versus Jev: compare two independently judged images"
+    },
+    "area": {
+      "zh": "图像判断实验游戏",
+      "en": "Image-judgment experiment game"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "每轮一张真实照片与一张生成图，先统一重编码去元数据；Jev和玩家看到相同像素，模型不收来源标签。",
+      "en": "One real and one generated image per round, re-encoded to remove metadata. Jev and the player see identical pixels; source labels are withheld from the model."
+    },
+    "decision": {
+      "zh": "实验性图像资产经原生System One分别提问是否AI生成的Noul，两个请求并发。",
+      "en": "Experimental image assets go through separate concurrent native System One Nouls asking whether each image was AI-generated."
+    },
+    "action": {
+      "zh": "选概率较高的一张，完全相等则弃权；失败不编造选择。代码核对预设真值、记五轮分数与用时，并丢弃过期回合结果。",
+      "en": "Code selects the higher probability, abstains on exact ties and invents no choice on failure. It compares against declared truth, records five-round scores/timing and discards stale-round results."
+    },
+    "boundary": {
+      "zh": "根许可unknown，仅代码案例；仓库不含图像语料，来源声明校验不保证真伪或权利。五组配对不能作通用检测基准，模型分数不证明图像来源；未下载图像、玩游戏、读取Cookie或调用收费API。",
+      "en": "Root licensing is unknown; listed as a code case. No image corpus is included, and manifest validation proves neither provenance nor rights. Five pairs are not a general detector benchmark and scores do not establish image origin. No images, gameplay, cookies or paid calls."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/rocktane/humain-vs-jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/rocktane/humain-vs-jev/blob/7c1b662cdb00f335d34b69abd2d7c4c58b980884/typesafe.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/rocktane/humain-vs-jev/blob/7c1b662cdb00f335d34b69abd2d7c4c58b980884/game.go"
+      }
+    ]
+  },
+  {
+    "id": "airportiq-jev-scope-screening-fallback",
+    "name": "airportiq",
+    "author": "ozeriyarin",
+    "title": {
+      "zh": "airportiq：问题范围与注入判断先于回答Agent",
+      "en": "airportiq: scope and injection checks before the answer agent"
+    },
+    "area": {
+      "zh": "领域问答输入筛选",
+      "en": "Domain-QA input screening"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "机场容量问答的当前文本及上一条用户问题；本地正则和固定寒暄路径先行。",
+      "en": "Current text and the previous user question in an airport-capacity assistant, after local regex and fixed greeting paths."
+    },
+    "decision": {
+      "zh": "通过锁定Pydantic AI 2.63.0的TypeSafeModel，把in_scope和injection两个类型化问题交给Jev；上游适配的system_one调用已核。",
+      "en": "Pinned Pydantic AI 2.63.0 TypeSafeModel sends typed in_scope and injection questions to Jev; the upstream adapter’s system_one call was checked."
+    },
+    "action": {
+      "zh": "Jev错误或提供的置信信息低于配置门槛时交Haiku；代码按标签返回固定拒绝或放行回答Agent，后续数据工具和答案生成另行执行。",
+      "en": "Errors or provided confidence below the configured gate fall back to Haiku. Code returns fixed refusals or admits the answer agent; data tools and generation run separately."
+    },
+    "boundary": {
+      "zh": "根许可unknown，仅代码原型。无key时跳过相应模型，test模式为模拟；缺少置信信息的空集合不会触发低置信回退。未运行投资分析或核真实机场数据，性能、预算与筛查效果未由本站验收。",
+      "en": "Unknown root licensing, listed only as a code prototype. Missing keys skip models and test mode is simulated; an empty confidence map does not trigger low-confidence fallback. No investment analysis or airport-data validation, and performance, budget or screening efficacy were not qualified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ozeriyarin/airportiq"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ozeriyarin/airportiq/blob/5f7e4afa0bcf69ef11337bc95315948b4d1ca069/src/app/decide/guard.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ozeriyarin/airportiq/blob/5f7e4afa0bcf69ef11337bc95315948b4d1ca069/src/app/llm/models.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ozeriyarin/airportiq/blob/5f7e4afa0bcf69ef11337bc95315948b4d1ca069/src/app/agent/core.py"
+      },
+      {
+        "label": "Pinned upstream adapter",
+        "url": "https://github.com/pydantic/pydantic-ai/blob/v2.63.0/pydantic_ai_slim/pydantic_ai/models/typesafe.py"
+      }
+    ]
+  },
+  {
+    "id": "codereview-jev-advisory-risk-observation",
+    "name": "PR Review Harness",
+    "author": "groktopus",
+    "title": {
+      "zh": "代码评审：Jev建议作为报告观察，不决定放行",
+      "en": "Code review: Jev advice is a report observation, not release authority"
+    },
+    "area": {
+      "zh": "静态评审建议",
+      "en": "Static-review advice"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "评审模式、覆盖状态、必查范围数量、发现标识与路由理由的摘要；不把目标代码当命令执行。",
+      "en": "A summary of review mode, coverage, required-scope count, finding IDs and routing reasons, without executing target code."
+    },
+    "decision": {
+      "zh": "可选原生TypeSafe提供商问Noul风险建议；显式Laya路径也支持三类Choice，但与Jev身份分开，响应模型及类型有校验。",
+      "en": "An optional native TypeSafe provider asks a Noul risk-advice question. A separate explicit Laya path supports three-class Choice, with model/type validation and distinct identity."
+    },
+    "action": {
+      "zh": "已有评审结果之后，在剩余预算和期限内调用并记录advisory_assessment的RECEIVED/FAILED/NOT_RUN、usage与来源；建议不授予批准或公开发布权限。",
+      "en": "After forming the review result, remaining budget/deadline gates the call; advisory_assessment records RECEIVED/FAILED/NOT_RUN with usage and provenance. Advice grants neither approval nor publication authority."
+    },
+    "boundary": {
+      "zh": "实验性源码核查，根许可unknown，仅列代码案例。启用Jev需可信配置，私有Laya或通用兼容服务不算TypeSafe实测；README披露初期评审不完整，publish只预览。未执行目标代码、调用模型或向第三方PR发评审。",
+      "en": "Experimental source review with unknown root licensing, so no project listing. Jev needs trusted opt-in configuration; private Laya or compatible services are not TypeSafe measurements. README discloses incomplete early reviews and preview-only publish. No target execution, model calls or third-party PR reviews."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/groktopus/codereview"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/groktopus/codereview/blob/ebab2f1d6b98f0f2a3a2d0876d1cb14c79149778/src/pr_review_harness/providers.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/groktopus/codereview/blob/ebab2f1d6b98f0f2a3a2d0876d1cb14c79149778/src/pr_review_harness/engine.py"
+      }
+    ]
   }
 ]

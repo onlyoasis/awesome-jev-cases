@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (214)
+## 深度使用案例 / Worked cases (220)
 
 ### jev-ultrafast
 
@@ -1930,7 +1930,61 @@
 - 核验边界：MIT代码案例，未附着浏览器、读账号池、执行游戏或复测延迟。框架另有mock和多提供商路径；校准、胜率和工业级说法为作者表述，部分回合是启发式而非Jev，不推荐任何绕过限额用途。
 - 来源：[GitHub](https://github.com/dengyie/decidex) · [Source](https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/examples/play_2048_live.py) · [Source](https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/src/decidex/providers/typesafe.py) · [Source](https://github.com/dengyie/decidex/blob/76b9ad1bd159e53f0bc92523398e80f01bb0032e/src/decidex/engine.py)
 
-## 开源项目 / Open-source projects (255)
+### vaultgate：逐段相关性后，再判断证据是否足够
+
+- 作者：Bagusdevaa
+- 输入：问题、混合检索候选和笔记链接扩展段落；即将给生成器的上下文有字符预算。
+- Jev 判断：OpenRouter alpha上的Jev对每段问相关性Noul，再对预算内最终候选问足以回答问题的Noul；按字节分批。
+- 后续动作：配置以相关性0.2和充分性0.5为初值；证据不够时取消过滤并扩到40候选重试一次，仍不足则abstain，不让生成器作答。
+- 核验边界：源码与消费路径已核，根许可及pyproject许可unknown，只列代码案例。阈值/作者60题比较不是本站校准；外部答案结构主要依赖索引与float转换。未读取真实笔记、启动Qdrant、下载模型或调用API。
+- 来源：[GitHub](https://github.com/Bagusdevaa/vaultgate) · [Source](https://github.com/Bagusdevaa/vaultgate/blob/f3a29299d45fed51044f3962e072e177efa37285/src/vault_rag/gate/jev_gate.py) · [Source](https://github.com/Bagusdevaa/vaultgate/blob/f3a29299d45fed51044f3962e072e177efa37285/src/vault_rag/pipeline.py) · [Source](https://github.com/Bagusdevaa/vaultgate/blob/f3a29299d45fed51044f3962e072e177efa37285/config.yaml)
+
+### JevRouter：四个判断进入独立策略与验证循环
+
+- 作者：HangChi / SongHangChi
+- 输入：目标、已有执行状态和注册工具的候选描述；工具风险等级由代码注册。
+- Jev 判断：原生System One一次请求问next_action Choice、0–4风险Score、需要确认及需要推理两个Noul。
+- 后续动作：策略先处理控制动作和未注册工具，再强制write/external确认；read再用阈值决定执行、确认或委托LLM。执行后另问完成度，重复finish分歧转人工。
+- 核验边界：MIT社区框架；53题命中率/延迟为作者自报，测试使用HTTP mock。web_search/send_mock_email是本地mock；未启动API、授权真实工具或复测安全性，模型概率不构成权限。
+- 来源：[GitHub](https://github.com/HangChi/JevRouter) · [Source](https://github.com/HangChi/JevRouter/blob/e405b3c8255e8ef78b2e26aaaafbf6d3ce76da9d/jev_router/clients/jev.py) · [Source](https://github.com/HangChi/JevRouter/blob/e405b3c8255e8ef78b2e26aaaafbf6d3ce76da9d/jev_router/router.py) · [Source](https://github.com/HangChi/JevRouter/blob/e405b3c8255e8ef78b2e26aaaafbf6d3ce76da9d/jev_router/policy.py) · [Source](https://github.com/HangChi/JevRouter/blob/e405b3c8255e8ef78b2e26aaaafbf6d3ce76da9d/jev_router/runner.py)
+
+### BetterChat：三个是非概率决定群聊是否接话
+
+- 作者：AS214933
+- 输入：通过本地命令、长度、限频、冷却等规则的群聊消息，加上近期上下文与Bot身份信息。
+- Jev 判断：直连原生Jev一次问addressed_to_bot、open_question和already_answered_by_bot三个Noul；严格校验题目键和概率数值。
+- 后续动作：代码先排除重复回答，再按唤醒和可配置阈值决定RESPOND/IGNORE；非法结果转UNKNOWN走失败策略，默认不主动回复，被唤醒的失败请求放行。
+- 核验边界：MIT AstrBot插件，只核源码，未读真实聊天或发送消息。私聊的等待/合并是本地防抖，不归功Jev；流式旧片段不能撤回。渠道版本与门槛效果未实测，配置保存会取消待合并会话。
+- 来源：[GitHub](https://github.com/AS214933/astrbot-betterchat) · [Source](https://github.com/AS214933/astrbot-betterchat/blob/b8bbad9f44335d61863946ad5fdb5bb7a9cdea1d/betterchat_jev.py) · [Source](https://github.com/AS214933/astrbot-betterchat/blob/b8bbad9f44335d61863946ad5fdb5bb7a9cdea1d/betterchat_core.py) · [Source](https://github.com/AS214933/astrbot-betterchat/blob/b8bbad9f44335d61863946ad5fdb5bb7a9cdea1d/main.py)
+
+### 人类对战Jev：两张图独立判断后比较概率
+
+- 作者：rocktane
+- 输入：每轮一张真实照片与一张生成图，先统一重编码去元数据；Jev和玩家看到相同像素，模型不收来源标签。
+- Jev 判断：实验性图像资产经原生System One分别提问是否AI生成的Noul，两个请求并发。
+- 后续动作：选概率较高的一张，完全相等则弃权；失败不编造选择。代码核对预设真值、记五轮分数与用时，并丢弃过期回合结果。
+- 核验边界：根许可unknown，仅代码案例；仓库不含图像语料，来源声明校验不保证真伪或权利。五组配对不能作通用检测基准，模型分数不证明图像来源；未下载图像、玩游戏、读取Cookie或调用收费API。
+- 来源：[GitHub](https://github.com/rocktane/humain-vs-jev) · [Source](https://github.com/rocktane/humain-vs-jev/blob/7c1b662cdb00f335d34b69abd2d7c4c58b980884/typesafe.go) · [Source](https://github.com/rocktane/humain-vs-jev/blob/7c1b662cdb00f335d34b69abd2d7c4c58b980884/game.go)
+
+### airportiq：问题范围与注入判断先于回答Agent
+
+- 作者：ozeriyarin
+- 输入：机场容量问答的当前文本及上一条用户问题；本地正则和固定寒暄路径先行。
+- Jev 判断：通过锁定Pydantic AI 2.63.0的TypeSafeModel，把in_scope和injection两个类型化问题交给Jev；上游适配的system_one调用已核。
+- 后续动作：Jev错误或提供的置信信息低于配置门槛时交Haiku；代码按标签返回固定拒绝或放行回答Agent，后续数据工具和答案生成另行执行。
+- 核验边界：根许可unknown，仅代码原型。无key时跳过相应模型，test模式为模拟；缺少置信信息的空集合不会触发低置信回退。未运行投资分析或核真实机场数据，性能、预算与筛查效果未由本站验收。
+- 来源：[GitHub](https://github.com/ozeriyarin/airportiq) · [Source](https://github.com/ozeriyarin/airportiq/blob/5f7e4afa0bcf69ef11337bc95315948b4d1ca069/src/app/decide/guard.py) · [Source](https://github.com/ozeriyarin/airportiq/blob/5f7e4afa0bcf69ef11337bc95315948b4d1ca069/src/app/llm/models.py) · [Source](https://github.com/ozeriyarin/airportiq/blob/5f7e4afa0bcf69ef11337bc95315948b4d1ca069/src/app/agent/core.py) · [Pinned upstream adapter](https://github.com/pydantic/pydantic-ai/blob/v2.63.0/pydantic_ai_slim/pydantic_ai/models/typesafe.py)
+
+### 代码评审：Jev建议作为报告观察，不决定放行
+
+- 作者：groktopus
+- 输入：评审模式、覆盖状态、必查范围数量、发现标识与路由理由的摘要；不把目标代码当命令执行。
+- Jev 判断：可选原生TypeSafe提供商问Noul风险建议；显式Laya路径也支持三类Choice，但与Jev身份分开，响应模型及类型有校验。
+- 后续动作：已有评审结果之后，在剩余预算和期限内调用并记录advisory_assessment的RECEIVED/FAILED/NOT_RUN、usage与来源；建议不授予批准或公开发布权限。
+- 核验边界：实验性源码核查，根许可unknown，仅列代码案例。启用Jev需可信配置，私有Laya或通用兼容服务不算TypeSafe实测；README披露初期评审不完整，publish只预览。未执行目标代码、调用模型或向第三方PR发评审。
+- 来源：[GitHub](https://github.com/groktopus/codereview) · [Source](https://github.com/groktopus/codereview/blob/ebab2f1d6b98f0f2a3a2d0876d1cb14c79149778/src/pr_review_harness/providers.py) · [Source](https://github.com/groktopus/codereview/blob/ebab2f1d6b98f0f2a3a2d0876d1cb14c79149778/src/pr_review_harness/engine.py)
+
+## 开源项目 / Open-source projects (258)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2189,6 +2243,9 @@
 | [george-amir/Custos](https://github.com/george-amir/Custos) | community | MIT | 0 |
 | [ricomanifesto/GRCInsight](https://github.com/ricomanifesto/GRCInsight) | community | MIT | 1 |
 | [dengyie/decidex](https://github.com/dengyie/decidex) | community | MIT | 2 |
+| [HangChi/JevRouter](https://github.com/HangChi/JevRouter) | community | MIT | 0 |
+| [AS214933/astrbot-betterchat](https://github.com/AS214933/astrbot-betterchat) | community | MIT | 0 |
+| [lyhmain/supersonic-ontology](https://github.com/lyhmain/supersonic-ontology) | inspired | Apache-2.0 | 0 |
 
 ## 官方 cookbook / Official recipes (25)
 
