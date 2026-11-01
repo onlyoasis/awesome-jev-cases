@@ -9285,8 +9285,8 @@
       "en": "Jev through OpenRouter alpha asks a relevance Noul per passage, then a sufficiency Noul over the final context-budgeted set, using byte-capped batches."
     },
     "action": {
-      "zh": "配置以相关性0.2和充分性0.5为初值；证据不够时取消过滤并扩到40候选重试一次，仍不足则abstain，不让生成器作答。",
-      "en": "Configured initial gates are 0.2 for relevance and 0.5 for sufficiency. Insufficient evidence triggers one retry without filters and with forty candidates, then abstention without generation if still insufficient."
+      "zh": "配置以相关性0.2和充分性0.5为初值；证据不够时移除目录/标签等检索条件并扩到40候选重试一次，仍执行Jev门控，仍不足则abstain，不让生成器作答。",
+      "en": "Configured initial gates are 0.2 for relevance and 0.5 for sufficiency. Insufficient evidence triggers one retry without retrieval filters and with forty candidates, still applying the Jev gate, then abstention without generation if still insufficient."
     },
     "boundary": {
       "zh": "源码与消费路径已核，根许可及pyproject许可unknown，只列代码案例。阈值/作者60题比较不是本站校准；外部答案结构主要依赖索引与float转换。未读取真实笔记、启动Qdrant、下载模型或调用API。",

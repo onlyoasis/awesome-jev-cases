@@ -1935,7 +1935,7 @@
 - 作者：Bagusdevaa
 - 输入：问题、混合检索候选和笔记链接扩展段落；即将给生成器的上下文有字符预算。
 - Jev 判断：OpenRouter alpha上的Jev对每段问相关性Noul，再对预算内最终候选问足以回答问题的Noul；按字节分批。
-- 后续动作：配置以相关性0.2和充分性0.5为初值；证据不够时取消过滤并扩到40候选重试一次，仍不足则abstain，不让生成器作答。
+- 后续动作：配置以相关性0.2和充分性0.5为初值；证据不够时移除目录/标签等检索条件并扩到40候选重试一次，仍执行Jev门控，仍不足则abstain，不让生成器作答。
 - 核验边界：源码与消费路径已核，根许可及pyproject许可unknown，只列代码案例。阈值/作者60题比较不是本站校准；外部答案结构主要依赖索引与float转换。未读取真实笔记、启动Qdrant、下载模型或调用API。
 - 来源：[GitHub](https://github.com/Bagusdevaa/vaultgate) · [Source](https://github.com/Bagusdevaa/vaultgate/blob/f3a29299d45fed51044f3962e072e177efa37285/src/vault_rag/gate/jev_gate.py) · [Source](https://github.com/Bagusdevaa/vaultgate/blob/f3a29299d45fed51044f3962e072e177efa37285/src/vault_rag/pipeline.py) · [Source](https://github.com/Bagusdevaa/vaultgate/blob/f3a29299d45fed51044f3962e072e177efa37285/config.yaml)
 
