@@ -238,15 +238,47 @@
     "host": "darwin"
   },
   "publication": {
-    "status": "catalog-pending-website-browser-blocked",
+    "status": "catalog-published-website-candidate-pushed-deploy-blocked",
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261101/review.md",
     "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261101/release-verification.json",
-    "catalogPush": "pending",
-    "websiteSync": "pending",
+    "catalogPush": "verified",
+    "websiteSync": "verified",
     "websiteDeploy": "blocked",
     "failedStep": "required-browser-acceptance",
     "reason": "官方Chrome入口明确返回 Local browser use is disabled in Work settings，属于设置拒绝，停止且不绕过。",
-    "worktreePeakBudgetGiB": 1.5
+    "worktreePeakBudgetGiB": 1.5,
+    "catalogContentSha": "ea5da9f1e65eef82ea264b5b8a26d9135aebd410",
+    "websiteSourcePush": "verified",
+    "candidateWebsiteSha": "68ecec6dbd1784512e2b76df273905cf64040a26",
+    "browserVerified": false,
+    "candidateValidation": {
+      "status": "passed",
+      "buildPages": 46,
+      "testsPassed": 2888,
+      "configTests": 3,
+      "testsFailed": 0,
+      "dryRunAssets": 200,
+      "productionArtifactVerified": true,
+      "candidateRelease": "68ecec6dbd1784512e2b76df273905cf64040a26"
+    },
+    "existingProduction": {
+      "websiteSha": "66d8a81af7130f55e8f2ba1b0b58203b432e688e",
+      "cloudflareVersion": "c074657d-819c-4bcb-94dc-fbc55596bb6f",
+      "trafficPercent": 100,
+      "counts": {
+        "cases": 214,
+        "projects": 255,
+        "officialRecipes": 25
+      }
+    },
+    "resumeFrom": {
+      "step": "browser-acceptance-and-final-deploy-gate",
+      "candidateSha": "68ecec6dbd1784512e2b76df273905cf64040a26",
+      "catalogSha": "ea5da9f1e65eef82ea264b5b8a26d9135aebd410",
+      "worktree": "/Volumes/ExternalProjects/Workspaces/codex/typesafe-jev-curation-20261101",
+      "needRediscover": false,
+      "requiredAction": "开启Work本地浏览器使用并恢复vivian Chrome，先重核远端与流量并验收既有正式版，再决定部署候选；部署后完整回读"
+    }
   },
   "pendingCandidates": [
     {
@@ -518,18 +550,21 @@
     "startRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261101/health-start.json",
     "start": "http-and-platform-verified",
     "status": "partial-browser-blocked",
-    "end": "pending",
+    "end": "http-and-platform-verified-browser-blocked",
     "browser": "blocked",
     "repairNeeded": false,
     "browserRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261101/browser-verification.json",
-    "reason": "官方Chrome入口明确返回 Local browser use is disabled in Work settings，属于设置拒绝，停止且不绕过。"
+    "reason": "官方Chrome入口明确返回 Local browser use is disabled in Work settings，属于设置拒绝，停止且不绕过。",
+    "endRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261101/health-end.json",
+    "formalPagesVerified": 44,
+    "verificationTarget": "existing-production"
   },
   "currentRun": {
     "automationId": "jev",
     "type": "scheduled-daily-curation",
     "scheduledAt": "2026-11-01T09:48:00.554Z",
     "checkedAt": "2026-11-01T09:57:09.756959+00:00",
-    "status": "catalog-pending-website-browser-blocked",
+    "status": "catalog-published-website-candidate-pushed-deploy-blocked",
     "addedCases": 6,
     "addedProjects": 3,
     "addedOfficialRecipes": 0,
@@ -545,7 +580,14 @@
     "historyCoverage": "partial",
     "scheduleChanged": false,
     "cachePersistence": "saved-to-Projects",
-    "updatedExistingCases": []
+    "updatedExistingCases": [],
+    "completedAt": "2026-11-01T10:02:04.075004+00:00",
+    "commit": "ea5da9f1e65eef82ea264b5b8a26d9135aebd410",
+    "websiteCommit": "68ecec6dbd1784512e2b76df273905cf64040a26",
+    "push": "verified",
+    "deployment": "not-attempted-browser-blocked",
+    "browser": "blocked",
+    "sourceCompletion": "github-and-official-succeeded-x-failed-history-partial"
   },
   "previousBlockedPublication": {
     "status": "blocked-storage-preflight",
