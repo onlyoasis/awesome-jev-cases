@@ -238,11 +238,11 @@
     "host": "darwin"
   },
   "publication": {
-    "status": "catalog-pending-website-browser-blocked",
+    "status": "catalog-published-website-candidate-pushed-deploy-blocked",
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261102/review.md",
     "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261102/release-verification.json",
-    "catalogPush": "pending",
-    "websiteSync": "pending",
+    "catalogPush": "verified",
+    "websiteSync": "verified",
     "websiteDeploy": "blocked",
     "failedStep": "required-browser-acceptance",
     "reason": "当前官方cua_repl库存返回Browsers: Local browser use is disabled in Work settings；明确设置拒绝，停止且不绕过。",
@@ -254,6 +254,40 @@
       "pendingTotalCases": 12,
       "pendingTotalProjects": 9,
       "sourceRecheck": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261102/backlog-source-recheck.json"
+    },
+    "catalogContentSha": "d578d97d9c2199445df2660ba5a533b98f9dacb5",
+    "websiteSourcePush": "verified",
+    "candidateWebsiteSha": "028f8aeec9b3bac5c1745695cd5644e4265be1b8",
+    "browserVerified": false,
+    "candidateValidation": {
+      "buildPages": 46,
+      "testsPassed": 2912,
+      "configTests": 3,
+      "testsFailed": 0,
+      "dryRunAssets": 200,
+      "productionArtifactVerified": true,
+      "candidateRelease": "028f8aeec9b3bac5c1745695cd5644e4265be1b8"
+    },
+    "existingProduction": {
+      "websiteSha": "66d8a81af7130f55e8f2ba1b0b58203b432e688e",
+      "cloudflareVersion": "c074657d-819c-4bcb-94dc-fbc55596bb6f",
+      "trafficPercent": 100,
+      "counts": {
+        "cases": 214,
+        "projects": 255,
+        "officialRecipes": 25
+      }
+    },
+    "resumeFrom": {
+      "step": "browser-acceptance-and-final-deploy-gate",
+      "candidateSha": "028f8aeec9b3bac5c1745695cd5644e4265be1b8",
+      "catalogSha": "d578d97d9c2199445df2660ba5a533b98f9dacb5",
+      "worktree": "/Volumes/ExternalProjects/Workspaces/codex/typesafe-jev-curation-20261101",
+      "needRediscover": false,
+      "requiredAction": "开启Work本地浏览器使用并恢复vivian Chrome，先重核远端与流量并验收既有正式版，再决定部署候选；部署后完整回读",
+      "pendingTotalCases": 12,
+      "pendingTotalProjects": 9,
+      "previousCandidateSha": "68ecec6dbd1784512e2b76df273905cf64040a26"
     }
   },
   "pendingCandidates": [
@@ -545,18 +579,21 @@
     "startRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261102/health-start.json",
     "start": "http-and-platform-verified",
     "status": "partial-browser-blocked",
-    "end": "pending",
+    "end": "http-and-platform-verified-browser-blocked",
     "browser": "blocked",
     "repairNeeded": false,
     "browserRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261102/browser-verification.json",
-    "reason": "当前官方cua_repl库存返回Browsers: Local browser use is disabled in Work settings；明确设置拒绝，停止且不绕过。"
+    "reason": "当前官方cua_repl库存返回Browsers: Local browser use is disabled in Work settings；明确设置拒绝，停止且不绕过。",
+    "endRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261102/health-end.json",
+    "formalPagesVerified": 44,
+    "verificationTarget": "existing-production"
   },
   "currentRun": {
     "automationId": "jev",
     "type": "scheduled-daily-curation",
     "scheduledAt": "2026-11-02T03:13:54.011Z",
     "checkedAt": "2026-11-02T03:28:12.161751+00:00",
-    "status": "catalog-pending-website-browser-blocked",
+    "status": "catalog-published-website-candidate-pushed-deploy-blocked",
     "addedCases": 6,
     "addedProjects": 6,
     "addedOfficialRecipes": 0,
@@ -572,7 +609,16 @@
     "historyCoverage": "partial",
     "scheduleChanged": false,
     "cachePersistence": "saved-to-Projects",
-    "updatedExistingCases": []
+    "updatedExistingCases": [],
+    "completedAt": "2026-11-02T03:34:28.470106+00:00",
+    "commit": "d578d97d9c2199445df2660ba5a533b98f9dacb5",
+    "websiteCommit": "028f8aeec9b3bac5c1745695cd5644e4265be1b8",
+    "push": "verified",
+    "deployment": "not-attempted-browser-blocked",
+    "browser": "blocked",
+    "sourceCompletion": "github-and-official-succeeded-x-failed-history-partial",
+    "pendingTotalCases": 12,
+    "pendingTotalProjects": 9
   },
   "previousBlockedPublication": {
     "status": "blocked-storage-preflight",
