@@ -4126,5 +4126,101 @@
     "lastVerified": "2026-11-01",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "charles-forsyth-jev-decision-wall",
+    "name": "charles-forsyth/jev-decision-wall",
+    "url": "https://github.com/charles-forsyth/jev-decision-wall",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT并行Noul实验：200问转概率热图、阈值筛选和变化观察，可用录制回放或live，源码缺失答案会回0。作者延迟不作本站实测，未运行演示或提交文本。",
+      "en": "MIT parallel-Noul experiment rendering two hundred questions as heatmaps, gated readouts and change observations, with recorded/live modes. Missing answers become zero. Author latency is not site measurement; no demo or text submission."
+    },
+    "sourceUrl": "https://github.com/charles-forsyth/jev-decision-wall/blob/dcfa50219ee4fadb9bdf1b6df52b6766af52c8c2/server.js",
+    "lastVerified": "2026-11-02",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "house-elves-pr-wall",
+    "name": "House-elves/pr-wall",
+    "url": "https://github.com/House-elves/pr-wall",
+    "category": "coding",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Apache-2.0 Java PR墙，以原生Jev分别问运行变更、测试触达和断言，展示原始概率并收本地反馈，不作总分或GitHub写入。静态判断不是测试执行；启用会外发diff，本站未读取真实PR或运行。",
+      "en": "Apache-2.0 Java PR wall asking native Jev about runtime change, test reach and assertions, showing probabilities and local feedback without composite scoring or GitHub writes. Static judgment is not test execution; enabling sends diffs externally. No real PRs or execution here."
+    },
+    "sourceUrl": "https://github.com/House-elves/pr-wall/blob/dd014bd6308aaa7a4d13da5960a5d1d7d2310263/Jev.java",
+    "lastVerified": "2026-11-02",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "guanghuang-coding-router-jev",
+    "name": "guanghuang/coding-router-jev",
+    "url": "https://github.com/guanghuang/coding-router-jev",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT TypeScript/Bun编码路由器，通过TypeSafe SDK选模型档位和强度，再由候选/置信与能力策略落地。敏感性判定不阻止原文本外发；缓存/节省与Claude/Pi兼容未由本站实测，未安装或读认证。",
+      "en": "MIT TypeScript/Bun coding router selecting model tier/effort through TypeSafe SDK under option/confidence/capability policy. Sensitivity judgments do not prevent sending original text. Savings, cache hits and Claude/Pi compatibility were not reproduced; no install or credentials."
+    },
+    "sourceUrl": "https://github.com/guanghuang/coding-router-jev/blob/59f77a16a4db06265e3c60dcfecb91bda12775d7/src/router.ts",
+    "lastVerified": "2026-11-02",
+    "status": "verified",
+    "stars": 2
+  },
+  {
+    "id": "changhaoliao-jev-rpa-assistant",
+    "name": "ChanghaoLiao/jev-rpa-assistant",
+    "url": "https://github.com/ChanghaoLiao/jev-rpa-assistant",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Windows客服原型：视觉转录与Jev分层Choice选择固定话术，授权和页面检查独立于模型；闲鱼Edge为历史检查场景，1688未适配。离线demo和真实发送分开，本站未装驱动、看聊天或发消息。",
+      "en": "MIT Windows support prototype combining vision transcription and hierarchical Jev Choice over fixed replies, with separate authorization/page checks. Xianyu/Edge has historical checks; 1688 is not adapted. Offline demos differ from real sends. No drivers, chats or messages here."
+    },
+    "sourceUrl": "https://github.com/ChanghaoLiao/jev-rpa-assistant/blob/59dd9d912d1381d6d16ad2f730783fbc3ae8ef89/jevtool/router.py",
+    "lastVerified": "2026-11-02",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "dolou12388-dsh-memory-hybrid",
+    "name": "dolou12388/dsh-memory-hybrid",
+    "url": "https://github.com/dolou12388/dsh-memory-hybrid",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT (LICENSE; bundled sql.js MIT)",
+    "summary": {
+      "zh": "MIT混合记忆插件，KV为权威、向量为派生索引；主流程规则抽取，含有条件的Jev类型/重要度Choice覆盖函数和消费钩子，注释仍为P3占位，未证明live兼容，暂不列实际Jev案例。根LICENSE含sql.js MIT说明；未安装、读会话或改记忆。",
+      "en": "MIT hybrid-memory plugin with authoritative KV and derived vector index. Rules remain primary; conditional Jev kind/importance Choice adapters and consumers exist, but comments still mark P3 placeholder and live compatibility is unverified, so no actual-Jev case is listed. Root LICENSE includes sql.js MIT notices. No install, sessions or memory changes."
+    },
+    "sourceUrl": "https://github.com/dolou12388/dsh-memory-hybrid/blob/a198a50ab96571801f176f8e469491cfc56d8845/plugin/src/pipeline/extract.js",
+    "lastVerified": "2026-11-02",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "hierichhsu-your-cto-jev",
+    "name": "hierichhsu/your-cto-jev",
+    "url": "https://github.com/hierichhsu/your-cto-jev",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT提交和Agent钩子工具，Jev Noul/Score建议经本地阈值阻止或警告；提供商失败fail-open，本地规则与模型判断分开。只核源码，未安装钩子、读本机记录或重测作者安全性/延迟。",
+      "en": "MIT commit/agent-hook tool applying local block/warn gates to Jev Noul/Score advice. Provider failures fail open, distinct from local deterministic rules. Source review only, without hooks, local records or reproducing author safety/latency claims."
+    },
+    "sourceUrl": "https://github.com/hierichhsu/your-cto-jev/blob/79739b5d1f7d1d76ec7d959915e8e5c4d15fcb93/src/hooks.ts",
+    "lastVerified": "2026-11-02",
+    "status": "verified",
+    "stars": 0
   }
 ]

@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (220)
+## 深度使用案例 / Worked cases (226)
 
 ### jev-ultrafast
 
@@ -1984,7 +1984,61 @@
 - 核验边界：实验性源码核查，根许可unknown，仅列代码案例。启用Jev需可信配置，私有Laya或通用兼容服务不算TypeSafe实测；README披露初期评审不完整，publish只预览。未执行目标代码、调用模型或向第三方PR发评审。
 - 来源：[GitHub](https://github.com/groktopus/codereview) · [Source](https://github.com/groktopus/codereview/blob/ebab2f1d6b98f0f2a3a2d0876d1cb14c79149778/src/pr_review_harness/providers.py) · [Source](https://github.com/groktopus/codereview/blob/ebab2f1d6b98f0f2a3a2d0876d1cb14c79149778/src/pr_review_harness/engine.py)
 
-## 开源项目 / Open-source projects (258)
+### Decision Wall：200个是非问题转成可调阈值热图
+
+- 作者：charles-forsyth
+- 输入：用户文本和所选题集的200条具体问题；后端限制文本、题目数和问题长度。
+- Jev 判断：一次原生System One请求对同一state并行问Noul，代理仅转发是非题。
+- 后续动作：前端按概率着色、筛选跨阈值问题并显示变化，拖动阈值直接重算显示；可查看问题和导出JSON，缓存与录制回放另行标记。
+- 核验边界：MIT社区实验，作者200问延迟表不是本站实测。静态站可使用录制答案而非live；前端把缺失Noul映射为0，不能当作明确否定。未打开演示、读key、提交用户文本或调用模型。
+- 来源：[GitHub](https://github.com/charles-forsyth/jev-decision-wall) · [Source](https://github.com/charles-forsyth/jev-decision-wall/blob/dcfa50219ee4fadb9bdf1b6df52b6766af52c8c2/server.js) · [Source](https://github.com/charles-forsyth/jev-decision-wall/blob/dcfa50219ee4fadb9bdf1b6df52b6766af52c8c2/public/app.js)
+
+### PR wall：分开呈现运行变更、测试触达和断言判断
+
+- 作者：House Elves
+- 输入：PR文件列表、经过大小预算处理的diff和仓库测试布局上下文；测试文件数由路径规则提供，不交给模型猜。
+- Jev 判断：原生Jev同批问运行行为变化Noul，以及测试触达程度和结果断言程度两个Choice，均含不足以判断等选项。
+- 后续动作：本地按PR提交和问题/上下文/模型指纹缓存原答案，墙面展示各选项概率并可排序筛选；人工Right/Wrong反馈绑定对应答案，不合成总分或写GitHub。
+- 核验边界：Apache-2.0 Java工具；静态判断不是实际覆盖率或测试执行证明。超大diff不强行截半送出；未加--save只预览。启用会把diff外发Jev，本站未取真实PR、读认证、发评审或运行Java。
+- 来源：[GitHub](https://github.com/House-elves/pr-wall) · [Source](https://github.com/House-elves/pr-wall/blob/dd014bd6308aaa7a4d13da5960a5d1d7d2310263/Jev.java) · [Source](https://github.com/House-elves/pr-wall/blob/dd014bd6308aaa7a4d13da5960a5d1d7d2310263/PrWall.java) · [Source](https://github.com/House-elves/pr-wall/blob/dd014bd6308aaa7a4d13da5960a5d1d7d2310263/questions.json)
+
+### 编码路由：模型档位与思考强度由独立策略落地
+
+- 作者：guanghuang
+- 输入：当前用户请求、可选近期上下文、可用模型/强度及最近同模型缓存读数；缺失观察显式为unknown。
+- Jev 判断：TypeSafe SDK的systemOne同批问任务/推理/工具复杂度Score、模型与强度Choice，并做文本敏感性Choice。
+- 后续动作：代理检查候选和置信度，低置信禁止降档或限制升级；强度还须在所选模型支持列表内。随后改写上游模型/强度，记录理由与缓存观察，失败保留当前档位。
+- 核验边界：MIT源码，只核Codex代理路径，不声称Claude/Pi宿主均已验收。缓存前缀保留不保证命中或省钱；敏感性问题与文本同批外发，只影响本地日志处理，不能保证文本留在本机。未安装启动器、读取订阅认证或调用模型。
+- 来源：[GitHub](https://github.com/guanghuang/coding-router-jev) · [Source](https://github.com/guanghuang/coding-router-jev/blob/59f77a16a4db06265e3c60dcfecb91bda12775d7/src/router.ts) · [Source](https://github.com/guanghuang/coding-router-jev/blob/59f77a16a4db06265e3c60dcfecb91bda12775d7/src/policy.ts) · [Source](https://github.com/guanghuang/coding-router-jev/blob/59f77a16a4db06265e3c60dcfecb91bda12775d7/src/proxy.ts)
+
+### 客服RPA：逐层选择固定话术，发送由页面与授权门控
+
+- 作者：ChanghaoLiao
+- 输入：另一个视觉模型转录的聊天状态、当前类别和经审核的话术树；界面消息发现共用串行工作流。
+- Jev 判断：原生Jev Choice逐层选择类别或固定话术，每层可选HUMAN；最终再以SEND/HUMAN复核适用性，代码校验选项和概率。
+- 后续动作：模型仅产候选原文；自动发送还需话术批准与首次验收/上传同意等本地条件，页面身份、草稿、消息变化和发送结果另行核对；不确定转人工。
+- 核验边界：MIT Windows/Clicknium原型，闲鱼Edge有历史检查依据，1688未完成适配。旧数值阈值配置保留但路由依显式Choice，不把它们写成生效门槛。离线demo为模拟，气泡不等于服务器送达；本站未取聊天截图、装驱动或发送消息。
+- 来源：[GitHub](https://github.com/ChanghaoLiao/jev-rpa-assistant) · [Source](https://github.com/ChanghaoLiao/jev-rpa-assistant/blob/59dd9d912d1381d6d16ad2f730783fbc3ae8ef89/jevtool/router.py) · [Source](https://github.com/ChanghaoLiao/jev-rpa-assistant/blob/59dd9d912d1381d6d16ad2f730783fbc3ae8ef89/jevtool/service.py) · [Source](https://github.com/ChanghaoLiao/jev-rpa-assistant/blob/59dd9d912d1381d6d16ad2f730783fbc3ae8ef89/jevtool/config.py)
+
+### 无人机仿真：把决策延迟计入离散动作生效时刻
+
+- 作者：subho004
+- 输入：模拟器观测、当前动作和可选任务信息；同一场景可切不同决策提供商及时延策略。
+- Jev 判断：OpenRouter alpha的Jev Choice在11个预定义动作中选择，如前进、制动、悬停、避让和降落，解析器只接受明确动作。
+- 后续动作：harness按时延策略将答案排到t+ceil(L/dt)生效，等待期间保留旧动作，再交执行器/PID；非法输出先保持当前动作，连续失败后悬停，并记录轨迹和指标。
+- 核验边界：原仓采用仅供查看、保留全部权利的源码可见许可，不列开源项目；这里只作源码阅读与事实评述，未执行或再分发代码/数据。仿真、oracle、反射shield和时延消融须分开，作者胜负/成本不是本站复测，也不证明真机安全。
+- 来源：[GitHub](https://github.com/subho004/drone-autonomy-ai-vs-rules) · [Source](https://github.com/subho004/drone-autonomy-ai-vs-rules/blob/8bf89e488f14e937dbe998fd374fa752952b2408/app/providers/decisions_endpoint.py) · [Source](https://github.com/subho004/drone-autonomy-ai-vs-rules/blob/8bf89e488f14e937dbe998fd374fa752952b2408/app/harness/flight_runner.py) · [Source](https://github.com/subho004/drone-autonomy-ai-vs-rules/blob/8bf89e488f14e937dbe998fd374fa752952b2408/LICENSE)
+
+### 提交钩子：Jev判断经本地阈值形成阻止或警告
+
+- 作者：hierichhsu
+- 输入：经过本地脱敏、过滤和分块的Git diff，及可选目标/架构约束；本地规则先行。
+- Jev 判断：按需批量问泄密、削弱测试等Noul，并可问复杂度Score；支持Cloudflare、OpenRouter与固定jev-1.13.0原生提供商。
+- 后续动作：代码将阻止类信号与各自阈值比较，提交钩子返回非零阻止；架构/复杂度只警告，并维护提供商冷却和决策记录；模型失败是fail-open。
+- 核验边界：MIT社区工具，阈值与延迟为作者样本，不构成无泄密或安全批准证明；脱敏与模型仍可能漏判。只核固定源码，不安装钩子、不读取本机diff/认证、不执行危险命令；其他宿主与所有渠道的实效未独立验收。
+- 来源：[GitHub](https://github.com/hierichhsu/your-cto-jev) · [Source](https://github.com/hierichhsu/your-cto-jev/blob/79739b5d1f7d1d76ec7d959915e8e5c4d15fcb93/src/api.ts) · [Source](https://github.com/hierichhsu/your-cto-jev/blob/79739b5d1f7d1d76ec7d959915e8e5c4d15fcb93/src/hooks.ts) · [Source](https://github.com/hierichhsu/your-cto-jev/blob/79739b5d1f7d1d76ec7d959915e8e5c4d15fcb93/src/check.ts)
+
+## 开源项目 / Open-source projects (264)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2246,6 +2300,12 @@
 | [HangChi/JevRouter](https://github.com/HangChi/JevRouter) | community | MIT | 0 |
 | [AS214933/astrbot-betterchat](https://github.com/AS214933/astrbot-betterchat) | community | MIT | 0 |
 | [lyhmain/supersonic-ontology](https://github.com/lyhmain/supersonic-ontology) | inspired | Apache-2.0 | 0 |
+| [charles-forsyth/jev-decision-wall](https://github.com/charles-forsyth/jev-decision-wall) | community | MIT | 0 |
+| [House-elves/pr-wall](https://github.com/House-elves/pr-wall) | community | Apache-2.0 | 0 |
+| [guanghuang/coding-router-jev](https://github.com/guanghuang/coding-router-jev) | community | MIT | 2 |
+| [ChanghaoLiao/jev-rpa-assistant](https://github.com/ChanghaoLiao/jev-rpa-assistant) | community | MIT | 0 |
+| [dolou12388/dsh-memory-hybrid](https://github.com/dolou12388/dsh-memory-hybrid) | community | MIT (LICENSE; bundled sql.js MIT) | 0 |
+| [hierichhsu/your-cto-jev](https://github.com/hierichhsu/your-cto-jev) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (25)
 
