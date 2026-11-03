@@ -9834,5 +9834,149 @@
         "url": "https://github.com/hierichhsu/your-cto-jev/blob/79739b5d1f7d1d76ec7d959915e8e5c4d15fcb93/src/check.ts"
       }
     ]
+  },
+  {
+    "id": "inbox-sweep-reviewed-mail-filing",
+    "name": "inbox-sweep",
+    "author": "Meerav29",
+    "title": {
+      "zh": "批量清理邮件：Jev信号进入本地策略与人工复核",
+      "en": "Batch mail cleanup: Jev signals feed local policy and review"
+    },
+    "area": {
+      "zh": "邮件分流与复核",
+      "en": "Mail triage and review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "邮件元数据、有限正文、邮件年龄及启用的文件夹说明。",
+      "en": "Email metadata, bounded body text, age and enabled folder descriptions."
+    },
+    "decision": {
+      "zh": "原生TypeSafe JS SDK一次systemOne请求，以目的地Choice和12个Noul判断重要性、待回复、推广、过期等信号。",
+      "en": "One native TypeSafe JS SDK systemOne request uses a destination Choice and twelve Nouls for importance, reply needs, marketing, staleness and other signals."
+    },
+    "action": {
+      "zh": "独立本地策略形成自动归档、建议文件夹或人工卡片；live批次可即时执行自动归档，其他移动等Apply；Apply逐线程核对最新消息与收件箱状态，避免重复或覆盖变化。",
+      "en": "Independent local policy selects auto-archive, proposed filing or review cards. Live batches can archive immediately; other moves await Apply, which rechecks each thread and inbox state to avoid repeated or stale changes."
+    },
+    "boundary": {
+      "zh": "MIT社区项目，仅核固定源码，未连接Gmail或调用模型；fake模式不能证明live。dry-run只阻止Gmail写入，内容仍外发TypeSafe及可选Anthropic；卡片解释由Claude生成，不是Jev文本输出，模型建议不保证邮件可安全归档。",
+      "en": "MIT community project reviewed at a pinned commit without Gmail or model access; fake mode does not prove live operation. Dry run prevents Gmail writes but still sends content to TypeSafe and optionally Anthropic. Claude writes card explanations; Jev does not generate them, and its signals do not guarantee safe archiving."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Meerav29/inbox-sweep"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Meerav29/inbox-sweep/blob/414afee8939e9d928c20d33aa5589f3515e46e43/server/jev/client.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Meerav29/inbox-sweep/blob/414afee8939e9d928c20d33aa5589f3515e46e43/server/jev/questions.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Meerav29/inbox-sweep/blob/414afee8939e9d928c20d33aa5589f3515e46e43/server/policy/decide.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Meerav29/inbox-sweep/blob/414afee8939e9d928c20d33aa5589f3515e46e43/server/session/apply.ts"
+      }
+    ]
+  },
+  {
+    "id": "hermes-slack-exact-source-routing",
+    "name": "Hermes Slack Agent Router",
+    "author": "u1-liquid",
+    "title": {
+      "zh": "Slack多Agent路由：响应判断与精确源片段选择分开",
+      "en": "Slack multi-agent routing: separate response admission from exact-source selection"
+    },
+    "area": {
+      "zh": "消息路由与上下文投影",
+      "en": "Message routing and context projection"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "完整当前消息、root及最多7条较新前文、当前接收者和本机已认证候选身份；有片段与字节上限。",
+      "en": "The complete current message, root plus up to seven recent prior records, receiving bot and native authenticated candidates, within segment and byte limits."
+    },
+    "decision": {
+      "zh": "原生/v1/systemone以Choice判断response及条件scope，并可选历史引用；只有response=yes且原生confidence严格大于0.5才接收，引用另需至少0.8。",
+      "en": "Native /v1/systemone Choices judge response and conditional scope, plus optional prior references. Admission requires response=yes and native confidence strictly above 0.5; prior references separately require at least 0.8."
+    },
+    "action": {
+      "zh": "按所选源范围投影完整原文给对应Hermes接收者；无法准确表示的混合片段停止该投影，未选普通消息静默确认，宿主继续管理队列、历史与权限。",
+      "en": "Project exact source text to the corresponding Hermes receiver. Unrepresentable mixed scopes stop projection; unselected ordinary input is silently acknowledged, while the host owns queues, history and authorization."
+    },
+    "boundary": {
+      "zh": "MIT社区插件，依赖钉住Hermes版本的私有接口；源码明确无推断总超时、无持久所有权或恰好一次保证。会外发会话，路由不授权对外动作；未安装、接Slack或独立验收分类准确率及实际送达。",
+      "en": "MIT community plugin using private seams of a pinned Hermes revision. It has no inference elapsed-time cutoff, durable ownership or exactly-once guarantee. Conversations leave the machine; routing does not authorize external actions. No install, Slack connection, classifier-accuracy or delivery qualification was performed."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/u1-liquid/hermes-slack-agent-router"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/u1-liquid/hermes-slack-agent-router/blob/c256fd73b80f0d80642955bbab67450105179476/hermes_slack_agent_router/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/u1-liquid/hermes-slack-agent-router/blob/c256fd73b80f0d80642955bbab67450105179476/hermes_slack_agent_router/semantic.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/u1-liquid/hermes-slack-agent-router/blob/c256fd73b80f0d80642955bbab67450105179476/hermes_slack_agent_router/bridge.py"
+      }
+    ]
+  },
+  {
+    "id": "pdf-excerpt-statistical-screening",
+    "name": "Jev PDF audit",
+    "author": "bertran2born",
+    "title": {
+      "zh": "PDF研究选摘：有限分类生成待复核清单",
+      "en": "PDF study excerpts: bounded classification produces review flags"
+    },
+    "area": {
+      "zh": "文献初筛与人工复核",
+      "en": "Literature screening and review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "PDF有限页中按方法和结果线索抽出的文本选摘；文本不足时标需OCR或人工复核。",
+      "en": "Selected method/result excerpts from a bounded number of PDF pages, with insufficient text marked for OCR or review."
+    },
+    "decision": {
+      "zh": "原生/v1/systemone批量9组Choice，判断学科、主结果、显著性、预注册及分析决定时间等；选项包含unknown或unclear，响应需有完整合法概率。",
+      "en": "Nine native /v1/systemone Choices cover field, primary finding, significance, preregistration and analytic-decision timing, with unknown/unclear options and validated complete probability distributions."
+    },
+    "action": {
+      "zh": "输出CSV保存每题选择、置信度与全概率；明确的事后调整、未校正或过度推断等信号达到0.8才加复核标记，HTML提供筛选、概率阈值和导出。",
+      "en": "Write CSV rows with choices, confidence and all probabilities. Explicit post-hoc, uncorrected-testing or overclaim signals at least 0.8 add review flags; HTML supplies filtering, probability gates and export."
+    },
+    "boundary": {
+      "zh": "只核固定公开源码，根许可未确认，因此不列已核许可的开源项目。只覆盖选摘，缺少提及不等于缺少方法；复核标记不裁定科研不端、科学真伪或临床适用性。未读取本机PDF、运行模型或复测作者效果。",
+      "en": "Pinned public-source review only; no confirmed root license, so no license-verified project listing. Excerpts are partial and silence is not absence of a method. Flags do not establish misconduct, scientific truth or clinical suitability. No local PDFs, live model runs or independent outcome reproduction."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/bertran2born/jev-classifier"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/bertran2born/jev-classifier/blob/c523cc475f7a840f5721a9e9aa51ea95bdb05343/jev_pdf_audit.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/bertran2born/jev-classifier/blob/c523cc475f7a840f5721a9e9aa51ea95bdb05343/viewer.js"
+      }
+    ]
   }
 ]

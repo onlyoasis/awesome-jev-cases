@@ -4222,5 +4222,69 @@
     "lastVerified": "2026-11-02",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "meerav29-inbox-sweep",
+    "name": "Meerav29/inbox-sweep",
+    "url": "https://github.com/Meerav29/inbox-sweep",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT本地邮件批处理工具：Jev Choice/Noul经本地策略自动归档、建议或排人工卡片；fake/dry-run/live边界与Apply复核分开，dry-run仍外发内容，仅核源码。",
+      "en": "MIT local mail-batch app using Jev Choice/Noul signals for local auto-archive, filing proposals or review cards. Fake, dry-run, live and Apply rechecks are distinct; dry run still sends content externally. Source review only."
+    },
+    "sourceUrl": "https://github.com/Meerav29/inbox-sweep/blob/414afee8939e9d928c20d33aa5589f3515e46e43/server/policy/decide.ts",
+    "lastVerified": "2026-11-03",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "u1-liquid-hermes-slack-agent-router",
+    "name": "u1-liquid/hermes-slack-agent-router",
+    "url": "https://github.com/u1-liquid/hermes-slack-agent-router",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Hermes Slack路由插件，以原生Choice选响应及精确原文范围；受固定宿主版本、会话外发及无推断总超时约束。路由不是对外动作授权，未安装或验实际Slack送达。",
+      "en": "MIT Hermes Slack routing plugin using native Choices for response admission and exact source scope. Bound to a pinned host, external conversation processing and no inference elapsed-time cutoff; routing is not external-action authorization. Not installed or live-delivery tested."
+    },
+    "sourceUrl": "https://github.com/u1-liquid/hermes-slack-agent-router/blob/c256fd73b80f0d80642955bbab67450105179476/hermes_slack_agent_router/jev.py",
+    "lastVerified": "2026-11-03",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "bronos-cc-cockpit-jev-triage",
+    "name": "BronOS/cc-cockpit-jev-triage",
+    "url": "https://github.com/BronOS/cc-cockpit-jev-triage",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT cc-cockpit源插件分流层：hint/规则先行，依赖既有Jev插件grid判断优先级与类别，再叠人工修正和floor。已核服务调用与消费，上游插件网络链未核，不列完整实际Jev案例；换模型需rescore。",
+      "en": "MIT cc-cockpit source-plugin triage layer: hints/rules precede the existing Jev plugin grid, followed by human overrides and floors. Service calls and consumers reviewed; upstream network integration unqualified, so no full actual-Jev case. Model changes require rescoring."
+    },
+    "sourceUrl": "https://github.com/BronOS/cc-cockpit-jev-triage/blob/c3e30e52fb02f37329e9441334ba6713a4d92255/dist/lib/pipeline.js",
+    "lastVerified": "2026-11-03",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "endgame-labs-understudy",
+    "name": "Endgame-Labs/understudy",
+    "url": "https://github.com/Endgame-Labs/understudy",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT System One代理与窄任务学生模型实验：未毕业请求发可配置lead，毕业后本地回答并抽审/降级；HTTP接线已核，训练、毕业和作者性能未复测，不是TypeSafe官方项目或Jev权重开源。",
+      "en": "MIT System One proxy and narrow-task student experiment forwarding ungraduated requests to a configurable lead, then auditing/demoting local answers. HTTP wiring reviewed; training, graduation and author metrics unreplicated. Neither TypeSafe official nor open Jev weights."
+    },
+    "sourceUrl": "https://github.com/Endgame-Labs/understudy/blob/3c8ecb295b44462ac5ed27db0c4b9d8fc8b02dfb/src/lead.rs",
+    "lastVerified": "2026-11-03",
+    "status": "verified",
+    "stars": 5
   }
 ]

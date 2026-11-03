@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (226)
+## 深度使用案例 / Worked cases (229)
 
 ### jev-ultrafast
 
@@ -2038,7 +2038,34 @@
 - 核验边界：MIT社区工具，阈值与延迟为作者样本，不构成无泄密或安全批准证明；脱敏与模型仍可能漏判。只核固定源码，不安装钩子、不读取本机diff/认证、不执行危险命令；其他宿主与所有渠道的实效未独立验收。
 - 来源：[GitHub](https://github.com/hierichhsu/your-cto-jev) · [Source](https://github.com/hierichhsu/your-cto-jev/blob/79739b5d1f7d1d76ec7d959915e8e5c4d15fcb93/src/api.ts) · [Source](https://github.com/hierichhsu/your-cto-jev/blob/79739b5d1f7d1d76ec7d959915e8e5c4d15fcb93/src/hooks.ts) · [Source](https://github.com/hierichhsu/your-cto-jev/blob/79739b5d1f7d1d76ec7d959915e8e5c4d15fcb93/src/check.ts)
 
-## 开源项目 / Open-source projects (264)
+### 批量清理邮件：Jev信号进入本地策略与人工复核
+
+- 作者：Meerav29
+- 输入：邮件元数据、有限正文、邮件年龄及启用的文件夹说明。
+- Jev 判断：原生TypeSafe JS SDK一次systemOne请求，以目的地Choice和12个Noul判断重要性、待回复、推广、过期等信号。
+- 后续动作：独立本地策略形成自动归档、建议文件夹或人工卡片；live批次可即时执行自动归档，其他移动等Apply；Apply逐线程核对最新消息与收件箱状态，避免重复或覆盖变化。
+- 核验边界：MIT社区项目，仅核固定源码，未连接Gmail或调用模型；fake模式不能证明live。dry-run只阻止Gmail写入，内容仍外发TypeSafe及可选Anthropic；卡片解释由Claude生成，不是Jev文本输出，模型建议不保证邮件可安全归档。
+- 来源：[GitHub](https://github.com/Meerav29/inbox-sweep) · [Source](https://github.com/Meerav29/inbox-sweep/blob/414afee8939e9d928c20d33aa5589f3515e46e43/server/jev/client.ts) · [Source](https://github.com/Meerav29/inbox-sweep/blob/414afee8939e9d928c20d33aa5589f3515e46e43/server/jev/questions.ts) · [Source](https://github.com/Meerav29/inbox-sweep/blob/414afee8939e9d928c20d33aa5589f3515e46e43/server/policy/decide.ts) · [Source](https://github.com/Meerav29/inbox-sweep/blob/414afee8939e9d928c20d33aa5589f3515e46e43/server/session/apply.ts)
+
+### Slack多Agent路由：响应判断与精确源片段选择分开
+
+- 作者：u1-liquid
+- 输入：完整当前消息、root及最多7条较新前文、当前接收者和本机已认证候选身份；有片段与字节上限。
+- Jev 判断：原生/v1/systemone以Choice判断response及条件scope，并可选历史引用；只有response=yes且原生confidence严格大于0.5才接收，引用另需至少0.8。
+- 后续动作：按所选源范围投影完整原文给对应Hermes接收者；无法准确表示的混合片段停止该投影，未选普通消息静默确认，宿主继续管理队列、历史与权限。
+- 核验边界：MIT社区插件，依赖钉住Hermes版本的私有接口；源码明确无推断总超时、无持久所有权或恰好一次保证。会外发会话，路由不授权对外动作；未安装、接Slack或独立验收分类准确率及实际送达。
+- 来源：[GitHub](https://github.com/u1-liquid/hermes-slack-agent-router) · [Source](https://github.com/u1-liquid/hermes-slack-agent-router/blob/c256fd73b80f0d80642955bbab67450105179476/hermes_slack_agent_router/jev.py) · [Source](https://github.com/u1-liquid/hermes-slack-agent-router/blob/c256fd73b80f0d80642955bbab67450105179476/hermes_slack_agent_router/semantic.py) · [Source](https://github.com/u1-liquid/hermes-slack-agent-router/blob/c256fd73b80f0d80642955bbab67450105179476/hermes_slack_agent_router/bridge.py)
+
+### PDF研究选摘：有限分类生成待复核清单
+
+- 作者：bertran2born
+- 输入：PDF有限页中按方法和结果线索抽出的文本选摘；文本不足时标需OCR或人工复核。
+- Jev 判断：原生/v1/systemone批量9组Choice，判断学科、主结果、显著性、预注册及分析决定时间等；选项包含unknown或unclear，响应需有完整合法概率。
+- 后续动作：输出CSV保存每题选择、置信度与全概率；明确的事后调整、未校正或过度推断等信号达到0.8才加复核标记，HTML提供筛选、概率阈值和导出。
+- 核验边界：只核固定公开源码，根许可未确认，因此不列已核许可的开源项目。只覆盖选摘，缺少提及不等于缺少方法；复核标记不裁定科研不端、科学真伪或临床适用性。未读取本机PDF、运行模型或复测作者效果。
+- 来源：[GitHub](https://github.com/bertran2born/jev-classifier) · [Source](https://github.com/bertran2born/jev-classifier/blob/c523cc475f7a840f5721a9e9aa51ea95bdb05343/jev_pdf_audit.py) · [Source](https://github.com/bertran2born/jev-classifier/blob/c523cc475f7a840f5721a9e9aa51ea95bdb05343/viewer.js)
+
+## 开源项目 / Open-source projects (268)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2306,6 +2333,10 @@
 | [ChanghaoLiao/jev-rpa-assistant](https://github.com/ChanghaoLiao/jev-rpa-assistant) | community | MIT | 0 |
 | [dolou12388/dsh-memory-hybrid](https://github.com/dolou12388/dsh-memory-hybrid) | community | MIT (LICENSE; bundled sql.js MIT) | 0 |
 | [hierichhsu/your-cto-jev](https://github.com/hierichhsu/your-cto-jev) | community | MIT | 0 |
+| [Meerav29/inbox-sweep](https://github.com/Meerav29/inbox-sweep) | community | MIT | 0 |
+| [u1-liquid/hermes-slack-agent-router](https://github.com/u1-liquid/hermes-slack-agent-router) | community | MIT | 0 |
+| [BronOS/cc-cockpit-jev-triage](https://github.com/BronOS/cc-cockpit-jev-triage) | community | MIT | 0 |
+| [Endgame-Labs/understudy](https://github.com/Endgame-Labs/understudy) | community | MIT | 5 |
 
 ## 官方 cookbook / Official recipes (25)
 
@@ -2315,9 +2346,9 @@
 - [Re-ranking](https://docs.typesafe.ai/cookbooks/rerank_typesafe.md)：Builds 30-passage BM25 shortlists for 40 CLERC legal queries, then uses one TypeSafe question per query-candidate pair to raise top-1 accuracy from 5% to 18% and top-10 accuracy from 38% to 62%.
 - [Line-by-line search](https://docs.typesafe.ai/cookbooks/semantic_find.md)：Build semantic search for GitHub's Terms of Service. In one request, score 218 line ids against a plain-language query with a Choice question, and use a Noul question to check whether the document contains an answer.
 - [Structure recovery](https://docs.typesafe.ai/cookbooks/autoformat.md)：Reconstructs Markdown from plain text that lost its formatting in two requests: one stitches hard-wrapped lines back together, one classifies every block (heading, list, code, callout).
-- [Function calling](https://docs.typesafe.ai/cookbooks/function_calling.md)：Turns natural-language trading requests into calls to ordinary typed functions by mapping function names and closed-set arguments to confidence-aware TypeSafe questions.
+- [Function calling](https://docs.typesafe.ai/cookbooks/function_calling.md)：Maps natural-language requests to typed function names and bounded arguments. The current example memoizes state/questions without the model in its cache key and fills the response model from the requested value, so replayed answers do not prove a new model was called.
 - [Skill suggestion](https://docs.typesafe.ai/cookbooks/skill_suggestion.md)：Picks at most one skill for an agent turn out of the 182 in Nous Research's Hermes catalog, using two TypeSafe requests to rank and re-check the top candidates.
-- [Knowledge graph entity alignment](https://docs.typesafe.ai/cookbooks/entity_alignment.md)：Decides which of 450 candidate pairs from two beer catalogues describe the same product using one Score question plus three companion Nouls that surface which fields disagree.
+- [Knowledge graph entity alignment](https://docs.typesafe.ai/cookbooks/entity_alignment.md)：Routes 450 Wikidata/MusicBrainz album pairs to no link, curator review or a merge recommendation using a three-level Score; three Nouls expose title, artist and label agreement. CC0 dataset links are imperfect reference labels, not verified truth; this is not an automatic knowledge-graph merge.
 - [Classifying RAG passages](https://docs.typesafe.ai/cookbooks/classifying_rag_passages.md)：Score each retrieved passage with one TypeSafe request, then decide in code which ones reach the answering model.
 - [Double-checking citations](https://docs.typesafe.ai/cookbooks/citation_check.md)：Catch wrong or hallucinated citations by checking against the source document. One Choice question decides whether the quote's context supports the claim.
 - [Guardrails for LLMs](https://docs.typesafe.ai/cookbooks/llm_guardrails.md)：Screen every message going into and out of an LLM app with one TypeSafe request, thresholding hazard probabilities and severity to pass, review, block, or route.

@@ -57,10 +57,10 @@
     "id": "function_calling",
     "name": "Function calling",
     "url": "https://docs.typesafe.ai/cookbooks/function_calling.md",
-    "description": "Turns natural-language trading requests into calls to ordinary typed functions by mapping function names and closed-set arguments to confidence-aware TypeSafe questions.",
+    "description": "Maps natural-language requests to typed function names and bounded arguments. The current example memoizes state/questions without the model in its cache key and fills the response model from the requested value, so replayed answers do not prove a new model was called.",
     "source": "official",
     "discoveredAt": "2026-09-24",
-    "lastVerified": "2026-09-24"
+    "lastVerified": "2026-11-03"
   },
   {
     "id": "skill_suggestion",
@@ -75,10 +75,10 @@
     "id": "entity_alignment",
     "name": "Knowledge graph entity alignment",
     "url": "https://docs.typesafe.ai/cookbooks/entity_alignment.md",
-    "description": "Decides which of 450 candidate pairs from two beer catalogues describe the same product using one Score question plus three companion Nouls that surface which fields disagree.",
+    "description": "Routes 450 Wikidata/MusicBrainz album pairs to no link, curator review or a merge recommendation using a three-level Score; three Nouls expose title, artist and label agreement. CC0 dataset links are imperfect reference labels, not verified truth; this is not an automatic knowledge-graph merge.",
     "source": "official",
     "discoveredAt": "2026-09-24",
-    "lastVerified": "2026-09-24"
+    "lastVerified": "2026-11-03"
   },
   {
     "id": "classifying_rag_passages",
