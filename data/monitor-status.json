@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-04T03:25:25.983962+00:00",
+  "checkedAt": "2026-11-04T03:30:40.287143+00:00",
   "github": "ok",
   "official": "ok",
   "x": "ok",
@@ -214,16 +214,36 @@
     "host": "darwin"
   },
   "publication": {
-    "status": "catalog-ready",
+    "status": "published-and-verified",
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261104/review.md",
     "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/release-verification.json",
-    "catalogPush": "pending",
-    "websiteSync": "pending",
-    "websiteDeploy": "pending",
+    "catalogPush": "verified",
+    "websiteSync": "verified",
+    "websiteDeploy": "verified",
     "backlog": {
       "previousCases": 12,
       "previousProjects": 9,
       "status": "cleared-by-Nov3-release-confirmed-Nov4"
+    },
+    "websiteSourcePush": "verified",
+    "catalogContentSha": "b78d7be233b8d11f4998578d0998e09c7b7dcad7",
+    "websiteSha": "6c01dde384c83e21f3c1cf5677cc8c3a4caf00b4",
+    "cloudflareVersion": "667b80de-ea42-47c8-9a8f-fc41e3c61a30",
+    "trafficPercent": 100,
+    "formalPagesVerified": 44,
+    "corePagesByteVerified": 6,
+    "browserVerified": true,
+    "productionConfiguration": {
+      "siteUrl": "https://typesafe-jev.com",
+      "gaId": "G-5HP02C0495",
+      "adsEnabled": true,
+      "monetagZoneId": "11855929"
+    },
+    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/deployed-artifact",
+    "publishedAt": "2026-11-04T03:30:30.368Z",
+    "remainingBacklog": {
+      "cases": 0,
+      "projects": 0
     }
   },
   "pendingCandidates": [
@@ -449,26 +469,51 @@
     {
       "url": "https://github.com/masonweb3/liuyao",
       "reason": "代码PolyForm Noncommercial，非开源；只列源码案例，语义筛查故障回退局限保留。"
+    },
+    {
+      "url": "https://github.com/Caph-dev/coffee-cart-demo",
+      "reason": "默认第三方Jev供应商模型身份/契约未核，根许可unknown；不据shopping-cart仿制或名称认定实际原生Jev。"
     }
   ],
   "xSearches": [
     {
       "query": "\"TypeSafe Jev\" since:2026-11-01 -is:retweet",
-      "status": "ok",
       "latest": true,
-      "visiblePosts": 7
+      "visiblePosts": 7,
+      "explicitNoResults": false,
+      "checkedAt": "2026-11-04T03:25:48.688075+00:00",
+      "links": [
+        "https://x.com/rlarguesa/status/2117638682656047338",
+        "https://x.com/GitTrend0x/status/2117610415827882290",
+        "https://x.com/YouXi29254/status/2117605784507077080",
+        "https://x.com/VIVEKPM99/status/2117595151212400798",
+        "https://x.com/FinrodChen/status/2117519248704831966",
+        "https://x.com/otiseleven/status/2117359243435376809",
+        "https://x.com/InfronAI/status/2117333466882973819"
+      ]
     },
     {
       "query": "Jev github.com since:2026-11-01 -is:retweet",
-      "status": "ok",
       "latest": true,
-      "visiblePosts": 6
+      "visiblePosts": 6,
+      "explicitNoResults": false,
+      "checkedAt": "2026-11-04T03:25:48.688075+00:00",
+      "links": [
+        "https://x.com/wang_haole71414/status/2117809282611822765",
+        "https://x.com/frankwong0205/status/2117791841076834779",
+        "https://x.com/gs_rumana/status/2117757832363974995",
+        "https://x.com/bekaqendrim/status/2117755678228160788",
+        "https://x.com/MrHodl/status/2117667185317278036",
+        "https://x.com/updog_osaka/status/2117590629463326877"
+      ]
     },
     {
       "query": "from:typesafeai Jev since:2026-11-01 -is:retweet",
-      "status": "ok",
       "latest": true,
-      "visiblePosts": 0
+      "visiblePosts": 0,
+      "explicitNoResults": true,
+      "checkedAt": "2026-11-04T03:25:48.688075+00:00",
+      "links": []
     }
   ],
   "previousPublication": {
@@ -628,16 +673,22 @@
   "productionHealth": {
     "startRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/health-start.json",
     "start": "verified",
-    "end": "pending",
-    "browser": "start-passed",
-    "repairNeeded": false
+    "end": "verified",
+    "browser": "verified",
+    "repairNeeded": false,
+    "status": "verified",
+    "endRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/health-end.json",
+    "browserRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/browser-verification.json",
+    "ordinaryChromeRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/ordinary-chrome-end.json",
+    "formalPagesVerified": 44,
+    "verificationTarget": "current-production"
   },
   "currentRun": {
     "automationId": "jev",
     "type": "scheduled-daily-curation",
     "scheduledAt": "2026-11-04T03:17:48.002Z",
     "checkedAt": "2026-11-04T03:25:25.983962+00:00",
-    "status": "catalog-ready",
+    "status": "published-and-verified",
     "addedCases": 3,
     "addedProjects": 3,
     "addedOfficialRecipes": 0,
@@ -653,7 +704,16 @@
     "historyCoverage": "partial",
     "scheduleChanged": false,
     "cachePersistence": "saved-to-Projects",
-    "resumedPreviousPublication": true
+    "resumedPreviousPublication": true,
+    "completedAt": "2026-11-04T03:30:40.287143+00:00",
+    "commit": "b78d7be233b8d11f4998578d0998e09c7b7dcad7",
+    "websiteCommit": "6c01dde384c83e21f3c1cf5677cc8c3a4caf00b4",
+    "push": "verified",
+    "deployment": "verified",
+    "browser": "verified",
+    "pendingTotalCases": 0,
+    "pendingTotalProjects": 0,
+    "sourceCompletion": "all-three-succeeded-history-partial"
   },
   "previousBlockedPublication": {
     "status": "blocked-storage-preflight",
@@ -779,157 +839,36 @@
   },
   "lastFullyVerifiedPublication": {
     "status": "published-and-verified",
-    "catalogContentSha": "5bec0519fcda0f3f1e846d93d1e663e774178b59",
-    "websiteCandidateBeforeRun": "028f8aeec9b3bac5c1745695cd5644e4265be1b8",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261104/review.md",
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/release-verification.json",
+    "catalogPush": "verified",
+    "websiteSync": "verified",
+    "websiteDeploy": "verified",
+    "backlog": {
+      "previousCases": 12,
+      "previousProjects": 9,
+      "status": "cleared-by-Nov3-release-confirmed-Nov4"
+    },
+    "websiteSourcePush": "verified",
+    "catalogContentSha": "b78d7be233b8d11f4998578d0998e09c7b7dcad7",
+    "websiteSha": "6c01dde384c83e21f3c1cf5677cc8c3a4caf00b4",
+    "cloudflareVersion": "667b80de-ea42-47c8-9a8f-fc41e3c61a30",
+    "trafficPercent": 100,
+    "formalPagesVerified": 44,
+    "corePagesByteVerified": 6,
+    "browserVerified": true,
     "productionConfiguration": {
       "siteUrl": "https://typesafe-jev.com",
       "gaId": "G-5HP02C0495",
       "adsEnabled": true,
       "monetagZoneId": "11855929"
     },
-    "worktree": {
-      "path": "/Volumes/ExternalProjects/Workspaces/codex/typesafe-jev-curation-20261101",
-      "peakBudgetGiB": 1.5
-    },
-    "productionDeployment": {
-      "status": "verified",
-      "existingRelease": "66d8a81af7130f55e8f2ba1b0b58203b432e688e",
-      "existingVersion": "c074657d-819c-4bcb-94dc-fbc55596bb6f",
-      "releaseSha": "55af96c794f7d6c6c3dbf0a0e9757778233d899f",
-      "version": "5d14e153-3f93-4256-83ee-9db4bfb05da2",
-      "trafficPercent": 100
-    },
-    "newCounts": {
-      "cases": 229,
-      "projects": 268,
-      "officialRecipes": 25
-    },
-    "added": {
-      "cases": 3,
-      "projects": 4,
-      "recipes": 0,
-      "updatedRecipes": 2
-    },
-    "backlog": {
-      "cases": 12,
-      "projects": 9
-    },
-    "browser": {
-      "headlessStart": "passed",
-      "ordinaryDesktopZh": "visible-material",
-      "ordinaryMobileBoth": "passed",
-      "desktopRestore": "fresh-same-browser-tab-1200-verified"
-    },
-    "sourceChecks": {
-      "github": "ok",
-      "x": "ok",
-      "official": "ok"
-    },
-    "historyCoverage": "partial",
-    "candidateWebsiteSha": "55af96c794f7d6c6c3dbf0a0e9757778233d899f",
-    "websiteSourcePush": "verified",
-    "validation": {
-      "status": "passed",
-      "buildPages": 46,
-      "testsPassed": 2928,
-      "configTests": 3,
-      "testsFailed": 0,
-      "dryRunAssets": 201,
-      "productionArtifactVerified": true,
-      "candidateRelease": "55af96c794f7d6c6c3dbf0a0e9757778233d899f"
-    },
-    "preDeploy": {
-      "checkedAt": "2026-11-03T03:27:35.915Z",
-      "remoteSha": "55af96c794f7d6c6c3dbf0a0e9757778233d899f",
-      "latestDeployment": {
-        "id": "114c9277-2f91-4951-b9f8-7d5f58abf506",
-        "created_on": "2026-10-31T03:26:13.869474Z",
-        "versions": [
-          {
-            "version_id": "c074657d-819c-4bcb-94dc-fbc55596bb6f",
-            "percentage": 100
-          }
-        ]
-      },
-      "paths": [
-        "src/data/cases.json",
-        "src/data/official-recipes.json",
-        "src/data/projects.json"
-      ]
-    },
-    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261103/deployed-artifact",
-    "websiteDeploymentAttempted": true,
-    "cloudflare": {
-      "deploymentId": "3ed7abc4-659c-40ac-95c4-abf6719da279",
-      "createdOn": "2026-11-03T03:28:02.460186Z",
-      "versions": [
-        {
-          "version_id": "5d14e153-3f93-4256-83ee-9db4bfb05da2",
-          "percentage": 100
-        }
-      ]
-    },
-    "coreReadbacks": [
-      {
-        "route": "/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 35130
-      },
-      {
-        "route": "/use-cases/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 588764
-      },
-      {
-        "route": "/en/use-cases/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 613430
-      },
-      {
-        "route": "/projects/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 170291
-      },
-      {
-        "route": "/en/projects/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 181324
-      },
-      {
-        "route": "/ads.txt",
-        "sameAsDeployedArtifact": true,
-        "bytes": 59
-      }
-    ],
-    "acceptedStaticAt": "2026-11-04T03:19:54.963751+00:00",
-    "healthEnd": {
-      "verifiedAt": "2026-11-04T03:25:25.983962+00:00",
-      "live": {
-        "status": "verified",
-        "pages": 44,
-        "releaseSha": "55af96c794f7d6c6c3dbf0a0e9757778233d899f",
-        "configuration": {
-          "siteUrl": "https://typesafe-jev.com",
-          "gaId": "G-5HP02C0495",
-          "adsEnabled": true,
-          "monetagZoneId": "11855929"
-        },
-        "adsTxt": "same-as-source",
-        "missing": 404,
-        "redirects": "verified"
-      },
-      "headlessRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261103/browser-verification.json",
-      "resumedOrdinaryChromeRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/ordinary-chrome-start.json",
-      "note": "Nov3部署/静态/平台/headless通过；普通Chrome剩余项于Nov4同版本恢复验收，无重复部署。"
-    },
+    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/deployed-artifact",
+    "publishedAt": "2026-11-04T03:30:30.368Z",
     "remainingBacklog": {
       "cases": 0,
       "projects": 0
-    },
-    "registrySync": {
-      "status": "pending-combined-Nov4-task-record"
-    },
-    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261103/release-verification.json"
+    }
   },
   "previousDailyReview": {
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261102/review.md",
