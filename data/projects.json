@@ -4286,5 +4286,53 @@
     "lastVerified": "2026-11-03",
     "status": "verified",
     "stars": 5
+  },
+  {
+    "id": "kevinyin9-next-steps-jev",
+    "name": "kevinyin9/next-steps-jev",
+    "url": "https://github.com/kevinyin9/next-steps-jev",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT终端Claude Code插件：原模型出候选、Jev Score排序，用户按键只填草稿；会话内容外发且宿主API早期，超时回退未证明HTTP取消。仅核源码，未安装。",
+      "en": "MIT terminal Claude Code plugin ranking model-proposed prompts with Jev Scores and filling drafts on user input. Conversation egress and early host API apply; timeout fallback does not prove cancellation. Source review only, not installed."
+    },
+    "sourceUrl": "https://github.com/kevinyin9/next-steps-jev/blob/de61bd06ab6cb981d679f49da758a98825133957/hooks/register.tsx",
+    "lastVerified": "2026-11-04",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "ryankapa-pasteguard",
+    "name": "Ryankapa/PasteGuard",
+    "url": "https://github.com/Ryankapa/PasteGuard",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Windows托盘原型，本地预筛命令后暂存剪贴板、用Jev Noul概率与阈值决定保留阻止或恢复；错误策略可配，命令内容外发。未运行或接剪贴板，不保证ClickFix防护。",
+      "en": "MIT Windows tray prototype holding command-like clipboard text while a Jev Noul and local gate select block/restoration. Configurable error policy; command content leaves the machine. Not run or connected to clipboard; no ClickFix-protection guarantee."
+    },
+    "sourceUrl": "https://github.com/Ryankapa/PasteGuard/blob/4952aa0e37d1f409dce1e108b42062f4521eea1b/src/PasteGuard/Analyzer.cs",
+    "lastVerified": "2026-11-04",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "ravex-io-ravex",
+    "name": "ravex-io/ravex",
+    "url": "https://github.com/ravex-io/ravex",
+    "category": "guard",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT Socket.IO聊天库的可选Jev Noul审核：在发送/编辑前用本地阈值阻止，默认fail-open与输入拒绝分开。作者原帖和源码已核，未连接聊天或验分类实效。",
+      "en": "Optional Jev Noul moderation in an MIT Socket.IO chat library, applying local gates before sends/edits. Default fail-open differs from input refusal. Original post and source checked; no chat connection or classifier-effectiveness testing."
+    },
+    "sourceUrl": "https://github.com/ravex-io/ravex/blob/0a937b4cc1f70f90796df5a4ec0048068138d8fc/packages/server/src/middleware/Moderation.ts",
+    "lastVerified": "2026-11-04",
+    "status": "verified",
+    "stars": 1
   }
 ]

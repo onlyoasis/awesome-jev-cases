@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (229)
+## 深度使用案例 / Worked cases (232)
 
 ### jev-ultrafast
 
@@ -2065,7 +2065,34 @@
 - 核验边界：只核固定公开源码，根许可未确认，因此不列已核许可的开源项目。只覆盖选摘，缺少提及不等于缺少方法；复核标记不裁定科研不端、科学真伪或临床适用性。未读取本机PDF、运行模型或复测作者效果。
 - 来源：[GitHub](https://github.com/bertran2born/jev-classifier) · [Source](https://github.com/bertran2born/jev-classifier/blob/c523cc475f7a840f5721a9e9aa51ea95bdb05343/jev_pdf_audit.py) · [Source](https://github.com/bertran2born/jev-classifier/blob/c523cc475f7a840f5721a9e9aa51ea95bdb05343/viewer.js)
 
-## 开源项目 / Open-source projects (268)
+### 下一步建议：Jev评分后只填草稿
+
+- 作者：kevinyin9
+- 输入：会话模型生成最多3条候选提示词；Jev只读最近用户消息最多2000字符、最近回答最多6000字符及候选。
+- Jev 判断：原生/v1/systemone为每条候选问五级Score，衡量它对当前目标的帮助；代码将0–4映射为0–100。
+- 后续动作：按分数排序，最高分至少50才标推荐；数字键或Tab只放入输入框草稿，用户仍需编辑并按Enter。缺Key、3秒等待超时或无效响应保留原顺序并显示未评分。
+- 核验边界：MIT社区插件，依赖终端Claude Code早期插件API，桌面/VS Code不适用；会话文本含代码或敏感内容也可能外发，无逐会话关闭开关。评分不等于长期目标最优；超时Promise.race未证明底层HTTP已取消。仅核固定源码和作者合成例，不安装、不读取本机会话或复测效果。
+- 来源：[GitHub](https://github.com/kevinyin9/next-steps-jev) · [Source](https://github.com/kevinyin9/next-steps-jev/blob/de61bd06ab6cb981d679f49da758a98825133957/hooks/register.tsx)
+
+### 剪贴板命令：先暂存，再按Noul概率拦截或恢复
+
+- 作者：Ryankapa
+- 输入：Windows剪贴板里经本地模式匹配识别的有限命令文本；标记为私有的剪贴板格式跳过。
+- Jev 判断：原生/v1/systemone问一个ClickFix风险Noul；yes概率乘100并四舍五入成为本地风险数，不是Score题型。
+- 后续动作：先移出命令文本再等待判定；达到阈值保留阻止并提示人工复核，低于阈值只在剪贴板序号未变时恢复。API失败按独立设置保持阻止或恢复，用户可显式释放。
+- 核验边界：MIT Windows社区原型，默认70是作者起点，未独立校准误报漏报。命令样式内容也可能含敏感信息并外发；本地预筛不是隐私或安全保证，清除与判断存在并发边界。未运行EXE、读取/改写本机剪贴板、执行命令或绕过SmartScreen；演示是作者Windows Sandbox样本。
+- 来源：[GitHub](https://github.com/Ryankapa/PasteGuard) · [Source](https://github.com/Ryankapa/PasteGuard/blob/4952aa0e37d1f409dce1e108b42062f4521eea1b/src/PasteGuard/JevClient.cs) · [Source](https://github.com/Ryankapa/PasteGuard/blob/4952aa0e37d1f409dce1e108b42062f4521eea1b/src/PasteGuard/Analyzer.cs) · [Source](https://github.com/Ryankapa/PasteGuard/blob/4952aa0e37d1f409dce1e108b42062f4521eea1b/src/PasteGuard/ClipboardWatcher.cs)
+
+### 聊天审核：Noul判断后由本地策略阻止发送或编辑
+
+- 作者：ravex-io
+- 输入：发送或编辑中的消息文本，先作本地类型、控制符和长度检查；仅显式配置moderation时启用。
+- Jev 判断：固定jev-1.14.0经原生/v1/systemone问辱骂Noul与默认启用的注入Noul，逐题验证有限合法概率。
+- 后续动作：默认辱骂阈值0.7、注入0.9；超过时抛MESSAGE_BLOCKED并触发审核回调。消息处理器在广播或编辑写入前筛查，并在队列/关闭后再核状态；短时重试和暂停调用独立于内容判断。
+- 核验边界：MIT社区集成，已回读原作者X与固定源码，未连接聊天或调用模型。默认fail-open可送出未审核消息，显式closed可阻止；服务拒绝该输入时无论模式均拒绝。fake-Jev测试不证明分类准确性、注入防护或真实送达；不是端到端加密聊天。
+- 来源：[Author X](https://x.com/gs_rumana/status/2117757832363974995) · [GitHub](https://github.com/ravex-io/ravex) · [Source](https://github.com/ravex-io/ravex/blob/0a937b4cc1f70f90796df5a4ec0048068138d8fc/packages/server/src/middleware/JevClient.ts) · [Source](https://github.com/ravex-io/ravex/blob/0a937b4cc1f70f90796df5a4ec0048068138d8fc/packages/server/src/middleware/Moderation.ts) · [Source](https://github.com/ravex-io/ravex/blob/0a937b4cc1f70f90796df5a4ec0048068138d8fc/packages/server/src/handlers/MessageHandler.ts)
+
+## 开源项目 / Open-source projects (271)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2337,6 +2364,9 @@
 | [u1-liquid/hermes-slack-agent-router](https://github.com/u1-liquid/hermes-slack-agent-router) | community | MIT | 0 |
 | [BronOS/cc-cockpit-jev-triage](https://github.com/BronOS/cc-cockpit-jev-triage) | community | MIT | 0 |
 | [Endgame-Labs/understudy](https://github.com/Endgame-Labs/understudy) | community | MIT | 5 |
+| [kevinyin9/next-steps-jev](https://github.com/kevinyin9/next-steps-jev) | community | MIT | 0 |
+| [Ryankapa/PasteGuard](https://github.com/Ryankapa/PasteGuard) | community | MIT | 0 |
+| [ravex-io/ravex](https://github.com/ravex-io/ravex) | community | MIT | 1 |
 
 ## 官方 cookbook / Official recipes (25)
 
@@ -2355,7 +2385,7 @@
 - [SDE cascade](https://docs.typesafe.ai/cookbooks/sde_cascade.md)：Uses a 2-stage structured-data-extraction cascade (mini → verify → reasoning) to get most of the quality of a big reasoning model at a fraction of the cost.
 - [Date extraction](https://docs.typesafe.ai/cookbooks/date_extraction_cookbook.md)：Extracts absolute and relative dates by asking TypeSafe for the parts named in a document, then resolving and validating them in code with confidence-based review.
 - [Pre-parsed value extraction](https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook.md)：Uses regexes to find candidate emails, phone numbers, and amounts, then has TypeSafe select the requested span so code can normalize a verbatim value.
-- [Hierarchical classification](https://docs.typesafe.ai/cookbooks/hierarchical_classification.md)：Classifies documents through deep patent, retail product, biomedical, and source-code hierarchies using parallel beam search over TypeSafe Choice probabilities.
+- [Hierarchical classification](https://docs.typesafe.ai/cookbooks/hierarchical_classification.md)：Uses parallel beam search over Choice probabilities for pinned CPC 2026.05, Shopify 2026-02 and January-2026 MeSH hierarchies. Taxonomy data retain publisher terms; three author-worked examples are not a general benchmark, and biomedical subject classification is not medical advice.
 - [Autoresearch feature discovery](https://docs.typesafe.ai/cookbooks/autoresearch_feature_discovery.md)：Runs an autoresearch loop that proposes TypeSafe questions, converts free text into numeric features, and uses model errors to improve a supervised CatBoost regressor.
 - [Classification using confidence](https://docs.typesafe.ai/cookbooks/classification_using_confidence.md)：Classify SEC annual reports into 75 industry groups with one Choice each, then read the answer's own confidence to decide whether to report that group or the broader division above it.
 - [Simple memory system](https://docs.typesafe.ai/cookbooks/basic_memory.md)：Store customer tickets and answers behind a Noul memory gate, then inject them into later typed support-routing calls. Toy dict-based example; evaluate the threshold for your own data.

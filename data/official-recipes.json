@@ -138,10 +138,10 @@
     "id": "hierarchical_classification",
     "name": "Hierarchical classification",
     "url": "https://docs.typesafe.ai/cookbooks/hierarchical_classification.md",
-    "description": "Classifies documents through deep patent, retail product, biomedical, and source-code hierarchies using parallel beam search over TypeSafe Choice probabilities.",
+    "description": "Uses parallel beam search over Choice probabilities for pinned CPC 2026.05, Shopify 2026-02 and January-2026 MeSH hierarchies. Taxonomy data retain publisher terms; three author-worked examples are not a general benchmark, and biomedical subject classification is not medical advice.",
     "source": "official",
     "discoveredAt": "2026-09-24",
-    "lastVerified": "2026-09-24"
+    "lastVerified": "2026-11-04"
   },
   {
     "id": "autoresearch_feature_discovery",
