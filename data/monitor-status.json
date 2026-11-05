@@ -1,164 +1,164 @@
 {
-  "checkedAt": "2026-11-04T03:30:40.287143+00:00",
+  "checkedAt": "2026-11-05T03:32:21.556945+00:00",
   "github": "ok",
   "official": "ok",
   "x": "ok",
   "addedProjects": 3,
-  "addedCases": 3,
+  "addedCases": 4,
   "officialRecipes": 25,
-  "xPosts": 13,
+  "xPosts": 16,
   "xVisibleCounts": {
-    "TypeSafe Jev": 7,
+    "TypeSafe Jev": 10,
     "Jev github.com": 6,
     "from:typesafeai Jev": 0
   },
   "xHistoricalCoverage": "partial",
   "xHistoricalBackfillFrom": "2026-09-22T02:27:56.532Z",
-  "xHistoricalCoverageNote": "日期结果仍含界外，改作者无日期Latest自然滚动与原帖；仅局部覆盖，保留9月22日起点及manualBackfill。",
+  "xHistoricalCoverageNote": "作者无日期Latest滚动到9月22日前，仅局部账号样本；补充既有Precog原帖，9月22日起点/manualBackfill保留，不声称其他未覆盖时段无新增。",
   "githubSearches": [
     {
-      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-11-01",
-      "checkedAt": "2026-11-04T03:19:25.268832+00:00",
+      "query": "\"TypeSafe Jev\" in:readme pushed:>=2026-11-02",
+      "checkedAt": "2026-11-05T03:24:32.787669+00:00",
       "status": "ok",
-      "totalCount": 1222,
+      "totalCount": 1272,
       "incomplete": false,
       "sampledResults": 30,
       "urls": [
+        "https://github.com/luyizhou6126214/serphia",
         "https://github.com/iii-hq/workers",
-        "https://github.com/Xia-Ataraxia/obsidian-metadata-auto-classifier",
-        "https://github.com/ysl-bots/Contest",
-        "https://github.com/KW-Yeh/VibeFlow",
-        "https://github.com/surya-sirisolla/Just-News",
-        "https://github.com/genspark-ai/genoffice",
-        "https://github.com/belchingleo/ChefJeff",
-        "https://github.com/HerbertGao/pi-extensions",
-        "https://github.com/YueyuHoshizora/TrackRadar",
-        "https://github.com/20030325zwx-lgtm/zwx-agent",
-        "https://github.com/ricomanifesto/GRCInsight",
-        "https://github.com/hayaenfj/shikii",
-        "https://github.com/Sidiora-Labs/hyperfide",
-        "https://github.com/SamDhingra/FX-agents",
-        "https://github.com/valerievanvu-dev/switchback",
-        "https://github.com/aaronblatnoy/blatbot",
-        "https://github.com/masterputra169/polymarket-btc-15-minutes",
-        "https://github.com/daveey/hermes-mods",
-        "https://github.com/isaaciseiler-beep/website-8-26",
-        "https://github.com/FausticSun/style-audit",
-        "https://github.com/nandodsg/stackoverflow-answerability",
-        "https://github.com/Jydsh/dsh-mrrp",
-        "https://github.com/OpenRouterTeam/docs",
-        "https://github.com/rantorna/rantorna.github.io",
         "https://github.com/kydlikebtc/awesome-jev",
-        "https://github.com/Yese-zw/sub2api-custom",
-        "https://github.com/milind-soni/OpenMausBot",
-        "https://github.com/cynthia-git11/clawq-diary",
-        "https://github.com/dereknex/fast-jev-compaction",
-        "https://github.com/adesurirey/prisme"
+        "https://github.com/pilacorp/nda-harness",
+        "https://github.com/ryan99teo/trade",
+        "https://github.com/wingedsheep/argentum-engine",
+        "https://github.com/Swordsman/sync_swords_plugin",
+        "https://github.com/genspark-ai/genoffice",
+        "https://github.com/YueyuHoshizora/TrackRadar",
+        "https://github.com/prgrmrwy/dsh-auto-model-routing",
+        "https://github.com/bketelsen/pi-pocket-team",
+        "https://github.com/EugeneinTW/fable5-cases",
+        "https://github.com/heyitsR1/myna-app",
+        "https://github.com/machamp0714/nod",
+        "https://github.com/davemen/grand-illusion-radar",
+        "https://github.com/jj-stuff/relay",
+        "https://github.com/firaen22/marketview-index",
+        "https://github.com/ericpanrun-commits/touxian",
+        "https://github.com/TimChr78/Agentic-Marketing",
+        "https://github.com/surya-sirisolla/Just-News",
+        "https://github.com/AreevAI/areev",
+        "https://github.com/Broderick-Westrope/broderick-westrope",
+        "https://github.com/ayayaQ/vivi-cli",
+        "https://github.com/xiaohuiyan/awesome-jev-papers",
+        "https://github.com/20030325zwx-lgtm/zwx-agent",
+        "https://github.com/leejisabella/system_one_explanability",
+        "https://github.com/HerbertGao/pi-extensions",
+        "https://github.com/AkashPriyadarshii/AkashPriyadarshii",
+        "https://github.com/ictrektech/V-Scheduler",
+        "https://github.com/Songwo/zhiyu"
       ]
     },
     {
-      "query": "jev in:name,description created:>=2026-11-01",
-      "checkedAt": "2026-11-04T03:19:25.208408+00:00",
+      "query": "jev in:name,description created:>=2026-11-02",
+      "checkedAt": "2026-11-05T03:24:31.738356+00:00",
       "status": "ok",
-      "totalCount": 210,
+      "totalCount": 208,
       "incomplete": false,
       "sampledResults": 30,
       "urls": [
-        "https://github.com/sakamoto66/webhand",
-        "https://github.com/takemo101/voice-control",
-        "https://github.com/Caph-dev/coffee-cart-demo",
-        "https://github.com/phillui-37/local-decision-framework",
-        "https://github.com/logicore-code/TraceCell",
-        "https://github.com/JeromyJSmith/jev-trading-lab",
+        "https://github.com/vivekanand1101/tic-tac-toe",
+        "https://github.com/stivelcn/jev-route-releases",
+        "https://github.com/PayAttentionECNU/JevTraffic",
         "https://github.com/uuutt2023/astrbot_plugin_jev_gateway",
-        "https://github.com/mxttbennett/jev-relay",
-        "https://github.com/crisesarmiento/opencode-routing-dashboard",
-        "https://github.com/hrf666666/iluvatar-experts-gen",
-        "https://github.com/Saturn294571/VA-MAS",
-        "https://github.com/gaoxingkele/myjev",
-        "https://github.com/PG-Darksan/blue",
-        "https://github.com/Michael-RDev/jev-as-router",
-        "https://github.com/kevinyin9/next-steps-jev",
-        "https://github.com/BronOS/cc-cockpit-jira",
-        "https://github.com/BronOS/cc-cockpit-gmail",
-        "https://github.com/BronOS/cc-cockpit-chat",
-        "https://github.com/ve2312012026-droid/Games-JEV",
-        "https://github.com/LuisDiego1010/Andon_Embebidos_PII",
-        "https://github.com/mwatkins03-netizen/The-Supper-Club-",
-        "https://github.com/frankievalentine/claude-decision-router",
-        "https://github.com/SpectorHacked/jev-char-service",
-        "https://github.com/DexterJae/AstraJev",
-        "https://github.com/VianneyMI/python-jev",
+        "https://github.com/taegi-hong/jev-researchmate-local",
+        "https://github.com/sudarshan210688/Clausario",
+        "https://github.com/phillui-37/local-decision-framework",
+        "https://github.com/takemo101/voice-control",
+        "https://github.com/WyattKnepp/Sports_Reference",
+        "https://github.com/B-A-M-N/Jeverb",
+        "https://github.com/calware/nocompact",
+        "https://github.com/Nomysx/jev-mote",
+        "https://github.com/gryszzz/jev-paper",
+        "https://github.com/taegi-hong/jev-disputeguard-local-ai-ai",
+        "https://github.com/curtismu7/jev-lab",
         "https://github.com/Ryankapa/PasteGuard",
+        "https://github.com/toasterman234/jeview",
+        "https://github.com/crisesarmiento/opencode-routing-dashboard",
+        "https://github.com/motivationp81-star/jev-decision-terminal",
+        "https://github.com/milopraetzel/kickbase-copilot",
+        "https://github.com/yy1588133/dsh-sensitive-guard",
+        "https://github.com/shmulc8/jev-game-lab",
+        "https://github.com/jelbirt/tenq",
         "https://github.com/hamr0/rwxlite",
-        "https://github.com/nello27/n8n-cv-recruitment-pipeline",
-        "https://github.com/ananthrajendran/outsmart-jev",
+        "https://github.com/ezcodelab/libreharness",
+        "https://github.com/serhiismetanskyi/llm-output-evaluation-with-clef",
+        "https://github.com/GabrielAndrus/Jev-Rule-Engine",
+        "https://github.com/KMIntelligentSystems/NASDAQ-sentiment-classifier",
+        "https://github.com/lawrence3699/jev-style-2b-v4-training",
         "https://github.com/Fasterious/jevotequi"
       ]
     },
     {
-      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-11-01",
-      "checkedAt": "2026-11-04T03:19:25.565140+00:00",
+      "query": "\"System One\" TypeSafe in:readme pushed:>=2026-11-02",
+      "checkedAt": "2026-11-05T03:24:31.978997+00:00",
       "status": "ok",
-      "totalCount": 923,
+      "totalCount": 967,
       "incomplete": false,
       "sampledResults": 30,
       "urls": [
-        "https://github.com/inosphe/claude-launcher",
-        "https://github.com/araray/llmcore",
-        "https://github.com/FazalAttic/avelor-ai",
+        "https://github.com/yoredstorm/zent_rag",
+        "https://github.com/kydlikebtc/awesome-jev",
+        "https://github.com/Antseed/antseed",
         "https://github.com/genspark-ai/genoffice",
         "https://github.com/YueyuHoshizora/TrackRadar",
-        "https://github.com/hayaenfj/shikii",
-        "https://github.com/aminry/decisio",
-        "https://github.com/shufflethis/agent-tracking",
-        "https://github.com/Sidiora-Labs/hyperfide",
-        "https://github.com/vice7770/surfing-game",
-        "https://github.com/aaronblatnoy/blatbot",
-        "https://github.com/masterputra169/polymarket-btc-15-minutes",
-        "https://github.com/daveey/hermes-mods",
+        "https://github.com/choiyounggi/groundwork",
+        "https://github.com/prgrmrwy/dsh-auto-model-routing",
+        "https://github.com/dpbs-715/skills",
+        "https://github.com/jj-stuff/relay",
+        "https://github.com/araray/llmcore",
+        "https://github.com/zwldarren/llm-proxy",
+        "https://github.com/LonelyYeezhiChicken/QuantitativeTrading",
+        "https://github.com/MemberJunction/MJ",
+        "https://github.com/TimChr78/Agentic-Marketing",
+        "https://github.com/Broderick-Westrope/broderick-westrope",
+        "https://github.com/WizardingCode-io/wizardingcode-developer-crew",
+        "https://github.com/xiaohuiyan/awesome-jev-papers",
+        "https://github.com/CarterCole/rust-cev",
+        "https://github.com/spacepacket1/e3d-pilot",
+        "https://github.com/leejisabella/system_one_explanability",
+        "https://github.com/agent-sh/tacit",
         "https://github.com/dashaun-tanzu/recent-cve-news",
-        "https://github.com/kydlikebtc/awesome-jev",
-        "https://github.com/Yese-zw/sub2api-custom",
-        "https://github.com/Antseed/antseed",
-        "https://github.com/dereknex/fast-jev-compaction",
-        "https://github.com/Jumbo-Juice/local-system-one",
-        "https://github.com/nsk1711/colibri",
-        "https://github.com/Srijan76-code/ReachAi-InfluencerMarketing",
-        "https://github.com/tbdavid2019/stock-underdog-ml",
-        "https://github.com/kejun/blogpost",
-        "https://github.com/Horace-Maxwell/horosa-skill",
-        "https://github.com/adventists-ai/duplexjev",
-        "https://github.com/jaredwray/autonomo.us",
-        "https://github.com/ncecere/open-model-gateway",
-        "https://github.com/hussi9/skill-router",
-        "https://github.com/tickernelz/sub2api",
-        "https://github.com/sirkirby/routr"
+        "https://github.com/tutros/sbxm",
+        "https://github.com/ictrektech/V-Scheduler",
+        "https://github.com/raullenchai/Rapid-MLX",
+        "https://github.com/daveey/hermes-mods",
+        "https://github.com/PayAttentionECNU/JevTraffic",
+        "https://github.com/UvYadav04/Agentlytics---multi-agent-engine",
+        "https://github.com/Arize-ai/openinference",
+        "https://github.com/itom123/a-g-sub2api-alternative-uiux-with-sidebar"
       ]
     }
   ],
-  "githubLastSuccessfulAt": "2026-11-04T03:19:25.565140+00:00",
-  "officialLastSuccessfulAt": "2026-11-04T03:19:29.172704+00:00",
-  "xLastSuccessfulAt": "2026-11-04T03:25:25.983962+00:00",
+  "githubLastSuccessfulAt": "2026-11-05T03:24:32.787669+00:00",
+  "officialLastSuccessfulAt": "2026-11-05T03:24:36.786355+00:00",
+  "xLastSuccessfulAt": "2026-11-05T03:32:21.556945+00:00",
   "xQueryStatus": {
     "TypeSafe Jev": "ok",
     "Jev github.com": "ok",
     "from:typesafeai Jev": "ok"
   },
-  "githubSearchNote": "三组1222/210/923各30样本；GitHub精读3仓，另X作者原帖追踪ravex一仓；合计新增3案例3项目，非全量。",
+  "githubSearchNote": "三组1272/208/967各30，代码13120取10；精读4新仓，非全量；3社区代码案例、3项目，另官方demo案例1。Sports未知根许可仅案例。",
   "officialRepositoryCount": 12,
-  "officialNote": "25教程/12仓、两demo200；examples两提交，实质修正层次分类摘要1篇，0新配方。",
+  "officialNote": "25cookbook/12仓，examples SHA未变，3demo200；新增Airbnb Sheet官方源码演示为案例，非新cookbook。",
   "recovery": {
-    "checkedAt": "2026-11-04T03:25:25.983962+00:00",
+    "checkedAt": "2026-11-05T03:32:21.556945+00:00",
     "executor": "当前macOS实际执行器",
     "systemPermissionChanges": false,
     "infrastructure": "passed",
-    "chrome": "官方node_repl重新bootstrap，清单选择vivian，三Latest真实回读",
+    "chrome": "官方node_repl重建绑定，清单选择vivian，三Latest真实回读",
     "sourceRetries": 0
   },
-  "officialRepositoryCountLastVerifiedAt": "2026-11-04T03:19:29.172704+00:00",
+  "officialRepositoryCountLastVerifiedAt": "2026-11-05T03:24:36.786355+00:00",
   "publishEnvironment": {
-    "checkedAt": "2026-11-04T03:18:13.065Z",
+    "checkedAt": "2026-11-05T03:22:33.116Z",
     "executor": {
       "sandbox": "not-set",
       "networkDisabled": false
@@ -168,23 +168,23 @@
         "ok": true,
         "peakBudgetGiB": 1.5,
         "minimumFreeGiB": 60,
-        "projectedFreeGiB": 62.243
+        "projectedFreeGiB": 61.603
       },
       "evidenceStorage": {
         "ok": true,
         "peakBudgetGiB": 1.5,
         "minimumFreeGiB": 60,
-        "projectedFreeGiB": 62.243
+        "projectedFreeGiB": 61.603
       },
       "catalogGitHub": {
         "ok": true,
-        "main": "5bec0519fcda0f3f1e846d93d1e663e774178b59",
+        "main": "d961f1d632e73e084a327024b4d5d9b6eb099a62",
         "sshReadback": true,
         "pushDryRun": true
       },
       "websiteGitHub": {
         "ok": true,
-        "main": "55af96c794f7d6c6c3dbf0a0e9757778233d899f",
+        "main": "6c01dde384c83e21f3c1cf5677cc8c3a4caf00b4",
         "sshReadback": true,
         "pushDryRun": true
       },
@@ -202,7 +202,7 @@
         "ok": true,
         "latestVersions": [
           {
-            "versionId": "5d14e153-3f93-4256-83ee-9db4bfb05da2",
+            "versionId": "667b80de-ea42-47c8-9a8f-fc41e3c61a30",
             "percentage": 100
           }
         ]
@@ -214,34 +214,13 @@
     "host": "darwin"
   },
   "publication": {
-    "status": "published-and-verified",
-    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261104/review.md",
-    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/release-verification.json",
-    "catalogPush": "verified",
-    "websiteSync": "verified",
-    "websiteDeploy": "verified",
+    "status": "catalog-ready",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261105/review.md",
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261105/release-verification.json",
+    "catalogPush": "pending",
+    "websiteSync": "pending",
+    "websiteDeploy": "pending",
     "backlog": {
-      "previousCases": 12,
-      "previousProjects": 9,
-      "status": "cleared-by-Nov3-release-confirmed-Nov4"
-    },
-    "websiteSourcePush": "verified",
-    "catalogContentSha": "b78d7be233b8d11f4998578d0998e09c7b7dcad7",
-    "websiteSha": "6c01dde384c83e21f3c1cf5677cc8c3a4caf00b4",
-    "cloudflareVersion": "667b80de-ea42-47c8-9a8f-fc41e3c61a30",
-    "trafficPercent": 100,
-    "formalPagesVerified": 44,
-    "corePagesByteVerified": 6,
-    "browserVerified": true,
-    "productionConfiguration": {
-      "siteUrl": "https://typesafe-jev.com",
-      "gaId": "G-5HP02C0495",
-      "adsEnabled": true,
-      "monetagZoneId": "11855929"
-    },
-    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/deployed-artifact",
-    "publishedAt": "2026-11-04T03:30:30.368Z",
-    "remainingBacklog": {
       "cases": 0,
       "projects": 0
     }
@@ -477,225 +456,152 @@
   ],
   "xSearches": [
     {
-      "query": "\"TypeSafe Jev\" since:2026-11-01 -is:retweet",
-      "latest": true,
-      "visiblePosts": 7,
-      "explicitNoResults": false,
-      "checkedAt": "2026-11-04T03:25:48.688075+00:00",
+      "query": "\"TypeSafe Jev\" since:2026-11-02 -is:retweet",
+      "recordedAt": "2026-11-05T03:33:14.739Z",
+      "latest": "Latest",
+      "visiblePosts": 10,
       "links": [
-        "https://x.com/rlarguesa/status/2117638682656047338",
-        "https://x.com/GitTrend0x/status/2117610415827882290",
-        "https://x.com/YouXi29254/status/2117605784507077080",
-        "https://x.com/VIVEKPM99/status/2117595151212400798",
-        "https://x.com/FinrodChen/status/2117519248704831966",
-        "https://x.com/otiseleven/status/2117359243435376809",
-        "https://x.com/InfronAI/status/2117333466882973819"
-      ]
+        {
+          "url": "https://x.com/oalanicolas/status/2118137941545345265",
+          "time": "2026-11-05T00:26:53Z"
+        },
+        {
+          "url": "https://x.com/QssQxs/status/2117824468420886539",
+          "time": "2026-11-04T03:41:15Z"
+        },
+        {
+          "url": "https://x.com/QssQxs/status/2117823751962472482",
+          "time": "2026-11-04T03:38:24Z"
+        },
+        {
+          "url": "https://x.com/YouXi29254/status/2117820609459785812",
+          "time": "2026-11-04T03:25:55Z"
+        },
+        {
+          "url": "https://x.com/rlarguesa/status/2117638682656047338",
+          "time": "2026-11-03T15:23:00Z"
+        },
+        {
+          "url": "https://x.com/GitTrend0x/status/2117610415827882290",
+          "time": "2026-11-03T13:30:41Z"
+        },
+        {
+          "url": "https://x.com/YouXi29254/status/2117605784507077080",
+          "time": "2026-11-03T13:12:16Z"
+        },
+        {
+          "url": "https://x.com/VIVEKPM99/status/2117595151212400798",
+          "time": "2026-11-03T12:30:01Z"
+        },
+        {
+          "url": "https://x.com/FinrodChen/status/2117519248704831966",
+          "time": "2026-11-03T07:28:25Z"
+        },
+        {
+          "url": "https://x.com/InfronAI/status/2117333466882973819",
+          "time": "2026-11-02T19:10:11Z"
+        }
+      ],
+      "explicitNoResults": false
     },
     {
-      "query": "Jev github.com since:2026-11-01 -is:retweet",
-      "latest": true,
+      "query": "Jev github.com since:2026-11-02 -is:retweet",
+      "checkedAt": "2026-11-05T03:24:54.237Z",
+      "latest": "Latest",
       "visiblePosts": 6,
-      "explicitNoResults": false,
-      "checkedAt": "2026-11-04T03:25:48.688075+00:00",
       "links": [
-        "https://x.com/wang_haole71414/status/2117809282611822765",
-        "https://x.com/frankwong0205/status/2117791841076834779",
-        "https://x.com/gs_rumana/status/2117757832363974995",
-        "https://x.com/bekaqendrim/status/2117755678228160788",
-        "https://x.com/MrHodl/status/2117667185317278036",
-        "https://x.com/updog_osaka/status/2117590629463326877"
-      ]
+        {
+          "url": "https://x.com/ryanusthedev/status/2118108096644219128",
+          "time": "2026-11-04T22:28:17.000Z"
+        },
+        {
+          "url": "https://x.com/jmurray10_/status/2118036053064061006",
+          "time": "2026-11-04T17:42:00.000Z"
+        },
+        {
+          "url": "https://x.com/oka_yuuji/status/2117997546664780258",
+          "time": "2026-11-04T15:09:00.000Z"
+        },
+        {
+          "url": "https://x.com/thedoomguy_ai/status/2117968858460143873",
+          "time": "2026-11-04T13:15:00.000Z"
+        },
+        {
+          "url": "https://x.com/decision_models/status/2117949818454851605",
+          "time": "2026-11-04T11:59:20.000Z"
+        },
+        {
+          "url": "https://x.com/YevMur/status/2117947573357117607",
+          "time": "2026-11-04T11:50:25.000Z"
+        }
+      ],
+      "explicitNoResults": false
     },
     {
-      "query": "from:typesafeai Jev since:2026-11-01 -is:retweet",
-      "latest": true,
+      "query": "from:typesafeai Jev since:2026-11-02 -is:retweet",
+      "checkedAt": "2026-11-05T03:25:27.665Z",
+      "latest": "Latest",
       "visiblePosts": 0,
-      "explicitNoResults": true,
-      "checkedAt": "2026-11-04T03:25:48.688075+00:00",
-      "links": []
+      "links": [],
+      "explicitNoResults": true
     }
   ],
   "previousPublication": {
     "status": "published-and-verified",
-    "catalogContentSha": "5bec0519fcda0f3f1e846d93d1e663e774178b59",
-    "websiteCandidateBeforeRun": "028f8aeec9b3bac5c1745695cd5644e4265be1b8",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261104/review.md",
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/release-verification.json",
+    "catalogPush": "verified",
+    "websiteSync": "verified",
+    "websiteDeploy": "verified",
+    "backlog": {
+      "previousCases": 12,
+      "previousProjects": 9,
+      "status": "cleared-by-Nov3-release-confirmed-Nov4"
+    },
+    "websiteSourcePush": "verified",
+    "catalogContentSha": "b78d7be233b8d11f4998578d0998e09c7b7dcad7",
+    "websiteSha": "6c01dde384c83e21f3c1cf5677cc8c3a4caf00b4",
+    "cloudflareVersion": "667b80de-ea42-47c8-9a8f-fc41e3c61a30",
+    "trafficPercent": 100,
+    "formalPagesVerified": 44,
+    "corePagesByteVerified": 6,
+    "browserVerified": true,
     "productionConfiguration": {
       "siteUrl": "https://typesafe-jev.com",
       "gaId": "G-5HP02C0495",
       "adsEnabled": true,
       "monetagZoneId": "11855929"
     },
-    "worktree": {
-      "path": "/Volumes/ExternalProjects/Workspaces/codex/typesafe-jev-curation-20261101",
-      "peakBudgetGiB": 1.5
-    },
-    "productionDeployment": {
-      "status": "verified",
-      "existingRelease": "66d8a81af7130f55e8f2ba1b0b58203b432e688e",
-      "existingVersion": "c074657d-819c-4bcb-94dc-fbc55596bb6f",
-      "releaseSha": "55af96c794f7d6c6c3dbf0a0e9757778233d899f",
-      "version": "5d14e153-3f93-4256-83ee-9db4bfb05da2",
-      "trafficPercent": 100
-    },
-    "newCounts": {
-      "cases": 229,
-      "projects": 268,
-      "officialRecipes": 25
-    },
-    "added": {
-      "cases": 3,
-      "projects": 4,
-      "recipes": 0,
-      "updatedRecipes": 2
-    },
-    "backlog": {
-      "cases": 12,
-      "projects": 9
-    },
-    "browser": {
-      "headlessStart": "passed",
-      "ordinaryDesktopZh": "visible-material",
-      "ordinaryMobileBoth": "passed",
-      "desktopRestore": "fresh-same-browser-tab-1200-verified"
-    },
-    "sourceChecks": {
-      "github": "ok",
-      "x": "ok",
-      "official": "ok"
-    },
-    "historyCoverage": "partial",
-    "candidateWebsiteSha": "55af96c794f7d6c6c3dbf0a0e9757778233d899f",
-    "websiteSourcePush": "verified",
-    "validation": {
-      "status": "passed",
-      "buildPages": 46,
-      "testsPassed": 2928,
-      "configTests": 3,
-      "testsFailed": 0,
-      "dryRunAssets": 201,
-      "productionArtifactVerified": true,
-      "candidateRelease": "55af96c794f7d6c6c3dbf0a0e9757778233d899f"
-    },
-    "preDeploy": {
-      "checkedAt": "2026-11-03T03:27:35.915Z",
-      "remoteSha": "55af96c794f7d6c6c3dbf0a0e9757778233d899f",
-      "latestDeployment": {
-        "id": "114c9277-2f91-4951-b9f8-7d5f58abf506",
-        "created_on": "2026-10-31T03:26:13.869474Z",
-        "versions": [
-          {
-            "version_id": "c074657d-819c-4bcb-94dc-fbc55596bb6f",
-            "percentage": 100
-          }
-        ]
-      },
-      "paths": [
-        "src/data/cases.json",
-        "src/data/official-recipes.json",
-        "src/data/projects.json"
-      ]
-    },
-    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261103/deployed-artifact",
-    "websiteDeploymentAttempted": true,
-    "cloudflare": {
-      "deploymentId": "3ed7abc4-659c-40ac-95c4-abf6719da279",
-      "createdOn": "2026-11-03T03:28:02.460186Z",
-      "versions": [
-        {
-          "version_id": "5d14e153-3f93-4256-83ee-9db4bfb05da2",
-          "percentage": 100
-        }
-      ]
-    },
-    "coreReadbacks": [
-      {
-        "route": "/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 35130
-      },
-      {
-        "route": "/use-cases/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 588764
-      },
-      {
-        "route": "/en/use-cases/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 613430
-      },
-      {
-        "route": "/projects/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 170291
-      },
-      {
-        "route": "/en/projects/",
-        "sameAsDeployedArtifact": true,
-        "bytes": 181324
-      },
-      {
-        "route": "/ads.txt",
-        "sameAsDeployedArtifact": true,
-        "bytes": 59
-      }
-    ],
-    "acceptedStaticAt": "2026-11-04T03:19:54.963751+00:00",
-    "healthEnd": {
-      "verifiedAt": "2026-11-04T03:25:25.983962+00:00",
-      "live": {
-        "status": "verified",
-        "pages": 44,
-        "releaseSha": "55af96c794f7d6c6c3dbf0a0e9757778233d899f",
-        "configuration": {
-          "siteUrl": "https://typesafe-jev.com",
-          "gaId": "G-5HP02C0495",
-          "adsEnabled": true,
-          "monetagZoneId": "11855929"
-        },
-        "adsTxt": "same-as-source",
-        "missing": 404,
-        "redirects": "verified"
-      },
-      "headlessRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261103/browser-verification.json",
-      "resumedOrdinaryChromeRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/ordinary-chrome-start.json",
-      "note": "Nov3部署/静态/平台/headless通过；普通Chrome剩余项于Nov4同版本恢复验收，无重复部署。"
-    },
+    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/deployed-artifact",
+    "publishedAt": "2026-11-04T03:30:30.368Z",
     "remainingBacklog": {
       "cases": 0,
       "projects": 0
-    },
-    "registrySync": {
-      "status": "pending-combined-Nov4-task-record"
-    },
-    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261103/release-verification.json"
+    }
   },
   "productionHealth": {
-    "startRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/health-start.json",
+    "startRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261105/health-start.json",
     "start": "verified",
-    "end": "verified",
-    "browser": "verified",
-    "repairNeeded": false,
-    "status": "verified",
-    "endRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/health-end.json",
-    "browserRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/browser-verification.json",
-    "ordinaryChromeRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261104/ordinary-chrome-end.json",
-    "formalPagesVerified": 44,
-    "verificationTarget": "current-production"
+    "end": "pending",
+    "browser": "start-passed",
+    "repairNeeded": false
   },
   "currentRun": {
     "automationId": "jev",
     "type": "scheduled-daily-curation",
-    "scheduledAt": "2026-11-04T03:17:48.002Z",
-    "checkedAt": "2026-11-04T03:25:25.983962+00:00",
-    "status": "published-and-verified",
-    "addedCases": 3,
+    "scheduledAt": "2026-11-05T03:21:50.598Z",
+    "checkedAt": "2026-11-05T03:32:21.556945+00:00",
+    "status": "catalog-ready",
+    "addedCases": 4,
     "addedProjects": 3,
     "addedOfficialRecipes": 0,
-    "updatedOfficialRecipes": 1,
+    "officialDemoCasesAdded": 1,
+    "updatedExistingCases": [
+      "allie-streaming-stt-intent-prewarm"
+    ],
     "historicalCasesAdded": 0,
-    "githubCandidatesReviewed": 3,
-    "xCandidatesReviewed": 1,
+    "githubCandidatesReviewed": 4,
+    "xCandidatesReviewed": 2,
     "sourceChecks": {
       "github": "ok",
       "x": "ok",
@@ -703,17 +609,7 @@
     },
     "historyCoverage": "partial",
     "scheduleChanged": false,
-    "cachePersistence": "saved-to-Projects",
-    "resumedPreviousPublication": true,
-    "completedAt": "2026-11-04T03:30:40.287143+00:00",
-    "commit": "b78d7be233b8d11f4998578d0998e09c7b7dcad7",
-    "websiteCommit": "6c01dde384c83e21f3c1cf5677cc8c3a4caf00b4",
-    "push": "verified",
-    "deployment": "verified",
-    "browser": "verified",
-    "pendingTotalCases": 0,
-    "pendingTotalProjects": 0,
-    "sourceCompletion": "all-three-succeeded-history-partial"
+    "cachePersistence": "saved-to-Projects"
   },
   "previousBlockedPublication": {
     "status": "blocked-storage-preflight",
@@ -761,37 +657,37 @@
     "from:typesafeai Jev": 0
   },
   "dailyReview": {
-    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261104/review.md",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261105/review.md",
     "reviewedRepositories": [
       {
-        "repo": "Caph-dev/coffee-cart-demo",
-        "sha": "ae3bbcf356cad98e2ccb80fb40e09bdd7a578ddd",
-        "commitAt": "2026-11-04T03:15:30Z",
+        "repo": "WyattKnepp/Sports_Reference",
+        "sha": "5fc3e64a2edcf0629aed3cf6c215d6078c476079",
+        "commitAt": "2026-11-05T00:39:31Z",
         "license": "unknown",
         "rootLicensePaths": []
       },
       {
-        "repo": "Ryankapa/PasteGuard",
-        "sha": "4952aa0e37d1f409dce1e108b42062f4521eea1b",
-        "commitAt": "2026-11-03T22:14:44Z",
+        "repo": "philrenaud/practical-data",
+        "sha": "a3f850fb8e2c452f194b0a11de94e8d0b7481c34",
+        "commitAt": "2026-11-04T16:55:52Z",
         "license": "MIT",
         "rootLicensePaths": [
           "LICENSE"
         ]
       },
       {
-        "repo": "kevinyin9/next-steps-jev",
-        "sha": "de61bd06ab6cb981d679f49da758a98825133957",
-        "commitAt": "2026-11-04T01:12:32Z",
+        "repo": "prgrmrwy/dsh-auto-model-routing",
+        "sha": "8e3287986ea91b9dc49192af67b47b7f8110881b",
+        "commitAt": "2026-11-05T02:19:13Z",
         "license": "MIT",
         "rootLicensePaths": [
           "LICENSE"
         ]
       },
       {
-        "repo": "ravex-io/ravex",
-        "sha": "0a937b4cc1f70f90796df5a4ec0048068138d8fc",
-        "commitAt": "2026-11-03T23:03:34Z",
+        "repo": "yy1588133/dsh-sensitive-guard",
+        "sha": "6c15412082f95e74057f6a4180ded881a6fe5ec0",
+        "commitAt": "2026-11-04T22:41:33Z",
         "license": "MIT",
         "rootLicensePaths": [
           "LICENSE"
@@ -800,16 +696,19 @@
     ],
     "historicalAdded": [],
     "historyStartPreserved": true,
-    "updatedOfficialRecipes": [
-      "hierarchical_classification"
-    ]
+    "updatedExistingCases": [
+      "allie-streaming-stt-intent-prewarm"
+    ],
+    "officialDemoCaseAdded": "official-airbnb-sheet-shortlist-score",
+    "xDiscoveredRepositoriesReviewed": 1
   },
   "xHistoricalIncrement": {
-    "checkedAt": "2026-11-04T03:25:25.983962+00:00",
+    "checkedAt": "2026-11-05T03:32:21.556945+00:00",
     "status": "ok-partial",
     "addedCases": 0,
+    "updatedCases": 1,
     "cursorAdvanced": false,
-    "record": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261104/x-search-status.json"
+    "record": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261105/x-history-pages.json"
   },
   "previousXHistoricalIncrement": {
     "checkedAt": "2026-11-01T09:57:09.756959+00:00",
@@ -822,7 +721,7 @@
   "githubCodeSearch": {
     "query": "\"systemone\" \"jev\" language:TypeScript",
     "status": "ok",
-    "totalCount": 12976,
+    "totalCount": 13120,
     "incomplete": false,
     "urls": [
       "https://github.com/mizchi/jev-lint/blob/af58a3bd20693f828ff6353e3543c0ab5bb7bad4/src/jev.ts",

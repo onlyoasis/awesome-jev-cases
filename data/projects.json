@@ -4334,5 +4334,53 @@
     "lastVerified": "2026-11-04",
     "status": "verified",
     "stars": 1
+  },
+  {
+    "id": "prgrmrwy-dsh-auto-model-routing",
+    "name": "prgrmrwy/dsh-auto-model-routing",
+    "url": "https://github.com/prgrmrwy/dsh-auto-model-routing",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT DSH插件：主模型固定、按Choice调effort，子任务模型/强度分开判断并核目录与允许列表；依赖特定宿主入口，selectModel会同步全局默认，反馈不自动学习。仅核源码，未安装。",
+      "en": "MIT DSH plugin keeping the main model while Choice adjusts effort, with separate child capability/depth and catalog/allowlist gates. Host-entry limits, global-default synchronization and no automatic feedback learning apply. Source review only, not installed."
+    },
+    "sourceUrl": "https://github.com/prgrmrwy/dsh-auto-model-routing/blob/8e3287986ea91b9dc49192af67b47b7f8110881b/src/policy-host.ts",
+    "lastVerified": "2026-11-05",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "philrenaud-practical-data",
+    "name": "philrenaud/practical-data",
+    "url": "https://github.com/philrenaud/practical-data",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT表格着色扩展，Jev判断可比性/方向，普通代码做解析和绘色；自备原生Key、作者托管或Clef路径分开，表格文字外发。未安装、读私表或验商店版本，作者评估不作本站实测。",
+      "en": "MIT table-color extension using Jev for comparability/direction and ordinary code for parsing/painting. Native own-key, author-hosted and Clef paths are distinct; table text leaves the browser. No install, private tables, store-version acceptance or author-metric reproduction."
+    },
+    "sourceUrl": "https://github.com/philrenaud/practical-data/blob/a3f850fb8e2c452f194b0a11de94e8d0b7481c34/src/decide/judge.ts",
+    "lastVerified": "2026-11-05",
+    "status": "verified",
+    "stars": 3
+  },
+  {
+    "id": "yy1588133-dsh-sensitive-guard",
+    "name": "yy1588133/dsh-sensitive-guard",
+    "url": "https://github.com/yy1588133/dsh-sensitive-guard",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT DSH决策插件（包已改名dsh-decision-guard），可配置敏感命令复核、工具/技能裁剪及路径排序。已核Jev请求、Noul工具掩码及tool_search恢复；功能默认关，失败/宿主权限回退存在，不能替代权限或沙箱。未安装或改变工具配置。",
+      "en": "MIT DSH decision plugin, now packaged as dsh-decision-guard, for optional command review, tool/skill pruning and path ranking. Jev wiring, Noul masks and tool_search restoration were reviewed. Features default off and failure/host-permission fallbacks remain; it does not replace permissions or sandboxing. Not installed or used to reconfigure tools."
+    },
+    "sourceUrl": "https://github.com/yy1588133/dsh-sensitive-guard/blob/6c15412082f95e74057f6a4180ded881a6fe5ec0/lib/tool-select.js",
+    "lastVerified": "2026-11-05",
+    "status": "verified",
+    "stars": 0
   }
 ]

@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (232)
+## 深度使用案例 / Worked cases (236)
 
 ### jev-ultrafast
 
@@ -1881,9 +1881,9 @@
 - 作者：Allie the Icon / Allie Laabs
 - 输入：自建STT管线逐词输出的转写文本，处于尚未说完的一轮语音中。
 - Jev 判断：作者描述Jev判断当前文本更可能落在哪个窄意图处理路径，随转写继续到达更新判断。
-- 后续动作：系统提前预热可能路径；作者称会依风险和可逆性，有时在说完前执行动作，再接自建TTS交互。
-- 核验边界：原帖显示2026-10-23 02:11 JST，引用系统说明为01:25 JST，已分别核对。只按作者自报收录；源码、完整候选、门槛和具体提前执行策略未公开，速度未独立复测，不能作为安全授权或直接处理音频的证明。
-- 来源：[Author post](https://x.com/allietheicon/status/2113317258839953571) · [System description](https://x.com/allietheicon/status/2113305734276600173)
+- 后续动作：系统提前预热可能路径；补充原帖称逐词重判且需连续两次批准，举调灯到50%的例子，在整轮发话结束前依风险/可逆性执行。
+- 核验边界：旧原帖为2026-10-23 02:11 JST，系统说明01:25 JST，补充原帖08:55 JST，引用时间分别核对。只有作者自报；完整候选、概率门槛及取消/并发和提前执行协议仍未公开，连续两次批准不等于安全授权，速度未独立复测，也不证明Jev直接处理音频。
+- 来源：[Author post](https://x.com/allietheicon/status/2113317258839953571) · [System description](https://x.com/allietheicon/status/2113305734276600173) · [Author follow-up](https://x.com/allietheicon/status/2113418999098990873)
 
 ### Custos：可疑IP窗口经判断后进入封禁执行链
 
@@ -2092,7 +2092,43 @@
 - 核验边界：MIT社区集成，已回读原作者X与固定源码，未连接聊天或调用模型。默认fail-open可送出未审核消息，显式closed可阻止；服务拒绝该输入时无论模式均拒绝。fake-Jev测试不证明分类准确性、注入防护或真实送达；不是端到端加密聊天。
 - 来源：[Author X](https://x.com/gs_rumana/status/2117757832363974995) · [GitHub](https://github.com/ravex-io/ravex) · [Source](https://github.com/ravex-io/ravex/blob/0a937b4cc1f70f90796df5a4ec0048068138d8fc/packages/server/src/middleware/JevClient.ts) · [Source](https://github.com/ravex-io/ravex/blob/0a937b4cc1f70f90796df5a4ec0048068138d8fc/packages/server/src/middleware/Moderation.ts) · [Source](https://github.com/ravex-io/ravex/blob/0a937b4cc1f70f90796df5a4ec0048068138d8fc/packages/server/src/handlers/MessageHandler.ts)
 
-## 开源项目 / Open-source projects (271)
+### DSH自动路由：主模型固定，推理强度与子任务能力分开判断
+
+- 作者：prgrmrwy
+- 输入：当前用户任务、有限前轮用户/助手文本、主模型与子任务显式选择，以及宿主模型目录、允许列表和effort上限。
+- Jev 判断：原生TypeSafe或OpenRouter alpha接口问depth Choice（lower/baseline/higher）；子任务可另问capability Choice（bounded/analytical/frontier/insufficient_context），两个维度分别保留显式选择。
+- 后续动作：主模型不换，只在已登记模型族与支持的effort中偏移最多一级，经selectModel同步；子任务在当前目录、允许列表及上限内选模型/强度并绑定初始分配。失败、模式变化、缺上下文或不支持时保留原生配置或记录回退。
+- 核验边界：MIT社区插件，作者验收绑定DSH版本和Web UI；teammate真实提供商、fork及第三方入口未全面验收。selectModel也保存宿主全局默认，AUTO任务判断会外发文本；本地反馈尚不自动学习。只核固定源码，未安装、改本机配置或复测作者成本/质量。
+- 来源：[GitHub](https://github.com/prgrmrwy/dsh-auto-model-routing) · [Source](https://github.com/prgrmrwy/dsh-auto-model-routing/blob/8e3287986ea91b9dc49192af67b47b7f8110881b/src/jev.ts) · [Source](https://github.com/prgrmrwy/dsh-auto-model-routing/blob/8e3287986ea91b9dc49192af67b47b7f8110881b/src/decision-service.ts) · [Source](https://github.com/prgrmrwy/dsh-auto-model-routing/blob/8e3287986ea91b9dc49192af67b47b7f8110881b/src/routing.ts) · [Source](https://github.com/prgrmrwy/dsh-auto-model-routing/blob/8e3287986ea91b9dc49192af67b47b7f8110881b/src/policy-host.ts)
+
+### 语音体育查询：把转写映射到有限球队与数据视图
+
+- 作者：WyattKnepp
+- 输入：本地Whisper管线的语句转写或输入文本，预定义球队、视图及可选球队名单。
+- Jev 判断：原生Python SDK一次并行问请求Noul、球队Choice、对手Choice与视图Choice；球员视图还可对有限名单再问Choice，低置信回普通姓名搜索。
+- 后续动作：请求门槛通过或显式force时，以所选参数查询带缓存的ESPN数据，服务器经SSE把结果发给浏览器；界面允许排除错误球队后重判。
+- 核验边界：仅核固定公开源码，根许可unknown，故不列已核许可的开源项目。对手选择会忽略none而取达到作者0.15门槛的真实球队，可能产生错误对手；缓存允许stale数据，延迟为作者自报。未访问麦克风、下载模型、运行服务或验证体育数据时效。
+- 来源：[GitHub](https://github.com/WyattKnepp/Sports_Reference) · [Source](https://github.com/WyattKnepp/Sports_Reference/blob/5fc3e64a2edcf0629aed3cf6c215d6078c476079/sr/router.py) · [Source](https://github.com/WyattKnepp/Sports_Reference/blob/5fc3e64a2edcf0629aed3cf6c215d6078c476079/server.py) · [Source](https://github.com/WyattKnepp/Sports_Reference/blob/5fc3e64a2edcf0629aed3cf6c215d6078c476079/sr/cache.py)
+
+### 表格着色：Jev判断可比性和方向，代码计算颜色
+
+- 作者：philrenaud
+- 输入：接近视口且启用站点中的表格：页面标题、表格标题、列头、有限样例和分类标签，以及首尾行的汇总线索。
+- Jev 判断：Jev接口用Noul与Choice判断数值是否可比较、大小方向、对数关系、类别顺序与汇总行；原生自备Key路径已核，也可选作者托管免费端或Clef。
+- 后续动作：本地阈值决定哪些列着色、用中性或正反色阶、如何排除汇总行；数值解析、范围中点、比例、排序和DOM绘色由普通代码完成，单表失败不抹去其他成功表。
+- 核验边界：MIT社区扩展，未安装、读用户表格或核商店分发版本。表格文字会外发；免费模式经作者Worker，存储/计数行为是作者说明，不等于本站审计。语义和阈值可能误判，颜色不是投资/产品推荐，录制评估和作者指标不代表所有网页实效。
+- 来源：[GitHub](https://github.com/philrenaud/practical-data) · [Source](https://github.com/philrenaud/practical-data/blob/a3f850fb8e2c452f194b0a11de94e8d0b7481c34/src/decide/model.ts) · [Source](https://github.com/philrenaud/practical-data/blob/a3f850fb8e2c452f194b0a11de94e8d0b7481c34/src/decide/questions.ts) · [Source](https://github.com/philrenaud/practical-data/blob/a3f850fb8e2c452f194b0a11de94e8d0b7481c34/src/decide/judge.ts) · [Source](https://github.com/philrenaud/practical-data/blob/a3f850fb8e2c452f194b0a11de94e8d0b7481c34/src/dom/paint.ts) · [X discovery](https://x.com/decision_models/status/2117949818454851605)
+
+### 官方表格演示：Choice分组短选，再批量Score排房源
+
+- 作者：TypeSafe AI
+- 输入：Google Sheets中的自然语言住宿需求和1000条开普敦房源样本，含价格、人数、描述与链接。
+- Jev 判断：先把每100条房源ID作为一个Choice的选项，10组并行按返回概率各取5条；再把50条短选描述放入一个state，为每条问五级Score。
+- 后续动作：Apps Script把Score从0–4映射为0–10，排序返回前10条及原房源字段；缓存命中时直接返回，1000条样本的完整首轮为11次请求。
+- 核验边界：官方页面含完整Apps Script，但本站未复制表格、设置Key或运行API；约1秒为官方自报，分组短选可能漏掉全局更优候选。描述截断为300/1500字符，6小时缓存键不含价格/描述正文，原链接相同的修改可能沿用旧结果。数据为2026-09-23抓取的Inside Airbnb样本（页面标CC BY4.0），匹配分不是实时可订或住宿事实保证。
+- 来源：[Official demo and Apps Script](https://docs.typesafe.ai/demos/airbnb-listing-search.md)
+
+## 开源项目 / Open-source projects (274)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2367,6 +2403,9 @@
 | [kevinyin9/next-steps-jev](https://github.com/kevinyin9/next-steps-jev) | community | MIT | 0 |
 | [Ryankapa/PasteGuard](https://github.com/Ryankapa/PasteGuard) | community | MIT | 0 |
 | [ravex-io/ravex](https://github.com/ravex-io/ravex) | community | MIT | 1 |
+| [prgrmrwy/dsh-auto-model-routing](https://github.com/prgrmrwy/dsh-auto-model-routing) | community | MIT | 1 |
+| [philrenaud/practical-data](https://github.com/philrenaud/practical-data) | community | MIT | 3 |
+| [yy1588133/dsh-sensitive-guard](https://github.com/yy1588133/dsh-sensitive-guard) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (25)
 
