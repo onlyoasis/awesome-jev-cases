@@ -4382,5 +4382,37 @@
     "lastVerified": "2026-11-05",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "omniaura-toolreview",
+    "name": "omniaura/toolreview",
+    "url": "https://github.com/omniaura/toolreview",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MIT工具目录审核库，以Jev Choice及本地阈值提供审批类别；宿主负责执行。按工具而非调用，缺失可回退供应商标签、stale可继续提供，不能替代权限层。未运行真实模型或工具。",
+      "en": "MIT catalog-review library using Jev Choices and local thresholds for approval classes enforced by the host. Reviews are per tool, with provider-label and stale-verdict fallbacks; it does not replace permissions. No live model/tool run."
+    },
+    "sourceUrl": "https://github.com/omniaura/toolreview/blob/990460c76f920d20b3895eedfb316fc5094fe3a7/reviewer.go",
+    "lastVerified": "2026-11-06",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "cyriusweng-jev-tern",
+    "name": "cyriusweng/jev-tern",
+    "url": "https://github.com/cyriusweng/jev-tern",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT (with inherited browser-use/jev-ultrafast notices)",
+    "summary": {
+      "zh": "MIT派生的Tern浏览器代理循环；已核DOM Choice/Noul与动作消费，填写用另一个聊天模型。Box预览兼容、完成启发式及作者性能均未实测；未安装或读取密钥。",
+      "en": "MIT-derived Tern browser loop with reviewed DOM Choices/Nouls and action consumption; a separate chat model supplies text. Box-preview compatibility, completion heuristics and author performance remain untested. No install or key access."
+    },
+    "sourceUrl": "https://github.com/cyriusweng/jev-tern/blob/1d060a6a37f180d189a7b0ff0a47c8741bdbf7c9/jevTern.mjs",
+    "lastVerified": "2026-11-06",
+    "status": "verified",
+    "stars": 0
   }
 ]

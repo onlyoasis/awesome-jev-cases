@@ -10314,5 +10314,149 @@
         "url": "https://docs.typesafe.ai/demos/airbnb-listing-search.md"
       }
     ]
+  },
+  {
+    "id": "entire-session-evidence-review",
+    "name": "Jev + Entire session review",
+    "author": "elizabethsiegle",
+    "title": {
+      "zh": "会话审查：分别核对范围、接口约束和测试证据",
+      "en": "Session review: separate scope, API constraints and test evidence"
+    },
+    "area": {
+      "zh": "代码审查分流",
+      "en": "Code review triage"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "本地已审阅的请求文本、Entire导出的Codex会话与匹配diff；JSONL路径只保留对话和工具证据，排除system/developer消息。",
+      "en": "A reviewed local request, an Entire-exported Codex session and a matching diff; JSONL filtering retains conversation/tool evidence and excludes system/developer messages."
+    },
+    "decision": {
+      "zh": "原生system_one批量询问三个Noul：diff是否偏离请求、是否违反保留公共API的约束、会话是否含已完成的测试命令及成功结果；单凭“测试通过”的宣称不算证据。",
+      "en": "A native system_one call asks three Nouls: scope drift, violation of the public-API constraint, and a completed test command with a successful result. An unsupported claim that tests passed is excluded."
+    },
+    "action": {
+      "zh": "任一风险概率≥0.3或测试证据<0.9时输出focused_review及具体关注项，否则standard_review；缺上下文或API错误退出，不自动合并代码。",
+      "en": "Risk ≥0.3 or test evidence <0.9 selects focused_review with review flags; otherwise standard_review. Missing context or provider errors exit; the script does not merge changes."
+    },
+    "boundary": {
+      "zh": "社区审查原型，阈值需标注样本校准，概率不证明程序正确。未运行Entire或API、未读取用户会话。作者保存的对照概率早于公开样本隐私编辑，不视为对当前文件字节的可复现结果；根许可未确认，只列代码案例。",
+      "en": "Community triage prototype whose thresholds need labeled-session calibration; probabilities do not prove correctness. No Entire/API run or private session access here. Saved comparison probabilities predate privacy edits to the public sample, so they do not establish reproduction on current bytes. Root license unconfirmed; code case only."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/elizabethsiegle/jev-entire-demo"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/elizabethsiegle/jev-entire-demo/blob/4e117f833ddd2f1fc7bedb8ba572ead04adfb580/review_session.py"
+      },
+      {
+        "label": "Evidence and sample caveats",
+        "url": "https://github.com/elizabethsiegle/jev-entire-demo/blob/4e117f833ddd2f1fc7bedb8ba572ead04adfb580/README.md"
+      }
+    ]
+  },
+  {
+    "id": "toolreview-catalog-approval-classification",
+    "name": "toolreview",
+    "author": "omniaura",
+    "title": {
+      "zh": "工具目录审核：Choice分类供宿主决定是否等待本人批准",
+      "en": "Tool catalog review: Choice classes inform host approval holds"
+    },
+    "area": {
+      "zh": "工具语义与审批策略",
+      "en": "Tool semantics and approval policy"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "工具目录中的名称、描述和参数schema，以及供应商声明标签；按工具及输入指纹审查，不包含每次真实调用参数或用户意图。",
+      "en": "Catalog tool names, descriptions, argument schemas and provider-declared labels. Reviews bind to the tool/input fingerprint, not each actual call or user intent."
+    },
+    "decision": {
+      "zh": "OpenRouter alpha/decisions调用typesafe/jev-1.13，以Choice返回read、write、outbound、destructive四类概率。",
+      "en": "OpenRouter alpha/decisions requests typesafe/jev-1.13 with a Choice over read, write, outbound and destructive."
+    },
+    "action": {
+      "zh": "outbound+destructive概率≥0.5时采用需批准类别，Effective与供应商标签取更严格者；宿主读取RequiresApproval执行审批。目录从内存、存储或编译清单取结果，异步排队复审，避免请求路径逐次问模型。",
+      "en": "Outbound+destructive probability ≥0.5 adopts an approval class; Effective takes the stricter of provider and review labels. The host must enforce RequiresApproval. Memory, storage and compiled manifests serve catalog results while queued reviews run off the request path."
+    },
+    "boundary": {
+      "zh": "MIT社区库，未运行真实工具或模型。它按工具而非调用授权；未知/复审失败时可仅沿用供应商标签，过期判断仍可标stale提供，不能当作失败即拒绝的权限层。0.8读写阈值只改变标签，不影响0.5审批门槛；作者延迟/成本未复现。",
+      "en": "MIT community library; no live tools or model execution here. Per-tool review is not per-call authorization: missing/failed reviews can fall back to provider labels, and stale verdicts may still be served with a flag. This is not a fail-closed permission layer. The 0.8 read/write thresholds affect labels, not the 0.5 hold gate; author latency/cost figures were not reproduced."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/omniaura/toolreview"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/omniaura/toolreview/blob/990460c76f920d20b3895eedfb316fc5094fe3a7/jev/jev.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/omniaura/toolreview/blob/990460c76f920d20b3895eedfb316fc5094fe3a7/reviewer.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/omniaura/toolreview/blob/990460c76f920d20b3895eedfb316fc5094fe3a7/toolreview.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/omniaura/toolreview/blob/990460c76f920d20b3895eedfb316fc5094fe3a7/catalog.go"
+      }
+    ]
+  },
+  {
+    "id": "jev-tern-dom-action-loop",
+    "name": "jev-tern",
+    "author": "CyriusWeng",
+    "title": {
+      "zh": "Tern浏览器循环：有限DOM动作选择与独立目标概率",
+      "en": "Tern browser loop: bounded DOM actions with a separate goal probability"
+    },
+    "area": {
+      "zh": "浏览器动作与任务判断",
+      "en": "Browser actions and task judgments"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "任务、当前页URL/文本、可见元素和字段、近期动作/页面，以及代码测得的滚动位置与已核事实。",
+      "en": "Task, current URL/text, visible elements/fields, recent actions/pages and mechanically checked scroll geometry and facts."
+    },
+    "decision": {
+      "zh": "原生/v1/systemone一次询问operation及各操作target的Choice，另用goal与stuck Noul判断完成和重复停滞；所钉版本请求jev-1.14.0。",
+      "en": "One native /v1/systemone request asks operation and per-operation target Choices plus goal/stuck Nouls for completion and repetition. The pinned code requests jev-1.14.0."
+    },
+    "action": {
+      "zh": "代码校验Choice标签/概率后执行点击、填写、选择或滚动；填写文本另由聊天模型生成。goal≥0.9或到达/完成启发式停止，重复目标、阻塞与预算也可终止，返回逐步证据与最终URL。",
+      "en": "Code validates Choice labels/probabilities before clicks, fills, selections or scrolling; a separate chat model generates field text. A goal ≥0.9 or arrival/DONE heuristics can stop execution; repeated targets, blocks and budget limits also terminate with step evidence and final URL."
+    },
+    "boundary": {
+      "zh": "MIT社区派生实现，保留browser-use/jev-ultrafast声明。仅静态核对DOM路径，未安装Tern、读取密钥、执行网页任务或复现作者18–73倍指标。Box/canvas属于代码声明的预览接线，兼容性未核；完成启发式含缺goal时仍可DONE的回退，不是独立任务成功证明，外部写动作仍需宿主权限。",
+      "en": "MIT community derivative retaining browser-use/jev-ultrafast notices. Only the DOM path was statically reviewed; no Tern install, key access, browser-task run or reproduction of the author’s 18–73× claim. Box/canvas is preview wiring with unverified compatibility. DONE heuristics include a missing-goal fallback and do not independently prove success; external writes still require host authorization."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/cyriusweng/jev-tern"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/cyriusweng/jev-tern/blob/1d060a6a37f180d189a7b0ff0a47c8741bdbf7c9/jevTern.mjs"
+      },
+      {
+        "label": "License and inherited notices",
+        "url": "https://github.com/cyriusweng/jev-tern/blob/1d060a6a37f180d189a7b0ff0a47c8741bdbf7c9/LICENSE"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/CyriusWeng/status/2118350261110612379"
+      }
+    ]
   }
 ]

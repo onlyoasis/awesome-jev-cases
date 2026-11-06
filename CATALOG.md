@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (236)
+## 深度使用案例 / Worked cases (239)
 
 ### jev-ultrafast
 
@@ -2128,7 +2128,34 @@
 - 核验边界：官方页面含完整Apps Script，但本站未复制表格、设置Key或运行API；约1秒为官方自报，分组短选可能漏掉全局更优候选。描述截断为300/1500字符，6小时缓存键不含价格/描述正文，原链接相同的修改可能沿用旧结果。数据为2026-09-23抓取的Inside Airbnb样本（页面标CC BY4.0），匹配分不是实时可订或住宿事实保证。
 - 来源：[Official demo and Apps Script](https://docs.typesafe.ai/demos/airbnb-listing-search.md)
 
-## 开源项目 / Open-source projects (274)
+### 会话审查：分别核对范围、接口约束和测试证据
+
+- 作者：elizabethsiegle
+- 输入：本地已审阅的请求文本、Entire导出的Codex会话与匹配diff；JSONL路径只保留对话和工具证据，排除system/developer消息。
+- Jev 判断：原生system_one批量询问三个Noul：diff是否偏离请求、是否违反保留公共API的约束、会话是否含已完成的测试命令及成功结果；单凭“测试通过”的宣称不算证据。
+- 后续动作：任一风险概率≥0.3或测试证据<0.9时输出focused_review及具体关注项，否则standard_review；缺上下文或API错误退出，不自动合并代码。
+- 核验边界：社区审查原型，阈值需标注样本校准，概率不证明程序正确。未运行Entire或API、未读取用户会话。作者保存的对照概率早于公开样本隐私编辑，不视为对当前文件字节的可复现结果；根许可未确认，只列代码案例。
+- 来源：[GitHub](https://github.com/elizabethsiegle/jev-entire-demo) · [Source](https://github.com/elizabethsiegle/jev-entire-demo/blob/4e117f833ddd2f1fc7bedb8ba572ead04adfb580/review_session.py) · [Evidence and sample caveats](https://github.com/elizabethsiegle/jev-entire-demo/blob/4e117f833ddd2f1fc7bedb8ba572ead04adfb580/README.md)
+
+### 工具目录审核：Choice分类供宿主决定是否等待本人批准
+
+- 作者：omniaura
+- 输入：工具目录中的名称、描述和参数schema，以及供应商声明标签；按工具及输入指纹审查，不包含每次真实调用参数或用户意图。
+- Jev 判断：OpenRouter alpha/decisions调用typesafe/jev-1.13，以Choice返回read、write、outbound、destructive四类概率。
+- 后续动作：outbound+destructive概率≥0.5时采用需批准类别，Effective与供应商标签取更严格者；宿主读取RequiresApproval执行审批。目录从内存、存储或编译清单取结果，异步排队复审，避免请求路径逐次问模型。
+- 核验边界：MIT社区库，未运行真实工具或模型。它按工具而非调用授权；未知/复审失败时可仅沿用供应商标签，过期判断仍可标stale提供，不能当作失败即拒绝的权限层。0.8读写阈值只改变标签，不影响0.5审批门槛；作者延迟/成本未复现。
+- 来源：[GitHub](https://github.com/omniaura/toolreview) · [Source](https://github.com/omniaura/toolreview/blob/990460c76f920d20b3895eedfb316fc5094fe3a7/jev/jev.go) · [Source](https://github.com/omniaura/toolreview/blob/990460c76f920d20b3895eedfb316fc5094fe3a7/reviewer.go) · [Source](https://github.com/omniaura/toolreview/blob/990460c76f920d20b3895eedfb316fc5094fe3a7/toolreview.go) · [Source](https://github.com/omniaura/toolreview/blob/990460c76f920d20b3895eedfb316fc5094fe3a7/catalog.go)
+
+### Tern浏览器循环：有限DOM动作选择与独立目标概率
+
+- 作者：CyriusWeng
+- 输入：任务、当前页URL/文本、可见元素和字段、近期动作/页面，以及代码测得的滚动位置与已核事实。
+- Jev 判断：原生/v1/systemone一次询问operation及各操作target的Choice，另用goal与stuck Noul判断完成和重复停滞；所钉版本请求jev-1.14.0。
+- 后续动作：代码校验Choice标签/概率后执行点击、填写、选择或滚动；填写文本另由聊天模型生成。goal≥0.9或到达/完成启发式停止，重复目标、阻塞与预算也可终止，返回逐步证据与最终URL。
+- 核验边界：MIT社区派生实现，保留browser-use/jev-ultrafast声明。仅静态核对DOM路径，未安装Tern、读取密钥、执行网页任务或复现作者18–73倍指标。Box/canvas属于代码声明的预览接线，兼容性未核；完成启发式含缺goal时仍可DONE的回退，不是独立任务成功证明，外部写动作仍需宿主权限。
+- 来源：[GitHub](https://github.com/cyriusweng/jev-tern) · [Source](https://github.com/cyriusweng/jev-tern/blob/1d060a6a37f180d189a7b0ff0a47c8741bdbf7c9/jevTern.mjs) · [License and inherited notices](https://github.com/cyriusweng/jev-tern/blob/1d060a6a37f180d189a7b0ff0a47c8741bdbf7c9/LICENSE) · [Author post](https://x.com/CyriusWeng/status/2118350261110612379)
+
+## 开源项目 / Open-source projects (276)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2406,6 +2433,8 @@
 | [prgrmrwy/dsh-auto-model-routing](https://github.com/prgrmrwy/dsh-auto-model-routing) | community | MIT | 1 |
 | [philrenaud/practical-data](https://github.com/philrenaud/practical-data) | community | MIT | 3 |
 | [yy1588133/dsh-sensitive-guard](https://github.com/yy1588133/dsh-sensitive-guard) | community | MIT | 0 |
+| [omniaura/toolreview](https://github.com/omniaura/toolreview) | community | MIT | 0 |
+| [cyriusweng/jev-tern](https://github.com/cyriusweng/jev-tern) | community | MIT (with inherited browser-use/jev-ultrafast notices) | 0 |
 
 ## 官方 cookbook / Official recipes (25)
 
