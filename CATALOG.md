@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (239)
+## 深度使用案例 / Worked cases (244)
 
 ### jev-ultrafast
 
@@ -2155,7 +2155,52 @@
 - 核验边界：MIT社区派生实现，保留browser-use/jev-ultrafast声明。仅静态核对DOM路径，未安装Tern、读取密钥、执行网页任务或复现作者18–73倍指标。Box/canvas属于代码声明的预览接线，兼容性未核；完成启发式含缺goal时仍可DONE的回退，不是独立任务成功证明，外部写动作仍需宿主权限。
 - 来源：[GitHub](https://github.com/cyriusweng/jev-tern) · [Source](https://github.com/cyriusweng/jev-tern/blob/1d060a6a37f180d189a7b0ff0a47c8741bdbf7c9/jevTern.mjs) · [License and inherited notices](https://github.com/cyriusweng/jev-tern/blob/1d060a6a37f180d189a7b0ff0a47c8741bdbf7c9/LICENSE) · [Author post](https://x.com/CyriusWeng/status/2118350261110612379)
 
-## 开源项目 / Open-source projects (276)
+### 日志分组：用 Noul 找出用户可见错误的请求
+
+- 作者：phyro
+- 输入：文本日志整体读入后按请求 ID 分组，每组只含该请求的日志行；另一个例子先选 ERROR/FATAL 行。
+- Jev 判断：Rust 客户端在托管路径发 System One：对每组询问是否出现用户可见错误的 Noul；逐行例子再加 api、db、worker、edge 四选一。相同 state 的题可合并。
+- 后续动作：示例将 Noul 大于 0.5 的请求 ID 输出给 shell；逐行示例输出可见性与服务标签供下游使用。
+- 核验边界：MIT 实验 CLI，源码和示例已核，未执行或发送日志。托管模式会把输入交给供应商，本地兼容模型是另一路径；0.5 是样例阈值，不证明故障或用户实际感知。
+- 来源：[GitHub](https://github.com/phyro/deem) · [Source](https://github.com/phyro/deem/blob/dec1dede03071e68e14df5d75b41af2b8154c7df/examples/.deem/failed-requests.deem) · [Source](https://github.com/phyro/deem/blob/dec1dede03071e68e14df5d75b41af2b8154c7df/examples/.deem/triage.deem) · [Source](https://github.com/phyro/deem/blob/dec1dede03071e68e14df5d75b41af2b8154c7df/src/transport/api.rs) · [Source](https://github.com/phyro/deem/blob/dec1dede03071e68e14df5d75b41af2b8154c7df/src/transport/request.rs) · [Author post](https://x.com/phyrooo/status/2118796348203942026)
+
+### 代码审查：合并 AST 与语义评分，排列重构优先级
+
+- 作者：INDXDev
+- 输入：逐文件源码、启用的预设问题及本地 AST 规则；模型只读到配置字符上限内的源码。
+- Jev 判断：TypeSafe 路径以 AI SDK 决策接口调用 jev-latest，按问题批量取 Score 或布尔概率；也有其他可选供应商。
+- 后续动作：程序把回答转成语义分并与 AST 分合成，排序生成报告，指出先审哪些文件。缓存按模型、问题和内容区分，缺题的旧答案不能命中。
+- 核验边界：MIT 社区工具，未运行或发送私有代码。无可用 Key 可仅走 AST；其他供应商、截断或部分调用失败影响结果。优先级只是审查线索，不证明漏洞、正确性或改动有效。
+- 来源：[GitHub](https://github.com/INDXDev/jevlint) · [Source](https://github.com/INDXDev/jevlint/blob/5d29ae0a3dae0f56efc7fbc0f506c8c801c66b80/src/decision/providers.ts) · [Source](https://github.com/INDXDev/jevlint/blob/5d29ae0a3dae0f56efc7fbc0f506c8c801c66b80/src/decision/decide.ts) · [Source](https://github.com/INDXDev/jevlint/blob/5d29ae0a3dae0f56efc7fbc0f506c8c801c66b80/src/audit.ts)
+
+### Pi 主会话：有限档位选择，经本地约束后调整推理
+
+- 作者：ttdua
+- 输入：Pi 的当前用户提示、近期有界会话和工具统计、平台线索；挂在 before_agent_start。
+- Jev 判断：默认原生 Jev 接口询问五档 effort Choice 与风险 Noul，另有纠正信号；只核实固定提交的主会话调用与消费。
+- 后续动作：本地策略将风险超过 0.7 的低档提高至至少 high，再限制到支持档位与 xhigh 上限，调用 setThinkingLevel；无有效答案或保持条件时保留原档位。
+- 核验边界：MIT 社区扩展，继承声明见 NOTICE。README 仍称设计期，描述以固定源码为准；未安装 Pi、调用付费模型或读取个人会话。托管调用可发送有界上下文，模型风险信号不代替权限，不外推其他规划功能。
+- 来源：[GitHub](https://github.com/ttdua/pi-jev-pilot) · [Source](https://github.com/ttdua/pi-jev-pilot/blob/180f8c80dea911eec6ec1a9a467f1d6670bda6ff/src/host/setup.ts) · [Source](https://github.com/ttdua/pi-jev-pilot/blob/180f8c80dea911eec6ec1a9a467f1d6670bda6ff/src/host/main.ts) · [Source](https://github.com/ttdua/pi-jev-pilot/blob/180f8c80dea911eec6ec1a9a467f1d6670bda6ff/src/jev/client.ts) · [Source](https://github.com/ttdua/pi-jev-pilot/blob/180f8c80dea911eec6ec1a9a467f1d6670bda6ff/src/policy/effort.ts) · [Source](https://github.com/ttdua/pi-jev-pilot/blob/180f8c80dea911eec6ec1a9a467f1d6670bda6ff/NOTICE.md)
+
+### 虚拟产线：在可行动作内选择，门控后执行模拟命令
+
+- 作者：Imperfective
+- 输入：虚拟 PLC 产线快照、生产目标差额、事件及每个可行动作的预测；候选集合由程序构造。
+- Jev 判断：可选的原生 System One 路径返回动作与原因 Choice，以及是否需人工干预的 Noul；mock 路径明确分开。
+- 后续动作：校验答案所属候选集，再过独立动作门控，接受时执行虚拟 PLC 命令并记录；调用失败或门控拒绝升级到模拟人工处理。
+- 核验边界：仅仿真；不是实厂控制、急停系统或安全认证。代码 MIT，视觉衍生数据和 YOLO 等另有许可；真实模型需明确启用。本站未运行仿真、访问设备或复现作者实验结果。
+- 来源：[GitHub](https://github.com/Imperfective/smart-factory-ai-ops-center) · [Source](https://github.com/Imperfective/smart-factory-ai-ops-center/blob/413bc8015e60bd3b374c9b26050b1f0f10237908/sfaic2/v3/jev.py) · [Source](https://github.com/Imperfective/smart-factory-ai-ops-center/blob/413bc8015e60bd3b374c9b26050b1f0f10237908/sfaic2/v3/control.py) · [Source](https://github.com/Imperfective/smart-factory-ai-ops-center/blob/413bc8015e60bd3b374c9b26050b1f0f10237908/sfaic2/adapters/typesafe_jev.py) · [Source](https://github.com/Imperfective/smart-factory-ai-ops-center/blob/413bc8015e60bd3b374c9b26050b1f0f10237908/LICENSE_NOTICE.md)
+
+### 餐厅筛选：用来源片段判断需求匹配，再排序候选
+
+- 作者：william-wei-zhu
+- 输入：餐厅名、区域和限长网页证据，带来自用户需求的检查项与预算档。
+- Jev 判断：Jev 对每项用 yes/no/unknown Choice 判断证据是否支持，例如预算是否匹配；缺 Key 或证据时跳过。
+- 后续动作：按检查的平均 P(yes) 排候选，缺项用 0.3，平分时参考来源提及度；概率送后续选项生成，高置信结果可形成标记。
+- 核验边界：社区源码案例，根许可未确认，不列许可明确的开源项目。缺答案时可能继续推荐，概率不能保证价格、营业、餐食成分或过敏安全；未实测站点推荐或调用模型。
+- 来源：[GitHub](https://github.com/william-wei-zhu/savorlm) · [Source](https://github.com/william-wei-zhu/savorlm/blob/cae09f52fb0ca679aaae95c2b31efdefd122493f/lib/server/jev.ts) · [Source](https://github.com/william-wei-zhu/savorlm/blob/cae09f52fb0ca679aaae95c2b31efdefd122493f/lib/server/guide.ts) · [Source](https://github.com/william-wei-zhu/savorlm/blob/cae09f52fb0ca679aaae95c2b31efdefd122493f/lib/guide/checks.ts)
+
+## 开源项目 / Open-source projects (280)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2435,6 +2480,10 @@
 | [yy1588133/dsh-sensitive-guard](https://github.com/yy1588133/dsh-sensitive-guard) | community | MIT | 0 |
 | [omniaura/toolreview](https://github.com/omniaura/toolreview) | community | MIT | 0 |
 | [cyriusweng/jev-tern](https://github.com/cyriusweng/jev-tern) | community | MIT (with inherited browser-use/jev-ultrafast notices) | 0 |
+| [phyro/deem](https://github.com/phyro/deem) | community | MIT | 1 |
+| [INDXDev/jevlint](https://github.com/INDXDev/jevlint) | community | MIT | 15 |
+| [ttdua/pi-jev-pilot](https://github.com/ttdua/pi-jev-pilot) | community | MIT (with upstream notices) | 0 |
+| [Imperfective/smart-factory-ai-ops-center](https://github.com/Imperfective/smart-factory-ai-ops-center) | community | MIT (code; separate data/model terms) | 0 |
 
 ## 官方 cookbook / Official recipes (25)
 

@@ -4414,5 +4414,69 @@
     "lastVerified": "2026-11-06",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "phyro-deem",
+    "name": "phyro/deem",
+    "url": "https://github.com/phyro/deem",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Rust 语义筛选 CLI：原生 Jev 或独立本地兼容模型，Noul/Choice 等结果供 shell 程序消费；已核日志分组样例，未发送日志或实跑。",
+      "en": "Rust semantic CLI with native Jev or separate compatible local models. Noul/Choice and other answers feed shell programs. Grouped-log example reviewed without executing or sending logs."
+    },
+    "sourceUrl": "https://github.com/phyro/deem/blob/dec1dede03071e68e14df5d75b41af2b8154c7df/examples/.deem/failed-requests.deem",
+    "lastVerified": "2026-11-07",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "indxdev-jevlint",
+    "name": "INDXDev/jevlint",
+    "url": "https://github.com/INDXDev/jevlint",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "以 Jev Score/布尔概率补充 AST 分析并排序文件；支持替代供应商与 AST-only，未上传私有源码或复现评分。",
+      "en": "Jev Scores and boolean probabilities supplement AST analysis and rank files. Other providers and AST-only operation are supported; no private source upload or score reproduction."
+    },
+    "sourceUrl": "https://github.com/INDXDev/jevlint/blob/5d29ae0a3dae0f56efc7fbc0f506c8c801c66b80/src/audit.ts",
+    "lastVerified": "2026-11-07",
+    "status": "verified",
+    "stars": 15
+  },
+  {
+    "id": "ttdua-pi-jev-pilot",
+    "name": "ttdua/pi-jev-pilot",
+    "url": "https://github.com/ttdua/pi-jev-pilot",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT (with upstream notices)",
+    "summary": {
+      "zh": "Pi 扩展；固定源码已核主会话 effort Choice、风险 Noul 与受限档位调整，失败保留档位。README 设计期说明有滞后，未安装或实跑。",
+      "en": "Pi extension with pinned main-session effort Choice, risk Noul and bounded level changes. Failures retain the level. README design wording lags the code; not installed or run."
+    },
+    "sourceUrl": "https://github.com/ttdua/pi-jev-pilot/blob/180f8c80dea911eec6ec1a9a467f1d6670bda6ff/src/host/main.ts",
+    "lastVerified": "2026-11-07",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "imperfective-smart-factory-ai-ops-center",
+    "name": "Imperfective/smart-factory-ai-ops-center",
+    "url": "https://github.com/Imperfective/smart-factory-ai-ops-center",
+    "category": "research",
+    "relationship": "community",
+    "license": "MIT (code; separate data/model terms)",
+    "summary": {
+      "zh": "虚拟工厂监督仿真：Jev 从可行动作中选择，经独立门控才发虚拟 PLC 命令；mock 与实调分开，代码 MIT，视觉数据/模型另许可，未连接实物。",
+      "en": "Virtual factory supervision: Jev selects feasible actions, with an independent gate before virtual PLC commands. Mock and live calls are separate. MIT code; vision data/model terms differ. No physical equipment use."
+    },
+    "sourceUrl": "https://github.com/Imperfective/smart-factory-ai-ops-center/blob/413bc8015e60bd3b374c9b26050b1f0f10237908/sfaic2/v3/control.py",
+    "lastVerified": "2026-11-07",
+    "status": "verified",
+    "stars": 0
   }
 ]
