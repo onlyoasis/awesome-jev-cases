@@ -223,5 +223,14 @@
     "source": "official",
     "discoveredAt": "2026-10-31",
     "lastVerified": "2026-10-31"
+  },
+  {
+    "id": "verify_llm_outputs",
+    "name": "Verifying LLM answers against their source",
+    "url": "https://docs.typesafe.ai/cookbooks/verify_llm_outputs.md",
+    "description": "Asks three Nouls about answerability, declines and source support, then uses code to route doubtful answers to review. The threshold and reported outcomes are from the official fixed MuSiQue sample.",
+    "source": "official",
+    "discoveredAt": "2026-11-08",
+    "lastVerified": "2026-11-08"
   }
 ]

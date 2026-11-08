@@ -10718,5 +10718,293 @@
         "url": "https://github.com/william-wei-zhu/savorlm/blob/cae09f52fb0ca679aaae95c2b31efdefd122493f/lib/guide/checks.ts"
       }
     ]
+  },
+  {
+    "id": "jevlint-spec-check-and-drift",
+    "name": "jevlint spec",
+    "author": "INDXDev",
+    "title": {
+      "zh": "逐条核对代码和规格文档",
+      "en": "Check code and documents against a specification checklist"
+    },
+    "area": {
+      "zh": "规格核对",
+      "en": "Specification review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "代码文件或规格文档，项目与功能级 YAML 检查项。",
+      "en": "A code file or specification document, with project and feature checklists in YAML."
+    },
+    "decision": {
+      "zh": "Jev 先以 Choice 将文件或文档归入已列功能或 global，再逐项判断满足、违反、不适用，或一致、冲突、未提及。文档路径另问是否有未覆盖要求。",
+      "en": "A Choice routes each file or document to a listed feature or global. Per-item Choices check satisfies, violates, not applicable, or agrees, contradicts, absent. The document path also asks about uncovered requirements."
+    },
+    "action": {
+      "zh": "本地代码按置信阈值筛掉低置信的违反或冲突，生成逐项报告。全量代码核对才汇总无满足证据的检查项。",
+      "en": "Local code drops low-confidence violation or contradiction judgments and reports the remaining items. Only a full code scan summarizes checklist items with no satisfying evidence."
+    },
+    "boundary": {
+      "zh": "社区 MIT。已核 jev-latest 提供方、两次判断与报告消费。源码可能截断，缺答案或低置信结果会使报告不完整。未运行模型，报告需人工复核。",
+      "en": "Community MIT project. Pinned Jev provider, two-stage questions and report consumption reviewed. Truncation, missing answers and confidence filtering can leave gaps. Model calls were not run and findings need review."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/INDXDev/jevlint"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/INDXDev/jevlint/blob/0ad414b746e7819e117c4280727e0a31a8ab8714/src/decision/providers.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/INDXDev/jevlint/blob/0ad414b746e7819e117c4280727e0a31a8ab8714/src/spec/check.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/INDXDev/jevlint/blob/0ad414b746e7819e117c4280727e0a31a8ab8714/src/spec/drift.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/INDXDev/jevlint/blob/0ad414b746e7819e117c4280727e0a31a8ab8714/src/spec/questions.ts"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/k1ito/status/2119260605119176803"
+      }
+    ]
+  },
+  {
+    "id": "compact-adviser-codex-hint",
+    "name": "compact-adviser",
+    "author": "kunchenguid",
+    "title": {
+      "zh": "Codex 回合结束时建议压缩上下文",
+      "en": "Suggest context compaction after a Codex turn"
+    },
+    "area": {
+      "zh": "上下文维护",
+      "en": "Context maintenance"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "Codex TUI 已完成回合的限长上下文与当前窗口占用，本地规则先排除太短或重复的检查。",
+      "en": "A bounded view of a completed Codex TUI turn and context usage. Local gates skip short or repeated checks."
+    },
+    "decision": {
+      "zh": "Jev 原生接口返回工作是否完成和执行形态两项 Choice，代码读取概率。",
+      "en": "The native Jev endpoint answers two Choices about task completion and whether the work was direct or coordinated. Code reads the probabilities."
+    },
+    "action": {
+      "zh": "以窗口占用对应的门槛评估分数。合格时向 Codex 输出提示，请用户自行运行 /compact；调用异常或不合格时不显示提示。",
+      "en": "Code evaluates the score against a usage-dependent threshold. A qualifying Codex turn gets a suggestion to run /compact. Errors and low scores produce no suggestion."
+    },
+    "boundary": {
+      "zh": "社区 MIT。只核 Codex 提示路径，其他宿主行为可能不同。原帖为作者经验。未安装插件或发送本机会话，工作完成判断可能出错。",
+      "en": "Community MIT. The Codex hint path was reviewed. Other hosts can behave differently. The post reports the author’s use. No plugin installation or local transcript transmission, and task completion can be misjudged."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kunchenguid/compact-adviser"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kunchenguid/compact-adviser/blob/37fa1a665b8933de68c90014312060e862cf121a/packages/codex-plugin/src/judge.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kunchenguid/compact-adviser/blob/37fa1a665b8933de68c90014312060e862cf121a/packages/codex-plugin/src/hook.ts"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/kunchenguid/status/2119254692442276223"
+      }
+    ]
+  },
+  {
+    "id": "ownyourtimeline-personal-feed-filter",
+    "name": "OwnYourTimeline",
+    "author": "raghavio",
+    "title": {
+      "zh": "按自己的规则过滤 X 首页帖子",
+      "en": "Filter X home-feed posts by a personal instruction"
+    },
+    "area": {
+      "zh": "本地信息流呈现",
+      "en": "Local feed presentation"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "用户的过滤规则及每条帖子的文字、引用和受支持的图片。",
+      "en": "A user-supplied filter instruction and each post’s text, quotes and supported images."
+    },
+    "decision": {
+      "zh": "原生 Jev 1.14.0 按帖子询问显示内容是否违反规则的 Noul，批量返回隐藏概率。",
+      "en": "Native Jev 1.14.0 answers a Noul per post about whether showing it would violate the instruction, batching the hide probabilities."
+    },
+    "action": {
+      "zh": "程序校验模型和回答格式，以 0.9 阈值标为过滤，在本地隐藏确认匹配的卡片。",
+      "en": "The extension validates the model and response shape, marks probabilities at or above 0.9 for filtering, and hides confirmed cards locally."
+    },
+    "boundary": {
+      "zh": "社区 MIT。帖子文字和图片可发送给 TypeSafe。源码依赖 X 网页结构，可能漏判或误判。未安装扩展、读取私人时间线或发出模型请求。",
+      "en": "Community MIT. Post text and images can be sent to TypeSafe. The extension depends on X page structure and can miss or misclassify posts. No installation, private timeline access or model request."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/raghavio/ownyourtimeline"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/raghavio/ownyourtimeline/blob/cc4bd3795657ee8508c9e93cb62d67441c06f56e/src/provider.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/raghavio/ownyourtimeline/blob/cc4bd3795657ee8508c9e93cb62d67441c06f56e/src/background.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/raghavio/ownyourtimeline/blob/cc4bd3795657ee8508c9e93cb62d67441c06f56e/src/confirmed-filter.ts"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/raghavio/status/2119133456915665126"
+      }
+    ]
+  },
+  {
+    "id": "jev-job-search-posting-fit",
+    "name": "jev-job-search",
+    "author": "qbeka",
+    "title": {
+      "zh": "求职信息预筛与匹配分排序",
+      "en": "Screen and rank job postings for a candidate"
+    },
+    "area": {
+      "zh": "岗位信息筛选",
+      "en": "Job posting triage"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "岗位描述与候选人资料摘要、技能和毕业时间。",
+      "en": "A job description and candidate details such as summary, skills and graduation timing."
+    },
+    "decision": {
+      "zh": "OpenRouter Decisions 路径默认调用 typesafe/jev-1.13，一批问是否为软件岗、经验档位、岗位时间及匹配评分等。",
+      "en": "The OpenRouter Decisions path defaults to typesafe/jev-1.13, batching software-role, experience level, timing and fit questions."
+    },
+    "action": {
+      "zh": "本地代码把 Noul、Choice、Score 合成带理由的评分和申请、低于阈值、跳过三类候选状态。",
+      "en": "Local code combines Noul, Choice and Score outputs into a fit score, reasons and apply, below-threshold or skip statuses."
+    },
+    "boundary": {
+      "zh": "社区 MIT。核对的是预筛模块。申请状态是程序标签，仍需核对原岗位要求和实际提交。托管模式可发送求职资料。未调用模型、访问邮箱或提交申请。",
+      "en": "Community MIT. The reviewed module is posting triage. Its apply status is a program label, and posting requirements and actual submissions need separate checks. Hosted calls can send candidate data. No model, mailbox or application operations were performed."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/qbeka/jev-job-search"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/qbeka/jev-job-search/blob/3e3c9dba7f437c7cdef7763350d1aea41702bffb/src/jobs/rate.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/qbeka/jev-job-search/blob/3e3c9dba7f437c7cdef7763350d1aea41702bffb/src/jev/client.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/qbeka/jev-job-search/blob/3e3c9dba7f437c7cdef7763350d1aea41702bffb/src/config.ts"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/bekaqendrim/status/2119261657260273993"
+      }
+    ]
+  },
+  {
+    "id": "jevgammon-legal-backgammon-moves",
+    "name": "jevgammon",
+    "author": "zekiworks",
+    "title": {
+      "zh": "从合法棋步中选择并推进棋局",
+      "en": "Choose a legal backgammon move and advance the game"
+    },
+    "area": {
+      "zh": "棋局模拟",
+      "en": "Game simulation"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "双陆棋棋盘、骰子和规则引擎生成的合法棋步。",
+      "en": "A backgammon board, dice and legal plays generated by a rules engine."
+    },
+    "decision": {
+      "zh": "TypeSafe 路径用原生 System One 将呈现的棋步作为 Choice 选项，代码把返回标签映射到棋步索引。",
+      "en": "The TypeSafe path presents plays as Choice options in native System One and maps the returned label to a play index."
+    },
+    "action": {
+      "zh": "对局程序应用选中的棋步并写入回合记录。比较模式用相同骰子交换席位。",
+      "en": "The runner applies the chosen play and records the turn. The comparison setup swaps seats with identical dice."
+    },
+    "boundary": {
+      "zh": "社区公开源码，根许可未确认，仅收录案例。服务可限制候选数，结果受候选和对局设置影响。未运行模型或复现胜率。",
+      "en": "Public community source with unconfirmed root license, listed as a case only. Services can cap options, and results depend on the candidate and match setup. No games or win rates were reproduced."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/zekiworks/jevgammon"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/zekiworks/jevgammon/blob/a7aaf88dde1d547838570eb7381aaa86754221bd/src/players/decision.rs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/zekiworks/jevgammon/blob/a7aaf88dde1d547838570eb7381aaa86754221bd/src/runner.rs"
+      }
+    ]
+  },
+  {
+    "id": "official-verify-llm-outputs-three-nouls",
+    "name": "Verifying LLM answers against their source",
+    "author": "TypeSafe AI",
+    "title": {
+      "zh": "用三项 Noul 核对答案是否有原文支持",
+      "en": "Verify answer support with three Noul questions"
+    },
+    "area": {
+      "zh": "回答证据复核",
+      "en": "Answer grounding review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "问题、检索段落、回答模型收到的指令和生成的答案。",
+      "en": "A question, retrieved paragraphs, the answering model’s instruction and its response."
+    },
+    "decision": {
+      "zh": "官方教程用一次 Jev 请求估计段落是否足以回答、候选是否拒答、原文是否支持候选答案。",
+      "en": "The official cookbook asks three Nouls in one Jev request: whether the paragraphs answer the question, whether the candidate declines, and whether the source supports its answer."
+    },
+    "action": {
+      "zh": "拒答概率至少 0.5 时以可答概率计风险，否则用 1 减去支持概率。风险达到 0.2 即标记人工或后续模型复核。",
+      "en": "When the decline probability reaches 0.5, risk is the answerability probability. Otherwise it is one minus support. Risk at or above 0.2 returns a review status for a person or another model."
+    },
+    "boundary": {
+      "zh": "TypeSafe 官方示例的阈值和评估来自固定 MuSiQue 样本，非本站实测。与参考答案不一致的评估使用另一模型复核，结果仍有漏检。",
+      "en": "Thresholds and measurements come from TypeSafe’s fixed MuSiQue sample. An additional model reviews grading disagreements with references, and errors can still pass the check."
+    },
+    "sources": [
+      {
+        "label": "Official cookbook and code",
+        "url": "https://docs.typesafe.ai/cookbooks/verify_llm_outputs.md"
+      }
+    ]
   }
 ]

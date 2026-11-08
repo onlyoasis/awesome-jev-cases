@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (244)
+## 深度使用案例 / Worked cases (250)
 
 ### jev-ultrafast
 
@@ -2200,7 +2200,61 @@
 - 核验边界：社区源码案例，根许可未确认，不列许可明确的开源项目。缺答案时可能继续推荐，概率不能保证价格、营业、餐食成分或过敏安全；未实测站点推荐或调用模型。
 - 来源：[GitHub](https://github.com/william-wei-zhu/savorlm) · [Source](https://github.com/william-wei-zhu/savorlm/blob/cae09f52fb0ca679aaae95c2b31efdefd122493f/lib/server/jev.ts) · [Source](https://github.com/william-wei-zhu/savorlm/blob/cae09f52fb0ca679aaae95c2b31efdefd122493f/lib/server/guide.ts) · [Source](https://github.com/william-wei-zhu/savorlm/blob/cae09f52fb0ca679aaae95c2b31efdefd122493f/lib/guide/checks.ts)
 
-## 开源项目 / Open-source projects (280)
+### 逐条核对代码和规格文档
+
+- 作者：INDXDev
+- 输入：代码文件或规格文档，项目与功能级 YAML 检查项。
+- Jev 判断：Jev 先以 Choice 将文件或文档归入已列功能或 global，再逐项判断满足、违反、不适用，或一致、冲突、未提及。文档路径另问是否有未覆盖要求。
+- 后续动作：本地代码按置信阈值筛掉低置信的违反或冲突，生成逐项报告。全量代码核对才汇总无满足证据的检查项。
+- 核验边界：社区 MIT。已核 jev-latest 提供方、两次判断与报告消费。源码可能截断，缺答案或低置信结果会使报告不完整。未运行模型，报告需人工复核。
+- 来源：[GitHub](https://github.com/INDXDev/jevlint) · [Source](https://github.com/INDXDev/jevlint/blob/0ad414b746e7819e117c4280727e0a31a8ab8714/src/decision/providers.ts) · [Source](https://github.com/INDXDev/jevlint/blob/0ad414b746e7819e117c4280727e0a31a8ab8714/src/spec/check.ts) · [Source](https://github.com/INDXDev/jevlint/blob/0ad414b746e7819e117c4280727e0a31a8ab8714/src/spec/drift.ts) · [Source](https://github.com/INDXDev/jevlint/blob/0ad414b746e7819e117c4280727e0a31a8ab8714/src/spec/questions.ts) · [Author post](https://x.com/k1ito/status/2119260605119176803)
+
+### Codex 回合结束时建议压缩上下文
+
+- 作者：kunchenguid
+- 输入：Codex TUI 已完成回合的限长上下文与当前窗口占用，本地规则先排除太短或重复的检查。
+- Jev 判断：Jev 原生接口返回工作是否完成和执行形态两项 Choice，代码读取概率。
+- 后续动作：以窗口占用对应的门槛评估分数。合格时向 Codex 输出提示，请用户自行运行 /compact；调用异常或不合格时不显示提示。
+- 核验边界：社区 MIT。只核 Codex 提示路径，其他宿主行为可能不同。原帖为作者经验。未安装插件或发送本机会话，工作完成判断可能出错。
+- 来源：[GitHub](https://github.com/kunchenguid/compact-adviser) · [Source](https://github.com/kunchenguid/compact-adviser/blob/37fa1a665b8933de68c90014312060e862cf121a/packages/codex-plugin/src/judge.ts) · [Source](https://github.com/kunchenguid/compact-adviser/blob/37fa1a665b8933de68c90014312060e862cf121a/packages/codex-plugin/src/hook.ts) · [Author post](https://x.com/kunchenguid/status/2119254692442276223)
+
+### 按自己的规则过滤 X 首页帖子
+
+- 作者：raghavio
+- 输入：用户的过滤规则及每条帖子的文字、引用和受支持的图片。
+- Jev 判断：原生 Jev 1.14.0 按帖子询问显示内容是否违反规则的 Noul，批量返回隐藏概率。
+- 后续动作：程序校验模型和回答格式，以 0.9 阈值标为过滤，在本地隐藏确认匹配的卡片。
+- 核验边界：社区 MIT。帖子文字和图片可发送给 TypeSafe。源码依赖 X 网页结构，可能漏判或误判。未安装扩展、读取私人时间线或发出模型请求。
+- 来源：[GitHub](https://github.com/raghavio/ownyourtimeline) · [Source](https://github.com/raghavio/ownyourtimeline/blob/cc4bd3795657ee8508c9e93cb62d67441c06f56e/src/provider.ts) · [Source](https://github.com/raghavio/ownyourtimeline/blob/cc4bd3795657ee8508c9e93cb62d67441c06f56e/src/background.ts) · [Source](https://github.com/raghavio/ownyourtimeline/blob/cc4bd3795657ee8508c9e93cb62d67441c06f56e/src/confirmed-filter.ts) · [Author post](https://x.com/raghavio/status/2119133456915665126)
+
+### 求职信息预筛与匹配分排序
+
+- 作者：qbeka
+- 输入：岗位描述与候选人资料摘要、技能和毕业时间。
+- Jev 判断：OpenRouter Decisions 路径默认调用 typesafe/jev-1.13，一批问是否为软件岗、经验档位、岗位时间及匹配评分等。
+- 后续动作：本地代码把 Noul、Choice、Score 合成带理由的评分和申请、低于阈值、跳过三类候选状态。
+- 核验边界：社区 MIT。核对的是预筛模块。申请状态是程序标签，仍需核对原岗位要求和实际提交。托管模式可发送求职资料。未调用模型、访问邮箱或提交申请。
+- 来源：[GitHub](https://github.com/qbeka/jev-job-search) · [Source](https://github.com/qbeka/jev-job-search/blob/3e3c9dba7f437c7cdef7763350d1aea41702bffb/src/jobs/rate.ts) · [Source](https://github.com/qbeka/jev-job-search/blob/3e3c9dba7f437c7cdef7763350d1aea41702bffb/src/jev/client.ts) · [Source](https://github.com/qbeka/jev-job-search/blob/3e3c9dba7f437c7cdef7763350d1aea41702bffb/src/config.ts) · [Author post](https://x.com/bekaqendrim/status/2119261657260273993)
+
+### 从合法棋步中选择并推进棋局
+
+- 作者：zekiworks
+- 输入：双陆棋棋盘、骰子和规则引擎生成的合法棋步。
+- Jev 判断：TypeSafe 路径用原生 System One 将呈现的棋步作为 Choice 选项，代码把返回标签映射到棋步索引。
+- 后续动作：对局程序应用选中的棋步并写入回合记录。比较模式用相同骰子交换席位。
+- 核验边界：社区公开源码，根许可未确认，仅收录案例。服务可限制候选数，结果受候选和对局设置影响。未运行模型或复现胜率。
+- 来源：[GitHub](https://github.com/zekiworks/jevgammon) · [Source](https://github.com/zekiworks/jevgammon/blob/a7aaf88dde1d547838570eb7381aaa86754221bd/src/players/decision.rs) · [Source](https://github.com/zekiworks/jevgammon/blob/a7aaf88dde1d547838570eb7381aaa86754221bd/src/runner.rs)
+
+### 用三项 Noul 核对答案是否有原文支持
+
+- 作者：TypeSafe AI
+- 输入：问题、检索段落、回答模型收到的指令和生成的答案。
+- Jev 判断：官方教程用一次 Jev 请求估计段落是否足以回答、候选是否拒答、原文是否支持候选答案。
+- 后续动作：拒答概率至少 0.5 时以可答概率计风险，否则用 1 减去支持概率。风险达到 0.2 即标记人工或后续模型复核。
+- 核验边界：TypeSafe 官方示例的阈值和评估来自固定 MuSiQue 样本，非本站实测。与参考答案不一致的评估使用另一模型复核，结果仍有漏检。
+- 来源：[Official cookbook and code](https://docs.typesafe.ai/cookbooks/verify_llm_outputs.md)
+
+## 开源项目 / Open-source projects (283)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2484,8 +2538,11 @@
 | [INDXDev/jevlint](https://github.com/INDXDev/jevlint) | community | MIT | 15 |
 | [ttdua/pi-jev-pilot](https://github.com/ttdua/pi-jev-pilot) | community | MIT (with upstream notices) | 0 |
 | [Imperfective/smart-factory-ai-ops-center](https://github.com/Imperfective/smart-factory-ai-ops-center) | community | MIT (code; separate data/model terms) | 0 |
+| [kunchenguid/compact-adviser](https://github.com/kunchenguid/compact-adviser) | community | MIT | 233 |
+| [raghavio/ownyourtimeline](https://github.com/raghavio/ownyourtimeline) | community | MIT | 0 |
+| [qbeka/jev-job-search](https://github.com/qbeka/jev-job-search) | community | MIT | 6 |
 
-## 官方 cookbook / Official recipes (25)
+## 官方 cookbook / Official recipes (26)
 
 - [Self-consistency: nouls](https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook.md)：Route uncertain probabilities to human review while keeping the underlying noul values visible.
 - [Self-consistency: choices](https://docs.typesafe.ai/cookbooks/consistency_choice_cookbook.md)：Add an uncertain outcome to moderation decisions and compare label agreement with the share of automatic actions.
@@ -2512,3 +2569,4 @@
 - [OCR confidence and bounding boxes](https://docs.typesafe.ai/cookbooks/ocr_confidence_bounding_boxes.md)：Check already-extracted invoice values against a full photo and a zoomed Box crop using Nouls; either check below 0.25 flags human review. Experimental images/Box and official cached examples, not independent OCR or production validation.
 - [Feeder-cam visit log](https://docs.typesafe.ai/cookbooks/feeder_watch.md)：Apply Noul, Choice and Box questions to one video frame per second, then merge detections into species visits in code. Experimental image workflow limited to two different species; occlusion and same-species birds remain limitations. Reported 101-frame results are official claims.
 - [Shopping cart](https://docs.typesafe.ai/cookbooks/cart_from_primitives.md)：Find menu items with a shrinking-options Choice loop and a nothing_else sentinel, then batch known field Choices per item. Code assembles the cart; each item appears once and quantities are not modeled. Published outputs are official reports, not site measurements.
+- [Verifying LLM answers against their source](https://docs.typesafe.ai/cookbooks/verify_llm_outputs.md)：Asks three Nouls about answerability, declines and source support, then uses code to route doubtful answers to review. The threshold and reported outcomes are from the official fixed MuSiQue sample.

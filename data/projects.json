@@ -4478,5 +4478,53 @@
     "lastVerified": "2026-11-07",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "kunchenguid-compact-adviser",
+    "name": "kunchenguid/compact-adviser",
+    "url": "https://github.com/kunchenguid/compact-adviser",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "以 Jev 检查回合完成度和工作形态，Codex 路径仅输出压缩建议，未运行。",
+      "en": "Jev checks turn completion and work shape. The reviewed Codex path emits a compaction hint. Not run."
+    },
+    "sourceUrl": "https://github.com/kunchenguid/compact-adviser/blob/37fa1a665b8933de68c90014312060e862cf121a/packages/codex-plugin/src/judge.ts",
+    "lastVerified": "2026-11-08",
+    "status": "verified",
+    "stars": 233
+  },
+  {
+    "id": "raghavio-ownyourtimeline",
+    "name": "raghavio/ownyourtimeline",
+    "url": "https://github.com/raghavio/ownyourtimeline",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "MV3 扩展用 Jev Noul 过滤 X 首页卡片，文字和图片可发送给 TypeSafe，未安装。",
+      "en": "A Manifest V3 extension using Jev Noul to filter X home-feed cards. Text and images can go to TypeSafe. Not installed."
+    },
+    "sourceUrl": "https://github.com/raghavio/ownyourtimeline/blob/cc4bd3795657ee8508c9e93cb62d67441c06f56e/src/provider.ts",
+    "lastVerified": "2026-11-08",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "qbeka-jev-job-search",
+    "name": "qbeka/jev-job-search",
+    "url": "https://github.com/qbeka/jev-job-search",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "求职工具含 Jev 岗位批量判断和本地排序。已核预筛源码，未执行申请流程。",
+      "en": "Job-search tool with batched Jev judgments and local ranking. Triage source reviewed without running applications."
+    },
+    "sourceUrl": "https://github.com/qbeka/jev-job-search/blob/3e3c9dba7f437c7cdef7763350d1aea41702bffb/src/jobs/rate.ts",
+    "lastVerified": "2026-11-08",
+    "status": "verified",
+    "stars": 6
   }
 ]
