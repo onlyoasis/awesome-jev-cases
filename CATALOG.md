@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (250)
+## 深度使用案例 / Worked cases (254)
 
 ### jev-ultrafast
 
@@ -2254,7 +2254,43 @@
 - 核验边界：TypeSafe 官方示例的阈值和评估来自固定 MuSiQue 样本，非本站实测。与参考答案不一致的评估使用另一模型复核，结果仍有漏检。
 - 来源：[Official cookbook and code](https://docs.typesafe.ai/cookbooks/verify_llm_outputs.md)
 
-## 开源项目 / Open-source projects (283)
+### 工具执行前按风险分流许可
+
+- 作者：Sraavan
+- 输入：Claude Code 的 PreToolUse 工具名、参数与经过整理的会话上下文。部分调用先由本地规则处理。
+- Jev 判断：原生 Jev 批量回答风险 Noul，例如是否会删除无法恢复的成果、改写共享历史或外传数据。
+- 后续动作：代码将风险概率按配置映射为 allow、ask 或 deny，再输出 Claude Code hook 决定。默认 gatekeeper 的判断错误走 ask，其他运行模式会改变传递行为。
+- 核验边界：社区 MIT。远程判断可发送整理后的工具与会话数据，程序也可记录请求状态。风险分流有漏判可能。未安装、调用模型或复现作者评测。
+- 来源：[GitHub](https://github.com/Sraavan/tripwire) · [Source](https://github.com/Sraavan/tripwire/blob/c44e68aad345df0a449969070e9200056a3878e6/tripwire/hook.py) · [Source](https://github.com/Sraavan/tripwire/blob/c44e68aad345df0a449969070e9200056a3878e6/tripwire/jev.py) · [Source](https://github.com/Sraavan/tripwire/blob/c44e68aad345df0a449969070e9200056a3878e6/tripwire/questions.py) · [Source](https://github.com/Sraavan/tripwire/blob/c44e68aad345df0a449969070e9200056a3878e6/tripwire/policy.py)
+
+### Kotlin 工单分类与低置信转人工示例
+
+- 作者：ItisNoMatter
+- 输入：短工单文本及用 Kotlin 枚举声明的团队选项。
+- Jev 判断：Kotlin 客户端通过原生 System One 发 Choice，返回枚举类型的选择、置信度及选项概率。
+- 后续动作：示例在置信度至少 0.8 时返回自动分流结果，否则返回人工分支并列出前两项候选，随后在命令行输出结果。
+- 核验边界：社区 MIT。已核客户端传输和示例分支。示例只打印结果，未接真实工单系统或复核队列。
+- 来源：[GitHub](https://github.com/ItisNoMatter/kojev) · [Source](https://github.com/ItisNoMatter/kojev/blob/3782d10273769c07f6fe61e5deac93c7451b8062/examples/src/main/kotlin/io/github/itisnomatter/kojev/examples/ConfidenceGatedRouting.kt) · [Source](https://github.com/ItisNoMatter/kojev/blob/3782d10273769c07f6fe61e5deac93c7451b8062/src/commonMain/kotlin/io/github/itisnomatter/kojev/wire/Transport.kt)
+
+### 按需求和交付证据逐项复核
+
+- 作者：randlee
+- 输入：需求记录及其映射到的实现位置。开发阶段还可核对交付说明和用户指令。
+- Jev 判断：原生 Jev 接收配置中的封闭 Choice。开发题集区分相关性、是否落实、是否冲突和是否给出可检查证据。
+- 后续动作：代码按预设规则消化选项，输出需求或交付复核结果以及判定依据。远程调用前读取仓库的 allow_remote_judge 设置。
+- 核验边界：社区 MIT。已核固定提交的请求、题集与结果规则。交付说明可引用证据但仍需独立核验。未向供应商发送仓库内容。
+- 来源：[GitHub](https://github.com/randlee/judge-jev) · [Source](https://github.com/randlee/judge-jev/blob/b647209dc4ba9fa08a9eedb6da568871c5baf823/plugins/sc-judge-jev/install/templates/skills/judge-jev/scripts/jev_judge.py.j2) · [Source](https://github.com/randlee/judge-jev/blob/b647209dc4ba9fa08a9eedb6da568871c5baf823/plugins/sc-judge-jev/install/templates/skills/judge-jev/assets/questions/dev.json)
+
+### 先取较深候选池，再融合 Jev 与检索排名
+
+- 作者：Raj / Ragwalla
+- 输入：用户问题与向量、关键词两路混合检索的候选段落。作者说明可从每路取至多 100 条。
+- Jev 判断：Ragwalla 将问题和候选交给 Jev，按各段落是否能回答问题得到相关度顺序。公开说明未给出接口题型。
+- 后续动作：程序以倒数排名融合合并 Jev 和原检索顺序，公开配置可为搜索启用该重排。
+- 核验边界：供应商一手文章与发布原帖。结果来自作者的合成企业语料检索实验，未独立复现，也未测量代理回答质量。
+- 来源：[Ragwalla writeup](https://ragwalla.com/blog/jev-rag-rerank-deep-dont-route) · [Author post](https://x.com/raj/status/2119460565533782133)
+
+## 开源项目 / Open-source projects (286)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2541,6 +2577,9 @@
 | [kunchenguid/compact-adviser](https://github.com/kunchenguid/compact-adviser) | community | MIT | 233 |
 | [raghavio/ownyourtimeline](https://github.com/raghavio/ownyourtimeline) | community | MIT | 0 |
 | [qbeka/jev-job-search](https://github.com/qbeka/jev-job-search) | community | MIT | 6 |
+| [Sraavan/tripwire](https://github.com/Sraavan/tripwire) | community | MIT | 0 |
+| [ItisNoMatter/kojev](https://github.com/ItisNoMatter/kojev) | community | MIT | 22 |
+| [randlee/judge-jev](https://github.com/randlee/judge-jev) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (26)
 

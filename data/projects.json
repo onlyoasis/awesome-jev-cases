@@ -4526,5 +4526,53 @@
     "lastVerified": "2026-11-08",
     "status": "verified",
     "stars": 6
+  },
+  {
+    "id": "sraavan-tripwire",
+    "name": "Sraavan/tripwire",
+    "url": "https://github.com/Sraavan/tripwire",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Claude Code hook 用 Jev 风险 Noul 和本地规则分流许可。已核源码，未安装。",
+      "en": "A Claude Code hook triaging permissions with Jev risk Nouls and local rules. Source reviewed without installation."
+    },
+    "sourceUrl": "https://github.com/Sraavan/tripwire/blob/c44e68aad345df0a449969070e9200056a3878e6/tripwire/hook.py",
+    "lastVerified": "2026-11-09",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "itisnomatter-kojev",
+    "name": "ItisNoMatter/kojev",
+    "url": "https://github.com/ItisNoMatter/kojev",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Kotlin Multiplatform 原生 Jev 客户端，支持类型化 Choice 及低置信转人工示例。",
+      "en": "Kotlin Multiplatform native Jev client with typed Choices and a confidence-gated routing example."
+    },
+    "sourceUrl": "https://github.com/ItisNoMatter/kojev/blob/3782d10273769c07f6fe61e5deac93c7451b8062/src/commonMain/kotlin/io/github/itisnomatter/kojev/wire/Transport.kt",
+    "lastVerified": "2026-11-09",
+    "status": "verified",
+    "stars": 22
+  },
+  {
+    "id": "randlee-judge-jev",
+    "name": "randlee/judge-jev",
+    "url": "https://github.com/randlee/judge-jev",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Jev 需求与交付复核工具，使用封闭题集和规则生成结果，远程判断需仓库设置允许。",
+      "en": "A Jev tool for requirement and delivery review using bounded questions and rules. Remote judging requires repository opt-in."
+    },
+    "sourceUrl": "https://github.com/randlee/judge-jev/blob/b647209dc4ba9fa08a9eedb6da568871c5baf823/plugins/sc-judge-jev/install/templates/skills/judge-jev/scripts/jev_judge.py.j2",
+    "lastVerified": "2026-11-09",
+    "status": "verified",
+    "stars": 0
   }
 ]

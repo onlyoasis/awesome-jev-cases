@@ -11006,5 +11006,185 @@
         "url": "https://docs.typesafe.ai/cookbooks/verify_llm_outputs.md"
       }
     ]
+  },
+  {
+    "id": "tripwire-pretooluse-permission-triage",
+    "name": "Tripwire",
+    "author": "Sraavan",
+    "title": {
+      "zh": "工具执行前按风险分流许可",
+      "en": "Triage permissions before a tool call"
+    },
+    "area": {
+      "zh": "工具调用许可",
+      "en": "Tool permissions"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "Claude Code 的 PreToolUse 工具名、参数与经过整理的会话上下文。部分调用先由本地规则处理。",
+      "en": "A Claude Code PreToolUse event with tool name, arguments and prepared conversation context. Local rules handle some calls first."
+    },
+    "decision": {
+      "zh": "原生 Jev 批量回答风险 Noul，例如是否会删除无法恢复的成果、改写共享历史或外传数据。",
+      "en": "Native Jev batches risk Nouls for actions such as deleting unrecoverable work, rewriting shared history or sending data out."
+    },
+    "action": {
+      "zh": "代码将风险概率按配置映射为 allow、ask 或 deny，再输出 Claude Code hook 决定。默认 gatekeeper 的判断错误走 ask，其他运行模式会改变传递行为。",
+      "en": "Code maps risk probabilities to allow, ask or deny and emits the Claude Code hook decision. In the default gatekeeper mode, evaluation errors ask for permission. Other modes change passthrough behavior."
+    },
+    "boundary": {
+      "zh": "社区 MIT。远程判断可发送整理后的工具与会话数据，程序也可记录请求状态。风险分流有漏判可能。未安装、调用模型或复现作者评测。",
+      "en": "Community MIT project. Remote judging can send prepared tool and conversation data, and the program can log request state. Risk triage can miss cases. No installation, model calls or benchmark reproduction."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Sraavan/tripwire"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Sraavan/tripwire/blob/c44e68aad345df0a449969070e9200056a3878e6/tripwire/hook.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Sraavan/tripwire/blob/c44e68aad345df0a449969070e9200056a3878e6/tripwire/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Sraavan/tripwire/blob/c44e68aad345df0a449969070e9200056a3878e6/tripwire/questions.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Sraavan/tripwire/blob/c44e68aad345df0a449969070e9200056a3878e6/tripwire/policy.py"
+      }
+    ]
+  },
+  {
+    "id": "kojev-confidence-gated-ticket-routing",
+    "name": "kojev",
+    "author": "ItisNoMatter",
+    "title": {
+      "zh": "Kotlin 工单分类与低置信转人工示例",
+      "en": "Kotlin ticket classification with a human review branch"
+    },
+    "area": {
+      "zh": "工单分流示例",
+      "en": "Ticket routing example"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "短工单文本及用 Kotlin 枚举声明的团队选项。",
+      "en": "Short ticket text and team options declared as a Kotlin enum."
+    },
+    "decision": {
+      "zh": "Kotlin 客户端通过原生 System One 发 Choice，返回枚举类型的选择、置信度及选项概率。",
+      "en": "The Kotlin client sends a Choice through native System One and returns a typed enum selection, confidence and option probabilities."
+    },
+    "action": {
+      "zh": "示例在置信度至少 0.8 时返回自动分流结果，否则返回人工分支并列出前两项候选，随后在命令行输出结果。",
+      "en": "At confidence 0.8 or higher the example returns an automatic routing result. Otherwise it returns a human branch with the top two options. The CLI prints the result."
+    },
+    "boundary": {
+      "zh": "社区 MIT。已核客户端传输和示例分支。示例只打印结果，未接真实工单系统或复核队列。",
+      "en": "Community MIT project. The client transport and example branches were inspected. The example prints results, and no real ticketing or review queue was used."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ItisNoMatter/kojev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ItisNoMatter/kojev/blob/3782d10273769c07f6fe61e5deac93c7451b8062/examples/src/main/kotlin/io/github/itisnomatter/kojev/examples/ConfidenceGatedRouting.kt"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ItisNoMatter/kojev/blob/3782d10273769c07f6fe61e5deac93c7451b8062/src/commonMain/kotlin/io/github/itisnomatter/kojev/wire/Transport.kt"
+      }
+    ]
+  },
+  {
+    "id": "judge-jev-requirement-evidence-review",
+    "name": "judge-jev",
+    "author": "randlee",
+    "title": {
+      "zh": "按需求和交付证据逐项复核",
+      "en": "Review delivery evidence against requirements"
+    },
+    "area": {
+      "zh": "工程交付复核",
+      "en": "Engineering delivery review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "需求记录及其映射到的实现位置。开发阶段还可核对交付说明和用户指令。",
+      "en": "Requirement records and their mapped implementation locations. The development gate can also compare delivery notes with user directives."
+    },
+    "decision": {
+      "zh": "原生 Jev 接收配置中的封闭 Choice。开发题集区分相关性、是否落实、是否冲突和是否给出可检查证据。",
+      "en": "Native Jev answers bounded Choices from configuration. The development set checks relevance, implementation, conflict and cited evidence."
+    },
+    "action": {
+      "zh": "代码按预设规则消化选项，输出需求或交付复核结果以及判定依据。远程调用前读取仓库的 allow_remote_judge 设置。",
+      "en": "Code applies configured rules to the choices and emits review results with reasons. Remote judging checks the repository’s allow_remote_judge setting first."
+    },
+    "boundary": {
+      "zh": "社区 MIT。已核固定提交的请求、题集与结果规则。交付说明可引用证据但仍需独立核验。未向供应商发送仓库内容。",
+      "en": "Community MIT project. The pinned request path, questions and result rules were inspected. Evidence cited in delivery notes still needs verification. No repository content was sent to the provider."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/randlee/judge-jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/randlee/judge-jev/blob/b647209dc4ba9fa08a9eedb6da568871c5baf823/plugins/sc-judge-jev/install/templates/skills/judge-jev/scripts/jev_judge.py.j2"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/randlee/judge-jev/blob/b647209dc4ba9fa08a9eedb6da568871c5baf823/plugins/sc-judge-jev/install/templates/skills/judge-jev/assets/questions/dev.json"
+      }
+    ]
+  },
+  {
+    "id": "ragwalla-jev-deep-rerank-rrf",
+    "name": "Ragwalla",
+    "author": "Raj / Ragwalla",
+    "title": {
+      "zh": "先取较深候选池，再融合 Jev 与检索排名",
+      "en": "Rerank a deep pool and fuse Jev with retrieval order"
+    },
+    "area": {
+      "zh": "检索重排",
+      "en": "Retrieval reranking"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "用户问题与向量、关键词两路混合检索的候选段落。作者说明可从每路取至多 100 条。",
+      "en": "A user question and passage candidates from vector and keyword retrieval. The author describes taking up to 100 from each side."
+    },
+    "decision": {
+      "zh": "Ragwalla 将问题和候选交给 Jev，按各段落是否能回答问题得到相关度顺序。公开说明未给出接口题型。",
+      "en": "Ragwalla gives the question and candidates to Jev, which ranks passages by how well they answer it. The writeup does not name the wire question type."
+    },
+    "action": {
+      "zh": "程序以倒数排名融合合并 Jev 和原检索顺序，公开配置可为搜索启用该重排。",
+      "en": "Reciprocal rank fusion combines Jev and original retrieval order, and a documented search option enables the reranker."
+    },
+    "boundary": {
+      "zh": "供应商一手文章与发布原帖。结果来自作者的合成企业语料检索实验，未独立复现，也未测量代理回答质量。",
+      "en": "First-party product writeup and launch post. Reported results come from the author’s synthetic enterprise retrieval experiment. No independent replication or agent answer-quality measurement."
+    },
+    "sources": [
+      {
+        "label": "Ragwalla writeup",
+        "url": "https://ragwalla.com/blog/jev-rag-rerank-deep-dont-route"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/raj/status/2119460565533782133"
+      }
+    ]
   }
 ]
