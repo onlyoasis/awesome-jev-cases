@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (254)
+## 深度使用案例 / Worked cases (259)
 
 ### jev-ultrafast
 
@@ -2290,7 +2290,52 @@
 - 核验边界：供应商一手文章与发布原帖。结果来自作者的合成企业语料检索实验，未独立复现，也未测量代理回答质量。
 - 来源：[Ragwalla writeup](https://ragwalla.com/blog/jev-rag-rerank-deep-dont-route) · [Author post](https://x.com/raj/status/2119460565533782133)
 
-## 开源项目 / Open-source projects (286)
+### 把 Jev 概率输出转成 scikit-learn 特征矩阵
+
+- 作者：engkimo
+- 输入：文本或结构化 JSON 样本，以及调用方声明的 Noul、Choice 和 Score 题集。
+- Jev 判断：每个样本将全部封闭题放进一次 System One 请求，返回概率和结构化答案。
+- 后续动作：校验答复后按声明顺序生成 float64 特征矩阵。Score 可保留等级分布或转换为期望值和标准差。
+- 核验边界：社区 MIT 预发布项目。源码和作者原帖已核，离线示例与真实 API 使用分开，本站未测量模型性能。
+- 来源：[GitHub](https://github.com/engkimo/scikit-jev) · [Source](https://github.com/engkimo/scikit-jev/blob/05e3b97e5d106b1a3f0241090f22ba2524afb258/src/scikit_jev/_engine.py) · [Source](https://github.com/engkimo/scikit-jev/blob/05e3b97e5d106b1a3f0241090f22ba2524afb258/src/scikit_jev/transformer.py) · [Source](https://github.com/engkimo/scikit-jev/blob/05e3b97e5d106b1a3f0241090f22ba2524afb258/src/scikit_jev/_features.py) · [Author post](https://x.com/immeivise/status/2119987927866638730)
+
+### 用同一量表评估 52 种语言译文
+
+- 作者：7shi
+- 输入：英语对话稿、目标语言译文及行对应说明。
+- Jev 判断：固定 Jev 1.14.0 按五个评估维度分别作五档 Score 判断，并保留等级概率。
+- 后续动作：程序按语言保存结果，另用语言检查处理错语种，再汇总评分分布及中位数等统计。
+- 核验边界：社区作者评测。结果来自该对话样本与固定量表，未独立复现，也未替代人工翻译评估。
+- 来源：[GitHub](https://github.com/7shi/multilingual-reader) · [Source](https://github.com/7shi/multilingual-reader/blob/517cf8af587097bb5ed02a8f7764cdd1bee27e17/examples/tr/plamo/README.md) · [Source](https://github.com/7shi/multilingual-reader/blob/517cf8af587097bb5ed02a8f7764cdd1bee27e17/trtools/jev.py) · [Source](https://github.com/7shi/multilingual-reader/blob/517cf8af587097bb5ed02a8f7764cdd1bee27e17/trtools/jev_criteria.py) · [Source](https://github.com/7shi/multilingual-reader/blob/517cf8af587097bb5ed02a8f7764cdd1bee27e17/examples/tr/onde/common.mk) · [Author post](https://x.com/7shi/status/2119918304337002597)
+
+### 从酒店价格卡片选择可复核的价格与条款
+
+- 作者：romkagribok
+- 输入：受限浏览流程读到的房型、价格候选行、入住晚数和取消说明。
+- Jev 判断：原生 Jev 用 Choice 选整段住宿总价和退款条款所在行，并对取消、税费状态作有限分类。
+- 后续动作：代码把选择映射回观测文本，解析金额并交给价格校验和比对流程。预订调整由用户在预订平台自行处理。
+- 核验边界：社区 MIT。源码和作者发布帖已核。网页布局与登录状态会影响运行，成本和效果属作者报告，本站未运行真实账号或订单。
+- 来源：[GitHub](https://github.com/romkagribok/booksaver-agent) · [Source](https://github.com/romkagribok/booksaver-agent/blob/db3207bfef2df6da609501e2d2552c7267caaa66/src/booksaver/infrastructure/browser/jev_price_executor.py) · [Source](https://github.com/romkagribok/booksaver-agent/blob/db3207bfef2df6da609501e2d2552c7267caaa66/src/booksaver/infrastructure/llm/typesafe_client.py) · [Author post](https://x.com/romkagribok/status/2119894650303684834)
+
+### 把相关性判断与时间和重要性一起用于记忆检索
+
+- 作者：jugripa
+- 输入：当前任务、短期与长期记忆的标题、摘要和问题线索。
+- Jev 判断：原生 Jev 对每条记录回答直接相关、间接相关或不相关的 Choice，并在每批做一次最匹配选择。
+- 后续动作：程序融合相关度、新鲜度与重要性，按阈值与 top-k 返回匹配。调用异常时可用本地 BM25 排序。
+- 核验边界：社区 MIT。大候选集按批调用，远程路径会发送检索文本。此处核对代码，未读取用户记忆或验证检索效果。
+- 来源：[GitHub](https://github.com/jugripa/mem100) · [Source](https://github.com/jugripa/mem100/blob/2e1297de358bab66fe4999d10430162000a6c967/scripts/manage_memory.py)
+
+### 用队列分布与风险信号生成客服分流结果
+
+- 作者：SMohammed72
+- 输入：经代码归一化和脱敏的工单主题、内容与渠道。
+- Jev 判断：通过 OpenRouter 的 Decisions 接口调用 Jev，批量问队列 Choice 与升级风险 Noul。
+- 后续动作：本地策略看高风险队列、首选分数和前两项差值，输出自动分流或人工复核及理由。
+- 核验边界：社区源码案例。根许可证未知，暂不列入开源项目。示例写出判断记录，脱敏覆盖和风险阈值仍需独立验证。
+- 来源：[GitHub](https://github.com/SMohammed72/jev-support-routing) · [Source](https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/client.py) · [Source](https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/pipeline.py) · [Source](https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/policy.py)
+
+## 开源项目 / Open-source projects (292)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2580,6 +2625,12 @@
 | [Sraavan/tripwire](https://github.com/Sraavan/tripwire) | community | MIT | 0 |
 | [ItisNoMatter/kojev](https://github.com/ItisNoMatter/kojev) | community | MIT | 22 |
 | [randlee/judge-jev](https://github.com/randlee/judge-jev) | community | MIT | 0 |
+| [engkimo/scikit-jev](https://github.com/engkimo/scikit-jev) | community | MIT | 0 |
+| [7shi/multilingual-reader](https://github.com/7shi/multilingual-reader) | community | CC0-1.0 | 0 |
+| [romkagribok/booksaver-agent](https://github.com/romkagribok/booksaver-agent) | community | MIT | 1 |
+| [jugripa/mem100](https://github.com/jugripa/mem100) | community | MIT | 0 |
+| [kkdev92/jev-dotnet](https://github.com/kkdev92/jev-dotnet) | community | MIT | 0 |
+| [sshworld/cev](https://github.com/sshworld/cev) | inspired | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (26)
 

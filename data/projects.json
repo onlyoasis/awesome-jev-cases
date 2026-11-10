@@ -4574,5 +4574,101 @@
     "lastVerified": "2026-11-09",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "engkimo-scikit-jev",
+    "name": "engkimo/scikit-jev",
+    "url": "https://github.com/engkimo/scikit-jev",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "把 System One 结构化概率转换为 scikit-learn 特征的预发布集成。",
+      "en": "Pre-alpha integration that turns System One probabilities into scikit-learn features."
+    },
+    "sourceUrl": "https://github.com/engkimo/scikit-jev/blob/05e3b97e5d106b1a3f0241090f22ba2524afb258/src/scikit_jev/transformer.py",
+    "lastVerified": "2026-11-10",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "7shi-multilingual-reader",
+    "name": "7shi/multilingual-reader",
+    "url": "https://github.com/7shi/multilingual-reader",
+    "category": "research",
+    "relationship": "community",
+    "license": "CC0-1.0",
+    "summary": {
+      "zh": "多语言阅读工具及翻译评测源码，包含原生 Jev 五档 Score 工作流。",
+      "en": "Multilingual reading and translation evaluation source with a native Jev five-level Score workflow."
+    },
+    "sourceUrl": "https://github.com/7shi/multilingual-reader/blob/517cf8af587097bb5ed02a8f7764cdd1bee27e17/trtools/jev.py",
+    "lastVerified": "2026-11-10",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "romkagribok-booksaver-agent",
+    "name": "romkagribok/booksaver-agent",
+    "url": "https://github.com/romkagribok/booksaver-agent",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "自托管的可退款酒店预订价格监测，用 Jev 选择并校验观测证据。",
+      "en": "Self-hosted monitoring of refundable hotel prices with Jev choices over observed evidence."
+    },
+    "sourceUrl": "https://github.com/romkagribok/booksaver-agent/blob/db3207bfef2df6da609501e2d2552c7267caaa66/src/booksaver/infrastructure/browser/jev_price_executor.py",
+    "lastVerified": "2026-11-10",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "jugripa-mem100",
+    "name": "jugripa/mem100",
+    "url": "https://github.com/jugripa/mem100",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "面向代理的双层记忆检索，以 Jev 相关性和本地排序筛选记录。",
+      "en": "Two-tier agent memory retrieval with Jev relevance and local ranking."
+    },
+    "sourceUrl": "https://github.com/jugripa/mem100/blob/2e1297de358bab66fe4999d10430162000a6c967/scripts/manage_memory.py",
+    "lastVerified": "2026-11-10",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "kkdev92-jev-dotnet",
+    "name": "kkdev92/jev-dotnet",
+    "url": "https://github.com/kkdev92/jev-dotnet",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "非官方 .NET SDK，源码支持类型化回答、图片请求和实验性 Box。实调是作者自报。",
+      "en": "Unofficial .NET SDK with typed answers, image requests and experimental Box support. Live testing is author-reported."
+    },
+    "sourceUrl": "https://github.com/kkdev92/jev-dotnet/blob/6b8233d2177273b89541029fbdc3d887d4d653b8/src/Kkdev92.Jev/JevClient.cs",
+    "lastVerified": "2026-11-10",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "sshworld-cev",
+    "name": "sshworld/cev",
+    "url": "https://github.com/sshworld/cev",
+    "category": "tool",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "受 System One 启发的独立工具，通过 Claude CLI 和可选 Codex 第二意见输出有限选择与升级信号。",
+      "en": "Independent System One-inspired tool using the Claude CLI and an optional Codex second opinion to return bounded choices and escalation signals."
+    },
+    "sourceUrl": "https://github.com/sshworld/cev/blob/36cfe00aa0929a65af66abc85a54fc4e956dd6a0/core/cev.mjs",
+    "lastVerified": "2026-11-10",
+    "status": "verified",
+    "stars": 0
   }
 ]

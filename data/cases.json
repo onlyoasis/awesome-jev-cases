@@ -11186,5 +11186,249 @@
         "url": "https://x.com/raj/status/2119460565533782133"
       }
     ]
+  },
+  {
+    "id": "scikit-jev-probability-feature-matrix",
+    "name": "scikit-jev",
+    "author": "engkimo",
+    "title": {
+      "zh": "把 Jev 概率输出转成 scikit-learn 特征矩阵",
+      "en": "Turn Jev probabilities into scikit-learn features"
+    },
+    "area": {
+      "zh": "概率特征工程",
+      "en": "Probabilistic features"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "文本或结构化 JSON 样本，以及调用方声明的 Noul、Choice 和 Score 题集。",
+      "en": "Text or structured JSON samples with caller-declared Noul, Choice and Score questions."
+    },
+    "decision": {
+      "zh": "每个样本将全部封闭题放进一次 System One 请求，返回概率和结构化答案。",
+      "en": "Each sample packs its closed questions into one System One request and receives typed answers and probabilities."
+    },
+    "action": {
+      "zh": "校验答复后按声明顺序生成 float64 特征矩阵。Score 可保留等级分布或转换为期望值和标准差。",
+      "en": "Validated responses become a declaration-ordered float64 matrix. Score features can preserve the distribution or use expectation and standard deviation."
+    },
+    "boundary": {
+      "zh": "社区 MIT 预发布项目。源码和作者原帖已核，离线示例与真实 API 使用分开，本站未测量模型性能。",
+      "en": "Community MIT pre-alpha project. The source and author post were reviewed. Offline examples and real API use are separate, and no model performance was measured here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/engkimo/scikit-jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/engkimo/scikit-jev/blob/05e3b97e5d106b1a3f0241090f22ba2524afb258/src/scikit_jev/_engine.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/engkimo/scikit-jev/blob/05e3b97e5d106b1a3f0241090f22ba2524afb258/src/scikit_jev/transformer.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/engkimo/scikit-jev/blob/05e3b97e5d106b1a3f0241090f22ba2524afb258/src/scikit_jev/_features.py"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/immeivise/status/2119987927866638730"
+      }
+    ]
+  },
+  {
+    "id": "multilingual-reader-jev-translation-evaluation",
+    "name": "Multilingual Podcast Reader",
+    "author": "7shi",
+    "title": {
+      "zh": "用同一量表评估 52 种语言译文",
+      "en": "Evaluate translations across 52 languages with a shared rubric"
+    },
+    "area": {
+      "zh": "翻译评测",
+      "en": "Translation evaluation"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "英语对话稿、目标语言译文及行对应说明。",
+      "en": "An English dialogue, a target-language translation and line correspondence."
+    },
+    "decision": {
+      "zh": "固定 Jev 1.14.0 按五个评估维度分别作五档 Score 判断，并保留等级概率。",
+      "en": "Pinned Jev 1.14.0 answers five five-level Score questions and retains their level probabilities."
+    },
+    "action": {
+      "zh": "程序按语言保存结果，另用语言检查处理错语种，再汇总评分分布及中位数等统计。",
+      "en": "Code records scores by language, applies a separate language check and aggregates distributions and medians."
+    },
+    "boundary": {
+      "zh": "社区作者评测。结果来自该对话样本与固定量表，未独立复现，也未替代人工翻译评估。",
+      "en": "Community evaluation reported by its author. Results depend on the dialogue sample and rubric. They were not reproduced here or used as a substitute for human translation review."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/7shi/multilingual-reader"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/7shi/multilingual-reader/blob/517cf8af587097bb5ed02a8f7764cdd1bee27e17/examples/tr/plamo/README.md"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/7shi/multilingual-reader/blob/517cf8af587097bb5ed02a8f7764cdd1bee27e17/trtools/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/7shi/multilingual-reader/blob/517cf8af587097bb5ed02a8f7764cdd1bee27e17/trtools/jev_criteria.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/7shi/multilingual-reader/blob/517cf8af587097bb5ed02a8f7764cdd1bee27e17/examples/tr/onde/common.mk"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/7shi/status/2119918304337002597"
+      }
+    ]
+  },
+  {
+    "id": "booksaver-observed-hotel-rate-choice",
+    "name": "BookSaver Agent",
+    "author": "romkagribok",
+    "title": {
+      "zh": "从酒店价格卡片选择可复核的价格与条款",
+      "en": "Select verifiable prices and terms from hotel rate cards"
+    },
+    "area": {
+      "zh": "预订价格监测",
+      "en": "Reservation price monitoring"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "受限浏览流程读到的房型、价格候选行、入住晚数和取消说明。",
+      "en": "Room details, displayed price lines, nights and cancellation terms collected by a bounded browser workflow."
+    },
+    "decision": {
+      "zh": "原生 Jev 用 Choice 选整段住宿总价和退款条款所在行，并对取消、税费状态作有限分类。",
+      "en": "Native Jev uses Choices to identify the whole-stay price and refund evidence line and to classify cancellation and tax terms."
+    },
+    "action": {
+      "zh": "代码把选择映射回观测文本，解析金额并交给价格校验和比对流程。预订调整由用户在预订平台自行处理。",
+      "en": "Code maps selections back to observed text, parses amounts and passes them to price validation and comparison. Reservation changes are handled separately by the user on the booking platform."
+    },
+    "boundary": {
+      "zh": "社区 MIT。源码和作者发布帖已核。网页布局与登录状态会影响运行，成本和效果属作者报告，本站未运行真实账号或订单。",
+      "en": "Community MIT project. The source and launch post were reviewed. Page layout and login state can affect operation. Performance and cost are author-reported, with no live account or reservation exercised here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/romkagribok/booksaver-agent"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/romkagribok/booksaver-agent/blob/db3207bfef2df6da609501e2d2552c7267caaa66/src/booksaver/infrastructure/browser/jev_price_executor.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/romkagribok/booksaver-agent/blob/db3207bfef2df6da609501e2d2552c7267caaa66/src/booksaver/infrastructure/llm/typesafe_client.py"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/romkagribok/status/2119894650303684834"
+      }
+    ]
+  },
+  {
+    "id": "mem100-jev-memory-retrieval",
+    "name": "MEM100",
+    "author": "jugripa",
+    "title": {
+      "zh": "把相关性判断与时间和重要性一起用于记忆检索",
+      "en": "Combine relevance, recency and importance in memory retrieval"
+    },
+    "area": {
+      "zh": "代理记忆检索",
+      "en": "Agent memory retrieval"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "当前任务、短期与长期记忆的标题、摘要和问题线索。",
+      "en": "A current task and titles, summaries and question cues from short- and long-term memories."
+    },
+    "decision": {
+      "zh": "原生 Jev 对每条记录回答直接相关、间接相关或不相关的 Choice，并在每批做一次最匹配选择。",
+      "en": "Native Jev answers a direct, related or irrelevant Choice for each record and picks a strongest match per batch."
+    },
+    "action": {
+      "zh": "程序融合相关度、新鲜度与重要性，按阈值与 top-k 返回匹配。调用异常时可用本地 BM25 排序。",
+      "en": "Code combines relevance, recency and importance, then applies a threshold and top-k. A local BM25 path handles Jev failures."
+    },
+    "boundary": {
+      "zh": "社区 MIT。大候选集按批调用，远程路径会发送检索文本。此处核对代码，未读取用户记忆或验证检索效果。",
+      "en": "Community MIT project. Large pools are split into batches and remote retrieval sends search text. Source was reviewed without reading user memory or measuring retrieval quality."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/jugripa/mem100"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jugripa/mem100/blob/2e1297de358bab66fe4999d10430162000a6c967/scripts/manage_memory.py"
+      }
+    ]
+  },
+  {
+    "id": "jev-support-routing-human-escalation",
+    "name": "jev-support-routing",
+    "author": "SMohammed72",
+    "title": {
+      "zh": "用队列分布与风险信号生成客服分流结果",
+      "en": "Use queue probabilities and risk to triage support tickets"
+    },
+    "area": {
+      "zh": "客服队列分流",
+      "en": "Support ticket triage"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "经代码归一化和脱敏的工单主题、内容与渠道。",
+      "en": "Ticket subject, message and channel after normalization and redaction."
+    },
+    "decision": {
+      "zh": "通过 OpenRouter 的 Decisions 接口调用 Jev，批量问队列 Choice 与升级风险 Noul。",
+      "en": "Jev via OpenRouter Decisions answers a queue Choice and an escalation-risk Noul together."
+    },
+    "action": {
+      "zh": "本地策略看高风险队列、首选分数和前两项差值，输出自动分流或人工复核及理由。",
+      "en": "Local policy checks high-risk queues, top probability and margin, then reports an automatic route or human review with reasons."
+    },
+    "boundary": {
+      "zh": "社区源码案例。根许可证未知，暂不列入开源项目。示例写出判断记录，脱敏覆盖和风险阈值仍需独立验证。",
+      "en": "Community source case with unconfirmed root license. The example writes decision records. Redaction coverage and risk thresholds require independent validation."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/SMohammed72/jev-support-routing"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/pipeline.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/policy.py"
+      }
+    ]
   }
 ]
