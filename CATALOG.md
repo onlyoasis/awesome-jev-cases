@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (259)
+## 深度使用案例 / Worked cases (268)
 
 ### jev-ultrafast
 
@@ -2335,7 +2335,88 @@
 - 核验边界：社区源码案例。根许可证未知，暂不列入开源项目。示例写出判断记录，脱敏覆盖和风险阈值仍需独立验证。
 - 来源：[GitHub](https://github.com/SMohammed72/jev-support-routing) · [Source](https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/client.py) · [Source](https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/pipeline.py) · [Source](https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/policy.py)
 
-## 开源项目 / Open-source projects (292)
+### 根据任务类型与配额策略分配 Hermes 模型
+
+- 作者：Antony-12s
+- 输入：当前请求、可用模型和路由配置。
+- Jev 判断：Jev 将任务类型 Choice、复杂度和能力需求 Score、深度推理 Noul 放入同一请求。
+- 后续动作：本地策略把判断映射到主聊天或子代理的模型与推理力度；低置信度限制升级或回退，配额回退是独立规则。
+- 核验边界：社区 MIT 插件。仅核对源码；未安装插件、切换账号或测量路由质量。配额规则不由 Jev 推断。
+- 来源：[GitHub](https://github.com/Antony-12s/hermes-jev-quota-routing) · [Source](https://github.com/Antony-12s/hermes-jev-quota-routing/blob/3e095b7638095edf282565db29e2d3d53a2990e7/plugins/hermes-jev-routing/jev.py) · [Source](https://github.com/Antony-12s/hermes-jev-quota-routing/blob/3e095b7638095edf282565db29e2d3d53a2990e7/plugins/hermes-jev-routing/decide.py) · [Source](https://github.com/Antony-12s/hermes-jev-quota-routing/blob/3e095b7638095edf282565db29e2d3d53a2990e7/plugins/typesafe-jev-delegation/jev_routes.py)
+
+### 把输入护栏分数转成四类评测标签
+
+- 作者：lightshadow1
+- 输入：HR/IT 政策问题及事先定义的允许范围、禁止主题和歧义说明。
+- Jev 判断：Jev 对各主题、范围和歧义回答 Noul，返回逐题概率。
+- 后续动作：代码按阈值和优先级组合为禁止、歧义、范围内或无关标签，与 Regex、GLiNER 的评测结果比较。
+- 核验边界：社区 MIT 评测代码，数据另有各自许可证。2,091 题和各轮指标为作者报告；事后 round 2b 与留出结果分开，本站未复现或验证真实 HR/IT 部署。
+- 来源：[GitHub](https://github.com/lightshadow1/policy-pal-guardrails) · [Source](https://github.com/lightshadow1/policy-pal-guardrails/blob/d3123cc23f82a74f626f72f9d4bad52912bc3a00/ppguard/client.py) · [Source](https://github.com/lightshadow1/policy-pal-guardrails/blob/d3123cc23f82a74f626f72f9d4bad52912bc3a00/ppguard/combine.py) · [Source](https://github.com/lightshadow1/policy-pal-guardrails/blob/d3123cc23f82a74f626f72f9d4bad52912bc3a00/README.md)
+
+### 为体素宠物选择下一项活动和播客嘉宾
+
+- 作者：Hendrik040
+- 输入：页面阅读状态、滚动与空闲等访问快照，以及预设活动和嘉宾目录。
+- Jev 判断：Jev 用 Choice 选择活动和嘉宾，并用 Score 与 Noul 判断参与度、阅读状态及嘉宾是否匹配。
+- 后续动作：前端仅接受已定义活动，使用新鲜的嘉宾概率安排演出；无可用真实答复时继续本地时间表。
+- 核验边界：社区 MIT。已核代理和消费代码，未验证托管站真实调用。代理的 mock 答案与真实 Jev 分开，正式前端排除 mock。
+- 来源：[GitHub](https://github.com/Hendrik040/henni) · [Source](https://github.com/Hendrik040/henni/blob/33386cbe39fb5cbb81bd5e307d595788f7e74b02/jev/jev-proxy.mjs) · [Source](https://github.com/Hendrik040/henni/blob/33386cbe39fb5cbb81bd5e307d595788f7e74b02/variants/big-hoodie.js)
+
+### 先选离散推块动作，再对低置信度动作做物理前瞻
+
+- 作者：arnabdeypolimi
+- 输入：方块与目标的坐标、姿态，以及不可执行动作集合。
+- Jev 判断：固定 Jev 1.14.0 对方向、距离和接触点分别作 Choice；低置信度时再从三个模拟结果中选一项。
+- 后续动作：控制器过滤不可行动作并驱动推手，显示候选未来与推块计数。
+- 核验边界：社区源码案例，根许可证未知，不列为开源项目。README 明示演示含样本答复，无密钥走 oracle；本站未把回放或 fallback 当真实 Jev 成绩。
+- 来源：[GitHub](https://github.com/arnabdeypolimi/jev_hack) · [Source](https://github.com/arnabdeypolimi/jev_hack/blob/bacec3985210d12243a76cad0af52ad2221aa804/pushcube/jev_judge.py) · [Source](https://github.com/arnabdeypolimi/jev_hack/blob/bacec3985210d12243a76cad0af52ad2221aa804/pushcube/controller.py) · [Source](https://github.com/arnabdeypolimi/jev_hack/blob/bacec3985210d12243a76cad0af52ad2221aa804/README.md)
+
+### 从原文片段填充共享单车行程表单
+
+- 作者：ebcodev
+- 输入：加泰罗尼亚语、西班牙语或英语请求，以及代码从原文枚举的地点短语和时间候选。
+- Jev 判断：一次 Jev 请求选择出发地、目的地、时间和车辆类型，并判断上坡需求及步行距离等级。
+- 后续动作：代码把选择映射为表单、时间和步行半径，低置信度字段标疑；实时站点抓取、距离和可靠性计算由其他代码处理。
+- 核验边界：社区源码案例，根许可证未知，仅列案例。Jev 不生成新地名；地理编码、站点可用性和路线质量未由本站实测。
+- 来源：[GitHub](https://github.com/ebcodev/bicing-planner) · [Source](https://github.com/ebcodev/bicing-planner/blob/2b98cc6b1549388695f06bab2469e27534a5a5a8/jev_assistant.py) · [Source](https://github.com/ebcodev/bicing-planner/blob/2b98cc6b1549388695f06bab2469e27534a5a5a8/README.md)
+
+### 把语音意图映射到预写菜单回复
+
+- 作者：nayeemrahman13
+- 输入：Deepgram 转写的来电内容或输入文本、对话历史及当前层级菜单。
+- Jev 判断：Jev 在当前菜单选项与不清楚兜底之间作 Choice，并返回置信度和概率。
+- 后续动作：程序取出预写回复并推进或保留菜单位置，交给 Vapi 的语音流程。
+- 核验边界：社区作者演示与源码已核，根许可证未知，不列为开源项目。未建立助手或拨打电话，转写延迟和真实通话效果未验。
+- 来源：[GitHub](https://github.com/nayeemrahman13/voice-ivr) · [Source](https://github.com/nayeemrahman13/voice-ivr/blob/55d4e8f5e3e969fddd5624ee043d68ca08dfb83a/lib/jev.ts) · [Source](https://github.com/nayeemrahman13/voice-ivr/blob/55d4e8f5e3e969fddd5624ee043d68ca08dfb83a/lib/answer.ts) · [Source](https://github.com/nayeemrahman13/voice-ivr/blob/55d4e8f5e3e969fddd5624ee043d68ca08dfb83a/README.md) · [Author post](https://x.com/nayeemrahman_/status/2120227640002928678)
+
+### 从五千部电影中分阶段找回记忆中的片名
+
+- 作者：TypeSafe AI
+- 输入：用户对电影的回忆描述，以及目录中的短剧情和长剧情。
+- Jev 判断：先逐片 Noul 筛选，再用长剧情重评前 80 部，最后以 Choice 对前 20 部联合排序。
+- 后续动作：find 函数返回概率排序；最高概率用于显示单片或短名单。
+- 核验边界：官方 cookbook。5,000 片、100 请求和 78% top-1 为 Jev 1.14.0 固定样本的官方报告，非本站实测；默认下载缓存回放，真实请求需另行开启。
+- 来源：[Official cookbook](https://docs.typesafe.ai/cookbooks/infinite_cardinality_choice.md)
+
+### 从可见网页控件中选择下一步操作
+
+- 作者：copper-browser
+- 输入：用户目标、当前 WebKit 页面观察、编号控件及可选截图。
+- Jev 判断：在编号目标策略中，Jev 用 Choice 选择操作和对应候选控件；另有使用截图和 Box 的策略。
+- 后续动作：代码校验选择属于候选集，把结果映射回网页动作并继续观察。
+- 核验边界：社区 MIT。已核源码和作者原帖，编号 Choice 的边界不适用于全部视觉策略；速度为作者自报，本站未安装或操作真实会话。
+- 来源：[GitHub](https://github.com/copper-browser/Copper) · [Source](https://github.com/copper-browser/Copper/blob/c468ab48c1d9cbc621f8a876b092b391125fe93e/Sources/Search/Fork/MCP/Ultrafast.swift) · [Source](https://github.com/copper-browser/Copper/blob/c468ab48c1d9cbc621f8a876b092b391125fe93e/Sources/Search/Fork/MCP/UltrafastStrategies.swift) · [Author post](https://x.com/CollinRijock/status/2120261269412581601)
+
+### 用 Jev 的不确定性决定何时复核身份合并
+
+- 作者：Albert Jin, Neil Desai, Delaney Mackenzie
+- 输入：从合成记录构造的身份档案，包含同一人的噪声记录和把不同人错误合并的样本。
+- Jev 判断：Jev 对档案是否包含多个人作二元判断并给出概率。原文未披露 API 请求字段。
+- 后续动作：混合评测把指定概率区间内的档案送给 Claude Opus 复核，再对照标签统计准确率、耗时和成本。
+- 核验边界：社区作者基准。较简单样本中，作者报告混合方案准确率 98.8%、Opus 单独 99.0%，更难样本的成本差距较小。本站未复现，也未验证真实客户数据部署。
+- 来源：[Author article](https://hightouch.com/blog/llm-judges-identity-resolution) · [Author post](https://x.com/tejasmanohar/status/2120240705914433567)
+
+## 开源项目 / Open-source projects (297)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2631,8 +2712,13 @@
 | [jugripa/mem100](https://github.com/jugripa/mem100) | community | MIT | 0 |
 | [kkdev92/jev-dotnet](https://github.com/kkdev92/jev-dotnet) | community | MIT | 0 |
 | [sshworld/cev](https://github.com/sshworld/cev) | inspired | MIT | 0 |
+| [Antony-12s/hermes-jev-quota-routing](https://github.com/Antony-12s/hermes-jev-quota-routing) | community | MIT | 0 |
+| [lightshadow1/policy-pal-guardrails](https://github.com/lightshadow1/policy-pal-guardrails) | community | MIT | 0 |
+| [Hendrik040/henni](https://github.com/Hendrik040/henni) | community | MIT | 0 |
+| [copper-browser/Copper](https://github.com/copper-browser/Copper) | community | MIT | 1 |
+| [bladerik/decision-benchmark](https://github.com/bladerik/decision-benchmark) | community | MIT | 0 |
 
-## 官方 cookbook / Official recipes (26)
+## 官方 cookbook / Official recipes (27)
 
 - [Self-consistency: nouls](https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook.md)：Route uncertain probabilities to human review while keeping the underlying noul values visible.
 - [Self-consistency: choices](https://docs.typesafe.ai/cookbooks/consistency_choice_cookbook.md)：Add an uncertain outcome to moderation decisions and compare label agreement with the share of automatic actions.
@@ -2660,3 +2746,4 @@
 - [Feeder-cam visit log](https://docs.typesafe.ai/cookbooks/feeder_watch.md)：Apply Noul, Choice and Box questions to one video frame per second, then merge detections into species visits in code. Experimental image workflow limited to two different species; occlusion and same-species birds remain limitations. Reported 101-frame results are official claims.
 - [Shopping cart](https://docs.typesafe.ai/cookbooks/cart_from_primitives.md)：Find menu items with a shrinking-options Choice loop and a nothing_else sentinel, then batch known field Choices per item. Code assembles the cart; each item appears once and quantities are not modeled. Published outputs are official reports, not site measurements.
 - [Verifying LLM answers against their source](https://docs.typesafe.ai/cookbooks/verify_llm_outputs.md)：Asks three Nouls about answerability, declines and source support, then uses code to route doubtful answers to review. The threshold and reported outcomes are from the official fixed MuSiQue sample.
+- [Infinite cardinality choice](https://docs.typesafe.ai/cookbooks/infinite_cardinality_choice.md)：Three-stage film retrieval using short-plot Nouls, long-plot Nouls and a final Choice. Results are official fixed-sample reports, and the default notebook replays published cached answers.

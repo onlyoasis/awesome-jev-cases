@@ -11430,5 +11430,413 @@
         "url": "https://github.com/SMohammed72/jev-support-routing/blob/a07432e5ca57a4bf3b6485e4b74534eeae5717ef/jevroute/policy.py"
       }
     ]
+  },
+  {
+    "id": "hermes-jev-quota-aware-routing",
+    "name": "Hermes Jev quota routing",
+    "author": "Antony-12s",
+    "title": {
+      "zh": "根据任务类型与配额策略分配 Hermes 模型",
+      "en": "Route Hermes work using task judgments and quota policy"
+    },
+    "area": {
+      "zh": "代理模型路由",
+      "en": "Agent model routing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "当前请求、可用模型和路由配置。",
+      "en": "A current request, available models and routing configuration."
+    },
+    "decision": {
+      "zh": "Jev 将任务类型 Choice、复杂度和能力需求 Score、深度推理 Noul 放入同一请求。",
+      "en": "Jev answers a task-kind Choice, complexity and capability Scores, and a deep-reasoning Noul in one request."
+    },
+    "action": {
+      "zh": "本地策略把判断映射到主聊天或子代理的模型与推理力度；低置信度限制升级或回退，配额回退是独立规则。",
+      "en": "Local policy maps judgments to main-chat or subagent models and effort. Low confidence limits promotion or falls back; quota fallback is a separate rule."
+    },
+    "boundary": {
+      "zh": "社区 MIT 插件。仅核对源码；未安装插件、切换账号或测量路由质量。配额规则不由 Jev 推断。",
+      "en": "Community MIT plugin reviewed from source. No plugin was installed, account switched or routing quality measured here. Quota rules are separate from Jev judgments."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Antony-12s/hermes-jev-quota-routing"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Antony-12s/hermes-jev-quota-routing/blob/3e095b7638095edf282565db29e2d3d53a2990e7/plugins/hermes-jev-routing/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Antony-12s/hermes-jev-quota-routing/blob/3e095b7638095edf282565db29e2d3d53a2990e7/plugins/hermes-jev-routing/decide.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Antony-12s/hermes-jev-quota-routing/blob/3e095b7638095edf282565db29e2d3d53a2990e7/plugins/typesafe-jev-delegation/jev_routes.py"
+      }
+    ]
+  },
+  {
+    "id": "policy-pal-guardrail-comparison",
+    "name": "Policy Pal guardrails",
+    "author": "lightshadow1",
+    "title": {
+      "zh": "把输入护栏分数转成四类评测标签",
+      "en": "Turn input-guardrail scores into four evaluation labels"
+    },
+    "area": {
+      "zh": "输入护栏评测",
+      "en": "Input guardrail evaluation"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "HR/IT 政策问题及事先定义的允许范围、禁止主题和歧义说明。",
+      "en": "HR/IT policy questions with predefined scope, prohibited topics and ambiguity definitions."
+    },
+    "decision": {
+      "zh": "Jev 对各主题、范围和歧义回答 Noul，返回逐题概率。",
+      "en": "Jev returns Noul probabilities for topics, scope and ambiguity."
+    },
+    "action": {
+      "zh": "代码按阈值和优先级组合为禁止、歧义、范围内或无关标签，与 Regex、GLiNER 的评测结果比较。",
+      "en": "Thresholds and precedence combine scores into not-allowed, ambiguous, in-scope or irrelevant labels for comparison with Regex and GLiNER."
+    },
+    "boundary": {
+      "zh": "社区 MIT 评测代码，数据另有各自许可证。2,091 题和各轮指标为作者报告；事后 round 2b 与留出结果分开，本站未复现或验证真实 HR/IT 部署。",
+      "en": "Community MIT evaluation code with separately licensed datasets. The 2,091-question set and metrics are author-reported. Post-hoc round 2b is distinguished from held-out results; no live HR/IT deployment was verified here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/lightshadow1/policy-pal-guardrails"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/lightshadow1/policy-pal-guardrails/blob/d3123cc23f82a74f626f72f9d4bad52912bc3a00/ppguard/client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/lightshadow1/policy-pal-guardrails/blob/d3123cc23f82a74f626f72f9d4bad52912bc3a00/ppguard/combine.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/lightshadow1/policy-pal-guardrails/blob/d3123cc23f82a74f626f72f9d4bad52912bc3a00/README.md"
+      }
+    ]
+  },
+  {
+    "id": "henni-voxel-pet-activity-choice",
+    "name": "Henni",
+    "author": "Hendrik040",
+    "title": {
+      "zh": "为体素宠物选择下一项活动和播客嘉宾",
+      "en": "Choose a voxel pet activity and podcast guest"
+    },
+    "area": {
+      "zh": "交互角色行为",
+      "en": "Interactive character behavior"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "页面阅读状态、滚动与空闲等访问快照，以及预设活动和嘉宾目录。",
+      "en": "A visit snapshot containing reading, scrolling and idle state, plus fixed activity and guest catalogs."
+    },
+    "decision": {
+      "zh": "Jev 用 Choice 选择活动和嘉宾，并用 Score 与 Noul 判断参与度、阅读状态及嘉宾是否匹配。",
+      "en": "Jev chooses activities and guests with Choices and judges engagement, reading state and guest fit with Score and Noul questions."
+    },
+    "action": {
+      "zh": "前端仅接受已定义活动，使用新鲜的嘉宾概率安排演出；无可用真实答复时继续本地时间表。",
+      "en": "The frontend accepts defined activities and uses fresh guest probabilities to arrange appearances. Without a usable live answer it follows its local timetable."
+    },
+    "boundary": {
+      "zh": "社区 MIT。已核代理和消费代码，未验证托管站真实调用。代理的 mock 答案与真实 Jev 分开，正式前端排除 mock。",
+      "en": "Community MIT code with proxy and consumer reviewed. Hosted live calls were not verified. Mock proxy answers are separate from Jev, and the production frontend excludes mocks."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Hendrik040/henni"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Hendrik040/henni/blob/33386cbe39fb5cbb81bd5e307d595788f7e74b02/jev/jev-proxy.mjs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Hendrik040/henni/blob/33386cbe39fb5cbb81bd5e307d595788f7e74b02/variants/big-hoodie.js"
+      }
+    ]
+  },
+  {
+    "id": "pushcube-jev-physics-lookahead",
+    "name": "Push·Cube",
+    "author": "arnabdeypolimi",
+    "title": {
+      "zh": "先选离散推块动作，再对低置信度动作做物理前瞻",
+      "en": "Choose discrete pushes and inspect simulated futures when uncertain"
+    },
+    "area": {
+      "zh": "物理游戏决策",
+      "en": "Physics game decisions"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "方块与目标的坐标、姿态，以及不可执行动作集合。",
+      "en": "Block and goal positions, poses and infeasible actions."
+    },
+    "decision": {
+      "zh": "固定 Jev 1.14.0 对方向、距离和接触点分别作 Choice；低置信度时再从三个模拟结果中选一项。",
+      "en": "Pinned Jev 1.14.0 answers direction, distance and aim Choices, then chooses among three simulated outcomes when confidence is low."
+    },
+    "action": {
+      "zh": "控制器过滤不可行动作并驱动推手，显示候选未来与推块计数。",
+      "en": "The controller filters infeasible actions, drives the pusher and displays candidate futures and push counts."
+    },
+    "boundary": {
+      "zh": "社区源码案例，根许可证未知，不列为开源项目。README 明示演示含样本答复，无密钥走 oracle；本站未把回放或 fallback 当真实 Jev 成绩。",
+      "en": "Community source case with unknown root license, excluded from the open-source catalog. The README identifies sample answers in the demo and an oracle fallback without a key. Neither is treated as live Jev performance here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/arnabdeypolimi/jev_hack"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/arnabdeypolimi/jev_hack/blob/bacec3985210d12243a76cad0af52ad2221aa804/pushcube/jev_judge.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/arnabdeypolimi/jev_hack/blob/bacec3985210d12243a76cad0af52ad2221aa804/pushcube/controller.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/arnabdeypolimi/jev_hack/blob/bacec3985210d12243a76cad0af52ad2221aa804/README.md"
+      }
+    ]
+  },
+  {
+    "id": "bicing-jev-grounded-trip-form",
+    "name": "Bicing Planner",
+    "author": "ebcodev",
+    "title": {
+      "zh": "从原文片段填充共享单车行程表单",
+      "en": "Fill bike-share trip fields from phrases in the request"
+    },
+    "area": {
+      "zh": "出行意图解析",
+      "en": "Trip intent parsing"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "加泰罗尼亚语、西班牙语或英语请求，以及代码从原文枚举的地点短语和时间候选。",
+      "en": "A Catalan, Spanish or English request, with place spans and time candidates enumerated from its text."
+    },
+    "decision": {
+      "zh": "一次 Jev 请求选择出发地、目的地、时间和车辆类型，并判断上坡需求及步行距离等级。",
+      "en": "One Jev request chooses origin, destination, time and bike type and judges uphill need and walking-distance level."
+    },
+    "action": {
+      "zh": "代码把选择映射为表单、时间和步行半径，低置信度字段标疑；实时站点抓取、距离和可靠性计算由其他代码处理。",
+      "en": "Code maps choices into form values, time and walking radius and flags uncertain fields. Separate code handles live stations, distance and reliability calculations."
+    },
+    "boundary": {
+      "zh": "社区源码案例，根许可证未知，仅列案例。Jev 不生成新地名；地理编码、站点可用性和路线质量未由本站实测。",
+      "en": "Community source case with unknown root license, listed only as a case. Jev selects supplied spans rather than generating place names. Geocoding, station availability and trip quality were not tested here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ebcodev/bicing-planner"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ebcodev/bicing-planner/blob/2b98cc6b1549388695f06bab2469e27534a5a5a8/jev_assistant.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ebcodev/bicing-planner/blob/2b98cc6b1549388695f06bab2469e27534a5a5a8/README.md"
+      }
+    ]
+  },
+  {
+    "id": "jvr-voice-menu-stored-reply",
+    "name": "JVR Phone menu",
+    "author": "nayeemrahman13",
+    "title": {
+      "zh": "把语音意图映射到预写菜单回复",
+      "en": "Map spoken intent to a stored menu reply"
+    },
+    "area": {
+      "zh": "语音菜单导航",
+      "en": "Voice menu navigation"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "Deepgram 转写的来电内容或输入文本、对话历史及当前层级菜单。",
+      "en": "A Deepgram transcript or typed turn, conversation history and the current nested menu."
+    },
+    "decision": {
+      "zh": "Jev 在当前菜单选项与不清楚兜底之间作 Choice，并返回置信度和概率。",
+      "en": "Jev makes a Choice among current menu options and an unclear fallback, returning confidence and probabilities."
+    },
+    "action": {
+      "zh": "程序取出预写回复并推进或保留菜单位置，交给 Vapi 的语音流程。",
+      "en": "Code retrieves the stored reply, updates or retains the menu position and supplies it to the Vapi voice flow."
+    },
+    "boundary": {
+      "zh": "社区作者演示与源码已核，根许可证未知，不列为开源项目。未建立助手或拨打电话，转写延迟和真实通话效果未验。",
+      "en": "The community author post and source were reviewed. The unknown root license excludes it from the open-source list. No assistant was created or call placed; transcription latency and live-call behavior were not verified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/nayeemrahman13/voice-ivr"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nayeemrahman13/voice-ivr/blob/55d4e8f5e3e969fddd5624ee043d68ca08dfb83a/lib/jev.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nayeemrahman13/voice-ivr/blob/55d4e8f5e3e969fddd5624ee043d68ca08dfb83a/lib/answer.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nayeemrahman13/voice-ivr/blob/55d4e8f5e3e969fddd5624ee043d68ca08dfb83a/README.md"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/nayeemrahman_/status/2120227640002928678"
+      }
+    ]
+  },
+  {
+    "id": "official-infinite-cardinality-film-search",
+    "name": "Infinite cardinality choice",
+    "author": "TypeSafe AI",
+    "title": {
+      "zh": "从五千部电影中分阶段找回记忆中的片名",
+      "en": "Find a remembered film in a 5,000-film catalog in stages"
+    },
+    "area": {
+      "zh": "大候选集检索",
+      "en": "Large-catalog retrieval"
+    },
+    "evidence": "official-doc",
+    "input": {
+      "zh": "用户对电影的回忆描述，以及目录中的短剧情和长剧情。",
+      "en": "A remembered-film description with short and long plots from a film catalog."
+    },
+    "decision": {
+      "zh": "先逐片 Noul 筛选，再用长剧情重评前 80 部，最后以 Choice 对前 20 部联合排序。",
+      "en": "Per-film Nouls filter the catalog, longer plots rescore the top 80, and a Choice ranks the top 20 together."
+    },
+    "action": {
+      "zh": "find 函数返回概率排序；最高概率用于显示单片或短名单。",
+      "en": "The find function returns probability-ranked films; top probability controls a single result or a shortlist."
+    },
+    "boundary": {
+      "zh": "官方 cookbook。5,000 片、100 请求和 78% top-1 为 Jev 1.14.0 固定样本的官方报告，非本站实测；默认下载缓存回放，真实请求需另行开启。",
+      "en": "Official cookbook. The 5,000-film, 100-request setup and 78% top-1 result are reported for a fixed Jev 1.14.0 sample, not measured here. The default replays downloaded answers; live requests must be enabled separately."
+    },
+    "sources": [
+      {
+        "label": "Official cookbook",
+        "url": "https://docs.typesafe.ai/cookbooks/infinite_cardinality_choice.md"
+      }
+    ]
+  },
+  {
+    "id": "copper-jev-browser-target-choice",
+    "name": "Copper",
+    "author": "copper-browser",
+    "title": {
+      "zh": "从可见网页控件中选择下一步操作",
+      "en": "Choose a next action from observed webpage controls"
+    },
+    "area": {
+      "zh": "浏览器操作选择",
+      "en": "Browser action selection"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "用户目标、当前 WebKit 页面观察、编号控件及可选截图。",
+      "en": "A user goal, WebKit page observation, numbered controls and optional screenshots."
+    },
+    "decision": {
+      "zh": "在编号目标策略中，Jev 用 Choice 选择操作和对应候选控件；另有使用截图和 Box 的策略。",
+      "en": "In the numbered-target strategy, Jev uses Choices for operation and candidate controls. Separate strategies use screenshots and Box."
+    },
+    "action": {
+      "zh": "代码校验选择属于候选集，把结果映射回网页动作并继续观察。",
+      "en": "Code checks the selection against the offered set, maps it back to a page action and observes the next state."
+    },
+    "boundary": {
+      "zh": "社区 MIT。已核源码和作者原帖，编号 Choice 的边界不适用于全部视觉策略；速度为作者自报，本站未安装或操作真实会话。",
+      "en": "Community MIT code and author posts were reviewed. Numbered Choice constraints do not apply to all vision strategies. Timing is author-reported; no installation or live browser session was exercised here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/copper-browser/Copper"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/copper-browser/Copper/blob/c468ab48c1d9cbc621f8a876b092b391125fe93e/Sources/Search/Fork/MCP/Ultrafast.swift"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/copper-browser/Copper/blob/c468ab48c1d9cbc621f8a876b092b391125fe93e/Sources/Search/Fork/MCP/UltrafastStrategies.swift"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/CollinRijock/status/2120261269412581601"
+      }
+    ]
+  },
+  {
+    "id": "hightouch-identity-overmerge-hybrid-evaluator",
+    "name": "Hightouch identity resolution evaluator",
+    "author": "Albert Jin, Neil Desai, Delaney Mackenzie",
+    "title": {
+      "zh": "用 Jev 的不确定性决定何时复核身份合并",
+      "en": "Escalate uncertain identity-merge judgments for a second opinion"
+    },
+    "area": {
+      "zh": "实体消歧评测",
+      "en": "Identity resolution evaluation"
+    },
+    "evidence": "post",
+    "input": {
+      "zh": "从合成记录构造的身份档案，包含同一人的噪声记录和把不同人错误合并的样本。",
+      "en": "Identity profiles built from synthetic records, including noisy records for one person and erroneous merges of different people."
+    },
+    "decision": {
+      "zh": "Jev 对档案是否包含多个人作二元判断并给出概率。原文未披露 API 请求字段。",
+      "en": "Jev gives a binary over-merge judgment with a probability. The authors do not show the API request fields."
+    },
+    "action": {
+      "zh": "混合评测把指定概率区间内的档案送给 Claude Opus 复核，再对照标签统计准确率、耗时和成本。",
+      "en": "The hybrid evaluator sends profiles in a chosen probability band to Claude Opus, then compares accuracy, latency and cost against labels."
+    },
+    "boundary": {
+      "zh": "社区作者基准。较简单样本中，作者报告混合方案准确率 98.8%、Opus 单独 99.0%，更难样本的成本差距较小。本站未复现，也未验证真实客户数据部署。",
+      "en": "Community benchmark reported by its authors. On the easier set, hybrid accuracy was reported as 98.8% versus 99.0% for Opus alone; the cost gap was smaller on the harder set. No reproduction or live customer deployment was verified here."
+    },
+    "sources": [
+      {
+        "label": "Author article",
+        "url": "https://hightouch.com/blog/llm-judges-identity-resolution"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/tejasmanohar/status/2120240705914433567"
+      }
+    ]
   }
 ]

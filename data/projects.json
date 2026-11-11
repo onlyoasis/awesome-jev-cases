@@ -4670,5 +4670,85 @@
     "lastVerified": "2026-11-10",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "antony12s-hermes-jev-quota-routing",
+    "name": "Antony-12s/hermes-jev-quota-routing",
+    "url": "https://github.com/Antony-12s/hermes-jev-quota-routing",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Hermes 主聊天与子代理的 Jev 任务分析和本地配额路由插件。",
+      "en": "Jev task analysis and local quota routing plugins for Hermes main chats and subagents."
+    },
+    "sourceUrl": "https://github.com/Antony-12s/hermes-jev-quota-routing/blob/3e095b7638095edf282565db29e2d3d53a2990e7/plugins/hermes-jev-routing/jev.py",
+    "lastVerified": "2026-11-11",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "lightshadow-policy-pal-guardrails",
+    "name": "lightshadow1/policy-pal-guardrails",
+    "url": "https://github.com/lightshadow1/policy-pal-guardrails",
+    "category": "application",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "对政策问答输入做四类护栏评测，比较 Jev、Regex 和 GLiNER；数据许可证独立。",
+      "en": "Four-label policy-question guardrail evaluation comparing Jev, Regex and GLiNER; dataset licenses are separate."
+    },
+    "sourceUrl": "https://github.com/lightshadow1/policy-pal-guardrails/blob/d3123cc23f82a74f626f72f9d4bad52912bc3a00/ppguard/client.py",
+    "lastVerified": "2026-11-11",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "hendrik040-henni",
+    "name": "Hendrik040/henni",
+    "url": "https://github.com/Hendrik040/henni",
+    "category": "application",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev 从固定活动与嘉宾目录中驱动网站体素宠物；无实时答复时有本地时间表。",
+      "en": "A website voxel pet driven by Jev choices over activities and guests, with a local timetable when live answers are unavailable."
+    },
+    "sourceUrl": "https://github.com/Hendrik040/henni/blob/33386cbe39fb5cbb81bd5e307d595788f7e74b02/jev/jev-proxy.mjs",
+    "lastVerified": "2026-11-11",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "copper-browser-copper",
+    "name": "copper-browser/Copper",
+    "url": "https://github.com/copper-browser/Copper",
+    "category": "application",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "macOS WebKit 浏览器，其自动化循环可用 Jev 选择网页操作和目标；视觉策略另有 Box。",
+      "en": "macOS WebKit browser with a Jev action-and-target loop and separate Box vision strategies."
+    },
+    "sourceUrl": "https://github.com/copper-browser/Copper/blob/c468ab48c1d9cbc621f8a876b092b391125fe93e/Sources/Search/Fork/MCP/Ultrafast.swift",
+    "lastVerified": "2026-11-11",
+    "status": "verified",
+    "stars": 1
+  },
+  {
+    "id": "bladerik-decision-benchmark",
+    "name": "bladerik/decision-benchmark",
+    "url": "https://github.com/bladerik/decision-benchmark",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "在用户标注样本上通过 OpenRouter Decisions 对比 Jev 等模型并生成指标报告；未在本站运行付费评测。",
+      "en": "Benchmark Jev and other OpenRouter decision models on user-labeled samples and generate metrics; no paid evaluation was run here."
+    },
+    "sourceUrl": "https://github.com/bladerik/decision-benchmark/blob/b77a4ef3f6a39353000a455601a6b11fb9b36f25/decision-benchmark/scripts/bench.py",
+    "lastVerified": "2026-11-11",
+    "status": "verified",
+    "stars": 0
   }
 ]

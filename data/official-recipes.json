@@ -232,5 +232,14 @@
     "source": "official",
     "discoveredAt": "2026-11-08",
     "lastVerified": "2026-11-08"
+  },
+  {
+    "id": "infinite_cardinality_choice",
+    "name": "Infinite cardinality choice",
+    "url": "https://docs.typesafe.ai/cookbooks/infinite_cardinality_choice.md",
+    "description": "Three-stage film retrieval using short-plot Nouls, long-plot Nouls and a final Choice. Results are official fixed-sample reports, and the default notebook replays published cached answers.",
+    "source": "official",
+    "discoveredAt": "2026-11-11",
+    "lastVerified": "2026-11-11"
   }
 ]
