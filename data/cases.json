@@ -11838,5 +11838,401 @@
         "url": "https://x.com/tejasmanohar/status/2120240705914433567"
       }
     ]
+  },
+  {
+    "id": "jev-drive-lab-simulated-maneuvers",
+    "name": "Jev Drive Lab",
+    "author": "BrendanH18",
+    "title": {
+      "zh": "从候选动作中选择模拟驾驶操作",
+      "en": "Choose among candidate maneuvers in a driving simulator"
+    },
+    "area": {
+      "zh": "驾驶模拟",
+      "en": "Driving simulation"
+    },
+    "input": {
+      "zh": "OpenStreetMap 道路、模拟车辆和交通状态，以及本地规则筛过的候选动作。",
+      "en": "OpenStreetMap roads, simulated traffic and vehicle state, and maneuver candidates filtered by local rules."
+    },
+    "decision": {
+      "zh": "Jev 在需要判断时以 Choice 选行驶状态、运动候选或备选路线。",
+      "en": "Jev answers Choices for motion state, a candidate maneuver or a route when a judgment is needed."
+    },
+    "action": {
+      "zh": "模拟器检查候选是否合法，使用选定动作推进模拟。无效答案由规则控制器接管。",
+      "en": "The simulator checks the choice against eligible candidates, advances the simulation and falls back to its rules controller for invalid answers."
+    },
+    "boundary": {
+      "zh": "仅核对模拟器源码。浏览器演示含规则和回放路径，不能据此归因给实时 Jev 或推断现实驾驶安全。",
+      "en": "Reviewed simulator source. The browser demo includes rule and replay paths. It provides no evidence of real-world driving safety or live Jev operation for every displayed run."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/BrendanH18/jev_fsd"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/BrendanH18/jev_fsd/blob/dcfc663dc72f2bcf709e744288a8a5c789cbc974/static/js/brain/state.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/BrendanH18/jev_fsd/blob/dcfc663dc72f2bcf709e744288a8a5c789cbc974/static/js/brain/jev.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/BrendanH18/jev_fsd/blob/dcfc663dc72f2bcf709e744288a8a5c789cbc974/jev/decide.py"
+      }
+    ]
+  },
+  {
+    "id": "fastabc-rubric-escalation",
+    "name": "FastABC",
+    "author": "GrntKim",
+    "title": {
+      "zh": "逐项检查主观题答案并提交人工确认",
+      "en": "Check written answers against a rubric for human confirmation"
+    },
+    "area": {
+      "zh": "评分辅助",
+      "en": "Grading assistance"
+    },
+    "input": {
+      "zh": "试题、去除部分身份字段的答题文本和教师确认的评分项。",
+      "en": "An exam question, answer text with specified identifiers redacted, and grading items approved by an instructor."
+    },
+    "decision": {
+      "zh": "Jev 以 Noul 检查要点是否出现，按题项也可用 Choice 或 Score。代码从概率算置信度。",
+      "en": "Jev checks rubric items with Noul and handles Choice or Score items where specified. Code derives confidence from the probabilities."
+    },
+    "action": {
+      "zh": "低置信度题项交第二模型复核。意见不一致时不给推荐，评分人确认最终分数。",
+      "en": "Low-confidence items go to a second model. Disagreement produces no recommendation, and a grader confirms the final score."
+    },
+    "boundary": {
+      "zh": "合成评测、耗时和一致率来自作者。本站未运行学生数据或测量脱敏覆盖。",
+      "en": "The authors report the synthetic evaluation, timing and agreement. This site used no student data and did not measure redaction coverage."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/GrntKim/FastABC"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/GrntKim/FastABC/blob/f0fbc279017bba0df60bd4f6638a4fc30a18b091/backend/app/judges/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/GrntKim/FastABC/blob/f0fbc279017bba0df60bd4f6638a4fc30a18b091/backend/app/judges/routing.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/GrntKim/FastABC/blob/f0fbc279017bba0df60bd4f6638a4fc30a18b091/backend/app/grading.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/GrntKim/FastABC/blob/f0fbc279017bba0df60bd4f6638a4fc30a18b091/README.md"
+      }
+    ]
+  },
+  {
+    "id": "jev-interaction-turn-taking",
+    "name": "Jev-Interaction",
+    "author": "native-bond-lab",
+    "title": {
+      "zh": "判断语音对话何时等待、继续或让出话轮",
+      "en": "Choose when to wait, continue, or yield in a voice conversation"
+    },
+    "area": {
+      "zh": "全双工语音",
+      "en": "Full-duplex voice"
+    },
+    "input": {
+      "zh": "转写片段、已有对话、静默时长和当前说话状态。",
+      "en": "Transcript fragments, conversation history, silence timing and the current speaker state."
+    },
+    "decision": {
+      "zh": "Jev 对发言是否结束、等待多久，以及双方同时说话时是否让出话轮等问题给出 Choice 概率。",
+      "en": "Jev returns Choice probabilities for turn completion, wait duration and whether to yield when speakers overlap."
+    },
+    "action": {
+      "zh": "会话策略按允许动作和阈值选取行为，继续播放、停止语音或交给生成模型回答。",
+      "en": "Session policy applies allowed actions and thresholds to continue playback, stop speech or request a generated reply."
+    },
+    "boundary": {
+      "zh": "Apache-2.0 原型。已核问句、客户端和会话消费，实时通话延迟由作者报告，本站未接入音频。",
+      "en": "Apache-2.0 prototype. Questions, client and session code were reviewed. Live conversation latency is author-reported and no audio was sent here."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/native-bond-lab/Jev-Interaction"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/native-bond-lab/Jev-Interaction/blob/f330c7e5ed6939f18949d16608b4eb167c8395a2/jev_interaction/judge/client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/native-bond-lab/Jev-Interaction/blob/f330c7e5ed6939f18949d16608b4eb167c8395a2/jev_interaction/judge/questions.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/native-bond-lab/Jev-Interaction/blob/f330c7e5ed6939f18949d16608b4eb167c8395a2/jev_interaction/session.py"
+      }
+    ]
+  },
+  {
+    "id": "jev-shot-pair-color-grade-groups",
+    "name": "Shot grouping with decision models",
+    "author": "JasonMakes801",
+    "title": {
+      "zh": "对电影静帧两两判断并分组调色",
+      "en": "Group film shots for grading using pairwise judgments"
+    },
+    "area": {
+      "zh": "视频后期制作",
+      "en": "Video post-production"
+    },
+    "input": {
+      "zh": "《Tears of Steel》每个镜头的一张静帧，以及同场景和同调色组的判定准则。",
+      "en": "One still from each Tears of Steel shot, with criteria for sharing a scene or color grade."
+    },
+    "decision": {
+      "zh": "先对全部镜头对问是否同场景，再对同组镜头问能否共用调色。Jev 经 OpenRouter Decisions 返回 Noul 概率。",
+      "en": "Jev via OpenRouter Decisions returns Noul probabilities for shared scenes, then shared grades within a scene."
+    },
+    "action": {
+      "zh": "程序用 1 减概率作为距离做平均连接聚类，再与作者手工标签对照。",
+      "en": "Code clusters using average linkage on one minus the probability and compares the groups against author labels."
+    },
+    "boundary": {
+      "zh": "样片、耗时、费用和分组成绩是作者报告。作者说明手工标签从 Jev 初分组修订，不能当独立盲标。根 MIT 适用于代码，影片素材另有授权。",
+      "en": "Sample, runtime, costs and grouping results are author-reported. Labels were revised from an initial Jev grouping, so they are not independent blind labels. Root MIT covers code; film assets have separate terms."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/JasonMakes801/shot-grouping-decision-models"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/JasonMakes801/shot-grouping-decision-models/blob/c6efa41e21f02da4619dbbe5311c52233bb9f755/run_pairs.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/JasonMakes801/shot-grouping-decision-models/blob/c6efa41e21f02da4619dbbe5311c52233bb9f755/group.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/JasonMakes801/shot-grouping-decision-models/blob/c6efa41e21f02da4619dbbe5311c52233bb9f755/README.md"
+      }
+    ]
+  },
+  {
+    "id": "pi-out-classify-relevance-filter",
+    "name": "pi-out-classify",
+    "author": "Piotr-Adamm",
+    "title": {
+      "zh": "按任务目标筛掉工具输出中的无关片段",
+      "en": "Filter irrelevant tool-output sections against a task goal"
+    },
+    "area": {
+      "zh": "代理上下文筛选",
+      "en": "Agent context filtering"
+    },
+    "input": {
+      "zh": "Pi 的工具输出分段、图像或解析后的 PDF，以及工具目标或最近用户消息。",
+      "en": "Sections, images or extracted PDF content from Pi tool outputs, with a tool goal or recent user messages."
+    },
+    "decision": {
+      "zh": "Jev 用 Choice 标记保留、不确定或可丢弃。视觉判断通过同作者的 pi-jevisual 发送。",
+      "en": "Jev assigns keep, uncertain or discard Choices. Visual judgments use the companion pi-jevisual API."
+    },
+    "action": {
+      "zh": "扩展重组结果并标示省略范围。仅删除明确丢弃的内容，失败或不确定时保留原片段。",
+      "en": "The extension rebuilds the output and marks omissions. Only explicit discards are removed; failed or uncertain classifications retain their sections."
+    },
+    "boundary": {
+      "zh": "MIT 扩展的源码行为。本站未安装插件、发送工具数据或验证节省量。",
+      "en": "MIT extension reviewed from source. No plugin installation, tool data transfer or savings measurement was performed here."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Piotr-Adamm/pi-out-classify"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Piotr-Adamm/pi-out-classify/blob/189f363328bee25d02e693c783079f7cfe1a50d5/src/classifier.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Piotr-Adamm/pi-out-classify/blob/189f363328bee25d02e693c783079f7cfe1a50d5/src/hook.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Piotr-Adamm/pi-out-classify/blob/189f363328bee25d02e693c783079f7cfe1a50d5/src/reconstructor.ts"
+      }
+    ]
+  },
+  {
+    "id": "verdict-transfer-intent-agreement",
+    "name": "Verdict",
+    "author": "Ustay-coder",
+    "title": {
+      "zh": "用同一套转账意图标签比较判断模型",
+      "en": "Compare decision models on one transfer-intent rubric"
+    },
+    "area": {
+      "zh": "决策模型评测",
+      "en": "Decision-model evaluation"
+    },
+    "input": {
+      "zh": "BANKING77 中的 80 条转账相关客服消息、八类意图与已有标签。",
+      "en": "Eighty transfer-related support messages from BANKING77, eight intents and existing labels."
+    },
+    "decision": {
+      "zh": "同一 rubric 转成 Choice，分别交给原生 Jev、OpenRouter Jev 和其他供应商模型。",
+      "en": "One rubric becomes a Choice for native Jev, OpenRouter Jev and the other providers."
+    },
+    "action": {
+      "zh": "CLI 保存结果，统计与标签的一致性，列出模型答案不一致的样本供复查。",
+      "en": "The CLI stores runs, reports agreement with labels and surfaces disagreements for review."
+    },
+    "boundary": {
+      "zh": "运行记录来自作者的小样本。样本及标签选择影响结果，本站未重跑付费模型。",
+      "en": "The run is a small author-reported sample. Cases and labels affect agreement, and this site did not rerun paid models."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Ustay-coder/verdict"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Ustay-coder/verdict/blob/c6e33c3e6801c798a2b1dfc3b369124d017b12f6/packages/core/src/judges/decision/providers.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Ustay-coder/verdict/blob/c6e33c3e6801c798a2b1dfc3b369124d017b12f6/examples/banking77/intent.yaml"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Ustay-coder/verdict/blob/c6e33c3e6801c798a2b1dfc3b369124d017b12f6/examples/banking77/README.md"
+      }
+    ]
+  },
+  {
+    "id": "agentmailguard-mail-risk-gates",
+    "name": "agentmailguard",
+    "author": "ivanrvpereira",
+    "title": {
+      "zh": "先筛邮件内容，再对可疑写操作要求人工批准",
+      "en": "Screen mail and hold suspicious writes for approval"
+    },
+    "area": {
+      "zh": "代理邮件安全",
+      "en": "Agent email safety"
+    },
+    "input": {
+      "zh": "邮件正文和元数据，或代理拟执行的邮件与日历操作及其字段。",
+      "en": "Mail content and metadata, or the proposed mail/calendar operation and its fields."
+    },
+    "decision": {
+      "zh": "Jev 以 Noul 判断提示注入、账号安全或写操作是否可疑。启用整理时另问文件夹 Choice 和类别 Noul。",
+      "en": "Jev answers Nouls about injection, account security or suspicious writes. Optional organization adds a folder Choice and category Nouls."
+    },
+    "action": {
+      "zh": "守护进程按判定限制正文可见性。原策略允许的写操作遇到可疑或检查失败时，可转入人工批准。",
+      "en": "The daemon limits body visibility based on the verdict. A suspicious or failed check can move an otherwise allowed write to human approval."
+    },
+    "boundary": {
+      "zh": "作者报告用于自己的工作邮件。本站核对 Apache-2.0 源码，未接入邮箱、测量绕过率或验证仓库所用 OpenRouter 路径的当前兼容性。",
+      "en": "The author reports using this for work email. Apache-2.0 source was reviewed; no mailbox, bypass-rate test or verification of the current OpenRouter endpoint compatibility was performed."
+    },
+    "evidence": "code-and-post",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ivanrvpereira/agentmailguard"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ivanrvpereira/agentmailguard/blob/a30cde008eeac9cd4e13a55b339833d24c808c9c/internal/screening/screening.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ivanrvpereira/agentmailguard/blob/a30cde008eeac9cd4e13a55b339833d24c808c9c/internal/guard/policy.go"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ivanrvpereira/agentmailguard/blob/a30cde008eeac9cd4e13a55b339833d24c808c9c/README.md"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/ivanrvpereira/status/2120656645965689144"
+      }
+    ]
+  },
+  {
+    "id": "killmyidea-jev-weighted-idea-score",
+    "name": "Kill My Idea",
+    "author": "monteduro",
+    "title": {
+      "zh": "按目标给创意打分并生成分档建议",
+      "en": "Score a startup idea against its goal and show a verdict band"
+    },
+    "area": {
+      "zh": "创意评审",
+      "en": "Idea review"
+    },
+    "input": {
+      "zh": "用户填写的创意描述及赚钱、开源或兴趣目标。",
+      "en": "A user-supplied idea description and a commercial, open-source or hobby goal."
+    },
+    "decision": {
+      "zh": "一次 Jev 请求并行回答八项等级评分、类别和描述是否清楚。",
+      "en": "One Jev request answers eight rubric scores, a category and a clarity judgment."
+    },
+    "action": {
+      "zh": "应用加权计算总分并应用清晰度门槛，显示 KILL IT、FIX IT 或 SHIP IT 及评分明细。",
+      "en": "The app weights the scores, applies a clarity gate and displays KILL IT, FIX IT or SHIP IT with a breakdown."
+    },
+    "boundary": {
+      "zh": "已读公开表单和 MIT 源码，未提交创意或触发评审。建议来自固定量表，作者展示的延迟未经本站实测。",
+      "en": "Reviewed the public form and MIT source without submitting an idea. Verdicts use a fixed rubric; displayed timing was not measured here."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/monteduro/killmyidea"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/api/_judge.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/src/lib/questions.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/api/evaluate.ts"
+      },
+      {
+        "label": "Public demo",
+        "url": "https://killmyidea.biz/"
+      }
+    ]
   }
 ]

@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (268)
+## 深度使用案例 / Worked cases (276)
 
 ### jev-ultrafast
 
@@ -2416,7 +2416,79 @@
 - 核验边界：社区作者基准。较简单样本中，作者报告混合方案准确率 98.8%、Opus 单独 99.0%，更难样本的成本差距较小。本站未复现，也未验证真实客户数据部署。
 - 来源：[Author article](https://hightouch.com/blog/llm-judges-identity-resolution) · [Author post](https://x.com/tejasmanohar/status/2120240705914433567)
 
-## 开源项目 / Open-source projects (297)
+### 从候选动作中选择模拟驾驶操作
+
+- 作者：BrendanH18
+- 输入：OpenStreetMap 道路、模拟车辆和交通状态，以及本地规则筛过的候选动作。
+- Jev 判断：Jev 在需要判断时以 Choice 选行驶状态、运动候选或备选路线。
+- 后续动作：模拟器检查候选是否合法，使用选定动作推进模拟。无效答案由规则控制器接管。
+- 核验边界：仅核对模拟器源码。浏览器演示含规则和回放路径，不能据此归因给实时 Jev 或推断现实驾驶安全。
+- 来源：[GitHub](https://github.com/BrendanH18/jev_fsd) · [Source](https://github.com/BrendanH18/jev_fsd/blob/dcfc663dc72f2bcf709e744288a8a5c789cbc974/static/js/brain/state.js) · [Source](https://github.com/BrendanH18/jev_fsd/blob/dcfc663dc72f2bcf709e744288a8a5c789cbc974/static/js/brain/jev.js) · [Source](https://github.com/BrendanH18/jev_fsd/blob/dcfc663dc72f2bcf709e744288a8a5c789cbc974/jev/decide.py)
+
+### 逐项检查主观题答案并提交人工确认
+
+- 作者：GrntKim
+- 输入：试题、去除部分身份字段的答题文本和教师确认的评分项。
+- Jev 判断：Jev 以 Noul 检查要点是否出现，按题项也可用 Choice 或 Score。代码从概率算置信度。
+- 后续动作：低置信度题项交第二模型复核。意见不一致时不给推荐，评分人确认最终分数。
+- 核验边界：合成评测、耗时和一致率来自作者。本站未运行学生数据或测量脱敏覆盖。
+- 来源：[GitHub](https://github.com/GrntKim/FastABC) · [Source](https://github.com/GrntKim/FastABC/blob/f0fbc279017bba0df60bd4f6638a4fc30a18b091/backend/app/judges/jev.py) · [Source](https://github.com/GrntKim/FastABC/blob/f0fbc279017bba0df60bd4f6638a4fc30a18b091/backend/app/judges/routing.py) · [Source](https://github.com/GrntKim/FastABC/blob/f0fbc279017bba0df60bd4f6638a4fc30a18b091/backend/app/grading.py) · [Source](https://github.com/GrntKim/FastABC/blob/f0fbc279017bba0df60bd4f6638a4fc30a18b091/README.md)
+
+### 判断语音对话何时等待、继续或让出话轮
+
+- 作者：native-bond-lab
+- 输入：转写片段、已有对话、静默时长和当前说话状态。
+- Jev 判断：Jev 对发言是否结束、等待多久，以及双方同时说话时是否让出话轮等问题给出 Choice 概率。
+- 后续动作：会话策略按允许动作和阈值选取行为，继续播放、停止语音或交给生成模型回答。
+- 核验边界：Apache-2.0 原型。已核问句、客户端和会话消费，实时通话延迟由作者报告，本站未接入音频。
+- 来源：[GitHub](https://github.com/native-bond-lab/Jev-Interaction) · [Source](https://github.com/native-bond-lab/Jev-Interaction/blob/f330c7e5ed6939f18949d16608b4eb167c8395a2/jev_interaction/judge/client.py) · [Source](https://github.com/native-bond-lab/Jev-Interaction/blob/f330c7e5ed6939f18949d16608b4eb167c8395a2/jev_interaction/judge/questions.py) · [Source](https://github.com/native-bond-lab/Jev-Interaction/blob/f330c7e5ed6939f18949d16608b4eb167c8395a2/jev_interaction/session.py)
+
+### 对电影静帧两两判断并分组调色
+
+- 作者：JasonMakes801
+- 输入：《Tears of Steel》每个镜头的一张静帧，以及同场景和同调色组的判定准则。
+- Jev 判断：先对全部镜头对问是否同场景，再对同组镜头问能否共用调色。Jev 经 OpenRouter Decisions 返回 Noul 概率。
+- 后续动作：程序用 1 减概率作为距离做平均连接聚类，再与作者手工标签对照。
+- 核验边界：样片、耗时、费用和分组成绩是作者报告。作者说明手工标签从 Jev 初分组修订，不能当独立盲标。根 MIT 适用于代码，影片素材另有授权。
+- 来源：[GitHub](https://github.com/JasonMakes801/shot-grouping-decision-models) · [Source](https://github.com/JasonMakes801/shot-grouping-decision-models/blob/c6efa41e21f02da4619dbbe5311c52233bb9f755/run_pairs.py) · [Source](https://github.com/JasonMakes801/shot-grouping-decision-models/blob/c6efa41e21f02da4619dbbe5311c52233bb9f755/group.py) · [Source](https://github.com/JasonMakes801/shot-grouping-decision-models/blob/c6efa41e21f02da4619dbbe5311c52233bb9f755/README.md)
+
+### 按任务目标筛掉工具输出中的无关片段
+
+- 作者：Piotr-Adamm
+- 输入：Pi 的工具输出分段、图像或解析后的 PDF，以及工具目标或最近用户消息。
+- Jev 判断：Jev 用 Choice 标记保留、不确定或可丢弃。视觉判断通过同作者的 pi-jevisual 发送。
+- 后续动作：扩展重组结果并标示省略范围。仅删除明确丢弃的内容，失败或不确定时保留原片段。
+- 核验边界：MIT 扩展的源码行为。本站未安装插件、发送工具数据或验证节省量。
+- 来源：[GitHub](https://github.com/Piotr-Adamm/pi-out-classify) · [Source](https://github.com/Piotr-Adamm/pi-out-classify/blob/189f363328bee25d02e693c783079f7cfe1a50d5/src/classifier.ts) · [Source](https://github.com/Piotr-Adamm/pi-out-classify/blob/189f363328bee25d02e693c783079f7cfe1a50d5/src/hook.ts) · [Source](https://github.com/Piotr-Adamm/pi-out-classify/blob/189f363328bee25d02e693c783079f7cfe1a50d5/src/reconstructor.ts)
+
+### 用同一套转账意图标签比较判断模型
+
+- 作者：Ustay-coder
+- 输入：BANKING77 中的 80 条转账相关客服消息、八类意图与已有标签。
+- Jev 判断：同一 rubric 转成 Choice，分别交给原生 Jev、OpenRouter Jev 和其他供应商模型。
+- 后续动作：CLI 保存结果，统计与标签的一致性，列出模型答案不一致的样本供复查。
+- 核验边界：运行记录来自作者的小样本。样本及标签选择影响结果，本站未重跑付费模型。
+- 来源：[GitHub](https://github.com/Ustay-coder/verdict) · [Source](https://github.com/Ustay-coder/verdict/blob/c6e33c3e6801c798a2b1dfc3b369124d017b12f6/packages/core/src/judges/decision/providers.ts) · [Source](https://github.com/Ustay-coder/verdict/blob/c6e33c3e6801c798a2b1dfc3b369124d017b12f6/examples/banking77/intent.yaml) · [Source](https://github.com/Ustay-coder/verdict/blob/c6e33c3e6801c798a2b1dfc3b369124d017b12f6/examples/banking77/README.md)
+
+### 先筛邮件内容，再对可疑写操作要求人工批准
+
+- 作者：ivanrvpereira
+- 输入：邮件正文和元数据，或代理拟执行的邮件与日历操作及其字段。
+- Jev 判断：Jev 以 Noul 判断提示注入、账号安全或写操作是否可疑。启用整理时另问文件夹 Choice 和类别 Noul。
+- 后续动作：守护进程按判定限制正文可见性。原策略允许的写操作遇到可疑或检查失败时，可转入人工批准。
+- 核验边界：作者报告用于自己的工作邮件。本站核对 Apache-2.0 源码，未接入邮箱、测量绕过率或验证仓库所用 OpenRouter 路径的当前兼容性。
+- 来源：[GitHub](https://github.com/ivanrvpereira/agentmailguard) · [Source](https://github.com/ivanrvpereira/agentmailguard/blob/a30cde008eeac9cd4e13a55b339833d24c808c9c/internal/screening/screening.go) · [Source](https://github.com/ivanrvpereira/agentmailguard/blob/a30cde008eeac9cd4e13a55b339833d24c808c9c/internal/guard/policy.go) · [Source](https://github.com/ivanrvpereira/agentmailguard/blob/a30cde008eeac9cd4e13a55b339833d24c808c9c/README.md) · [Author post](https://x.com/ivanrvpereira/status/2120656645965689144)
+
+### 按目标给创意打分并生成分档建议
+
+- 作者：monteduro
+- 输入：用户填写的创意描述及赚钱、开源或兴趣目标。
+- Jev 判断：一次 Jev 请求并行回答八项等级评分、类别和描述是否清楚。
+- 后续动作：应用加权计算总分并应用清晰度门槛，显示 KILL IT、FIX IT 或 SHIP IT 及评分明细。
+- 核验边界：已读公开表单和 MIT 源码，未提交创意或触发评审。建议来自固定量表，作者展示的延迟未经本站实测。
+- 来源：[GitHub](https://github.com/monteduro/killmyidea) · [Source](https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/api/_judge.ts) · [Source](https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/src/lib/questions.ts) · [Source](https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/api/evaluate.ts) · [Public demo](https://killmyidea.biz/)
+
+## 开源项目 / Open-source projects (306)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2717,6 +2789,15 @@
 | [Hendrik040/henni](https://github.com/Hendrik040/henni) | community | MIT | 0 |
 | [copper-browser/Copper](https://github.com/copper-browser/Copper) | community | MIT | 1 |
 | [bladerik/decision-benchmark](https://github.com/bladerik/decision-benchmark) | community | MIT | 0 |
+| [BrendanH18/jev_fsd](https://github.com/BrendanH18/jev_fsd) | community | MIT | 12 |
+| [GrntKim/FastABC](https://github.com/GrntKim/FastABC) | community | MIT | 0 |
+| [native-bond-lab/Jev-Interaction](https://github.com/native-bond-lab/Jev-Interaction) | community | Apache-2.0 | 12 |
+| [JasonMakes801/shot-grouping-decision-models](https://github.com/JasonMakes801/shot-grouping-decision-models) | community | MIT | 0 |
+| [Piotr-Adamm/pi-out-classify](https://github.com/Piotr-Adamm/pi-out-classify) | community | MIT | 0 |
+| [Piotr-Adamm/pi-jevisual](https://github.com/Piotr-Adamm/pi-jevisual) | community | MIT | 0 |
+| [Ustay-coder/verdict](https://github.com/Ustay-coder/verdict) | community | MIT | 0 |
+| [ivanrvpereira/agentmailguard](https://github.com/ivanrvpereira/agentmailguard) | community | Apache-2.0 | 0 |
+| [monteduro/killmyidea](https://github.com/monteduro/killmyidea) | community | MIT | 279 |
 
 ## 官方 cookbook / Official recipes (27)
 

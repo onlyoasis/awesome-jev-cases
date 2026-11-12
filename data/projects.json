@@ -4750,5 +4750,149 @@
     "lastVerified": "2026-11-11",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "brendanh18-jev-drive-lab",
+    "name": "BrendanH18/jev_fsd",
+    "url": "https://github.com/BrendanH18/jev_fsd",
+    "category": "application",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "在 OSM 路网中测试 Jev 候选驾驶动作的模拟器。",
+      "en": "OSM-based simulator for evaluating Jev maneuver choices."
+    },
+    "sourceUrl": "https://github.com/BrendanH18/jev_fsd/blob/dcfc663dc72f2bcf709e744288a8a5c789cbc974/static/js/brain/jev.js",
+    "lastVerified": "2026-11-12",
+    "status": "verified",
+    "stars": 12
+  },
+  {
+    "id": "grntkim-fastabc",
+    "name": "GrntKim/FastABC",
+    "url": "https://github.com/GrntKim/FastABC",
+    "category": "application",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "书面答题评分辅助，结合 Jev 判断、模型复核和教师确认。",
+      "en": "Written-answer grading assistance with Jev judgments, model review and instructor confirmation."
+    },
+    "sourceUrl": "https://github.com/GrntKim/FastABC/blob/f0fbc279017bba0df60bd4f6638a4fc30a18b091/backend/app/judges/jev.py",
+    "lastVerified": "2026-11-12",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "native-bond-jev-interaction",
+    "name": "native-bond-lab/Jev-Interaction",
+    "url": "https://github.com/native-bond-lab/Jev-Interaction",
+    "category": "application",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "用 Jev 判断话轮、静默和打断的全双工语音实验。",
+      "en": "Full-duplex voice experiment with Jev judgments for turns, silences and interruptions."
+    },
+    "sourceUrl": "https://github.com/native-bond-lab/Jev-Interaction/blob/f330c7e5ed6939f18949d16608b4eb167c8395a2/jev_interaction/session.py",
+    "lastVerified": "2026-11-12",
+    "status": "verified",
+    "stars": 12
+  },
+  {
+    "id": "jasonmakes801-shot-grouping",
+    "name": "JasonMakes801/shot-grouping-decision-models",
+    "url": "https://github.com/JasonMakes801/shot-grouping-decision-models",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用成对 Noul 概率和聚类为电影镜头划分场景及调色组。",
+      "en": "Group film shots into scenes and grades using pairwise Noul probabilities and clustering."
+    },
+    "sourceUrl": "https://github.com/JasonMakes801/shot-grouping-decision-models/blob/c6efa41e21f02da4619dbbe5311c52233bb9f755/run_pairs.py",
+    "lastVerified": "2026-11-12",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "piotr-adamm-pi-out-classify",
+    "name": "Piotr-Adamm/pi-out-classify",
+    "url": "https://github.com/Piotr-Adamm/pi-out-classify",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "按任务目标裁剪 Pi 工具结果，保留不确定片段。",
+      "en": "Trim Pi tool results against a goal while retaining uncertain sections."
+    },
+    "sourceUrl": "https://github.com/Piotr-Adamm/pi-out-classify/blob/189f363328bee25d02e693c783079f7cfe1a50d5/src/classifier.ts",
+    "lastVerified": "2026-11-12",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "piotr-adamm-pi-jevisual",
+    "name": "Piotr-Adamm/pi-jevisual",
+    "url": "https://github.com/Piotr-Adamm/pi-jevisual",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "把图像和命名题目发给 Jev，返回可按图像定位的结构化答案。",
+      "en": "Send images and named questions to Jev and return structured answers keyed by image."
+    },
+    "sourceUrl": "https://github.com/Piotr-Adamm/pi-jevisual/blob/fa4f9ce6fee23cd9f079979d4bd13679760b2def/src/api.ts",
+    "lastVerified": "2026-11-12",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "ustay-coder-verdict",
+    "name": "Ustay-coder/verdict",
+    "url": "https://github.com/Ustay-coder/verdict",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "复用同一 rubric 对比 Jev 与其他模型的结构化判断。",
+      "en": "Compare Jev and other models on structured judgments using one rubric."
+    },
+    "sourceUrl": "https://github.com/Ustay-coder/verdict/blob/c6e33c3e6801c798a2b1dfc3b369124d017b12f6/packages/core/src/judges/decision/providers.ts",
+    "lastVerified": "2026-11-12",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "ivanrvpereira-agentmailguard",
+    "name": "ivanrvpereira/agentmailguard",
+    "url": "https://github.com/ivanrvpereira/agentmailguard",
+    "category": "application",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "在代理与邮件服务之间增加 Jev 风险筛查及人工审批。",
+      "en": "Add Jev risk screening and human approval between an agent and mail services."
+    },
+    "sourceUrl": "https://github.com/ivanrvpereira/agentmailguard/blob/a30cde008eeac9cd4e13a55b339833d24c808c9c/internal/screening/screening.go",
+    "lastVerified": "2026-11-12",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "monteduro-killmyidea",
+    "name": "monteduro/killmyidea",
+    "url": "https://github.com/monteduro/killmyidea",
+    "category": "application",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev 评分、加权与清晰度门槛生成创意建议。",
+      "en": "Generate idea verdicts using Jev rubric scores, weights and a clarity gate."
+    },
+    "sourceUrl": "https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/api/_judge.ts",
+    "lastVerified": "2026-11-12",
+    "status": "verified",
+    "stars": 279
   }
 ]
