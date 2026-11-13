@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (276)
+## 深度使用案例 / Worked cases (284)
 
 ### jev-ultrafast
 
@@ -2488,7 +2488,79 @@
 - 核验边界：已读公开表单和 MIT 源码，未提交创意或触发评审。建议来自固定量表，作者展示的延迟未经本站实测。
 - 来源：[GitHub](https://github.com/monteduro/killmyidea) · [Source](https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/api/_judge.ts) · [Source](https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/src/lib/questions.ts) · [Source](https://github.com/monteduro/killmyidea/blob/fccb8234d651e86d3297b1ee24f8b8cd0e00d1ec/api/evaluate.ts) · [Public demo](https://killmyidea.biz/)
 
-## 开源项目 / Open-source projects (306)
+### 给推广和点点互动评论分级显示
+
+- 作者：JDChi
+- 输入：网页评论正文及扩展抽取的上下文。
+- Jev 判断：原生 Jev 为推广引流和向点点发请求分别回答 Noul。
+- 后续动作：扩展按阈值标疑、折叠或隐藏，折叠可在本地展开，超时则显示原文。
+- 核验边界：只核源码，未安装或访问实际评论。根许可证未确认。
+- 来源：[GitHub](https://github.com/JDChi/jev-rednote) · [Source](https://github.com/JDChi/jev-rednote/blob/11ccd958eb29ed6563a43cc160e290b0b6865c21/jev.js) · [Source](https://github.com/JDChi/jev-rednote/blob/11ccd958eb29ed6563a43cc160e290b0b6865c21/content.js)
+
+### 先判断片段相关性，再问是否补充新证据
+
+- 作者：bytelabs-oss
+- 输入：问题与混合检索得到的候选文段，或关键词工具找到的片段。
+- Jev 判断：Jev 以 Noul 判断候选是否支持问题的一部分，混合路径还问片段是否补充已选文段没有的事实。
+- 后续动作：代码按概率和预算选择上下文，保留部分不确定的补充片段，把入选内容交给回答模型并记录轨迹。
+- 核验边界：根许可证未知，数据集另有授权。公开评测入口和运行路径已核，本站未复跑评测。
+- 来源：[GitHub](https://github.com/bytelabs-oss/multihop-rag-jev) · [Source](https://github.com/bytelabs-oss/multihop-rag-jev/blob/0e80ead7c6890a9cecaecc712a76f8bd8ce4ec6c/server/pipeline.mjs) · [Source](https://github.com/bytelabs-oss/multihop-rag-jev/blob/0e80ead7c6890a9cecaecc712a76f8bd8ce4ec6c/README.md)
+
+### 让模型从生成视频帧中选择下一步操作
+
+- 作者：willemhelmet
+- 输入：最近两帧、关卡目标、交互阶段及已知物体。
+- Jev 判断：Jev 经 OpenRouter Decisions 作按键 Choice、目标 Box，以及可见性、可交互和阶段完成 Noul。
+- 后续动作：浏览器按阈值决定是否执行交互，连续达到完成阈值才推进阶段，再更新世界提示和可视覆盖。
+- 核验边界：生成视频实验，根许可证未确认。未调用付费模型或复现关卡完成率。
+- 来源：[GitHub](https://github.com/willemhelmet/jev-world) · [Source](https://github.com/willemhelmet/jev-world/blob/979e9426299e233509a32e9a6990282ae73b127e/app/api/jev/route.ts) · [Source](https://github.com/willemhelmet/jev-world/blob/979e9426299e233509a32e9a6990282ae73b127e/components/Arena.tsx)
+
+### 对文档段落和标题生成可定位的编辑诊断
+
+- 作者：mbrock
+- 输入：文档中抽出的标题、正文片段及本地结构指标。
+- Jev 判断：原生 Jev 用 Noul 判断口号标题、术语拥挤等问题，并对正文可读性评分。
+- 后续动作：脚本按阈值把问题转成编辑提示，结合结构指标输出诊断。
+- 核验边界：仓库中的实验脚本。未核实根许可证或外部转载者报告的速度，未运行模型。
+- 来源：[GitHub](https://github.com/mbrock/filnix) · [Source](https://github.com/mbrock/filnix/blob/469b842d7c5c1a097928020ecb43999f704ee213/scripts/prose-check)
+
+### 用流式转写预览并提交列表操作
+
+- 作者：John Hartquist
+- 输入：手表录音经 Deepgram Flux 转写后的当前文本与现有条目。
+- Jev 判断：作者描述每次并行选择动作、目标条目和正文片段，多项重复提问直至模型选择没有更多。
+- 后续动作：服务端在说话时预览，停顿后按置信度提交，删除门槛更高。
+- 核验边界：手表应用行为来自作者演示和说明。公开的 system2 是所用 SDK，未取得手表应用源码或独立测量。
+- 来源：[Author demo](https://x.com/johnhartquist/status/2120988079867695515) · [Author details](https://x.com/johnhartquist/status/2120988883412496533) · [Author follow-up](https://x.com/johnhartquist/status/2120988991705231774) · [Rust SDK](https://github.com/jhartquist/system2)
+
+### 用段落分类和引文支持判断辅助浏览案卷
+
+- 作者：Rafael Arcuri
+- 输入：电子案卷文本段落和模型生成的案情地图陈述及其引用。
+- Jev 判断：作者用 Jev 将段落归为请求、事实、论证或裁定，并判断生成陈述是否获引用段支持。
+- 后续动作：代码按类别把片段分发给写作调用，把证据疑点标给律师复核。
+- 核验边界：作者报告仍有遗漏和错误，扫描页覆盖有限。性能、成本和结果均未独立复现，案例只描述辅助浏览。
+- 来源：[Author thread](https://x.com/Arcuri_Rafael/status/2121061143318008061) · [Author classification](https://x.com/Arcuri_Rafael/status/2121061146891600333) · [Author evidence check](https://x.com/Arcuri_Rafael/status/2121061150012096543)
+
+### 给罕见笔记标签建议归并目标
+
+- 作者：snaga
+- 输入：低频标签及笔记标题、开头文段。
+- Jev 判断：通过 MCP 让 Jev 在 64 个主要标签与保留原样选项中作 Choice。
+- 后续动作：作者输出所选归并目标与置信度，检查样本并标出低置信度结果供复核。
+- 核验边界：历史作者实验，共报告 20 个样本。未验证整库实际改写或分类准确率。
+- 来源：[Author post](https://x.com/snaga/status/2104064400831422938) · [Author report](https://gist.github.com/snaga/d87bbc9e95bd9ef120b233f06dfc60ac)
+
+### 按重要度和质量排序文档修订，并定位疑似问题句
+
+- 作者：TypeSafe AI
+- 输入：Django 文档页与站点语境，深入检查时补充当前页候选句。
+- Jev 判断：TypeSafe 演示逐页提问 45 个 Score、Choice、Noul，量化质量、重要度、类别和可能的问题。
+- 后续动作：仪表板排序修订优先级并汇总标志，深入检查高亮候选句并链接到原始代码行，便于人工核对。
+- 核验边界：官方 demo。页数、费用和耗时为 TypeSafe 报告，示例脚本只实现部分问题，本站未独立运行。
+- 来源：[Official demo](https://docs.typesafe.ai/demos/content-audit.md)
+
+## 开源项目 / Open-source projects (309)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2798,6 +2870,9 @@
 | [Ustay-coder/verdict](https://github.com/Ustay-coder/verdict) | community | MIT | 0 |
 | [ivanrvpereira/agentmailguard](https://github.com/ivanrvpereira/agentmailguard) | community | Apache-2.0 | 0 |
 | [monteduro/killmyidea](https://github.com/monteduro/killmyidea) | community | MIT | 279 |
+| [Jev-Engineering/TypeWright](https://github.com/Jev-Engineering/TypeWright) | community | MIT | 7 |
+| [jhartquist/system2](https://github.com/jhartquist/system2) | community | MIT OR Apache-2.0 | 3 |
+| [joshrotenberg/cljev](https://github.com/joshrotenberg/cljev) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (27)
 

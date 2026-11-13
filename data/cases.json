@@ -12234,5 +12234,345 @@
         "url": "https://killmyidea.biz/"
       }
     ]
+  },
+  {
+    "id": "jev-rednote-comment-fold",
+    "name": "小红书评论过滤",
+    "author": "JDChi",
+    "title": {
+      "zh": "给推广和点点互动评论分级显示",
+      "en": "Triage promotional and Diandian comments in the browser"
+    },
+    "area": {
+      "zh": "评论界面过滤",
+      "en": "Comment display filtering"
+    },
+    "input": {
+      "zh": "网页评论正文及扩展抽取的上下文。",
+      "en": "Comment text and context extracted by the browser extension."
+    },
+    "decision": {
+      "zh": "原生 Jev 为推广引流和向点点发请求分别回答 Noul。",
+      "en": "Native Jev answers separate Nouls for promotion and requests directed at Diandian."
+    },
+    "action": {
+      "zh": "扩展按阈值标疑、折叠或隐藏，折叠可在本地展开，超时则显示原文。",
+      "en": "The extension labels, folds or hides comments according to thresholds. Folded threads can be expanded and timeouts show the original text."
+    },
+    "boundary": {
+      "zh": "只核源码，未安装或访问实际评论。根许可证未确认。",
+      "en": "Reviewed source without installing the extension or using real comments. The root license was not confirmed."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/JDChi/jev-rednote"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/JDChi/jev-rednote/blob/11ccd958eb29ed6563a43cc160e290b0b6865c21/jev.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/JDChi/jev-rednote/blob/11ccd958eb29ed6563a43cc160e290b0b6865c21/content.js"
+      }
+    ]
+  },
+  {
+    "id": "atlas-jev-multihop-evidence",
+    "name": "Atlas MultiHop-RAG",
+    "author": "bytelabs-oss",
+    "title": {
+      "zh": "先判断片段相关性，再问是否补充新证据",
+      "en": "Judge relevance before checking for new evidence"
+    },
+    "area": {
+      "zh": "多跳检索增强",
+      "en": "Multi-hop retrieval augmentation"
+    },
+    "input": {
+      "zh": "问题与混合检索得到的候选文段，或关键词工具找到的片段。",
+      "en": "A question and passages from hybrid retrieval or a keyword-search tool."
+    },
+    "decision": {
+      "zh": "Jev 以 Noul 判断候选是否支持问题的一部分，混合路径还问片段是否补充已选文段没有的事实。",
+      "en": "Jev uses Nouls for partial relevance and, on the hybrid path, whether a passage contributes a fact missing from selected evidence."
+    },
+    "action": {
+      "zh": "代码按概率和预算选择上下文，保留部分不确定的补充片段，把入选内容交给回答模型并记录轨迹。",
+      "en": "Code selects context under probability and budget rules, retains some uncertain contributions, and traces the evidence sent to the answer model."
+    },
+    "boundary": {
+      "zh": "根许可证未知，数据集另有授权。公开评测入口和运行路径已核，本站未复跑评测。",
+      "en": "The root license is unknown and the dataset has separate terms. The benchmark entry point and pipeline were reviewed without rerunning the benchmark."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/bytelabs-oss/multihop-rag-jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/bytelabs-oss/multihop-rag-jev/blob/0e80ead7c6890a9cecaecc712a76f8bd8ce4ec6c/server/pipeline.mjs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/bytelabs-oss/multihop-rag-jev/blob/0e80ead7c6890a9cecaecc712a76f8bd8ce4ec6c/README.md"
+      }
+    ]
+  },
+  {
+    "id": "jev-world-frame-action-stage",
+    "name": "Jev World",
+    "author": "willemhelmet",
+    "title": {
+      "zh": "让模型从生成视频帧中选择下一步操作",
+      "en": "Choose the next control action from generated world frames"
+    },
+    "area": {
+      "zh": "世界模型实验",
+      "en": "World-model experiment"
+    },
+    "input": {
+      "zh": "最近两帧、关卡目标、交互阶段及已知物体。",
+      "en": "Two recent frames, the level goal, interaction stage and named objects."
+    },
+    "decision": {
+      "zh": "Jev 经 OpenRouter Decisions 作按键 Choice、目标 Box，以及可见性、可交互和阶段完成 Noul。",
+      "en": "Via OpenRouter Decisions, Jev returns a control Choice, target Boxes and Nouls for visibility, interaction readiness and stage completion."
+    },
+    "action": {
+      "zh": "浏览器按阈值决定是否执行交互，连续达到完成阈值才推进阶段，再更新世界提示和可视覆盖。",
+      "en": "The browser gates interactions and advances a stage after repeated positive completion checks, then updates world prompts and overlays."
+    },
+    "boundary": {
+      "zh": "生成视频实验，根许可证未确认。未调用付费模型或复现关卡完成率。",
+      "en": "Generated-video experiment with an unconfirmed root license. No paid calls or level success rates were reproduced."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/willemhelmet/jev-world"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/willemhelmet/jev-world/blob/979e9426299e233509a32e9a6990282ae73b127e/app/api/jev/route.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/willemhelmet/jev-world/blob/979e9426299e233509a32e9a6990282ae73b127e/components/Arena.tsx"
+      }
+    ]
+  },
+  {
+    "id": "filnix-jev-prose-diagnostics",
+    "name": "Filnix prose-check",
+    "author": "mbrock",
+    "title": {
+      "zh": "对文档段落和标题生成可定位的编辑诊断",
+      "en": "Generate locatable editing diagnostics for headings and paragraphs"
+    },
+    "area": {
+      "zh": "文档质量检查",
+      "en": "Documentation review"
+    },
+    "input": {
+      "zh": "文档中抽出的标题、正文片段及本地结构指标。",
+      "en": "Headings, prose sections and locally computed structural metrics."
+    },
+    "decision": {
+      "zh": "原生 Jev 用 Noul 判断口号标题、术语拥挤等问题，并对正文可读性评分。",
+      "en": "Native Jev uses Nouls for issues such as slogan headings and identifier clutter, and scores prose readability."
+    },
+    "action": {
+      "zh": "脚本按阈值把问题转成编辑提示，结合结构指标输出诊断。",
+      "en": "The script turns threshold crossings and structural metrics into editing diagnostics."
+    },
+    "boundary": {
+      "zh": "仓库中的实验脚本。未核实根许可证或外部转载者报告的速度，未运行模型。",
+      "en": "Experimental repository script. The root license and any reported speed were not verified, and no model was called."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/mbrock/filnix"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mbrock/filnix/blob/469b842d7c5c1a097928020ecb43999f704ee213/scripts/prose-check"
+      }
+    ]
+  },
+  {
+    "id": "watch-streaming-list-choices",
+    "name": "Apple Watch raise-to-talk",
+    "author": "John Hartquist",
+    "title": {
+      "zh": "用流式转写预览并提交列表操作",
+      "en": "Preview and apply list edits from streaming speech"
+    },
+    "area": {
+      "zh": "可穿戴语音交互",
+      "en": "Wearable voice interaction"
+    },
+    "input": {
+      "zh": "手表录音经 Deepgram Flux 转写后的当前文本与现有条目。",
+      "en": "The current Deepgram Flux transcript from watch audio and the existing list items."
+    },
+    "decision": {
+      "zh": "作者描述每次并行选择动作、目标条目和正文片段，多项重复提问直至模型选择没有更多。",
+      "en": "The author describes parallel choices for action, target item and transcript span, repeating for multiple items until there are no more."
+    },
+    "action": {
+      "zh": "服务端在说话时预览，停顿后按置信度提交，删除门槛更高。",
+      "en": "The server previews while the user speaks and applies edits at a pause using confidence thresholds, with a higher threshold for deletion."
+    },
+    "boundary": {
+      "zh": "手表应用行为来自作者演示和说明。公开的 system2 是所用 SDK，未取得手表应用源码或独立测量。",
+      "en": "Watch behavior comes from the author demo and thread. The public system2 repository is the SDK; watch app source and independent measurements were not obtained."
+    },
+    "evidence": "post",
+    "sources": [
+      {
+        "label": "Author demo",
+        "url": "https://x.com/johnhartquist/status/2120988079867695515"
+      },
+      {
+        "label": "Author details",
+        "url": "https://x.com/johnhartquist/status/2120988883412496533"
+      },
+      {
+        "label": "Author follow-up",
+        "url": "https://x.com/johnhartquist/status/2120988991705231774"
+      },
+      {
+        "label": "Rust SDK",
+        "url": "https://github.com/jhartquist/system2"
+      }
+    ]
+  },
+  {
+    "id": "jev-lawsuit-map-source-check",
+    "name": "Jev case-file map",
+    "author": "Rafael Arcuri",
+    "title": {
+      "zh": "用段落分类和引文支持判断辅助浏览案卷",
+      "en": "Use paragraph labels and citation checks to review a case map"
+    },
+    "area": {
+      "zh": "文档归类与证据复核",
+      "en": "Document routing and evidence review"
+    },
+    "input": {
+      "zh": "电子案卷文本段落和模型生成的案情地图陈述及其引用。",
+      "en": "Text paragraphs from a case file and drafted map statements with cited passages."
+    },
+    "decision": {
+      "zh": "作者用 Jev 将段落归为请求、事实、论证或裁定，并判断生成陈述是否获引用段支持。",
+      "en": "The author uses Jev to label paragraphs as requests, facts, arguments or rulings, and to judge whether a cited passage supports a drafted statement."
+    },
+    "action": {
+      "zh": "代码按类别把片段分发给写作调用，把证据疑点标给律师复核。",
+      "en": "Code routes passages into drafting calls and flags evidence doubts for lawyer review."
+    },
+    "boundary": {
+      "zh": "作者报告仍有遗漏和错误，扫描页覆盖有限。性能、成本和结果均未独立复现，案例只描述辅助浏览。",
+      "en": "The author reports omissions, errors and limited scanned-page coverage. Timing, cost and results were not reproduced. The case describes review assistance."
+    },
+    "evidence": "post",
+    "sources": [
+      {
+        "label": "Author thread",
+        "url": "https://x.com/Arcuri_Rafael/status/2121061143318008061"
+      },
+      {
+        "label": "Author classification",
+        "url": "https://x.com/Arcuri_Rafael/status/2121061146891600333"
+      },
+      {
+        "label": "Author evidence check",
+        "url": "https://x.com/Arcuri_Rafael/status/2121061150012096543"
+      }
+    ]
+  },
+  {
+    "id": "snaga-obsidian-tag-normalization",
+    "name": "Obsidian tag normalization",
+    "author": "snaga",
+    "title": {
+      "zh": "给罕见笔记标签建议归并目标",
+      "en": "Suggest merge targets for rare note tags"
+    },
+    "area": {
+      "zh": "笔记标签整理",
+      "en": "Note-tag organization"
+    },
+    "input": {
+      "zh": "低频标签及笔记标题、开头文段。",
+      "en": "A rare tag, note title and opening excerpt."
+    },
+    "decision": {
+      "zh": "通过 MCP 让 Jev 在 64 个主要标签与保留原样选项中作 Choice。",
+      "en": "Through MCP, Jev makes a Choice among 64 established tags and a keep-original option."
+    },
+    "action": {
+      "zh": "作者输出所选归并目标与置信度，检查样本并标出低置信度结果供复核。",
+      "en": "The author records suggested targets and confidence and marks low-confidence samples for review."
+    },
+    "boundary": {
+      "zh": "历史作者实验，共报告 20 个样本。未验证整库实际改写或分类准确率。",
+      "en": "Historical author experiment reporting 20 samples. No bulk edits or classification accuracy were verified."
+    },
+    "evidence": "post",
+    "sources": [
+      {
+        "label": "Author post",
+        "url": "https://x.com/snaga/status/2104064400831422938"
+      },
+      {
+        "label": "Author report",
+        "url": "https://gist.github.com/snaga/d87bbc9e95bd9ef120b233f06dfc60ac"
+      }
+    ]
+  },
+  {
+    "id": "official-django-content-audit",
+    "name": "Content audits with Jev",
+    "author": "TypeSafe AI",
+    "title": {
+      "zh": "按重要度和质量排序文档修订，并定位疑似问题句",
+      "en": "Prioritize documentation edits and locate suspect sentences"
+    },
+    "area": {
+      "zh": "官方文档审查演示",
+      "en": "Official documentation audit demo"
+    },
+    "input": {
+      "zh": "Django 文档页与站点语境，深入检查时补充当前页候选句。",
+      "en": "Django documentation pages and site context, with candidate sentences for the deep scan."
+    },
+    "decision": {
+      "zh": "TypeSafe 演示逐页提问 45 个 Score、Choice、Noul，量化质量、重要度、类别和可能的问题。",
+      "en": "TypeSafe’s demo asks 45 Score, Choice and Noul questions per page for quality, importance, categories and potential issues."
+    },
+    "action": {
+      "zh": "仪表板排序修订优先级并汇总标志，深入检查高亮候选句并链接到原始代码行，便于人工核对。",
+      "en": "The dashboard prioritizes edits and aggregates flags. A deep scan highlights candidate sentences and links to source lines for review."
+    },
+    "boundary": {
+      "zh": "官方 demo。页数、费用和耗时为 TypeSafe 报告，示例脚本只实现部分问题，本站未独立运行。",
+      "en": "Official demo. Page counts, cost and timing are reported by TypeSafe. The sample script implements a subset of questions and was not run independently here."
+    },
+    "evidence": "official-doc",
+    "sources": [
+      {
+        "label": "Official demo",
+        "url": "https://docs.typesafe.ai/demos/content-audit.md"
+      }
+    ]
   }
 ]

@@ -4894,5 +4894,53 @@
     "lastVerified": "2026-11-12",
     "status": "verified",
     "stars": 279
+  },
+  {
+    "id": "typewright",
+    "name": "Jev-Engineering/TypeWright",
+    "url": "https://github.com/Jev-Engineering/TypeWright",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "从声明和样本编译可冻结的 Jev 决策程序。作者将离线演示与尚未完成的实调研究分开。",
+      "en": "Compile frozen Jev decision programs from declarations and samples. The author distinguishes offline demos from live provider research."
+    },
+    "sourceUrl": "https://github.com/Jev-Engineering/TypeWright/blob/43903f0b1e01c70ab4033df7e6279483cd028b3a/src/typewright/backends.py",
+    "lastVerified": "2026-11-13",
+    "status": "verified",
+    "stars": 7
+  },
+  {
+    "id": "jhartquist-system2",
+    "name": "jhartquist/system2",
+    "url": "https://github.com/jhartquist/system2",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT OR Apache-2.0",
+    "summary": {
+      "zh": "非官方 Rust SDK，支持类型化问题与答案校验，以及录制回放。",
+      "en": "Unofficial Rust SDK with typed questions, answer validation and recording replay."
+    },
+    "sourceUrl": "https://github.com/jhartquist/system2/blob/f0b3719b1e21871de42733200ce1c08adf2f708c/system2/src/client.rs",
+    "lastVerified": "2026-11-13",
+    "status": "verified",
+    "stars": 3
+  },
+  {
+    "id": "joshrotenberg-cljev",
+    "name": "joshrotenberg/cljev",
+    "url": "https://github.com/joshrotenberg/cljev",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "Babashka 和 JVM 共用的 TypeSafe System One Clojure 客户端。",
+      "en": "TypeSafe System One Clojure client for both Babashka and the JVM."
+    },
+    "sourceUrl": "https://github.com/joshrotenberg/cljev/blob/ae834f94756990889c273eb5cce01c88b91a317e/src/cljev/core.clj",
+    "lastVerified": "2026-11-13",
+    "status": "verified",
+    "stars": 0
   }
 ]
