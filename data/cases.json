@@ -12574,5 +12574,245 @@
         "url": "https://docs.typesafe.ai/demos/content-audit.md"
       }
     ]
+  },
+  {
+    "id": "decision-agents-hindsight-progress",
+    "name": "Actor, Judge, or Teacher?",
+    "author": "Haochen Liu et al.",
+    "title": {
+      "zh": "回看完整轨迹，为代理的每个动作分配训练信号",
+      "en": "Score agent actions after seeing the complete trajectory"
+    },
+    "area": {
+      "zh": "强化学习动作归因",
+      "en": "Reinforcement learning credit assignment"
+    },
+    "input": {
+      "zh": "代理目标、完整交互轨迹，以及标明的待评估动作。",
+      "en": "The agent goal, completed interaction trajectory and a marked action to evaluate."
+    },
+    "decision": {
+      "zh": "作者的 Progress 问题问该动作是否推动了目标。原生 API 适配器使用 Noul 概率表示 0–1 信号。",
+      "en": "The Progress question asks if the action helped achieve the goal. The native API adapter represents the 0–1 signal as a Noul probability."
+    },
+    "action": {
+      "zh": "训练代码把逐步分数映射回轨迹行并用于训练优势估计。论文比较了回看评判与只看任务成败的训练。",
+      "en": "Training code aligns step scores to rollout rows and uses them in advantage estimation. The paper compares hindsight judgments with outcome-only training."
+    },
+    "boundary": {
+      "zh": "论文和 Apache-2.0 源码已核。ALFWorld 与 WebShop 的改进是作者在指定训练设置下报告的结果。本站未重训。",
+      "en": "The preprint and Apache-2.0 source were reviewed. ALFWorld and WebShop improvements are author-reported under specific training settings, without retraining here."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ZJU-REAL/decision-agents"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ZJU-REAL/decision-agents/blob/ce9fd8c35fced3ab1c22d3b1380ac430649db703/decision_model/prompts/questions/progress.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ZJU-REAL/decision-agents/blob/ce9fd8c35fced3ab1c22d3b1380ac430649db703/decision_model/models/decisions_api.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ZJU-REAL/decision-agents/blob/ce9fd8c35fced3ab1c22d3b1380ac430649db703/decision_model/training/bridge.py"
+      },
+      {
+        "label": "Paper",
+        "url": "https://arxiv.org/abs/2611.17167"
+      }
+    ]
+  },
+  {
+    "id": "coffee-demo-streaming-stock-flags",
+    "name": "Jev Coffee",
+    "author": "adamsonwalter",
+    "title": {
+      "zh": "把实时语音转写填成饮品选项，并提示缺货",
+      "en": "Turn live speech transcripts into drink options and stock flags"
+    },
+    "area": {
+      "zh": "语音界面填表",
+      "en": "Voice interface form filling"
+    },
+    "input": {
+      "zh": "持续更新的语音转写和饮品演示的固定选项。",
+      "en": "A running speech transcript and fixed options for the coffee demo."
+    },
+    "decision": {
+      "zh": "服务端通过 ABCDJEV 网关提交结构化题目，识别饮品、杯型、奶类和附加要求。",
+      "en": "The server sends structured questions via the ABCDJEV gateway to identify drink, size, milk and extras."
+    },
+    "action": {
+      "zh": "前端更新字段，用本地示例库存表提示缺货或存量偏低。",
+      "en": "The frontend updates fields and checks an example inventory table for out-of-stock or low-stock flags."
+    },
+    "boundary": {
+      "zh": "独立代码演示。根许可证未确认，库存是示例数据。未复现延迟或将其归为另一位作者的语音点单原型。",
+      "en": "Independent code demo with an unconfirmed root license and example inventory. Timing was not reproduced, and this is distinct from the other author’s voice-ordering prototype."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/adamsonwalter/jev-coffee-demo"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/adamsonwalter/jev-coffee-demo/blob/1c3700a95e25f6c5a01dd0b52bb77a0727f0e0ce/demos/coffee.mjs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/adamsonwalter/jev-coffee-demo/blob/1c3700a95e25f6c5a01dd0b52bb77a0727f0e0ce/netlify/functions/order.mjs"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/adamsonwalter/jev-coffee-demo/blob/1c3700a95e25f6c5a01dd0b52bb77a0727f0e0ce/index.html"
+      }
+    ]
+  },
+  {
+    "id": "same-bet-jev-settlement-comparison",
+    "name": "Same bet?",
+    "author": "siddhanttiwary25-eng",
+    "title": {
+      "zh": "比较两个预测市场的结算条件",
+      "en": "Compare settlement conditions across prediction markets"
+    },
+    "area": {
+      "zh": "合约条款匹配评测",
+      "en": "Contract matching evaluation"
+    },
+    "input": {
+      "zh": "Polymarket 与 Kalshi 的候选市场对，包括标题、条件和期限。",
+      "en": "Candidate Polymarket and Kalshi pairs with titles, conditions and deadlines."
+    },
+    "decision": {
+      "zh": "Jev 用 Choice 判断相同、变体或不同，并以三个 Noul 判断主体、条件、时窗是否一致。",
+      "en": "Jev chooses same, variant or different and answers three Nouls about the subject, condition and time window."
+    },
+    "action": {
+      "zh": "评测脚本将分类与人工标签和标题匹配基线比较，保留维度判断供检查。",
+      "en": "The benchmark compares classifications with human labels and a title matching baseline, retaining the dimension judgments for review."
+    },
+    "boundary": {
+      "zh": "代码评测，根许可证未确认。样本与结果为作者记录，未独立复跑或执行交易。",
+      "en": "Code benchmark with an unconfirmed root license. Samples and results are author-reported. No rerun or trades were performed."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/siddhanttiwary25-eng/same-bet-jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/siddhanttiwary25-eng/same-bet-jev/blob/5ace29f34c726eb2603ebd158449cd5e6a4dbe65/src/jev_match.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/siddhanttiwary25-eng/same-bet-jev/blob/5ace29f34c726eb2603ebd158449cd5e6a4dbe65/src/benchmark.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/siddhanttiwary25-eng/same-bet-jev/blob/5ace29f34c726eb2603ebd158449cd5e6a4dbe65/results/benchmark_v2.json"
+      }
+    ]
+  },
+  {
+    "id": "elise-serial-plate-retake",
+    "name": "Elise Labs serial plate readability",
+    "author": "Mario Martone and Kyran Flynn",
+    "title": {
+      "zh": "通过铭牌照片可读性判断提示现场重拍",
+      "en": "Check appliance label readability to flag an on-site retake"
+    },
+    "area": {
+      "zh": "现场照片质检",
+      "en": "Field photo quality checks"
+    },
+    "input": {
+      "zh": "维修人员拍摄的设备铭牌照片。",
+      "en": "A photo of an appliance serial plate taken by a technician."
+    },
+    "decision": {
+      "zh": "实验版 Jev 在同一请求判断型号和序列号是否各自完整可读。",
+      "en": "Experimental Jev judges in one request whether the model number and serial number are each fully readable."
+    },
+    "action": {
+      "zh": "作者以两项中的较高得分作为照片分，两项都不高于 0.60 时标记重拍。",
+      "en": "The authors use the higher of the two scores and flag a retake if both are at or below 0.60."
+    },
+    "boundary": {
+      "zh": "Elise Labs 报告基于 140 张训练照片。阈值结果未在留出集验证，94 毫秒中位数不含预处理和排队，费用为估算。",
+      "en": "Elise Labs reports results on 140 training photos. The cutoff lacks held-out validation, the 94 ms median excludes preprocessing and queueing, and costs are estimated."
+    },
+    "evidence": "post",
+    "sources": [
+      {
+        "label": "Author article",
+        "url": "https://x.com/elise_ai/article/2120965516072243219"
+      },
+      {
+        "label": "TypeSafe recommendation",
+        "url": "https://x.com/typesafeai/status/2121319134202126571"
+      }
+    ]
+  },
+  {
+    "id": "jev-trading-plan-paper-veto",
+    "name": "JEV Trading Command Center",
+    "author": "mars-tw",
+    "title": {
+      "zh": "在模拟计划与等待之间选择，再由规则否决",
+      "en": "Choose a paper-trade plan or wait, subject to a rules veto"
+    },
+    "area": {
+      "zh": "纸上交易研究",
+      "en": "Paper-trading research"
+    },
+    "input": {
+      "zh": "市场快照、本地构建的候选计划及风险信息。",
+      "en": "A market snapshot, a locally constructed candidate plan and risk information."
+    },
+    "decision": {
+      "zh": "TypeSafe Jev 用固定 Choice 选择执行绑定的计划或等待。",
+      "en": "TypeSafe Jev makes a fixed Choice between the bound plan and waiting."
+    },
+    "action": {
+      "zh": "程序校验选项和概率，独立风控可以否决。通过时由 PaperBroker 模拟执行。",
+      "en": "Code validates the choice and probabilities. Separate risk rules can veto the plan, and PaperBroker simulates approved execution."
+    },
+    "boundary": {
+      "zh": "作者报告未公开的纸上训练版扣成本后亏损。本站仅核查当前公开源码，未复跑该实验或执行实际交易。",
+      "en": "The author reports losses after costs in an unreleased paper-training build. This entry reviews current public source without reproducing that experiment or making real trades."
+    },
+    "evidence": "code",
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/mars-tw/jev-trading-command-center"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/jev_client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/jev_decision.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/engine.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/paper_broker.py"
+      }
+    ]
   }
 ]

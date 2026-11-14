@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (284)
+## 深度使用案例 / Worked cases (289)
 
 ### jev-ultrafast
 
@@ -2560,7 +2560,52 @@
 - 核验边界：官方 demo。页数、费用和耗时为 TypeSafe 报告，示例脚本只实现部分问题，本站未独立运行。
 - 来源：[Official demo](https://docs.typesafe.ai/demos/content-audit.md)
 
-## 开源项目 / Open-source projects (309)
+### 回看完整轨迹，为代理的每个动作分配训练信号
+
+- 作者：Haochen Liu et al.
+- 输入：代理目标、完整交互轨迹，以及标明的待评估动作。
+- Jev 判断：作者的 Progress 问题问该动作是否推动了目标。原生 API 适配器使用 Noul 概率表示 0–1 信号。
+- 后续动作：训练代码把逐步分数映射回轨迹行并用于训练优势估计。论文比较了回看评判与只看任务成败的训练。
+- 核验边界：论文和 Apache-2.0 源码已核。ALFWorld 与 WebShop 的改进是作者在指定训练设置下报告的结果。本站未重训。
+- 来源：[GitHub](https://github.com/ZJU-REAL/decision-agents) · [Source](https://github.com/ZJU-REAL/decision-agents/blob/ce9fd8c35fced3ab1c22d3b1380ac430649db703/decision_model/prompts/questions/progress.py) · [Source](https://github.com/ZJU-REAL/decision-agents/blob/ce9fd8c35fced3ab1c22d3b1380ac430649db703/decision_model/models/decisions_api.py) · [Source](https://github.com/ZJU-REAL/decision-agents/blob/ce9fd8c35fced3ab1c22d3b1380ac430649db703/decision_model/training/bridge.py) · [Paper](https://arxiv.org/abs/2611.17167)
+
+### 把实时语音转写填成饮品选项，并提示缺货
+
+- 作者：adamsonwalter
+- 输入：持续更新的语音转写和饮品演示的固定选项。
+- Jev 判断：服务端通过 ABCDJEV 网关提交结构化题目，识别饮品、杯型、奶类和附加要求。
+- 后续动作：前端更新字段，用本地示例库存表提示缺货或存量偏低。
+- 核验边界：独立代码演示。根许可证未确认，库存是示例数据。未复现延迟或将其归为另一位作者的语音点单原型。
+- 来源：[GitHub](https://github.com/adamsonwalter/jev-coffee-demo) · [Source](https://github.com/adamsonwalter/jev-coffee-demo/blob/1c3700a95e25f6c5a01dd0b52bb77a0727f0e0ce/demos/coffee.mjs) · [Source](https://github.com/adamsonwalter/jev-coffee-demo/blob/1c3700a95e25f6c5a01dd0b52bb77a0727f0e0ce/netlify/functions/order.mjs) · [Source](https://github.com/adamsonwalter/jev-coffee-demo/blob/1c3700a95e25f6c5a01dd0b52bb77a0727f0e0ce/index.html)
+
+### 比较两个预测市场的结算条件
+
+- 作者：siddhanttiwary25-eng
+- 输入：Polymarket 与 Kalshi 的候选市场对，包括标题、条件和期限。
+- Jev 判断：Jev 用 Choice 判断相同、变体或不同，并以三个 Noul 判断主体、条件、时窗是否一致。
+- 后续动作：评测脚本将分类与人工标签和标题匹配基线比较，保留维度判断供检查。
+- 核验边界：代码评测，根许可证未确认。样本与结果为作者记录，未独立复跑或执行交易。
+- 来源：[GitHub](https://github.com/siddhanttiwary25-eng/same-bet-jev) · [Source](https://github.com/siddhanttiwary25-eng/same-bet-jev/blob/5ace29f34c726eb2603ebd158449cd5e6a4dbe65/src/jev_match.py) · [Source](https://github.com/siddhanttiwary25-eng/same-bet-jev/blob/5ace29f34c726eb2603ebd158449cd5e6a4dbe65/src/benchmark.py) · [Source](https://github.com/siddhanttiwary25-eng/same-bet-jev/blob/5ace29f34c726eb2603ebd158449cd5e6a4dbe65/results/benchmark_v2.json)
+
+### 通过铭牌照片可读性判断提示现场重拍
+
+- 作者：Mario Martone and Kyran Flynn
+- 输入：维修人员拍摄的设备铭牌照片。
+- Jev 判断：实验版 Jev 在同一请求判断型号和序列号是否各自完整可读。
+- 后续动作：作者以两项中的较高得分作为照片分，两项都不高于 0.60 时标记重拍。
+- 核验边界：Elise Labs 报告基于 140 张训练照片。阈值结果未在留出集验证，94 毫秒中位数不含预处理和排队，费用为估算。
+- 来源：[Author article](https://x.com/elise_ai/article/2120965516072243219) · [TypeSafe recommendation](https://x.com/typesafeai/status/2121319134202126571)
+
+### 在模拟计划与等待之间选择，再由规则否决
+
+- 作者：mars-tw
+- 输入：市场快照、本地构建的候选计划及风险信息。
+- Jev 判断：TypeSafe Jev 用固定 Choice 选择执行绑定的计划或等待。
+- 后续动作：程序校验选项和概率，独立风控可以否决。通过时由 PaperBroker 模拟执行。
+- 核验边界：作者报告未公开的纸上训练版扣成本后亏损。本站仅核查当前公开源码，未复跑该实验或执行实际交易。
+- 来源：[GitHub](https://github.com/mars-tw/jev-trading-command-center) · [Source](https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/jev_client.py) · [Source](https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/jev_decision.py) · [Source](https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/engine.py) · [Source](https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/paper_broker.py)
+
+## 开源项目 / Open-source projects (313)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2873,6 +2918,10 @@
 | [Jev-Engineering/TypeWright](https://github.com/Jev-Engineering/TypeWright) | community | MIT | 7 |
 | [jhartquist/system2](https://github.com/jhartquist/system2) | community | MIT OR Apache-2.0 | 3 |
 | [joshrotenberg/cljev](https://github.com/joshrotenberg/cljev) | community | MIT | 0 |
+| [ZJU-REAL/decision-agents](https://github.com/ZJU-REAL/decision-agents) | community | Apache-2.0 | 42 |
+| [j2launay/jev-decision-models-xai](https://github.com/j2launay/jev-decision-models-xai) | inspired | MIT | 0 |
+| [diegoag64/jev-inspector](https://github.com/diegoag64/jev-inspector) | community | MIT | 0 |
+| [mars-tw/jev-trading-command-center](https://github.com/mars-tw/jev-trading-command-center) | community | MIT | 67 |
 
 ## 官方 cookbook / Official recipes (27)
 

@@ -4942,5 +4942,69 @@
     "lastVerified": "2026-11-13",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "zju-decision-agents",
+    "name": "ZJU-REAL/decision-agents",
+    "url": "https://github.com/ZJU-REAL/decision-agents",
+    "category": "research",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "研究 Jev 等判断模型作为执行者、评判者和训练教师的表现，提供轨迹评估和训练代码。",
+      "en": "Research on decision models as actors, judges and teachers, with rollout evaluation and training code."
+    },
+    "sourceUrl": "https://github.com/ZJU-REAL/decision-agents/blob/ce9fd8c35fced3ab1c22d3b1380ac430649db703/decision_model/training/bridge.py",
+    "lastVerified": "2026-11-14",
+    "status": "verified",
+    "stars": 42
+  },
+  {
+    "id": "j2launay-system1-perturbation-audit",
+    "name": "j2launay/jev-decision-models-xai",
+    "url": "https://github.com/j2launay/jev-decision-models-xai",
+    "category": "research",
+    "relationship": "inspired",
+    "license": "MIT",
+    "summary": {
+      "zh": "审查 Tev1、Nimble 和 Clef 等开放权重判断模型的置信度与扰动稳定性。论文未对 TypeSafe Jev 实测。",
+      "en": "Audit confidence and perturbation stability of open-weight models including Tev1, Nimble and Clef. The paper did not benchmark TypeSafe Jev."
+    },
+    "sourceUrl": "https://github.com/j2launay/jev-decision-models-xai/blob/26d747bbf46f52dffe16a6a46ebeecdc5b3c1fdd/jev_xai/config.py",
+    "lastVerified": "2026-11-14",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "diegoag64-jev-inspector",
+    "name": "diegoag64/jev-inspector",
+    "url": "https://github.com/diegoag64/jev-inspector",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "通过本地中继捕获 TypeSafe 请求与答复，在桌面查看结构化答案和时序。",
+      "en": "Inspect structured TypeSafe request and response traffic and timing through a local relay and desktop UI."
+    },
+    "sourceUrl": "https://github.com/diegoag64/jev-inspector/blob/98f950cec1261c42e766547bf878cd66ce7bdf0c/crates/jev-bridge/src/lib.rs",
+    "lastVerified": "2026-11-14",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "mars-tw-jev-trading-command-center",
+    "name": "mars-tw/jev-trading-command-center",
+    "url": "https://github.com/mars-tw/jev-trading-command-center",
+    "category": "application",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "以 TypeSafe Choice 加上独立风控控制纸上交易的研究台。作者报告测试未获利。",
+      "en": "Paper-trading research dashboard with TypeSafe Choice and separate risk rules. The author reports no profitable result."
+    },
+    "sourceUrl": "https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/jev_decision.py",
+    "lastVerified": "2026-11-14",
+    "status": "verified",
+    "stars": 67
   }
 ]
