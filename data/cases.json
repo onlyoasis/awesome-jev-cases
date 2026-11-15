@@ -12814,5 +12814,249 @@
         "url": "https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/paper_broker.py"
       }
     ]
+  },
+  {
+    "id": "decision-models-game-legal-moves",
+    "name": "Decision models in games",
+    "author": "Alyasska",
+    "title": {
+      "zh": "从合法着法中选动作并交回游戏引擎",
+      "en": "Select from legal moves and return the move to the game engine"
+    },
+    "area": {
+      "zh": "游戏模型对照",
+      "en": "Game model comparison"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "回合状态和引擎给出的合法动作列表。",
+      "en": "Turn state and the legal action list supplied by the engine."
+    },
+    "decision": {
+      "zh": "Jev 经 OpenRouter 对编号动作作 Choice。部分实验席位可按概率采样。",
+      "en": "Jev via OpenRouter answers a Choice over numbered moves. Some experimental seats sample from the probabilities."
+    },
+    "action": {
+      "zh": "程序把编号映回合法动作并推进回合，同时保存选择、耗时和概率摘要。",
+      "en": "Code maps the option back to a legal action, advances the game and records the selection, timing and a probability summary."
+    },
+    "boundary": {
+      "zh": "GPL 项目。与其他模型的对局是作者的小样本，本站未重跑。单一合法动作可直接执行。",
+      "en": "GPL project. Comparisons are small author-reported samples and were not rerun here. A sole legal move can be applied directly."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Alyasska/decision-models-in-games"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Alyasska/decision-models-in-games/blob/2336449cdc110ada60b137e7a1831f055c85000f/games/common.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Alyasska/decision-models-in-games/blob/2336449cdc110ada60b137e7a1831f055c85000f/games/backgammon.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/Alyasska/decision-models-in-games/blob/2336449cdc110ada60b137e7a1831f055c85000f/catan/drex_player.py"
+      }
+    ]
+  },
+  {
+    "id": "open-system-one-option-description-benchmark",
+    "name": "open-system-one",
+    "author": "zhlei07",
+    "title": {
+      "zh": "用同一组选项描述对照 Jev 与本地分类器",
+      "en": "Compare Jev and local classifiers using the same option descriptions"
+    },
+    "area": {
+      "zh": "分类和路由评测",
+      "en": "Classification and routing evaluation"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "分类或路由样本及相同的候选标签描述。",
+      "en": "Classification or routing samples with shared candidate-label descriptions."
+    },
+    "decision": {
+      "zh": "TypeSafe Jev 以 Choice 返回标签和分布。作者另用较丰富的候选描述重新跑 Jev 对照。",
+      "en": "TypeSafe Jev returns a label and distribution through Choice. The authors also rerun Jev with richer option descriptions."
+    },
+    "action": {
+      "zh": "脚本记录预测并对照标签与本地方案汇总成绩。",
+      "en": "The scripts record predictions and summarize performance against labels and local alternatives."
+    },
+    "boundary": {
+      "zh": "作者公开评测，代码为 MIT，数据另有授权。本站未复现，相关本地模型及视频实验不代表 Jev 权重或成绩。",
+      "en": "Author-published benchmark with MIT code and separately licensed data. It was not reproduced here. Local models and video experiments do not represent Jev weights or results."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/zhlei07/open-system-one"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/zhlei07/open-system-one/blob/c0217891a36e3d468a7a8feb409fc1f90ae2f92d/jev_adapter.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/zhlei07/open-system-one/blob/c0217891a36e3d468a7a8feb409fc1f90ae2f92d/fair_jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/zhlei07/open-system-one/blob/c0217891a36e3d468a7a8feb409fc1f90ae2f92d/DATA_LICENSES.md"
+      }
+    ]
+  },
+  {
+    "id": "decisionrag-multisource-evidence-ranking",
+    "name": "DecisionRAG",
+    "author": "nguyenvo09",
+    "title": {
+      "zh": "跨来源排列证据，并标记低相关性回答",
+      "en": "Rank evidence across sources and flag low-relevance answers"
+    },
+    "area": {
+      "zh": "检索增强问答",
+      "en": "Retrieval-augmented Q&A"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "问答请求与本地索引和搜索接口返回的候选文段。",
+      "en": "A question and candidate passages from local indexing and search APIs."
+    },
+    "decision": {
+      "zh": "Jev 提供逐项 Noul 相关性判断及候选短名单的 Choice 概率。",
+      "en": "Jev provides per-item relevance Nouls and shortlist Choice probabilities."
+    },
+    "action": {
+      "zh": "问答层根据最高分选择正常或证据不足的提示路径。有生成模型密钥时，低分路径仍可调用 Gemini。",
+      "en": "The Q&A layer uses the highest score to select normal or insufficient-evidence instructions. With a generation key, the low-score path may still call Gemini."
+    },
+    "boundary": {
+      "zh": "根许可证未确认。低相关性状态属于程序判断，未验证生成内容在该路径必定拒答。",
+      "en": "The root license is unconfirmed. Low relevance is a program state; consistent abstention by the generator was not verified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/nguyenvo09/decisionRAG"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nguyenvo09/decisionRAG/blob/59694fccbf45423f661edd471bc0b5aa23843241/decision_rag/jev_client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nguyenvo09/decisionRAG/blob/59694fccbf45423f661edd471bc0b5aa23843241/decision_rag/qa_engine.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/nguyenvo09/decisionRAG/blob/59694fccbf45423f661edd471bc0b5aa23843241/app.py"
+      }
+    ]
+  },
+  {
+    "id": "mizchi-jev-lint-document-consistency",
+    "name": "jev-lint docs",
+    "author": "mizchi",
+    "title": {
+      "zh": "检查文档声明、术语和译文是否一致",
+      "en": "Check consistency of document claims, terminology and translations"
+    },
+    "area": {
+      "zh": "文档一致性检查",
+      "en": "Documentation consistency"
+    },
+    "evidence": "code-and-post",
+    "input": {
+      "zh": "清单声明的主题、参考和目标文档摘录。",
+      "en": "Manifest-declared topics and excerpts from reference and target documents."
+    },
+    "decision": {
+      "zh": "Jev 用 Choice 对比较项判断一致、矛盾或缺乏足够上下文等。",
+      "en": "Jev uses Choice to classify comparisons as consistent, contradictory, lacking context or otherwise outside the assessed scope."
+    },
+    "action": {
+      "zh": "工具汇总覆盖情况与矛盾，给出退出码。离线回放校验源快照和题目，结果待人工复审。",
+      "en": "The tool reports coverage and contradictions and emits an exit code. Offline replay checks source snapshots and questions, and findings remain for review."
+    },
+    "boundary": {
+      "zh": "已核 MIT 源码和 v0.8.0 发布。适用范围由清单限定，未测准确率。",
+      "en": "MIT source and the v0.8.0 release were reviewed. Scope is limited by the manifest, and accuracy was not measured here."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/mizchi/jev-lint"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mizchi/jev-lint/blob/ca479e1b6091ff87d5aa53bc7c37c2dadb784a1d/src/documents.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mizchi/jev-lint/blob/ca479e1b6091ff87d5aa53bc7c37c2dadb784a1d/src/cli/cmd-docs.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mizchi/jev-lint/blob/ca479e1b6091ff87d5aa53bc7c37c2dadb784a1d/docs/self-check.md"
+      },
+      {
+        "label": "Author post",
+        "url": "https://x.com/mizchi/status/2121680417866826187"
+      },
+      {
+        "label": "Release",
+        "url": "https://github.com/mizchi/jev-lint/releases/tag/v0.8.0"
+      }
+    ]
+  },
+  {
+    "id": "portunol-jev-translation-candidate-gate",
+    "name": "Portuñol Sin Vergüenza",
+    "author": "straviosbr",
+    "title": {
+      "zh": "用 Jev 复核口语译文，再选择是否调用生成模型",
+      "en": "Check colloquial translations before escalating to a generator"
+    },
+    "area": {
+      "zh": "翻译候选复核",
+      "en": "Translation candidate review"
+    },
+    "evidence": "code",
+    "input": {
+      "zh": "原文、翻译方向、词汇表中的俚语匹配和候选译文。",
+      "en": "Source text, translation direction, slang hits and candidate translations."
+    },
+    "decision": {
+      "zh": "每项候选用 Noul 判断语义和语气是否保留，歧义俚语用 Choice 判语境义。",
+      "en": "Jev answers a Noul per candidate for meaning and tone and a Choice for ambiguous slang in context."
+    },
+    "action": {
+      "zh": "有达到阈值的译文则按得分和偏好选主结果。都未通过时，如配置允许，可调用高级翻译模型。",
+      "en": "Code selects a passing candidate by score and preference. If none passes, a configured advanced translator can be called."
+    },
+    "boundary": {
+      "zh": "仅 Web 服务路径。根许可未确认，未运行服务或复核真实聊天译文。",
+      "en": "This describes the web-server path. The root license is unconfirmed, and neither the service nor private-chat translations were tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/straviosbr/portunol-sin-verguenza"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/straviosbr/portunol-sin-verguenza/blob/2155e2e0654e25fae7de571b7410b0e27ac1fbea/servidor/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/straviosbr/portunol-sin-verguenza/blob/2155e2e0654e25fae7de571b7410b0e27ac1fbea/servidor/motor.py"
+      }
+    ]
   }
 ]

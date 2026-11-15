@@ -5006,5 +5006,69 @@
     "lastVerified": "2026-11-14",
     "status": "verified",
     "stars": 67
+  },
+  {
+    "id": "alyasska-decision-models-in-games",
+    "name": "Alyasska/decision-models-in-games",
+    "url": "https://github.com/Alyasska/decision-models-in-games",
+    "category": "research",
+    "relationship": "community",
+    "license": "GPL-3.0",
+    "summary": {
+      "zh": "用相同合法选项对照 Jev、其他模型和规则玩家。",
+      "en": "Compare Jev, other models and rule players using the same legal move options."
+    },
+    "sourceUrl": "https://github.com/Alyasska/decision-models-in-games/blob/2336449cdc110ada60b137e7a1831f055c85000f/games/common.py",
+    "lastVerified": "2026-11-15",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "zhlei07-open-system-one",
+    "name": "zhlei07/open-system-one",
+    "url": "https://github.com/zhlei07/open-system-one",
+    "category": "research",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "对照 TypeSafe Jev 与本地分类方法的实验代码。",
+      "en": "Benchmark TypeSafe Jev against local classification approaches."
+    },
+    "sourceUrl": "https://github.com/zhlei07/open-system-one/blob/c0217891a36e3d468a7a8feb409fc1f90ae2f92d/jev_adapter.py",
+    "lastVerified": "2026-11-15",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "mizchi-jev-lint",
+    "name": "mizchi/jev-lint",
+    "url": "https://github.com/mizchi/jev-lint",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "语义规则检查和文档一致性审查，支持固定证据与离线回放。",
+      "en": "Semantic rule and documentation consistency checks with pinned evidence and offline replay."
+    },
+    "sourceUrl": "https://github.com/mizchi/jev-lint/blob/ca479e1b6091ff87d5aa53bc7c37c2dadb784a1d/src/documents.ts",
+    "lastVerified": "2026-11-15",
+    "status": "verified",
+    "stars": 132
+  },
+  {
+    "id": "chengyixu-jev-clean",
+    "name": "chengyixu/jev-clean",
+    "url": "https://github.com/chengyixu/jev-clean",
+    "category": "tool",
+    "relationship": "inspired",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "使用本地 Laya 适配器判断 macOS 清理候选，文件处置由程序另行约束。",
+      "en": "Uses a local Laya adapter to classify macOS cleanup candidates, with separate file-disposal controls."
+    },
+    "sourceUrl": "https://github.com/chengyixu/jev-clean/blob/69335280c99cc3399de6e7aa02073555ea08b857/src/jev_clean/infrastructure/learned_cleanup.py",
+    "lastVerified": "2026-11-15",
+    "status": "verified",
+    "stars": 0
   }
 ]

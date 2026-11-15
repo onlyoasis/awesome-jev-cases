@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (289)
+## 深度使用案例 / Worked cases (294)
 
 ### jev-ultrafast
 
@@ -2605,7 +2605,52 @@
 - 核验边界：作者报告未公开的纸上训练版扣成本后亏损。本站仅核查当前公开源码，未复跑该实验或执行实际交易。
 - 来源：[GitHub](https://github.com/mars-tw/jev-trading-command-center) · [Source](https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/jev_client.py) · [Source](https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/jev_decision.py) · [Source](https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/engine.py) · [Source](https://github.com/mars-tw/jev-trading-command-center/blob/2c0029415c7c3e7761c874fa4cf301a51b0ccf74/scanner/paper_broker.py)
 
-## 开源项目 / Open-source projects (313)
+### 从合法着法中选动作并交回游戏引擎
+
+- 作者：Alyasska
+- 输入：回合状态和引擎给出的合法动作列表。
+- Jev 判断：Jev 经 OpenRouter 对编号动作作 Choice。部分实验席位可按概率采样。
+- 后续动作：程序把编号映回合法动作并推进回合，同时保存选择、耗时和概率摘要。
+- 核验边界：GPL 项目。与其他模型的对局是作者的小样本，本站未重跑。单一合法动作可直接执行。
+- 来源：[GitHub](https://github.com/Alyasska/decision-models-in-games) · [Source](https://github.com/Alyasska/decision-models-in-games/blob/2336449cdc110ada60b137e7a1831f055c85000f/games/common.py) · [Source](https://github.com/Alyasska/decision-models-in-games/blob/2336449cdc110ada60b137e7a1831f055c85000f/games/backgammon.py) · [Source](https://github.com/Alyasska/decision-models-in-games/blob/2336449cdc110ada60b137e7a1831f055c85000f/catan/drex_player.py)
+
+### 用同一组选项描述对照 Jev 与本地分类器
+
+- 作者：zhlei07
+- 输入：分类或路由样本及相同的候选标签描述。
+- Jev 判断：TypeSafe Jev 以 Choice 返回标签和分布。作者另用较丰富的候选描述重新跑 Jev 对照。
+- 后续动作：脚本记录预测并对照标签与本地方案汇总成绩。
+- 核验边界：作者公开评测，代码为 MIT，数据另有授权。本站未复现，相关本地模型及视频实验不代表 Jev 权重或成绩。
+- 来源：[GitHub](https://github.com/zhlei07/open-system-one) · [Source](https://github.com/zhlei07/open-system-one/blob/c0217891a36e3d468a7a8feb409fc1f90ae2f92d/jev_adapter.py) · [Source](https://github.com/zhlei07/open-system-one/blob/c0217891a36e3d468a7a8feb409fc1f90ae2f92d/fair_jev.py) · [Source](https://github.com/zhlei07/open-system-one/blob/c0217891a36e3d468a7a8feb409fc1f90ae2f92d/DATA_LICENSES.md)
+
+### 跨来源排列证据，并标记低相关性回答
+
+- 作者：nguyenvo09
+- 输入：问答请求与本地索引和搜索接口返回的候选文段。
+- Jev 判断：Jev 提供逐项 Noul 相关性判断及候选短名单的 Choice 概率。
+- 后续动作：问答层根据最高分选择正常或证据不足的提示路径。有生成模型密钥时，低分路径仍可调用 Gemini。
+- 核验边界：根许可证未确认。低相关性状态属于程序判断，未验证生成内容在该路径必定拒答。
+- 来源：[GitHub](https://github.com/nguyenvo09/decisionRAG) · [Source](https://github.com/nguyenvo09/decisionRAG/blob/59694fccbf45423f661edd471bc0b5aa23843241/decision_rag/jev_client.py) · [Source](https://github.com/nguyenvo09/decisionRAG/blob/59694fccbf45423f661edd471bc0b5aa23843241/decision_rag/qa_engine.py) · [Source](https://github.com/nguyenvo09/decisionRAG/blob/59694fccbf45423f661edd471bc0b5aa23843241/app.py)
+
+### 检查文档声明、术语和译文是否一致
+
+- 作者：mizchi
+- 输入：清单声明的主题、参考和目标文档摘录。
+- Jev 判断：Jev 用 Choice 对比较项判断一致、矛盾或缺乏足够上下文等。
+- 后续动作：工具汇总覆盖情况与矛盾，给出退出码。离线回放校验源快照和题目，结果待人工复审。
+- 核验边界：已核 MIT 源码和 v0.8.0 发布。适用范围由清单限定，未测准确率。
+- 来源：[GitHub](https://github.com/mizchi/jev-lint) · [Source](https://github.com/mizchi/jev-lint/blob/ca479e1b6091ff87d5aa53bc7c37c2dadb784a1d/src/documents.ts) · [Source](https://github.com/mizchi/jev-lint/blob/ca479e1b6091ff87d5aa53bc7c37c2dadb784a1d/src/cli/cmd-docs.ts) · [Source](https://github.com/mizchi/jev-lint/blob/ca479e1b6091ff87d5aa53bc7c37c2dadb784a1d/docs/self-check.md) · [Author post](https://x.com/mizchi/status/2121680417866826187) · [Release](https://github.com/mizchi/jev-lint/releases/tag/v0.8.0)
+
+### 用 Jev 复核口语译文，再选择是否调用生成模型
+
+- 作者：straviosbr
+- 输入：原文、翻译方向、词汇表中的俚语匹配和候选译文。
+- Jev 判断：每项候选用 Noul 判断语义和语气是否保留，歧义俚语用 Choice 判语境义。
+- 后续动作：有达到阈值的译文则按得分和偏好选主结果。都未通过时，如配置允许，可调用高级翻译模型。
+- 核验边界：仅 Web 服务路径。根许可未确认，未运行服务或复核真实聊天译文。
+- 来源：[GitHub](https://github.com/straviosbr/portunol-sin-verguenza) · [Source](https://github.com/straviosbr/portunol-sin-verguenza/blob/2155e2e0654e25fae7de571b7410b0e27ac1fbea/servidor/jev.py) · [Source](https://github.com/straviosbr/portunol-sin-verguenza/blob/2155e2e0654e25fae7de571b7410b0e27ac1fbea/servidor/motor.py)
+
+## 开源项目 / Open-source projects (317)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2922,6 +2967,10 @@
 | [j2launay/jev-decision-models-xai](https://github.com/j2launay/jev-decision-models-xai) | inspired | MIT | 0 |
 | [diegoag64/jev-inspector](https://github.com/diegoag64/jev-inspector) | community | MIT | 0 |
 | [mars-tw/jev-trading-command-center](https://github.com/mars-tw/jev-trading-command-center) | community | MIT | 67 |
+| [Alyasska/decision-models-in-games](https://github.com/Alyasska/decision-models-in-games) | community | GPL-3.0 | 0 |
+| [zhlei07/open-system-one](https://github.com/zhlei07/open-system-one) | community | MIT | 0 |
+| [mizchi/jev-lint](https://github.com/mizchi/jev-lint) | community | MIT | 132 |
+| [chengyixu/jev-clean](https://github.com/chengyixu/jev-clean) | inspired | Apache-2.0 | 0 |
 
 ## 官方 cookbook / Official recipes (27)
 
