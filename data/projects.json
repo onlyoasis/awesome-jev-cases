@@ -5070,5 +5070,53 @@
     "lastVerified": "2026-11-15",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "maaninou01-warmstart",
+    "name": "maaninou01/warmstart",
+    "url": "https://github.com/maaninou01/warmstart",
+    "category": "research",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "客服答案缓存实验。用 Jev 复核相似问题与个性化需求，再决定复用或存储。",
+      "en": "A support answer cache experiment using Jev for equivalence and personalization checks."
+    },
+    "sourceUrl": "https://github.com/maaninou01/warmstart/blob/b16e774c03aac2c11fa564e29a9ccd3d1503fc34/warmstart/clients.py",
+    "lastVerified": "2026-11-16",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "marble-gp-opencode-adaptive-fusion",
+    "name": "Marble-GP/opencode-adaptive-fusion",
+    "url": "https://github.com/Marble-GP/opencode-adaptive-fusion",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "OpenCode 编排插件，可选用 Jev 判断任务类别、难度和编排结构。",
+      "en": "An OpenCode orchestration plugin with optional Jev classification, difficulty scoring, and topology selection."
+    },
+    "sourceUrl": "https://github.com/Marble-GP/opencode-adaptive-fusion/blob/99225dd42e38370d7c3f3a1df42c8c8ffc26e89e/plugins/adaptive-fusion/index.ts",
+    "lastVerified": "2026-11-16",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "mattt-anydecisionmodel",
+    "name": "mattt/AnyDecisionModel",
+    "url": "https://github.com/mattt/AnyDecisionModel",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Swift 类型化决策库，提供托管 Jev 适配器，将 Noul、Choice 与 Score 批量请求映射为 Swift 类型。",
+      "en": "A Swift typed-decision package whose hosted Jev adapter maps batches of Noul, Choice, and Score questions to Swift types."
+    },
+    "sourceUrl": "https://github.com/mattt/AnyDecisionModel/blob/a7742a5080e16e2d8a2fc3a6d1a8f7cd3b50eb7c/Sources/AnyDecisionModel/Models/JevDecisionModel.swift",
+    "lastVerified": "2026-11-16",
+    "status": "verified",
+    "stars": 59
   }
 ]

@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (294)
+## 深度使用案例 / Worked cases (298)
 
 ### jev-ultrafast
 
@@ -2650,7 +2650,43 @@
 - 核验边界：仅 Web 服务路径。根许可未确认，未运行服务或复核真实聊天译文。
 - 来源：[GitHub](https://github.com/straviosbr/portunol-sin-verguenza) · [Source](https://github.com/straviosbr/portunol-sin-verguenza/blob/2155e2e0654e25fae7de571b7410b0e27ac1fbea/servidor/jev.py) · [Source](https://github.com/straviosbr/portunol-sin-verguenza/blob/2155e2e0654e25fae7de571b7410b0e27ac1fbea/servidor/motor.py)
 
-## 开源项目 / Open-source projects (317)
+### 客服问题相近时，用 Jev 复核是否可复用答案
+
+- 作者：maaninou01
+- 输入：用户问题、向量索引中最接近的历史问题，以及客服场景说明。
+- Jev 判断：两个 Noul 分别判断同一答案能否覆盖两个问题，以及回答是否需要某位客户的记录。
+- 后续动作：中等相似度命中须通过两个判断才复用。未命中时生成新答案，仅在个人信息检查通过时写入缓存。
+- 核验边界：精确与最高相似度命中会直接复用。仅核查源码，隐私与成本指标未独立验证。
+- 来源：[GitHub](https://github.com/maaninou01/warmstart) · [Source](https://github.com/maaninou01/warmstart/blob/b16e774c03aac2c11fa564e29a9ccd3d1503fc34/warmstart/clients.py) · [Source](https://github.com/maaninou01/warmstart/blob/b16e774c03aac2c11fa564e29a9ccd3d1503fc34/warmstart/cache.py)
+
+### 用 Jev 判断 OpenCode 任务类别、难度和编排结构
+
+- 作者：Marble-GP
+- 输入：用户指令的前 1,000 字符。结构判断另带已选任务类别和同类任务的历史表现摘要。
+- Jev 判断：首轮用 Choice 选任务类别、Score 估计难度。下一轮用 Choice 在允许的单模型、路由和顺序链中选结构。
+- 后续动作：插件保存会话分类和难度。结构置信度低于 0.7 时使用单模型，只有在链式模式启用且调用预算足够时才安排规划器。
+- 核验边界：需要配置 TypeSafe API Key。失败可回退到历史启发式，未运行插件或测量路由收益。
+- 来源：[GitHub](https://github.com/Marble-GP/opencode-adaptive-fusion) · [Source](https://github.com/Marble-GP/opencode-adaptive-fusion/blob/99225dd42e38370d7c3f3a1df42c8c8ffc26e89e/plugins/adaptive-fusion/jev.ts) · [Source](https://github.com/Marble-GP/opencode-adaptive-fusion/blob/99225dd42e38370d7c3f3a1df42c8c8ffc26e89e/plugins/adaptive-fusion/index.ts) · [X](https://x.com/scalar_subby/status/2121823368144101566)
+
+### 用 Jev 判断作物照片是否有活跃病虫害
+
+- 作者：Flying Higher AI
+- 输入：三张样图，分别是有明显病征的叶片、含表面杂物和疑似日灼的图、以及非叶片负样本。
+- Jev 判断：问照片中是否有活跃的真菌、细菌病害或虫害，返回肯定概率。
+- 后续动作：作者按 0.50 阈值比较 Jev 与 Google Decision 1 的标签，并用图表标出歧义样本的分歧。
+- 核验边界：仅作者公开的三图冒烟实验。未见全量 40 图结果、独立标注或实际诊断部署。
+- 来源：[X](https://x.com/flyinghigherai/status/2122065366557847920) · [X](https://x.com/flyinghigherai/status/2122065370249036009) · [X](https://x.com/flyinghigherai/status/2122065379019178321)
+
+### 先筛查机器人操作，再把可疑记录交给深度审计
+
+- 作者：bfrench
+- 输入：消息助手的收件箱分流、回复草稿及归档等操作证据，以及人为植入故障的样本。
+- Jev 判断：Jev 按 TRUST 检查逐项回答封闭的是非问题并给出概率。实验另跑 Google Decision 1 比较。
+- 后续动作：两种筛查器在组合实验中标出需深读的记录，再由完整审计提示复核，监督决定交由人。
+- 核验边界：20 条真实记录和 8 个人为植入故障均为作者自报。筛查阈值在同一批样本上调过，未见留出集确认。
+- 来源：[X](https://x.com/bfrench/status/2121988360965382159) · [X](https://x.com/Michael_Fenech_/status/2120904954806432067)
+
+## 开源项目 / Open-source projects (320)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -2971,6 +3007,9 @@
 | [zhlei07/open-system-one](https://github.com/zhlei07/open-system-one) | community | MIT | 0 |
 | [mizchi/jev-lint](https://github.com/mizchi/jev-lint) | community | MIT | 132 |
 | [chengyixu/jev-clean](https://github.com/chengyixu/jev-clean) | inspired | Apache-2.0 | 0 |
+| [maaninou01/warmstart](https://github.com/maaninou01/warmstart) | community | MIT | 0 |
+| [Marble-GP/opencode-adaptive-fusion](https://github.com/Marble-GP/opencode-adaptive-fusion) | community | MIT | 0 |
+| [mattt/AnyDecisionModel](https://github.com/mattt/AnyDecisionModel) | community | Apache-2.0 | 59 |
 
 ## 官方 cookbook / Official recipes (27)
 
