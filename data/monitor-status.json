@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-17T03:21:47.439831+00:00",
+  "checkedAt": "2026-11-17T03:32:22.732877+00:00",
   "github": "ok",
   "official": "ok",
   "x": "ok",
@@ -250,21 +250,79 @@
     "host": "darwin"
   },
   "publication": {
-    "status": "reviewed-pending-publication",
-    "catalogPush": "pending",
-    "websiteSync": "pending",
-    "websiteDeploy": "pending",
+    "status": "published-and-verified",
+    "catalogPush": "verified",
+    "websiteSync": "verified",
+    "websiteDeploy": "verified",
     "backlog": {
-      "cases": 8,
-      "projects": 4,
+      "cases": 0,
+      "projects": 0,
       "recipes": 0
     },
     "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261117/review.md",
-    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/release-verification.json"
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/release-verification.json",
+    "websiteSourcePush": "verified",
+    "catalogContentSha": "fb304086954ea9d51b5a4554240e3a593568f0c1",
+    "websiteSha": "5457fd73ac98c5e53d08d4bacf45a025d53b02d0",
+    "cloudflareVersion": "070ba53b-bb93-4f16-8a33-aa385106dd22",
+    "trafficPercent": 100,
+    "formalPagesVerified": 44,
+    "corePagesByteVerified": 6,
+    "browserVerified": true,
+    "productionConfiguration": {
+      "siteUrl": "https://typesafe-jev.com",
+      "gaId": "G-5HP02C0495",
+      "adsEnabled": true,
+      "monetagZoneId": "11855929"
+    },
+    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/deployed-artifact",
+    "publishedAt": "2026-11-17T03:32:20.527Z",
+    "remainingBacklog": {
+      "cases": 0,
+      "projects": 0,
+      "recipes": 0
+    },
+    "siteKit": {
+      "version": "v0.1.2",
+      "sha": "eecdffb58ece8e1a45a027d356e71f0f50a84229",
+      "status": "passed",
+      "checks": [
+        {
+          "name": "seo",
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "name": "jsonld",
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "name": "links",
+          "errors": 0,
+          "warnings": 45
+        },
+        {
+          "name": "head",
+          "errors": 0,
+          "warnings": 1
+        },
+        {
+          "name": "lighthouse",
+          "errors": 0,
+          "warnings": 15
+        }
+      ],
+      "warnings": 61,
+      "lighthouseAssertions": 15,
+      "lighthouseFailures": 0,
+      "reportPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/site-kit-cache",
+      "configurationUnchanged": true
+    }
   },
   "pendingCandidates": {
-    "cases": 8,
-    "projects": 4,
+    "cases": 0,
+    "projects": 0,
     "recipes": 0
   },
   "deferredCandidates": [
@@ -434,22 +492,37 @@
     }
   },
   "productionHealth": {
-    "status": "in-progress",
+    "status": "verified",
     "start": "verified",
     "startRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/health-start.json",
-    "end": "pending",
-    "analyticsPolicy": "UA-090 默认测量、地区 Cookie 同意、拒绝和 GPC"
+    "end": "verified",
+    "analyticsPolicy": "UA-090 默认测量、地区 Cookie 同意、拒绝和 GPC",
+    "endRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/health-end.json",
+    "browser": "verified",
+    "browserRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/browser-verification.json",
+    "ordinaryChromeRecord": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/ordinary-chrome-end.json",
+    "formalPagesVerified": 44,
+    "repairNeeded": false,
+    "verificationTarget": "current-production",
+    "heartbeatAnalyticsDefaultOff": "not-met-approved-UA-090-default-measurement",
+    "realEuropeanTrafficVerified": false
   },
   "currentRun": {
     "checkedAt": "2026-11-17T03:21:47.439831+00:00",
-    "status": "reviewed-pending-publication",
+    "status": "published-and-verified",
     "addedCases": 8,
     "addedProjects": 4,
     "addedRecipes": 0,
-    "pendingTotalCases": 8,
-    "pendingTotalProjects": 4,
+    "pendingTotalCases": 0,
+    "pendingTotalProjects": 0,
     "pendingTotalRecipes": 0,
-    "sourceCompletion": "all-three-succeeded-history-partial"
+    "sourceCompletion": "all-three-succeeded-history-partial",
+    "completedAt": "2026-11-17T03:32:22.732877+00:00",
+    "commit": "fb304086954ea9d51b5a4554240e3a593568f0c1",
+    "websiteCommit": "5457fd73ac98c5e53d08d4bacf45a025d53b02d0",
+    "push": "verified",
+    "deployment": "verified",
+    "browser": "verified"
   },
   "previousBlockedPublication": {
     "status": "blocked-storage-preflight",
@@ -707,12 +780,12 @@
       "projects": 0,
       "recipes": 0
     },
-    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261116/review.md",
-    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261116/release-verification.json",
+    "reviewPath": "/Volumes/ExternalProjects/DevCaches/awesome-jev-cases/20261117/review.md",
+    "releaseRecordPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/release-verification.json",
     "websiteSourcePush": "verified",
-    "catalogContentSha": "a1672dc97506472f821832960c86c45ec8381850",
-    "websiteSha": "d0acce34098284a99e84eba8856f4d0f3d341029",
-    "cloudflareVersion": "5998842d-b56d-4623-8307-7ffeb7f0f963",
+    "catalogContentSha": "fb304086954ea9d51b5a4554240e3a593568f0c1",
+    "websiteSha": "5457fd73ac98c5e53d08d4bacf45a025d53b02d0",
+    "cloudflareVersion": "070ba53b-bb93-4f16-8a33-aa385106dd22",
     "trafficPercent": 100,
     "formalPagesVerified": 44,
     "corePagesByteVerified": 6,
@@ -723,8 +796,8 @@
       "adsEnabled": true,
       "monetagZoneId": "11855929"
     },
-    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261116/deployed-artifact",
-    "publishedAt": "2026-11-16T03:35:46.366Z",
+    "deployedArtifact": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/deployed-artifact",
+    "publishedAt": "2026-11-17T03:32:20.527Z",
     "remainingBacklog": {
       "cases": 0,
       "projects": 0,
@@ -748,7 +821,7 @@
         {
           "name": "links",
           "errors": 0,
-          "warnings": 41
+          "warnings": 45
         },
         {
           "name": "head",
@@ -761,10 +834,10 @@
           "warnings": 15
         }
       ],
-      "warnings": 57,
+      "warnings": 61,
       "lighthouseAssertions": 15,
       "lighthouseFailures": 0,
-      "reportPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261116/site-kit-cache",
+      "reportPath": "/Volumes/ExternalProjects/DevCaches/typesafe-jev/20261117/site-kit-cache",
       "configurationUnchanged": true
     }
   },
