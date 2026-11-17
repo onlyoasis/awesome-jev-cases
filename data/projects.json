@@ -5118,5 +5118,69 @@
     "lastVerified": "2026-11-16",
     "status": "verified",
     "stars": 59
+  },
+  {
+    "id": "hidefujimori-hf-second-opinion-triage",
+    "name": "hidefujimori/hf-second-opinion-triage",
+    "url": "https://github.com/hidefujimori/hf-second-opinion-triage",
+    "category": "guard",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "给 Splunk ES 告警加上 Jev 第二意见及可选备注，供分析师复核。",
+      "en": "Adds a Jev second opinion and optional notes to Splunk ES findings for analyst review."
+    },
+    "sourceUrl": "https://github.com/hidefujimori/hf-second-opinion-triage/blob/0ff1571c4c6225e3f1fa54597fbde5efa2ab8d83/app/second_opinion_triage/bin/jevtriage.py",
+    "lastVerified": "2026-11-17",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "kenning-labs-ken",
+    "name": "kenning-labs/ken",
+    "url": "https://github.com/kenning-labs/ken",
+    "category": "agent",
+    "relationship": "community",
+    "license": "AGPL-3.0",
+    "summary": {
+      "zh": "个人记忆与工作记录工具，支持用 Jev 判断存储提议及其与已有记录的关系。",
+      "en": "A personal memory and workflow tool with optional Jev judgments over proposed writes and existing records."
+    },
+    "sourceUrl": "https://github.com/kenning-labs/ken/blob/e6679a3d32f11912fc035649ed3cfff16a85bb67/engine/src/ken/decisions.py",
+    "lastVerified": "2026-11-17",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "teknologist-pi-multi-model-router",
+    "name": "teknologist/pi-multi-model-router",
+    "url": "https://github.com/teknologist/pi-multi-model-router",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "为 Pi 注册可配置虚拟模型，调用 Jev 从有限选项路由到实际模型。",
+      "en": "Registers configurable virtual models in Pi and uses Jev to select a physical model from bounded routes."
+    },
+    "sourceUrl": "https://github.com/teknologist/pi-multi-model-router/blob/a5cfee0c6318474102cd2be77c22ecf04f96a35f/src/router.ts",
+    "lastVerified": "2026-11-17",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "ag2ai-ag2",
+    "name": "ag2ai/ag2",
+    "url": "https://github.com/ag2ai/ag2",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "Apache-2.0",
+    "summary": {
+      "zh": "Agent 库，提供 TypeSafe 决策客户端，将多项结构化判断映射到一次 System One 请求。",
+      "en": "An agent library whose TypeSafe decision client maps multiple structured questions to a single System One request."
+    },
+    "sourceUrl": "https://github.com/ag2ai/ag2/blob/bf76b9cb6607936a7c240b1efc1811d8bd422de6/ag2/config/typesafe/typesafe_client.py",
+    "lastVerified": "2026-11-17",
+    "status": "verified",
+    "stars": 5073
   }
 ]

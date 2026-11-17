@@ -13234,5 +13234,377 @@
         "url": "https://x.com/Michael_Fenech_/status/2120904954806432067"
       }
     ]
+  },
+  {
+    "id": "splunk-es-second-opinion-jev",
+    "name": "HF Decision Model Triage and Second Opinion",
+    "author": "hidefujimori",
+    "evidence": "code",
+    "title": {
+      "zh": "用 Jev 为 Splunk 安全告警提供第二意见",
+      "en": "Use Jev to offer a second opinion on Splunk findings"
+    },
+    "area": {
+      "zh": "安全告警分流",
+      "en": "Security finding triage"
+    },
+    "input": {
+      "zh": "Splunk Enterprise Security 的告警记录，可附资产、身份和相关告警等上下文。",
+      "en": "A Splunk Enterprise Security finding, optionally enriched with asset, identity, and related-alert context."
+    },
+    "decision": {
+      "zh": "Choice 分辨真阳性、误报、良性活动或未定，Score 判断紧急度，Noul 检查是否需要升级等信号。",
+      "en": "Choice selects true positive, false positive, benign, or undetermined. Score estimates urgency, and Noul checks signals such as escalation."
+    },
+    "action": {
+      "zh": "代码按置信度和策略给出建议分类与紧急度，可保存建议或附为备注。原告警字段由分析师决定。",
+      "en": "Policy and confidence rules produce suggested disposition and urgency. The app can save the suggestion or attach it as a note. Analysts control the original finding fields."
+    },
+    "boundary": {
+      "zh": "核查的是公开实现。配置可切换兼容模型，未复现告警或验证分流准确率。",
+      "en": "The review covers public source. The model can be changed to a compatible backend. No findings or triage accuracy were independently evaluated."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/hidefujimori/hf-second-opinion-triage"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/hidefujimori/hf-second-opinion-triage/blob/0ff1571c4c6225e3f1fa54597fbde5efa2ab8d83/app/second_opinion_triage/bin/jev_triage/questions.json"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/hidefujimori/hf-second-opinion-triage/blob/0ff1571c4c6225e3f1fa54597fbde5efa2ab8d83/app/second_opinion_triage/bin/jev_triage/policy.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/hidefujimori/hf-second-opinion-triage/blob/0ff1571c4c6225e3f1fa54597fbde5efa2ab8d83/app/second_opinion_triage/bin/jevtriage.py"
+      }
+    ]
+  },
+  {
+    "id": "ken-jev-memory-write-review",
+    "name": "Ken",
+    "author": "kenning-labs",
+    "evidence": "code-and-post",
+    "title": {
+      "zh": "在记忆写入前判断新增、重复或冲突",
+      "en": "Judge whether a proposed memory is new, duplicate, or conflicting"
+    },
+    "area": {
+      "zh": "记忆写入审核",
+      "en": "Memory-write review"
+    },
+    "input": {
+      "zh": "Agent 提议保存的内容、用户最新消息，以及一组已有的可比记录。",
+      "en": "An agent’s proposed memory, the latest user message, and a bounded set of comparable records."
+    },
+    "decision": {
+      "zh": "启用 Jev 时，Choice 从保留或带已有记录 ID 的合并、冲突选项中选一项。有用户消息时再用 Noul 检查依据。",
+      "en": "With Jev enabled, Choice selects keep or a duplicate or conflict tied to an existing ID. A Noul additionally checks grounding when a user message is available."
+    },
+    "action": {
+      "zh": "重复项走合并或去重，冲突交给用户确认，新条目继续走同意策略。依据概率写入审计理由。",
+      "en": "Duplicates are collapsed or merged, conflicts go to the user, and new items continue through consent policy. Grounding probability goes to the audit reason."
+    },
+    "boundary": {
+      "zh": "Jev 是可选后端。依据概率用于审计，未核验线上记忆质量或误判率。",
+      "en": "Jev is optional. Grounding probability is an audit signal. Memory quality and error rates were not independently verified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/kenning-labs/ken"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kenning-labs/ken/blob/e6679a3d32f11912fc035649ed3cfff16a85bb67/engine/src/ken/decisions.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kenning-labs/ken/blob/e6679a3d32f11912fc035649ed3cfff16a85bb67/engine/src/ken/consent/judge.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/kenning-labs/ken/blob/e6679a3d32f11912fc035649ed3cfff16a85bb67/engine/src/ken/consent/gate.py"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/sashko_po/status/2122447254233428245"
+      }
+    ]
+  },
+  {
+    "id": "deskrecall-jev-window-slot-matching",
+    "name": "DeskRecall",
+    "author": "sreenivasanac",
+    "evidence": "code",
+    "title": {
+      "zh": "把标题已变化的窗口匹配到已保存布局",
+      "en": "Match renamed windows to saved layout slots"
+    },
+    "area": {
+      "zh": "macOS 窗口布局",
+      "en": "macOS window layout"
+    },
+    "input": {
+      "zh": "当前显示器、保存布局及同一应用里无法直接匹配的窗口标题。",
+      "en": "Current displays, a saved layout, and ambiguous titles for windows of the same application."
+    },
+    "decision": {
+      "zh": "Jev Choice 在保存位置或对应的开放窗口等有限选项之间选择，并返回概率。",
+      "en": "Jev Choice selects among saved slots or open windows and supplies probabilities."
+    },
+    "action": {
+      "zh": "代码按概率做一对一分配，可提示用户复核低置信结果，再移动窗口和调整尺寸。请求失败时使用同应用的窗口顺序。",
+      "en": "Code assigns one window per slot by probability, can prompt for low-confidence matches, then moves and resizes windows. It falls back to same-app window order on failure."
+    },
+    "boundary": {
+      "zh": "核查 Swift 实现。标题及布局摘要会用于远程请求，未安装应用或确认根许可。",
+      "en": "The review covers Swift source. Titles and layout summaries are used in the remote request. Installation and a root license were not verified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/sreenivasanac/deskrecall"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/sreenivasanac/deskrecall/blob/ef550917cd143a753a1f46c7ffeabb3e321ae75f/Sources/DeskRecall/Arranger.swift"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/sreenivasanac/deskrecall/blob/ef550917cd143a753a1f46c7ffeabb3e321ae75f/Sources/DeskRecall/Jev.swift"
+      }
+    ]
+  },
+  {
+    "id": "n8n-jev-enterprise-feature-demand",
+    "name": "Enterprise demand digest",
+    "author": "quequegerones",
+    "evidence": "code",
+    "title": {
+      "zh": "给 n8n 论坛需求分类后按企业影响排序",
+      "en": "Classify n8n feature requests before ranking enterprise demand"
+    },
+    "area": {
+      "zh": "产品需求分析",
+      "en": "Product demand analysis"
+    },
+    "input": {
+      "zh": "公开功能论坛的帖子标题和摘录。排序同时使用投票和回复数。",
+      "en": "Titles and excerpts from the public feature-request forum. Ranking also uses votes and reply counts."
+    },
+    "decision": {
+      "zh": "一次调用用 Choice 选产品领域、Score 判断企业影响、Noul 估计是否为个别需求。",
+      "en": "A single call uses Choice for product area, Score for enterprise impact, and Noul for one-off likelihood."
+    },
+    "action": {
+      "zh": "代码组合需求量、影响分和个别需求概率，标记待人工核对的项目，并生成周报及待办表。",
+      "en": "Code combines demand, impact, and one-off probability, flags cases for review, and produces a weekly report and backlog rows."
+    },
+    "boundary": {
+      "zh": "已看工作流和作者输出。未运行定时工作流或读写表格，根许可未确认。",
+      "en": "The workflow and author-published output were reviewed. The schedule and spreadsheet were not exercised, and a root license was not confirmed."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/quequegerones/n8n-enterprise-demand-digest"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/quequegerones/n8n-enterprise-demand-digest/blob/db9ab9f27a47b07a9319ffa76b358058923b0ca8/workflow.json"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/quequegerones/n8n-enterprise-demand-digest/blob/db9ab9f27a47b07a9319ffa76b358058923b0ca8/reports/2026-11-16.md"
+      }
+    ]
+  },
+  {
+    "id": "repoe-ai-jev-restock-suggestions",
+    "name": "Repõe Aí!",
+    "author": "adriangpo",
+    "evidence": "code",
+    "title": {
+      "zh": "用 Jev 为服装 SKU 提出补货建议",
+      "en": "Suggest restocking actions for apparel variants"
+    },
+    "area": {
+      "zh": "库存建议",
+      "en": "Inventory recommendations"
+    },
+    "input": {
+      "zh": "款式、尺码、颜色、当前库存、最低库存、近两段销量、季节和可选店主备注。",
+      "en": "Product, size, color, current and minimum stock, two sales windows, season, and an optional store-owner note."
+    },
+    "decision": {
+      "zh": "Choice 选补货、促销或等待等动作，Score 评估紧急度。",
+      "en": "Choice selects an action such as replenishing, promoting, or waiting. Score estimates urgency."
+    },
+    "action": {
+      "zh": "程序计算建议件数，将对缺货商品的促销建议替换为少量补货，并把低概率或被改写的建议标为待复核。",
+      "en": "Code computes suggested quantities, substitutes a small restock for a promotion on sold-out stock, and flags low-probability or changed suggestions for review."
+    },
+    "boundary": {
+      "zh": "公开课程项目，查看了模型调用和规则回退代码。未运行采购流程，根许可未确认。",
+      "en": "This is a public coursework project. The model call and rule fallback were reviewed. Purchasing and a root license were not verified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/adriangpo/repoe-ai-saas"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/adriangpo/repoe-ai-saas/blob/a588cd484d633d78760e90c392a2ceb0088f98f1/server/src/services/restock.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/adriangpo/repoe-ai-saas/blob/a588cd484d633d78760e90c392a2ceb0088f98f1/server/src/routes/restock.ts"
+      }
+    ]
+  },
+  {
+    "id": "pi-jev-virtual-model-routing",
+    "name": "Pi Multi-Model Router",
+    "author": "teknologist",
+    "evidence": "code",
+    "title": {
+      "zh": "用 Jev 为 Pi 虚拟模型选实际后端",
+      "en": "Route a Pi virtual model to a physical backend with Jev"
+    },
+    "area": {
+      "zh": "编码 Agent 模型路由",
+      "en": "Coding agent model routing"
+    },
+    "input": {
+      "zh": "当前用户请求、用于消歧的一段近期文本、配置的路由选项及描述。",
+      "en": "The current request, bounded recent text for context, and configured route choices with descriptions."
+    },
+    "decision": {
+      "zh": "Pi 的分类器注册表用 jev-latest 的 Choice 选有限路由。",
+      "en": "Pi’s classifier registry asks jev-latest to choose a route from the configured set."
+    },
+    "action": {
+      "zh": "有效路由解析到可用实际模型及推理档位，异常或不可用时选配置的回退模型。工具调用续接沿用先前的模型。",
+      "en": "A valid route resolves to an available physical model and thinking level. Errors or unavailable routes use the configured fallback. Tool continuations retain the previous model."
+    },
+    "boundary": {
+      "zh": "已核查路由和测试文件，未运行 Pi 插件或比较路由质量。",
+      "en": "The route code and tests were inspected. The Pi extension and routing quality were not independently tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/teknologist/pi-multi-model-router"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/teknologist/pi-multi-model-router/blob/a5cfee0c6318474102cd2be77c22ecf04f96a35f/src/router.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/teknologist/pi-multi-model-router/blob/a5cfee0c6318474102cd2be77c22ecf04f96a35f/tests/router.test.ts"
+      }
+    ]
+  },
+  {
+    "id": "ag2-jev-batched-job-screening",
+    "name": "AG2 v1.3.2 decision batching",
+    "author": "taku41477996",
+    "evidence": "code-and-post",
+    "title": {
+      "zh": "用 AG2 合并同一招聘样本的多项 Jev 判断",
+      "en": "Batch Jev hiring-screen questions about one example in AG2"
+    },
+    "area": {
+      "zh": "结构化批量判断",
+      "en": "Batched structured decisions"
+    },
+    "input": {
+      "zh": "一组岗位描述和候选人资料，由文章作者合成。",
+      "en": "One job listing and a candidate profile from the author’s synthetic dataset."
+    },
+    "decision": {
+      "zh": "组合响应类型把岗位类别、经验是否达标和推荐优先级转为同一状态上的 Choice、Noul 和 Score。",
+      "en": "A composite schema maps role category, sufficient experience, and recommendation priority to Choice, Noul, and Score on one state."
+    },
+    "action": {
+      "zh": "AG2 将问题并入一次请求，按字段返回结构化答案及相关概率，供程序比较与后续处理。",
+      "en": "AG2 sends the questions in one request and returns typed field values and corresponding probabilities for comparison and downstream code."
+    },
+    "boundary": {
+      "zh": "作者用 72 组自造样本比较逐问与合并调用。未复现性能或评估真实招聘的适用性。",
+      "en": "The author compares separate and batched requests on 72 synthetic pairs. Performance and suitability for actual hiring were not independently evaluated."
+    },
+    "sources": [
+      {
+        "label": "Release",
+        "url": "https://github.com/ag2ai/ag2/releases/tag/v1.3.2"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ag2ai/ag2/blob/bf76b9cb6607936a7c240b1efc1811d8bd422de6/ag2/config/typesafe/typesafe_client.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ag2ai/ag2/blob/bf76b9cb6607936a7c240b1efc1811d8bd422de6/docs/adr/0038-decision-schema-class-is-several-questions-in-one-request.md"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/taku41477996/status/2122302237196378341"
+      }
+    ]
+  },
+  {
+    "id": "lightpanda-jev-crawl-page-triage",
+    "name": "Lightpanda crawl triage",
+    "author": "Lightpanda",
+    "evidence": "post",
+    "title": {
+      "zh": "用 Jev 判断爬取页应写入、跳过还是处理后重查",
+      "en": "Triage whether to keep, skip, or recheck a crawled page"
+    },
+    "area": {
+      "zh": "浏览器抓取分流",
+      "en": "Browser crawl triage"
+    },
+    "input": {
+      "zh": "浏览器已有的页面语义树、交互节点及其 ID。",
+      "en": "The page’s semantic tree and interactive node IDs already available to the browser."
+    },
+    "decision": {
+      "zh": "批量判断页面是否为登录墙、验证码、同意弹窗等。需要定位时从现有控件 ID 或 none 中选择。",
+      "en": "A batch checks whether the page is a login wall, CAPTCHA, consent wall, or similar case. When an element is needed, Choice returns an existing node ID or none."
+    },
+    "action": {
+      "zh": "爬虫按规则保留有效内容、跳过受阻页，或处理同意弹窗后重读页面再判断。",
+      "en": "Crawler policy keeps usable content, skips blocked pages, or handles a consent wall and rechecks the page."
+    },
+    "boundary": {
+      "zh": "依据作者博客、演示说明和发布记录。30 站结果和耗时由作者报告，未运行抓取实验。",
+      "en": "Evidence is the author’s blog, demo documentation, and release. The 30-site results and timing are author-reported, with no independent crawl run."
+    },
+    "sources": [
+      {
+        "label": "Author",
+        "url": "https://lightpanda.io/blog/posts/lightpanda-and-jev"
+      },
+      {
+        "label": "Demo",
+        "url": "https://github.com/lightpanda-io/lightpanda-python/blob/main/examples/README.md#triage_crawlpy--crawl-real-sites-in-parallel-and-act-on-what-jev-sees"
+      },
+      {
+        "label": "Release",
+        "url": "https://github.com/lightpanda-io/browser/releases/tag/1.0.3"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/lightpanda_io/status/2122237921084203041"
+      }
+    ]
   }
 ]
