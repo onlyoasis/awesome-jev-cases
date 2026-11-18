@@ -13606,5 +13606,377 @@
         "url": "https://x.com/lightpanda_io/status/2122237921084203041"
       }
     ]
+  },
+  {
+    "id": "jetriever-memory-utility",
+    "name": "Jetriever",
+    "author": "imlrz",
+    "evidence": "code",
+    "title": {
+      "zh": "按当前任务的用途重排 Agent 记忆",
+      "en": "Rerank agent memories by usefulness for the current task"
+    },
+    "area": {
+      "zh": "Agent 记忆检索",
+      "en": "Agent memory retrieval"
+    },
+    "input": {
+      "zh": "用户当前问题、可选答案及该用户的原始记忆片段。",
+      "en": "The user’s current query, optional answer choices, and raw memory chunks for that user."
+    },
+    "decision": {
+      "zh": "通过 OpenRouter 调用 Jev，用 Noul 逐条判断片段是否有助于完成当前任务。",
+      "en": "A Jev Noul via OpenRouter estimates whether each chunk helps solve the current task."
+    },
+    "action": {
+      "zh": "服务按概率排序，默认最多返回五条。任何片段评分最终失败时，本轮返回错误，避免把部分结果当作完整排名。",
+      "en": "The service sorts by probability and returns up to five by default. If any candidate ultimately fails, the run errors instead of presenting a partial ranking."
+    },
+    "boundary": {
+      "zh": "公开代码会把问题和片段发往模型服务。未运行外部接口或复现作者的检索评测。",
+      "en": "The public code sends queries and chunks to the model provider. The external calls and author evaluation were not reproduced."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/imlrz/Jetriever"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/imlrz/Jetriever/blob/13efd943d48b52f26b25531cb9378a029dd4acf5/app/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/imlrz/Jetriever/blob/13efd943d48b52f26b25531cb9378a029dd4acf5/app/retriever.py"
+      }
+    ]
+  },
+  {
+    "id": "codex-sift-jev-model-lane",
+    "name": "codex-sift",
+    "author": "romanmeclazcke",
+    "evidence": "code",
+    "title": {
+      "zh": "用 Jev 信号为 Codex 新一轮请求选择模型",
+      "en": "Select a model for a new Codex turn using Jev signals"
+    },
+    "area": {
+      "zh": "Codex 请求路由",
+      "en": "Codex request routing"
+    },
+    "input": {
+      "zh": "当前用户提示的脱敏结果、是否含图、是否重试和上次路由。",
+      "en": "Redacted user text, image and retry flags, and the previous route."
+    },
+    "decision": {
+      "zh": "Noul 分别判断推理、规划、高风险、跨文件影响和闲聊等特征。",
+      "en": "Noul questions estimate reasoning, planning, high stakes, cross-cutting work, and small talk."
+    },
+    "action": {
+      "zh": "配置策略选模型和推理档位，代理改写虚拟模型请求。工具续接沿用已选档位，模型不可用时使用回退策略。",
+      "en": "Policy chooses the model and effort, and the proxy rewrites virtual-model requests. Continuations use the pinned route, with fallback for classifier outages."
+    },
+    "boundary": {
+      "zh": "显式指定实际模型的调用不走自动分流。脱敏和路由未实测，未复现作者的费用数据。",
+      "en": "Explicit physical model selections bypass routing. Redaction, routing, and author-reported costs were not independently tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/romanmeclazcke/codex-sift"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/romanmeclazcke/codex-sift/blob/f9d5c43669090197239c0ca50ed5872e468033ec/src/jev.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/romanmeclazcke/codex-sift/blob/f9d5c43669090197239c0ca50ed5872e468033ec/src/proxy.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/romanmeclazcke/codex-sift/blob/f9d5c43669090197239c0ca50ed5872e468033ec/policy.yaml"
+      }
+    ]
+  },
+  {
+    "id": "ad-library-saver-jev-tags",
+    "name": "Ad Library Saver",
+    "author": "jimbanks",
+    "evidence": "code",
+    "title": {
+      "zh": "给已保存的广告卡片补上素材和漏斗标签",
+      "en": "Tag saved ad cards by format, CTA, and funnel stage"
+    },
+    "area": {
+      "zh": "广告素材整理",
+      "en": "Ad creative organization"
+    },
+    "input": {
+      "zh": "Meta Ad Library 卡片上的广告主、正文、标题、按钮文字和媒体类型摘要。",
+      "en": "Advertiser, copy, headline, CTA text, and a media-type summary from a Meta Ad Library card."
+    },
+    "decision": {
+      "zh": "两道 Choice 选素材格式与 CTA 类别，一道 Score 判断所在漏斗阶段。",
+      "en": "Two Choice questions select the format and CTA category. Score estimates the funnel stage."
+    },
+    "action": {
+      "zh": "插件存储标签和分值，在 CSV 中标记低置信字段以供复核。",
+      "en": "The extension stores labels and scores and flags low-confidence fields in CSV exports for review."
+    },
+    "boundary": {
+      "zh": "只核对源码。模型使用卡片文字与媒体摘要，未运行插件或验证标签准确率。",
+      "en": "This is a source inspection. Jev receives card text and media summaries. The extension and tagging accuracy were not tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/jimbanks/ad-library-saver"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jimbanks/ad-library-saver/blob/7c935db97a1bbec17abd50dd9d1b0fe36812a7e0/questions.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jimbanks/ad-library-saver/blob/7c935db97a1bbec17abd50dd9d1b0fe36812a7e0/background.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/jimbanks/ad-library-saver/blob/7c935db97a1bbec17abd50dd9d1b0fe36812a7e0/csv.js"
+      }
+    ]
+  },
+  {
+    "id": "tmkp-jev-sentence-evidence",
+    "name": "TMKP cleanup",
+    "author": "cbizon",
+    "evidence": "code",
+    "title": {
+      "zh": "逐条核对知识图谱边的实体映射与证据句",
+      "en": "Check entity mappings and supporting sentences for knowledge graph edges"
+    },
+    "area": {
+      "zh": "知识图谱证据清理",
+      "en": "Knowledge graph evidence cleanup"
+    },
+    "input": {
+      "zh": "图谱边、候选概念 ID 及支持该边的文献句子。",
+      "en": "A graph edge, candidate concept IDs, and its supporting literature sentences."
+    },
+    "decision": {
+      "zh": "Choice 判断提及与概念是否匹配、句子是否支持指定关系，并在有限候选或 none 中选择修复项。",
+      "en": "Choice checks mention-to-concept mapping and relation support and chooses a repair from bounded candidates or none."
+    },
+    "action": {
+      "zh": "硬规则和阈值组合决定保留、修复或剔除证据，输出供下游导入的修复边和剔除清单。",
+      "en": "Rules and thresholds determine whether evidence is kept, repaired, or pruned. The pipeline emits repaired edges and removal lists for downstream ingest."
+    },
+    "boundary": {
+      "zh": "核查代码和作者验证材料。仅说明数据清理，未复现图谱结果，也不验证生物医学关系。",
+      "en": "The source and author validation materials were inspected. This describes data cleanup, without reproducing graph outcomes or validating biomedical relations."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/cbizon/tmkp-cleanup"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/cbizon/tmkp-cleanup/blob/90f02804a86e65589622e71f2b03040dbdb369c5/pipeline/score.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/cbizon/tmkp-cleanup/blob/90f02804a86e65589622e71f2b03040dbdb369c5/pipeline/choose_repairs.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/cbizon/tmkp-cleanup/blob/90f02804a86e65589622e71f2b03040dbdb369c5/pipeline/README.md"
+      }
+    ]
+  },
+  {
+    "id": "tagging-jev-qualitative-code-review",
+    "name": "Cortico-compatible tagging",
+    "author": "mdetwiller",
+    "evidence": "code",
+    "title": {
+      "zh": "为访谈片段建议质性标签并交给研究者复核",
+      "en": "Suggest qualitative codes for interview excerpts for researcher review"
+    },
+    "area": {
+      "zh": "质性研究编码",
+      "en": "Qualitative research coding"
+    },
+    "input": {
+      "zh": "文本片段、候选标签定义与人工确认或否定的示例。",
+      "en": "A text excerpt, candidate code definitions, and human-approved or rejected examples."
+    },
+    "decision": {
+      "zh": "每个候选标签用 Noul 判断当前片段是否符合定义和示例。",
+      "en": "A Noul per candidate estimates whether the excerpt fits its definition and examples."
+    },
+    "action": {
+      "zh": "概率按标签阈值形成建议，界面供研究者复核。最终判断优先采用人工标注。",
+      "en": "Thresholds produce suggestions for review, and human annotation takes precedence in the final decision."
+    },
+    "boundary": {
+      "zh": "仅公开原型源码，根许可证和真实访谈数据均未核验。",
+      "en": "This review covers public prototype source. A root license and real interview data were not verified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/mdetwiller/tagging"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mdetwiller/tagging/blob/e75a5874bd9d783116ddad4420b48a817cbc13de/backend/app/services/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mdetwiller/tagging/blob/e75a5874bd9d783116ddad4420b48a817cbc13de/backend/app/services/judgments.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/mdetwiller/tagging/blob/e75a5874bd9d783116ddad4420b48a817cbc13de/backend/app/routers/review.py"
+      }
+    ]
+  },
+  {
+    "id": "switchboard-jev-it-intake",
+    "name": "Switchboard",
+    "author": "gauravlahoti",
+    "evidence": "code",
+    "title": {
+      "zh": "判断 IT 工单应澄清、转专员还是进入处理",
+      "en": "Decide whether an IT ticket needs clarification, specialist review, or handling"
+    },
+    "area": {
+      "zh": "IT 服务台分流",
+      "en": "IT service desk intake"
+    },
+    "input": {
+      "zh": "用户的 IT 请求文本及对话上下文。",
+      "en": "The user’s IT request and conversation context."
+    },
+    "decision": {
+      "zh": "Choice 选类别及意图，Noul 检查是否有请求、类别是否合适、信息是否不足。",
+      "en": "Choice identifies category and intent. Noul checks whether there is a request, whether its category fits, and whether details are missing."
+    },
+    "action": {
+      "zh": "程序优先将安全事项转给专员，模糊问题先追问，清楚的请求交给处理 Agent。",
+      "en": "Code routes security issues to a specialist, asks about ambiguous requests, and passes clear requests to a resolution agent."
+    },
+    "boundary": {
+      "zh": "核查了原型源码，未验证真实企业工单、工具动作和根许可。",
+      "en": "The prototype source was reviewed. Real tickets, tool actions, and a root license were not verified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/gauravlahoti/Switchboard"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/gauravlahoti/Switchboard/blob/02818d97ce0db63212b0cba68a23e020b12ff5de/app/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/gauravlahoti/Switchboard/blob/02818d97ce0db63212b0cba68a23e020b12ff5de/app/questions.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/gauravlahoti/Switchboard/blob/02818d97ce0db63212b0cba68a23e020b12ff5de/app/nodes.py"
+      }
+    ]
+  },
+  {
+    "id": "jev-spotlight-semantic-page-annotation",
+    "name": "Jev Spotlight",
+    "author": "vishalanton16",
+    "evidence": "code-and-post",
+    "title": {
+      "zh": "找出页面上符合条件的元素并添加标注",
+      "en": "Match visible page elements to a criterion and annotate them"
+    },
+    "area": {
+      "zh": "网页语义标注",
+      "en": "Semantic page annotation"
+    },
+    "input": {
+      "zh": "页面快照中的可见元素 ID 和文字，用户匹配条件及可选证据。",
+      "en": "Visible element IDs and text from a page snapshot, a user criterion, and optional evidence."
+    },
+    "decision": {
+      "zh": "分批用 Noul 判断每个元素是否直接符合条件，保留概率达到 0.8 的元素 ID。",
+      "en": "Batched Nouls test whether each element directly fits the criterion. IDs with probabilities of at least 0.8 are retained."
+    },
+    "action": {
+      "zh": "扩展按快照 ID 把提供的注释定位到匹配元素。说明文字由调用方提供。",
+      "en": "The extension attaches supplied annotations to matching elements in the captured snapshot. The caller supplies their wording."
+    },
+    "boundary": {
+      "zh": "读到作者演示和代码，仅说明语义标注入口。未安装扩展或确认根许可。",
+      "en": "The author demo and source were inspected. This covers the semantic marking path. Installation and a root license were not verified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/vishalanton16/jev-spotlight"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/vishalanton16/jev-spotlight/blob/30aafffb7731af92b3106f90dd4cb6cd6208cb5d/src/jev.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/vishalanton16/jev-spotlight/blob/30aafffb7731af92b3106f90dd4cb6cd6208cb5d/src/tools.ts"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/vishalanton_/status/2122759863881421172"
+      }
+    ]
+  },
+  {
+    "id": "alginte-jev-cve-routing",
+    "name": "Alginte CVE triage",
+    "author": "Alginte",
+    "evidence": "post",
+    "title": {
+      "zh": "在 Kafka 中为缺少严重度的 CVE 分流",
+      "en": "Route CVEs without severity in Kafka"
+    },
+    "area": {
+      "zh": "漏洞记录分流",
+      "en": "Vulnerability record routing"
+    },
+    "input": {
+      "zh": "Kafka 中来自 NVD 的 CVE 记录。缺少原始严重度时，将英文描述送给 Jev。",
+      "en": "CVE records from NVD in Kafka. When severity is missing, Jev receives the English description."
+    },
+    "decision": {
+      "zh": "一次 Choice 从严重、高、中、低四档选一项，并返回置信度。",
+      "en": "A Choice selects critical, high, medium, or low and returns confidence."
+    },
+    "action": {
+      "zh": "低置信结果进入复核主题，其余按严重度进入紧急或普通队列。已有严重度的记录直接分流。",
+      "en": "Low-confidence results go to a review topic. Other results go to urgent or routine topics. Records with severity already present are routed directly."
+    },
+    "boundary": {
+      "zh": "依据作者技术文章和演示，预览使用模拟响应。未验证线上分流、告警准确率或 NVD 覆盖。",
+      "en": "Evidence comes from the author’s technical article and demo. Preview uses simulated responses. Live routing, classification accuracy, and NVD coverage were not independently verified."
+    },
+    "sources": [
+      {
+        "label": "Author",
+        "url": "https://www.alginte.com/blog/asking-a-model-for-a-judgment-in-kafka-streams/"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/alginte_sw/status/2122727788226416918"
+      }
+    ]
   }
 ]

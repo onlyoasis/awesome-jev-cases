@@ -57,10 +57,10 @@
     "id": "function_calling",
     "name": "Function calling",
     "url": "https://docs.typesafe.ai/cookbooks/function_calling.md",
-    "description": "Maps natural-language requests to typed function names and bounded arguments. The current example memoizes state/questions without the model in its cache key and fills the response model from the requested value, so replayed answers do not prove a new model was called.",
+    "description": "Routes natural-language requests to typed functions and bounded arguments in one batch. The dispatcher now appears inline in the official walkthrough, and the demo replays saved answers on simulated price data by default. A replay does not establish a live model call.",
     "source": "official",
     "discoveredAt": "2026-09-24",
-    "lastVerified": "2026-11-03"
+    "lastVerified": "2026-11-18"
   },
   {
     "id": "skill_suggestion",

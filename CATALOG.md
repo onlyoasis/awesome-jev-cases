@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (306)
+## 深度使用案例 / Worked cases (314)
 
 ### jev-ultrafast
 
@@ -2758,7 +2758,79 @@
 - 核验边界：依据作者博客、演示说明和发布记录。30 站结果和耗时由作者报告，未运行抓取实验。
 - 来源：[Author](https://lightpanda.io/blog/posts/lightpanda-and-jev) · [Demo](https://github.com/lightpanda-io/lightpanda-python/blob/main/examples/README.md#triage_crawlpy--crawl-real-sites-in-parallel-and-act-on-what-jev-sees) · [Release](https://github.com/lightpanda-io/browser/releases/tag/1.0.3) · [X](https://x.com/lightpanda_io/status/2122237921084203041)
 
-## 开源项目 / Open-source projects (324)
+### 按当前任务的用途重排 Agent 记忆
+
+- 作者：imlrz
+- 输入：用户当前问题、可选答案及该用户的原始记忆片段。
+- Jev 判断：通过 OpenRouter 调用 Jev，用 Noul 逐条判断片段是否有助于完成当前任务。
+- 后续动作：服务按概率排序，默认最多返回五条。任何片段评分最终失败时，本轮返回错误，避免把部分结果当作完整排名。
+- 核验边界：公开代码会把问题和片段发往模型服务。未运行外部接口或复现作者的检索评测。
+- 来源：[GitHub](https://github.com/imlrz/Jetriever) · [Source](https://github.com/imlrz/Jetriever/blob/13efd943d48b52f26b25531cb9378a029dd4acf5/app/jev.py) · [Source](https://github.com/imlrz/Jetriever/blob/13efd943d48b52f26b25531cb9378a029dd4acf5/app/retriever.py)
+
+### 用 Jev 信号为 Codex 新一轮请求选择模型
+
+- 作者：romanmeclazcke
+- 输入：当前用户提示的脱敏结果、是否含图、是否重试和上次路由。
+- Jev 判断：Noul 分别判断推理、规划、高风险、跨文件影响和闲聊等特征。
+- 后续动作：配置策略选模型和推理档位，代理改写虚拟模型请求。工具续接沿用已选档位，模型不可用时使用回退策略。
+- 核验边界：显式指定实际模型的调用不走自动分流。脱敏和路由未实测，未复现作者的费用数据。
+- 来源：[GitHub](https://github.com/romanmeclazcke/codex-sift) · [Source](https://github.com/romanmeclazcke/codex-sift/blob/f9d5c43669090197239c0ca50ed5872e468033ec/src/jev.ts) · [Source](https://github.com/romanmeclazcke/codex-sift/blob/f9d5c43669090197239c0ca50ed5872e468033ec/src/proxy.ts) · [Source](https://github.com/romanmeclazcke/codex-sift/blob/f9d5c43669090197239c0ca50ed5872e468033ec/policy.yaml)
+
+### 给已保存的广告卡片补上素材和漏斗标签
+
+- 作者：jimbanks
+- 输入：Meta Ad Library 卡片上的广告主、正文、标题、按钮文字和媒体类型摘要。
+- Jev 判断：两道 Choice 选素材格式与 CTA 类别，一道 Score 判断所在漏斗阶段。
+- 后续动作：插件存储标签和分值，在 CSV 中标记低置信字段以供复核。
+- 核验边界：只核对源码。模型使用卡片文字与媒体摘要，未运行插件或验证标签准确率。
+- 来源：[GitHub](https://github.com/jimbanks/ad-library-saver) · [Source](https://github.com/jimbanks/ad-library-saver/blob/7c935db97a1bbec17abd50dd9d1b0fe36812a7e0/questions.js) · [Source](https://github.com/jimbanks/ad-library-saver/blob/7c935db97a1bbec17abd50dd9d1b0fe36812a7e0/background.js) · [Source](https://github.com/jimbanks/ad-library-saver/blob/7c935db97a1bbec17abd50dd9d1b0fe36812a7e0/csv.js)
+
+### 逐条核对知识图谱边的实体映射与证据句
+
+- 作者：cbizon
+- 输入：图谱边、候选概念 ID 及支持该边的文献句子。
+- Jev 判断：Choice 判断提及与概念是否匹配、句子是否支持指定关系，并在有限候选或 none 中选择修复项。
+- 后续动作：硬规则和阈值组合决定保留、修复或剔除证据，输出供下游导入的修复边和剔除清单。
+- 核验边界：核查代码和作者验证材料。仅说明数据清理，未复现图谱结果，也不验证生物医学关系。
+- 来源：[GitHub](https://github.com/cbizon/tmkp-cleanup) · [Source](https://github.com/cbizon/tmkp-cleanup/blob/90f02804a86e65589622e71f2b03040dbdb369c5/pipeline/score.py) · [Source](https://github.com/cbizon/tmkp-cleanup/blob/90f02804a86e65589622e71f2b03040dbdb369c5/pipeline/choose_repairs.py) · [Source](https://github.com/cbizon/tmkp-cleanup/blob/90f02804a86e65589622e71f2b03040dbdb369c5/pipeline/README.md)
+
+### 为访谈片段建议质性标签并交给研究者复核
+
+- 作者：mdetwiller
+- 输入：文本片段、候选标签定义与人工确认或否定的示例。
+- Jev 判断：每个候选标签用 Noul 判断当前片段是否符合定义和示例。
+- 后续动作：概率按标签阈值形成建议，界面供研究者复核。最终判断优先采用人工标注。
+- 核验边界：仅公开原型源码，根许可证和真实访谈数据均未核验。
+- 来源：[GitHub](https://github.com/mdetwiller/tagging) · [Source](https://github.com/mdetwiller/tagging/blob/e75a5874bd9d783116ddad4420b48a817cbc13de/backend/app/services/jev.py) · [Source](https://github.com/mdetwiller/tagging/blob/e75a5874bd9d783116ddad4420b48a817cbc13de/backend/app/services/judgments.py) · [Source](https://github.com/mdetwiller/tagging/blob/e75a5874bd9d783116ddad4420b48a817cbc13de/backend/app/routers/review.py)
+
+### 判断 IT 工单应澄清、转专员还是进入处理
+
+- 作者：gauravlahoti
+- 输入：用户的 IT 请求文本及对话上下文。
+- Jev 判断：Choice 选类别及意图，Noul 检查是否有请求、类别是否合适、信息是否不足。
+- 后续动作：程序优先将安全事项转给专员，模糊问题先追问，清楚的请求交给处理 Agent。
+- 核验边界：核查了原型源码，未验证真实企业工单、工具动作和根许可。
+- 来源：[GitHub](https://github.com/gauravlahoti/Switchboard) · [Source](https://github.com/gauravlahoti/Switchboard/blob/02818d97ce0db63212b0cba68a23e020b12ff5de/app/jev.py) · [Source](https://github.com/gauravlahoti/Switchboard/blob/02818d97ce0db63212b0cba68a23e020b12ff5de/app/questions.py) · [Source](https://github.com/gauravlahoti/Switchboard/blob/02818d97ce0db63212b0cba68a23e020b12ff5de/app/nodes.py)
+
+### 找出页面上符合条件的元素并添加标注
+
+- 作者：vishalanton16
+- 输入：页面快照中的可见元素 ID 和文字，用户匹配条件及可选证据。
+- Jev 判断：分批用 Noul 判断每个元素是否直接符合条件，保留概率达到 0.8 的元素 ID。
+- 后续动作：扩展按快照 ID 把提供的注释定位到匹配元素。说明文字由调用方提供。
+- 核验边界：读到作者演示和代码，仅说明语义标注入口。未安装扩展或确认根许可。
+- 来源：[GitHub](https://github.com/vishalanton16/jev-spotlight) · [Source](https://github.com/vishalanton16/jev-spotlight/blob/30aafffb7731af92b3106f90dd4cb6cd6208cb5d/src/jev.ts) · [Source](https://github.com/vishalanton16/jev-spotlight/blob/30aafffb7731af92b3106f90dd4cb6cd6208cb5d/src/tools.ts) · [X](https://x.com/vishalanton_/status/2122759863881421172)
+
+### 在 Kafka 中为缺少严重度的 CVE 分流
+
+- 作者：Alginte
+- 输入：Kafka 中来自 NVD 的 CVE 记录。缺少原始严重度时，将英文描述送给 Jev。
+- Jev 判断：一次 Choice 从严重、高、中、低四档选一项，并返回置信度。
+- 后续动作：低置信结果进入复核主题，其余按严重度进入紧急或普通队列。已有严重度的记录直接分流。
+- 核验边界：依据作者技术文章和演示，预览使用模拟响应。未验证线上分流、告警准确率或 NVD 覆盖。
+- 来源：[Author](https://www.alginte.com/blog/asking-a-model-for-a-judgment-in-kafka-streams/) · [X](https://x.com/alginte_sw/status/2122727788226416918)
+
+## 开源项目 / Open-source projects (328)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -3086,6 +3158,10 @@
 | [kenning-labs/ken](https://github.com/kenning-labs/ken) | community | AGPL-3.0 | 0 |
 | [teknologist/pi-multi-model-router](https://github.com/teknologist/pi-multi-model-router) | community | MIT | 0 |
 | [ag2ai/ag2](https://github.com/ag2ai/ag2) | community | Apache-2.0 | 5073 |
+| [imlrz/Jetriever](https://github.com/imlrz/Jetriever) | community | MIT | 4 |
+| [romanmeclazcke/codex-sift](https://github.com/romanmeclazcke/codex-sift) | community | MIT | 9 |
+| [jimbanks/ad-library-saver](https://github.com/jimbanks/ad-library-saver) | community | MIT | 0 |
+| [cbizon/tmkp-cleanup](https://github.com/cbizon/tmkp-cleanup) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (27)
 
@@ -3095,7 +3171,7 @@
 - [Re-ranking](https://docs.typesafe.ai/cookbooks/rerank_typesafe.md)：Builds 30-passage BM25 shortlists for 40 CLERC legal queries, then uses one TypeSafe question per query-candidate pair to raise top-1 accuracy from 5% to 18% and top-10 accuracy from 38% to 62%.
 - [Line-by-line search](https://docs.typesafe.ai/cookbooks/semantic_find.md)：Build semantic search for GitHub's Terms of Service. In one request, score 218 line ids against a plain-language query with a Choice question, and use a Noul question to check whether the document contains an answer.
 - [Structure recovery](https://docs.typesafe.ai/cookbooks/autoformat.md)：Reconstructs Markdown from plain text that lost its formatting in two requests: one stitches hard-wrapped lines back together, one classifies every block (heading, list, code, callout).
-- [Function calling](https://docs.typesafe.ai/cookbooks/function_calling.md)：Maps natural-language requests to typed function names and bounded arguments. The current example memoizes state/questions without the model in its cache key and fills the response model from the requested value, so replayed answers do not prove a new model was called.
+- [Function calling](https://docs.typesafe.ai/cookbooks/function_calling.md)：Routes natural-language requests to typed functions and bounded arguments in one batch. The dispatcher now appears inline in the official walkthrough, and the demo replays saved answers on simulated price data by default. A replay does not establish a live model call.
 - [Skill suggestion](https://docs.typesafe.ai/cookbooks/skill_suggestion.md)：Picks at most one skill for an agent turn out of the 182 in Nous Research's Hermes catalog, using two TypeSafe requests to rank and re-check the top candidates.
 - [Knowledge graph entity alignment](https://docs.typesafe.ai/cookbooks/entity_alignment.md)：Routes 450 Wikidata/MusicBrainz album pairs to no link, curator review or a merge recommendation using a three-level Score; three Nouls expose title, artist and label agreement. CC0 dataset links are imperfect reference labels, not verified truth; this is not an automatic knowledge-graph merge.
 - [Classifying RAG passages](https://docs.typesafe.ai/cookbooks/classifying_rag_passages.md)：Score each retrieved passage with one TypeSafe request, then decide in code which ones reach the answering model.

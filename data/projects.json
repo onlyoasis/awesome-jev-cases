@@ -5182,5 +5182,69 @@
     "lastVerified": "2026-11-17",
     "status": "verified",
     "stars": 5073
+  },
+  {
+    "id": "imlrz-jetriever",
+    "name": "imlrz/Jetriever",
+    "url": "https://github.com/imlrz/Jetriever",
+    "category": "research",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "通过 OpenRouter 使用 Jev 的 Noul 对 Agent 记忆逐条重排。",
+      "en": "Reranks agent memories with Jev Noul questions via OpenRouter."
+    },
+    "sourceUrl": "https://github.com/imlrz/Jetriever/blob/13efd943d48b52f26b25531cb9378a029dd4acf5/app/retriever.py",
+    "lastVerified": "2026-11-18",
+    "status": "verified",
+    "stars": 4
+  },
+  {
+    "id": "romanmeclazcke-codex-sift",
+    "name": "romanmeclazcke/codex-sift",
+    "url": "https://github.com/romanmeclazcke/codex-sift",
+    "category": "routing",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev 分类信号与本地策略为 Codex 虚拟模型请求选模型和推理档位。",
+      "en": "Uses Jev signals and local policy to select a model and effort for Codex virtual-model requests."
+    },
+    "sourceUrl": "https://github.com/romanmeclazcke/codex-sift/blob/f9d5c43669090197239c0ca50ed5872e468033ec/src/jev.ts",
+    "lastVerified": "2026-11-18",
+    "status": "verified",
+    "stars": 9
+  },
+  {
+    "id": "jimbanks-ad-library-saver",
+    "name": "jimbanks/ad-library-saver",
+    "url": "https://github.com/jimbanks/ad-library-saver",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "把已保存广告卡片交给 Jev 标注，并在 CSV 中标出低置信结果。",
+      "en": "Tags saved ad cards with Jev and flags low-confidence results in CSV."
+    },
+    "sourceUrl": "https://github.com/jimbanks/ad-library-saver/blob/7c935db97a1bbec17abd50dd9d1b0fe36812a7e0/background.js",
+    "lastVerified": "2026-11-18",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "cbizon-tmkp-cleanup",
+    "name": "cbizon/tmkp-cleanup",
+    "url": "https://github.com/cbizon/tmkp-cleanup",
+    "category": "data",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "用 Jev 检视实体映射及关系证据，并生成清理和修复清单。",
+      "en": "Uses Jev to inspect concept mappings and relation evidence and build pruning and repair lists."
+    },
+    "sourceUrl": "https://github.com/cbizon/tmkp-cleanup/blob/90f02804a86e65589622e71f2b03040dbdb369c5/pipeline/score.py",
+    "lastVerified": "2026-11-18",
+    "status": "verified",
+    "stars": 0
   }
 ]
