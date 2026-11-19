@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (314)
+## 深度使用案例 / Worked cases (319)
 
 ### jev-ultrafast
 
@@ -2668,14 +2668,14 @@
 - 核验边界：需要配置 TypeSafe API Key。失败可回退到历史启发式，未运行插件或测量路由收益。
 - 来源：[GitHub](https://github.com/Marble-GP/opencode-adaptive-fusion) · [Source](https://github.com/Marble-GP/opencode-adaptive-fusion/blob/99225dd42e38370d7c3f3a1df42c8c8ffc26e89e/plugins/adaptive-fusion/jev.ts) · [Source](https://github.com/Marble-GP/opencode-adaptive-fusion/blob/99225dd42e38370d7c3f3a1df42c8c8ffc26e89e/plugins/adaptive-fusion/index.ts) · [X](https://x.com/scalar_subby/status/2121823368144101566)
 
-### 用 Jev 判断作物照片是否有活跃病虫害
+### 比较 Jev 与 Google Decision 1 的作物影像判断
 
 - 作者：Flying Higher AI
-- 输入：三张样图，分别是有明显病征的叶片、含表面杂物和疑似日灼的图、以及非叶片负样本。
-- Jev 判断：问照片中是否有活跃的真菌、细菌病害或虫害，返回肯定概率。
-- 后续动作：作者按 0.50 阈值比较 Jev 与 Google Decision 1 的标签，并用图表标出歧义样本的分歧。
-- 核验边界：仅作者公开的三图冒烟实验。未见全量 40 图结果、独立标注或实际诊断部署。
-- 来源：[X](https://x.com/flyinghigherai/status/2122065366557847920) · [X](https://x.com/flyinghigherai/status/2122065370249036009) · [X](https://x.com/flyinghigherai/status/2122065379019178321)
+- 输入：作者拍摄的四十张秋叶照片，包括病斑、干燥、自然腐败、模糊图和干扰负样本。
+- Jev 判断：作者分别使用 Boolean/Noul、Choice、Score 和 Box 判断病害、根因、严重度和空间位置。
+- 后续动作：作者为图片标注预期答案，并将两模型的输出汇成对比图表，延续了早先的三图实验。
+- 核验边界：四十图实验和标注均由作者自报，技术全文尚待发布。未独立验证准确率、标注或实地诊断效果。
+- 来源：[X](https://x.com/flyinghigherai/status/2123099606875877553) · [X](https://x.com/flyinghigherai/status/2123099610444898325) · [X](https://x.com/flyinghigherai/status/2123123502869832028) · [X](https://x.com/flyinghigherai/status/2122065370249036009)
 
 ### 先筛查机器人操作，再把可疑记录交给深度审计
 
@@ -2830,7 +2830,52 @@
 - 核验边界：依据作者技术文章和演示，预览使用模拟响应。未验证线上分流、告警准确率或 NVD 覆盖。
 - 来源：[Author](https://www.alginte.com/blog/asking-a-model-for-a-judgment-in-kafka-streams/) · [X](https://x.com/alginte_sw/status/2122727788226416918)
 
-## 开源项目 / Open-source projects (328)
+### 从带战术说明的候选点中选五子棋下一手
+
+- 作者：fanweiya
+- 输入：15×15 棋盘和本地启发式生成的最多十个候选空位及说明。
+- Jev 判断：Jev 兼容的 Choice 从有限候选位置中选下一手，返回置信度和概率。
+- 后续动作：程序只接受候选内的答案并落子。超时、请求失败或无有效答案时采用本地首选点。
+- 核验边界：Jev 是可配置通道之一，无密钥时可用本地启发式。未实测托管模型棋力。
+- 来源：[GitHub](https://github.com/fanweiya/gomoku-jev) · [Source](https://github.com/fanweiya/gomoku-jev/blob/3a02867bdbbedd04d10c89120ddc98dee500f8ca/src/game/JevClient.ts) · [Source](https://github.com/fanweiya/gomoku-jev/blob/3a02867bdbbedd04d10c89120ddc98dee500f8ca/src/game/GomokuCore.ts)
+
+### 让 Jev 在合法着法中分阶段选择棋步
+
+- 作者：shihabalratul
+- 输入：当前棋局、历史着法及规则库生成的合法着法。可选多阶段流程另附对手回应和后续局面。
+- Jev 判断：Choice 可直接选合法棋步，也可先判断意图、提名候选、比较回应，再选最终着法。
+- 后续动作：代码逐阶段验证答案属于所给选项，推进棋局并保留决策轨迹。
+- 核验边界：核查服务端 Jev/OpenRouter 路径。未运行扩展、操控棋局或验证棋力，仓库中的演示结果属作者记录。
+- 来源：[GitHub](https://github.com/shihabalratul/Jev-chess) · [Source](https://github.com/shihabalratul/Jev-chess/blob/bd1ce7865b6ffd3bc590ca4a41dd2172807265b0/apps/server/src/services/decisions.ts) · [Source](https://github.com/shihabalratul/Jev-chess/blob/bd1ce7865b6ffd3bc590ca4a41dd2172807265b0/apps/server/src/providers/openrouter.ts)
+
+### 按内容价值和上下文折叠 X 帖子
+
+- 作者：tpa339
+- 输入：可见帖子文本、引用文本，或带主帖上下文的回复，以及用户标记的保留和噪声示例。
+- Jev 判断：通过 OpenRouter 批量用 Noul 判断是否有实质内容、是否为互动诱饵，以及回复是否切题。
+- 后续动作：本地阈值决定折叠，用户可展开或覆盖判断。缺失的模型判断保留可见。
+- 核验边界：核查扩展代码，未安装或测试过滤效果。启用时帖子文本会提交给所配模型服务。
+- 来源：[GitHub](https://github.com/tpa339/x-noisefilter) · [Source](https://github.com/tpa339/x-noisefilter/blob/467439edf7acbc24142aa695d55a86a498d278b7/extension/background.js) · [Source](https://github.com/tpa339/x-noisefilter/blob/467439edf7acbc24142aa695d55a86a498d278b7/extension/content.js)
+
+### 用 Jev 筛论文，再生成知识图谱三元组
+
+- 作者：riurretx
+- 输入：arXiv 论文标题、摘要和若干预设研究主题。
+- Jev 判断：每个主题使用一道 Noul，在同一次请求里估计论文是否匹配。
+- 后续动作：至少一个主题达到阈值的论文进入 GPT 三元组抽取和 Neo4j 存储。最终调用失败时，各主题按零分处理。
+- 核验边界：根许可未确认，未运行抓取、模型或数据库。阈值筛选可能漏掉相关论文。
+- 来源：[GitHub](https://github.com/riurretx/arxiv-knowledge-graph) · [Source](https://github.com/riurretx/arxiv-knowledge-graph/blob/882c991a108e30d462a9ff6735da8362e6d22af4/kg_core.py) · [Source](https://github.com/riurretx/arxiv-knowledge-graph/blob/882c991a108e30d462a9ff6735da8362e6d22af4/daily_job.py)
+
+### 用 Jev 选择 PR 审查规模和模板
+
+- 作者：joeharris76
+- 输入：PR 的改动信息、补丁及文件范围。
+- Jev 判断：Choice 判断从 trivial 到 max 的规模、routine 或 deep 能力，以及 standard、deep 或 gate 模板。文件级问题还判断影响与所需审查程度。
+- 后续动作：审查器依据分类及策略选择审查配置，将结果用于后续审查流程。
+- 核验边界：核查作者原帖与固定提交。未运行审查器或复现其成本、覆盖率和审查质量。
+- 来源：[GitHub](https://github.com/joeharris76/theseus) · [Source](https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/classify.py) · [Source](https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/jev.py) · [Source](https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/selection.py) · [X](https://x.com/joeharris76/status/2123207119453262038)
+
+## 开源项目 / Open-source projects (333)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -3162,6 +3207,11 @@
 | [romanmeclazcke/codex-sift](https://github.com/romanmeclazcke/codex-sift) | community | MIT | 9 |
 | [jimbanks/ad-library-saver](https://github.com/jimbanks/ad-library-saver) | community | MIT | 0 |
 | [cbizon/tmkp-cleanup](https://github.com/cbizon/tmkp-cleanup) | community | MIT | 0 |
+| [fanweiya/gomoku-jev](https://github.com/fanweiya/gomoku-jev) | community | MIT | 0 |
+| [shihabalratul/Jev-chess](https://github.com/shihabalratul/Jev-chess) | community | MIT | 0 |
+| [tpa339/x-noisefilter](https://github.com/tpa339/x-noisefilter) | community | MIT | 0 |
+| [joeharris76/theseus](https://github.com/joeharris76/theseus) | community | MIT | 0 |
+| [DataSnackAPI/n8n-nodes-datasnack](https://github.com/DataSnackAPI/n8n-nodes-datasnack) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (27)
 

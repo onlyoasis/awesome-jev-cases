@@ -5246,5 +5246,85 @@
     "lastVerified": "2026-11-18",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "fanweiya-gomoku-jev",
+    "name": "fanweiya/gomoku-jev",
+    "url": "https://github.com/fanweiya/gomoku-jev",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "五子棋界面，将本地战术候选送给可配置的 Jev 兼容决策通道。",
+      "en": "A Gomoku UI that sends local tactical candidates to a configurable Jev-compatible decision backend."
+    },
+    "sourceUrl": "https://github.com/fanweiya/gomoku-jev/blob/3a02867bdbbedd04d10c89120ddc98dee500f8ca/src/game/JevClient.ts",
+    "lastVerified": "2026-11-19",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "shihabalratul-jev-chess",
+    "name": "shihabalratul/Jev-chess",
+    "url": "https://github.com/shihabalratul/Jev-chess",
+    "category": "app",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "国际象棋实验，以 Jev 的有限选项判断选择合法棋步，并保留分阶段轨迹。",
+      "en": "A chess experiment selecting legal moves with bounded Jev choices and staged decision traces."
+    },
+    "sourceUrl": "https://github.com/shihabalratul/Jev-chess/blob/bd1ce7865b6ffd3bc590ca4a41dd2172807265b0/apps/server/src/services/decisions.ts",
+    "lastVerified": "2026-11-19",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "tpa339-x-noisefilter",
+    "name": "tpa339/x-noisefilter",
+    "url": "https://github.com/tpa339/x-noisefilter",
+    "category": "browser",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "浏览器扩展，通过 OpenRouter 的 Jev 判断内容价值与诱饵信号，按阈值折叠帖子。",
+      "en": "A browser extension using Jev via OpenRouter to assess substance and bait before collapsing posts."
+    },
+    "sourceUrl": "https://github.com/tpa339/x-noisefilter/blob/467439edf7acbc24142aa695d55a86a498d278b7/extension/background.js",
+    "lastVerified": "2026-11-19",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "joeharris76-theseus",
+    "name": "joeharris76/theseus",
+    "url": "https://github.com/joeharris76/theseus",
+    "category": "coding",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "PR 审查工具，以 Jev 判断改动规模、审查能力和模板。",
+      "en": "A PR reviewer using Jev to classify change size, review capability, and template."
+    },
+    "sourceUrl": "https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/classify.py",
+    "lastVerified": "2026-11-19",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "datasnackapi-n8n-nodes-datasnack",
+    "name": "DataSnackAPI/n8n-nodes-datasnack",
+    "url": "https://github.com/DataSnackAPI/n8n-nodes-datasnack",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "连接 DataSnack 的 n8n 节点，按服务确认结果分支。Jev 后端及 Go 规则核验为作者说明，托管服务未复现。",
+      "en": "An n8n node that branches on DataSnack confirmation. Its Jev backend and Go rule checks are author-described, and the hosted service was not reproduced."
+    },
+    "sourceUrl": "https://github.com/DataSnackAPI/n8n-nodes-datasnack/blob/8903fdfe0b4a01c8040dd31818e95d490f24295e/nodes/Datasnack/Datasnack.node.ts",
+    "lastVerified": "2026-11-19",
+    "status": "verified",
+    "stars": 0
   }
 ]

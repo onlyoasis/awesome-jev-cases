@@ -13157,41 +13157,45 @@
     "author": "Flying Higher AI",
     "evidence": "post",
     "title": {
-      "zh": "用 Jev 判断作物照片是否有活跃病虫害",
-      "en": "Check crop photos for active disease or pest damage"
+      "zh": "比较 Jev 与 Google Decision 1 的作物影像判断",
+      "en": "Compare Jev and Google Decision 1 on crop images"
     },
     "area": {
       "zh": "农业影像小样实验",
       "en": "Agricultural image smoke test"
     },
     "input": {
-      "zh": "三张样图，分别是有明显病征的叶片、含表面杂物和疑似日灼的图、以及非叶片负样本。",
-      "en": "Three samples: a clearly affected leaf, an ambiguous image with surface interference and possible sun scald, and a non-leaf negative."
+      "zh": "作者拍摄的四十张秋叶照片，包括病斑、干燥、自然腐败、模糊图和干扰负样本。",
+      "en": "Forty author-captured autumn-leaf images including disease spots, desiccation, natural decay, blur, and negative distractors."
     },
     "decision": {
-      "zh": "问照片中是否有活跃的真菌、细菌病害或虫害，返回肯定概率。",
-      "en": "A binary question asks whether active fungal, bacterial, or pest pathology is present and yields a probability."
+      "zh": "作者分别使用 Boolean/Noul、Choice、Score 和 Box 判断病害、根因、严重度和空间位置。",
+      "en": "The author tests Boolean/Noul, Choice, Score, and Box judgments for disease, root cause, severity, and location."
     },
     "action": {
-      "zh": "作者按 0.50 阈值比较 Jev 与 Google Decision 1 的标签，并用图表标出歧义样本的分歧。",
-      "en": "The author compares Jev and Google Decision 1 labels at a 0.50 threshold and charts their disagreement on the ambiguous sample."
+      "zh": "作者为图片标注预期答案，并将两模型的输出汇成对比图表，延续了早先的三图实验。",
+      "en": "The author labels expected outcomes and charts the models’ outputs, following the earlier three-image test."
     },
     "boundary": {
-      "zh": "仅作者公开的三图冒烟实验。未见全量 40 图结果、独立标注或实际诊断部署。",
-      "en": "This is the author’s three-image smoke test. It provides no completed 40-image benchmark, independent labeling, or field diagnosis deployment."
+      "zh": "四十图实验和标注均由作者自报，技术全文尚待发布。未独立验证准确率、标注或实地诊断效果。",
+      "en": "The forty-image study and labels are author-reported, with a full technical write-up pending. Accuracy, labels, and field diagnosis were not independently verified."
     },
     "sources": [
       {
         "label": "X",
-        "url": "https://x.com/flyinghigherai/status/2122065366557847920"
+        "url": "https://x.com/flyinghigherai/status/2123099606875877553"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/flyinghigherai/status/2123099610444898325"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/flyinghigherai/status/2123123502869832028"
       },
       {
         "label": "X",
         "url": "https://x.com/flyinghigherai/status/2122065370249036009"
-      },
-      {
-        "label": "X",
-        "url": "https://x.com/flyinghigherai/status/2122065379019178321"
       }
     ]
   },
@@ -13976,6 +13980,234 @@
       {
         "label": "X",
         "url": "https://x.com/alginte_sw/status/2122727788226416918"
+      }
+    ]
+  },
+  {
+    "id": "gomoku-jev-heuristic-move-choice",
+    "name": "Gomoku × Jev",
+    "author": "fanweiya",
+    "evidence": "code",
+    "title": {
+      "zh": "从带战术说明的候选点中选五子棋下一手",
+      "en": "Choose a Gomoku move from tactically described candidates"
+    },
+    "area": {
+      "zh": "棋盘游戏",
+      "en": "Board games"
+    },
+    "input": {
+      "zh": "15×15 棋盘和本地启发式生成的最多十个候选空位及说明。",
+      "en": "A 15×15 board and up to ten locally generated candidate moves with tactical descriptions."
+    },
+    "decision": {
+      "zh": "Jev 兼容的 Choice 从有限候选位置中选下一手，返回置信度和概率。",
+      "en": "A Jev-compatible Choice selects the next move from the candidate positions and returns confidence and probabilities."
+    },
+    "action": {
+      "zh": "程序只接受候选内的答案并落子。超时、请求失败或无有效答案时采用本地首选点。",
+      "en": "Code accepts only a listed candidate and places the stone. A timeout, failed request, or invalid answer uses the local top candidate."
+    },
+    "boundary": {
+      "zh": "Jev 是可配置通道之一，无密钥时可用本地启发式。未实测托管模型棋力。",
+      "en": "Jev is one configurable backend, and a local heuristic works without a key. Hosted-model playing strength was not tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/fanweiya/gomoku-jev"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/fanweiya/gomoku-jev/blob/3a02867bdbbedd04d10c89120ddc98dee500f8ca/src/game/JevClient.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/fanweiya/gomoku-jev/blob/3a02867bdbbedd04d10c89120ddc98dee500f8ca/src/game/GomokuCore.ts"
+      }
+    ]
+  },
+  {
+    "id": "jev-chess-staged-legal-move-selection",
+    "name": "Jev Chess",
+    "author": "shihabalratul",
+    "evidence": "code",
+    "title": {
+      "zh": "让 Jev 在合法着法中分阶段选择棋步",
+      "en": "Choose legal chess moves through staged Jev decisions"
+    },
+    "area": {
+      "zh": "国际象棋实验",
+      "en": "Chess experiment"
+    },
+    "input": {
+      "zh": "当前棋局、历史着法及规则库生成的合法着法。可选多阶段流程另附对手回应和后续局面。",
+      "en": "The position, move history, and legal moves generated by a rules library. Optional staged flows include opposing replies and resulting positions."
+    },
+    "decision": {
+      "zh": "Choice 可直接选合法棋步，也可先判断意图、提名候选、比较回应，再选最终着法。",
+      "en": "Choice can select a legal move directly or assess intent, nominate candidates, compare replies, and choose the final move in stages."
+    },
+    "action": {
+      "zh": "代码逐阶段验证答案属于所给选项，推进棋局并保留决策轨迹。",
+      "en": "Code validates each answer against the supplied options, advances the position, and retains a decision trace."
+    },
+    "boundary": {
+      "zh": "核查服务端 Jev/OpenRouter 路径。未运行扩展、操控棋局或验证棋力，仓库中的演示结果属作者记录。",
+      "en": "The server’s Jev/OpenRouter path was reviewed. The extension, board control, and playing strength were not tested. Demo outcomes are the author’s records."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/shihabalratul/Jev-chess"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/shihabalratul/Jev-chess/blob/bd1ce7865b6ffd3bc590ca4a41dd2172807265b0/apps/server/src/services/decisions.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/shihabalratul/Jev-chess/blob/bd1ce7865b6ffd3bc590ca4a41dd2172807265b0/apps/server/src/providers/openrouter.ts"
+      }
+    ]
+  },
+  {
+    "id": "x-noisefilter-jev-collapsible-feed",
+    "name": "X Noisefilter",
+    "author": "tpa339",
+    "evidence": "code",
+    "title": {
+      "zh": "按内容价值和上下文折叠 X 帖子",
+      "en": "Collapse X posts by substance and context"
+    },
+    "area": {
+      "zh": "信息流过滤",
+      "en": "Feed filtering"
+    },
+    "input": {
+      "zh": "可见帖子文本、引用文本，或带主帖上下文的回复，以及用户标记的保留和噪声示例。",
+      "en": "Visible post and quote text, or replies with parent-post context, plus examples the user marked as signal or noise."
+    },
+    "decision": {
+      "zh": "通过 OpenRouter 批量用 Noul 判断是否有实质内容、是否为互动诱饵，以及回复是否切题。",
+      "en": "Batched Jev Nouls via OpenRouter assess substance, engagement bait, and whether a reply relates to its parent."
+    },
+    "action": {
+      "zh": "本地阈值决定折叠，用户可展开或覆盖判断。缺失的模型判断保留可见。",
+      "en": "Local thresholds decide which posts collapse. Users can reveal or override them, and unanswered model judgments leave content visible."
+    },
+    "boundary": {
+      "zh": "核查扩展代码，未安装或测试过滤效果。启用时帖子文本会提交给所配模型服务。",
+      "en": "The extension source was reviewed. It was not installed or evaluated. When enabled, post text goes to the configured model provider."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/tpa339/x-noisefilter"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/tpa339/x-noisefilter/blob/467439edf7acbc24142aa695d55a86a498d278b7/extension/background.js"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/tpa339/x-noisefilter/blob/467439edf7acbc24142aa695d55a86a498d278b7/extension/content.js"
+      }
+    ]
+  },
+  {
+    "id": "arxiv-jev-before-triple-extraction",
+    "name": "arXiv knowledge graph",
+    "author": "riurretx",
+    "evidence": "code",
+    "title": {
+      "zh": "用 Jev 筛论文，再生成知识图谱三元组",
+      "en": "Screen papers with Jev before extracting knowledge graph triples"
+    },
+    "area": {
+      "zh": "科研论文预筛选",
+      "en": "Research paper screening"
+    },
+    "input": {
+      "zh": "arXiv 论文标题、摘要和若干预设研究主题。",
+      "en": "An arXiv paper title, abstract, and predefined research topics."
+    },
+    "decision": {
+      "zh": "每个主题使用一道 Noul，在同一次请求里估计论文是否匹配。",
+      "en": "A Noul per topic estimates whether the paper matches, with all topics sharing one request."
+    },
+    "action": {
+      "zh": "至少一个主题达到阈值的论文进入 GPT 三元组抽取和 Neo4j 存储。最终调用失败时，各主题按零分处理。",
+      "en": "Papers meeting at least one topic threshold proceed to GPT triple extraction and Neo4j storage. Exhausted model failures become zero scores."
+    },
+    "boundary": {
+      "zh": "根许可未确认，未运行抓取、模型或数据库。阈值筛选可能漏掉相关论文。",
+      "en": "A root license was not confirmed, and crawling, model calls, and database writes were not run. Threshold screening can miss relevant papers."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/riurretx/arxiv-knowledge-graph"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/riurretx/arxiv-knowledge-graph/blob/882c991a108e30d462a9ff6735da8362e6d22af4/kg_core.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/riurretx/arxiv-knowledge-graph/blob/882c991a108e30d462a9ff6735da8362e6d22af4/daily_job.py"
+      }
+    ]
+  },
+  {
+    "id": "theseus-jev-review-depth-selection",
+    "name": "Theseus reviewer",
+    "author": "joeharris76",
+    "evidence": "code-and-post",
+    "title": {
+      "zh": "用 Jev 选择 PR 审查规模和模板",
+      "en": "Choose PR review size and template with Jev"
+    },
+    "area": {
+      "zh": "代码审查编排",
+      "en": "Code review orchestration"
+    },
+    "input": {
+      "zh": "PR 的改动信息、补丁及文件范围。",
+      "en": "Pull-request metadata, patch content, and changed-file scope."
+    },
+    "decision": {
+      "zh": "Choice 判断从 trivial 到 max 的规模、routine 或 deep 能力，以及 standard、deep 或 gate 模板。文件级问题还判断影响与所需审查程度。",
+      "en": "Choice selects a trivial-to-max size, routine or deep capability, and a standard, deep, or gate template. File-level questions assess impact and scrutiny."
+    },
+    "action": {
+      "zh": "审查器依据分类及策略选择审查配置，将结果用于后续审查流程。",
+      "en": "The reviewer combines judgments with policy to select the configuration for its review workflow."
+    },
+    "boundary": {
+      "zh": "核查作者原帖与固定提交。未运行审查器或复现其成本、覆盖率和审查质量。",
+      "en": "The author’s post and pinned source were inspected. Cost, coverage, and review quality were not independently reproduced."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/joeharris76/theseus"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/classify.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/selection.py"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/joeharris76/status/2123207119453262038"
       }
     ]
   }
