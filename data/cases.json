@@ -14210,5 +14210,193 @@
         "url": "https://x.com/joeharris76/status/2123207119453262038"
       }
     ]
+  },
+  {
+    "id": "jev-judge-mcp-rerank-validation",
+    "name": "Jev Judge MCP",
+    "author": "PyModel",
+    "evidence": "code",
+    "title": {
+      "zh": "给候选逐项打相关概率，并保留可验证的排序",
+      "en": "Score candidate relevance and return a validated ordering"
+    },
+    "area": {
+      "zh": "Agent 检索工具",
+      "en": "Agent retrieval tools"
+    },
+    "input": {
+      "zh": "查询和带唯一标识的候选文本列表。工具先检查候选与文本预算。",
+      "en": "A query and candidate texts with unique IDs. The tool first checks candidate and text budgets."
+    },
+    "decision": {
+      "zh": "每个候选用一道 Noul 估计与查询的相关性，同一请求共享查询状态。",
+      "en": "A Noul per candidate estimates relevance to the query, with the query shared in one request."
+    },
+    "action": {
+      "zh": "工具按概率返回排序和可选前 k 项。任一答案无效时返回 invalid_response，放弃本次排名。",
+      "en": "The tool returns candidates ranked by probability, optionally limited to top k. Any invalid answer produces invalid_response and no ranking."
+    },
+    "boundary": {
+      "zh": "已核查 MCP 处理器及 TypeSafe SDK 路径。未运行服务器或复现检索收益。",
+      "en": "The MCP handler and TypeSafe SDK path were inspected. The server and retrieval gains were not independently tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/PyModel/jev-judge-mcp"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/PyModel/jev-judge-mcp/blob/91545ebbd53e8d969e55bdc4210b431068f3da2d/src/jev_judge_mcp/tools/rerank.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/PyModel/jev-judge-mcp/blob/91545ebbd53e8d969e55bdc4210b431068f3da2d/src/jev_judge_mcp/providers/typesafe.py"
+      }
+    ]
+  },
+  {
+    "id": "system-one-agent-tool-and-context-selection",
+    "name": "System One Agent",
+    "author": "MahmoudMoubarez",
+    "evidence": "code",
+    "title": {
+      "zh": "由 Jev 选择工具，并筛出代码生成器需要的上下文",
+      "en": "Use Jev to select tools and the context needed by a code generator"
+    },
+    "area": {
+      "zh": "编码 Agent 控制循环",
+      "en": "Coding agent control loop"
+    },
+    "input": {
+      "zh": "用户目标、工作区观察、可用工具及候选文件、消息和工具结果。",
+      "en": "The user goal, workspace observations, available tools, and candidate files, messages, and tool outputs."
+    },
+    "decision": {
+      "zh": "Choice 选下一工具及有限参数，Noul 判断工作模型需要哪些上下文条目。",
+      "en": "Choice selects the next tool and bounded parameters. Noul checks select context entries for a worker model."
+    },
+    "action": {
+      "zh": "宿主验证选项后执行本地工具，或把所选材料交给生成模型，再以工具结果继续循环。",
+      "en": "The host validates the selections, executes a local tool or sends selected material to a generator, then continues from the resulting observations."
+    },
+    "boundary": {
+      "zh": "这是公开编码原型。未执行文件写入或测试命令，作者的成本与基准结果未复现。",
+      "en": "This is a public coding prototype. File writes and test commands were not run, and the author’s costs and benchmarks were not reproduced."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/MahmoudMoubarez/system-one-agent"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/MahmoudMoubarez/system-one-agent/blob/6b2d7181e264ed78bf8b719cc107537d0dd35ea5/jev.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/MahmoudMoubarez/system-one-agent/blob/6b2d7181e264ed78bf8b719cc107537d0dd35ea5/coding_kit.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/MahmoudMoubarez/system-one-agent/blob/6b2d7181e264ed78bf8b719cc107537d0dd35ea5/providers.py"
+      }
+    ]
+  },
+  {
+    "id": "omp-optchat-judge-history-recall",
+    "name": "OMP OptChat",
+    "author": "ericjuta",
+    "evidence": "code-and-post",
+    "title": {
+      "zh": "从压缩历史中挑出原始消息供 Agent 回读",
+      "en": "Select original messages for recall from compressed history"
+    },
+    "area": {
+      "zh": "Agent 历史回读",
+      "en": "Agent history recall"
+    },
+    "input": {
+      "zh": "当前问题、压缩视图行、原始日志词语命中的种子消息。",
+      "en": "A current question, compressed view lines, and seed messages found by lexical search of the raw log."
+    },
+    "decision": {
+      "zh": "宿主 judge 用 Noul 给相关行和其覆盖的原始消息打分。接近最高分的消息可再用 Choice 比较。作者称使用 Jev。",
+      "en": "The host judge scores lines and their underlying messages with Nouls. Near-top messages can enter a Choice comparison. The author reports using Jev."
+    },
+    "action": {
+      "zh": "返回胜出消息的原文首页及路径，Agent 可继续 zoom。无有效候选或调用超限时返回相应状态。",
+      "en": "It returns the winning message’s first raw page and its path for further zooming. Missing candidates or exhausted bounds produce status results."
+    },
+    "boundary": {
+      "zh": "模型由 OMP 宿主 judge 角色配置，仓库内未固定 TypeSafe 后端。根许可及长会话效果未独立验证。",
+      "en": "OMP’s host judge role selects the model, with no fixed TypeSafe backend in this repository. A root license and long-session outcomes were not independently verified."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ericjuta/omp-optchat"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ericjuta/omp-optchat/blob/6d382234b235370f3014c6c5ff7760390f91c61d/src/system1/recall.ts"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/ericjuta/omp-optchat/blob/6d382234b235370f3014c6c5ff7760390f91c61d/src/system1/judge.ts"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/ericjuta/status/2123497400329244823"
+      }
+    ]
+  },
+  {
+    "id": "typesafe-jevbot-word-tournament",
+    "name": "TypeSafe jevbot",
+    "author": "TypeSafe AI",
+    "evidence": "code",
+    "title": {
+      "zh": "官方实验用有限词表选择拼出聊天回复",
+      "en": "An official experiment assembles chat replies through vocabulary choices"
+    },
+    "area": {
+      "zh": "聊天机器人实验",
+      "en": "Chat bot experiment"
+    },
+    "input": {
+      "zh": "最近的频道或线程对话、当前已拼出的文本，以及词表和从对话加入的词。",
+      "en": "Recent channel or thread messages, the partial reply, and a vocabulary augmented with conversation words."
+    },
+    "decision": {
+      "zh": "Choice 在分桶词表中选词，再对入围词和短语复选，Noul 判断回复是否已完整。",
+      "en": "Choice selects from vocabulary buckets, then compares finalists and short phrases. Noul judges whether the reply is complete."
+    },
+    "action": {
+      "zh": "程序追加所选词，按停止判断或长度限制结束，再由 Discord 或 Slack 前端发送回复。",
+      "en": "Code appends selected words, stops on a completion judgment or length bound, and lets a Discord or Slack frontend send the reply."
+    },
+    "boundary": {
+      "zh": "来源为 typesafe-ai 官方仓库，根许可未确认。未接入频道、发送消息或独立验证回复质量及计费。",
+      "en": "The source is the official typesafe-ai repository, with no confirmed root license. Channels, message sending, reply quality, and billing were not independently tested."
+    },
+    "sources": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/typesafe-ai/jevbot"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/typesafe-ai/jevbot/blob/40cb722e7dcaf0c048094f25e5a692a87921795d/jev_core.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/typesafe-ai/jevbot/blob/40cb722e7dcaf0c048094f25e5a692a87921795d/jev_bot.py"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/typesafe-ai/jevbot/blob/40cb722e7dcaf0c048094f25e5a692a87921795d/jev_slack.py"
+      }
+    ]
   }
 ]

@@ -5326,5 +5326,69 @@
     "lastVerified": "2026-11-19",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "third774-opencode-decision-models",
+    "name": "third774/opencode-decision-models",
+    "url": "https://github.com/third774/opencode-decision-models",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "OpenCode Code Mode 插件，把含 Jev 的决策后端封装为单项及批量类型化判断工具。",
+      "en": "An OpenCode Code Mode plugin exposing decision backends including Jev as single and batched typed judgment tools."
+    },
+    "sourceUrl": "https://github.com/third774/opencode-decision-models/blob/aeb2ad8b24d8d65cd0ca8cd1bf68eb0425ebf9b6/src/index.ts",
+    "lastVerified": "2026-11-20",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "pymodel-jev-judge-mcp",
+    "name": "PyModel/jev-judge-mcp",
+    "url": "https://github.com/PyModel/jev-judge-mcp",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "面向 Agent 的 Jev MCP 工具集，包含带输入预算和答案校验的检索、筛选及比较工具。",
+      "en": "Jev MCP tools for agents, including retrieval, screening, and comparison with input budgets and answer validation."
+    },
+    "sourceUrl": "https://github.com/PyModel/jev-judge-mcp/blob/91545ebbd53e8d969e55bdc4210b431068f3da2d/src/jev_judge_mcp/providers/typesafe.py",
+    "lastVerified": "2026-11-20",
+    "status": "verified",
+    "stars": 49
+  },
+  {
+    "id": "revans-typesafe-ruby",
+    "name": "revans/typesafe-ruby",
+    "url": "https://github.com/revans/typesafe-ruby",
+    "category": "sdk",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "TypeSafe System One 的社区 Ruby 客户端，封装类型化问题、图片输入与重试。",
+      "en": "A community Ruby client for TypeSafe System One with typed questions, image input, and retries."
+    },
+    "sourceUrl": "https://github.com/revans/typesafe-ruby/blob/fc60594b69435c5bca2527e9350440333d55c25a/lib/typesafe/client.rb",
+    "lastVerified": "2026-11-20",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "mahmoudmoubarez-system-one-agent",
+    "name": "MahmoudMoubarez/system-one-agent",
+    "url": "https://github.com/MahmoudMoubarez/system-one-agent",
+    "category": "agent",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "以 Jev 选择工具和生成模型上下文的 Agent 循环，附 Python 编码原型。",
+      "en": "An agent loop using Jev to choose tools and generator context, with a Python coding prototype."
+    },
+    "sourceUrl": "https://github.com/MahmoudMoubarez/system-one-agent/blob/6b2d7181e264ed78bf8b719cc107537d0dd35ea5/jev.py",
+    "lastVerified": "2026-11-20",
+    "status": "verified",
+    "stars": 0
   }
 ]

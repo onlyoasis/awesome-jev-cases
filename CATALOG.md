@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (319)
+## 深度使用案例 / Worked cases (323)
 
 ### jev-ultrafast
 
@@ -2875,7 +2875,43 @@
 - 核验边界：核查作者原帖与固定提交。未运行审查器或复现其成本、覆盖率和审查质量。
 - 来源：[GitHub](https://github.com/joeharris76/theseus) · [Source](https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/classify.py) · [Source](https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/jev.py) · [Source](https://github.com/joeharris76/theseus/blob/976917576298553a818d48d1bcbbf8628c81c248/src/theseus_reviewer/selection.py) · [X](https://x.com/joeharris76/status/2123207119453262038)
 
-## 开源项目 / Open-source projects (333)
+### 给候选逐项打相关概率，并保留可验证的排序
+
+- 作者：PyModel
+- 输入：查询和带唯一标识的候选文本列表。工具先检查候选与文本预算。
+- Jev 判断：每个候选用一道 Noul 估计与查询的相关性，同一请求共享查询状态。
+- 后续动作：工具按概率返回排序和可选前 k 项。任一答案无效时返回 invalid_response，放弃本次排名。
+- 核验边界：已核查 MCP 处理器及 TypeSafe SDK 路径。未运行服务器或复现检索收益。
+- 来源：[GitHub](https://github.com/PyModel/jev-judge-mcp) · [Source](https://github.com/PyModel/jev-judge-mcp/blob/91545ebbd53e8d969e55bdc4210b431068f3da2d/src/jev_judge_mcp/tools/rerank.py) · [Source](https://github.com/PyModel/jev-judge-mcp/blob/91545ebbd53e8d969e55bdc4210b431068f3da2d/src/jev_judge_mcp/providers/typesafe.py)
+
+### 由 Jev 选择工具，并筛出代码生成器需要的上下文
+
+- 作者：MahmoudMoubarez
+- 输入：用户目标、工作区观察、可用工具及候选文件、消息和工具结果。
+- Jev 判断：Choice 选下一工具及有限参数，Noul 判断工作模型需要哪些上下文条目。
+- 后续动作：宿主验证选项后执行本地工具，或把所选材料交给生成模型，再以工具结果继续循环。
+- 核验边界：这是公开编码原型。未执行文件写入或测试命令，作者的成本与基准结果未复现。
+- 来源：[GitHub](https://github.com/MahmoudMoubarez/system-one-agent) · [Source](https://github.com/MahmoudMoubarez/system-one-agent/blob/6b2d7181e264ed78bf8b719cc107537d0dd35ea5/jev.py) · [Source](https://github.com/MahmoudMoubarez/system-one-agent/blob/6b2d7181e264ed78bf8b719cc107537d0dd35ea5/coding_kit.py) · [Source](https://github.com/MahmoudMoubarez/system-one-agent/blob/6b2d7181e264ed78bf8b719cc107537d0dd35ea5/providers.py)
+
+### 从压缩历史中挑出原始消息供 Agent 回读
+
+- 作者：ericjuta
+- 输入：当前问题、压缩视图行、原始日志词语命中的种子消息。
+- Jev 判断：宿主 judge 用 Noul 给相关行和其覆盖的原始消息打分。接近最高分的消息可再用 Choice 比较。作者称使用 Jev。
+- 后续动作：返回胜出消息的原文首页及路径，Agent 可继续 zoom。无有效候选或调用超限时返回相应状态。
+- 核验边界：模型由 OMP 宿主 judge 角色配置，仓库内未固定 TypeSafe 后端。根许可及长会话效果未独立验证。
+- 来源：[GitHub](https://github.com/ericjuta/omp-optchat) · [Source](https://github.com/ericjuta/omp-optchat/blob/6d382234b235370f3014c6c5ff7760390f91c61d/src/system1/recall.ts) · [Source](https://github.com/ericjuta/omp-optchat/blob/6d382234b235370f3014c6c5ff7760390f91c61d/src/system1/judge.ts) · [X](https://x.com/ericjuta/status/2123497400329244823)
+
+### 官方实验用有限词表选择拼出聊天回复
+
+- 作者：TypeSafe AI
+- 输入：最近的频道或线程对话、当前已拼出的文本，以及词表和从对话加入的词。
+- Jev 判断：Choice 在分桶词表中选词，再对入围词和短语复选，Noul 判断回复是否已完整。
+- 后续动作：程序追加所选词，按停止判断或长度限制结束，再由 Discord 或 Slack 前端发送回复。
+- 核验边界：来源为 typesafe-ai 官方仓库，根许可未确认。未接入频道、发送消息或独立验证回复质量及计费。
+- 来源：[GitHub](https://github.com/typesafe-ai/jevbot) · [Source](https://github.com/typesafe-ai/jevbot/blob/40cb722e7dcaf0c048094f25e5a692a87921795d/jev_core.py) · [Source](https://github.com/typesafe-ai/jevbot/blob/40cb722e7dcaf0c048094f25e5a692a87921795d/jev_bot.py) · [Source](https://github.com/typesafe-ai/jevbot/blob/40cb722e7dcaf0c048094f25e5a692a87921795d/jev_slack.py)
+
+## 开源项目 / Open-source projects (337)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -3212,6 +3248,10 @@
 | [tpa339/x-noisefilter](https://github.com/tpa339/x-noisefilter) | community | MIT | 0 |
 | [joeharris76/theseus](https://github.com/joeharris76/theseus) | community | MIT | 0 |
 | [DataSnackAPI/n8n-nodes-datasnack](https://github.com/DataSnackAPI/n8n-nodes-datasnack) | community | MIT | 0 |
+| [third774/opencode-decision-models](https://github.com/third774/opencode-decision-models) | community | MIT | 0 |
+| [PyModel/jev-judge-mcp](https://github.com/PyModel/jev-judge-mcp) | community | MIT | 49 |
+| [revans/typesafe-ruby](https://github.com/revans/typesafe-ruby) | community | MIT | 0 |
+| [MahmoudMoubarez/system-one-agent](https://github.com/MahmoudMoubarez/system-one-agent) | community | MIT | 0 |
 
 ## 官方 cookbook / Official recipes (27)
 
