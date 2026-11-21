@@ -2,7 +2,7 @@
 
 本目录由结构化数据生成。来源链接指向原作者；官方标签仅用于 TypeSafe 一手资料。
 
-## 深度使用案例 / Worked cases (323)
+## 深度使用案例 / Worked cases (327)
 
 ### jev-ultrafast
 
@@ -2908,10 +2908,46 @@
 - 输入：最近的频道或线程对话、当前已拼出的文本，以及词表和从对话加入的词。
 - Jev 判断：Choice 在分桶词表中选词，再对入围词和短语复选，Noul 判断回复是否已完整。
 - 后续动作：程序追加所选词，按停止判断或长度限制结束，再由 Discord 或 Slack 前端发送回复。
-- 核验边界：来源为 typesafe-ai 官方仓库，根许可未确认。未接入频道、发送消息或独立验证回复质量及计费。
+- 核验边界：来源为 typesafe-ai 官方仓库，根许可未确认。未接入频道、发送消息或独立验证回复质量及计费。 2026-11-21 原仓库回读返回 GitHub 404；本条保留此前源码读取的历史记录，当前公开链接不可用。
 - 来源：[GitHub](https://github.com/typesafe-ai/jevbot) · [Source](https://github.com/typesafe-ai/jevbot/blob/40cb722e7dcaf0c048094f25e5a692a87921795d/jev_core.py) · [Source](https://github.com/typesafe-ai/jevbot/blob/40cb722e7dcaf0c048094f25e5a692a87921795d/jev_bot.py) · [Source](https://github.com/typesafe-ai/jevbot/blob/40cb722e7dcaf0c048094f25e5a692a87921795d/jev_slack.py)
 
-## 开源项目 / Open-source projects (337)
+### 按新任务选择模型和推理强度，并复用后续路线
+
+- 作者：smg1024
+- 输入：最近用户文本（最多 16000 字符）、图片存在标记，以及已认证且符合范围的物理模型元数据。
+- Jev 判断：两道 Jev Choice 分别选择模型编号和 off 至 xhigh 的有限推理强度。
+- 后续动作：代码校验所选编号与强度后交给 Pi 调度；续接与重试尽可能复用原路线，分类失败或选择无效则报错。
+- 核验边界：只向分类器提供文本与图片标记，未发送图片本身；内部 direct 调用跳过分类。仓库测试使用模拟分类器，本站未运行 Pi 或验证路由收益。
+- 来源：[GitHub](https://github.com/smg1024/jev-router) · [Source](https://github.com/smg1024/jev-router/blob/38eee3e1e1dd424143387d2f3e917e4d66e63964/extensions/index.ts)
+
+### Jev 读取合成线索，代码决定联系或先复核
+
+- 作者：Duckky153
+- 输入：合成企业名称与客户留言；表单字段和作者答案键不送入模型。
+- Jev 判断：Jev 1.14 用七道固定 Choice/Noul 问题返回标签、置信度或概率。
+- 后续动作：代码校验答案并结合联系信息、重复项等规则，分为可联系、先修复或人工复核，输出负责人、排序与模板信息。
+- 核验边界：一百条线索均为虚构，页面重放已保存答案，不实际联系客户或发信。原仓库许可未确认；作者评分与比较未复现，不能外推真实保险业务。
+- 来源：[GitHub](https://github.com/Duckky153/every-lead) · [Source](https://github.com/Duckky153/every-lead/blob/686718107397c4f5d967771912665cb1159ce4f2/read_leads.py) · [Source](https://github.com/Duckky153/every-lead/blob/686718107397c4f5d967771912665cb1159ce4f2/site/engine.js)
+
+### Jev 解释账单意图，固定业务规则决定处理方式
+
+- 作者：rashedtalukder
+- 输入：虚构客户的账单支持留言；Stripe sandbox 事实由独立代码读取。
+- Jev 判断：Jev 用一道 Choice 在共享意图标签中分类；调用或合同异常返回 UNKNOWN。
+- 后续动作：Orkes 的固定版本 BUSINESS_RULE 结合意图和事实作决定；只有批准退款的分支才进入额外受限的退款执行器，默认 dry-run。
+- 核验边界：这是虚构政策与 sandbox 教学应用，许可未确认。概率不作为退款权限；本站未调用 Orkes、Stripe 或模型，也未复现作者基准及退款结果。
+- 来源：[GitHub](https://github.com/rashedtalukder/orkes-stripe-retail-decisions) · [Source](https://github.com/rashedtalukder/orkes-stripe-retail-decisions/blob/e0609d245837ac1e4239919790bd6501a2597c08/src/stripe_decisions/adapters/jev.py) · [Source](https://github.com/rashedtalukder/orkes-stripe-retail-decisions/blob/e0609d245837ac1e4239919790bd6501a2597c08/src/stripe_decisions/workers.py) · [Source](https://github.com/rashedtalukder/orkes-stripe-retail-decisions/blob/e0609d245837ac1e4239919790bd6501a2597c08/src/stripe_decisions/refunds.py)
+
+### 用 Jev 评价 RAG 答案，再按阈值判定评测通过
+
+- 作者：johnrodermund
+- 输入：公开 ISO 20022 资料的检索段落、问题和 Claude 生成的答案。
+- Jev 判断：选择 --judge jev 时，DeepEval 的 system_one 模式用 Jev 评价忠实性与答案相关性。
+- 后续动作：程序汇总分数与 judge_errors，独立 gate 按配置下限检查，缺失指标或低于阈值时以非零退出。
+- 核验边界：Jev 是可选离线评审，默认不运行；作者称 LLM 评分只在本地运行，不能写成已接入 CI。许可未确认，本站未发送资料或复现分数。
+- 来源：[GitHub](https://github.com/johnrodermund/payments-standards-rag) · [Source](https://github.com/johnrodermund/payments-standards-rag/blob/bbe6b5f43bcd095fd69714bcc4b69265b8516856/src/payments_rag/evals/judge.py) · [Source](https://github.com/johnrodermund/payments-standards-rag/blob/bbe6b5f43bcd095fd69714bcc4b69265b8516856/src/payments_rag/evals/rag_eval.py) · [Source](https://github.com/johnrodermund/payments-standards-rag/blob/bbe6b5f43bcd095fd69714bcc4b69265b8516856/src/payments_rag/evals/gate.py)
+
+## 开源项目 / Open-source projects (340)
 
 | 项目 | 关系 | 许可证 | ★ |
 | --- | --- | --- | ---: |
@@ -3252,6 +3288,9 @@
 | [PyModel/jev-judge-mcp](https://github.com/PyModel/jev-judge-mcp) | community | MIT | 49 |
 | [revans/typesafe-ruby](https://github.com/revans/typesafe-ruby) | community | MIT | 0 |
 | [MahmoudMoubarez/system-one-agent](https://github.com/MahmoudMoubarez/system-one-agent) | community | MIT | 0 |
+| [smg1024/jev-router](https://github.com/smg1024/jev-router) | community | MIT | 0 |
+| [parker-brown-family/jevbrev](https://github.com/parker-brown-family/jevbrev) | community | MIT OR Apache-2.0 | 0 |
+| [light-cheng/Light-Decision-MCP](https://github.com/light-cheng/Light-Decision-MCP) | community | MIT | 1 |
 
 ## 官方 cookbook / Official recipes (27)
 

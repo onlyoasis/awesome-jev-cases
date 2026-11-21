@@ -5390,5 +5390,53 @@
     "lastVerified": "2026-11-20",
     "status": "verified",
     "stars": 0
+  },
+  {
+    "id": "smg1024-jev-router",
+    "name": "smg1024/jev-router",
+    "url": "https://github.com/smg1024/jev-router",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "为 Pi 提供 Jev 自动模型与推理强度路由的社区扩展。",
+      "en": "A community Pi extension for Jev-based model and thinking-effort routing."
+    },
+    "sourceUrl": "https://github.com/smg1024/jev-router/blob/38eee3e1e1dd424143387d2f3e917e4d66e63964/extensions/index.ts",
+    "lastVerified": "2026-11-21",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "parker-brown-family-jevbrev",
+    "name": "parker-brown-family/jevbrev",
+    "url": "https://github.com/parker-brown-family/jevbrev",
+    "category": "tool",
+    "relationship": "community",
+    "license": "MIT OR Apache-2.0",
+    "summary": {
+      "zh": "把精简 API 描述转换为 Jev 问题、答案读取器和 HTTP 调用计划；工具本身不调用模型或发送请求。",
+      "en": "Converts compact API descriptions into Jev questions, answer readers, and HTTP plans; the tool itself makes no model or HTTP calls."
+    },
+    "sourceUrl": "https://github.com/parker-brown-family/jevbrev/blob/d6503914b6fbeb21c90d217e6b866cacc9dd71a5/src/read.rs",
+    "lastVerified": "2026-11-21",
+    "status": "verified",
+    "stars": 0
+  },
+  {
+    "id": "light-cheng-light-decision-mcp",
+    "name": "light-cheng/Light-Decision-MCP",
+    "url": "https://github.com/light-cheng/Light-Decision-MCP",
+    "category": "mcp",
+    "relationship": "community",
+    "license": "MIT",
+    "summary": {
+      "zh": "包含直接 TypeSafe Jev 后端的多供应商决策 MCP，提供有数据去向约束的路由与本地回退。",
+      "en": "A multi-provider decision MCP with a direct TypeSafe Jev backend, destination-constrained routing, and local fallback."
+    },
+    "sourceUrl": "https://github.com/light-cheng/Light-Decision-MCP/blob/84ae697175dc8f079cb530bbf66591af19c494d8/src/backends/systemone.mjs",
+    "lastVerified": "2026-11-21",
+    "status": "verified",
+    "stars": 1
   }
 ]
