@@ -50,7 +50,7 @@ X Latest 若忽略 `since` / `until` 日期条件，记录历史补查为 `parti
 
 每轮至少在结束时用真实浏览器检查中英文桌面与 375px：桌面至少 1024px，Monetag 正常加载；GA4 按网站主线已授权策略默认测量，首访核对正确 measurement ID 的 `page_view/collect` 请求及响应；核验欧洲经济区、英国和瑞士的统计 Cookie 同意配置，明确拒绝与 GPC 停止统计，普通请求省略调试参数；375px 无 Monetag loader、请求或素材，即使勾选广告也不加载。保留用户退出、缩屏和 GPC 门控。普通 Chrome 可见素材与 headless 加载证据分别记录，不点击真实广告，不把供应商无填充直接归为代码配置丢失。
 
-独立 headless 验收的临时 profile、Chromium 临时文件与截图也须放在本轮经过峰值预检的 Projects 缓存；启动进程时显式设置 `TMPDIR=/Volumes/ExternalProjects/DevCaches/typesafe-jev/<date>/browser-tmp`，先建目录并核对真实卷，不能依赖默认系统临时目录。关闭本轮创建的浏览器后确认临时 profile 已清理；普通 Chrome 的既有登录身份与这份隔离验收分开，不复制认证或用 headless 绕过浏览器权限拒绝。
+独立 headless 验收的临时 profile、Chromium 临时文件与截图也须放在本轮经过峰值预检的 Projects 缓存；启动进程时显式设置 `TMPDIR=/Volumes/ExternalProjects/DevCaches/typesafe-jev/<date>/browser-tmp`，先建目录并核对真实卷，不能依赖默认系统临时目录。site-kit 的 head 与 Lighthouse 子进程也必须继承同一 Projects TMPDIR，完整门禁前先设置，不能只给最终验收脚本设置。macOS 下 Lighthouse 的 mktemp -t 可能不采用 TMPDIR；必须回读真实 profile 路径，必要时使用任务范围的 mktemp 入口和完整 Projects 模板，保留全量门禁结果，不改全局配置。关闭本轮创建的浏览器后确认临时 profile 已清理；普通 Chrome 的既有登录身份与这份隔离验收分开，不复制认证或用 headless 绕过浏览器权限拒绝。
 
 切换响应式视口时，先记录原视口和本站偏好，并确认当前聚焦的是本任务自建的验收标签页。视口工具返回成功后仍须回读该页实际 `innerWidth`；请求375px却仍为桌面宽度时，只能记为视口操作未生效，不能据此判定移动端广告故障或验收成功。先检查当前焦点；必要时通过当前官方工具或原生Chrome界面聚焦自建验收页，再在同一浏览器应用尺寸并回读，不切账号、不改其他标签页内容、不用原始CDP或全局权限绕过。2026-10-29实测此方式可恢复375px；无法恢复则记录验收缺口并通知。完成后恢复原视口、偏好和用户原焦点；证据只保留本任务页面及非敏感操作结论，不保存其他标签页URL、认证回调或账号材料。
 
